@@ -2,7 +2,6 @@
 
 import pytest
 import pytest_asyncio
-import uuid
 from fastmcp.client import Client
 from fastmcp.client.transports import FastMCPTransport
 
@@ -15,24 +14,25 @@ async def main_mcp_client():
 
 
 @pytest.mark.parametrize(
-    "display_name,email,company,contact,timezone,currency,company_size,password",
+    "display_name,email,company,contact,timezone,currency,company_size,password,user_id,onboarding_id",
     [
-    
         (
             "DataFlow Analytics",
-            "info_791d6e166d@dataflow.com",
+            "info_791d6e166dm@dataflow.com",
             "DataFlow Inc",
             "918877665544",
             "Asia/Calcutta GMT+05:30",
             "USD",
             "50 - 100",
-            "Analytics@123"
-        )
-      
+            "Analytics@123",
+            "user_456",
+            "onb_789",
+        ),
     ],
 )
 @pytest.mark.asyncio
 async def test_create_business_profile(
+    main_mcp_client: Client[FastMCPTransport],
     display_name: str,
     email: str,
     company: str,
@@ -41,7 +41,8 @@ async def test_create_business_profile(
     currency: str,
     company_size: str,
     password: str,
-    main_mcp_client: Client[FastMCPTransport],
+    user_id: str,
+    onboarding_id: str,
 ):
     """Test creating a new business profile."""
     result = await main_mcp_client.call_tool(
@@ -55,11 +56,12 @@ async def test_create_business_profile(
             "currency": currency,
             "company_size": company_size,
             "password": password,
+            "user_id": user_id,
+            "onboarding_id": onboarding_id,
         },
     )
     print(f"\n=== Create Business Profile: {display_name} ===")
     print(f"Email used: {email}")
     print(result.data)
     
-    # Add assertions
     assert result.data is not None
