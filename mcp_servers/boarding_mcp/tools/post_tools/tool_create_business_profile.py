@@ -9,6 +9,7 @@ from ..import mcp
 from ...models import CreateBusinessProfileRequest, BusinessCreationResponse
 from ...clients import get_aisensy_post_client
 from app import logger
+from app import BusinessCreationRepository, get_session
 
 
 @mcp.tool(
@@ -40,7 +41,9 @@ async def create_business_profile(
     timezone: str,
     currency: str,
     company_size: str,
-    password: str
+    password: str,
+    user_id: str,
+    onboarding_id: str,
 ) -> BusinessCreationResponse:
     """
     Create a new business profile.
@@ -54,7 +57,9 @@ async def create_business_profile(
             timezone=timezone,
             currency=currency,
             company_size=company_size,
-            password=password
+            password=password,
+            user_id=user_id,
+            onboarding_id=onboarding_id
         )
         
         async with get_aisensy_post_client() as client:
@@ -71,6 +76,28 @@ async def create_business_profile(
             
             if response.get("success"):
                 logger.info("Successfully created business profile")
+
+                try:
+                    with get_session() as session:
+                        business_repo = BusinessCreationRepository(session=session)
+                        
+                        business_repo.create(
+                            id=response["data"]["id"],
+                            user_id=request.user_id,
+                            onboarding_id=request.onboarding_id,
+                            display_name=response["data"]["display_name"],
+                            project_ids=response["data"]["project_ids"],
+                            user_name=response["data"]["user_name"],
+                            business_id=response["data"]["business_id"],
+                            email=response["data"]["email"],
+                            company=response["data"]["company"],
+                            contact=response["data"]["contact"],
+                            currency=response["data"]["currency"],
+                            timezone=response["data"]["timezone"]
+                        )
+                except Exception as db_error:
+                    logger.error(f"Database error: {db_error}")
+                
                 return BusinessCreationResponse(
                     success=True,
                     data=response["data"]

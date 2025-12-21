@@ -55,6 +55,14 @@ class CreateBusinessProfileRequest(BaseModel):
         description="Password for the business account",
         min_length=8
     )
+    user_id: str = Field(
+        ...,
+        description="User ID for the business profile"
+    )
+    onboarding_id: str = Field(
+        ...,
+        description="Onboarding ID for the business profile"
+    )
     
     @field_validator("display_name", "company", "contact", "timezone", "company_size")
     @classmethod

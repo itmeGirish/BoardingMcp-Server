@@ -1,10 +1,11 @@
+"""Business Creation Repository."""
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 from dataclasses import dataclass
-from sqlmodel import Session
+from sqlmodel import Session, select
 from ..models import BusinessCreation
-from ....config.logging import logger
+from app import logger
 
 
 @dataclass
@@ -54,4 +55,67 @@ class BusinessCreationRepository:
         except Exception as e:
             self.session.rollback()
             logger.error(f"Failed to insert BusinessCreation: {e}")
+            raise e
+
+    def get_by_id(self, id: str) -> BusinessCreation | None:
+        """Get a business creation record by ID."""
+        try:
+            statement = select(BusinessCreation).where(BusinessCreation.id == id)
+            result = self.session.exec(statement).first()
+            return result
+        except Exception as e:
+            logger.error(f"Failed to get BusinessCreation by id {id}: {e}")
+            raise e
+
+    def get_by_user_id(self, user_id: str) -> List[BusinessCreation]:
+        """Get all business creation records for a user."""
+        try:
+            statement = select(BusinessCreation).where(BusinessCreation.user_id == user_id)
+            results = self.session.exec(statement).all()
+            return list(results)
+        except Exception as e:
+            logger.error(f"Failed to get BusinessCreation by user_id {user_id}: {e}")
+            raise e
+
+    def get_ids_by_user_id(self, user_id: str) -> List[dict]:
+        """Get only id and business_id for a user."""
+        try:
+            statement = select(
+                BusinessCreation.id, 
+                BusinessCreation.business_id
+            ).where(BusinessCreation.user_id == user_id)
+            results = self.session.exec(statement).all()
+            return [{"id": r[0], "business_id": r[1]} for r in results]
+        except Exception as e:
+            logger.error(f"Failed to get IDs by user_id {user_id}: {e}")
+            raise e
+
+    def get_by_email(self, email: str) -> BusinessCreation | None:
+        """Get a business creation record by email."""
+        try:
+            statement = select(BusinessCreation).where(BusinessCreation.email == email)
+            result = self.session.exec(statement).first()
+            return result
+        except Exception as e:
+            logger.error(f"Failed to get BusinessCreation by email {email}: {e}")
+            raise e
+
+    def get_all(self) -> List[BusinessCreation]:
+        """Get all business creation records."""
+        try:
+            statement = select(BusinessCreation)
+            results = self.session.exec(statement).all()
+            return list(results)
+        except Exception as e:
+            logger.error(f"Failed to get all BusinessCreation records: {e}")
+            raise e
+
+    def get_by_business_id(self, business_id: str) -> BusinessCreation | None:
+        """Get a business creation record by business_id."""
+        try:
+            statement = select(BusinessCreation).where(BusinessCreation.business_id == business_id)
+            result = self.session.exec(statement).first()
+            return result
+        except Exception as e:
+            logger.error(f"Failed to get BusinessCreation by business_id {business_id}: {e}")
             raise e
