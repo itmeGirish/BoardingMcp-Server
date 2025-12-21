@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: boarding-mcp-server
+Version: 0.1.0
+Summary: MCP Server for Onboarding Management
+Author: Girish
+Author-email: Girish <girish12n@gmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pydantic
+Requires-Dist: pydantic-settings
+Requires-Dist: sqlalchemy
+Requires-Dist: alembic
+Requires-Dist: psycopg2-binary
+Requires-Dist: python-jose[cryptography]
+Requires-Dist: passlib[bcrypt]
+Requires-Dist: python-multipart
+Requires-Dist: httpx
+Requires-Dist: fastmcp
+Requires-Dist: mcp
+Requires-Dist: google-genai
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pytest-asyncio; extra == "test"
+Requires-Dist: httpx; extra == "test"
+Dynamic: author
+Dynamic: requires-python
+
+# BoardingMcp-Server
