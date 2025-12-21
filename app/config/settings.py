@@ -51,8 +51,8 @@ class Settings(BaseSettings):
 
     #auth
     SECRET_KEY:str
-    ALGORITHM = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES = 30
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     #openai api keys
     OPENAI_API_KEY:str
@@ -64,20 +64,12 @@ class Settings(BaseSettings):
     MAX_RETRIES:int
 
 
+    model_config = ConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore"
+    )
 
 
-
-    model_config = ConfigDict(env_file=".env")
-
-
-
-
-
-
-
-
-
-
- 
 
 settings = Settings()
