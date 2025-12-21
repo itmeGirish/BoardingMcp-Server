@@ -1,0 +1,3 @@
+from .post_create_qr_code_and_short_link import create_qr_code_and_short_link
+
+__all__=["create_qr_code_and_short_link"]
