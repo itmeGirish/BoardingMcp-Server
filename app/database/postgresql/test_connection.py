@@ -20,13 +20,13 @@ from .postgresql_repositories import UserCreationRepository, BusinessCreationRep
 session = next(get_session())
 
 # 1. Create User first
-# user_repo = UserCreationRepository(session=session)
-# user = user_repo.create(
-#     id="user_456",
-#     name="John Doe",
-#     email="john@example.com"
-# )
-# print(f"User created: {user.id}")
+user_repo = UserCreationRepository(session=session)
+user = user_repo.create(
+    id="user_456",
+    name="John Doe",
+    email="john@example.com"
+)
+print(f"User created: {user.id}")
 
 # # 2. Then create BusinessCreation
 business_repo = BusinessCreationRepository(session=session)

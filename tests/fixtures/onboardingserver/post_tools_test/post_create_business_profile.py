@@ -20,7 +20,7 @@ async def main_mcp_client():
     
         (
             "DataFlow Analytics",
-            "info_791d6e1d@dataflow.com",
+            "info_791d6e166d@dataflow.com",
             "DataFlow Inc",
             "918877665544",
             "Asia/Calcutta GMT+05:30",
