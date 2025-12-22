@@ -10,7 +10,9 @@ from .get_response import (BusinessProfile,
 
 from .post_response import (BusinessCreationResponse,
                             BusinessCreationWithUserResponse,
-                            BusinessCreationWithUserResponse)
+                            BusinessCreationWithUserResponse,
+                            ProjectAPIResponse,
+                            ProjectResponse)
 
 
 __all__=[
@@ -25,4 +27,6 @@ __all__=[
     "ProjectIDResponse",
     "BusinessCreationResponse",
     "BusinessCreationWithUserResponse",
-    "BusinessCreationWithUserResponse",]
+    "BusinessCreationWithUserResponse",
+    "ProjectAPIResponse",
+    "ProjectResponse"]

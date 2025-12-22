@@ -1,17 +1,14 @@
-from typing import Annotated
-
-from fastapi import Depends, FastAPI, HTTPException, Query
-from sqlmodel import Field, Session, SQLModel
+# app/database/postgresql/create_tables.py
+from sqlmodel import SQLModel
 from .postgresql_connection import engine
-from .models import User,BusinessCreation, Project_Creation
+from .models import User, BusinessCreation, ProjectCreation  # Import all models
 
-def create_db_and_tables():
+
+def create_all_tables():
+    """Create all tables in the database."""
     SQLModel.metadata.create_all(engine)
-    print("Database and tables created.")
+    print("All tables created successfully!")
 
 
 if __name__ == "__main__":
-    create_db_and_tables()
-
-
-
+    create_all_tables()

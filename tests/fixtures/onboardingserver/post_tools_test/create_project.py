@@ -14,22 +14,21 @@ async def main_mcp_client():
 
 
 @pytest.mark.parametrize(
-    "project_name",
+    "project_name, user_id",
     [
-        "API TEST PROJECT 1",
-        "Marketing Automation",
-        "Customer Support Integration",
+        ("test_sector_tanker_rey_shall", "user_45618"),
     ],
 )
 @pytest.mark.asyncio
 async def test_create_project(
     project_name: str,
+    user_id: str,
     main_mcp_client: Client[FastMCPTransport],
 ):
     """Test creating a new project."""
     result = await main_mcp_client.call_tool(
         "create_project",
-        arguments={"name": project_name},
+        arguments={"name": project_name, "user_id": user_id},
     )
     print(f"\n=== Create Project: {project_name} ===")
     print(result.data)

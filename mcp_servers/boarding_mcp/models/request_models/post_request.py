@@ -84,6 +84,8 @@ class CreateProjectRequest(BaseModel):
         max_length=100,
         examples=["API TEST PROJECT 1"]
     )
+    user_id:str=Field("unique identifier of user")
+
     
     @field_validator("name")
     @classmethod

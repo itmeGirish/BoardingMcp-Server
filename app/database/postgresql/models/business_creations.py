@@ -1,12 +1,13 @@
 from sqlmodel import SQLModel, Field, Relationship
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
 from sqlalchemy import ARRAY, Text
 
 if TYPE_CHECKING:
     from .user_table import User
 
-#Business Creation Model
+
+# Business Creation Model
 class BusinessCreation(SQLModel, table=True):
     __tablename__ = "business_creations"
 
@@ -27,10 +28,7 @@ class BusinessCreation(SQLModel, table=True):
     timezone: str = Field(default="Asia/Calcutta")
     type: str = Field(default="owner")
 
-    ## Relationship
+    # Relationship - only keep user relationship
     user: Optional["User"] = Relationship(back_populates="business_creations")
-
-
-
-
-
+    
+    # REMOVED: project_creations relationship

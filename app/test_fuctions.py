@@ -4,7 +4,7 @@ from app.database.postgresql.postgresql_repositories import BusinessCreationRepo
 with get_session() as session:
     business_repo = BusinessCreationRepository(session=session)
     
-    user_id = "user_456"
+    user_id = "user_45618"
     ids = business_repo.get_ids_by_user_id(user_id)
     
     print(f"\nIDs for user_id: {user_id}\n")

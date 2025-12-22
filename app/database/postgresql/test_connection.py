@@ -17,31 +17,31 @@ from .postgresql_connection import get_session
 from .postgresql_repositories import UserCreationRepository, BusinessCreationRepository
 
 
-session = next(get_session())
-
-# 1. Create User first
-user_repo = UserCreationRepository(session=session)
-user = user_repo.create(
-    id="user_456",
-    name="John Doe",
-    email="john@example.com"
-)
-print(f"User created: {user.id}")
+# Use context manager syntax instead of next()
+with get_session() as session:
+    # 1. Create User first
+    user_repo = UserCreationRepository(session=session)
+    user = user_repo.create(
+        id="user_45618",
+        name="John Doe",
+        email="john@example3377.com"
+    )
+    print(f"User created: {user.id}")
 
 # # 2. Then create BusinessCreation
-business_repo = BusinessCreationRepository(session=session)
-business = business_repo.create(
-    id="123",
-    user_id="user_456",
-    onboarding_id="onb_789",
-    display_name="My Business",
-    project_ids=["proj_1", "proj_2"],
-    user_name="john@example.com",
-    business_id="biz_001",
-    email="john@example.com",
-    company="Acme Inc",
-    contact="919876543210"
-)
-print(f"BusinessCreation created: {business.id}")
+# business_repo = BusinessCreationRepository(session=session)
+# business = business_repo.create(
+#     id="123",
+#     user_id="user_456",
+#     onboarding_id="onb_789",
+#     display_name="My Business",
+#     project_ids=["proj_1", "proj_2"],
+#     user_name="john@example.com",
+#     business_id="biz_001",
+#     email="john@example.com",
+#     company="Acme Inc",
+#     contact="919876543210"
+# )
+# print(f"BusinessCreation created: {business.id}")
 
-session.close()
+# session.close()

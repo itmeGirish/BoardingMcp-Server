@@ -24,7 +24,9 @@ from .response_models import (BusinessProfile,
                            ProjectIDResponse,
                            BusinessCreationResponse,
                            BusinessCreationWithUserResponse,
-                           BusinessCreationWithUserResponse)
+                           BusinessCreationWithUserResponse,
+                           ProjectAPIResponse,
+                           ProjectResponse)
 
 
 __all__ = [
@@ -50,5 +52,6 @@ __all__ = [
     "ProjectIDResponse",
     "BusinessCreationResponse",
     "BusinessCreationWithUserResponse",
-    "BusinessCreationWithUserResponse"
+    "BusinessCreationWithUserResponse",
+    "ProjectResponse"
 ]
