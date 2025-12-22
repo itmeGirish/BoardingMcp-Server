@@ -79,29 +79,28 @@ async def create_project(name: str, user_id: str) -> ProjectAPIResponse:
             
             logger.info(f"Successfully retrieved the business_id for {user_id}")
 
-        # Create project via API
-        async with get_aisensy_post_client() as client:
-            response = await client.create_project(name=request.name, business_id=business_id)
-            
-            if not response.get("success"):
-                error_msg = response.get("error", "Unknown error")
-                status_code = response.get("status_code", "N/A")
-                details = response.get("details", {})
+            # Create project via API
+            async with get_aisensy_post_client() as client:
+                response = await client.create_project(name=request.name, business_id=business_id)
                 
-                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
-                logger.warning(f"Failed to create project: {full_error}")
-                return ProjectAPIResponse(
-                    success=False,
-                    error=full_error
-                )
-            
-            logger.info(f"Successfully created project via API: {request.name}")
-            
-            # Parse the API response data into ProjectResponse
-            project_data = ProjectResponse(**response["data"])
-            
-            # Save project to database
-            with get_session() as session:
+                if not response.get("success"):
+                    error_msg = response.get("error", "Unknown error")
+                    status_code = response.get("status_code", "N/A")
+                    details = response.get("details", {})
+                    
+                    full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                    logger.warning(f"Failed to create project: {full_error}")
+                    return ProjectAPIResponse(
+                        success=False,
+                        error=full_error
+                    )
+                
+                logger.info(f"Successfully created project via API: {request.name}")
+                
+                # Parse the API response data into ProjectResponse
+                project_data = ProjectResponse(**response["data"])
+                
+                # Save project to database using same session
                 project_repo = ProjectCreationRepository(session=session)
                 
                 # Convert Pydantic model to dict
@@ -116,7 +115,6 @@ async def create_project(name: str, user_id: str) -> ProjectAPIResponse:
                     project_dict["wa_business_profile"] = dict(project_dict["wa_business_profile"])
                 
                 # Remove any keys that don't match repository create params
-                # (in case API returns extra fields)
                 allowed_keys = {
                     "id", "user_id", "business_id", "name", "partner_id", "type",
                     "status", "sandbox", "active_plan", "plan_activated_on",
@@ -137,11 +135,11 @@ async def create_project(name: str, user_id: str) -> ProjectAPIResponse:
                     logger.info(f"Successfully saved project to database: {saved_project.id}")
                 else:
                     logger.warning(f"Failed to save project to database: {project_data.id}")
-            
-            return ProjectAPIResponse(
-                success=True,
-                data=project_data
-            )
+                
+                return ProjectAPIResponse(
+                    success=True,
+                    data=project_data
+                )
         
     except ValueError as e:
         error_msg = f"Validation error: {str(e)}"
