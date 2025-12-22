@@ -66,15 +66,15 @@ class AiSensyPostClient(AiSensyBaseClient):
             logger.exception("Unexpected error")
             return {"success": False, "error": str(e)}
 
-    async def create_project(self, name: str) -> Dict[str, Any]:
+    async def create_project(self, name: str,business_id:str) -> Dict[str, Any]:
         """
         Create a new project in the AiSensy API.
         """
-        if not settings.PARTNER_ID or not settings.BUSINESS_ID:
-            logger.error("Missing PARTNER_ID or BUSINESS_ID in settings")
+        if not settings.PARTNER_ID:
+            logger.error("Missing PARTNER_ID")
             return {
                 "success": False,
-                "error": "Missing required fields: partner_id and business_id"
+                "error": "Missing required fields: partner_id"
             }
 
         if not name:
@@ -84,7 +84,7 @@ class AiSensyPostClient(AiSensyBaseClient):
                 "error": "Missing required field: name"
             }
 
-        url = f"{self.BASE_URL}/partner/{settings.PARTNER_ID}/business/{settings.BUSINESS_ID}/project"
+        url = f"{self.BASE_URL}/partner/{settings.PARTNER_ID}/business/{business_id}/project"
         payload = {"name": name}
         logger.debug(f"Creating project at: {url}")
 
