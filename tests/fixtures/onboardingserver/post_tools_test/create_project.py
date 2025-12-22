@@ -16,7 +16,7 @@ async def main_mcp_client():
 @pytest.mark.parametrize(
     "project_name, user_id",
     [
-        ("test_sector_tanker_rey_shall", "user_45618"),
+        ("my_test_project", "user_45618"),
     ],
 )
 @pytest.mark.asyncio
