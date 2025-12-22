@@ -5,7 +5,6 @@ import pytest_asyncio
 from fastmcp.client import Client
 from fastmcp.client.transports import FastMCPTransport
 
-
 @pytest_asyncio.fixture
 async def main_mcp_client():
     """Initialize MCP client for onboarding server."""
