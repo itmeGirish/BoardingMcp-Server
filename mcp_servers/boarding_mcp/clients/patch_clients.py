@@ -15,7 +15,8 @@ class AiSensyPatchClient(AiSensyBaseClient):
         self,
         display_name: Optional[str] = None,
         company: Optional[str] = None,
-        contact: Optional[str] = None
+        contact: Optional[str] = None,
+        business_id:str
     ) -> Dict[str, Any]:
         """
         Update business details in the AiSensy API.

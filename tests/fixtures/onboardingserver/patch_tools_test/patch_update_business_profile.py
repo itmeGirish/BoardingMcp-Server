@@ -12,25 +12,16 @@ async def main_mcp_client():
     async with Client("mcp_servers/onboardserver.py") as mcp_client:
         yield mcp_client
 
+# 918877665544
 
 @pytest.mark.parametrize(
     "display_name,company,contact",
     [
         (
-            "CallHippo Updated",
-            "CallHippo Inc",
-            "918116856153",
-        ),
-        (
-            "TechStartup New Name",
-            "TechStartup Solutions",
-            "919876543210",
-        ),
-        (
-            "Premium Support Center",
-            "Global Support Services",
-            "441234567890",
-        ),
+            "Agent@Tapes",
+            "AgentTape",
+            "918877665544",
+        )
     ],
 )
 @pytest.mark.asyncio
