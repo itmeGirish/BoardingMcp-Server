@@ -1,14 +1,11 @@
 from app.database.postgresql.postgresql_connection import get_session
 from app.database.postgresql.postgresql_repositories import BusinessCreationRepository
+from app.database.postgresql.postgresql_repositories import ProjectCreationRepository
 
 with get_session() as session:
-    business_repo = BusinessCreationRepository(session=session)
+    business_repo = ProjectCreationRepository(session=session)
     
     user_id = "user_45618"
-    ids = business_repo.get_ids_by_user_id(user_id)
-    
-    print(f"\nIDs for user_id: {user_id}\n")
-    for record in ids:
-        print(f"  ID: {record['id']}")
-        print(f"  Business ID: {record['business_id']}")
-        print(f"  {'-'*30}")
+    ids = business_repo.get_project_by_user_id(user_id)
+
+    print(ids)

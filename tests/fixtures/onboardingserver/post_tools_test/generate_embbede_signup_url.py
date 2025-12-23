@@ -14,11 +14,10 @@ async def main_mcp_client():
 
 
 @pytest.mark.parametrize(
-    "business_id,assistant_id,business_name,business_email,phone_code,phone_number,website,street_address,city,state,zip_postal,country,timezone,display_name,category,description",
+    "user_id,business_name,business_email,phone_code,phone_number,website,street_address,city,state,zip_postal,country,timezone,display_name,category,description",
     [
         (
-            "63bbe4c2cd10ea720a532ez0",
-            "63bbe4c256be217200ad1b5b",
+            "user_45618",
             "Acme Inc.",
             "johndoe@acme.com",
             1,
@@ -32,32 +31,13 @@ async def main_mcp_client():
             "UTC-08:00",
             "Acme Inc.",
             "ENTERTAIN",
-            "",
-        ),
-        (
-            "67482a210fa2703716c11a4e",
-            "66a73a246f969d0b5dbb6903",
-            "Tech Solutions Ltd",
-            "contact@techsolutions.com",
-            44,
-            "2071234567",
-            "https://www.techsolutions.co.uk",
-            "100 Tech Street",
-            "London",
-            "LDN",
-            "E1 6AN",
-            "GB",
-            "UTC+00:00",
-            "Tech Solutions",
-            "TECHNOLOGY",
-            "Leading tech solutions provider",
-        ),
+            "this is best ",
+        )
     ],
 )
 @pytest.mark.asyncio
 async def test_generate_embedded_signup_url(
-    business_id: str,
-    assistant_id: str,
+    user_id: str,  # Added this
     business_name: str,
     business_email: str,
     phone_code: int,
@@ -78,8 +58,7 @@ async def test_generate_embedded_signup_url(
     result = await main_mcp_client.call_tool(
         "generate_embedded_signup_url",
         arguments={
-            "business_id": business_id,
-            "assistant_id": assistant_id,
+            "user_id": user_id,  # Added this
             "business_name": business_name,
             "business_email": business_email,
             "phone_code": phone_code,

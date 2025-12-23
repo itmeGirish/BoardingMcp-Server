@@ -4,11 +4,13 @@ MCP Tool: Generate Embedded Signup URL
 Generates an embedded signup URL for WhatsApp Business API (WABA).
 """
 from typing import Dict, Any, Optional
-
 from .. import mcp
 from ...models import EmbeddedSignupUrlRequest
 from ...clients import get_aisensy_post_client
 from app import logger
+from app import get_session
+from app import ProjectCreationRepository
+
 
 
 @mcp.tool(
@@ -35,8 +37,7 @@ from app import logger
     }
 )
 async def generate_embedded_signup_url(
-    business_id: str,
-    assistant_id: str,
+    user_id: str,
     business_name: str,
     business_email: str,
     phone_code: int,
@@ -56,8 +57,7 @@ async def generate_embedded_signup_url(
     Generate an embedded signup URL for WABA.
     
     Args:
-        business_id: The business ID.
-        assistant_id: The assistant ID.
+        user_id: The user ID to lookup project details.
         business_name: Name of the business.
         business_email: Email of the business.
         phone_code: Phone country code (e.g., 1 for US, 91 for India).
@@ -75,15 +75,25 @@ async def generate_embedded_signup_url(
     
     Returns:
         Dict containing:
-        - success (bool): Whether the operation was successful
-        - data (dict): Generated signup URL details if successful
+        - embeddedSignupURL (str): The generated signup URL
         - error (str): Error message if unsuccessful
     """
     try:
+        with get_session() as session:
+            project_repo = ProjectCreationRepository(session=session)
+            result = project_repo.get_project_by_user_id(user_id)
+
+            if not result:
+                error_msg = f"No business found for user_id: {user_id}"
+                logger.warning(error_msg)
+                return {"error": error_msg}
+            
+            name, project_id, business_id = result
+
         # Validate input using Pydantic model
         request = EmbeddedSignupUrlRequest(
             business_id=business_id,
-            assistant_id=assistant_id,
+            assistant_id=project_id,
             business_name=business_name,
             business_email=business_email,
             phone_code=phone_code,
@@ -99,11 +109,11 @@ async def generate_embedded_signup_url(
             category=category,
             description=description
         )
-        
+
         async with get_aisensy_post_client() as client:
             response = await client.generate_embedded_signup_url(
-                business_id=request.business_id,
-                assistant_id=request.assistant_id,
+                business_id=business_id,
+                assistant_id=project_id,
                 business_name=request.business_name,
                 business_email=request.business_email,
                 phone_code=request.phone_code,
@@ -122,25 +132,18 @@ async def generate_embedded_signup_url(
             
             if response.get("success"):
                 logger.info("Successfully generated embedded signup URL")
+                return {"embeddedSignupURL": response["data"]["embeddedSignupURL"]}
             else:
-                logger.warning(
-                    f"Failed to generate embedded signup URL: {response.get('error')}"
-                )
-            
-            return response
+                error_msg = response.get("error", "Unknown error")
+                logger.warning(f"Failed to generate embedded signup URL: {error_msg}")
+                return {"error": error_msg}
         
     except ValueError as e:
         error_msg = f"Validation error: {str(e)}"
         logger.error(error_msg)
-        return {
-            "success": False,
-            "error": error_msg
-        }
+        return {"error": error_msg}
         
     except Exception as e:
         error_msg = f"Unexpected error generating embedded signup URL: {str(e)}"
         logger.exception(error_msg)
-        return {
-            "success": False,
-            "error": error_msg
-        }
+        return {"error": error_msg}

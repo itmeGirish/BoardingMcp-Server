@@ -96,145 +96,29 @@ class ProjectCreationRepository:
             self.session.rollback()
             logger.error(f"Failed to insert ProjectCreation: {e}")
             raise e
-
-    def get_by_id(self, id: str) -> ProjectCreation | None:
-        """Get a project creation record by ID."""
-        try:
-            statement = select(ProjectCreation).where(ProjectCreation.id == id)
-            result = self.session.exec(statement).first()
-            return result
-        except Exception as e:
-            logger.error(f"Failed to get ProjectCreation by id {id}: {e}")
-            raise e
-
-    def get_by_user_id(self, user_id: str) -> List[ProjectCreation]:
-        """Get all project creation records for a user."""
-        try:
-            statement = select(ProjectCreation).where(ProjectCreation.user_id == user_id)
-            results = self.session.exec(statement).all()
-            return list(results)
-        except Exception as e:
-            logger.error(f"Failed to get ProjectCreation by user_id {user_id}: {e}")
-            raise e
-
-    def get_by_business_id(self, business_id: str) -> List[ProjectCreation]:
-        """Get all project creation records for a business."""
-        try:
-            statement = select(ProjectCreation).where(ProjectCreation.business_id == business_id)
-            results = self.session.exec(statement).all()
-            return list(results)
-        except Exception as e:
-            logger.error(f"Failed to get ProjectCreation by business_id {business_id}: {e}")
-            raise e
-
-    def get_ids_by_user_id(self, user_id: str) -> List[dict]:
-        """Get only id, name and business_id for a user."""
+    
+    def get_all_projects_by_user_id(self, user_id: str) -> List[tuple[str, str, str]]:
+        """Get all (name, id, business_id) tuples for a given user_id."""
         try:
             statement = select(
-                ProjectCreation.id,
                 ProjectCreation.name,
-                ProjectCreation.business_id
-            ).where(ProjectCreation.user_id == user_id)
+                ProjectCreation.id,
+                ProjectCreation.business_id).where(ProjectCreation.user_id == user_id)
             results = self.session.exec(statement).all()
-            return [{"id": r[0], "name": r[1], "business_id": r[2]} for r in results]
+            return list(results)
         except Exception as e:
-            logger.error(f"Failed to get IDs by user_id {user_id}: {e}")
+            logger.error(f"Failed to get projects for user_id {user_id}: {e}")
             raise e
-
-    def get_ids_by_business_id(self, business_id: str) -> List[dict]:
-        """Get only id and name for a business."""
+    
+    def get_project_by_user_id(self, user_id: str) -> Optional[tuple[str, str, str]]:
+        """Get name, id, and business_id for a given user_id."""
         try:
             statement = select(
-                ProjectCreation.id,
-                ProjectCreation.name
-            ).where(ProjectCreation.business_id == business_id)
-            results = self.session.exec(statement).all()
-            return [{"id": r[0], "name": r[1]} for r in results]
-        except Exception as e:
-            logger.error(f"Failed to get IDs by business_id {business_id}: {e}")
-            raise e
-
-    def get_by_name(self, name: str) -> ProjectCreation | None:
-        """Get a project creation record by name."""
-        try:
-            statement = select(ProjectCreation).where(ProjectCreation.name == name)
+            ProjectCreation.name,
+            ProjectCreation.id,
+            ProjectCreation.business_id).where(ProjectCreation.user_id == user_id)
             result = self.session.exec(statement).first()
-            return result
+            return result  # Returns (name, id, business_id) or None
         except Exception as e:
-            logger.error(f"Failed to get ProjectCreation by name {name}: {e}")
-            raise e
-
-    def get_all(self) -> List[ProjectCreation]:
-        """Get all project creation records."""
-        try:
-            statement = select(ProjectCreation)
-            results = self.session.exec(statement).all()
-            return list(results)
-        except Exception as e:
-            logger.error(f"Failed to get all ProjectCreation records: {e}")
-            raise e
-
-    def update(self, id: str, **kwargs) -> ProjectCreation | None:
-        """Update a project creation record."""
-        try:
-            project = self.get_by_id(id)
-            if not project:
-                logger.warning(f"ProjectCreation not found for update: {id}")
-                return None
-
-            for key, value in kwargs.items():
-                if hasattr(project, key):
-                    setattr(project, key, value)
-
-            project.local_updated_at = datetime.utcnow()
-            self.session.add(project)
-            self.session.commit()
-            self.session.refresh(project)
-            logger.info(f"ProjectCreation Updated: {id}")
-            return project
-
-        except Exception as e:
-            self.session.rollback()
-            logger.error(f"Failed to update ProjectCreation {id}: {e}")
-            raise e
-
-    def delete(self, id: str) -> bool:
-        """Delete a project creation record."""
-        try:
-            project = self.get_by_id(id)
-            if not project:
-                logger.warning(f"ProjectCreation not found for delete: {id}")
-                return False
-
-            self.session.delete(project)
-            self.session.commit()
-            logger.info(f"ProjectCreation Deleted: {id}")
-            return True
-
-        except Exception as e:
-            self.session.rollback()
-            logger.error(f"Failed to delete ProjectCreation {id}: {e}")
-            raise e
-
-    def get_by_partner_id(self, partner_id: str) -> List[ProjectCreation]:
-        """Get all project creation records for a partner."""
-        try:
-            statement = select(ProjectCreation).where(ProjectCreation.partner_id == partner_id)
-            results = self.session.exec(statement).all()
-            return list(results)
-        except Exception as e:
-            logger.error(f"Failed to get ProjectCreation by partner_id {partner_id}: {e}")
-            raise e
-
-    def get_active_projects(self, user_id: str) -> List[ProjectCreation]:
-        """Get all active projects for a user."""
-        try:
-            statement = select(ProjectCreation).where(
-                ProjectCreation.user_id == user_id,
-                ProjectCreation.status == "active"
-            )
-            results = self.session.exec(statement).all()
-            return list(results)
-        except Exception as e:
-            logger.error(f"Failed to get active projects for user_id {user_id}: {e}")
+            logger.error(f"Failed to get project for user_id {user_id}: {e}")
             raise e

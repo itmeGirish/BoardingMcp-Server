@@ -100,8 +100,6 @@ class CreateProjectRequest(BaseModel):
 class EmbeddedSignupUrlRequest(BaseModel):
     """Model for generating embedded signup URL."""
     
-    business_id: str = Field(..., description="The business ID", min_length=1)
-    assistant_id: str = Field(..., description="The assistant ID", min_length=1)
     business_name: str = Field(..., description="Name of the business", min_length=1)
     business_email: str = Field(..., description="Email of the business")
     phone_code: int = Field(..., description="Phone country code", ge=1, examples=[1, 91])
@@ -117,7 +115,7 @@ class EmbeddedSignupUrlRequest(BaseModel):
     category: str = Field(..., description="Business category", examples=["ENTERTAIN"])
     description: Optional[str] = Field(default="", description="Optional description")
     
-    @field_validator("business_id", "assistant_id", "business_name", "phone_number", 
+    @field_validator("business_name", "phone_number", 
                      "street_address", "city", "state", "zip_postal", "display_name")
     @classmethod
     def validate_not_empty(cls, v: str) -> str:
