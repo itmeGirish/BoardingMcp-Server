@@ -135,6 +135,9 @@ async def generate_embedded_signup_url(
                 return {"embeddedSignupURL": response["data"]["embeddedSignupURL"]}
             else:
                 error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
                 logger.warning(f"Failed to generate embedded signup URL: {error_msg}")
                 return {"error": error_msg}
         

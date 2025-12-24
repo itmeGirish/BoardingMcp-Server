@@ -6,9 +6,10 @@ Updates business details in the AiSensy API.
 from typing import Dict, Any, Optional
 
 from .. import mcp
-from ...models import UpdateBusinessDetailsRequest
+from ...models import UpdateBusinessDetailsRequest, UpdateBusinessDetailsResponse
 from ...clients import get_aisensy_patch_client
 from app import logger
+from app import BusinessCreationRepository, get_session
 
 
 @mcp.tool(
@@ -33,22 +34,24 @@ from app import logger
     }
 )
 async def update_business_details(
+    user_id: str,
     display_name: Optional[str] = None,
     company: Optional[str] = None,
     contact: Optional[str] = None
-) -> Dict[str, Any]:
+) -> UpdateBusinessDetailsResponse:
     """
     Update business details.
     
     Args:
+        user_id: The user ID to look up the business.
         display_name: Optional new display name for the business.
         company: Optional new company name.
         contact: Optional new contact number.
     
     Returns:
-        Dict containing:
+        UpdateBusinessDetailsResponse containing:
         - success (bool): Whether the operation was successful
-        - data (dict): Updated business details if successful
+        - data (BusinessDetailsData): Updated business details if successful
         - error (str): Error message if unsuccessful
     
     Note:
@@ -61,21 +64,36 @@ async def update_business_details(
             company=company,
             contact=contact
         )
+
+        with get_session() as session:
+            business_repo = BusinessCreationRepository(session=session)
+            ids = business_repo.get_ids_by_user_id(user_id)
+        
+        if not ids:
+            error_msg = f"No business found for user_id: {user_id}"
+            logger.warning(error_msg)
+            return UpdateBusinessDetailsResponse(
+                success=False,
+                error=error_msg
+            )
+
+        business_id = ids[0]["business_id"]
         
         # Check if at least one field is provided
         if not request.has_updates():
             error_msg = "At least one field (display_name, company, or contact) must be provided"
             logger.error(error_msg)
-            return {
-                "success": False,
-                "error": error_msg
-            }
+            return UpdateBusinessDetailsResponse(
+                success=False,
+                error=error_msg
+            )
         
         async with get_aisensy_patch_client() as client:
             response = await client.update_business_details(
                 display_name=request.display_name,
                 company=request.company,
-                contact=request.contact
+                contact=request.contact,
+                business_id=business_id
             )
             
             if response.get("success"):
@@ -87,25 +105,30 @@ async def update_business_details(
                     f"Successfully updated business details. "
                     f"Updated fields: {', '.join(updated_fields)}"
                 )
+                return UpdateBusinessDetailsResponse(**response)
             else:
-                logger.warning(
-                    f"Failed to update business details: {response.get('error')}"
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                logger.warning(f"Failed to update business profile: {full_error}")
+                return UpdateBusinessDetailsResponse(
+                    success=False,
+                    error=full_error
                 )
-            
-            return response
         
     except ValueError as e:
         error_msg = f"Validation error: {str(e)}"
         logger.error(error_msg)
-        return {
-            "success": False,
-            "error": error_msg
-        }
+        return UpdateBusinessDetailsResponse(
+            success=False,
+            error=error_msg
+        )
         
     except Exception as e:
         error_msg = f"Unexpected error updating business details: {str(e)}"
         logger.exception(error_msg)
-        return {
-            "success": False,
-            "error": error_msg
-        }
+        return UpdateBusinessDetailsResponse(
+            success=False,
+            error=error_msg
+        )

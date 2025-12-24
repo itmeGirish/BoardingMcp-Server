@@ -72,12 +72,13 @@ async def get_all_business_projects(
                 logger.info(f"Successfully retrieved {count} business projects")
                 return ProjectResponse(projects=response["data"])
             else:
-                logger.warning(
-                    f"Failed to retrieve business projects: {response.get('error')}"
-                )
-                error_msg = f"Failed to retrieve business projects: {response.get('error')}"
-                logger.warning(error_msg)
-                raise ValueError(error_msg)
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                logger.warning(full_error)
+                raise full_error
             
 
         

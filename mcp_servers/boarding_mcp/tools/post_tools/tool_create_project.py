@@ -133,13 +133,22 @@ async def create_project(name: str, user_id: str) -> ProjectAPIResponse:
                 
                 if saved_project:
                     logger.info(f"Successfully saved project to database: {saved_project.id}")
-                else:
-                    logger.warning(f"Failed to save project to database: {project_data.id}")
-                
-                return ProjectAPIResponse(
+                    
+                    return ProjectAPIResponse(
                     success=True,
-                    data=project_data
-                )
+                    data=project_data)
+
+
+                else:
+                    
+                    error_msg = response.get("error", "Unknown error")
+                    status_code = response.get("status_code", "N/A")
+                    details = response.get("details", {})
+                    full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                    logger.warning(f"Failed to create business profile: {full_error}")
+                    return ProjectAPIResponse(
+                    success=False,
+                    data=full_error)
         
     except ValueError as e:
         error_msg = f"Validation error: {str(e)}"

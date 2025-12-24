@@ -51,12 +51,13 @@ async def get_partner_details() -> PartnerDetails:
                 logger.info("Successfully retrieved partner details")
                 return PartnerDetails(**response["data"])
             else:
-                logger.warning(
-                    f"Failed to retrieve partner details: {response.get('error')}"
-                )
-                error_msg = f"Failed to retrieve partner details: {response.get('error')}"
-                logger.warning(error_msg)
-                raise ValueError(error_msg)       
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                logger.warning(full_error)
+                raise full_error
             
        
         

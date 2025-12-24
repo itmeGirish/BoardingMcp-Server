@@ -119,3 +119,13 @@ class BusinessCreationRepository:
         except Exception as e:
             logger.error(f"Failed to get BusinessCreation by business_id {business_id}: {e}")
             raise e
+    
+    def get_everything_by_id(self, user_id: str) -> Optional[dict]:
+        """Get all fields of a business creation record by ID as a dictionary."""
+        try:
+            statement = select(BusinessCreation).where(BusinessCreation.user_id == user_id)
+            result = self.session.exec(statement).first()
+            return result.model_dump() if result else None
+        except Exception as e:
+            logger.error(f"Failed to get everything for BusinessCreation by id {id}: {e}")
+            raise e

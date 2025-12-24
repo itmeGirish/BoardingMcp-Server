@@ -13,7 +13,7 @@ from .post_response import (BusinessCreationResponse,
                             BusinessCreationWithUserResponse,
                             ProjectAPIResponse,
                             ProjectResponse)
-
+from .patch_response import UpdateBusinessDetailsResponse
 
 __all__=[
     "BusinessProfile",
@@ -29,4 +29,5 @@ __all__=[
     "BusinessCreationWithUserResponse",
     "BusinessCreationWithUserResponse",
     "ProjectAPIResponse",
-    "ProjectResponse"]
+    "ProjectResponse",
+    "UpdateBusinessDetailsResponse"]

@@ -66,16 +66,14 @@ async def get_business_verification_status(project_id: str) -> BusinessVerificat
                 return BusinessVerificationStatusResponse(**response)
 
             else:
-                logger.warning(
-                    f"Failed to retrieve business verification status "
-                    f"for project {validated_project_id}: {response.get('error')}")
-                error_msg = (
-                    f"Failed to retrieve business verification status: "
-                    f"{response.get('error')}"
-                )
-                logger.warning(error_msg)
-                raise ValueError(error_msg)
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
                 
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                
+                logger.warning(full_error)
+                raise full_error
 
             
 
