@@ -62,16 +62,13 @@ async def get_kyc_submission_status(project_id: str) -> KycSubmissionStatusRespo
                 return KycSubmissionStatusResponse(**response)
 
             else:
-                logger.warning(
-                    f"Failed to retrieve KYC status for project {validated_project_id}: "
-                    f"{response.get('error')}"
-                )
-                error_msg = (
-                    f"Failed to retrieve KYC status for project "
-                    f"{validated_project_id}: {response.get('error')}"
-                )
-                logger.warning(error_msg)
-                raise ValueError(error_msg)
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                logger.warning(full_error)
+                raise full_error
 
             
 

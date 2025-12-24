@@ -6,16 +6,16 @@ import asyncio
 
 from .base_client import AiSensyBaseClient
 from app import settings, logger
-
+from app import BusinessCreationRepository, get_session
 
 class AiSensyPatchClient(AiSensyBaseClient):
     """Client for all PATCH operations."""
 
     async def update_business_details(
         self,
-        display_name: Optional[str] = None,
-        company: Optional[str] = None,
-        contact: Optional[str] = None,
+        display_name:str,
+        company: str,
+        contact: str,
         business_id:str
     ) -> Dict[str, Any]:
         """
@@ -30,11 +30,11 @@ class AiSensyPatchClient(AiSensyBaseClient):
             Dict[str, Any]: A dictionary containing the updated business details 
             as returned by the AiSensy API.
         """
-        if not settings.PARTNER_ID or not settings.BUSINESS_ID:
-            logger.error("Missing PARTNER_ID or BUSINESS_ID in settings")
+        if not settings.PARTNER_ID:
+            logger.error("Missing PARTNER_ID")
             return {
                 "success": False,
-                "error": "Missing required fields: partner_id and business_id"
+                "error": "Missing required fields: partner_id"
             }
 
         # Build payload with only provided fields
@@ -53,7 +53,7 @@ class AiSensyPatchClient(AiSensyBaseClient):
                 "error": "No fields provided to update"
             }
 
-        url = f"{self.BASE_URL}/partner/{settings.PARTNER_ID}/business/{settings.BUSINESS_ID}"
+        url = f"{self.BASE_URL}/partner/{settings.PARTNER_ID}/business/{business_id}"
         logger.debug(f"Updating business details at: {url}")
 
         try:

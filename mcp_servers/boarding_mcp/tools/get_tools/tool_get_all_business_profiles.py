@@ -52,15 +52,14 @@ async def get_all_business_profiles() -> AllBusinessProfilesResponse:
                 logger.info(f"Successfully retrieved {count} business profiles")
                 return AllBusinessProfilesResponse(profiles=response["data"])
             else:
-                logger.warning(
-                    f"Failed to retrieve business profiles: {response.get('error')}"
-                )
-                error_msg = f"Failed to retrieve business profiles: {response.get('error')}"
-                logger.warning(error_msg)
-                raise ValueError(error_msg)
-            
-        
-        
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+                logger.warning(full_error)
+                return full_error
+
     except Exception as e:
         error_msg = f"Unexpected error fetching business profiles: {str(e)}"
         logger.exception(error_msg)

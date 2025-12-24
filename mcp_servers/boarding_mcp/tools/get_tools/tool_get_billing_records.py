@@ -64,16 +64,14 @@ async def get_billing_records(project_id: str) -> BillingRecordsResponse:
                 )
                 return BillingRecordsResponse(**response)
             else:
-                logger.warning(
-                    f"Failed to retrieve billing records for project {validated_project_id}: "
-                    f"{response.get('error')}"
-                )
-                error_msg = (
-                    f"Failed to retrieve billing records for project "
-                    f"{validated_project_id}: {response.get('error')}"
-                )
-                logger.warning(error_msg) 
-                raise ValueError(error_msg)    
+                error_msg = response.get("error", "Unknown error")
+                status_code = response.get("status_code", "N/A")
+                details = response.get("details", {})
+                
+                full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
+
+                logger.warning(full_error) 
+                return full_error
             
         
     except ValueError as e:
