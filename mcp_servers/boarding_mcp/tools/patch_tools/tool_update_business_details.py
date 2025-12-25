@@ -78,6 +78,8 @@ async def update_business_details(
             )
 
         business_id = ids[0]["business_id"]
+
+
         
         # Check if at least one field is provided
         if not request.has_updates():

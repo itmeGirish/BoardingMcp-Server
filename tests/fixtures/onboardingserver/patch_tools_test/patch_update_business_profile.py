@@ -18,9 +18,9 @@ async def main_mcp_client():
     "user_id,display_name,company,contact",
     [
         (   "user_45618",
-            "Tech Analytics",
-            "Tech Inc",
-            "918861832566",
+            "AgentsTape",
+            "AgentsTape",
+            "919042689009",
         )
     ],
 )
