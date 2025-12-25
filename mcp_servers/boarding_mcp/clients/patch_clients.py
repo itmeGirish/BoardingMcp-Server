@@ -52,6 +52,7 @@ class AiSensyPatchClient(AiSensyBaseClient):
                 "success": False,
                 "error": "No fields provided to update"
             }
+   
 
         url = f"{self.BASE_URL}/partner/{settings.PARTNER_ID}/business/{business_id}"
         logger.debug(f"Updating business details at: {url}")
