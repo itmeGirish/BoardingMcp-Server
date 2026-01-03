@@ -1,22 +1,30 @@
-from typing import Dict, TypedDict, Any
+"""State definitions for onboarding workflow"""
 
-class Create_business_profileState(TypedDict):
-    display_name:str
-    email:str
-    company:str
-    contact:str
-    timezone:str
-    currency:str
-    company_size:str
-    password:str
-    user_id:str
-    onboarding_id:str
+from typing import Dict, TypedDict, Any, Optional
+
+
+class CreateBusinessProfileState(TypedDict):
+    """State for business profile creation"""
+    display_name: str
+    email: str
+    company: str
+    contact: str
+    timezone: str
+    currency: str
+    company_size: str
+    password: str
+    user_id: str
+    onboarding_id: str
+
 
 class CreateProjectState(TypedDict):
+    """State for project creation"""
     name: str
-    user_id:str
+    user_id: str
+
 
 class EmbeddedSignupUrlState(TypedDict):
+    """State for embedded signup URL generation"""
     business_name: str
     business_email: str
     phone_code: int
@@ -30,5 +38,3 @@ class EmbeddedSignupUrlState(TypedDict):
     display_name: str
     category: str
     description: Optional[str]
-
-    
