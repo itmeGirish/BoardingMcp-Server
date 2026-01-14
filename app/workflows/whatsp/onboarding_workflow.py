@@ -1,20 +1,22 @@
 """
 Interactive Onboarding Workflow
-
 Flow:
 1. Frontend sends user_id + business_profile data → Execute create_business_node
 2. Frontend receives result → Sends project data → Execute create_project_node  
 3. Frontend receives result → Sends embedded_signup data → Execute create_embedding_node
 4. Workflow complete
 """
-
-
+from xmlrpc import client
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 from typing import Dict, TypedDict, Any, Optional, Literal
 from dataclasses import dataclass
+import json
+from app.workflows.whatsp.test_workflow import build_workflow
+from langchain_mcp_adapters.client import MultiServerMCPClient
+from langchain_mcp_adapters.tools import load_mcp_tools
 
-from .config import logging
+from app import logger
 from .state import (
     CreateBusinessProfileState,
     CreateProjectState,
@@ -24,19 +26,12 @@ from .state import (
 
 class OnboardingState(TypedDict):
     """Complete onboarding workflow state"""
-    # Shared user identifier - passed once at start
     user_id: str
-    
-    # Current step tracking
     current_step: Literal["business_profile", "project", "embedded_signup", "completed"]
-    
-    # Input data for each step (populated incrementally from frontend)
     business_profile: Optional[CreateBusinessProfileState]
     project: Optional[CreateProjectState]
     embedded_signup: Optional[EmbeddedSignupUrlState]
     
-    # MCP tools reference
-    mcp_tools: Dict[str, Any]
     
     # Results from each step
     business_profile_result: Optional[Dict[str, Any]]
@@ -47,6 +42,11 @@ class OnboardingState(TypedDict):
     error: Optional[str]
 
 
+# Global variable to hold MCP tools during workflow execution
+# This avoids storing non-serializable tools in state
+_current_mcp_tools: Dict[str, Any] = {}
+
+
 @dataclass
 class OnboardingFlow:
     """
@@ -55,8 +55,13 @@ class OnboardingFlow:
     Each node executes and then waits for frontend to provide next step's data.
     Uses LangGraph's interrupt/resume pattern for human-in-the-loop flow.
     """
-    
-    mcp_tools: Dict[str, Any]
+    global _current_mcp_tools
+
+
+    async def show_the_business_node(self, CreateBusinessProfileState) -> CreateBusinessProfileState:
+        """Debug node to show current business profile data."""
+        return {"business_profile":CreateBusinessProfileState}
+ 
 
     async def create_business_node(self, state: OnboardingState) -> Dict[str, Any]:
         """
@@ -65,8 +70,19 @@ class OnboardingFlow:
         Expects: user_id + business_profile data from frontend
         Returns: business_profile_result, advances to 'project' step
         """
-        business_creation_tool = state["mcp_tools"].get("create_business_profile")
-        
+        client = MultiServerMCPClient({
+            "FormsMCP": {
+                "url": "http://127.0.0.1:8000/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        async with client.session("FormsMCP") as session:
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+
+            business_creation_tool = mcp_tools["create_business_profile"]
+
         if not business_creation_tool:
             return {"error": "create_business_profile tool not found"}
         
@@ -81,17 +97,41 @@ class OnboardingFlow:
             }
             
             result = await business_creation_tool.ainvoke(profile_data)
-            logging.info("Business profile created successfully for user: %s", state["user_id"])
-            
-            return {
-                "business_profile_result": result,
-                "current_step": "project",  # Advance to next step
-                "error": None,
-            }
+            if hasattr(result, 'content'):
+                result_data = result.content
+            else:
+                result_data = result 
+
+            if isinstance(result_data, list) and len(result_data) > 0:
+                first_item = result_data[0]
+                if isinstance(first_item, dict) and first_item.get('type') == 'text':
+                    text_content = first_item['text']
+                    try:
+                        result_data = json.loads(text_content)
+                    except:
+                        result_data = {"status": "success", "message": text_content}
+
+                return result_data   
+            logger.info("Business profile created successfully for user: %s", state["user_id"])
+
+            state["business_profile_result"]=result
+            state["current_step"]="business_profile"
+            state["error"]=None
+            return state
+        
         except Exception as e:
             error_msg = f"Business creation failed: {e}"
-            logging.error(error_msg)
-            return {"error": error_msg}
+            logger.error(error_msg)
+            state["error"]=error_msg
+            return state
+
+
+    async def show_project_node(self, CreateProjectState) -> CreateProjectState:
+        """inpute node of the project data."""
+
+        return {"business_profile":CreateProjectState}
+        
+    
 
     async def create_project_node(self, state: OnboardingState) -> Dict[str, Any]:
         """
@@ -101,9 +141,20 @@ class OnboardingFlow:
         Returns: project_result, advances to 'embedded_signup' step
         """
         if state.get("error"):
-            return {}
+            return f"Sorry, an error occurred couldn't proceed: {state['error']}"
         
-        create_project_tool = state["mcp_tools"].get("create_project")
+        client = MultiServerMCPClient({
+            "FormsMCP": {
+                "url": "http://127.0.0.1:8000/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        async with client.session("FormsMCP") as session:
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+        
+        create_project_tool = _current_mcp_tools["create_project"]
         
         if not create_project_tool:
             return {"error": "create_project tool not found"}
@@ -117,32 +168,74 @@ class OnboardingFlow:
                 **state["project"],
                 "user_id": state["user_id"],
             }
-            
+
             result = await create_project_tool.ainvoke(project_data)
-            logging.info("Project created successfully: %s for user: %s", 
-                        project_data.get("name"), state["user_id"])
-            
-            return {
-                "project_result": result,
-                "current_step": "embedded_signup",  # Advance to next step
-                "error": None,
-            }
+            if hasattr(result, 'content'):
+                result_data = result.content
+            else:
+                result_data = result
+
+  
+            if isinstance(result_data, str):
+                try:
+                    result_data = json.loads(result_data)
+                except:
+                    result_data = {"status": "success", "message": result_data}
+
+
+            if isinstance(result_data, list):
+                if len(result_data) > 0:
+                    first_item = result_data[0]
+                    
+                    if isinstance(first_item, dict):
+                        if first_item.get('type') == 'text' and 'text' in first_item:
+                            text_content = first_item['text']
+                            try:
+                                result_data = json.loads(text_content)
+                            except:
+                                result_data = {"status": "success", "message": text_content}
+                        else:
+                            result_data = first_item
+                    elif hasattr(first_item, 'text'):
+                        try:
+                            result_data = json.loads(first_item.text)
+                        except:
+                            result_data = {"status": "success", "message": first_item.text}
+                else:
+                    result_data = {"status": "success", "message": str(first_item)}
+            else:
+                result_data = {"status": "success", "message": "Empty response"}
+
+
+            logger.info("Project created successfully: %s for user: %s", project_data.get("name"), state["user_id"])
+
+            state["project_result"]=result
+            state["current_step"]="project"
+            state["error"]=None
+            return state
+        
         except Exception as e:
-            error_msg = f"Project creation failed: {e}"
-            logging.error(error_msg)
-            return {"error": error_msg}
+            error_msg = f"Business creation failed: {e}"
+            logger.error(error_msg)
+            state["error"]=error_msg
+            return state
+        
+    async def show_embedding_node(self, EmbeddedSignupUrlState) -> EmbeddedSignupUrlState:
+        """inpute node of the project data."""
+
+        return {"business_profile":EmbeddedSignupUrlState}
+    
 
     async def create_embedding_node(self, state: OnboardingState) -> Dict[str, Any]:
         """
         Step 3: Embedded signup URL creation.
-        
         Expects: embedded_signup data from frontend (after project completed)
         Returns: embedded_signup_result, marks workflow as 'completed'
         """
         if state.get("error"):
-            return {}
+            return f"Sorry, an error occurred in creating project couldn't proceed: {state['error']}"
         
-        create_embedding_tool = state["mcp_tools"].get("generate_embedded_signup_url")
+        create_embedding_tool =_current_mcp_tools["embedded_signup"]
         
         if not create_embedding_tool:
             return {"error": "generate_embedded_signup_url tool not found"}
@@ -154,18 +247,57 @@ class OnboardingFlow:
             embedding_data = state["embedded_signup"]
             
             result = await create_embedding_tool.ainvoke(embedding_data)
-            logging.info("Embedded signup URL created successfully for: %s", 
+            
+            if hasattr(result, 'content'):
+                result_data = result.content
+            else:
+                result_data = result
+
+  
+            if isinstance(result_data, str):
+                try:
+                    result_data = json.loads(result_data)
+                except:
+                    result_data = {"status": "success", "message": result_data}
+
+
+            if isinstance(result_data, list):
+                if len(result_data) > 0:
+                    first_item = result_data[0]
+                    
+                    if isinstance(first_item, dict):
+                        if first_item.get('type') == 'text' and 'text' in first_item:
+                            text_content = first_item['text']
+                            try:
+                                result_data = json.loads(text_content)
+                            except:
+                                result_data = {"status": "success", "message": text_content}
+                        else:
+                            result_data = first_item
+                    elif hasattr(first_item, 'text'):
+                        try:
+                            result_data = json.loads(first_item.text)
+                        except:
+                            result_data = {"status": "success", "message": first_item.text}
+                else:
+                    result_data = {"status": "success", "message": str(first_item)}
+            else:
+                result_data = {"status": "success", "message": "Empty response"}
+
+
+            logger.info("Embedded signup URL created successfully for: %s", 
                         embedding_data.get("business_name"))
             
-            return {
-                "embedded_signup_result": result,
-                "current_step": "completed",  # Workflow finished
-                "error": None,
-            }
+            state["embedded_signup_result"]=result
+            state["current_step"]="embedded_signup"
+            return state
         except Exception as e:
             error_msg = f"Embedded URL creation failed: {e}"
-            logging.error(error_msg)
-            return {"error": error_msg}
+            logger.error(error_msg)
+            state["error"]=error_msg
+            return state
+        
+
 
     def should_continue(self, state: OnboardingState) -> str:
         """Route based on error state."""
@@ -176,8 +308,10 @@ class OnboardingFlow:
     async def handle_error_node(self, state: OnboardingState) -> Dict[str, Any]:
         """Error handling node."""
         error = state.get("error", "Unknown error occurred")
-        logging.error("Workflow error: %s", error)
+        logger.error("Workflow error: %s", error)
         return {"error": error}
+
+
 
     def build_workflow(self) -> StateGraph:
         """Build the interactive workflow graph."""
@@ -212,141 +346,63 @@ class OnboardingFlow:
         return builder.compile(checkpointer=memory)
 
 
-class OnboardingSession:
+async def run_onboarding_http_workflow(
+    user_id: str,
+    current_step: Literal["business_profile", "project", "embedded_signup", "completed"],
+    business_profile: Optional[CreateBusinessProfileState],
+    project: Optional[CreateProjectState],
+    embedded_signup: Optional[EmbeddedSignupUrlState]) -> Dict[str, Any]:
     """
-    Manages an interactive onboarding session.
-    
-    Usage:
-        session = OnboardingSession(mcp_tools, user_id)
+    Execute the onboarding workflow with given initial state and MCP tools.
+    Args:
+        initial_state (OnboardingState): Initial state for the workflow.
+        mcp_tools (Dict[str, Any]): MCP tools required for the workflow steps.
         
-        # Step 1: Business profile
-        result1 = await session.start(business_profile_data)
-        
-        # Step 2: Project (frontend collects data, then calls)
-        result2 = await session.submit_project(project_data)
-        
-        # Step 3: Embedded signup (frontend collects data, then calls)
-        result3 = await session.submit_embedded_signup(embedded_signup_data)
+    Returns:
+        Dict[str, Any]: Final state after workflow execution.
     """
+    client = MultiServerMCPClient({
+        "FormsMCP": {
+            "url": "http://127.0.0.1:8000/mcp",
+            "transport": "streamable-http"
+        }})
     
-    def __init__(self, mcp_tools: Dict[str, Any], user_id: str):
-        self.mcp_tools = mcp_tools
-        self.user_id = user_id
-        self.flow = OnboardingFlow(mcp_tools=mcp_tools)
-        self.workflow = self.flow.build_workflow()
-        self.thread_id = f"onboarding_{user_id}"
-        self.config = {"configurable": {"thread_id": self.thread_id}}
-        self._state: Optional[OnboardingState] = None
-    
-    async def start(self, business_profile: CreateBusinessProfileState) -> Dict[str, Any]:
-        """
-        Start onboarding with user_id and business profile data.
+    global _current_mcp_tools
+    async with client.session("FormsMCP") as session:
+        mcp_tools_list = await load_mcp_tools(session)
+        mcp_tools = {t.name: t for t in mcp_tools_list}
+
+        # Store tools in global variable (NOT in state - they can't be serialized)
+        _current_mcp_tools = mcp_tools
+
+        print(f"Loaded MCP tools: {list(mcp_tools.keys())}\n")
+
+        OnboardingFlow_instance = OnboardingFlow()
+
+        # Build and run workflow
+        workflow = OnboardingFlow_instance.build_workflow()
         
-        Returns result of business profile creation.
-        Frontend should then collect project data for next step.
-        """
         initial_state: OnboardingState = {
-            "user_id": self.user_id,
-            "current_step": "business_profile",
+            "user_id": user_id,
+            current_step:None,
             "business_profile": business_profile,
-            "project": None,
-            "embedded_signup": None,
-            "mcp_tools": self.mcp_tools,
-            "business_profile_result": None,
-            "project_result": None,
-            "embedded_signup_result": None,
-            "error": None,
-        }
+            "project": project,
+            "embedded_signup": embedded_signup,
+            "business_profile_result": "",
+            "project_result": {},
+            "embedded_signup_result": "",
+            "error": ""}
         
-        # Run only the first node
-        result = await self.workflow.ainvoke(
-            initial_state,
-            self.config,
-        )
-        self._state = result
+        result = await workflow.ainvoke(initial_state)
         
+        _current_mcp_tools = {}
+
         return {
-            "success": result.get("error") is None,
-            "current_step": result.get("current_step"),
-            "business_profile_result": result.get("business_profile_result"),
-            "error": result.get("error"),
-            "next_step": "project" if not result.get("error") else None,
+            "business_profile_result": result["business_profile_result"],
+            "project_result": result["project_result"],
+            "embedded_signup_result": result["embedded_signup_result"],
+            "error": result["error"]
         }
-    
-    async def submit_project(self, project: CreateProjectState) -> Dict[str, Any]:
-        """
-        Submit project data (Step 2).
-        
-        Called by frontend after collecting project details.
-        Returns result of project creation.
-        """
-        if not self._state:
-            return {"error": "Session not started. Call start() first."}
-        
-        if self._state.get("current_step") != "project":
-            return {"error": f"Invalid step. Current step is: {self._state.get('current_step')}"}
-        
-        # Update state with project data
-        self._state["project"] = project
-        
-        # Resume workflow
-        result = await self.workflow.ainvoke(
-            self._state,
-            self.config,
-        )
-        self._state = result
-        
-        return {
-            "success": result.get("error") is None,
-            "current_step": result.get("current_step"),
-            "project_result": result.get("project_result"),
-            "error": result.get("error"),
-            "next_step": "embedded_signup" if not result.get("error") else None,
-        }
-    
-    async def submit_embedded_signup(self, embedded_signup: EmbeddedSignupUrlState) -> Dict[str, Any]:
-        """
-        Submit embedded signup data (Step 3 - Final).
-        
-        Called by frontend after collecting embedded signup details.
-        Returns final result with embedded signup URL.
-        """
-        if not self._state:
-            return {"error": "Session not started. Call start() first."}
-        
-        if self._state.get("current_step") != "embedded_signup":
-            return {"error": f"Invalid step. Current step is: {self._state.get('current_step')}"}
-        
-        # Update state with embedded signup data
-        self._state["embedded_signup"] = embedded_signup
-        
-        # Resume workflow
-        result = await self.workflow.ainvoke(
-            self._state,
-            self.config,
-        )
-        self._state = result
-        
-        return {
-            "success": result.get("error") is None,
-            "current_step": result.get("current_step"),
-            "embedded_signup_result": result.get("embedded_signup_result"),
-            "error": result.get("error"),
-            "completed": result.get("current_step") == "completed",
-        }
-    
-    def get_current_state(self) -> Dict[str, Any]:
-        """Get current session state for frontend."""
-        if not self._state:
-            return {"current_step": None, "started": False}
-        
-        return {
-            "current_step": self._state.get("current_step"),
-            "user_id": self._state.get("user_id"),
-            "business_profile_result": self._state.get("business_profile_result"),
-            "project_result": self._state.get("project_result"),
-            "embedded_signup_result": self._state.get("embedded_signup_result"),
-            "error": self._state.get("error"),
-        }
+
 
 
