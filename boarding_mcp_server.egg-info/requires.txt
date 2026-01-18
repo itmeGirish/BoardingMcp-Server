@@ -2,16 +2,24 @@ fastapi
 uvicorn[standard]
 pydantic
 pydantic-settings
+httpx
+aiohttp
 sqlalchemy
+sqlmodel
 alembic
 psycopg2-binary
 python-jose[cryptography]
 passlib[bcrypt]
 python-multipart
-httpx
 fastmcp
 mcp
-google-genai
+langgraph
+langchain
+langchain-openai
+langchain-mcp-adapters
+copilotkit
+langgraph-cli[inmem]>=0.4.11
+nest_asyncio
 
 [dev]
 pytest
@@ -21,6 +29,8 @@ black
 flake8
 mypy
 isort
+inline_snapshot
+inline-snapshot[black]
 
 [test]
 pytest

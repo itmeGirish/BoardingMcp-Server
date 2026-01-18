@@ -12,11 +12,12 @@ from langgraph.checkpoint.memory import MemorySaver
 from typing import Dict, TypedDict, Any, Optional, Literal
 from dataclasses import dataclass
 import json
+from langchain.tools import tool
 from app.workflows.whatsp.test_workflow import build_workflow
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_mcp_adapters.tools import load_mcp_tools
 
-from app import logger
+from ...config import logger
 from .state import (
     CreateBusinessProfileState,
     CreateProjectState,
@@ -346,6 +347,7 @@ class OnboardingFlow:
         return builder.compile(checkpointer=memory)
 
 
+@tool
 async def run_onboarding_http_workflow(
     user_id: str,
     current_step: Literal["business_profile", "project", "embedded_signup", "completed"],

@@ -11,23 +11,39 @@ readme = "README.md"
 authors = [
     { name = "Girish", email = "girish12n@gmail.com" }
 ]
-requires-python = ">=3.8"
+# Limit Python so uv doesn't try to solve for 3.14+
+requires-python = ">=3.10,<3.14"
 
 dependencies = [
+    # Web & Core
     "fastapi",
     "uvicorn[standard]",
     "pydantic",
     "pydantic-settings",
+    "httpx",
+    "aiohttp",
+
+    # Database
     "sqlalchemy",
+    "sqlmodel",
     "alembic",
     "psycopg2-binary",
+
+    # Auth & Forms
     "python-jose[cryptography]",
     "passlib[bcrypt]",
     "python-multipart",
-    "httpx",
+
+    # MCP / Agent Stack
     "fastmcp",
     "mcp",
-    "google-genai",
+    "langgraph",
+    "langchain",
+    "langchain-openai",
+    "langchain-mcp-adapters",
+    "copilotkit",
+    "langgraph-cli[inmem]>=0.4.11",
+    "nest_asyncio"
 ]
 
 [project.optional-dependencies]
@@ -39,6 +55,8 @@ dev = [
     "flake8",
     "mypy",
     "isort",
+    "inline_snapshot",
+    "inline-snapshot[black]",
 ]
 
 test = [
@@ -51,6 +69,8 @@ test = [
 boarding-server = "app.main:main"
 
 [tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "config*"]
 exclude = ["tests*", "*.tests", "*.tests.*"]
 
 [tool.pytest.ini_options]
