@@ -10,16 +10,24 @@ Requires-Dist: fastapi
 Requires-Dist: uvicorn[standard]
 Requires-Dist: pydantic
 Requires-Dist: pydantic-settings
+Requires-Dist: httpx
+Requires-Dist: aiohttp
 Requires-Dist: sqlalchemy
+Requires-Dist: sqlmodel
 Requires-Dist: alembic
 Requires-Dist: psycopg2-binary
 Requires-Dist: python-jose[cryptography]
 Requires-Dist: passlib[bcrypt]
 Requires-Dist: python-multipart
-Requires-Dist: httpx
 Requires-Dist: fastmcp
 Requires-Dist: mcp
-Requires-Dist: google-genai
+Requires-Dist: langgraph
+Requires-Dist: langchain
+Requires-Dist: langchain-openai
+Requires-Dist: langchain-mcp-adapters
+Requires-Dist: copilotkit
+Requires-Dist: langgraph-cli[inmem]>=0.4.11
+Requires-Dist: nest_asyncio
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: pytest-asyncio; extra == "dev"
@@ -28,6 +36,8 @@ Requires-Dist: black; extra == "dev"
 Requires-Dist: flake8; extra == "dev"
 Requires-Dist: mypy; extra == "dev"
 Requires-Dist: isort; extra == "dev"
+Requires-Dist: inline_snapshot; extra == "dev"
+Requires-Dist: inline-snapshot[black]; extra == "dev"
 Provides-Extra: test
 Requires-Dist: pytest; extra == "test"
 Requires-Dist: pytest-asyncio; extra == "test"
