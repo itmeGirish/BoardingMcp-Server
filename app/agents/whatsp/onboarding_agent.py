@@ -1,5 +1,6 @@
 """
 This is the main entry point for the agent.
+Onboarding workflow with step-by-step frontend forms.
 """
 from typing import List
 from copilotkit import CopilotKitState
@@ -30,14 +31,14 @@ def get_weather(location: str):
     """Get the weather for a given location."""
     return f"The weather for {location} is 70 degrees."
 
-    
-backend_tools = [get_weather,run_onboarding_http_workflow]
+
+backend_tools = [get_weather, run_onboarding_http_workflow]
 backend_tool_names = [tool.name for tool in backend_tools]
 
 
 async def chat_node(state: AgentState, config: RunnableConfig) -> Command[str]:
     """Chat node that uses the LLM with tools."""
-    model = ChatOpenAI(model=settings.LLM_MODEL,api_key=settings.OPENAI_API_KEY)
+    model = ChatOpenAI(model=settings.LLM_MODEL, api_key=settings.OPENAI_API_KEY)
 
     model_with_tools = model.bind_tools(
         [
@@ -48,11 +49,47 @@ async def chat_node(state: AgentState, config: RunnableConfig) -> Command[str]:
     )
 
     system_message = SystemMessage(
-        content=f"""You are a helpful assistant on Onboarding the Business . The current proverbs are {state.get('proverbs', [])}.
+        content="""You are a helpful assistant for onboarding businesses to WhatsApp Business API.
 
-Your needs use workflow tool for onboarding process.
-1. Use to get the onboarding workflow tool to onboard a business.
-  
+## Onboarding Workflow - FOLLOW THIS EXACTLY:
+
+When a user wants to start onboarding or says "Start user onboarding process", follow these steps IN ORDER:
+
+### Step 1: Business Profile
+- Call the frontend tool `show_onboarding_business_profile_form` to display the business profile form
+- Wait for the user to submit the form with their business details (display_name, email, company, contact, timezone, currency, company_size)
+
+### Step 2: Project Creation
+- After receiving business profile data, call `show_onboarding_project_form` with the company name
+- Wait for the user to submit the project name
+
+### Step 3: WhatsApp Setup
+- After receiving project data, call `show_onboarding_embedded_signup_form` with the project name
+- Wait for the user to submit the WhatsApp business setup details
+
+### Step 4: Complete
+- After receiving all WhatsApp setup data, call `show_onboarding_success` to show the completion screen
+- Congratulate the user on completing the onboarding
+
+## Important Rules:
+1. ALWAYS use the frontend form tools (show_onboarding_*) for step-by-step data collection
+2. Do NOT use run_onboarding_http_workflow directly - use the form tools instead
+3. Each form must be shown one at a time in sequence
+4. Parse the submitted data from user messages and pass relevant info to the next form tool
+5. Be encouraging and helpful throughout the process
+
+## Example Flow:
+User: "Start user onboarding process"
+Assistant: [calls show_onboarding_business_profile_form]
+
+User: "Business profile submitted: display_name=John, email=john@company.com, company=Acme Inc..."
+Assistant: [calls show_onboarding_project_form with company="Acme Inc"]
+
+User: "Project created: name=WhatsApp Integration"
+Assistant: [calls show_onboarding_embedded_signup_form with project_name="WhatsApp Integration"]
+
+User: "WhatsApp setup completed: business_name=Acme, category=Technology..."
+Assistant: [calls show_onboarding_success with all the collected data]
 """
     )
 
@@ -100,4 +137,3 @@ workflow.add_edge("tool_node", "chat_node")
 workflow.set_entry_point("chat_node")
 
 graph = workflow.compile()
-
