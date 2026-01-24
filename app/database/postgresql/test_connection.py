@@ -22,9 +22,9 @@ with get_session() as session:
     # 1. Create User first
     user_repo = UserCreationRepository(session=session)
     user = user_repo.create(
-        id="user_45618",
-        name="John Doe",
-        email="john@example3377.com"
+        id="user_45618516",
+        name="John Doe127",
+        email="john@example33778.com3"
     )
     print(f"User created: {user.id}")
 

@@ -1,6 +1,8 @@
+version: "3.9"
+
 services:
   postgres:
-    image: postgres:15
+    image: postgres:16
     container_name: progress_db
     restart: unless-stopped
     environment:

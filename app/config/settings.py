@@ -3,17 +3,16 @@ settings.py - Auto-generated
 Implement your logic here
 """
 
-
 from pydantic_settings import BaseSettings
 from pydantic import ConfigDict
 
 class Settings(BaseSettings):
-    GOOGLE_CLIENT_ID: str
-    GOOGLE_CLIENT_SECRET: str
-    GOOGLE_REDIRECT_URI: str
-    LOCAL_POSTGRES_URL: str  # keep only one field
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
-    ALGORITHM: str = "HS256"
+    # GOOGLE_CLIENT_ID: str
+    # GOOGLE_CLIENT_SECRET: str
+    # GOOGLE_REDIRECT_URI: str
+    # LOCAL_POSTGRES_URL: str  # keep only one field
+    # ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    # ALGORITHM: str = "HS256"
 
 
     STG_BASE_URL:str
@@ -69,7 +68,6 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore"
     )
-
 
 
 settings = Settings()

@@ -6,6 +6,7 @@ Flow:
 3. Frontend receives result → Sends embedded_signup data → Execute create_embedding_node
 4. Workflow complete
 """
+
 from xmlrpc import client
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
@@ -48,6 +49,7 @@ class OnboardingState(TypedDict):
 _current_mcp_tools: Dict[str, Any] = {}
 
 
+
 @dataclass
 class OnboardingFlow:
     """
@@ -62,6 +64,7 @@ class OnboardingFlow:
     async def show_the_business_node(self, CreateBusinessProfileState) -> CreateBusinessProfileState:
         """Debug node to show current business profile data."""
         return {"business_profile":CreateBusinessProfileState}
+ 
  
 
     async def create_business_node(self, state: OnboardingState) -> Dict[str, Any]:
@@ -127,7 +130,8 @@ class OnboardingFlow:
         """inpute node of the project data."""
 
         return {"business_profile":CreateProjectState}
-        
+
+
     
 
     async def create_project_node(self, state: OnboardingState) -> Dict[str, Any]:
@@ -322,7 +326,6 @@ class OnboardingFlow:
         return builder.compile(checkpointer=memory)
 
 
-@tool
 async def run_onboarding_http_workflow(
     user_id: str,
     current_step: Literal["business_profile", "project", "embedded_signup", "completed"],
@@ -331,6 +334,7 @@ async def run_onboarding_http_workflow(
     embedded_signup: Optional[EmbeddedSignupUrlState]) -> Dict[str, Any]:
     """
     Execute a single step of the onboarding workflow based on current_step.
+    This is the raw async function that can be called directly.
 
     Args:
         user_id: User identifier
@@ -347,66 +351,96 @@ async def run_onboarding_http_workflow(
     logger.info(f"Starting workflow step: {current_step}")
     logger.info(f"Business profile data: {business_profile}")
 
+    result = None
+
     try:
         client = MultiServerMCPClient({
             "FormsMCP": {
-                "url": "http://127.0.0.1:8000/mcp",
+                "url": "http://127.0.0.1:9001/mcp",
                 "transport": "streamable-http"
             }})
 
         logger.info("MCP client created, opening session...")
 
-        async with client.session("FormsMCP") as session:
-            logger.info("MCP session opened, loading tools...")
+        try:
+            async with client.session("FormsMCP") as session:
+                logger.info("MCP session opened, loading tools...")
 
-            mcp_tools_list = await load_mcp_tools(session)
-            mcp_tools = {t.name: t for t in mcp_tools_list}
+                mcp_tools_list = await load_mcp_tools(session)
+                mcp_tools = {t.name: t for t in mcp_tools_list}
 
-            # Store tools in global variable for node methods to use
-            _current_mcp_tools = mcp_tools
+                # Store tools in global variable for node methods to use
+                _current_mcp_tools = mcp_tools
 
-            logger.info(f"Loaded MCP tools: {list(mcp_tools.keys())}")
-            logger.info(f"Executing step: {current_step}")
+                logger.info(f"Loaded MCP tools: {list(mcp_tools.keys())}")
+                logger.info(f"Executing step: {current_step}")
 
-            flow = OnboardingFlow()
+                flow = OnboardingFlow()
 
-            # Build state for the current step
-            state: OnboardingState = {
-                "user_id": user_id,
-                "current_step": current_step,
-                "business_profile": business_profile,
-                "project": project,
-                "embedded_signup": embedded_signup,
-                "business_profile_result": None,
-                "project_result": None,
-                "embedded_signup_result": None,
-                "error": None
-            }
+                # Build state for the current step
+                state: OnboardingState = {
+                    "user_id": user_id,
+                    "current_step": current_step,
+                    "business_profile": business_profile,
+                    "project": project,
+                    "embedded_signup": embedded_signup,
+                    "business_profile_result": None,
+                    "project_result": None,
+                    "embedded_signup_result": None,
+                    "error": None
+                }
 
-            # Execute only the relevant node based on current_step
-            if current_step == "business_profile":
-                logger.info("Calling create_business_node...")
-                result = await flow.create_business_node(state)
-            elif current_step == "project":
-                logger.info("Calling create_project_node...")
-                result = await flow.create_project_node(state)
-            elif current_step == "embedded_signup":
-                logger.info("Calling create_embedding_node...")
-                result = await flow.create_embedding_node(state)
-            else:
-                result = {"error": f"Unknown step: {current_step}"}
+                # Execute only the relevant node based on current_step
+                if current_step == "business_profile":
+                    logger.info("Calling create_business_node...")
+                    result = await flow.create_business_node(state)
+                elif current_step == "project":
+                    logger.info("Calling create_project_node...")
+                    result = await flow.create_project_node(state)
+                elif current_step == "embedded_signup":
+                    logger.info("Calling create_embedding_node...")
+                    result = await flow.create_embedding_node(state)
+                else:
+                    result = {"error": f"Unknown step: {current_step}"}
 
-            logger.info(f"Step {current_step} completed with result: {result}")
-            return result
+                logger.info(f"Step {current_step} completed with result: {result}")
+
+        except (ConnectionResetError, OSError) as e:
+            # Ignore Windows socket cleanup errors (WinError 10054) during session close
+            if result is None:
+                # Only treat as error if we didn't get a result yet
+                raise
+            logger.debug(f"Ignoring socket cleanup error after successful execution: {e}")
 
     except Exception as e:
         import traceback
         error_trace = traceback.format_exc()
         logger.error(f"Error in workflow step {current_step}: {e}")
         logger.error(f"Full traceback: {error_trace}")
-        return {"error": str(e), "traceback": error_trace}
+        result = {"error": str(e), "traceback": error_trace}
+
     finally:
         _current_mcp_tools = {}
+
+    return result if result else {"error": "Unknown error occurred"}
+
+
+# Tool wrapper for the workflow (if needed as a LangChain tool)
+@tool
+async def run_onboarding_workflow_tool(
+    user_id: str,
+    current_step: str,
+    business_profile: Optional[Dict] = None,
+    project: Optional[Dict] = None,
+    embedded_signup: Optional[Dict] = None) -> Dict[str, Any]:
+    """Tool wrapper for run_onboarding_http_workflow."""
+    return await run_onboarding_http_workflow(
+        user_id=user_id,
+        current_step=current_step,
+        business_profile=business_profile,
+        project=project,
+        embedded_signup=embedded_signup
+    )
 
 
 

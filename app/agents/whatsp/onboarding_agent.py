@@ -5,6 +5,7 @@ The agent uses backend tools that trigger frontend rendering via useFrontendTool
 MCP tools are called when form data is submitted to actually create resources.
 """
 from typing import List, Optional, Dict, Any
+import json
 from copilotkit import CopilotKitState
 from langchain.tools import tool
 from langchain_core.messages import BaseMessage, SystemMessage
@@ -15,7 +16,7 @@ from langgraph.prebuilt import ToolNode
 from langgraph.types import Command
 from ...config import settings, logger
 
-# Import the MCP workflow tool
+# Import the MCP workflow
 from ...workflows.whatsp.onboarding_workflow import run_onboarding_http_workflow
 
 
@@ -80,10 +81,11 @@ async def create_business_profile_mcp(
     try:
         logger.info(f"Creating business profile for user: {user_id}, company: {company}")
 
-        result = await run_onboarding_http_workflow.ainvoke({
-            "user_id": user_id,
-            "current_step": "business_profile",
-            "business_profile": {
+        # Call the workflow directly (not using .ainvoke())
+        result = await run_onboarding_http_workflow(
+            user_id=user_id,
+            current_step="business_profile",
+            business_profile={
                 "display_name": display_name,
                 "email": email,
                 "company": company,
@@ -95,15 +97,15 @@ async def create_business_profile_mcp(
                 "user_id": user_id,
                 "onboarding_id": f"onb_{user_id}"
             },
-            "project": None,
-            "embedded_signup": None
-        })
+            project=None,
+            embedded_signup=None
+        )
 
         logger.info(f"Business profile created successfully: {result}")
         return {
             "status": "success",
             "message": f"Business profile created for {company}",
-            "result": result.get("business_profile_result", {})
+            "result": result.get("business_profile_result", {}) if isinstance(result, dict) else result
         }
     except Exception as e:
         logger.error(f"Failed to create business profile: {e}")
@@ -129,22 +131,23 @@ async def create_project_mcp(
     try:
         logger.info(f"Creating project '{project_name}' for user: {user_id}")
 
-        result = await run_onboarding_http_workflow.ainvoke({
-            "user_id": user_id,
-            "current_step": "project",
-            "business_profile": None,
-            "project": {
+        # Call the workflow directly
+        result = await run_onboarding_http_workflow(
+            user_id=user_id,
+            current_step="project",
+            business_profile=None,
+            project={
                 "name": project_name,
                 "user_id": user_id
             },
-            "embedded_signup": None
-        })
+            embedded_signup=None
+        )
 
         logger.info(f"Project created successfully: {result}")
         return {
             "status": "success",
             "message": f"Project '{project_name}' created successfully",
-            "result": result.get("project_result", {})
+            "result": result.get("project_result", {}) if isinstance(result, dict) else result
         }
     except Exception as e:
         logger.error(f"Failed to create project: {e}")
@@ -180,12 +183,13 @@ async def create_embedded_signup_mcp(
     try:
         logger.info(f"Creating embedded signup for business: {business_name}")
 
-        result = await run_onboarding_http_workflow.ainvoke({
-            "user_id": "system",
-            "current_step": "embedded_signup",
-            "business_profile": None,
-            "project": None,
-            "embedded_signup": {
+        # Call the workflow directly
+        result = await run_onboarding_http_workflow(
+            user_id="system",
+            current_step="embedded_signup",
+            business_profile=None,
+            project=None,
+            embedded_signup={
                 "business_name": business_name,
                 "business_email": business_email,
                 "phone_code": 1,
@@ -200,13 +204,13 @@ async def create_embedded_signup_mcp(
                 "category": category,
                 "description": description
             }
-        })
+        )
 
         logger.info(f"Embedded signup created successfully: {result}")
         return {
             "status": "success",
             "message": f"WhatsApp Business '{business_name}' setup complete",
-            "result": result.get("embedded_signup_result", {})
+            "result": result.get("embedded_signup_result", {}) if isinstance(result, dict) else result
         }
     except Exception as e:
         logger.error(f"Failed to create embedded signup: {e}")
