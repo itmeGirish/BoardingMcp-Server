@@ -13,22 +13,18 @@ Why here and not in states.py?
 - States are pure TypedDict (no logic)
 - Normalization is for MCP's requirements (belongs in MCP layer)
 - Clean separation: states = structure, mcp_client = transformation
-
-CRITICAL FIX: Imports are at module level to avoid blocking in ASGI context!
 """
 
 import asyncio
 import logging
 from typing import Dict, Any, Optional
 
-# CRITICAL: Import at MODULE level, not inside async functions!
-# This prevents blocking file I/O in ASGI context
+# MCP imports at module level to avoid blocking I/O in async context
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_mcp_adapters.tools import load_mcp_tools
 
 # Import utils for data transformation (ONLY imported here!)
-from ...utils.whsp_onboarding_agent import normalize_timezone, normalize_country_code, parse_mcp_result
-
+from ...utils.whsp_onboarding_agent import normalize_timezone, normalize_country_code, parse_mcp_result, parse_mcp_result_with_debug
 from ...config import logger
 
 
@@ -61,6 +57,7 @@ class MCPConnectionManager:
     
     _client = None
     _session = None
+    _session_context = None  # Store context manager for proper cleanup
     _tools: Optional[Dict[str, Any]] = None
     _lock = asyncio.Lock()
     
@@ -87,13 +84,8 @@ class MCPConnectionManager:
     
     @classmethod
     async def _initialize_connection(cls):
-        """
-        Initialize MCP connection and load tools.
-        
-        IMPORTANT: All imports are at module level to avoid blocking!
-        """
+        """Initialize MCP connection and load tools"""
         try:
-            # No imports here! They're at module level
             cls._client = MultiServerMCPClient({
                 MCP_SERVER_NAME: {
                     "url": MCP_SERVER_URL,
@@ -101,12 +93,13 @@ class MCPConnectionManager:
                 }
             })
             
-            # Create session
-            cls._session = cls._client.session(MCP_SERVER_NAME)
-            session_obj = await cls._session.__aenter__()
+            # Store context manager for proper cleanup
+            cls._session_context = cls._client.session(MCP_SERVER_NAME)
+            # Enter the context
+            cls._session = await cls._session_context.__aenter__()
             
             # Load tools once
-            tools_list = await load_mcp_tools(session_obj)
+            tools_list = await load_mcp_tools(cls._session)
             cls._tools = {t.name: t for t in tools_list}
             
             logger.info("Successfully loaded %d MCP tools: %s", 
@@ -122,24 +115,18 @@ class MCPConnectionManager:
     async def close(cls):
         """Close MCP connection gracefully"""
         async with cls._lock:
-            if cls._session:
+            if cls._session_context is not None:
                 try:
-                    # Properly close the session with async context manager
-                    await cls._session.__aexit__(None, None, None)
+                    # Properly exit the context manager
+                    await cls._session_context.__aexit__(None, None, None)
                     logger.info("MCP connection closed successfully")
                 except Exception as e:
                     logger.error("Error closing MCP session: %s", e)
                 finally:
+                    cls._session_context = None
                     cls._session = None
                     cls._tools = None
                     cls._client = None
-                    
-                    # Also close the client if it has a close method
-                    if cls._client and hasattr(cls._client, 'close'):
-                        try:
-                            await cls._client.close()
-                        except:
-                            pass
     
     @classmethod
     async def reset(cls):
@@ -206,9 +193,15 @@ async def create_business_profile(
             "password": password,
             "onboarding_id": onboarding_id
         })
-        
-        parsed_result = parse_mcp_result(result)
-        logger.info("Business profile created: %s", parsed_result.get("status", "unknown"))
+
+        # Use debug version to see what MCP is actually returning
+        parsed_result = parse_mcp_result_with_debug(result)
+        logger.info("Business profile status: %s", parsed_result.get("status", "unknown"))
+
+        # If there's an error, log it clearly
+        if "error" in parsed_result:
+            logger.error("MCP business profile error: %s", parsed_result["error"])
+
         return parsed_result
         
     except Exception as e:

@@ -79,18 +79,34 @@ async def generate_embedded_signup_url(
         - error (str): Error message if unsuccessful
     """
     try:
+        logger.info("=" * 80)
+        logger.info(f"Generating embedded signup URL for user_id: {user_id}")
+        logger.info(f"  - Business: {business_name}")
+        logger.info(f"  - Email: {business_email}")
+        logger.info("=" * 80)
+
+        # Step 1: Fetch project details from database
+        logger.info("Step 1: Fetching project details from database...")
         with get_session() as session:
             project_repo = ProjectCreationRepository(session=session)
             result = project_repo.get_project_by_user_id(user_id)
 
             if not result:
-                error_msg = f"No business found for user_id: {user_id}"
-                logger.warning(error_msg)
+                error_msg = f"No project found for user_id: {user_id}"
+                logger.error(error_msg)
+                logger.error("  Make sure a project has been created for this user first")
                 return {"error": error_msg}
-            
-            name, project_id, business_id = result
 
-        # Validate input using Pydantic model
+            name, project_id, business_id = result
+            logger.info(f"✓ Successfully retrieved project details")
+            logger.info(f"  - Project Name: {name}")
+            logger.info(f"  - Project ID: {project_id}")
+            logger.info(f"  - Business ID: {business_id}")
+
+        # Step 2: Validate input
+        logger.info("=" * 80)
+        logger.info("Step 2: Validating input parameters...")
+        logger.info("=" * 80)
         request = EmbeddedSignupUrlRequest(
             business_id=business_id,
             assistant_id=project_id,
@@ -109,7 +125,12 @@ async def generate_embedded_signup_url(
             category=category,
             description=description
         )
+        logger.info("✓ Input validation passed")
 
+        # Step 3: Generate signup URL via API
+        logger.info("=" * 80)
+        logger.info("Step 3: Calling AiSensy API to generate embedded signup URL...")
+        logger.info("=" * 80)
         async with get_aisensy_post_client() as client:
             response = await client.generate_embedded_signup_url(
                 business_id=business_id,
@@ -129,17 +150,29 @@ async def generate_embedded_signup_url(
                 category=request.category,
                 description=request.description
             )
-            
+
             if response.get("success"):
-                logger.info("Successfully generated embedded signup URL")
-                return {"embeddedSignupURL": response["data"]["embeddedSignupURL"]}
+                signup_url = response["data"]["embeddedSignupURL"]
+                logger.info("=" * 80)
+                logger.info("✓ Successfully generated embedded signup URL")
+                logger.info(f"  - URL: {signup_url[:80]}..." if len(signup_url) > 80 else f"  - URL: {signup_url}")
+                logger.info("=" * 80)
+                return {"embeddedSignupURL": signup_url}
             else:
                 error_msg = response.get("error", "Unknown error")
                 status_code = response.get("status_code", "N/A")
                 details = response.get("details", {})
+
+                logger.error("=" * 80)
+                logger.error("API ERROR - Failed to generate embedded signup URL")
+                logger.error("=" * 80)
+                logger.error(f"Error: {error_msg}")
+                logger.error(f"Status Code: {status_code}")
+                logger.error(f"Details: {details}")
+                logger.error("=" * 80)
+
                 full_error = f"{error_msg} | Status: {status_code} | Details: {details}"
-                logger.warning(f"Failed to generate embedded signup URL: {error_msg}")
-                return {"error": error_msg}
+                return {"error": full_error}
         
     except ValueError as e:
         error_msg = f"Validation error: {str(e)}"
