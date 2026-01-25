@@ -2,19 +2,17 @@
 Interactive Onboarding Workflow
 Flow:
 1. Frontend sends user_id + business_profile data → Execute create_business_node
-2. Frontend receives result → Sends project data → Execute create_project_node  
+2. Frontend receives result → Sends project data → Execute create_project_node
 3. Frontend receives result → Sends embedded_signup data → Execute create_embedding_node
 4. Workflow complete
 """
 
-from xmlrpc import client
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 from typing import Dict, TypedDict, Any, Optional, Literal
 from dataclasses import dataclass
 import json
 from langchain.tools import tool
-from app.workflows.whatsp.test_workflow import build_workflow
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_mcp_adapters.tools import load_mcp_tools
 

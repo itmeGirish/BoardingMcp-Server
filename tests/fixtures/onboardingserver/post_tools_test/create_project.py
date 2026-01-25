@@ -8,14 +8,14 @@ from fastmcp.client.transports import FastMCPTransport
 @pytest_asyncio.fixture
 async def main_mcp_client():
     """Initialize MCP client for onboarding server."""
-    async with Client("mcp_servers/onboardserver.py") as mcp_client:
+    async with Client("http://localhost:9001/mcp") as mcp_client:
         yield mcp_client
 
 
 @pytest.mark.parametrize(
     "project_name, user_id",
     [
-        ("my_test_project", "user_45618"),
+        ("Tesla_car", "user_8861"),
     ],
 )
 @pytest.mark.asyncio

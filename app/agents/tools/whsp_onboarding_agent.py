@@ -5,48 +5,222 @@ This module defines the LangChain tools that integrate with
 the MCP server for the onboarding workflow.
 
 IMPORTANT: These tools run in LangGraph's ASGI context.
-We use asyncio.to_thread() to avoid blocking the event loop.
+We use ThreadPoolExecutor to run MCP calls in separate threads with their own event loops.
+This pattern matches the working implementation and avoids all async/event loop conflicts.
 """
 
 import asyncio
 import json
 import logging
+import concurrent.futures
+import nest_asyncio
 from langchain.tools import tool
 
-from ..mcp_client import whsp_onboarding_agent as mcp_client
+from ...config import logger
 
-logger = logging.getLogger(__name__)
+# Apply nest_asyncio to allow nested event loops
+nest_asyncio.apply()
+
+# Thread pool for running MCP calls in separate threads
+_executor = concurrent.futures.ThreadPoolExecutor(max_workers=3)
 
 
 # ============================================
-# HELPER: Non-blocking async wrapper
+# SYNC WRAPPERS - Run MCP calls in new event loop
 # ============================================
 
-async def _run_async_in_thread(async_func, *args, **kwargs):
-    """
-    Run an async function in a separate thread to avoid blocking.
-    
-    This is necessary because LangGraph runs in an ASGI context
-    where blocking calls are not allowed.
-    
-    Args:
-        async_func: The async function to run
-        *args, **kwargs: Arguments to pass to the function
-    
-    Returns:
-        Result from the async function
-    """
-    def sync_wrapper():
-        # Create new event loop in thread
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        try:
-            return loop.run_until_complete(async_func(*args, **kwargs))
-        finally:
-            loop.close()
-    
-    # Run in thread pool to avoid blocking
-    return await asyncio.to_thread(sync_wrapper)
+def _run_create_business_profile_sync(
+    user_id: str,
+    display_name: str,
+    email: str,
+    company: str,
+    contact: str,
+    timezone: str,
+    currency: str,
+    company_size: str,
+    password: str,
+    onboarding_id: str
+):
+    """Run MCP create_business_profile synchronously in a new event loop."""
+    # Import MCP modules INSIDE the function to avoid event loop conflicts
+    from langchain_mcp_adapters.client import MultiServerMCPClient
+    from langchain_mcp_adapters.tools import load_mcp_tools
+    from app.utils.whsp_onboarding_agent import parse_mcp_result_with_debug as parse_mcp_result, normalize_timezone
+
+    async def _call():
+        import logging
+        logger = logging.getLogger(__name__)
+
+        logger.info("🔧 [MCP] Creating fresh MCP client...")
+        # Create fresh MCP client with new connection
+        client = MultiServerMCPClient({
+            "BoardingMCP": {
+                "url": "http://127.0.0.1:9001/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        logger.info("🔧 [MCP] Opening MCP session...")
+        async with client.session("BoardingMCP") as session:
+            logger.info("🔧 [MCP] Loading MCP tools...")
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+            logger.info(f"🔧 [MCP] Loaded {len(mcp_tools)} tools")
+
+            create_business_tool = mcp_tools["create_business_profile"]
+
+            # Normalize timezone before calling MCP
+            normalized_timezone = normalize_timezone(timezone)
+            logger.info(f"🔧 [MCP] Calling create_business_profile for {email}...")
+
+            result = await create_business_tool.ainvoke({
+                "display_name": display_name,
+                "email": email,
+                "company": company,
+                "contact": contact,
+                "timezone": normalized_timezone,
+                "currency": currency,
+                "company_size": company_size,
+                "password": password,
+                "user_id": user_id,
+                "onboarding_id": onboarding_id
+            })
+
+            logger.info("🔧 [MCP] Tool call completed, parsing result...")
+            # Parse MCP result
+            parsed = parse_mcp_result(result)
+            logger.info(f"🔧 [MCP] Result status: {parsed.get('status', 'unknown')}")
+            return parsed
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        return loop.run_until_complete(_call())
+    finally:
+        loop.close()
+
+
+def _run_create_project_sync(user_id: str, name: str):
+    """Run MCP create_project synchronously in a new event loop."""
+    # Import MCP modules INSIDE the function to avoid event loop conflicts
+    from langchain_mcp_adapters.client import MultiServerMCPClient
+    from langchain_mcp_adapters.tools import load_mcp_tools
+    from app.utils.whsp_onboarding_agent import parse_mcp_result_with_debug as parse_mcp_result
+
+    async def _call():
+        # Create fresh MCP client with new connection
+        client = MultiServerMCPClient({
+            "BoardingMCP": {
+                "url": "http://127.0.0.1:9001/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        async with client.session("BoardingMCP") as session:
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+
+            create_project_tool = mcp_tools["create_project"]
+
+            result = await create_project_tool.ainvoke({
+                "user_id": user_id,
+                "name": name
+            })
+
+            # Parse MCP result
+            return parse_mcp_result(result)
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        return loop.run_until_complete(_call())
+    finally:
+        loop.close()
+
+
+def _run_generate_embedded_signup_url_sync(
+    user_id: str,
+    business_name: str,
+    business_email: str,
+    phone_code: int,
+    phone_number: str,
+    website: str,
+    street_address: str,
+    city: str,
+    state: str,
+    zip_postal: str,
+    country: str,
+    timezone: str,
+    display_name: str,
+    category: str,
+    description: str = None
+):
+    """Run MCP generate_embedded_signup_url synchronously in a new event loop."""
+    # Import MCP modules INSIDE the function to avoid event loop conflicts
+    from langchain_mcp_adapters.client import MultiServerMCPClient
+    from langchain_mcp_adapters.tools import load_mcp_tools
+    from app.utils.whsp_onboarding_agent import parse_mcp_result_with_debug as parse_mcp_result, normalize_timezone, normalize_country_code
+
+    async def _call():
+        import logging
+        logger = logging.getLogger(__name__)
+
+        logger.info("🔧 [MCP] Creating fresh MCP client for embedded signup...")
+        # Create fresh MCP client with new connection
+        client = MultiServerMCPClient({
+            "BoardingMCP": {
+                "url": "http://127.0.0.1:9001/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        logger.info("🔧 [MCP] Opening MCP session...")
+        async with client.session("BoardingMCP") as session:
+            logger.info("🔧 [MCP] Loading MCP tools...")
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+            logger.info(f"🔧 [MCP] Loaded {len(mcp_tools)} tools")
+
+            generate_signup_tool = mcp_tools["generate_embedded_signup_url"]
+
+            # Normalize timezone and country before calling MCP
+            logger.info("🔧 [MCP] Normalizing timezone and country codes...")
+            normalized_timezone = normalize_timezone(timezone)
+            normalized_country = normalize_country_code(country)
+            logger.info(f"🔧 [MCP]   Timezone: {timezone} -> {normalized_timezone}")
+            logger.info(f"🔧 [MCP]   Country: {country} -> {normalized_country}")
+
+            logger.info(f"🔧 [MCP] Calling generate_embedded_signup_url for {business_email}...")
+            result = await generate_signup_tool.ainvoke({
+                "user_id": user_id,
+                "business_name": business_name,
+                "business_email": business_email,
+                "phone_code": phone_code,
+                "phone_number": phone_number,
+                "website": website,
+                "street_address": street_address,
+                "city": city,
+                "state": state,
+                "zip_postal": zip_postal,
+                "country": normalized_country,
+                "timezone": normalized_timezone,
+                "display_name": display_name,
+                "category": category,
+                "description": description
+            })
+
+            logger.info("🔧 [MCP] Tool call completed, parsing result...")
+            # Parse MCP result
+            parsed = parse_mcp_result(result)
+            logger.info(f"🔧 [MCP] Result status: {parsed.get('status', 'unknown')}")
+            return parsed
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        return loop.run_until_complete(_call())
+    finally:
+        loop.close()
 
 
 # ============================================
@@ -54,7 +228,7 @@ async def _run_async_in_thread(async_func, *args, **kwargs):
 # ============================================
 
 @tool
-async def show_business_profile_form(
+def show_business_profile_form(
     user_id: str,
     display_name: str,
     email: str,
@@ -68,7 +242,7 @@ async def show_business_profile_form(
 ) -> str:
     """
     Display the business profile form AND create business profile via MCP as STEP 1 of onboarding.
-    
+
     This is called when you receive "Workflow business profile submitted" message.
     It calls the MCP create_business_profile tool and then shows the project form.
 
@@ -83,16 +257,17 @@ async def show_business_profile_form(
         company_size: Company size (e.g., "1-10", "11-50", "51-200")
         password: User password
         onboarding_id: Onboarding identifier
-    
+
     Returns:
         JSON string containing the MCP result
     """
-    logger.info("Business profile form called for user: %s", user_id)
-    
+    logger.info("🔧 [BACKEND] show_business_profile_form called for user: %s", user_id)
+
     try:
-        # Use to_thread to avoid blocking in ASGI context
-        result = await _run_async_in_thread(
-            mcp_client.create_business_profile,
+        logger.info("🔧 [BACKEND] Submitting MCP call to thread pool...")
+        # Run MCP call in thread pool to avoid event loop conflicts
+        future = _executor.submit(
+            _run_create_business_profile_sync,
             user_id=user_id,
             display_name=display_name,
             email=email,
@@ -104,13 +279,28 @@ async def show_business_profile_form(
             password=password,
             onboarding_id=onboarding_id
         )
-        
-        logger.info("Business profile creation result: %s", result.get('status', 'unknown'))
-        return json.dumps(result)
-        
+        logger.info("🔧 [BACKEND] Waiting for MCP result (timeout: 60s)...")
+        result = future.result(timeout=60)
+
+        # Ensure result is a dict
+        if not isinstance(result, dict):
+            logger.error("MCP returned non-dict result: %s", type(result))
+            result = {"error": "Invalid MCP response format", "status": "failed"}
+
+        logger.info("🔧 [BACKEND] Business profile creation result: %s", result.get('status', 'unknown'))
+
+        # Log what we're returning to the agent
+        result_json = json.dumps(result, ensure_ascii=False)
+        logger.info("🔧 [BACKEND] Returning to agent: %s", result_json[:200])
+
+        # Always return a valid JSON string
+        return result_json
+
     except Exception as e:
-        logger.error("Business profile error: %s", e, exc_info=True)
-        return json.dumps({"error": str(e), "status": "failed"})
+        error_msg = str(e)
+        logger.error("🔧 [BACKEND] Business profile error: %s", e, exc_info=True)
+        # Ensure we always return valid JSON
+        return json.dumps({"error": error_msg, "status": "failed", "details": "Exception in show_business_profile_form"}, ensure_ascii=False)
 
 
 # ============================================
@@ -118,39 +308,43 @@ async def show_business_profile_form(
 # ============================================
 
 @tool
-async def show_project_form(
+def show_project_form(
     user_id: str,
     name: str
 ) -> str:
     """
     Display the project form AND create project via MCP as STEP 2 of onboarding.
-    
+
     This is called when you receive "Workflow project submitted" message.
     It calls the MCP create_project tool and then shows the embedded signup form.
+    The business_id is automatically fetched from the database based on user_id.
 
     Args:
-        user_id: User's unique identifier
+        user_id: User's unique identifier - used to fetch the associated business_id from database
         name: Project name
-    
+
     Returns:
         JSON string containing the MCP result
     """
-    logger.info("Project form called for user: %s, project: %s", user_id, name)
-    
+    logger.info("🔧 [BACKEND] show_project_form called for user: %s, project: %s", user_id, name)
+
     try:
-        # Use to_thread to avoid blocking in ASGI context
-        result = await _run_async_in_thread(
-            mcp_client.create_project,
-            user_id=user_id,
-            name=name
-        )
-        
-        logger.info("Project creation result: %s", result.get('status', 'unknown'))
-        return json.dumps(result)
-        
+        # Run MCP call in thread pool to avoid event loop conflicts
+        future = _executor.submit(_run_create_project_sync, user_id=user_id, name=name)
+        result = future.result(timeout=30)
+
+        # Ensure result is a dict
+        if not isinstance(result, dict):
+            logger.error("MCP returned non-dict result: %s", type(result))
+            result = {"error": "Invalid MCP response format", "status": "failed"}
+
+        logger.info("🔧 [BACKEND] Project creation result: %s", result.get('status', 'unknown'))
+        return json.dumps(result, ensure_ascii=False)
+
     except Exception as e:
-        logger.error("Project creation error: %s", e, exc_info=True)
-        return json.dumps({"error": str(e), "status": "failed"})
+        error_msg = str(e)
+        logger.error("🔧 [BACKEND] Project creation error: %s", e, exc_info=True)
+        return json.dumps({"error": error_msg, "status": "failed", "details": "Exception in show_project_form"}, ensure_ascii=False)
 
 
 # ============================================
@@ -158,7 +352,7 @@ async def show_project_form(
 # ============================================
 
 @tool
-async def show_embedded_signup_form(
+def show_embedded_signup_form(
     user_id: str,
     business_name: str,
     business_email: str,
@@ -177,7 +371,7 @@ async def show_embedded_signup_form(
 ) -> str:
     """
     Display the embedded signup form AND submit final onboarding via MCP as STEP 3.
-    
+
     This is called when you receive "Workflow embedded signup submitted" message.
     It calls the MCP generate_embedded_signup_url tool and completes the entire onboarding process.
 
@@ -197,16 +391,16 @@ async def show_embedded_signup_form(
         display_name: Display name
         category: Business category
         description: Optional business description
-    
+
     Returns:
         JSON string containing the MCP result with signup URL
     """
-    logger.info("Embedded signup form called for user: %s", user_id)
-    
+    logger.info("🔧 [BACKEND] show_embedded_signup_form called for user: %s", user_id)
+
     try:
-        # Use to_thread to avoid blocking in ASGI context
-        result = await _run_async_in_thread(
-            mcp_client.generate_embedded_signup_url,
+        # Run MCP call in thread pool to avoid event loop conflicts
+        future = _executor.submit(
+            _run_generate_embedded_signup_url_sync,
             user_id=user_id,
             business_name=business_name,
             business_email=business_email,
@@ -223,13 +417,21 @@ async def show_embedded_signup_form(
             category=category,
             description=description or None
         )
-        
-        logger.info("Embedded signup result: %s", result.get('status', 'unknown'))
-        return json.dumps(result)
-        
+        logger.info("🔧 [BACKEND] Waiting for embedded signup URL generation (timeout: 60s)...")
+        result = future.result(timeout=60)
+
+        # Ensure result is a dict
+        if not isinstance(result, dict):
+            logger.error("MCP returned non-dict result: %s", type(result))
+            result = {"error": "Invalid MCP response format", "status": "failed"}
+
+        logger.info("🔧 [BACKEND] Embedded signup result: %s", result.get('status', 'unknown'))
+        return json.dumps(result, ensure_ascii=False)
+
     except Exception as e:
-        logger.error("Embedded signup error: %s", e, exc_info=True)
-        return json.dumps({"error": str(e), "status": "failed"})
+        error_msg = str(e)
+        logger.error("🔧 [BACKEND] Embedded signup error: %s", e, exc_info=True)
+        return json.dumps({"error": error_msg, "status": "failed", "details": "Exception in show_embedded_signup_form"}, ensure_ascii=False)
 
 
 # ============================================

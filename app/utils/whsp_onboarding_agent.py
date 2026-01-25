@@ -156,12 +156,13 @@ def parse_mcp_result(result: Any) -> Dict[str, Any]:
     if not isinstance(result_data, dict):
         result_data = {"data": result_data}
     
-    # Step 4: Normalize status key
+    # Step 4: Normalize status key and add user-friendly message
     parsed = dict(result_data)  # Make a copy
-    
+
     if "status" not in parsed:
         # Infer status from other fields
-        if "error" in parsed:
+        # Check if error field exists AND has a truthy value (not None, not empty string)
+        if parsed.get("error"):
             parsed["status"] = "failed"
         elif "success" in parsed:
             parsed["status"] = "success" if parsed["success"] else "failed"
@@ -171,7 +172,33 @@ def parse_mcp_result(result: Any) -> Dict[str, Any]:
         else:
             # Default to success if no error indicators
             parsed["status"] = "success"
-    
+
+    # Step 5: Add user-friendly message field
+    if "message" not in parsed:
+        if parsed["status"] == "failed":
+            # Extract error message from error field or details
+            if parsed.get("error"):
+                parsed["message"] = str(parsed["error"])
+            elif parsed.get("details"):
+                parsed["message"] = str(parsed["details"])
+            else:
+                parsed["message"] = "Operation failed"
+        else:
+            # Success message
+            if "data" in parsed and isinstance(parsed["data"], dict):
+                # Extract useful info from data for success message
+                data = parsed["data"]
+                if "display_name" in data:
+                    parsed["message"] = f"Successfully created for {data['display_name']}"
+                elif "name" in data:
+                    parsed["message"] = f"Successfully created {data['name']}"
+                elif "signup_url" in data:
+                    parsed["message"] = f"Successfully generated signup URL"
+                else:
+                    parsed["message"] = "Operation completed successfully"
+            else:
+                parsed["message"] = "Operation completed successfully"
+
     return parsed
 
 
