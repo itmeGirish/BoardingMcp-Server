@@ -26,7 +26,8 @@ class BusinessCreationRepository:
         contact: str,
         currency: Optional[str] = "INR",
         timezone: Optional[str] = "Asia/Calcutta",
-        type: Optional[str] = "owner"
+        type: Optional[str] = "owner",
+        password: Optional[str] = None
     ) -> BusinessCreation | None:
         try:
             business_creation = BusinessCreation(
@@ -38,6 +39,7 @@ class BusinessCreationRepository:
                 user_name=user_name,
                 business_id=business_id,
                 email=email,
+                password=password,
                 company=company,
                 contact=contact,
                 currency=currency,
@@ -128,4 +130,19 @@ class BusinessCreationRepository:
             return result.model_dump() if result else None
         except Exception as e:
             logger.error(f"Failed to get everything for BusinessCreation by id {id}: {e}")
+            raise e
+
+    def get_credentials_by_user_id(self, user_id: str) -> Optional[dict]:
+        """Get email and password for JWT token generation by user_id."""
+        try:
+            statement = select(
+                BusinessCreation.email,
+                BusinessCreation.password
+            ).where(BusinessCreation.user_id == user_id)
+            result = self.session.exec(statement).first()
+            if result:
+                return {"email": result[0], "password": result[1]}
+            return None
+        except Exception as e:
+            logger.error(f"Failed to get credentials for user_id {user_id}: {e}")
             raise e

@@ -61,17 +61,35 @@ STEP 3 - When you see "Workflow embedded signup submitted" with parameters:
     → DO NOT proceed to the next step
   * If status is "success":
     → Share the signup URL with the user as a clickable link
-    → Tell the user: "Click on this link to get your WhatsApp Business Platform Account that you would like to connect to the WhatsApp Business API"
-    → Emphasize: "This is a MANDATORY step. Please fill in the details on the Facebook form to complete your WhatsApp Business setup"
+    → Tell the user: "**Click on this link to complete your WhatsApp Business Platform Account setup.**"
+    → Emphasize: "This is a **MANDATORY** step. Please fill in the details on the Facebook form to complete your WhatsApp Business setup."
+    → Tell the user: "After you finish the Facebook signup, come back here and type **'Check verification status'** so I can verify your WABA account."
     → DO NOT say "onboarding complete", "Thank you for completing", or any completion messages
     → DO NOT call display_onboarding_success()
     → The onboarding is NOT finished - user still needs to complete the Facebook form
+
+STEP 4 - When user says "Check verification status" or "Check status" or similar:
+- Call check_verification_status with:
+  * user_id (use the same user_id from the onboarding session)
+- WAIT for the tool result
+- PARSE the JSON result and CHECK the status:
+  * If status is "success" and verification is complete:
+    → Say: "🎉 **Congratulations!** Your WhatsApp Business Account (WABA) has been verified successfully!"
+    → Say: "Your onboarding is now complete. You can start using WhatsApp Business API."
+  * If verification is pending or not complete:
+    → Say: "⏳ Your WABA verification is still in progress."
+    → Say: "Please wait for the verification to complete. This can take a few minutes to a few hours."
+    → Say: "You can check the status again later by typing **'Check verification status'**."
+  * If status is "failed" or there's an error:
+    → Tell the user the error message
+    → Suggest they complete the Facebook signup first if they haven't
 
 IMPORTANT:
 - Do NOT ask for confirmation
 - When you see "Workflow X submitted", IMMEDIATELY call the corresponding tool
 - ALWAYS check tool results before proceeding to the next step
-- Only call display_* tools AFTER verifying the backend tool succeeded"""
+- Only call display_* tools AFTER verifying the backend tool succeeded
+- After embedded signup URL is generated, ALWAYS remind user to check verification status after completing Facebook signup"""
 
 
 # ============================================
@@ -102,6 +120,16 @@ When handling embedded signup submission:
 4. Call show_embedded_signup_form immediately
 5. Do NOT ask for confirmation
 6. Wait for the tool result before responding
+7. After success, remind user to check verification status after completing Facebook signup
+"""
+
+VERIFICATION_STATUS_INSTRUCTIONS = """
+When user asks to check verification status:
+1. Call check_verification_status with the user_id
+2. Wait for the tool result
+3. If successful verification: Congratulate the user
+4. If pending verification: Tell them to wait and check again later
+5. If failed: Explain the error and suggest completing Facebook signup
 """
 
 
@@ -126,7 +154,11 @@ BUSINESS_PROFILE_SUCCESS = "✅ Business profile created successfully! Please pr
 
 PROJECT_SUCCESS = "✅ Project created successfully! Please complete the embedded signup."
 
-EMBEDDED_SIGNUP_SUCCESS = "✅ Onboarding completed successfully! Your WhatsApp Business account is ready."
+EMBEDDED_SIGNUP_SUCCESS = "✅ Signup URL generated! Click the link above to complete your WhatsApp Business setup on Facebook."
+
+VERIFICATION_SUCCESS = "🎉 Congratulations! Your WhatsApp Business Account (WABA) has been verified successfully!"
+
+VERIFICATION_PENDING = "⏳ Your WABA verification is still in progress. Please check again later."
 
 
 # ============================================
@@ -136,7 +168,7 @@ EMBEDDED_SIGNUP_SUCCESS = "✅ Onboarding completed successfully! Your WhatsApp 
 PARAMETER_VALIDATION_RULES = {
     "business_profile": {
         "required": [
-            "user_id", "display_name", "email", "company", 
+            "user_id", "display_name", "email", "company",
             "contact", "timezone", "currency", "company_size",
             "password", "onboarding_id"
         ],
@@ -148,12 +180,16 @@ PARAMETER_VALIDATION_RULES = {
     },
     "embedded_signup": {
         "required": [
-            "user_id", "business_name", "business_email", 
-            "phone_code", "phone_number", "website", 
+            "user_id", "business_name", "business_email",
+            "phone_code", "phone_number", "website",
             "street_address", "city", "state", "zip_postal",
             "country", "timezone", "display_name", "category"
         ],
         "optional": ["description"]
+    },
+    "verification_status": {
+        "required": ["user_id"],
+        "optional": []
     }
 }
 

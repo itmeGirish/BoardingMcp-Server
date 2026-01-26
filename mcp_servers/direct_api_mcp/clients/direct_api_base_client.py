@@ -15,7 +15,7 @@ class AiSensyDirectApiClient:
     timeout: int = 30
     BASE_URL: str = settings.Direct_BASE_URL
     _session: Optional[aiohttp.ClientSession] = field(default=None, init=False, repr=False)
-    _token: str = field(default_factory=lambda: settings.AISENSY_BEARER_TOKEN)
+    _token: str = field(default_factory=lambda: settings.AiSensy_API_Key)
     
     async def _get_session(self) -> aiohttp.ClientSession:
         """Get or create HTTP session."""

@@ -139,7 +139,8 @@ async def create_business_profile(
                             company=response["data"]["company"],
                             contact=response["data"]["contact"],
                             currency=response["data"]["currency"],
-                            timezone=response["data"]["timezone"]
+                            timezone=response["data"]["timezone"],
+                            password=request.password  # Save password for JWT token generation
                         )
                         logger.info("Step 5 Complete: repository.create() executed successfully")
                         
