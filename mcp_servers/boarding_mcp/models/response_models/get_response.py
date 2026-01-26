@@ -79,9 +79,10 @@ class KycSubmissionStatusData(BaseModel):
 
 class KycSubmissionStatusResponse(BaseModel):
     """Response model for get_kyc_submission_status endpoint."""
-    
+
     success: bool
-    data: KycSubmissionStatusData
+    data: Optional[KycSubmissionStatusData] = None
+    error: Optional[str] = None
 
 
 # ============================================================
@@ -97,9 +98,10 @@ class BusinessVerificationStatusData(BaseModel):
 
 class BusinessVerificationStatusResponse(BaseModel):
     """Response model for get_business_verification_status endpoint."""
-    
+
     success: bool
-    data: BusinessVerificationStatusData
+    data: Optional[BusinessVerificationStatusData] = None
+    error: Optional[str] = None
 
 
 # ============================================================

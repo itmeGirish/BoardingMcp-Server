@@ -20,6 +20,7 @@ class BusinessCreation(SQLModel, table=True):
     user_name: str
     business_id: str = Field(index=True)
     email: str = Field(index=True)
+    password: Optional[str] = Field(default=None)  # Stored for JWT token generation
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
     company: str

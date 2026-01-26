@@ -13,7 +13,7 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
 
     # ==================== 1. AUTHENTICATION ====================
 
-    async def regenerate_jwt_bearer_token(self, direct_api: bool = True) -> Dict[str, Any]:
+    async def regenerate_jwt_bearer_token(self,token:str, direct_api: bool = True) -> Dict[str, Any]:
         """
         Regenerate JWT Bearer Token to Access Direct-APIs.
         
@@ -30,9 +30,15 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         payload = {"direct_api": direct_api}
         logger.debug(f"Regenerating JWT bearer token at: {url}")
 
+
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {token}"
+            }
             session = await self._get_session()
-            async with session.post(url, json=payload) as response:
+            async with session.post(url, json=payload,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info("Successfully regenerated JWT bearer token")

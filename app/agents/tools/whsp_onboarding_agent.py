@@ -223,6 +223,54 @@ def _run_generate_embedded_signup_url_sync(
         loop.close()
 
 
+def _run_get_kyc_submission_status_sync(user_id: str):
+    """Run MCP get_kyc_submission_status synchronously in a new event loop."""
+    # Import MCP modules INSIDE the function to avoid event loop conflicts
+    from langchain_mcp_adapters.client import MultiServerMCPClient
+    from langchain_mcp_adapters.tools import load_mcp_tools
+    from app.utils.whsp_onboarding_agent import parse_mcp_result_with_debug as parse_mcp_result
+
+    async def _call():
+        import logging
+        logger = logging.getLogger(__name__)
+
+        logger.info("🔧 [MCP] Creating fresh MCP client for KYC status check...")
+        # Create fresh MCP client with new connection
+        client = MultiServerMCPClient({
+            "BoardingMCP": {
+                "url": "http://127.0.0.1:9001/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        logger.info("🔧 [MCP] Opening MCP session...")
+        async with client.session("BoardingMCP") as session:
+            logger.info("🔧 [MCP] Loading MCP tools...")
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+            logger.info(f"🔧 [MCP] Loaded {len(mcp_tools)} tools")
+
+            get_kyc_status_tool = mcp_tools["get_kyc_submission_status"]
+
+            logger.info(f"🔧 [MCP] Calling get_kyc_submission_status for user_id: {user_id}...")
+            result = await get_kyc_status_tool.ainvoke({
+                "user_id": user_id
+            })
+
+            logger.info("🔧 [MCP] Tool call completed, parsing result...")
+            # Parse MCP result
+            parsed = parse_mcp_result(result)
+            logger.info(f"🔧 [MCP] Result status: {parsed.get('status', 'unknown')}")
+            return parsed
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        return loop.run_until_complete(_call())
+    finally:
+        loop.close()
+
+
 # ============================================
 # STEP 1: BUSINESS PROFILE TOOL
 # ============================================
@@ -435,6 +483,52 @@ def show_embedded_signup_form(
 
 
 # ============================================
+# STEP 4: CHECK VERIFICATION STATUS TOOL
+# ============================================
+
+@tool
+def check_verification_status(user_id: str) -> str:
+    """
+    Check the KYC/WABA verification status after user completes embedded signup.
+
+    This is called AFTER the user has clicked the embedded signup URL and completed
+    the Facebook signup process. It checks if the WhatsApp Business Account (WABA)
+    verification is complete.
+
+    The project_id is automatically fetched from the database based on user_id.
+
+    Args:
+        user_id: User's unique identifier - used to fetch the associated project from database
+
+    Returns:
+        JSON string containing:
+        - success: true if verification is complete
+        - data: KYC submission status details
+        - error: Error message if verification is pending or failed
+    """
+    logger.info("🔧 [BACKEND] check_verification_status called for user: %s", user_id)
+
+    try:
+        # Run MCP call in thread pool to avoid event loop conflicts
+        future = _executor.submit(_run_get_kyc_submission_status_sync, user_id=user_id)
+        logger.info("🔧 [BACKEND] Waiting for KYC status check (timeout: 30s)...")
+        result = future.result(timeout=30)
+
+        # Ensure result is a dict
+        if not isinstance(result, dict):
+            logger.error("MCP returned non-dict result: %s", type(result))
+            result = {"error": "Invalid MCP response format", "status": "failed"}
+
+        logger.info("🔧 [BACKEND] KYC status check result: %s", result.get('status', 'unknown'))
+        return json.dumps(result, ensure_ascii=False)
+
+    except Exception as e:
+        error_msg = str(e)
+        logger.error("🔧 [BACKEND] KYC status check error: %s", e, exc_info=True)
+        return json.dumps({"error": error_msg, "status": "failed", "details": "Exception in check_verification_status"}, ensure_ascii=False)
+
+
+# ============================================
 # TOOLS EXPORTS
 # ============================================
 
@@ -443,6 +537,7 @@ BACKEND_TOOLS = [
     show_business_profile_form,
     show_project_form,
     show_embedded_signup_form,
+    check_verification_status,
 ]
 
 # Set of tool names for O(1) lookup
