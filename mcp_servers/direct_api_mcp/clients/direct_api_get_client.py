@@ -69,7 +69,7 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
                 "Authorization": f"Bearer {jwt_token}"
             }
             session = await self._get_session()
-            async with session.get(url,headers) as response:
+            async with session.get(url, headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info("Successfully fb-verification-status info")
