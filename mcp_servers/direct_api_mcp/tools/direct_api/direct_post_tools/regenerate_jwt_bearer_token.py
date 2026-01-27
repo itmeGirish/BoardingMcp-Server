@@ -14,7 +14,8 @@ from app import logger
 from app.database.postgresql.postgresql_connection import get_session
 from app.database.postgresql.postgresql_repositories import (
     BusinessCreationRepository,
-    ProjectCreationRepository
+    ProjectCreationRepository,
+    MemoryRepository
 )
 
 
@@ -146,6 +147,50 @@ async def regenerate_jwt_bearer_token(user_id: str, direct_api: bool = True) -> 
                 logger.info(f"  - User: {email}")
                 logger.info(f"  - Project: {project_id}")
                 logger.info("=" * 80)
+
+                # Step 5: Save to temporary_notes (Memory table) - includes JWT token
+                logger.info("Step 5: Saving to temporary_notes (Memory table)...")
+                # Extract JWT token from response: data.users[0].token
+                jwt_token_value = ""
+                data = response.get("data", {})
+                users = data.get("users", [])
+                if users and len(users) > 0:
+                    jwt_token_value = users[0].get("token", "")
+
+                if jwt_token_value:
+                    try:
+                        with get_session() as session:
+                            memory_repo = MemoryRepository(session=session)
+                            memory_record = memory_repo.create_on_verification_success(
+                                user_id=user_id,
+                                business_id=business_id,
+                                project_id=project_id,
+                                jwt_token=jwt_token_value,
+                                email=email,
+                                password=password,
+                                base64_token=token,
+                                verification_token=token  # base64 token as verification token
+                            )
+                            logger.info("=" * 80)
+                            logger.info("✓ TEMP MEMORY SAVED TO DATABASE (with JWT)")
+                            logger.info(f"  - Record ID: {memory_record.id}")
+                            logger.info(f"  - User ID: {user_id}")
+                            logger.info(f"  - Business ID: {business_id}")
+                            logger.info(f"  - Project ID: {project_id}")
+                            logger.info(f"  - Email: {email}")
+                            logger.info(f"  - Base64 Token: {token[:30]}...")
+                            logger.info(f"  - JWT Token: {jwt_token_value[:50]}...")
+                            logger.info(f"  - First Broadcasting: {memory_record.first_broadcasting}")
+                            logger.info(f"  - Broadcasting Status: {memory_record.broadcasting_status}")
+                            logger.info("=" * 80)
+                    except Exception as mem_error:
+                        logger.error("=" * 80)
+                        logger.error("✗ FAILED TO SAVE TEMP MEMORY TO DATABASE")
+                        logger.error(f"  Error: {str(mem_error)}")
+                        logger.error("=" * 80)
+                        # Don't fail the whole operation, just log the error
+                else:
+                    logger.warning("No JWT token in response data to save")
             else:
                 error_msg = response.get("error", "Unknown error")
                 status_code = response.get("status_code", "N/A")

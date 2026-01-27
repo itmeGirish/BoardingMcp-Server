@@ -271,6 +271,62 @@ def _run_get_kyc_submission_status_sync(user_id: str):
         loop.close()
 
 
+def _run_regenerate_jwt_bearer_token_sync(user_id: str, direct_api: bool = True):
+    """Run MCP regenerate_jwt_bearer_token synchronously in a new event loop.
+
+    This connects to the Direct API MCP server (port 9002) to:
+    1. Fetch email, password, project_id from database
+    2. Generate base64 token
+    3. Call API to regenerate JWT bearer token
+    4. Store the generated JWT token in database
+    """
+    # Import MCP modules INSIDE the function to avoid event loop conflicts
+    from langchain_mcp_adapters.client import MultiServerMCPClient
+    from langchain_mcp_adapters.tools import load_mcp_tools
+    from app.utils.whsp_onboarding_agent import parse_mcp_result_with_debug as parse_mcp_result
+
+    async def _call():
+        import logging
+        logger = logging.getLogger(__name__)
+
+        logger.info("🔧 [MCP] Creating fresh MCP client for JWT token regeneration...")
+        # Create fresh MCP client with connection to Direct API MCP server
+        client = MultiServerMCPClient({
+            "DirectApiMCP": {
+                "url": "http://127.0.0.1:9002/mcp",
+                "transport": "streamable-http"
+            }
+        })
+
+        logger.info("🔧 [MCP] Opening MCP session to Direct API server...")
+        async with client.session("DirectApiMCP") as session:
+            logger.info("🔧 [MCP] Loading MCP tools from Direct API server...")
+            mcp_tools_list = await load_mcp_tools(session)
+            mcp_tools = {t.name: t for t in mcp_tools_list}
+            logger.info(f"🔧 [MCP] Loaded {len(mcp_tools)} tools from Direct API server")
+
+            regenerate_jwt_tool = mcp_tools["regenerate_jwt_bearer_token"]
+
+            logger.info(f"🔧 [MCP] Calling regenerate_jwt_bearer_token for user_id: {user_id}...")
+            result = await regenerate_jwt_tool.ainvoke({
+                "user_id": user_id,
+                "direct_api": direct_api
+            })
+
+            logger.info("🔧 [MCP] Tool call completed, parsing result...")
+            # Parse MCP result
+            parsed = parse_mcp_result(result)
+            logger.info(f"🔧 [MCP] Result status: {parsed.get('status', 'unknown')}")
+            return parsed
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        return loop.run_until_complete(_call())
+    finally:
+        loop.close()
+
+
 # ============================================
 # STEP 1: BUSINESS PROFILE TOOL
 # ============================================
@@ -529,6 +585,55 @@ def check_verification_status(user_id: str) -> str:
 
 
 # ============================================
+# STEP 5: REGENERATE JWT BEARER TOKEN TOOL (FINAL STEP)
+# ============================================
+
+@tool
+def regenerate_jwt_bearer_token_tool(user_id: str) -> str:
+    """
+    Test Business WhatsApp & Regenerate JWT Bearer Token as the FINAL STEP of onboarding.
+
+    This tool is called ONLY AFTER the WABA verification is SUCCESSFUL (check_verification_status returned success).
+    It connects to the Direct API MCP server to:
+    1. Fetch email, password, project_id from the database using user_id
+    2. Generate a base64 token in format <email>:<password>:<projectId>
+    3. Call the API to regenerate a new JWT bearer token
+    4. Store the generated JWT token in the database
+
+    After this tool completes successfully, the WhatsApp onboarding is COMPLETE.
+
+    Args:
+        user_id: User's unique identifier - used to fetch credentials and project info from database
+
+    Returns:
+        JSON string containing:
+        - success: true if JWT token was generated and saved
+        - data: Contains the generated JWT token details
+        - error: Error message if token generation failed
+    """
+    logger.info("🔧 [BACKEND] regenerate_jwt_bearer_token_tool called for user: %s", user_id)
+
+    try:
+        # Run MCP call in thread pool to avoid event loop conflicts
+        future = _executor.submit(_run_regenerate_jwt_bearer_token_sync, user_id=user_id, direct_api=True)
+        logger.info("🔧 [BACKEND] Waiting for JWT token regeneration (timeout: 60s)...")
+        result = future.result(timeout=60)
+
+        # Ensure result is a dict
+        if not isinstance(result, dict):
+            logger.error("MCP returned non-dict result: %s", type(result))
+            result = {"error": "Invalid MCP response format", "status": "failed"}
+
+        logger.info("🔧 [BACKEND] JWT token regeneration result: %s", result.get('status', 'unknown'))
+        return json.dumps(result, ensure_ascii=False)
+
+    except Exception as e:
+        error_msg = str(e)
+        logger.error("🔧 [BACKEND] JWT token regeneration error: %s", e, exc_info=True)
+        return json.dumps({"error": error_msg, "status": "failed", "details": "Exception in regenerate_jwt_bearer_token_tool"}, ensure_ascii=False)
+
+
+# ============================================
 # TOOLS EXPORTS
 # ============================================
 
@@ -538,6 +643,7 @@ BACKEND_TOOLS = [
     show_project_form,
     show_embedded_signup_form,
     check_verification_status,
+    regenerate_jwt_bearer_token_tool,  # Final step - JWT generation after verification success
 ]
 
 # Set of tool names for O(1) lookup
