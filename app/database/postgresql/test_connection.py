@@ -7,7 +7,7 @@ from .postgresql_repositories import (
     UserCreationRepository,
     BusinessCreationRepository,
     ProjectCreationRepository,
-
+    MemoryRepository,
 )
 
 
@@ -94,44 +94,40 @@ def test_database_operations():
         else:
             print("  Failed to retrieve project!")
 
-        # 6. Create JWT Token
-    #     print("\nStep 6: Creating JWT Token...")
-    #     jwt_repo = JwtTokenRepository(session=session)
+    #     # 6. Create TempMemory record
+    #     print("\nStep 6: Creating TempMemory record...")
     #     import base64
+    #     memory_repo = MemoryRepository(session=session)
     #     base64_token = base64.b64encode(
     #         "agentstape@gmail.com:Agents@123:6798e0ab6c6d490c0e356d1d".encode()
     #     ).decode()
-    #     jwt_token = jwt_repo.create(
+    #     memory_record = memory_repo.create_on_verification_success(
     #         user_id="user1",
+    #         business_id="6798e0ab6c6d490c0e356d18",
     #         project_id="6798e0ab6c6d490c0e356d1d",
+    #         jwt_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dummy_token",
     #         email="agentstape@gmail.com",
     #         password="Agents@123",
     #         base64_token=base64_token,
-    #         jwt_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlcjEiLCJwcm9qZWN0X2lkIjoiNjc5OGUwYWI2YzZkNDkwYzBlMzU2ZDFkIn0.dummy_signature"
+    #         verification_token=base64_token,
     #     )
-    #     print(f"  JWT Token created with ID: {jwt_token.id}")
-    #     print(f"  Base64 Token: {base64_token[:30]}...")
-
-    #     # 7. Verify JWT token retrieval by user_id and project_id
-    #     print("\nStep 7: Verifying JWT token retrieval...")
-    #     token_data = jwt_repo.get_token_by_user_and_project("user1", "6798e0ab6c6d490c0e356d1d")
-    #     if token_data:
-    #         print(f"  User ID: {token_data.get('user_id')}")
-    #         print(f"  Project ID: {token_data.get('project_id')}")
-    #         print(f"  Email: {token_data.get('email')}")
-    #         print(f"  JWT Token: {token_data.get('jwt_token')[:50]}...")
-    #         print("  JWT token retrieved successfully!")
+    #     if memory_record:
+    #         print(f"  TempMemory created with ID: {memory_record.id}")
+    #         print(f"  First broadcasting: {memory_record.first_broadcasting}")
     #     else:
-    #         print("  Failed to retrieve JWT token!")
+    #         print("  Failed to create TempMemory record!")
 
-    #     # 8. Verify JWT token retrieval by user_id only
-    #     print("\nStep 8: Verifying JWT token retrieval by user_id only...")
-    #     token_by_user = jwt_repo.get_token_by_user_id("user1")
-    #     if token_by_user:
-    #         print(f"  Found JWT token for user_id: user1")
-    #         print("  JWT token by user_id retrieved successfully!")
+    #     # 7. Verify TempMemory retrieval by user_id
+    #     print("\nStep 7: Verifying TempMemory retrieval by user_id...")
+    #     mem_data = memory_repo.get_by_user_id("user1")
+    #     if mem_data:
+    #         print(f"  User ID: {mem_data.get('user_id')}")
+    #         print(f"  Project ID: {mem_data.get('project_id')}")
+    #         print(f"  JWT Token: {mem_data.get('jwt_token')[:50]}...")
+    #         print(f"  First Broadcasting: {mem_data.get('first_broadcasting')}")
+    #         print("  TempMemory retrieved successfully!")
     #     else:
-    #         print("  Failed to retrieve JWT token by user_id!")
+    #         print("  Failed to retrieve TempMemory!")
 
     # print("\n" + "=" * 60)
     # print("DATABASE TEST COMPLETED SUCCESSFULLY!")

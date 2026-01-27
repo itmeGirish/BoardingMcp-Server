@@ -60,8 +60,8 @@ async def get_fb_verification_status(user_id: str) -> Dict[str, Any]:
         jwt_token = memory_record["jwt_token"]
         logger.info(f"JWT token fetched successfully for user_id: {user_id}")
 
-        async with get_direct_api_get_client(jwt_token) as client:
-            response = await client.get_fb_verification_status()
+        async with get_direct_api_get_client() as client:
+            response = await client.get_fb_verification_status(jwt_token)
             
             if response.get("success"):
                 logger.info("Successfully get_fb_verification_status info")
