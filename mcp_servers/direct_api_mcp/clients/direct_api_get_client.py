@@ -27,6 +27,7 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
         logger.debug(f"Fetching business info from: {url}")
 
         try:
+            
             session = await self._get_session()
             async with session.get(url) as response:
                 if response.status == 200:
@@ -48,7 +49,7 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
             return {"success": False, "error": str(e)}
 
 
-    async def get_fb_verification_status(self) -> Dict[str, Any]:
+    async def get_fb_verification_status(self,jwt_token:str) -> Dict[str, Any]:
         """
         Fetch fb_verification_status from the AiSensy Direct API.
         
@@ -62,8 +63,13 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
         logger.debug(f"Fetching business info from: {url}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {jwt_token}"
+            }
             session = await self._get_session()
-            async with session.get(url) as response:
+            async with session.get(url,headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info("Successfully fb-verification-status info")

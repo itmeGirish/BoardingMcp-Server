@@ -2,19 +2,22 @@
 MCP Tool: Get fb verification status
 
 Fetches fb verification status info from the AiSensy Direct API.
+Uses JWT token from TempMemory (temporary_notes) table.
 """
 from typing import Dict, Any
 
 from ... import mcp
 from ....clients import get_direct_api_get_client
 from app import logger
+from app.database.postgresql.postgresql_connection import get_session
+from app.database.postgresql.postgresql_repositories import MemoryRepository
 
 
 @mcp.tool(
     name="fb_verification_status",
     description=(
         "Fetches fb verification status info from the AiSensy Direct API. "
-        "Returns verifcation status"
+        "Returns verifcation status. Requires user_id to fetch JWT token from database."
     ),
     tags={
         "fb verifcation status",
@@ -29,10 +32,13 @@ from app import logger
         "category": "WABA Management"
     }
 )
-async def get_fb_verification_status() -> Dict[str, Any]:
+async def get_fb_verification_status(user_id: str) -> Dict[str, Any]:
     """
-   get fb verification status
-    
+    Get fb verification status using JWT token fetched from TempMemory.
+
+    Args:
+        user_id: User ID to fetch JWT token from temporary_notes table.
+
     Returns:
         Dict containing:
         - success (bool): Whether the operation was successful
@@ -40,7 +46,21 @@ async def get_fb_verification_status() -> Dict[str, Any]:
         - error (str): Error message if unsuccessful
     """
     try:
-        async with get_direct_api_get_client() as client:
+        # Fetch JWT token from TempMemory
+        logger.info(f"Fetching JWT token from TempMemory for user_id: {user_id}")
+        with get_session() as session:
+            memory_repo = MemoryRepository(session=session)
+            memory_record = memory_repo.get_by_user_id(user_id)
+
+        if not memory_record or not memory_record.get("jwt_token"):
+            error_msg = f"No JWT token found in TempMemory for user_id: {user_id}"
+            logger.error(error_msg)
+            return {"success": False, "error": error_msg}
+
+        jwt_token = memory_record["jwt_token"]
+        logger.info(f"JWT token fetched successfully for user_id: {user_id}")
+
+        async with get_direct_api_get_client(jwt_token) as client:
             response = await client.get_fb_verification_status()
             
             if response.get("success"):

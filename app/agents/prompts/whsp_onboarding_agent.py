@@ -74,22 +74,42 @@ STEP 4 - When user says "Check verification status" or "Check status" or similar
 - WAIT for the tool result
 - PARSE the JSON result and CHECK the status:
   * If status is "success" and verification is complete:
-    → Say: "🎉 **Congratulations!** Your WhatsApp Business Account (WABA) has been verified successfully!"
-    → Say: "Your onboarding is now complete. You can start using WhatsApp Business API."
+    → Say: "🎉 **Your WhatsApp Business Account (WABA) has been verified successfully!**"
+    → Say: "Now I'll generate your JWT bearer token to complete the setup..."
+    → IMMEDIATELY proceed to STEP 5 (call regenerate_jwt_bearer_token_tool)
   * If verification is pending or not complete:
     → Say: "⏳ Your WABA verification is still in progress."
     → Say: "Please wait for the verification to complete. This can take a few minutes to a few hours."
     → Say: "You can check the status again later by typing **'Check verification status'**."
+    → DO NOT proceed to STEP 5
   * If status is "failed" or there's an error:
     → Tell the user the error message
     → Suggest they complete the Facebook signup first if they haven't
+    → DO NOT proceed to STEP 5
+
+STEP 5 - FINAL STEP - Generate JWT Bearer Token (ONLY after verification is successful):
+- This step runs AUTOMATICALLY after STEP 4 verification success
+- Call regenerate_jwt_bearer_token_tool with:
+  * user_id (use the same user_id from the onboarding session)
+- WAIT for the tool result
+- PARSE the JSON result and CHECK the status:
+  * If status is "success":
+    → Say: "🎉 **Congratulations! Your WhatsApp onboarding is complete!**"
+    → Say: "✅ Your JWT bearer token has been generated and saved."
+    → Say: "You can now start using the WhatsApp Business API."
+  * If status is "failed" or there's an error:
+    → Tell the user the error message
+    → Say: "Your WABA verification was successful, but there was an issue generating the JWT token."
+    → Suggest they try again later or contact support
 
 IMPORTANT:
 - Do NOT ask for confirmation
 - When you see "Workflow X submitted", IMMEDIATELY call the corresponding tool
 - ALWAYS check tool results before proceeding to the next step
 - Only call display_* tools AFTER verifying the backend tool succeeded
-- After embedded signup URL is generated, ALWAYS remind user to check verification status after completing Facebook signup"""
+- After embedded signup URL is generated, ALWAYS remind user to check verification status after completing Facebook signup
+- ONLY call regenerate_jwt_bearer_token_tool AFTER check_verification_status returns success
+- The onboarding is NOT complete until STEP 5 (JWT generation) succeeds"""
 
 
 # ============================================
@@ -127,9 +147,18 @@ VERIFICATION_STATUS_INSTRUCTIONS = """
 When user asks to check verification status:
 1. Call check_verification_status with the user_id
 2. Wait for the tool result
-3. If successful verification: Congratulate the user
+3. If successful verification: Immediately proceed to JWT generation (STEP 5)
 4. If pending verification: Tell them to wait and check again later
 5. If failed: Explain the error and suggest completing Facebook signup
+"""
+
+JWT_REGENERATION_INSTRUCTIONS = """
+When verification is successful (STEP 5 - FINAL STEP):
+1. This step runs automatically after successful WABA verification
+2. Call regenerate_jwt_bearer_token_tool with the user_id
+3. Wait for the tool result
+4. If successful: Congratulate user - onboarding is complete!
+5. If failed: Inform user about the error but acknowledge their WABA is verified
 """
 
 
@@ -156,9 +185,15 @@ PROJECT_SUCCESS = "✅ Project created successfully! Please complete the embedde
 
 EMBEDDED_SIGNUP_SUCCESS = "✅ Signup URL generated! Click the link above to complete your WhatsApp Business setup on Facebook."
 
-VERIFICATION_SUCCESS = "🎉 Congratulations! Your WhatsApp Business Account (WABA) has been verified successfully!"
+VERIFICATION_SUCCESS = "🎉 Your WhatsApp Business Account (WABA) has been verified successfully! Generating JWT token..."
 
 VERIFICATION_PENDING = "⏳ Your WABA verification is still in progress. Please check again later."
+
+JWT_GENERATION_SUCCESS = "🎉 Congratulations! Your WhatsApp onboarding is complete! JWT token has been generated and saved."
+
+JWT_GENERATION_FAILED = "⚠️ Your WABA is verified, but there was an issue generating the JWT token. Please try again later."
+
+ONBOARDING_COMPLETE = "🎉 **Congratulations! Your WhatsApp onboarding is complete.** You can now start using the WhatsApp Business API."
 
 
 # ============================================
@@ -188,6 +223,10 @@ PARAMETER_VALIDATION_RULES = {
         "optional": ["description"]
     },
     "verification_status": {
+        "required": ["user_id"],
+        "optional": []
+    },
+    "jwt_regeneration": {
         "required": ["user_id"],
         "optional": []
     }

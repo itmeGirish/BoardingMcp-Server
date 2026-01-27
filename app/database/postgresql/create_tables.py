@@ -6,7 +6,7 @@ WARNING: This will DELETE ALL DATA in the database tables!
 """
 from sqlmodel import SQLModel
 from .postgresql_connection import engine
-from .models import User, BusinessCreation, ProjectCreation  # Import all models
+from .models import User, BusinessCreation, ProjectCreation, TempMemory  # Import all models
 
 
 def drop_all_tables():
@@ -30,6 +30,7 @@ def create_all_tables():
     print("  - users")
     print("  - business_creations (with password column)")
     print("  - project_creations")
+    print("  - temporary_notes (for JWT tokens, runtime/broadcasting status)")
     print("=" * 60)
 
 
