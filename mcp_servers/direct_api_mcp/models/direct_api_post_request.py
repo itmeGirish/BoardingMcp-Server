@@ -197,7 +197,7 @@ class SubmitWhatsappTemplateMessageRequest(BaseModel):
     language: str = Field(
         ...,
         description="Template language",
-        examples=["en", "hi"]
+        examples=["en_US", "hi"]
     )
     components: List[Dict[str, Any]] = Field(
         ...,

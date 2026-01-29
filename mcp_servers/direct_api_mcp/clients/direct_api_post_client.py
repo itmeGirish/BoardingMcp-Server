@@ -393,6 +393,7 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         name: str,
         category: str,
         language: str,
+        token:str,
         components: List[Dict[str, Any]]
     ) -> Dict[str, Any]:
         """
@@ -427,8 +428,13 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         logger.debug(f"Submitting WhatsApp template: {name}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {token}"
+            }
             session = await self._get_session()
-            async with session.post(url, json=payload) as response:
+            async with session.post(url, json=payload,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully submitted WhatsApp template: {name}")

@@ -9,6 +9,8 @@ from ... import mcp
 from ....clients import get_direct_api_post_client
 from ....models import SubmitWhatsappTemplateMessageRequest
 from app import logger
+from app.database.postgresql.postgresql_connection import get_session
+from app.database.postgresql.postgresql_repositories import MemoryRepository
 
 
 @mcp.tool(
@@ -33,6 +35,7 @@ from app import logger
     }
 )
 async def submit_whatsapp_template_message(
+    user_id: str,
     name: str,
     category: str,
     language: str,
@@ -60,13 +63,27 @@ async def submit_whatsapp_template_message(
             language=language,
             components=components
         )
+
+        logger.info(f"Fetching JWT token from TempMemory for user_id: {user_id}")
+        with get_session() as session:
+            memory_repo = MemoryRepository(session=session)
+            memory_record = memory_repo.get_by_user_id(user_id)
+
+        if not memory_record or not memory_record.get("jwt_token"):
+            error_msg = f"No JWT token found in TempMemory for user_id: {user_id}"
+            logger.error(error_msg)
+            return {"success": False, "error": error_msg}
+
+        jwt_token = memory_record["jwt_token"]
+        logger.info(f"JWT token fetched successfully for user_id: {user_id}")
         
         async with get_direct_api_post_client() as client:
             response = await client.submit_whatsapp_template_message(
                 name=request.name,
                 category=request.category,
                 language=request.language,
-                components=request.components
+                components=request.components,
+                token=jwt_token
             )
             
             if response.get("success"):
