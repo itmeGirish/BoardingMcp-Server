@@ -10,3 +10,14 @@
 # docker-compose -f docker-database-config.yml up -d
 
 
+
+
+# === Result ===
+# {
+#   "success": true,
+#   "data": {
+#     "id": "2649029682146901",
+#     "status": "PENDING",
+#     "category": "UTILITY"
+#   }
+# }

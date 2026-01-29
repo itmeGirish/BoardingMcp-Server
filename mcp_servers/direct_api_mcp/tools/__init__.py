@@ -54,6 +54,10 @@ from .media import (
 # Messages tools
 from .messages import send_message, send_marketing_lite_message, mark_message_as_read
 
+from .templates import (compare_template,edit_template,submit_whatsapp_template_message,
+                                  get_templates,get_template_by_id,
+                                  delete_wa_template_by_id,delete_wa_template_by_id)
+
 # Phone number tools
 from .phone_number import (
     get_all_phone_numbers,
@@ -149,4 +153,13 @@ __all__ = [
     "get_payment_configuration_by_name",
     "generate_payment_configuration_oauth_link",
     "create_payment_configuration",
+    
+    #templates
+    "compare_template",
+    "edit_template",
+    "submit_whatsapp_template_message",
+    "get_templates",
+    "get_template_by_id",
+    "delete_wa_template_by_id",
+    "delete_wa_template_by_id"
 ]
