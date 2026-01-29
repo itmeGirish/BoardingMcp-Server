@@ -75,8 +75,8 @@ class MessagingHealthStatusRequest(BaseModel):
 
 
 class SendMessageRequest(BaseModel):
-    """Model for send message request."""
-    
+    """Model for send message request. Supports text, image, video, audio, document, template, and interactive types."""
+
     to: str = Field(
         ...,
         description="Recipient phone number",
@@ -85,21 +85,55 @@ class SendMessageRequest(BaseModel):
     )
     message_type: str = Field(
         default="text",
-        description="Type of message",
-        examples=["text"]
+        description="Type of message: text, image, video, audio, document, template, interactive",
+        examples=["text", "image", "template", "interactive"]
     )
-    text_body: str = Field(
-        ...,
-        description="The message body text",
-        min_length=1,
+    text_body: Optional[str] = Field(
+        default=None,
+        description="The message body text (required for type 'text')",
         examples=["Hello from AiSensy!"]
+    )
+    media_link: Optional[str] = Field(
+        default=None,
+        description="URL of the media (required for image, video, audio, document types)",
+        examples=["https://example.com/image.png"]
+    )
+    media_caption: Optional[str] = Field(
+        default=None,
+        description="Caption for the media (optional, for image, video, document types)"
+    )
+    media_filename: Optional[str] = Field(
+        default=None,
+        description="Filename for document type messages"
+    )
+    template_name: Optional[str] = Field(
+        default=None,
+        description="Template name (required for type 'template')",
+        examples=["sample_shipping_confirmation"]
+    )
+    template_language_code: Optional[str] = Field(
+        default=None,
+        description="Template language code (required for type 'template')",
+        examples=["en_us"]
+    )
+    template_language_policy: Optional[str] = Field(
+        default="deterministic",
+        description="Template language policy (default: 'deterministic')"
+    )
+    template_components: Optional[List[Dict[str, Any]]] = Field(
+        default=None,
+        description="Template components list (optional for type 'template')"
+    )
+    interactive: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Interactive message object (required for type 'interactive'). Contains type, body, footer, action, etc."
     )
     recipient_type: str = Field(
         default="individual",
         description="Type of recipient",
         examples=["individual"]
     )
-    
+
     @field_validator("to")
     @classmethod
     def validate_to(cls, v: str) -> str:
@@ -108,11 +142,13 @@ class SendMessageRequest(BaseModel):
         if not v:
             raise ValueError("to cannot be empty or whitespace")
         return v
-    
+
     @field_validator("text_body")
     @classmethod
-    def validate_text_body(cls, v: str) -> str:
+    def validate_text_body(cls, v: Optional[str]) -> Optional[str]:
         """Validate and sanitize text_body."""
+        if v is None:
+            return v
         v = v.strip()
         if not v:
             raise ValueError("text_body cannot be empty or whitespace")

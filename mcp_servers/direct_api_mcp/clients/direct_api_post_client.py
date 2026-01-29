@@ -1,7 +1,7 @@
 """
 POST client for AiSensy Direct APIs
 """
-from typing import Dict, Any, Optional, List
+from typing import Any, Dict, List, Optional
 import aiohttp
 
 from .direct_api_base_client import AiSensyDirectApiClient
@@ -169,45 +169,95 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         self,
         to: str,
         message_type: str,
-        text_body: str,
-        recipient_type: str = "individual"
+        jwt_token: str,
+        text_body: Optional[str] = None,
+        media_link: Optional[str] = None,
+        media_caption: Optional[str] = None,
+        media_filename: Optional[str] = None,
+        template_name: Optional[str] = None,
+        template_language_code: Optional[str] = None,
+        template_language_policy: Optional[str] = "deterministic",
+        template_components: Optional[List[Dict[str, Any]]] = None,
+        interactive: Optional[Dict[str, Any]] = None,
+        recipient_type: str = "individual",
     ) -> Dict[str, Any]:
         """
         Send Message.
-        
+
         Endpoint: POST /messages
 
         Args:
             to: Recipient phone number (e.g., "917089379345").
-            message_type: Type of message (e.g., "text").
-            text_body: The message body text.
+            message_type: Type of message (e.g., "text", "image", "video", "audio", "document", "template").
+            jwt_token: JWT bearer token for authorization.
+            text_body: The message body text (required for type "text").
+            media_link: URL of the media (required for image, video, audio, document).
+            media_caption: Caption for the media (optional).
+            media_filename: Filename for document type messages (optional).
+            template_name: Template name (required for type "template").
+            template_language_code: Template language code (required for type "template").
+            template_language_policy: Template language policy (default: "deterministic").
+            template_components: Template components list (optional for type "template").
             recipient_type: Type of recipient. Defaults to "individual".
 
         Returns:
             Dict[str, Any]: A dictionary containing the message response
             as returned by the AiSensy API.
         """
-        if not to or not text_body:
-            logger.error("Missing required parameters")
-            return {
-                "success": False,
-                "error": "Missing required fields: to and text_body"
-            }
+        if not to:
+            logger.error("Missing required parameter: to")
+            return {"success": False, "error": "Missing required field: to"}
 
         url = f"{self.BASE_URL}/messages"
-        payload = {
+        payload: Dict[str, Any] = {
             "to": to,
             "type": message_type,
             "recipient_type": recipient_type,
-            "text": {
-                "body": text_body
-            }
         }
-        logger.debug(f"Sending message to: {to}")
+
+        if message_type == "text":
+            if not text_body:
+                return {"success": False, "error": "Missing required field: text_body for text message"}
+            payload["text"] = {"body": text_body}
+        elif message_type in ("image", "video", "audio", "document"):
+            if not media_link:
+                return {"success": False, "error": f"Missing required field: media_link for {message_type} message"}
+            media_obj: Dict[str, Any] = {"link": media_link}
+            if media_caption:
+                media_obj["caption"] = media_caption
+            if message_type == "document" and media_filename:
+                media_obj["filename"] = media_filename
+            payload[message_type] = media_obj
+        elif message_type == "template":
+            if not template_name or not template_language_code:
+                return {"success": False, "error": "Missing required fields: template_name and template_language_code for template message"}
+            template_obj: Dict[str, Any] = {
+                "name": template_name,
+                "language": {
+                    "policy": template_language_policy or "deterministic",
+                    "code": template_language_code
+                }
+            }
+            template_obj["components"] = template_components if template_components is not None else []
+            payload["template"] = template_obj
+        elif message_type == "interactive":
+            if not interactive:
+                return {"success": False, "error": "Missing required field: interactive for interactive message"}
+            payload["interactive"] = interactive
+        else:
+            return {"success": False, "error": f"Unsupported message type: {message_type}"}
+
+        logger.debug(f"Sending {message_type} message to: {to}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {jwt_token}"
+            }
+
             session = await self._get_session()
-            async with session.post(url, json=payload) as response:
+            async with session.post(url, json=payload,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully sent message to: {to}")
