@@ -133,7 +133,7 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
             logger.exception("Unexpected error")
             return {"success": False, "error": str(e)}
 
-    async def get_template_by_id(self, template_id: str) -> Dict[str, Any]:
+    async def get_template_by_id(self, template_id: str,token:str) -> Dict[str, Any]:
         """
         Fetch a specific template by ID from the AiSensy Direct API.
         
@@ -157,8 +157,14 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
         logger.debug(f"Fetching template from: {url}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {token}"
+            }
+
             session = await self._get_session()
-            async with session.get(url) as response:
+            async with session.get(url,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully fetched template: {template_id}")
