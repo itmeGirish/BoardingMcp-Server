@@ -9,6 +9,8 @@ from ... import mcp
 from ....clients import get_direct_api_post_client
 from ....models import CreateCatalogRequest
 from app import logger
+from app.database.postgresql.postgresql_connection import get_session
+from app.database.postgresql.postgresql_repositories import MemoryRepository
 
 
 @mcp.tool(
@@ -32,6 +34,7 @@ from app import logger
     }
 )
 async def create_catalog(
+    user_id:str,
     name: str,
     vertical: str = "commerce",
     product_count: int = 0,
@@ -71,9 +74,24 @@ async def create_catalog(
             is_catalog_segment=is_catalog_segment,
             da_display_settings=da_display_settings
         )
+
+        logger.info(f"Fetching JWT token from TempMemory for user_id: {user_id}")
+        with get_session() as session:
+            memory_repo = MemoryRepository(session=session)
+            memory_record = memory_repo.get_by_user_id(user_id)
+
+        if not memory_record or not memory_record.get("jwt_token"):
+            error_msg = f"No JWT token found in TempMemory for user_id: {user_id}"
+            logger.error(error_msg)
+            return {"success": False, "error": error_msg}
+
+        jwt_token = memory_record["jwt_token"]
+        logger.info(f"JWT token fetched successfully for user_id: {user_id}")
+
         
         async with get_direct_api_post_client() as client:
             response = await client.create_catalog(
+                jwt_token=jwt_token,
                 name=request.name,
                 vertical=request.vertical,
                 product_count=request.product_count,
@@ -81,7 +99,8 @@ async def create_catalog(
                 default_image_url=request.default_image_url,
                 fallback_image_url=request.fallback_image_url,
                 is_catalog_segment=request.is_catalog_segment,
-                da_display_settings=request.da_display_settings
+                da_display_settings=request.da_display_settings,
+               
             )
             
             if response.get("success"):

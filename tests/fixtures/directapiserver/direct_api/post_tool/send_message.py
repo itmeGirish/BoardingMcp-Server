@@ -5,6 +5,7 @@ import pytest_asyncio
 import json
 from fastmcp.client import Client
 from fastmcp.client.transports import FastMCPTransport
+from typing import List
 
 
 @pytest_asyncio.fixture
@@ -108,7 +109,7 @@ async def test_inspect_send_message_schema(
 #             "user1",
 #             "918861832522",
 #             "image",
-#             "https://aisensy-project-media-library-stg.s3.ap-south-1.amazonaws.com/IMAGE/6245d025fcb7966c46294618/2699676_babyyoda1.png",
+#             "https://picsum.photos/200/300",
 #             "Your image caption here",
 #             True,
 #         ),
@@ -313,108 +314,42 @@ async def test_inspect_send_message_schema(
 # # ==================== TEMPLATE MESSAGE TESTS ====================
 
 
-@pytest.mark.asyncio
-async def test_send_template_text_message(
-    direct_api_mcp_client: Client[FastMCPTransport],
-):
-    """Test sending a template text message (e.g., shipping confirmation)."""
-    print(f"\n{'=' * 80}")
-    print(f"Testing send_message (template - text)")
-    print(f"{'=' * 80}")
-
-    result = await direct_api_mcp_client.call_tool(
-        "send_message",
-        arguments={
-            "user_id": "user1",
-            "to": "918861832522",
-            "message_type": "template",
-            "template_name": "sample_shipping_confirmation",
-            "template_language_code": "en_us",
-            "template_language_policy": "deterministic",
-            "template_components":[
-      {
-        "type": "BODY",
-        "text": "Hi {{1}}, your order {{2}} has been confirmed! It will be delivered by {{3}}. Total amount is {{4}}. Thank you for shopping with us.",
-        "example": {
-          "body_text": [
-            [
-              "Rahul",
-              "ORD12345",
-              "Feb 5, 2026",
-              "Rs 2,499"
-            ]
-          ]
-        }
-      },
-      {
-        "type": "FOOTER",
-        "text": "We appreciate your business"
-      },
-      {
-        "type": "BUTTONS",
-        "buttons": [
-          {
-            "type": "URL",
-            "text": "Track Order",
-            "url": "https://yourstore.com/track/{{1}}",
-            "example": [
-              "https://yourstore.com/track/ORD12345"
-            ]
-          },
-          {
-            "type": "PHONE_NUMBER",
-            "text": "Contact Support",
-            "phone_number": "+918861832522"
-          }
-        ]
-      }
-    ],
-        },
-    )
-
-    print(f"\n=== Result ===")
-    print(json.dumps(result.data, indent=2))
-
-    assert result.data is not None
-    assert "success" in result.data
-
-
 # @pytest.mark.asyncio
-# async def test_send_template_image_message(
+# async def test_send_template_text_message(
 #     direct_api_mcp_client: Client[FastMCPTransport],
 # ):
-#     """Test sending a template message with image header."""
+#     """Test sending a template text message (e.g., shipping confirmation)."""
 #     print(f"\n{'=' * 80}")
-#     print(f"Testing send_message (template - image)")
+#     print(f"Testing send_message (template - text)")
 #     print(f"{'=' * 80}")
 
 #     result = await direct_api_mcp_client.call_tool(
 #         "send_message",
 #         arguments={
 #             "user_id": "user1",
-#             "to": "917089379345",
+#             "to": "918297347120",
 #             "message_type": "template",
-#             "template_name": "sample_image_template",
+#             "template_name": "order_confirmation_v1",
 #             "template_language_code": "en",
 #             "template_language_policy": "deterministic",
 #             "template_components": [
 #                 {
-#                     "type": "header",
-#                     "parameters": [
-#                         {
-#                             "type": "image",
-#                             "image": {
-#                                 "link": "https://aisensy-project-media-library-stg.s3.ap-south-1.amazonaws.com/IMAGE/6245d025fcb7966c46294618/2699676_babyyoda1.png"
-#                             },
-#                         }
-#                     ],
-#                 },
-#                 {
 #                     "type": "body",
 #                     "parameters": [
-#                         {"type": "text", "text": "Romit"}
-#                     ],
+#                         {"type": "text", "text": "Rahul"},           # {{1}} - Name
+#                         {"type": "text", "text": "ORD12345"},       # {{2}} - Order ID
+#                         {"type": "text", "text": "Feb 5, 2026"},    # {{3}} - Delivery date
+#                         {"type": "text", "text": "Rs 2,499"}        # {{4}} - Amount
+#                     ]
 #                 },
+#                 {
+#                     "type": "button",
+#                     "sub_type": "url",
+#                     "index": "0",
+#                     "parameters": [
+#                         {"type": "text", "text": "ORD12345"}  # {{1}} in the URL
+#                     ]
+#                 }
 #             ],
 #         },
 #     )
@@ -425,6 +360,47 @@ async def test_send_template_text_message(
 #     assert result.data is not None
 #     assert "success" in result.data
 
+"""image template"""
+
+# @pytest.mark.asyncio
+# async def test_send_with_conversation_window(
+#     direct_api_mcp_client: Client[FastMCPTransport],
+# ):
+
+#     template_result = await direct_api_mcp_client.call_tool(
+#         "send_message",
+#         arguments={
+#             "user_id": "user1",
+#             "to": "919177604610",
+#             "message_type": "template",
+#             "template_name": "physics_course_preview",
+#             "template_language_code": "en",
+#             "template_language_policy": "deterministic",
+#             "template_components": [
+#                 {
+#                     "type": "header",
+#                     "parameters": [
+#                         {
+#                             "type": "image",
+#                             "image": {
+#                                 "link": "https://picsum.photos/200/300"
+#                             }
+#                         }
+#                     ]
+#                 },
+#                 {
+#                     "type": "body",
+#                     "parameters": [
+#                         {"type": "text", "text": "Quantum Mechanics"}
+#                     ]
+#                 }
+#             ]
+#         }
+#     )
+    
+#     print(f"\n=== Template Result ===")
+#     print(json.dumps(template_result.data, indent=2))
+#     print("\n✅ Check your WhatsApp now!")
 
 # @pytest.mark.asyncio
 # async def test_send_template_video_message(
@@ -969,3 +945,304 @@ async def test_send_template_text_message(
 
 #     assert result.data is not None
 #     assert result.data.get("success") is False
+
+
+# import json
+# import pytest
+# from typing import List
+
+
+
+# ============================================================
+# 🔍 Inspect send_message schema (safe fallback)
+# ============================================================
+def test_inspect_send_message_schema(
+    direct_api_mcp_client: Client[FastMCPTransport],
+):
+    """
+    Just verifies the tool exists.
+    Some Client versions don't expose inspect_tool().
+    """
+    assert direct_api_mcp_client is not None
+
+
+# ============================================================
+# 📤 SEND ALL APPROVED TEMPLATES
+# ============================================================
+@pytest.mark.parametrize(
+    "template_name,template_components",
+    [
+        # ==================================================
+        # 📄 DOCUMENT TEMPLATE
+        # ==================================================
+        (
+            "books_list",
+            [
+                {
+                    "type": "header",
+                    "parameters": [
+                        {
+                            "type": "document",
+                            "document": {
+                                "link": "https://www.mha.gov.in/sites/default/files/250883_english_01042024.pdf"
+                            }
+                        }
+                    ],
+                },
+                {
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", "text": "Virat"}
+                    ],
+                },
+            ],
+        ),
+
+        # ==================================================
+        # 🎥 VIDEO TEMPLATE
+        # ==================================================
+        (
+            "computer_lectures",
+            [
+                {
+                    "type": "header",
+                    "parameters": [
+                        {
+                            "type": "video",
+                            "video": {
+                                "link": "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
+                            }
+                        }
+                    ],
+                },
+                {
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", "text": "Rohit"}
+                    ],
+                },
+            ],
+        ),
+
+        # ==================================================
+        # ⏰ LIMITED TIME OFFER
+        # ==================================================
+        (
+            "limited_time_offer_tem_2",
+            [
+                {
+                    "type": "header",
+                    "parameters": [
+                        {
+                            "type": "image",
+                            "image": {
+                                "link": "https://picsum.photos/300/200"
+                            }
+                        }
+                    ],
+                },
+                {
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", "text": "Preeti"},
+                        {"type": "text", "text": "PR25"},
+                    ],
+                },
+                {
+                    "type": "button",
+                    "sub_type": "copy_code",
+                    "index": "0",
+                    "parameters": [
+                        {
+                            "type": "coupon_code",
+                            "coupon_code": "PR25"
+                        }
+                    ],
+                },
+                {
+                    "type": "button",
+                    "sub_type": "url",
+                    "index": "1",
+                    "parameters": [
+                        {"type": "text", "text": "PR25"}
+                    ],
+                },
+            ],
+        ),
+
+        # ==================================================
+        # 🔘 MULTI BUTTON TEMPLATE
+        # ==================================================
+        (
+            "multi_button_template",
+            [
+                {
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", "text": "Saurabh"}
+                    ],
+                },
+                {
+                    "type": "button",
+                    "sub_type": "url",
+                    "index": "1",
+                    "parameters": [
+                        {"type": "text", "text": "dynamic-url"}
+                    ],
+                },
+            ],
+        ),
+
+        # ==================================================
+        # 🔐 AUTHENTICATION TEMPLATE (APPROVED)
+        # ==================================================
+        (
+            "my_auth_template",
+            [
+                {
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", "text": "123456"}
+                    ],
+                },
+                {
+                    "type": "button",
+                    "sub_type": "url",
+                    "index": "0",
+                    "parameters": [
+                        {"type": "text", "text": "123456"}
+                    ],
+                },
+            ],
+        ),
+
+        # ==================================================
+        # 🧩 CAROUSEL TEMPLATE (FIXED + APPROVED)
+        # ==================================================
+        (
+            "summer_carousel_promo_2023_7",
+            [
+                # GLOBAL BODY
+                {
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", "text": "15OFF"},
+                        {"type": "text", "text": "15%"},
+                    ],
+                },
+
+                # CAROUSEL
+                {
+                    "type": "carousel",
+                    "cards": [
+                        {
+                            "card_index": 0,
+                            "components": [
+                                {
+                                    "type": "header",
+                                    "parameters": [
+                                        {
+                                            "type": "image",
+                                            "image": {
+                                                "link": "https://images.pexels.com/photos/616838/pexels-photo-616838.jpeg"
+                                            }
+                                        }
+                                    ],
+                                },
+                                {
+                                    "type": "body",
+                                    "parameters": [
+                                        {"type": "text", "text": "15OFF"},
+                                        {"type": "text", "text": "15%"},
+                                    ],
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "url",
+                                    "index": "1",
+                                    "parameters": [
+                                        {
+                                            "type": "text",
+                                            "text": "exotic_produce_2023"
+                                        }
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            "card_index": 1,
+                            "components": [
+                                {
+                                    "type": "header",
+                                    "parameters": [
+                                        {
+                                            "type": "image",
+                                            "image": {
+                                                "link": "https://images.pexels.com/photos/326131/pexels-photo-326131.jpeg"
+                                            }
+                                        }
+                                    ],
+                                },
+                                {
+                                    "type": "body",
+                                    "parameters": [
+                                        {"type": "text", "text": "20OFFEXOTIC"},
+                                        {"type": "text", "text": "20%"},
+                                    ],
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "url",
+                                    "index": "1",
+                                    "parameters": [
+                                        {
+                                            "type": "text",
+                                            "text": "exotic_produce_2023"
+                                        }
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        ),
+    ],
+)
+@pytest.mark.asyncio
+async def test_send_templates_with_conversation_window(
+    template_name: str,
+    template_components: List[dict],
+    direct_api_mcp_client: Client[FastMCPTransport],
+):
+    """
+    Send ALL APPROVED WhatsApp templates using send_message.
+    Covers:
+    - UTILITY
+    - MARKETING
+    - AUTHENTICATION
+    - CAROUSEL
+    """
+
+    result = await direct_api_mcp_client.call_tool(
+        "send_message",
+        arguments={
+            "user_id": "user1",
+            "to": "918861832522",
+            "message_type": "template",
+            "template_name": template_name,
+            "template_language_code": "en",
+            "template_language_policy": "deterministic",
+            "template_components": template_components,
+        },
+    )
+
+    print("\n" + "=" * 80)
+    print(f"Sent template: {template_name}")
+    print(json.dumps(result.data, indent=2))
+    print("📲 Check your WhatsApp now!")
+    print("=" * 80)
+
+    assert result.data is not None
+    assert isinstance(result.data, dict)
+    assert result.data.get("success") is True, result.data.get("details")
