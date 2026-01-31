@@ -99,7 +99,7 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
 
     # ==================== TEMPLATES ====================
 
-    async def get_templates(self) -> Dict[str, Any]:
+    async def get_templates(self,jwt_token:str) -> Dict[str, Any]:
         """
         Fetch all templates from the AiSensy Direct API.
         
@@ -113,8 +113,14 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
         logger.debug(f"Fetching templates from: {url}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {jwt_token}"
+            }
+
             session = await self._get_session()
-            async with session.get(url) as response:
+            async with session.get(url,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info("Successfully fetched templates")
@@ -157,6 +163,7 @@ class AiSensyDirectApiGetClient(AiSensyDirectApiClient):
         logger.debug(f"Fetching template from: {url}")
 
         try:
+            
             headers={
                 "Accept": "application/json",
                 "Content-Type": "application/json",
