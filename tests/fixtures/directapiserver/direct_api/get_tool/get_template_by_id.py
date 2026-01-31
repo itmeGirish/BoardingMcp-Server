@@ -37,40 +37,59 @@ async def test_get_template_by_id(
     print("=" * 80)
 
 
+import pytest
+import json
+
 @pytest.mark.parametrize(
     "user_id,template_id,expected_success",
     [
-        ("user1","2649029682146901" ,True),  # Valid user with JWT token in TempMemory
+        # PDF file
+        ("user1", "858447980512648", True),  # utility: pending (pdf)
+
+        # Video file
+        ("user1", "2502204860182652", True),  # UTILITY: video
+
+        # Carousel file
+        ("user1", "2285632275274849", True),  # MARKETING: carousel
+
+        # Flow template
+        ("user1", "25847459641586526", True),  # MARKETING: flow
+
+        # Multi-Button Template
+        ("user1", "1398730445602939", True),  # MARKETING: multi-button
+
+        # Limited-time offer
+        ("user1", "1424476949274088", True),  # MARKETING: offer
+
+        # Authentication template
+        ("user1", "1260203929348523", True),  # AUTHENTICATION
     ],
 )
 @pytest.mark.asyncio
 async def test_get_template_by_id(
     user_id: str,
-    template_id:str,
+    template_id: str,
     expected_success: bool,
-    direct_api_mcp_client: Client[FastMCPTransport],
+    direct_api_mcp_client,
 ):
-    """Test fetching fb verification status.
+    """Test fetching template by template_id."""
 
-    The tool fetches the JWT token from TempMemory using user_id,
-    then calls the Direct API to get FB verification status.
-
-    Args:
-        user_id: User ID to fetch JWT token for
-        expected_success: Whether this test case should succeed
-    """
     print(f"\n{'=' * 80}")
-    print(f"Testing get_template_by_id")
+    print("Testing get_template_by_id")
     print(f"  - user_id: {user_id}")
+    print(f"  - template_id: {template_id}")
     print(f"  - expected_success: {expected_success}")
     print(f"{'=' * 80}")
 
     result = await direct_api_mcp_client.call_tool(
         "get_template_by_id",
-        arguments={"user_id": user_id,"template_id":template_id},
+        arguments={
+            "user_id": user_id,
+            "template_id": template_id,
+        },
     )
 
-    print(f"\n=== Result ===")
+    print("\n=== Result ===")
     print(json.dumps(result.data, indent=2))
 
     assert result.data is not None, "Result should not be None"
@@ -78,10 +97,13 @@ async def test_get_template_by_id(
     assert "success" in result.data, "Result should contain 'success' field"
 
     if expected_success:
-        assert result.data["success"] is True, f"Expected success but got: {result.data.get('error')}"
+        assert result.data["success"] is True, (
+            f"Expected success but got error: {result.data.get('error')}"
+        )
     else:
         assert result.data["success"] is False, "Expected failure but got success"
         assert "error" in result.data, "Failed response should contain 'error' field"
+
 
 
 

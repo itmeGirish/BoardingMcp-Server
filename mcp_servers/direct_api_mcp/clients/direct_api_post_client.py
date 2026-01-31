@@ -791,6 +791,7 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
 
     async def create_catalog(
         self,
+        jwt_token:str,
         name: str,
         vertical: str = "commerce",
         product_count: int = 0,
@@ -798,7 +799,8 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         default_image_url: Optional[str] = None,
         fallback_image_url: Optional[List[str]] = None,
         is_catalog_segment: bool = False,
-        da_display_settings: Optional[Dict[str, Any]] = None
+        da_display_settings: Optional[Dict[str, Any]] = None,
+        
     ) -> Dict[str, Any]:
         """
         Create Catalog.
@@ -844,8 +846,14 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         logger.debug(f"Creating catalog: {name}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Authorization": f"Bearer {jwt_token}",
+                "Content-Type": "application/json",
+                
+            }
             session = await self._get_session()
-            async with session.post(url, json=payload) as response:
+            async with session.post(url, json=payload,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully created catalog: {name}")
@@ -1364,7 +1372,8 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         purpose_code: str,
         merchant_category_code: str,
         provider_name: str,
-        redirect_url: str
+        redirect_url: str,
+        jwt_token:str
     ) -> Dict[str, Any]:
         """
         Create Payment Configuration.
@@ -1400,8 +1409,14 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         logger.debug(f"Creating payment configuration: {configuration_name}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {jwt_token}"
+            }
+
             session = await self._get_session()
-            async with session.post(url, json=payload) as response:
+            async with session.post(url, json=payload,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully created payment configuration: {configuration_name}")
@@ -1425,7 +1440,8 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
     async def generate_payment_configuration_oauth_link(
         self,
         configuration_name: str,
-        redirect_url: str
+        redirect_url: str,
+        jwt_token:str
     ) -> Dict[str, Any]:
         """
         Generate Payment Configuration OAuth Link.
@@ -1455,8 +1471,15 @@ class AiSensyDirectApiPostClient(AiSensyDirectApiClient):
         logger.debug(f"Generating OAuth link for: {configuration_name}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {jwt_token}"
+            }
+
+
             session = await self._get_session()
-            async with session.post(url, json=payload) as response:
+            async with session.post(url, json=payload,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully generated OAuth link for: {configuration_name}")
