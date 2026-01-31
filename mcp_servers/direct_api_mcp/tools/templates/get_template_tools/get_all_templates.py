@@ -8,6 +8,8 @@ from typing import Dict, Any
 from ... import mcp
 from ....clients import get_direct_api_get_client
 from app import logger
+from app.database.postgresql.postgresql_connection import get_session
+from app.database.postgresql.postgresql_repositories import MemoryRepository
 
 
 @mcp.tool(
@@ -31,7 +33,7 @@ from app import logger
         "category": "Template Management"
     }
 )
-async def get_templates() -> Dict[str, Any]:
+async def get_templates(user_id:str) -> Dict[str, Any]:
     """
     Fetch all templates.
     
@@ -42,8 +44,22 @@ async def get_templates() -> Dict[str, Any]:
         - error (str): Error message if unsuccessful
     """
     try:
+        
+        logger.info(f"Fetching JWT token from TempMemory for user_id: {user_id}")
+        with get_session() as session:
+            memory_repo = MemoryRepository(session=session)
+            memory_record = memory_repo.get_by_user_id(user_id)
+
+        if not memory_record or not memory_record.get("jwt_token"):
+            error_msg = f"No JWT token found in TempMemory for user_id: {user_id}"
+            logger.error(error_msg)
+            return {"success": False, "error": error_msg}
+
+        jwt_token = memory_record["jwt_token"]
+        logger.info(f"JWT token fetched successfully for user_id: {user_id}")
+        
         async with get_direct_api_get_client() as client:
-            response = await client.get_templates()
+            response = await client.get_templates(jwt_token=jwt_token)
             
             if response.get("success"):
                 data = response.get("data", [])

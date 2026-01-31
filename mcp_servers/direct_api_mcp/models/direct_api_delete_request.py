@@ -13,14 +13,20 @@ class DeleteWaTemplateByIdRequest(BaseModel):
         min_length=1,
         examples=["156167230836488"]
     )
+    template_name: str = Field(
+        ...,
+        description="The template name",
+        min_length=1,
+        examples=["mytemplate"]
+    )
     
-    @field_validator("template_id")
+    @field_validator("template_id", "template_name")
     @classmethod
-    def validate_template_id(cls, v: str) -> str:
-        """Validate and sanitize template_id."""
+    def validate_fields(cls, v: str) -> str:
+        """Validate and sanitize template fields."""
         v = v.strip()
         if not v:
-            raise ValueError("template_id cannot be empty or whitespace")
+            raise ValueError(f"Field cannot be empty or whitespace")
         return v
 
 

@@ -11,6 +11,7 @@ from ....models import DeleteWaTemplateByIdRequest
 from app import logger
 
 
+
 @mcp.tool(
     name="delete_wa_template_by_id",
     description=(
@@ -31,7 +32,7 @@ from app import logger
         "category": "Template Management"
     }
 )
-async def delete_wa_template_by_id(template_id: str) -> Dict[str, Any]:
+async def delete_wa_template_by_id(template_id: str,template_name:str) -> Dict[str, Any]:
     """
     Delete a WhatsApp template by ID.
     
@@ -45,11 +46,13 @@ async def delete_wa_template_by_id(template_id: str) -> Dict[str, Any]:
         - error (str): Error message if unsuccessful
     """
     try:
-        request = DeleteWaTemplateByIdRequest(template_id=template_id)
+        request = DeleteWaTemplateByIdRequest(template_id=template_id,template_name=template_name)
+
         
         async with get_direct_api_delete_client() as client:
             response = await client.delete_wa_template_by_id(
-                template_id=request.template_id
+                template_id=request.template_id,
+                template_name=template_name
             )
             
             if response.get("success"):

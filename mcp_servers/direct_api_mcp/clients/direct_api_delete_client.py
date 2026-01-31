@@ -13,7 +13,7 @@ class AiSensyDirectApiDeleteClient(AiSensyDirectApiClient):
 
     # ==================== 1. DELETE WA TEMPLATE BY ID ====================
 
-    async def delete_wa_template_by_id(self, template_id: str) -> Dict[str, Any]:
+    async def delete_wa_template_by_id(self, template_id: str,template_name:str) -> Dict[str, Any]:
         """
         Delete WA Template by ID.
         
@@ -32,14 +32,24 @@ class AiSensyDirectApiDeleteClient(AiSensyDirectApiClient):
                 "success": False,
                 "error": "Missing required field: template_id"
             }
+        
+        if not template_name:
+            logger.error("Missing template_name paramter")
+
+            return {
+                "success": False,
+                "error": "Missing required field: template_name"
+            }
 
         url = f"{self.BASE_URL}/wa_template"
-        params = {"templateId": template_id}
+        params = {"templateId": template_id,"template_name":template_name}
         logger.debug(f"Deleting WA template by ID: {template_id}")
 
         try:
+   
+
             session = await self._get_session()
-            async with session.delete(url, params=params) as response:
+            async with session.delete(url, params=params,) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully deleted WA template by ID: {template_id}")
