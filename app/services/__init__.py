@@ -1,4 +1,3 @@
-"""
-__init__.py - Auto-generated
-Implement your logic here
-"""
+from .llm_service import openai_model
+
+__all__=["openai_model"]
