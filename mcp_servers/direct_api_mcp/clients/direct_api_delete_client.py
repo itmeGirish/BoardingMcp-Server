@@ -13,7 +13,7 @@ class AiSensyDirectApiDeleteClient(AiSensyDirectApiClient):
 
     # ==================== 1. DELETE WA TEMPLATE BY ID ====================
 
-    async def delete_wa_template_by_id(self, template_id: str,template_name:str) -> Dict[str, Any]:
+    async def delete_wa_template_by_id(self, template_id: str,template_name:str,jwt_token:str) -> Dict[str, Any]:
         """
         Delete WA Template by ID.
         
@@ -42,14 +42,19 @@ class AiSensyDirectApiDeleteClient(AiSensyDirectApiClient):
             }
 
         url = f"{self.BASE_URL}/wa_template"
-        params = {"templateId": template_id,"template_name":template_name}
+        params = {"hsm_id": template_id,"name":template_name}
         logger.debug(f"Deleting WA template by ID: {template_id}")
 
         try:
+            headers={
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {jwt_token}"
+            }
    
 
             session = await self._get_session()
-            async with session.delete(url, params=params,) as response:
+            async with session.delete(url, params=params,headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     logger.info(f"Successfully deleted WA template by ID: {template_id}")
