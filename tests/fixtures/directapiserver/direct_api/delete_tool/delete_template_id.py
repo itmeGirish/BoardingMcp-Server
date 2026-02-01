@@ -38,21 +38,23 @@ async def test_inspect_delete_template_schema(
 
 
 @pytest.mark.parametrize(
-    "template_id, template_name, expected_success, test_description",
+    "user_id,template_id,template_name,expected_success,test_description",
     [
         # Valid test case - actual template to delete
         (
-            "858447980512648",
+            "user1",
+            "2502204860182652",
             "computer_lectures",
             True,
             "Delete actual template: computer_lectures"
         ),
         # Invalid test case - example from model (likely doesn't exist)
-
+        # Add more test cases here as needed
     ],
 )
 @pytest.mark.asyncio
 async def test_delete_template_by_id(
+    user_id: str,
     template_id: str,
     template_name: str,
     expected_success: bool,
@@ -65,6 +67,7 @@ async def test_delete_template_by_id(
     then calls the Direct API to delete the specified template.
 
     Args:
+        user_id: User ID for the operation
         template_id: Template ID to delete
         template_name: Template name to delete
         expected_success: Whether this test case should succeed
@@ -73,6 +76,7 @@ async def test_delete_template_by_id(
     print(f"\n{'=' * 80}")
     print(f"Testing delete_wa_template_by_id")
     print(f"Test: {test_description}")
+    print(f"  - user_id: {user_id}")
     print(f"  - template_id: {template_id}")
     print(f"  - template_name: {template_name}")
     print(f"  - expected_success: {expected_success}")
@@ -82,6 +86,7 @@ async def test_delete_template_by_id(
     result = await direct_api_mcp_client.call_tool(
         "delete_wa_template_by_id",
         arguments={
+            "user_id": user_id,
             "template_id": template_id,
             "template_name": template_name
         },
@@ -122,4 +127,5 @@ async def test_delete_template_by_id(
         details = result.data.get("details", "")
         
         print(f"\n✓ Test correctly failed with error: {error_message}")
-        
+        if details:
+            print(f"  Details: {details}")
