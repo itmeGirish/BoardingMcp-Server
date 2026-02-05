@@ -55,6 +55,13 @@ class Settings(BaseSettings):
 
     #openai api keys
     OPENAI_API_KEY:str
+
+    #nvidia
+    NVIDIA_API_KEY:str
+    NVIDIA_MODEL:str
+    NVIDIA_TEMPERATURE:float
+    NVIDIA_TOP_P:float
+    NVIDIA_MAX_COMPLETION_TOKENS:int
     
     LLM_MODEL:str
     TEMPERATURE:str
