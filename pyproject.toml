@@ -43,7 +43,13 @@ dependencies = [
     "langchain-mcp-adapters",
     "copilotkit",
     "langgraph-cli[inmem]>=0.4.11",
-    "nest_asyncio"
+    "nest_asyncio",
+
+    # Data Processing (Broadcasting)
+    "openpyxl",
+    "pandas",
+    "phonenumbers",
+    "python-Levenshtein",
 ]
 
 [project.optional-dependencies]

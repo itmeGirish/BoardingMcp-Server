@@ -6,7 +6,7 @@ WARNING: This will DELETE ALL DATA in the database tables!
 """
 from sqlmodel import SQLModel
 from .postgresql_connection import engine
-from .models import User, BusinessCreation, ProjectCreation, TempMemory  # Import all models
+from .models import User, BusinessCreation, ProjectCreation, TempMemory, BroadcastJob, TemplateCreation, ProcessedContact, ConsentLog, SuppressionList  # Import all models
 
 
 def drop_all_tables():
@@ -31,6 +31,11 @@ def create_all_tables():
     print("  - business_creations (with password column)")
     print("  - project_creations")
     print("  - temporary_notes (for JWT tokens, runtime/broadcasting status)")
+    print("  - broadcast_jobs (for broadcast campaign tracking)")
+    print("  - template_creations (for WhatsApp template lifecycle)")
+    print("  - processed_contacts (for validated broadcast contacts)")
+    print("  - consent_logs (for opt-in/opt-out audit trail)")
+    print("  - suppression_lists (for excluded phone numbers)")
     print("=" * 60)
 
 
