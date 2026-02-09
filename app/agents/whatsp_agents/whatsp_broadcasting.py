@@ -11,6 +11,9 @@ from .nodes.supervisor_broadcasting import call_model_node, route_after_tool
 # Import sub-agent graphs
 from .data_processing_agent import data_processing_graph
 from .compliance_agent import compliance_graph
+from .segmentation_agent import segmentation_graph
+from .content_creation_agent import content_creation_graph
+from .delivery_agent import delivery_graph
 
 
 def _create_call_model_node_with_dependencies():
@@ -39,6 +42,9 @@ def _assemble_graph():
     sub_agents = {
         "data_processing": data_processing_graph,
         "compliance": compliance_graph,
+        "segmentation": segmentation_graph,
+        "content_creation": content_creation_graph,
+        "delivery": delivery_graph,
     }
 
     return create_graph(

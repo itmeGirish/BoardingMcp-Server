@@ -928,6 +928,80 @@ def delegate_to_segmentation(user_id: str, broadcast_job_id: str, project_id: st
     }, ensure_ascii=False)
 
 
+@tool
+def delegate_to_content_creation(user_id: str, broadcast_job_id: str, project_id: str) -> str:
+    """
+    Delegate template management to the Content Creation Agent.
+
+    Call this when transitioning to the CONTENT_CREATION phase.
+    The Content Creation Agent will handle:
+    - Listing available templates (text, image, video, document)
+    - Creating new templates and submitting to WhatsApp for approval
+    - Checking template approval status (PENDING -> APPROVED/REJECTED)
+    - Rejection analysis and auto-fix suggestions
+    - Editing and resubmitting rejected templates
+    - Deleting templates by ID or by name
+    - Selecting an APPROVED template for the broadcast job
+
+    The supervisor should call this INSTEAD of get_available_templates / create_broadcast_template
+    when entering the CONTENT_CREATION phase.
+
+    Args:
+        user_id: User's unique identifier
+        broadcast_job_id: The broadcast job ID
+        project_id: Project ID for the broadcast
+
+    Returns:
+        JSON string confirming delegation to Content Creation Agent
+    """
+    logger.info("[BROADCAST] Delegating to Content Creation Agent for job: %s", broadcast_job_id)
+    return json.dumps({
+        "status": "delegated",
+        "agent": "content_creation",
+        "user_id": user_id,
+        "broadcast_job_id": broadcast_job_id,
+        "project_id": project_id,
+        "message": "Handing off to Content Creation Agent for template management, approval, and selection."
+    }, ensure_ascii=False)
+
+
+@tool
+def delegate_to_delivery(user_id: str, broadcast_job_id: str, project_id: str) -> str:
+    """
+    Delegate message dispatch to the Delivery Agent.
+
+    Call this when transitioning to the SENDING phase.
+    The Delivery Agent will handle:
+    - Multi-priority queue preparation (5 levels)
+    - BUSINESS POLICY: send_marketing_lite_message FIRST (cheaper)
+    - Fallback to send_message for template-based delivery (media/buttons)
+    - Rate limiting by WhatsApp messaging tier
+    - Retry with exponential backoff (immediate, 30s, 2m, 10m, 1hr)
+    - Error code handling (non-retryable: 131026, 131047, etc.)
+    - Delivery tracking and mark-as-read
+
+    The supervisor should call this INSTEAD of send_broadcast_messages
+    when entering the SENDING phase.
+
+    Args:
+        user_id: User's unique identifier
+        broadcast_job_id: The broadcast job ID
+        project_id: Project ID for the broadcast
+
+    Returns:
+        JSON string confirming delegation to Delivery Agent
+    """
+    logger.info("[BROADCAST] Delegating to Delivery Agent for job: %s", broadcast_job_id)
+    return json.dumps({
+        "status": "delegated",
+        "agent": "delivery",
+        "user_id": user_id,
+        "broadcast_job_id": broadcast_job_id,
+        "project_id": project_id,
+        "message": "Handing off to Delivery Agent for message dispatch with lite-first policy, rate limiting, and retry logic."
+    }, ensure_ascii=False)
+
+
 # ============================================
 # TOOLS EXPORTS
 # ============================================
@@ -949,6 +1023,8 @@ BACKEND_TOOLS = [
     delegate_to_data_processing,
     delegate_to_compliance,
     delegate_to_segmentation,
+    delegate_to_content_creation,
+    delegate_to_delivery,
 ]
 
 BACKEND_TOOL_NAMES = {tool.name for tool in BACKEND_TOOLS}
@@ -958,4 +1034,6 @@ DELEGATION_TOOL_MAP = {
     "delegate_to_data_processing": "data_processing",
     "delegate_to_compliance": "compliance",
     "delegate_to_segmentation": "segmentation",
+    "delegate_to_content_creation": "content_creation",
+    "delegate_to_delivery": "delivery",
 }
