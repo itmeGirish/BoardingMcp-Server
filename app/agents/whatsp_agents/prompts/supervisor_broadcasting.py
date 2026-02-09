@@ -77,27 +77,40 @@ After Compliance Agent completes:
 - If ALL checks passed: Call update_broadcast_phase to SEGMENTATION
 - If ANY check failed: Explain which check failed and call update_broadcast_phase to FAILED
 
-STEP 4 - SEGMENTATION:
-- Ask user how they want to segment their audience:
-  a) Send to all contacts (single segment)
-  b) Custom segmentation criteria (if applicable)
-- Call segment_broadcast_audience with user_id, broadcast_job_id, and segmentation preferences
-- Call update_broadcast_phase to CONTENT_CREATION
+STEP 4 - SEGMENTATION (Handled by Segmentation Agent):
+- Call delegate_to_segmentation with user_id, broadcast_job_id, and project_id
+- The Segmentation Agent performs:
+  1. Lifecycle classification: New (<=7d), Engaged (<=30d), Active (<=60d), At-Risk, Dormant, Churned (90+d excluded)
+  2. 24-hour window detection: Identifies contacts in free service window (30-50% cost savings)
+  3. Timezone clustering: Groups by timezone, optimal send time 10AM-2PM local
+  4. Frequency capping: Marketing 2/week, Promotional 1/week, Combined 4/week
+  5. Segment creation: By lifecycle, country, or all contacts
 
-STEP 5 - CONTENT CREATION:
-- Call get_available_templates to show user their approved WhatsApp templates
-- User can:
-  a) Select an existing APPROVED template -> call get_template_details for preview
-  b) Create a new template -> call create_broadcast_template
-  c) Edit an existing template -> call edit_broadcast_template
-- If selected template status is APPROVED: Call update_broadcast_phase to READY_TO_SEND
-- If newly created/edited (status PENDING): Call update_broadcast_phase to PENDING_APPROVAL
+After Segmentation Agent completes:
+- If segments created successfully: Call update_broadcast_phase to CONTENT_CREATION
+- If segmentation failed: Call update_broadcast_phase to FAILED
+
+STEP 5 - CONTENT CREATION (Handled by Content Creation Agent):
+- Call delegate_to_content_creation with user_id, broadcast_job_id, and project_id
+- The Content Creation Agent handles the full template lifecycle:
+  1. List existing templates (text, image, video, document) from DB
+  2. Create new templates via MCP (submit_whatsapp_template_message) and store in DB
+  3. Check approval status via MCP (get_template_by_id) and sync to DB
+  4. Rejection analysis with auto-fix suggestions
+  5. Edit and resubmit rejected templates via MCP (edit_template)
+  6. Delete templates by ID or name via MCP + soft-delete in DB
+  7. Select an APPROVED template for the broadcast job
+
+After Content Creation Agent completes:
+- If APPROVED template selected: Call update_broadcast_phase to READY_TO_SEND
+- If template still PENDING: Call update_broadcast_phase to PENDING_APPROVAL
+- If all templates rejected: Call update_broadcast_phase to FAILED
 
 STEP 6 - PENDING APPROVAL:
-- Inform user their template is pending WhatsApp approval (can take minutes to hours)
-- User can call check_template_approval_status to poll the status
+- Template is pending WhatsApp approval (can take 24-48 hours)
+- Call delegate_to_content_creation again to poll status via check_template_status
 - If APPROVED: Call update_broadcast_phase to READY_TO_SEND
-- If REJECTED: Explain rejection reason, call update_broadcast_phase to CONTENT_CREATION
+- If REJECTED: Content Creation Agent analyzes reason and suggests fixes, then call update_broadcast_phase to CONTENT_CREATION
 
 STEP 7 - READY TO SEND:
 - Show broadcast summary to user:
@@ -108,11 +121,21 @@ STEP 7 - READY TO SEND:
 - If user confirms: Call update_broadcast_phase to SENDING
 - If user cancels: Call update_broadcast_phase to CANCELLED
 
-STEP 8 - SENDING:
-- Call send_broadcast_messages to start dispatching messages in batches
-- Report progress: sent count, failed count, pending count
+STEP 8 - SENDING (Handled by Delivery Agent):
+- Call delegate_to_delivery with user_id, broadcast_job_id, and project_id
+- The Delivery Agent handles the full dispatch process:
+  1. Prepares a 5-priority delivery queue (Urgent > 24hr Window > Normal > Low > Background)
+  2. Checks account messaging tier rate limits (250/1K/10K/100K/Unlimited)
+  3. BUSINESS POLICY: Sends via send_marketing_lite_message FIRST (cheaper, promotional)
+  4. Falls back to send_template_message for templates with media/buttons/variables
+  5. Retries failed messages with exponential backoff (immediate > 30s > 2m > 10m > 1hr)
+  6. Classifies errors: non-retryable (131026, 131047, 131051, 131031) vs retryable (131053, 130429)
+  7. Returns delivery summary with sent/delivered/failed/pending counts
+
+After Delivery Agent completes:
 - If all messages processed: Call update_broadcast_phase to COMPLETED
 - If user requests pause: Call update_broadcast_phase to PAUSED
+- If delivery failed: Call update_broadcast_phase to FAILED
 
 STEP 9 - PAUSED:
 - Broadcast is temporarily halted
@@ -185,18 +208,27 @@ Also handles opt-out keywords (STOP, UNSUBSCRIBE, PAUSE, STOP PROMO, START) via 
 """
 
 SEGMENTATION_INSTRUCTIONS = """
-When segmenting audience:
-1. Present segmentation options to user
-2. Default: send to all valid contacts (single segment)
-3. Store segmentation data for the broadcast job
+Segmentation is handled by the dedicated Segmentation Agent which:
+
+1. LIFECYCLE CLASSIFICATION: Classifies contacts into stages (New, Engaged, Active, At-Risk, Dormant, Churned)
+   - Churned contacts (90+ days inactive) are excluded from marketing broadcasts
+2. 24-HOUR WINDOW DETECTION: Detects contacts in free service window (cost savings 30-50%)
+   - Contacts who messaged within 24 hours get FREE messages (service category)
+3. TIMEZONE CLUSTERING: Groups contacts by timezone for optimal delivery (10AM-2PM local)
+4. FREQUENCY CAPPING: Enforces limits (Marketing 2/week, Promotional 1/week, Combined 4/week)
+5. SEGMENT CREATION: Creates segments by lifecycle, country, or as single "all contacts" group
 """
 
 CONTENT_CREATION_INSTRUCTIONS = """
-When creating/selecting content:
-1. First show available APPROVED templates via get_available_templates
-2. If user wants a new template, collect: name, category, language, components
-3. If selecting existing, show preview via get_template_details
-4. Validate template is APPROVED before allowing READY_TO_SEND transition
+Content creation is handled by the dedicated Content Creation Agent which:
+
+1. LIST TEMPLATES: Shows user's existing templates from DB (filter by status/category)
+2. CREATE TEMPLATE: Submits new template (text/image/video/document) via MCP + stores in DB
+3. CHECK STATUS: Polls WhatsApp approval via MCP (get_template_by_id) and syncs to DB
+4. REJECTION ANALYSIS: Detects common issues (promotional in utility, missing opt-out, URL shortener, excessive caps) and suggests fixes
+5. EDIT & RESUBMIT: Fixes rejected templates via MCP (edit_template) and resubmits
+6. DELETE: Removes templates by ID or name via MCP + soft-delete in DB
+7. SELECT: Links APPROVED template to broadcast job, increments usage counter
 """
 
 APPROVAL_INSTRUCTIONS = """
@@ -208,11 +240,14 @@ When waiting for template approval:
 """
 
 SENDING_INSTRUCTIONS = """
-When sending messages:
-1. Messages are sent in batches via send_broadcast_messages
-2. Report progress after each batch
-3. Handle partial failures gracefully
-4. User can pause at any time
+Sending is handled by the dedicated Delivery Agent which:
+
+1. PREPARE QUEUE: Builds 5-priority delivery queue, checks tier rate limits via MCP
+2. SEND LITE (FIRST): Sends via send_marketing_lite_message (cheaper, promotional) - BUSINESS POLICY
+3. SEND TEMPLATE (FALLBACK): Sends via send_message with message_type="template" for media/buttons/variables
+4. RETRY FAILED: Exponential backoff (immediate > 30s > 2m > 10m > 1hr), classifies retryable vs permanent errors
+5. DELIVERY SUMMARY: Returns sent/delivered/failed/pending counts, error breakdown, lite vs template stats
+6. MARK READ: Updates read status from webhook callbacks for analytics
 """
 
 
