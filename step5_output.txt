@@ -1,0 +1,365 @@
+Connecting to database with URL: postgresql+psycopg://mystartup:NewStrongPass456@127.0.0.1:5432/Agent_steer
+============================= test session starts =============================
+platform win32 -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\agent_steer\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.12.1, inline-snapshot-0.31.1, langsmith-0.6.4, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending 
+============================================================
+  REAL BROADCAST TEST
+  Job ID: real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408
+  Contacts: Girish, Vamsi, Santhu, Mahesh
+============================================================
+
+  [INITIALIZED] Broadcast job created
+  [DATA_PROCESSING] 4 contacts processed: ['+918861832522', '+919177604610', '+919353578022', '+918297347120']
+  [COMPLIANCE_CHECK] Passed (health data stored)
+  [SEGMENTATION] 1 segment: All Contacts (4)
+  [CONTENT_CREATION] Submitting new template: bedzee_broadcast_7a0ed7d2
+  [CONTENT_CREATION] Template submitted - ID: 1112713360932531, status: PENDING
+
+  [WAITING] Polling template approval status (every 10s, up to 5 min)...
+    Poll 1/30: status = REJECTED
+  [CONTENT_CREATION] Template final status: REJECTED
+  [CONTENT_CREATION] Template status: REJECTED - looking for APPROVED fallback...
+  [CONTENT_CREATION] Fallback to APPROVED template: bedzee_broadcast_f3bd2c7d (ID: 2220243888384933)
+  [READY_TO_SEND] Using fallback template
+
+  [SENDING] Broadcasting to 4 contacts via MCP (port 9002)...
+  Template: bedzee_broadcast_f3bd2c7d (MARKETING, en_US)
+FAILED
+
+================================== FAILURES ===================================
+_______ TestRealMCPBroadcast.test_step5_full_broadcast_with_mcp_sending _______
+
+self = <tests.integration.test_broadcasting.TestRealMCPBroadcast object at 0x000002E8366AA570>
+broadcast_repo = BroadcastJobRepository(session=<sqlmodel.orm.session.Session object at 0x000002E8350470E0>)
+contact_repo = ProcessedContactRepository(session=<sqlmodel.orm.session.Session object at 0x000002E8350470E0>)
+template_repo = TemplateCreationRepository(session=<sqlmodel.orm.session.Session object at 0x000002E8350470E0>)
+
+    def test_step5_full_broadcast_with_mcp_sending(self, broadcast_repo, contact_repo, template_repo):
+        """
+        Step 5: FULL BROADCAST - Create job, submit template, WAIT for approval, then send via MCP.
+    
+        This is the REAL broadcast test:
+        - Creates broadcast job in DB
+        - Processes 4 CSV contacts (Girish, Vamsi, Santhu, Mahesh)
+        - Submits a MARKETING template via MCP
+        - WAITS for WhatsApp to approve the template (polls every 10s)
+        - Sends messages via MCP send_message to each contact
+        - Tracks sent/failed counts
+        """
+        job_id = f"real-broadcast-{uuid.uuid4()}"
+    
+        print(f"\n{'='*60}")
+        print(f"  REAL BROADCAST TEST")
+        print(f"  Job ID: {job_id}")
+        print(f"  Contacts: {', '.join(c['name'] for c in CSV_CONTACTS)}")
+        print(f"{'='*60}")
+    
+        # --- PHASE 1: INITIALIZED ---
+        broadcast_repo.create_broadcast_job(
+            job_id=job_id, user_id=USER_ID, project_id=PROJECT_ID
+        )
+        print(f"\n  [INITIALIZED] Broadcast job created")
+    
+        # --- PHASE 2: DATA_PROCESSING ---
+        broadcast_repo.update_phase(job_id, "DATA_PROCESSING")
+        broadcast_repo.update_contacts(
+            job_id=job_id,
+            contacts_data=json.dumps(E164_PHONES),
+            total=4, valid=4, invalid=0,
+        )
+    
+        processed = [
+            {
+                "phone_e164": E164_PHONES[i],
+                "name": CSV_CONTACTS[i]["name"],
+                "country_code": "IN",
+                "quality_score": 80,
+                "source_row": i + 1,
+                "is_duplicate": False,
+                "custom_fields": {"sno": i + 1},
+            }
+            for i in range(4)
+        ]
+        contact_repo.bulk_create(processed, job_id, USER_ID)
+        print(f"  [DATA_PROCESSING] 4 contacts processed: {E164_PHONES}")
+    
+        # --- PHASE 3: COMPLIANCE_CHECK ---
+        broadcast_repo.update_phase(job_id, "COMPLIANCE_CHECK")
+        health = getattr(self.__class__, '_health_result', {})
+        broadcast_repo.update_compliance(
+            job_id=job_id,
+            compliance_status="passed",
+            compliance_details=json.dumps(health, default=str),
+        )
+        print(f"  [COMPLIANCE_CHECK] Passed (health data stored)")
+    
+        # --- PHASE 4: SEGMENTATION ---
+        broadcast_repo.update_phase(job_id, "SEGMENTATION")
+        segments = [{"name": "All Contacts", "criteria": "all", "contact_count": 4}]
+        broadcast_repo.update_segments(job_id, json.dumps(segments))
+        print(f"  [SEGMENTATION] 1 segment: All Contacts (4)")
+    
+        # --- PHASE 5: CONTENT_CREATION ---
+        broadcast_repo.update_phase(job_id, "CONTENT_CREATION")
+    
+        # First check if there's already an APPROVED template from step 3
+        approved = getattr(self.__class__, '_approved_template', None)
+    
+        if approved:
+            # Use existing approved template directly
+            tpl_name = approved.get("name", "")
+            tpl_id = str(approved.get("id", ""))
+            tpl_lang = approved.get("language", "en_US")
+            tpl_cat = approved.get("category", "MARKETING")
+    
+            template_repo.create(
+                template_id=tpl_id,
+                user_id=USER_ID,
+                business_id=BUSINESS_ID,
+                name=tpl_name,
+                category=tpl_cat,
+                language=tpl_lang,
+                components=approved.get("components", []),
+                project_id=PROJECT_ID,
+                status="APPROVED",
+            )
+            template_status = "APPROVED"
+            print(f"  [CONTENT_CREATION] Using existing APPROVED template: {tpl_name}")
+        else:
+            # Submit a NEW template and WAIT for approval
+            tpl_name = f"bedzee_broadcast_{uuid.uuid4().hex[:8]}"
+            print(f"  [CONTENT_CREATION] Submitting new template: {tpl_name}")
+    
+            submit_result = _call_direct_api_mcp("submit_whatsapp_template_message", {
+                "user_id": USER_ID,
+                "name": tpl_name,
+                "category": "MARKETING",
+                "language": "en_US",
+                "components": [
+                    {
+                        "type": "BODY",
+                        "text": "Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.",
+                        "example": {"body_text": [["Customer"]]},
+                    }
+                ],
+            })
+    
+            tpl_id = ""
+            tpl_lang = "en_US"
+            tpl_cat = "MARKETING"
+    
+            if isinstance(submit_result, dict) and submit_result.get("success"):
+                api_data = submit_result.get("data", {})
+                tpl_id = str(api_data.get("id", "")) if isinstance(api_data, dict) else ""
+                print(f"  [CONTENT_CREATION] Template submitted - ID: {tpl_id}, status: PENDING")
+            else:
+                error = submit_result.get("error", "unknown") if isinstance(submit_result, dict) else str(submit_result)
+                print(f"  [CONTENT_CREATION] Template submit error: {error}")
+                tpl_id = f"failed-{uuid.uuid4()}"
+    
+            # Store in local DB
+            template_repo.create(
+                template_id=tpl_id,
+                user_id=USER_ID,
+                business_id=BUSINESS_ID,
+                name=tpl_name,
+                category=tpl_cat,
+                language=tpl_lang,
+                project_id=PROJECT_ID,
+                status="PENDING",
+            )
+    
+            # --- WAIT FOR TEMPLATE APPROVAL ---
+            if tpl_id and not tpl_id.startswith("failed-"):
+                print(f"\n  [WAITING] Polling template approval status (every 10s, up to 5 min)...")
+                template_status = "PENDING"
+    
+                for attempt in range(1, 31):  # 30 polls x 10s = 5 minutes max
+                    check_result = _call_direct_api_mcp("get_template_by_id", {
+                        "user_id": USER_ID,
+                        "template_id": tpl_id,
+                    })
+    
+                    api_status = "UNKNOWN"
+                    if isinstance(check_result, dict) and check_result.get("success"):
+                        api_data = check_result.get("data", {})
+                        if isinstance(api_data, dict):
+                            api_status = api_data.get("status", "UNKNOWN").upper()
+    
+                    print(f"    Poll {attempt}/30: status = {api_status}")
+    
+                    if api_status in ("APPROVED", "REJECTED", "PAUSED", "DISABLED"):
+                        template_status = api_status
+                        # Sync to local DB
+                        template_repo.update_status(tpl_id, api_status)
+                        break
+    
+                    time.sleep(10)
+                else:
+                    template_status = "PENDING"
+                    print(f"  [TIMEOUT] Template still PENDING after 5 minutes")
+    
+                print(f"  [CONTENT_CREATION] Template final status: {template_status}")
+            else:
+                template_status = "FAILED"
+    
+        # --- PHASE 6: Link template to job ---
+        broadcast_repo.update_template(
+            job_id=job_id,
+            template_id=tpl_id,
+            template_name=tpl_name,
+            template_language=tpl_lang,
+            template_category=tpl_cat,
+            template_status=template_status,
+        )
+    
+        # --- PHASE 7: READY_TO_SEND or PENDING_APPROVAL ---
+        if template_status == "APPROVED":
+            broadcast_repo.update_phase(job_id, "READY_TO_SEND")
+            print(f"  [READY_TO_SEND] Template APPROVED - ready to send")
+        elif template_status in ("REJECTED", "PENDING", "FAILED", "PAUSED", "DISABLED"):
+            # Template not approved - fallback to an existing APPROVED template
+            print(f"  [CONTENT_CREATION] Template status: {template_status} - looking for APPROVED fallback...")
+    
+            # Fallback: list templates via MCP and find an approved one
+            list_result = _call_direct_api_mcp("get_templates", {"user_id": USER_ID})
+            fallback_template = None
+            if isinstance(list_result, dict) and list_result.get("success"):
+                data_wrapper = list_result.get("data", {})
+                if isinstance(data_wrapper, dict) and "data" in data_wrapper:
+                    templates_list = data_wrapper["data"]
+                elif isinstance(data_wrapper, list):
+                    templates_list = data_wrapper
+                else:
+                    templates_list = []
+                for t in templates_list:
+                    if isinstance(t, dict) and t.get("status", "").upper() == "APPROVED":
+                        fallback_template = t
+                        break
+    
+            if fallback_template:
+                tpl_name = fallback_template.get("name", "")
+                tpl_id = str(fallback_template.get("id", ""))
+                tpl_lang = fallback_template.get("language", "en_US")
+                tpl_cat = fallback_template.get("category", "MARKETING")
+                template_status = "APPROVED"
+                broadcast_repo.update_template(
+                    job_id=job_id,
+                    template_id=tpl_id,
+                    template_name=tpl_name,
+                    template_language=tpl_lang,
+                    template_category=tpl_cat,
+                    template_status="APPROVED",
+                )
+                print(f"  [CONTENT_CREATION] Fallback to APPROVED template: {tpl_name} (ID: {tpl_id})")
+                broadcast_repo.update_phase(job_id, "READY_TO_SEND")
+                print(f"  [READY_TO_SEND] Using fallback template")
+            else:
+                print(f"  [ABORTED] No APPROVED template available - cannot send")
+                broadcast_repo.update_phase(job_id, "PENDING_APPROVAL")
+                print(f"{'='*60}")
+                pytest.skip("No APPROVED template available for sending")
+                return
+    
+        # --- PHASE 8: SENDING via MCP ---
+        broadcast_repo.update_phase(job_id, "SENDING")
+        job = broadcast_repo.get_by_id(job_id)
+        assert job["started_sending_at"] is not None
+    
+        print(f"\n  [SENDING] Broadcasting to 4 contacts via MCP (port 9002)...")
+        print(f"  Template: {tpl_name} ({tpl_cat}, {tpl_lang})")
+>       print(f"  {'\u2500'*50}")
+
+tests\integration\test_broadcasting.py:1093: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <encodings.cp1252.IncrementalEncoder object at 0x000002E82E2A4AD0>
+input = '  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', final = False
+
+    def encode(self, input, final=False):
+>       return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       UnicodeEncodeError: 'charmap' codec can't encode characters in position 2-51: character maps to <undefined>
+
+C:\Python313\Lib\encodings\cp1252.py:19: UnicodeEncodeError
+------------------------------ Captured log call ------------------------------
+INFO     root:broadcast_job_repo.py:38 ============================================================\nINFO     root:broadcast_job_repo.py:39 BROADCAST JOB REPOSITORY - CREATE\nINFO     root:broadcast_job_repo.py:40   job_id: real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408\nINFO     root:broadcast_job_repo.py:41   user_id: user1\nINFO     root:broadcast_job_repo.py:42   project_id: 6798e0ab6c6d490c0e356d1d\nINFO     root:broadcast_job_repo.py:43   phase: INITIALIZED\nINFO     root:broadcast_job_repo.py:57   Broadcast job created: real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408\nINFO     root:broadcast_job_repo.py:58 ============================================================\nINFO     root:broadcast_job_repo.py:129 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: INITIALIZED -> DATA_PROCESSING\nINFO     root:broadcast_job_repo.py:152 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: contacts updated (total=4, valid=4, invalid=0)\nINFO     root:processed_contact_repo.py:36 Bulk inserting 4 processed contacts for job real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408\nINFO     root:processed_contact_repo.py:60 Successfully inserted 4 processed contacts\nINFO     root:broadcast_job_repo.py:129 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: DATA_PROCESSING -> COMPLIANCE_CHECK\nINFO     root:broadcast_job_repo.py:196 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: compliance=passed\nINFO     root:broadcast_job_repo.py:129 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: COMPLIANCE_CHECK -> SEGMENTATION\nINFO     root:broadcast_job_repo.py:213 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: segments updated\nINFO     root:broadcast_job_repo.py:129 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: SEGMENTATION -> CONTENT_CREATION\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     mcp.client.streamable_http:streamable_http.py:181 Received session ID: 9d363cf929a54039b1c150221fb5b564\nINFO     mcp.client.streamable_http:streamable_http.py:193 Negotiated protocol version: 2025-11-25\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 202 Accepted"\nINFO     httpx:_client.py:1740 HTTP Request: GET http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     root:whsp_onboarding_agent.py:218 \U0001f4ca RAW MCP RESULT TYPE: <class 'list'>\nINFO     root:whsp_onboarding_agent.py:219 \U0001f4ca RAW MCP RESULT: [{'type': 'text', 'text': '{"success":true,"data":{"id":"1112713360932531","status":"REJECTED","category":"MARKETING"}}', 'id': 'lc_648122b6-38f3-4fa1-841a-fda073f841d7'}]\nINFO     root:whsp_onboarding_agent.py:228 \U0001f4ca PARSED RESULT KEYS: ['success', 'data', 'status', 'message']\nINFO     root:whsp_onboarding_agent.py:229 \U0001f4ca PARSED RESULT: {'success': True, 'data': {'id': '1112713360932531', 'status': 'REJECTED', 'category': 'MARKETING'}, 'status': 'success', 'message': 'Operation completed successfully'}\nINFO     httpx:_client.py:1740 HTTP Request: DELETE http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     root:template_creation_repo.py:46 ============================================================\nINFO     root:template_creation_repo.py:47 TEMPLATE CREATION REPOSITORY - CREATE\nINFO     root:template_creation_repo.py:48   template_id: 1112713360932531\nINFO     root:template_creation_repo.py:49   user_id: user1\nINFO     root:template_creation_repo.py:50   business_id: 6798e0ab6c6d490c0e356d18\nINFO     root:template_creation_repo.py:51   name: bedzee_broadcast_7a0ed7d2\nINFO     root:template_creation_repo.py:52   category: MARKETING\nINFO     root:template_creation_repo.py:53   language: en_US\nINFO     root:template_creation_repo.py:54   status: PENDING\nINFO     root:template_creation_repo.py:75   Template record created: id=15\nINFO     root:template_creation_repo.py:76 ============================================================\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     mcp.client.streamable_http:streamable_http.py:181 Received session ID: 0a42d129b75f42339077b5afdc22193c\nINFO     mcp.client.streamable_http:streamable_http.py:193 Negotiated protocol version: 2025-11-25\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 202 Accepted"\nINFO     httpx:_client.py:1740 HTTP Request: GET http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     root:whsp_onboarding_agent.py:218 \U0001f4ca RAW MCP RESULT TYPE: <class 'list'>\nINFO     root:whsp_onboarding_agent.py:219 \U0001f4ca RAW MCP RESULT: [{'type': 'text', 'text': '{"success":true,"data":{"name":"bedzee_broadcast_7a0ed7d2","parameter_format":"POSITIONAL","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","status":"REJECTED","category":"MARKETING","id":"1112713360932531"}}', 'id': 'lc_2be83a6c-7c34-489c-8fac-bb4fd8e1425f'}]\nINFO     root:whsp_onboarding_agent.py:228 \U0001f4ca PARSED RESULT KEYS: ['success', 'data', 'status', 'message']\nINFO     root:whsp_onboarding_agent.py:229 \U0001f4ca PARSED RESULT: {'success': True, 'data': {'name': 'bedzee_broadcast_7a0ed7d2', 'parameter_format': 'POSITIONAL', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'status': 'REJECTED', 'category': 'MARKETING', 'id': '1112713360932531'}, 'status': 'success', 'message': 'Successfully created bedzee_broadcast_7a0ed7d2'}\nINFO     httpx:_client.py:1740 HTTP Request: DELETE http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     root:template_creation_repo.py:184 Template 1112713360932531: status updated to REJECTED\nINFO     root:broadcast_job_repo.py:176 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: template set to bedzee_broadcast_7a0ed7d2 (REJECTED)\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     mcp.client.streamable_http:streamable_http.py:181 Received session ID: 26bce3336c7d4ddca5b898b568922d83\nINFO     mcp.client.streamable_http:streamable_http.py:193 Negotiated protocol version: 2025-11-25\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 202 Accepted"\nINFO     httpx:_client.py:1740 HTTP Request: GET http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     httpx:_client.py:1740 HTTP Request: POST http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     root:whsp_onboarding_agent.py:218 \U0001f4ca RAW MCP RESULT TYPE: <class 'list'>\nINFO     root:whsp_onboarding_agent.py:219 \U0001f4ca RAW MCP RESULT: [{'type': 'text', 'text': '{"success":true,"data":{"total":25,"data":[{"id":"1112713360932531","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_broadcast_7a0ed7d2","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INVALID_FORMAT","status":"REJECTED"},{"id":"1325270409421511","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_promo_d78df381","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INVALID_FORMAT","status":"REJECTED"},{"id":"1420107989667079","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_broadcast_fe6968c0","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INVALID_FORMAT","status":"REJECTED"},{"id":"3402793479867605","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_promo_5d07a347","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INVALID_FORMAT","status":"REJECTED"},{"id":"1380755430012454","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_broadcast_fb3f0d2f","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INVALID_FORMAT","status":"REJECTED"},{"id":"2220243888384933","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_broadcast_f3bd2c7d","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1215837534034895","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_promo_b058d7b4","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"2028537724670935","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_broadcast_c4b961f7","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1282243460385787","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_promo_61547967","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"2090123101764967","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.","example":{"body_text":[["Customer"]]}}],"language":"en_US","name":"bedzee_promo_670539ed","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1260203929348523","category":"AUTHENTICATION","components":[{"type":"BODY","text":"*{{1}}* is your verification code.","add_security_recommendation":false,"example":{"body_text":[["123456"]]}},{"type":"BUTTONS","buttons":[{"type":"URL","text":"COPY CODE","url":"https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code=otp{{1}}","example":["https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code=otp123456"]}]}],"language":"en","name":"my_auth_template","quality_score":{"score":"UNKNOWN","date":1769845963},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1424476949274088","category":"MARKETING","components":[{"type":"HEADER","format":"IMAGE","example":{"header_handle":["https://scontent.whatsapp.net/v/t61.29466-34/546455382_1424476952607421_4798931525305879199_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=Fqe2-F15P5cQ7kNvwEhMPKr&_nc_oc=AdlEiJ29qwVtkRon5kVFXfklNWdIL7ctfQ-qNpTu8S7tru_0T9X9EJpodAsU8l_GrhY&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&_nc_tpa=Q5bMBQElnIQXtX2WY7pAtBz7nv36ZZfZ_1CdnDL4ceJyIQCh0WA6dWBvn6BJsa-sSTxvM1Egtmy0qInP&oh=01_Q5Aa3wH-KC8ZIFYXdPMwoEYWCR-zKll5Wb-iFKZW9JIz6YSeSQ&oe=69B1720F"]}},{"type":"BODY","text":"Good news, {{1}}! Use code {{2}} to get 25% off on all plans!","example":{"body_text":[["Preeti","PR25"]]}},{"type":"LIMITED_TIME_OFFER","limited_time_offer":{"text":"Expiring {{1}}!","has_expiration":false}},{"type":"BUTTONS","buttons":[{"type":"COPY_CODE","text":"Copy offer code","example":["CARIBE25"]},{"type":"URL","text":"Book now!","url":"https://aisensy.com/offers?code={{1}}","example":["https://aisensy.com/offers?code=n3mtql"]}]}],"language":"en","name":"limited_time_offer_tem_2","quality_score":{"score":"UNKNOWN","date":1769845730},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1398730445602939","category":"MARKETING","components":[{"type":"BODY","text":"Hello dear Mr. {{1}},to resolve your issue please connect with us","example":{"body_text":[["Saurabh"]]}},{"type":"BUTTONS","buttons":[{"type":"PHONE_NUMBER","text":"Call Us","phone_number":"+917889379345"},{"type":"URL","text":"Connect on web","url":"https://yoursite.com/{{1}}","example":["https://www.yoursite.com/dynamic-url-example"]},{"type":"QUICK_REPLY","text":"Renew Membership"},{"type":"QUICK_REPLY","text":"Cancel Membership"}]}],"language":"en","name":"multi_button_template","quality_score":{"score":"UNKNOWN","date":1769845729},"rejected_reason":"NONE","status":"APPROVED"},{"id":"25847459641586526","category":"MARKETING","components":[{"type":"BODY","text":"My first flow template!"},{"type":"BUTTONS","buttons":[{"type":"FLOW","text":"Open flow!","flow_id":1354795268451905,"flow_action":"NAVIGATE","navigate_screen":"DEMO_SCREEN"}]}],"language":"en","name":"flow_template","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"2285632275274849","category":"MARKETING","components":[{"type":"BODY","text":"Summer is here, and we have the freshest produce around! Use code {{1}} to get {{2}} off your next order.","example":{"body_text":[["15OFF","15%"]]}},{"type":"CAROUSEL","cards":[{"components":[{"type":"HEADER","format":"IMAGE","example":{"header_handle":["https://scontent.whatsapp.net/v/t61.29466-34/605485670_926193569837399_8492497490336299214_n.jpg?ccb=1-7&_nc_sid=a80384&_nc_ohc=nUgGOESFcCIQ7kNvwHUjEhd&_nc_oc=AdkftoAYiC8wV4tDCB_uGY3BvzS16c0kgwY0vK2FFSK23n38lLnwaEGd2pK7SKyMTbE&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&oh=01_Q5Aa3wE4gOwa0VE6uvXEWHB1wDNOzElqqAHorKPnZH6b37LAIA&oe=69B18986"]}},{"type":"BODY","text":"Rare lemons for unique cocktails. Use code {{1}} to get {{2}} off all produce.","example":{"body_text":[["15OFF","15%"]]}},{"type":"BUTTONS","buttons":[{"type":"QUICK_REPLY","text":"Get Lemons"},{"type":"URL","text":"Buy now","url":"https://www.luckyshrub.com/shop?promo{{1}}","example":["https://www.luckyshrub.com/shop?promo=exotic_produce_2023"]}]}]},{"components":[{"type":"HEADER","format":"IMAGE","example":{"header_handle":["https://scontent.whatsapp.net/v/t61.29466-34/550681503_1446334436824004_5079328464059744375_n.jpg?ccb=1-7&_nc_sid=a80384&_nc_ohc=rDOE8ygPsMAQ7kNvwHMFwad&_nc_oc=AdkUclSgkhQ2rZArfjLBPi9nkR0b2slVBP1IxM8G49iRjUF_K4EOlBoWxAOitXgkAZw&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&oh=01_Q5Aa3wF_CEI4GtR2G5SiPD7U3pGhTgsE0iS7wWJonFKDBM0XXg&oe=69B1A01F"]}},{"type":"BODY","text":"Exotic fruit for unique cocktails! Use code {{1}} to get {{2}} off all exotic produce.","example":{"body_text":[["20OFFEXOTIC","20%"]]}},{"type":"BUTTONS","buttons":[{"type":"QUICK_REPLY","text":"Get Lemons"},{"type":"URL","text":"Buy now","url":"https://www.luckyshrub.com/shop?promo{{1}}","example":["https://www.luckyshrub.com/shop?promo=exotic_produce_2023"]}]}]}]}],"language":"en","name":"summer_carousel_promo_2023_7","quality_score":{"score":"UNKNOWN","date":1769855194},"rejected_reason":"NONE","status":"APPROVED"},{"id":"858447980512648","category":"MARKETING","components":[{"type":"HEADER","format":"DOCUMENT","example":{"header_handle":["https://scontent.whatsapp.net/v/t61.29466-34/534425640_858447983845981_1478711006324866501_n.pdf?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=cu61cwbWpdIQ7kNvwE_L7wF&_nc_oc=AdkcjpenpaBz9mCgVKO0s3YrH1Fw9WaWzi-SNL3-eW8fd_4tYSmYiiAiOvoaq1EUssY&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&_nc_tpa=Q5bMBQHFPbsQQ_Cokt2nPhIKuxXKygAwUDjlaG8LNiAZLNHlzT-jDvti1jpd-VZorduXSGtVh8kpGCs7&oh=01_Q5Aa3wEq2P2LN8P2RhUcYm6dmVkZveRU3RDJvaao3oFS3NDSRA&oe=69B18142"]}},{"type":"BODY","text":"Hello dear Mr. {{1}}, please download the available book list from below:","example":{"body_text":[["Virat"]]}},{"type":"FOOTER","text":"Reach out to us at 12/1 ABC"},{"type":"BUTTONS","buttons":[{"type":"PHONE_NUMBER","text":"Contact Us","phone_number":"+917089379345"},{"type":"URL","text":"Visit Us","url":"https://yoursite.com/"}]}],"language":"en","name":"books_list","quality_score":{"score":"UNKNOWN","date":1769845009},"rejected_reason":"NONE","status":"APPROVED"},{"id":"2041277196439130","category":"MARKETING","components":[{"type":"BODY","text":"Hello {{1}}, thank you for participating in our research study. Your survey is now ready and will take approximately {{2}} minutes to complete. Your responses are confidential and will help us improve our services. Please complete the survey by {{3}} to ensure your feedback is included.","example":{"body_text":[["Dr. Michael Chen","15","February 15, 2026"]]}},{"type":"FOOTER","text":"Your privacy is important to us"},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Start Survey","url":"https://aisensy.com/survey/{{1}}","example":["SRV-2026-001"]}]}],"language":"en","name":"survey_invitation","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1793819844618345","category":"UTILITY","components":[{"type":"HEADER","format":"TEXT","text":"Order Confirmed"},{"type":"BODY","text":"Hello {{1}},\\\\n\\\\nThank you for your order! Your order number {{2}} has been successfully confirmed and is being processed.\\\\n\\\\nWe will notify you once your package is shipped. Expected delivery date is {{3}}.\\\\n\\\\nIf you have any questions, please feel free to contact our support team.","example":{"body_text":[["John Doe","ORD-12345","February 5, 2026"]]}},{"type":"FOOTER","text":"Thank you for shopping with us"},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Track Order","url":"https://aisensy.com/track/{{1}}","example":["ORD-12345"]},{"type":"PHONE_NUMBER","text":"Call Support","phone_number":"+919177604610"}]}],"language":"en","name":"order_confirmation","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1596477194723808","category":"MARKETING","components":[{"type":"HEADER","format":"IMAGE","example":{"header_handle":["https://scontent.whatsapp.net/v/t61.29466-34/550848305_1596477201390474_1534971816815674440_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=MJbcG5uFMEoQ7kNvwEiNTfG&_nc_oc=AdlEse-wzTzsRG-JvNg9U4ZxS7JSwZplJ58iEtwczY1yQrx1BrNEQM32XKDw9JtofjI&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&_nc_tpa=Q5bMBQEh_MlqgWGgpDQTb4dBFCEwrzqPCDZkhEjA6d1AlAC-0dr0cviQD8li15IfgmBeqmS6NscNs1o6&oh=01_Q5Aa3wFtvJtwl-VgbDC9T4d64f-rjPIoGfJI7Cu65SIWdvq36w&oe=69B17DC8"]}},{"type":"BODY","text":"Your physics course {{1}}, is now available in preview!","example":{"body_text":[["Gravity"]]}},{"type":"FOOTER","text":"Retry if this fails"},{"type":"BUTTONS","buttons":[{"type":"PHONE_NUMBER","text":"Call Now","phone_number":"+918861832522"},{"type":"URL","text":"Visit","url":"https://aisensy.com/"}]}],"language":"en","name":"physics_course_preview","quality_score":{"score":"UNKNOWN","date":1769834225},"rejected_reason":"NONE","status":"APPROVED"},{"id":"2649029682146901","category":"UTILITY","components":[{"type":"BODY","text":"Hi {{1}}, your order {{2}} has been confirmed! It will be delivered by {{3}}. Total amount is {{4}}. Thank you for shopping with us.","example":{"body_text":[["Rahul","ORD12345","Feb 5, 2026","Rs 2,499"]]}},{"type":"FOOTER","text":"We appreciate your business"},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Track Order","url":"https://yourstore.com/track/{{1}}","example":["https://yourstore.com/track/ORD12345"]},{"type":"PHONE_NUMBER","text":"Contact Support","phone_number":"+918861832522"}]}],"language":"en","name":"order_confirmation_v1","quality_score":{"score":"UNKNOWN","date":1769753837},"rejected_reason":"NONE","status":"APPROVED"},{"id":"626969773544543","category":"UTILITY","components":[{"type":"BODY","text":"\U0001f44b Hello {{1}},\\\\n\\\\nThank you for choosing Daily Grubs! Start enjoying fresh, homemade meals delivered to your door \U0001f957\U0001f35b\u2764\ufe0f.\\\\n\\\\n\U0001f680 Click below to view your menu or place an order","example":{"body_text":[["arun"]]}},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Explore Meals","url":"https://dailygrubs.com/"}]}],"language":"en","name":"website_redirect_qw","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"NONE","status":"APPROVED"},{"id":"1177707917265485","category":"UTILITY","components":[{"type":"BODY","text":"Dear {{1}}, Welcome to Daily Grubs! \U0001f37d\ufe0f\u2728\\\\n\\\\n\U0001f44b Enjoy fresh, homemade meals made with care. \U0001f957\U0001f35b\u2764\ufe0f\\\\n\\\\nWe\u2019re here to bring you tasty and convenient meals every day. \U0001f60a","example":{"body_text":[["arun"]]}},{"type":"BUTTONS","buttons":[{"type":"URL","text":"click here","url":"https://dailygrubs.com/"}]}],"language":"en","name":"customer_welcome","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INCORRECT_CATEGORY","status":"REJECTED"},{"id":"540229499095178","category":"UTILITY","components":[{"type":"BODY","text":"\U0001f31f Hello {{1}}, Welcome to Daily Grubs! \U0001f37d\ufe0f\u2728\\\\n\\\\n\U0001f44b Enjoy fresh, homemade meals made with care. \U0001f957\U0001f35b\u2764\ufe0f\\\\n\\\\n\U0001f680 Click Order Now to explore our menu and place your order.\\\\n\\\\nWe\u2019re here to bring you tasty and convenient meals every day. \U0001f60a","example":{"body_text":[["Sivakumaran SK"]]}},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Order Now","url":"https://dailygrubs.com/"}]}],"language":"en","name":"website_redirect_utility1","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INCORRECT_CATEGORY","status":"REJECTED"},{"id":"1000838201474513","category":"UTILITY","components":[{"type":"BODY","text":"\U0001f31f Dear {{1}}! \U0001f37d\ufe0f\u2728\\\\n\\\\n\U0001f44b Hello! Enjoy the goodness of fresh, homemade meals made with care. \U0001f957\U0001f35b\u2764\ufe0f\\\\n\\\\n\U0001f680 Order now and enjoy tasty food delivered to your door.\\\\n\\\\nAt Daily Grubs, we\u2019re here to bring you fresh, simple, and delicious meals every day. \U0001f60a","example":{"body_text":[["Sivakumaran SK"]]}},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Order Now","url":"https://dailygrubs.com/"}]}],"language":"en","name":"website_redirect_utility","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INCORRECT_CATEGORY","status":"REJECTED"},{"id":"1191892512558780","category":"UTILITY","components":[{"type":"BODY","text":"\U0001f31f Welcome to Daily Grubs! \U0001f37d\ufe0f\u2728\\\\n\\\\n\U0001f44b Greetings! Discover the joy of freshly prepared, authentic homemade meals. \U0001f957\U0001f35b\u2764\ufe0f\\\\n\\\\n\U0001f680 Experience effortless meal ordering and savor delicious food delivered straight to your doorstep.\\\\n\\\\nWe\u2019re here to provide you with quality, convenience, and care every day. \U0001f60a"},{"type":"BUTTONS","buttons":[{"type":"URL","text":"Order Now","url":"https://dailygrubs.com/"}]}],"language":"en","name":"website_redirect_u","quality_score":{"score":"UNKNOWN","date":1770657013},"rejected_reason":"INCORRECT_CATEGORY","status":"REJECTED"}],"paging":{"before":"QVFIU1B2ZAlZAhQ1ZACSTlLWk5kRHQ2RHNtS1Y3MF9hRXN3bjdBTF8wZAlZARTVMtcW9DVVp2d0tYT0V1cTlxOXdQUXRWODFKSGFLVHduS2phT0M4V0owWEctSU1R","after":"QVFIU1d6QkRSd1hXa05hVVh2QUhuNWg2ZA1ZACYmlMTW53R051akxJQlR3YzBBWHViOEo2OC1GenFTTUQ0Rm44a3c3NzNZAV3NuR3c3ODdlZAW1PQ1hVS2RLZAHF3"}}}', 'id': 'lc_c6dbd646-e5bb-4d91-a936-d9d4e5723d6f'}]\nINFO     root:whsp_onboarding_agent.py:228 \U0001f4ca PARSED RESULT KEYS: ['success', 'data', 'status', 'message']\nINFO     root:whsp_onboarding_agent.py:229 \U0001f4ca PARSED RESULT: {'success': True, 'data': {'total': 25, 'data': [{'id': '1112713360932531', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_broadcast_7a0ed7d2', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INVALID_FORMAT', 'status': 'REJECTED'}, {'id': '1325270409421511', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_promo_d78df381', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INVALID_FORMAT', 'status': 'REJECTED'}, {'id': '1420107989667079', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_broadcast_fe6968c0', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INVALID_FORMAT', 'status': 'REJECTED'}, {'id': '3402793479867605', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_promo_5d07a347', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INVALID_FORMAT', 'status': 'REJECTED'}, {'id': '1380755430012454', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_broadcast_fb3f0d2f', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INVALID_FORMAT', 'status': 'REJECTED'}, {'id': '2220243888384933', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_broadcast_f3bd2c7d', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1215837534034895', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_promo_b058d7b4', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '2028537724670935', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_broadcast_c4b961f7', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1282243460385787', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_promo_61547967', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '2090123101764967', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, check out our latest offers on Bedzee! Visit us today for exclusive deals.', 'example': {'body_text': [['Customer']]}}], 'language': 'en_US', 'name': 'bedzee_promo_670539ed', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1260203929348523', 'category': 'AUTHENTICATION', 'components': [{'type': 'BODY', 'text': '*{{1}}* is your verification code.', 'add_security_recommendation': False, 'example': {'body_text': [['123456']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'COPY CODE', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code=otp123456']}]}], 'language': 'en', 'name': 'my_auth_template', 'quality_score': {'score': 'UNKNOWN', 'date': 1769845963}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1424476949274088', 'category': 'MARKETING', 'components': [{'type': 'HEADER', 'format': 'IMAGE', 'example': {'header_handle': ['https://scontent.whatsapp.net/v/t61.29466-34/546455382_1424476952607421_4798931525305879199_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=Fqe2-F15P5cQ7kNvwEhMPKr&_nc_oc=AdlEiJ29qwVtkRon5kVFXfklNWdIL7ctfQ-qNpTu8S7tru_0T9X9EJpodAsU8l_GrhY&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&_nc_tpa=Q5bMBQElnIQXtX2WY7pAtBz7nv36ZZfZ_1CdnDL4ceJyIQCh0WA6dWBvn6BJsa-sSTxvM1Egtmy0qInP&oh=01_Q5Aa3wH-KC8ZIFYXdPMwoEYWCR-zKll5Wb-iFKZW9JIz6YSeSQ&oe=69B1720F']}}, {'type': 'BODY', 'text': 'Good news, {{1}}! Use code {{2}} to get 25% off on all plans!', 'example': {'body_text': [['Preeti', 'PR25']]}}, {'type': 'LIMITED_TIME_OFFER', 'limited_time_offer': {'text': 'Expiring {{1}}!', 'has_expiration': False}}, {'type': 'BUTTONS', 'buttons': [{'type': 'COPY_CODE', 'text': 'Copy offer code', 'example': ['CARIBE25']}, {'type': 'URL', 'text': 'Book now!', 'url': 'https://aisensy.com/offers?code={{1}}', 'example': ['https://aisensy.com/offers?code=n3mtql']}]}], 'language': 'en', 'name': 'limited_time_offer_tem_2', 'quality_score': {'score': 'UNKNOWN', 'date': 1769845730}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1398730445602939', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello dear Mr. {{1}},to resolve your issue please connect with us', 'example': {'body_text': [['Saurabh']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'PHONE_NUMBER', 'text': 'Call Us', 'phone_number': '+917889379345'}, {'type': 'URL', 'text': 'Connect on web', 'url': 'https://yoursite.com/{{1}}', 'example': ['https://www.yoursite.com/dynamic-url-example']}, {'type': 'QUICK_REPLY', 'text': 'Renew Membership'}, {'type': 'QUICK_REPLY', 'text': 'Cancel Membership'}]}], 'language': 'en', 'name': 'multi_button_template', 'quality_score': {'score': 'UNKNOWN', 'date': 1769845729}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '25847459641586526', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'My first flow template!'}, {'type': 'BUTTONS', 'buttons': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 1354795268451905, 'flow_action': 'NAVIGATE', 'navigate_screen': 'DEMO_SCREEN'}]}], 'language': 'en', 'name': 'flow_template', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '2285632275274849', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Summer is here, and we have the freshest produce around! Use code {{1}} to get {{2}} off your next order.', 'example': {'body_text': [['15OFF', '15%']]}}, {'type': 'CAROUSEL', 'cards': [{'components': [{'type': 'HEADER', 'format': 'IMAGE', 'example': {'header_handle': ['https://scontent.whatsapp.net/v/t61.29466-34/605485670_926193569837399_8492497490336299214_n.jpg?ccb=1-7&_nc_sid=a80384&_nc_ohc=nUgGOESFcCIQ7kNvwHUjEhd&_nc_oc=AdkftoAYiC8wV4tDCB_uGY3BvzS16c0kgwY0vK2FFSK23n38lLnwaEGd2pK7SKyMTbE&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&oh=01_Q5Aa3wE4gOwa0VE6uvXEWHB1wDNOzElqqAHorKPnZH6b37LAIA&oe=69B18986']}}, {'type': 'BODY', 'text': 'Rare lemons for unique cocktails. Use code {{1}} to get {{2}} off all produce.', 'example': {'body_text': [['15OFF', '15%']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'QUICK_REPLY', 'text': 'Get Lemons'}, {'type': 'URL', 'text': 'Buy now', 'url': 'https://www.luckyshrub.com/shop?promo{{1}}', 'example': ['https://www.luckyshrub.com/shop?promo=exotic_produce_2023']}]}]}, {'components': [{'type': 'HEADER', 'format': 'IMAGE', 'example': {'header_handle': ['https://scontent.whatsapp.net/v/t61.29466-34/550681503_1446334436824004_5079328464059744375_n.jpg?ccb=1-7&_nc_sid=a80384&_nc_ohc=rDOE8ygPsMAQ7kNvwHMFwad&_nc_oc=AdkUclSgkhQ2rZArfjLBPi9nkR0b2slVBP1IxM8G49iRjUF_K4EOlBoWxAOitXgkAZw&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&oh=01_Q5Aa3wF_CEI4GtR2G5SiPD7U3pGhTgsE0iS7wWJonFKDBM0XXg&oe=69B1A01F']}}, {'type': 'BODY', 'text': 'Exotic fruit for unique cocktails! Use code {{1}} to get {{2}} off all exotic produce.', 'example': {'body_text': [['20OFFEXOTIC', '20%']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'QUICK_REPLY', 'text': 'Get Lemons'}, {'type': 'URL', 'text': 'Buy now', 'url': 'https://www.luckyshrub.com/shop?promo{{1}}', 'example': ['https://www.luckyshrub.com/shop?promo=exotic_produce_2023']}]}]}]}], 'language': 'en', 'name': 'summer_carousel_promo_2023_7', 'quality_score': {'score': 'UNKNOWN', 'date': 1769855194}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '858447980512648', 'category': 'MARKETING', 'components': [{'type': 'HEADER', 'format': 'DOCUMENT', 'example': {'header_handle': ['https://scontent.whatsapp.net/v/t61.29466-34/534425640_858447983845981_1478711006324866501_n.pdf?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=cu61cwbWpdIQ7kNvwE_L7wF&_nc_oc=AdkcjpenpaBz9mCgVKO0s3YrH1Fw9WaWzi-SNL3-eW8fd_4tYSmYiiAiOvoaq1EUssY&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&_nc_tpa=Q5bMBQHFPbsQQ_Cokt2nPhIKuxXKygAwUDjlaG8LNiAZLNHlzT-jDvti1jpd-VZorduXSGtVh8kpGCs7&oh=01_Q5Aa3wEq2P2LN8P2RhUcYm6dmVkZveRU3RDJvaao3oFS3NDSRA&oe=69B18142']}}, {'type': 'BODY', 'text': 'Hello dear Mr. {{1}}, please download the available book list from below:', 'example': {'body_text': [['Virat']]}}, {'type': 'FOOTER', 'text': 'Reach out to us at 12/1 ABC'}, {'type': 'BUTTONS', 'buttons': [{'type': 'PHONE_NUMBER', 'text': 'Contact Us', 'phone_number': '+917089379345'}, {'type': 'URL', 'text': 'Visit Us', 'url': 'https://yoursite.com/'}]}], 'language': 'en', 'name': 'books_list', 'quality_score': {'score': 'UNKNOWN', 'date': 1769845009}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '2041277196439130', 'category': 'MARKETING', 'components': [{'type': 'BODY', 'text': 'Hello {{1}}, thank you for participating in our research study. Your survey is now ready and will take approximately {{2}} minutes to complete. Your responses are confidential and will help us improve our services. Please complete the survey by {{3}} to ensure your feedback is included.', 'example': {'body_text': [['Dr. Michael Chen', '15', 'February 15, 2026']]}}, {'type': 'FOOTER', 'text': 'Your privacy is important to us'}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Start Survey', 'url': 'https://aisensy.com/survey/{{1}}', 'example': ['SRV-2026-001']}]}], 'language': 'en', 'name': 'survey_invitation', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1793819844618345', 'category': 'UTILITY', 'components': [{'type': 'HEADER', 'format': 'TEXT', 'text': 'Order Confirmed'}, {'type': 'BODY', 'text': 'Hello {{1}},\\n\\nThank you for your order! Your order number {{2}} has been successfully confirmed and is being processed.\\n\\nWe will notify you once your package is shipped. Expected delivery date is {{3}}.\\n\\nIf you have any questions, please feel free to contact our support team.', 'example': {'body_text': [['John Doe', 'ORD-12345', 'February 5, 2026']]}}, {'type': 'FOOTER', 'text': 'Thank you for shopping with us'}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Track Order', 'url': 'https://aisensy.com/track/{{1}}', 'example': ['ORD-12345']}, {'type': 'PHONE_NUMBER', 'text': 'Call Support', 'phone_number': '+919177604610'}]}], 'language': 'en', 'name': 'order_confirmation', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1596477194723808', 'category': 'MARKETING', 'components': [{'type': 'HEADER', 'format': 'IMAGE', 'example': {'header_handle': ['https://scontent.whatsapp.net/v/t61.29466-34/550848305_1596477201390474_1534971816815674440_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=MJbcG5uFMEoQ7kNvwEiNTfG&_nc_oc=AdlEse-wzTzsRG-JvNg9U4ZxS7JSwZplJ58iEtwczY1yQrx1BrNEQM32XKDw9JtofjI&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=vPaH19sJ9rFq5C6VxvGSqQ&_nc_tpa=Q5bMBQEh_MlqgWGgpDQTb4dBFCEwrzqPCDZkhEjA6d1AlAC-0dr0cviQD8li15IfgmBeqmS6NscNs1o6&oh=01_Q5Aa3wFtvJtwl-VgbDC9T4d64f-rjPIoGfJI7Cu65SIWdvq36w&oe=69B17DC8']}}, {'type': 'BODY', 'text': 'Your physics course {{1}}, is now available in preview!', 'example': {'body_text': [['Gravity']]}}, {'type': 'FOOTER', 'text': 'Retry if this fails'}, {'type': 'BUTTONS', 'buttons': [{'type': 'PHONE_NUMBER', 'text': 'Call Now', 'phone_number': '+918861832522'}, {'type': 'URL', 'text': 'Visit', 'url': 'https://aisensy.com/'}]}], 'language': 'en', 'name': 'physics_course_preview', 'quality_score': {'score': 'UNKNOWN', 'date': 1769834225}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '2649029682146901', 'category': 'UTILITY', 'components': [{'type': 'BODY', 'text': 'Hi {{1}}, your order {{2}} has been confirmed! It will be delivered by {{3}}. Total amount is {{4}}. Thank you for shopping with us.', 'example': {'body_text': [['Rahul', 'ORD12345', 'Feb 5, 2026', 'Rs 2,499']]}}, {'type': 'FOOTER', 'text': 'We appreciate your business'}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Track Order', 'url': 'https://yourstore.com/track/{{1}}', 'example': ['https://yourstore.com/track/ORD12345']}, {'type': 'PHONE_NUMBER', 'text': 'Contact Support', 'phone_number': '+918861832522'}]}], 'language': 'en', 'name': 'order_confirmation_v1', 'quality_score': {'score': 'UNKNOWN', 'date': 1769753837}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '626969773544543', 'category': 'UTILITY', 'components': [{'type': 'BODY', 'text': '\U0001f44b Hello {{1}},\\n\\nThank you for choosing Daily Grubs! Start enjoying fresh, homemade meals delivered to your door \U0001f957\U0001f35b\u2764\ufe0f.\\n\\n\U0001f680 Click below to view your menu or place an order', 'example': {'body_text': [['arun']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Explore Meals', 'url': 'https://dailygrubs.com/'}]}], 'language': 'en', 'name': 'website_redirect_qw', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'NONE', 'status': 'APPROVED'}, {'id': '1177707917265485', 'category': 'UTILITY', 'components': [{'type': 'BODY', 'text': 'Dear {{1}}, Welcome to Daily Grubs! \U0001f37d\ufe0f\u2728\\n\\n\U0001f44b Enjoy fresh, homemade meals made with care. \U0001f957\U0001f35b\u2764\ufe0f\\n\\nWe\u2019re here to bring you tasty and convenient meals every day. \U0001f60a', 'example': {'body_text': [['arun']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'click here', 'url': 'https://dailygrubs.com/'}]}], 'language': 'en', 'name': 'customer_welcome', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INCORRECT_CATEGORY', 'status': 'REJECTED'}, {'id': '540229499095178', 'category': 'UTILITY', 'components': [{'type': 'BODY', 'text': '\U0001f31f Hello {{1}}, Welcome to Daily Grubs! \U0001f37d\ufe0f\u2728\\n\\n\U0001f44b Enjoy fresh, homemade meals made with care. \U0001f957\U0001f35b\u2764\ufe0f\\n\\n\U0001f680 Click Order Now to explore our menu and place your order.\\n\\nWe\u2019re here to bring you tasty and convenient meals every day. \U0001f60a', 'example': {'body_text': [['Sivakumaran SK']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Order Now', 'url': 'https://dailygrubs.com/'}]}], 'language': 'en', 'name': 'website_redirect_utility1', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INCORRECT_CATEGORY', 'status': 'REJECTED'}, {'id': '1000838201474513', 'category': 'UTILITY', 'components': [{'type': 'BODY', 'text': '\U0001f31f Dear {{1}}! \U0001f37d\ufe0f\u2728\\n\\n\U0001f44b Hello! Enjoy the goodness of fresh, homemade meals made with care. \U0001f957\U0001f35b\u2764\ufe0f\\n\\n\U0001f680 Order now and enjoy tasty food delivered to your door.\\n\\nAt Daily Grubs, we\u2019re here to bring you fresh, simple, and delicious meals every day. \U0001f60a', 'example': {'body_text': [['Sivakumaran SK']]}}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Order Now', 'url': 'https://dailygrubs.com/'}]}], 'language': 'en', 'name': 'website_redirect_utility', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INCORRECT_CATEGORY', 'status': 'REJECTED'}, {'id': '1191892512558780', 'category': 'UTILITY', 'components': [{'type': 'BODY', 'text': '\U0001f31f Welcome to Daily Grubs! \U0001f37d\ufe0f\u2728\\n\\n\U0001f44b Greetings! Discover the joy of freshly prepared, authentic homemade meals. \U0001f957\U0001f35b\u2764\ufe0f\\n\\n\U0001f680 Experience effortless meal ordering and savor delicious food delivered straight to your doorstep.\\n\\nWe\u2019re here to provide you with quality, convenience, and care every day. \U0001f60a'}, {'type': 'BUTTONS', 'buttons': [{'type': 'URL', 'text': 'Order Now', 'url': 'https://dailygrubs.com/'}]}], 'language': 'en', 'name': 'website_redirect_u', 'quality_score': {'score': 'UNKNOWN', 'date': 1770657013}, 'rejected_reason': 'INCORRECT_CATEGORY', 'status': 'REJECTED'}], 'paging': {'before': 'QVFIU1B2ZAlZAhQ1ZACSTlLWk5kRHQ2RHNtS1Y3MF9hRXN3bjdBTF8wZAlZARTVMtcW9DVVp2d0tYT0V1cTlxOXdQUXRWODFKSGFLVHduS2phT0M4V0owWEctSU1R', 'after': 'QVFIU1d6QkRSd1hXa05hVVh2QUhuNWg2ZA1ZACYmlMTW53R051akxJQlR3YzBBWHViOEo2OC1GenFTTUQ0Rm44a3c3NzNZAV3NuR3c3ODdlZAW1PQ1hVS2RLZAHF3'}}, 'status': 'success', 'message': 'Operation completed successfully'}\nINFO     httpx:_client.py:1740 HTTP Request: DELETE http://127.0.0.1:9002/mcp "HTTP/1.1 200 OK"\nINFO     root:broadcast_job_repo.py:176 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: template set to bedzee_broadcast_f3bd2c7d (APPROVED)\nINFO     root:broadcast_job_repo.py:129 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: CONTENT_CREATION -> READY_TO_SEND\nINFO     root:broadcast_job_repo.py:129 Broadcast real-broadcast-aa922c9f-f12a-4629-a4b8-cbb387a57408: READY_TO_SEND -> SENDING
+============================== warnings summary ===============================
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:50: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow(),
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:51: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    updated_at=datetime.utcnow(),
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:121: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.updated_at = datetime.utcnow()
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:150: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.updated_at = datetime.utcnow()
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\processed_contact_repo.py:53: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow(),
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:194: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.updated_at = datetime.utcnow()
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:211: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.updated_at = datetime.utcnow()
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Python313\Lib\contextlib.py:109: DeprecationWarning: Use `streamable_http_client` instead.
+    self.gen = func(*args, **kwds)
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\template_creation_repo.py:66: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    submitted_at=datetime.utcnow(),
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\template_creation_repo.py:67: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow(),
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\template_creation_repo.py:68: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    updated_at=datetime.utcnow(),
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\template_creation_repo.py:178: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.updated_at = datetime.utcnow()
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:174: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.updated_at = datetime.utcnow()
+
+tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+  C:\Girish\Fundamental_Projects\ActionAi\Agent_steer_backend\BoardingMcp-Server\app\database\postgresql\postgresql_repositories\broadcast_job_repo.py:124: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record.started_sending_at = datetime.utcnow()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/test_broadcasting.py::TestRealMCPBroadcast::test_step5_full_broadcast_with_mcp_sending
+======================= 1 failed, 25 warnings in 10.49s =======================

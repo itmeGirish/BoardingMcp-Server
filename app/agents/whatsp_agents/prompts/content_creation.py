@@ -71,17 +71,26 @@ For IMAGE/VIDEO/DOCUMENT headers:
 ```
 
 ═══════════════════════════════════════════════════════════
-STEP 3: CHECK APPROVAL STATUS
+STEP 3: WAIT FOR TEMPLATE APPROVAL
 ═══════════════════════════════════════════════════════════
 
-- Call check_template_status with user_id and template_id
-- This calls get_template_by_id MCP tool AND updates our DB status
+After submitting a new template, you MUST wait for WhatsApp to approve it
+before proceeding. Do NOT skip this step.
+
+- Call wait_for_template_approval with user_id and template_id
+- This polls get_template_by_id MCP tool every 10 seconds (up to 5 minutes)
+- Automatically syncs the latest status to our local DB after each poll
+- Returns when template reaches a final status: APPROVED, REJECTED, PAUSED, DISABLED
+
+IMPORTANT: WhatsApp MARKETING templates are typically approved within a few
+minutes, but can take up to 24-48 hours. If the tool times out (still PENDING),
+inform the user and suggest checking back later with check_template_status.
 
 Template Approval Workflow:
 | Status    | Description                  | Next Steps                     |
 |-----------|------------------------------|--------------------------------|
 | DRAFT     | Created, not submitted       | Review and submit              |
-| PENDING   | Submitted to WhatsApp        | Wait 24-48 hours               |
+| PENDING   | Submitted to WhatsApp        | Wait (use wait_for_template_approval) |
 | APPROVED  | Ready to use                 | Use in campaigns               |
 | REJECTED  | Failed review                | Analyze reason, modify, resubmit|
 | PAUSED    | Quality issues detected      | Review and fix                 |
@@ -89,6 +98,9 @@ Template Approval Workflow:
 
 If APPROVED: Call select_template_for_broadcast to link to broadcast job
 If REJECTED: Analyze rejection reason and suggest fixes (see auto-fix rules below)
+If TIMEOUT (still PENDING): Tell user to wait and check back later
+
+For a quick one-time status check (without waiting), use check_template_status instead.
 
 ═══════════════════════════════════════════════════════════
 STEP 4: REJECTION ANALYSIS & AUTO-FIX

@@ -14,6 +14,7 @@ from .compliance_agent import compliance_graph
 from .segmentation_agent import segmentation_graph
 from .content_creation_agent import content_creation_graph
 from .delivery_agent import delivery_graph
+from .analytics_agent import analytics_graph
 
 
 def _create_call_model_node_with_dependencies():
@@ -45,6 +46,7 @@ def _assemble_graph():
         "segmentation": segmentation_graph,
         "content_creation": content_creation_graph,
         "delivery": delivery_graph,
+        "analytics": analytics_graph,
     }
 
     return create_graph(

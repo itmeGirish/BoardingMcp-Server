@@ -143,10 +143,18 @@ STEP 9 - PAUSED:
 - If resume: Call update_broadcast_phase to SENDING, then call send_broadcast_messages
 - If cancel: Call update_broadcast_phase to CANCELLED
 
-STEP 10 - COMPLETED:
-- Report final statistics: total sent, delivered, failed
-- Call get_broadcast_analytics for delivery metrics
-- Offer to view detailed report
+STEP 10 - COMPLETED (Handled by Analytics & Optimization Agent):
+- Call delegate_to_analytics with user_id, broadcast_job_id, and project_id
+- The Analytics Agent handles post-delivery analysis:
+  1. Broadcast delivery report (sent, delivered, failed, read rates, duration)
+  2. WABA-level analytics via MCP (message trends, engagement by time range)
+  3. Messaging health & quality score monitoring via MCP (GREEN/YELLOW/RED alerts)
+  4. Broadcast history comparison across campaigns
+  5. AI-powered optimization recommendations (delivery rate, quality, engagement)
+
+After Analytics Agent completes:
+- Present the analytics report and recommendations to user
+- Offer to view detailed breakdown or run specific reports
 
 STEP 11 - FAILED / CANCELLED:
 - Report what happened clearly
@@ -237,6 +245,18 @@ When waiting for template approval:
 2. Typical review time: minutes to 24 hours
 3. User can poll status with check_template_approval_status
 4. If rejected, explain common rejection reasons and suggest fixes
+"""
+
+ANALYTICS_INSTRUCTIONS = """
+Analytics & optimization is handled by the dedicated Analytics Agent which:
+
+1. DELIVERY REPORT: Pulls broadcast-specific metrics (sent, delivered, failed, read rates, duration)
+2. WABA ANALYTICS: Fetches account-wide analytics via MCP (today, 7d, 30d, 90d with DAY/HOUR/MONTH granularity)
+3. HEALTH MONITORING: Checks quality score (GREEN/YELLOW/RED), messaging tier, account status via MCP
+4. BROADCAST HISTORY: Compares performance across campaigns with average delivery rate
+5. OPTIMIZATION: Generates actionable recommendations for delivery rate, quality, engagement, and tier
+
+NOTE: Cost tracking is not available yet (future enhancement).
 """
 
 SENDING_INSTRUCTIONS = """

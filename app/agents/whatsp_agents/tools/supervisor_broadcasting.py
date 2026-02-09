@@ -242,7 +242,7 @@ def _run_check_compliance_sync(user_id: str, broadcast_job_id: str):
     from app.database.postgresql.postgresql_repositories.broadcast_job_repo import BroadcastJobRepository
 
     # Call MCP to check messaging health
-    health_result = _call_direct_api_mcp("get_messaging_health_status", {"user_id": user_id})
+    health_result = _call_direct_api_mcp("get_messaging_health_status", {"node_id": user_id})
 
     compliance_status = "passed"
     details = []
@@ -1002,6 +1002,38 @@ def delegate_to_delivery(user_id: str, broadcast_job_id: str, project_id: str) -
     }, ensure_ascii=False)
 
 
+@tool
+def delegate_to_analytics(user_id: str, broadcast_job_id: str, project_id: str) -> str:
+    """
+    Delegate post-delivery analytics to the Analytics & Optimization Agent.
+
+    Call this after broadcast COMPLETED or when user requests analytics.
+    The Analytics Agent will handle:
+    - Broadcast delivery report (sent, delivered, failed, read rates)
+    - WABA-level analytics via MCP (message trends, engagement)
+    - Messaging health & quality score monitoring via MCP
+    - Broadcast history comparison across campaigns
+    - AI-powered optimization recommendations
+
+    Args:
+        user_id: User's unique identifier
+        broadcast_job_id: The broadcast job ID
+        project_id: Project ID for the broadcast
+
+    Returns:
+        JSON string confirming delegation to Analytics Agent
+    """
+    logger.info("[BROADCAST] Delegating to Analytics Agent for job: %s", broadcast_job_id)
+    return json.dumps({
+        "status": "delegated",
+        "agent": "analytics",
+        "user_id": user_id,
+        "broadcast_job_id": broadcast_job_id,
+        "project_id": project_id,
+        "message": "Handing off to Analytics Agent for delivery metrics, health monitoring, and optimization recommendations."
+    }, ensure_ascii=False)
+
+
 # ============================================
 # TOOLS EXPORTS
 # ============================================
@@ -1025,6 +1057,7 @@ BACKEND_TOOLS = [
     delegate_to_segmentation,
     delegate_to_content_creation,
     delegate_to_delivery,
+    delegate_to_analytics,
 ]
 
 BACKEND_TOOL_NAMES = {tool.name for tool in BACKEND_TOOLS}
@@ -1036,4 +1069,5 @@ DELEGATION_TOOL_MAP = {
     "delegate_to_segmentation": "segmentation",
     "delegate_to_content_creation": "content_creation",
     "delegate_to_delivery": "delivery",
+    "delegate_to_analytics": "analytics",
 }

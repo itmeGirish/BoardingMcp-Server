@@ -391,6 +391,123 @@ def check_template_status(user_id: str, template_id: str) -> str:
 
 
 # ============================================
+# TOOL 4b: WAIT FOR TEMPLATE APPROVAL (POLL)
+# ============================================
+
+def _run_wait_for_template_approval_sync(
+    user_id: str, template_id: str, max_polls: int = 30, poll_interval: int = 10
+):
+    """Poll template status via MCP until APPROVED, REJECTED, or timeout."""
+    import time
+
+    from app.database.postgresql.postgresql_connection import get_session
+    from app.database.postgresql.postgresql_repositories.template_creation_repo import TemplateCreationRepository
+
+    final_statuses = {"APPROVED", "REJECTED", "PAUSED", "DISABLED"}
+
+    for attempt in range(1, max_polls + 1):
+        # Check status via MCP
+        mcp_result = _call_direct_api_mcp("get_template_by_id", {
+            "user_id": user_id, "template_id": template_id
+        })
+
+        api_status = "UNKNOWN"
+        rejected_reason = None
+
+        if isinstance(mcp_result, dict) and mcp_result.get("success"):
+            api_data = mcp_result.get("data", {})
+            if isinstance(api_data, dict):
+                api_status = api_data.get("status", "UNKNOWN").upper()
+                rejected_reason = api_data.get("rejected_reason")
+
+        # Sync to local DB
+        with get_session() as session:
+            repo = TemplateCreationRepository(session=session)
+            repo.update_status(
+                template_id, api_status,
+                rejected_reason=str(rejected_reason) if rejected_reason else None
+            )
+
+        logger.info(
+            "[CONTENT] wait_for_template_approval: poll %d/%d - template %s status: %s",
+            attempt, max_polls, template_id, api_status
+        )
+
+        if api_status in final_statuses:
+            return {
+                "status": "success",
+                "template_id": template_id,
+                "template_status": api_status,
+                "rejected_reason": rejected_reason,
+                "polls": attempt,
+                "message": (
+                    f"Template {template_id} is now {api_status} after {attempt} poll(s)."
+                    + (f" Rejection reason: {rejected_reason}" if rejected_reason and api_status == "REJECTED" else "")
+                ),
+            }
+
+        # Wait before next poll
+        time.sleep(poll_interval)
+
+    # Timeout
+    return {
+        "status": "timeout",
+        "template_id": template_id,
+        "template_status": api_status,
+        "polls": max_polls,
+        "message": (
+            f"Template {template_id} still {api_status} after {max_polls} polls "
+            f"({max_polls * poll_interval}s). Template approval can take up to 24-48 hours. "
+            f"Use check_template_status later to re-check."
+        ),
+    }
+
+
+@tool
+def wait_for_template_approval(
+    user_id: str,
+    template_id: str,
+    max_polls: int = 30,
+    poll_interval: int = 10,
+) -> str:
+    """
+    Wait for a WhatsApp template to be approved by polling its status.
+
+    Polls get_template_by_id MCP tool repeatedly until the template reaches
+    a final status (APPROVED, REJECTED, PAUSED, DISABLED) or times out.
+    Syncs status to local DB after each poll.
+
+    Default: polls every 10 seconds for up to 30 attempts (5 minutes).
+    WhatsApp typically approves MARKETING templates within a few minutes,
+    but it can take up to 24-48 hours.
+
+    Args:
+        user_id: User's unique identifier
+        template_id: WhatsApp template ID to monitor
+        max_polls: Maximum number of poll attempts (default: 30)
+        poll_interval: Seconds between polls (default: 10)
+
+    Returns:
+        JSON string with final template status and poll count
+    """
+    logger.info(
+        "[CONTENT] wait_for_template_approval: template=%s, max_polls=%d, interval=%ds",
+        template_id, max_polls, poll_interval
+    )
+    try:
+        future = _executor.submit(
+            _run_wait_for_template_approval_sync,
+            user_id, template_id, max_polls, poll_interval
+        )
+        timeout = (max_polls * poll_interval) + 60  # extra buffer
+        result = future.result(timeout=timeout)
+        return json.dumps(result, ensure_ascii=False)
+    except Exception as e:
+        logger.error("[CONTENT] wait_for_template_approval error: %s", e, exc_info=True)
+        return json.dumps({"error": str(e), "status": "failed"}, ensure_ascii=False)
+
+
+# ============================================
 # TOOL 5: EDIT TEMPLATE
 # ============================================
 
@@ -653,6 +770,7 @@ BACKEND_TOOLS = [
     get_template_detail,
     submit_template,
     check_template_status,
+    wait_for_template_approval,
     edit_template,
     delete_template_by_id,
     delete_template_by_name,
