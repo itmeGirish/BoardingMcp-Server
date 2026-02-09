@@ -322,7 +322,7 @@ TIER_LIMITS = {
 
 def _run_check_account_health_sync(user_id: str, contact_count: int):
     """Check WhatsApp account health and messaging tier via MCP."""
-    health_result = _call_direct_api_mcp("get_messaging_health_status", {"user_id": user_id})
+    health_result = _call_direct_api_mcp("get_messaging_health_status", {"node_id": user_id})
 
     quality_score = "UNKNOWN"
     tier = "UNKNOWN"

@@ -5,6 +5,7 @@ from .compliance import ComplianceAgentState, ComplianceStatus
 from .segmentation import SegmentationAgentState, SegmentationStatus
 from .content_creation import ContentCreationAgentState, ContentCreationStatus
 from .delivery import DeliveryAgentState, DeliveryStatus
+from .analytics import AnalyticsAgentState, AnalyticsStatus
 
 __all__ = [
     "OnboardingAgentState",
@@ -23,4 +24,6 @@ __all__ = [
     "ContentCreationStatus",
     "DeliveryAgentState",
     "DeliveryStatus",
+    "AnalyticsAgentState",
+    "AnalyticsStatus",
 ]

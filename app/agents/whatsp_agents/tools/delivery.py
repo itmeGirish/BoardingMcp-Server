@@ -116,7 +116,7 @@ def _run_prepare_queue_sync(user_id: str, broadcast_job_id: str):
 
     # Get account tier via MCP
     try:
-        health = _call_direct_api_mcp("get_messaging_health_status", {"user_id": user_id})
+        health = _call_direct_api_mcp("get_messaging_health_status", {"node_id": user_id})
         tier = "UNKNOWN"
         if isinstance(health, dict):
             data = health.get("data", health)
