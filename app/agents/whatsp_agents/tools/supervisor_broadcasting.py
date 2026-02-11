@@ -162,12 +162,14 @@ def _run_process_contacts_sync(user_id: str, broadcast_job_id: str, phone_number
     """Validate, normalize, and deduplicate phone numbers."""
     from app.database.postgresql.postgresql_connection import get_session
     from app.database.postgresql.postgresql_repositories.broadcast_job_repo import BroadcastJobRepository
+    from app.database.postgresql.postgresql_repositories.processed_contact_repo import ProcessedContactRepository
 
     valid = []
     invalid = []
     seen = set()
+    processed_contacts = []
 
-    for phone in phone_numbers:
+    for idx, phone in enumerate(phone_numbers):
         phone = str(phone).strip()
         if not phone:
             continue
@@ -177,6 +179,30 @@ def _run_process_contacts_sync(user_id: str, broadcast_job_id: str, phone_number
             if normalized not in seen:
                 valid.append(normalized)
                 seen.add(normalized)
+                # Detect country code from E.164 number
+                country = "IN" if normalized.startswith("+91") else "UNKNOWN"
+                processed_contacts.append({
+                    "phone_e164": normalized,
+                    "name": None,
+                    "email": None,
+                    "country_code": country,
+                    "quality_score": 50,  # Default score for basic validation
+                    "custom_fields": None,
+                    "source_row": idx + 1,
+                    "validation_errors": None,
+                    "is_duplicate": False,
+                    "duplicate_of": None,
+                })
+            else:
+                # Duplicate
+                processed_contacts.append({
+                    "phone_e164": normalized,
+                    "country_code": "IN" if normalized.startswith("+91") else "UNKNOWN",
+                    "quality_score": 0,
+                    "source_row": idx + 1,
+                    "is_duplicate": True,
+                    "duplicate_of": normalized,
+                })
         else:
             invalid.append(phone)
 
@@ -189,6 +215,15 @@ def _run_process_contacts_sync(user_id: str, broadcast_job_id: str, phone_number
             valid=len(valid),
             invalid=len(invalid)
         )
+
+        # Also insert into processed_contacts table for sub-agent tools
+        if processed_contacts:
+            pc_repo = ProcessedContactRepository(session=session)
+            pc_repo.bulk_create(
+                contacts=processed_contacts,
+                broadcast_job_id=broadcast_job_id,
+                user_id=user_id,
+            )
 
     return {
         "status": "success" if len(valid) > 0 else "failed",
@@ -685,23 +720,36 @@ def send_broadcast_messages(user_id: str, broadcast_job_id: str) -> str:
 # STATE MANAGEMENT TOOLS
 # ============================================
 
-def _run_update_phase_sync(broadcast_job_id: str, new_phase: str, error_message: str = None):
+def _run_update_phase_sync(broadcast_job_id: str, new_phase: str, error_message: str = None, scheduled_for: str = None):
     """Update broadcast phase in database."""
+    from datetime import datetime as dt
     from app.database.postgresql.postgresql_connection import get_session
     from app.database.postgresql.postgresql_repositories.broadcast_job_repo import BroadcastJobRepository
 
+    # Parse scheduled_for ISO string to datetime if provided
+    scheduled_dt = None
+    if scheduled_for:
+        try:
+            scheduled_dt = dt.fromisoformat(scheduled_for.replace("Z", "+00:00"))
+        except (ValueError, AttributeError):
+            logger.warning("[BROADCAST] Invalid scheduled_for format: %s", scheduled_for)
+
     with get_session() as session:
         repo = BroadcastJobRepository(session=session)
-        success = repo.update_phase(broadcast_job_id, new_phase, error_message)
+        success = repo.update_phase(broadcast_job_id, new_phase, error_message, scheduled_for=scheduled_dt)
 
         if success:
             job = repo.get_by_id(broadcast_job_id)
-            return {
+            result = {
                 "status": "success",
                 "phase": new_phase,
                 "previous_phase": job.get("previous_phase") if job else None,
                 "message": f"Phase updated to {new_phase}"
             }
+            if new_phase == "SCHEDULED" and job:
+                result["scheduled_for"] = job.get("scheduled_for")
+                result["message"] = f"Broadcast scheduled for {job.get('scheduled_for')}"
+            return result
         else:
             return {
                 "status": "failed",
@@ -713,31 +761,36 @@ def _run_update_phase_sync(broadcast_job_id: str, new_phase: str, error_message:
 def update_broadcast_phase(
     broadcast_job_id: str,
     new_phase: str,
-    error_message: str = None
+    error_message: str = None,
+    scheduled_for: str = None
 ) -> str:
     """
     Update the broadcast phase (state transition).
 
     Validates the transition against allowed state machine transitions.
     Records the previous phase and timestamps for terminal states.
+    When transitioning to SCHEDULED, stores the scheduled send time.
 
     Args:
         broadcast_job_id: The broadcast job ID
         new_phase: Target phase (INITIALIZED, DATA_PROCESSING, COMPLIANCE_CHECK,
                    SEGMENTATION, CONTENT_CREATION, PENDING_APPROVAL, READY_TO_SEND,
-                   SENDING, PAUSED, COMPLETED, FAILED, CANCELLED)
+                   SCHEDULED, SENDING, PAUSED, COMPLETED, FAILED, CANCELLED)
         error_message: Optional error message (used when transitioning to FAILED)
+        scheduled_for: Optional ISO 8601 UTC datetime for SCHEDULED phase
+                       (e.g., "2026-02-11T03:30:00+00:00"). Required when new_phase=SCHEDULED.
 
     Returns:
         JSON string with transition result
     """
-    logger.info("[BROADCAST] update_broadcast_phase: job=%s -> %s", broadcast_job_id, new_phase)
+    logger.info("[BROADCAST] update_broadcast_phase: job=%s -> %s (scheduled_for=%s)", broadcast_job_id, new_phase, scheduled_for)
     try:
         future = _executor.submit(
             _run_update_phase_sync,
             broadcast_job_id=broadcast_job_id,
             new_phase=new_phase,
-            error_message=error_message
+            error_message=error_message,
+            scheduled_for=scheduled_for
         )
         result = future.result(timeout=15)
         return json.dumps(result, ensure_ascii=False)

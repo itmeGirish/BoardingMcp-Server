@@ -263,9 +263,20 @@ def _run_check_time_window_sync(user_id: str, broadcast_job_id: str):
             else:
                 wait_hours = 24 - local_hour + window["start"]
             entry["next_window_in_hours"] = wait_hours
+            # Compute absolute UTC datetime for the next valid window
+            next_window_utc = now_utc + timedelta(hours=wait_hours)
+            # Round to next hour start
+            next_window_utc = next_window_utc.replace(minute=0, second=0, microsecond=0)
+            entry["next_valid_window_utc"] = next_window_utc.isoformat()
             regions_blocked.append(entry)
 
     all_passed = len(regions_blocked) == 0
+
+    # Find the latest next_valid_window across all blocked regions (safe to send for ALL)
+    scheduled_send_utc = None
+    if not all_passed:
+        window_times = [r["next_valid_window_utc"] for r in regions_blocked]
+        scheduled_send_utc = max(window_times)  # Latest window = safe for all regions
 
     return {
         "status": "success",
@@ -273,11 +284,13 @@ def _run_check_time_window_sync(user_id: str, broadcast_job_id: str):
         "regions_ok": regions_ok,
         "regions_blocked": regions_blocked,
         "total_regions": len(country_breakdown),
+        "scheduled_send_utc": scheduled_send_utc,
         "message": (
             f"Time window check passed: All {len(regions_ok)} regions within allowed hours."
             if all_passed else
             f"Time window restriction: {len(regions_blocked)} region(s) outside allowed hours. "
-            f"Blocked regions: {[r['region'] for r in regions_blocked]}."
+            f"Blocked regions: {[r['region'] for r in regions_blocked]}. "
+            f"Next valid send window (UTC): {scheduled_send_utc}."
         ),
     }
 
@@ -328,13 +341,43 @@ def _run_check_account_health_sync(user_id: str, contact_count: int):
     tier = "UNKNOWN"
     tier_limit = 0
     account_status = "unknown"
+    mcp_reachable = True
 
     if isinstance(health_result, dict):
-        data = health_result.get("data", health_result)
-        if isinstance(data, dict):
-            quality_score = data.get("quality_score", data.get("quality_rating", "UNKNOWN"))
-            tier = data.get("messaging_tier", data.get("tier", "UNKNOWN"))
-            account_status = data.get("account_status", data.get("status", "unknown"))
+        # Check if MCP call itself failed (network error, invalid token, etc.)
+        if health_result.get("status") == "failed" or health_result.get("error"):
+            mcp_reachable = False
+            logger.warning(
+                "[COMPLIANCE] Health check MCP unreachable: %s",
+                health_result.get("error", "Unknown error")
+            )
+        else:
+            data = health_result.get("data", health_result)
+            if isinstance(data, dict):
+                quality_score = data.get("quality_score", data.get("quality_rating", "UNKNOWN"))
+                tier = data.get("messaging_tier", data.get("tier", "UNKNOWN"))
+                account_status = data.get("account_status", data.get("status", "unknown"))
+
+    # If MCP was unreachable, soft-pass with warnings instead of blocking
+    if not mcp_reachable:
+        return {
+            "status": "success",
+            "passed": True,
+            "quality_score": "UNKNOWN (API unreachable)",
+            "messaging_tier": "UNKNOWN",
+            "tier_limit": "unknown",
+            "contact_count": contact_count,
+            "account_status": "unknown",
+            "issues": [],
+            "warnings": [
+                "Health check API was unreachable. Proceeding with broadcast.",
+                f"MCP error: {health_result.get('error', 'Unknown')}",
+            ],
+            "message": (
+                "Account health check skipped (API unreachable). "
+                "Proceeding with broadcast - monitor delivery for issues."
+            ),
+        }
 
     # Determine tier limit
     tier_upper = str(tier).upper().replace(" ", "_")
@@ -342,7 +385,10 @@ def _run_check_account_health_sync(user_id: str, contact_count: int):
 
     # Quality check
     quality_ok = quality_score.upper() not in ("LOW", "RED")
-    capacity_ok = contact_count <= tier_limit if tier_limit != float("inf") else True
+    # If tier is UNKNOWN, don't block on capacity
+    capacity_ok = True if tier_limit == 0 else (
+        contact_count <= tier_limit if tier_limit != float("inf") else True
+    )
     account_ok = account_status.lower() not in ("restricted", "flagged", "banned")
 
     all_passed = quality_ok and capacity_ok and account_ok
