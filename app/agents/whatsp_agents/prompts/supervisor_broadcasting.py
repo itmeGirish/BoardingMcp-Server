@@ -20,11 +20,12 @@ BROADCAST STATE MACHINE:
 |-------------------|------------------------------------------|---------------------------------------|
 | INITIALIZED       | Broadcast created, awaiting data upload   | DATA_PROCESSING                       |
 | DATA_PROCESSING   | Contacts being validated and normalized   | COMPLIANCE_CHECK, FAILED              |
-| COMPLIANCE_CHECK  | Verifying opt-ins and consent             | SEGMENTATION, FAILED                  |
+| COMPLIANCE_CHECK  | Verifying opt-ins and consent             | SEGMENTATION, SCHEDULED, FAILED       |
 | SEGMENTATION      | Grouping audience into segments           | CONTENT_CREATION                      |
 | CONTENT_CREATION  | Generating/selecting templates            | PENDING_APPROVAL, READY_TO_SEND       |
 | PENDING_APPROVAL  | Awaiting WhatsApp template approval       | READY_TO_SEND, CONTENT_CREATION       |
 | READY_TO_SEND     | All checks passed, awaiting dispatch      | SENDING, CANCELLED                    |
+| SCHEDULED         | Waiting for valid send window (time hold) | COMPLIANCE_CHECK, CANCELLED, FAILED   |
 | SENDING           | Messages being delivered                  | COMPLETED, PAUSED, FAILED             |
 | PAUSED            | Broadcast temporarily halted              | SENDING, CANCELLED                    |
 | COMPLETED         | All messages processed                    | Terminal                              |
@@ -73,9 +74,22 @@ STEP 3 - COMPLIANCE CHECK (Handled by Compliance Agent):
   3. Time window restrictions: TRAI (India 9AM-9PM), GDPR (EU 8AM-9PM), etc.
   4. Account health: Quality score, messaging tier, capacity check via MCP
 
-After Compliance Agent completes:
-- If ALL checks passed: Call update_broadcast_phase to SEGMENTATION
-- If ANY check failed: Explain which check failed and call update_broadcast_phase to FAILED
+After Compliance Agent completes, read its summary carefully:
+
+- If "COMPLIANCE_RESULT: PASSED": Call update_broadcast_phase to SEGMENTATION
+
+- If "COMPLIANCE_RESULT: SCHEDULE_REQUIRED" (time window restriction only):
+  This is NOT a failure. The broadcast is compliant but outside allowed sending hours.
+  1. Extract the scheduled_send_utc from the compliance summary.
+  2. Call update_broadcast_phase to SCHEDULED with the scheduled_for parameter
+     set to the scheduled_send_utc value (ISO 8601 UTC datetime).
+  3. Tell the user: "Your broadcast passed all compliance checks, but cannot be sent right now
+     due to regional time window restrictions. It has been scheduled for [datetime]."
+  4. STOP HERE. Do NOT proceed to segmentation or any further steps.
+     The broadcast is now in SCHEDULED state and will resume when the time arrives.
+
+- If "COMPLIANCE_RESULT: FAILED" (hard failure - opt-in, suppression, account health):
+  Explain which check failed and call update_broadcast_phase to FAILED
 
 STEP 4 - SEGMENTATION (Handled by Segmentation Agent):
 - Call delegate_to_segmentation with user_id, broadcast_job_id, and project_id
@@ -137,13 +151,23 @@ After Delivery Agent completes:
 - If user requests pause: Call update_broadcast_phase to PAUSED
 - If delivery failed: Call update_broadcast_phase to FAILED
 
-STEP 9 - PAUSED:
-- Broadcast is temporarily halted
+STEP 9 - SCHEDULED (STOP POINT - do NOT continue to segmentation or any other step):
+- Broadcast is waiting for a valid time window (compliance hold, NOT a failure)
+- The scheduled_for datetime is stored in the database
+- Tell the user: "Your broadcast is scheduled for [datetime]. You can cancel at any time."
+- STOP HERE AND WAIT for user input. Do NOT delegate to any sub-agent.
+- If user wants to cancel: Call update_broadcast_phase to CANCELLED
+- When the scheduled time arrives (or user says "send now" during valid hours):
+  Call update_broadcast_phase from SCHEDULED back to COMPLIANCE_CHECK to re-verify,
+  then the flow continues normally through SEGMENTATION -> CONTENT_CREATION -> SENDING.
+
+STEP 10 - PAUSED:
+- Broadcast is temporarily halted during sending
 - Ask user: "Resume sending" or "Cancel broadcast"
 - If resume: Call update_broadcast_phase to SENDING, then call send_broadcast_messages
 - If cancel: Call update_broadcast_phase to CANCELLED
 
-STEP 10 - COMPLETED (Handled by Analytics & Optimization Agent):
+STEP 11 - COMPLETED (Handled by Analytics & Optimization Agent):
 - Call delegate_to_analytics with user_id, broadcast_job_id, and project_id
 - The Analytics Agent handles post-delivery analysis:
   1. Broadcast delivery report (sent, delivered, failed, read rates, duration)
@@ -156,7 +180,7 @@ After Analytics Agent completes:
 - Present the analytics report and recommendations to user
 - Offer to view detailed breakdown or run specific reports
 
-STEP 11 - FAILED / CANCELLED:
+STEP 12 - FAILED / CANCELLED:
 - Report what happened clearly
 - If FAILED: Provide actionable guidance on how to fix the issue
 - If CANCELLED: Confirm cancellation
@@ -166,10 +190,17 @@ IMPORTANT RULES:
 2. ALWAYS check tool results before proceeding to the next step
 3. ALWAYS persist state via tools - never skip database updates
 4. On ANY unrecoverable error, transition to FAILED with clear error details
+   NOTE: Time window restriction is NOT an unrecoverable error - use SCHEDULED, not FAILED.
 5. Do NOT skip phases - follow the state machine strictly
-6. Only ask for user confirmation at READY_TO_SEND (before sending)
+6. Only ask for user confirmation at READY_TO_SEND (before sending) and SCHEDULE_REQUIRED (before scheduling)
 7. For first-time broadcasters (first_broadcasting=True), provide extra guidance at each step
 8. When user returns to an existing broadcast, call get_broadcast_status to resume from current phase
+9. NEVER mark a broadcast as FAILED for a time window restriction. If compliance returns
+   SCHEDULE_REQUIRED, you MUST transition to SCHEDULED (not FAILED). If the SCHEDULED transition
+   fails for any reason, inform the user about the issue - do NOT silently fall back to FAILED.
+10. After transitioning to SCHEDULED, your work is DONE for this session. Tell the user the
+    broadcast is scheduled and STOP. Do NOT proceed to segmentation, content creation, or any
+    further workflow steps. The broadcast will resume from SCHEDULED when the user triggers it.
 """
 
 
@@ -297,6 +328,7 @@ TEMPLATE_SELECTED = "Template selected and ready."
 READY_TO_SEND_MSG = "All checks passed. Review the summary and confirm to start sending."
 SENDING_STARTED = "Broadcasting started. Messages are being dispatched."
 BROADCAST_COMPLETED = "Broadcast complete! All messages have been processed."
+BROADCAST_SCHEDULED = "Broadcast scheduled. It will be sent at the specified time."
 BROADCAST_PAUSED = "Broadcast paused. You can resume or cancel at any time."
 BROADCAST_CANCELLED = "Broadcast has been cancelled."
 BROADCAST_FAILED = "Broadcast failed. Please check the error details."

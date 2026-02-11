@@ -10,13 +10,16 @@ from app import logger
 
 # Valid state transitions for the broadcast state machine
 ALLOWED_TRANSITIONS = {
-    "INITIALIZED": {"DATA_PROCESSING"},
-    "DATA_PROCESSING": {"COMPLIANCE_CHECK", "FAILED"},
-    "COMPLIANCE_CHECK": {"SEGMENTATION", "FAILED"},
-    "SEGMENTATION": {"CONTENT_CREATION"},
-    "CONTENT_CREATION": {"PENDING_APPROVAL", "READY_TO_SEND"},
+    # LLM may skip intermediate phase updates, so SCHEDULED and FAILED are reachable
+    # from any active (pre-send) phase to handle compliance time window blocks.
+    "INITIALIZED": {"DATA_PROCESSING", "COMPLIANCE_CHECK", "SCHEDULED", "FAILED"},
+    "DATA_PROCESSING": {"COMPLIANCE_CHECK", "SCHEDULED", "FAILED"},
+    "COMPLIANCE_CHECK": {"SEGMENTATION", "SCHEDULED", "FAILED"},
+    "SEGMENTATION": {"CONTENT_CREATION", "FAILED"},
+    "CONTENT_CREATION": {"PENDING_APPROVAL", "READY_TO_SEND", "FAILED"},
     "PENDING_APPROVAL": {"READY_TO_SEND", "CONTENT_CREATION", "FAILED"},
     "READY_TO_SEND": {"SENDING", "CANCELLED"},
+    "SCHEDULED": {"COMPLIANCE_CHECK", "CANCELLED", "FAILED"},
     "SENDING": {"COMPLETED", "PAUSED", "FAILED"},
     "PAUSED": {"SENDING", "CANCELLED"},
     "COMPLETED": set(),
@@ -92,13 +95,15 @@ class BroadcastJobRepository:
             raise e
 
     def update_phase(
-        self, job_id: str, new_phase: str, error_message: Optional[str] = None
+        self, job_id: str, new_phase: str, error_message: Optional[str] = None,
+        scheduled_for: Optional[datetime] = None
     ) -> bool:
         """
         Update the broadcast phase (state transition).
 
         Validates transition against ALLOWED_TRANSITIONS map.
         Automatically sets timestamps for SENDING/terminal phases.
+        Sets scheduled_for when transitioning to SCHEDULED.
         """
         try:
             record = self._get_record(job_id)
@@ -120,6 +125,9 @@ class BroadcastJobRepository:
             record.error_message = error_message
             record.updated_at = datetime.utcnow()
 
+            if new_phase == "SCHEDULED" and scheduled_for:
+                record.scheduled_for = scheduled_for
+                logger.info(f"Broadcast {job_id}: scheduled for {scheduled_for.isoformat()}")
             if new_phase == "SENDING" and not record.started_sending_at:
                 record.started_sending_at = datetime.utcnow()
             if new_phase in ("COMPLETED", "FAILED", "CANCELLED"):
@@ -265,6 +273,7 @@ class BroadcastJobRepository:
             "failed_count": record.failed_count,
             "pending_count": record.pending_count,
             "error_message": record.error_message,
+            "scheduled_for": record.scheduled_for.isoformat() if record.scheduled_for else None,
             "created_at": record.created_at.isoformat() if record.created_at else None,
             "updated_at": record.updated_at.isoformat() if record.updated_at else None,
             "started_sending_at": record.started_sending_at.isoformat() if record.started_sending_at else None,

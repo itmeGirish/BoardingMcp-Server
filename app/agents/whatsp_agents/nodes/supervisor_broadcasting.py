@@ -11,7 +11,7 @@ Routing supports:
 - END: No more tool calls
 """
 
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END
@@ -152,15 +152,17 @@ def route_after_tool(state, delegation_tool_map: dict = None):
     if not delegation_tool_map:
         return "call_model"
 
-    # Check recent messages for delegation tool results
+    # Only check the most recent contiguous block of ToolMessages.
+    # Break as soon as we hit a non-ToolMessage (AIMessage, HumanMessage, etc.)
+    # This prevents re-routing to old delegation tools from earlier in history.
     for msg in reversed(state.get("messages", [])):
-        # Look for ToolMessage that came from a delegation tool
-        if hasattr(msg, "name") and msg.name in delegation_tool_map:
-            target = delegation_tool_map[msg.name]
-            logger.info(f"[Broadcasting] Post-tool routing to sub-agent: {target}")
-            return target
-        # Stop searching after we hit a non-tool message
-        if not hasattr(msg, "name"):
+        if isinstance(msg, ToolMessage):
+            if msg.name in delegation_tool_map:
+                target = delegation_tool_map[msg.name]
+                logger.info(f"[Broadcasting] Post-tool routing to sub-agent: {target}")
+                return target
+        else:
+            # Hit a non-tool message, stop searching
             break
 
     return "call_model"

@@ -79,15 +79,31 @@ If quality score is Low (Red): FAIL compliance - all marketing sends must be pau
 FINAL RESULT
 ═══════════════════════════════════════════════════════════
 
-After all checks, call get_compliance_summary to generate the final report:
+After running all 4 checks, DO NOT call any more tools.
+Simply summarize the results from the checks you already ran and END:
 - Total contacts checked
 - Contacts passed (eligible for broadcast)
 - Contacts excluded (with breakdown: no opt-in, suppressed, time window)
 - Account health status
 - Messaging tier and remaining capacity
 
-If ALL checks pass: Report success with final eligible contact count
-If ANY check fails: Report which check failed and actionable guidance
+CRITICAL - DISTINGUISH BETWEEN FAILURE TYPES:
+
+1. If ALL 4 checks passed: Report "COMPLIANCE_RESULT: PASSED" with final eligible count.
+
+2. If ONLY the time window check failed (checks 1, 2, 4 passed but check 3 blocked):
+   Report "COMPLIANCE_RESULT: SCHEDULE_REQUIRED"
+   Include the scheduled_send_utc value from the time window check result.
+   Include the blocked regions and next_valid_window_utc for each.
+   Ask the user: "Would you like to schedule this broadcast for [next valid window time]?"
+   This is NOT a failure - it is a compliance hold that can be resolved by scheduling.
+
+3. If any OTHER check failed (opt-in, suppression hard block, account health RED):
+   Report "COMPLIANCE_RESULT: FAILED" with which check failed and why.
+   These are hard failures that require user action to fix.
+
+IMPORTANT: Do NOT call get_compliance_summary or any other tool after the 4 checks.
+Just provide your summary in a message and stop. The supervisor will read your summary.
 
 ═══════════════════════════════════════════════════════════
 OPT-OUT KEYWORD HANDLING

@@ -90,6 +90,7 @@ IMPORTANT RULES
 5. Store all processed contacts in the database via tools
 6. Report clear, actionable summaries after each processing step
 7. Phone numbers without country codes default to India (+91)
+8. After processing contacts (process_phone_list or process_contact_file), DO NOT call get_processing_summary or any other tool repeatedly. Simply summarize the results from the processing tool response and END. The supervisor will read your summary.
 """
 
 

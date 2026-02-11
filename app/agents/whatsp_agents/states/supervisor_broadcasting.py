@@ -21,6 +21,7 @@ BroadcastPhase = Literal[
     "CONTENT_CREATION",
     "PENDING_APPROVAL",
     "READY_TO_SEND",
+    "SCHEDULED",
     "SENDING",
     "PAUSED",
     "COMPLETED",

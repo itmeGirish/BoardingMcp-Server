@@ -84,7 +84,11 @@ STEP 5: CREATE SEGMENTS
 FINAL RESULT
 ═══════════════════════════════════════════════════════════
 
-After all steps, call get_segmentation_summary to generate the final report:
+After completing all 5 steps above, DO NOT call get_segmentation_summary or any other tool.
+Simply summarize the results from the tools you already called and END your turn.
+The supervisor will read your summary.
+
+Your summary should include:
 - Total contacts analyzed
 - Segments created with contact counts
 - 24-hour window contacts (free messaging)
@@ -92,6 +96,9 @@ After all steps, call get_segmentation_summary to generate the final report:
 - Contacts excluded by frequency capping
 - Contacts excluded (churned)
 - Estimated cost savings from window detection
+
+IMPORTANT: Do NOT call any tool repeatedly. Each tool should be called exactly ONCE.
+If a tool returns results, use those results in your summary - do NOT call the same tool again.
 
 ═══════════════════════════════════════════════════════════
 SEGMENTATION DIMENSIONS

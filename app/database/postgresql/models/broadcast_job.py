@@ -8,7 +8,7 @@ from datetime import datetime
 
 class BroadcastJob(SQLModel, table=True):
     """
-    Persists broadcast campaign state through the 12-phase state machine.
+    Persists broadcast campaign state through the 13-phase state machine.
 
     Tracks the entire lifecycle of a broadcast:
     - Phase transitions (INITIALIZED -> DATA_PROCESSING -> ... -> COMPLETED)
@@ -16,11 +16,12 @@ class BroadcastJob(SQLModel, table=True):
     - Segmentation info
     - Template selection
     - Send progress counters
+    - Scheduling (time window restrictions)
     - Error details
 
     Phase values: INITIALIZED, DATA_PROCESSING, COMPLIANCE_CHECK, SEGMENTATION,
-    CONTENT_CREATION, PENDING_APPROVAL, READY_TO_SEND, SENDING, PAUSED,
-    COMPLETED, FAILED, CANCELLED
+    CONTENT_CREATION, PENDING_APPROVAL, READY_TO_SEND, SCHEDULED, SENDING,
+    PAUSED, COMPLETED, FAILED, CANCELLED
     """
     __tablename__ = "broadcast_jobs"
 
@@ -61,6 +62,9 @@ class BroadcastJob(SQLModel, table=True):
     # Error tracking
     error_message: Optional[str] = Field(default=None, sa_type=Text)
     error_details: Optional[str] = Field(default=None, sa_type=Text)  # JSON
+
+    # Scheduling (for time window compliance holds)
+    scheduled_for: Optional[datetime] = Field(default=None)  # UTC datetime for next valid send window
 
     # Timestamps
     created_at: datetime = Field(default_factory=datetime.utcnow)
