@@ -762,6 +762,94 @@ def select_template_for_broadcast(
 
 
 # ============================================
+# TOOL 9: START BACKGROUND TEMPLATE MONITORING
+# ============================================
+
+@tool
+def start_background_monitoring(user_id: str, template_id: str) -> str:
+    """
+    Start background monitoring for a WhatsApp template approval.
+
+    Starts an APScheduler background job that polls get_template_by_id
+    via MCP every 15 seconds and syncs status to the local DB.
+    Monitoring stops automatically when the template reaches a final
+    status (APPROVED, REJECTED, PAUSED, DISABLED) or after 10
+    consecutive MCP errors.
+
+    Call this AFTER submit_template to begin proactive status tracking.
+    Use wait_for_template_approval for synchronous blocking poll, or
+    use this for fire-and-forget background monitoring.
+
+    Args:
+        user_id: User's unique identifier
+        template_id: WhatsApp template ID to monitor
+
+    Returns:
+        JSON string confirming monitoring started or already active
+    """
+    logger.info("[CONTENT] start_background_monitoring: user=%s, template=%s", user_id, template_id)
+    try:
+        from ..proactive_template_monitor import start_template_monitoring as _start_monitor
+
+        started = _start_monitor(user_id=user_id, template_id=template_id)
+        if started:
+            return json.dumps({
+                "status": "success",
+                "template_id": template_id,
+                "message": f"Background monitoring started for template {template_id}. Polling every 15 seconds.",
+            })
+        else:
+            return json.dumps({
+                "status": "already_active",
+                "template_id": template_id,
+                "message": f"Background monitoring already active for template {template_id}.",
+            })
+    except Exception as e:
+        logger.error("[CONTENT] start_background_monitoring error: %s", e, exc_info=True)
+        return json.dumps({"error": str(e), "status": "failed"}, ensure_ascii=False)
+
+
+# ============================================
+# TOOL 10: STOP BACKGROUND TEMPLATE MONITORING
+# ============================================
+
+@tool
+def stop_background_monitoring(template_id: str) -> str:
+    """
+    Stop background monitoring for a WhatsApp template.
+
+    Removes the APScheduler polling job. Call this after the template
+    reaches a final status or if the user cancels the broadcast.
+
+    Args:
+        template_id: WhatsApp template ID to stop monitoring
+
+    Returns:
+        JSON string confirming monitoring stopped
+    """
+    logger.info("[CONTENT] stop_background_monitoring: template=%s", template_id)
+    try:
+        from ..proactive_template_monitor import stop_template_monitoring as _stop_monitor
+
+        stopped = _stop_monitor(template_id=template_id)
+        if stopped:
+            return json.dumps({
+                "status": "success",
+                "template_id": template_id,
+                "message": f"Background monitoring stopped for template {template_id}.",
+            })
+        else:
+            return json.dumps({
+                "status": "not_found",
+                "template_id": template_id,
+                "message": f"No active background monitor found for template {template_id}.",
+            })
+    except Exception as e:
+        logger.error("[CONTENT] stop_background_monitoring error: %s", e, exc_info=True)
+        return json.dumps({"error": str(e), "status": "failed"}, ensure_ascii=False)
+
+
+# ============================================
 # TOOLS EXPORT
 # ============================================
 
@@ -775,6 +863,8 @@ BACKEND_TOOLS = [
     delete_template_by_id,
     delete_template_by_name,
     select_template_for_broadcast,
+    start_background_monitoring,
+    stop_background_monitoring,
 ]
 
 BACKEND_TOOL_NAMES = {t.name for t in BACKEND_TOOLS}

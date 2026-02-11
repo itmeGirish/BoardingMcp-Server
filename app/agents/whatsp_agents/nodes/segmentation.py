@@ -5,12 +5,14 @@ Pure node functions for the segmentation sub-graph.
 Same pattern as data_processing and compliance agents.
 """
 
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage, AIMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END
 from langgraph.types import Command
 from ....config import logger
+
+MAX_ITERATIONS = 15
 
 
 # ============================================
@@ -37,8 +39,14 @@ async def call_model_node(
     Returns:
         Command specifying next node (tool_node or END)
     """
+    tool_message_count = sum(1 for msg in state["messages"] if isinstance(msg, ToolMessage))
+
+    if tool_message_count >= MAX_ITERATIONS:
+        logger.warning(f"[Segmentation] Max iterations ({MAX_ITERATIONS}) reached. Forcing END.")
+        return Command(goto=END, update={"messages": [AIMessage(content="Segmentation complete. Maximum iteration limit reached.")]})
+
     recent_messages = state["messages"][-2:] if len(state["messages"]) > 2 else state["messages"]
-    logger.info(f"[Segmentation] Call model with {len(state['messages'])} messages, last 2:")
+    logger.info(f"[Segmentation] Call model with {len(state['messages'])} messages, {tool_message_count} tool results, last 2:")
     for i, msg in enumerate(recent_messages):
         msg_type = type(msg).__name__
         content_preview = str(getattr(msg, 'content', ''))[:150]

@@ -32,6 +32,27 @@ BROADCAST STATE MACHINE:
 | FAILED            | Unrecoverable error occurred              | Terminal                              |
 | CANCELLED         | User cancelled broadcast                  | Terminal                              |
 
+FRONTEND UI TOOLS (CopilotKit):
+You MUST call the appropriate display_* tool at each phase transition to update the frontend UI.
+These are CopilotKit frontend actions that render the correct page/view for the user.
+
+| Phase Transition       | Frontend Tool to Call           | What It Shows                          |
+|------------------------|---------------------------------|----------------------------------------|
+| INITIALIZED reached    | display_data_processing_form    | File upload form for contacts          |
+| COMPLIANCE_CHECK enter | display_compliance_view         | Auto-running compliance checks         |
+| SEGMENTATION enter     | display_segmentation_form       | Audience segmentation form             |
+| CONTENT_CREATION enter | display_content_creation_form   | Template management form               |
+| PENDING_APPROVAL enter | display_pending_approval        | Template approval waiting screen       |
+| Template status change | update_template_status          | Push APPROVED/REJECTED status to UI    |
+| READY_TO_SEND enter    | display_ready_to_send           | Final review & confirmation screen     |
+| SENDING enter          | display_sending_view            | Live delivery progress view            |
+| SCHEDULED enter        | display_scheduled_view          | Scheduled broadcast hold screen        |
+| COMPLETED enter        | display_analytics_view          | Post-delivery analytics dashboard      |
+| After analytics done   | display_campaign_complete       | Campaign success screen                |
+
+CRITICAL: Always call the frontend display tool BEFORE asking the user for input at that step.
+For example, after initialization, call display_data_processing_form FIRST, then ask the user to upload contacts.
+
 WORKFLOW STEPS:
 
 STEP 1 - INITIALIZATION:
@@ -43,7 +64,11 @@ When user says "Start broadcast", "Create new broadcast campaign", or similar:
   * If first_broadcasting=True (BEGINNER): The Data Processing Agent will handle
     Facebook Business verification before allowing contact upload.
   * If first_broadcasting=False (RETURNING): Proceed directly to contact upload.
+- Call display_data_processing_form to show the file upload UI
 - Ask user to provide their contact list (phone numbers or file upload)
+- IMPORTANT: When the user uploads a CSV via the frontend, the frontend extracts phone numbers
+  and sends them in the chat message as a JSON array. Do NOT ask for the file again.
+  Take the phone numbers from the message and call process_broadcast_contacts directly.
 - Call update_broadcast_phase to transition to DATA_PROCESSING
 
 STEP 2 - DATA PROCESSING (Handled by Data Processing Agent):
@@ -63,7 +88,7 @@ STANDARD FLOW (first_broadcasting=False):
 - Returns: valid_count, invalid_count, duplicates_removed, quality_distribution, country_breakdown
 
 After Data Processing Agent completes:
-- If valid_count > 0: Call update_broadcast_phase to COMPLIANCE_CHECK
+- If valid_count > 0: Call update_broadcast_phase to COMPLIANCE_CHECK, then call display_compliance_view
 - If all contacts invalid: Call update_broadcast_phase to FAILED with error details
 
 STEP 3 - COMPLIANCE CHECK (Handled by Compliance Agent):
@@ -76,17 +101,21 @@ STEP 3 - COMPLIANCE CHECK (Handled by Compliance Agent):
 
 After Compliance Agent completes, read its summary carefully:
 
-- If "COMPLIANCE_RESULT: PASSED": Call update_broadcast_phase to SEGMENTATION
+- If "COMPLIANCE_RESULT: PASSED": Call update_broadcast_phase to SEGMENTATION, then call display_segmentation_form
 
 - If "COMPLIANCE_RESULT: SCHEDULE_REQUIRED" (time window restriction only):
   This is NOT a failure. The broadcast is compliant but outside allowed sending hours.
-  1. Extract the scheduled_send_utc from the compliance summary.
-  2. Call update_broadcast_phase to SCHEDULED with the scheduled_for parameter
-     set to the scheduled_send_utc value (ISO 8601 UTC datetime).
-  3. Tell the user: "Your broadcast passed all compliance checks, but cannot be sent right now
-     due to regional time window restrictions. It has been scheduled for [datetime]."
-  4. STOP HERE. Do NOT proceed to segmentation or any further steps.
-     The broadcast is now in SCHEDULED state and will resume when the time arrives.
+  1. Extract the scheduled_send_utc from the compliance summary and REMEMBER it.
+  2. Tell the user: "Compliance passed but sending is restricted to [time window].
+     Your broadcast will be scheduled for [datetime] after preparation is complete.
+     Let's continue setting up your campaign."
+  3. CONTINUE to SEGMENTATION (do NOT stop here). The user still needs to:
+     - Select audience segments (Step 4)
+     - Create/select a template (Step 5 - Content Creation)
+     - Review everything (Step 7 - Ready to Send)
+  4. Only at READY_TO_SEND, transition to SCHEDULED with the saved scheduled_for time
+     instead of SENDING immediately.
+  Call update_broadcast_phase to SEGMENTATION, then call display_segmentation_form.
 
 - If "COMPLIANCE_RESULT: FAILED" (hard failure - opt-in, suppression, account health):
   Explain which check failed and call update_broadcast_phase to FAILED
@@ -101,39 +130,57 @@ STEP 4 - SEGMENTATION (Handled by Segmentation Agent):
   5. Segment creation: By lifecycle, country, or all contacts
 
 After Segmentation Agent completes:
-- If segments created successfully: Call update_broadcast_phase to CONTENT_CREATION
+- If segments created successfully: Call update_broadcast_phase to CONTENT_CREATION, then call display_content_creation_form
 - If segmentation failed: Call update_broadcast_phase to FAILED
 
 STEP 5 - CONTENT CREATION (Handled by Content Creation Agent):
 - Call delegate_to_content_creation with user_id, broadcast_job_id, and project_id
-- The Content Creation Agent handles the full template lifecycle:
-  1. List existing templates (text, image, video, document) from DB
-  2. Create new templates via MCP (submit_whatsapp_template_message) and store in DB
-  3. Check approval status via MCP (get_template_by_id) and sync to DB
-  4. Rejection analysis with auto-fix suggestions
-  5. Edit and resubmit rejected templates via MCP (edit_template)
-  6. Delete templates by ID or name via MCP + soft-delete in DB
-  7. Select an APPROVED template for the broadcast job
+- The Content Creation Agent MUST follow this sequence:
+  1. FIRST: List existing templates from DB (call list_user_templates)
+     - Show user their available APPROVED templates
+     - Ask: "Would you like to use an existing template or create a new one?"
+  2. If EXISTING template: User selects one → call select_template_for_broadcast → done
+  3. If NEW template: Ask for all details step-by-step (purpose, name, body text, etc.)
+     - Show complete preview and get user confirmation BEFORE submitting
+     - Call submit_template ONLY after user confirms
+  4. After submission: Call wait_for_template_approval to poll status via MCP get_template_by_id
+     - The proactive template monitor checks status every 15 seconds
+     - Frontend shows polling animation with "Waiting for Meta Approval..."
+     - Do NOT proceed until template is actually APPROVED by Meta
+  5. If REJECTED: Analyze reason, suggest fixes, let user edit and resubmit
+  6. If APPROVED: Call select_template_for_broadcast to link to broadcast job
 
 After Content Creation Agent completes:
-- If APPROVED template selected: Call update_broadcast_phase to READY_TO_SEND
-- If template still PENDING: Call update_broadcast_phase to PENDING_APPROVAL
-- If all templates rejected: Call update_broadcast_phase to FAILED
+- If APPROVED template selected: Call update_template_status with template_id, status="APPROVED", then call update_broadcast_phase to READY_TO_SEND, then call display_ready_to_send
+- If template still PENDING: Call update_broadcast_phase to PENDING_APPROVAL, then call display_pending_approval with template_id and template_name parameters so the frontend can track it
+- If all templates rejected: Call update_template_status with template_id, status="REJECTED", rejected_reason, then call update_broadcast_phase to FAILED
 
 STEP 6 - PENDING APPROVAL:
-- Template is pending WhatsApp approval (can take 24-48 hours)
-- Call delegate_to_content_creation again to poll status via check_template_status
-- If APPROVED: Call update_broadcast_phase to READY_TO_SEND
-- If REJECTED: Content Creation Agent analyzes reason and suggests fixes, then call update_broadcast_phase to CONTENT_CREATION
+- Template is pending WhatsApp (Meta) approval (can take minutes to 24 hours)
+- The frontend shows a polling animation while waiting
+- Call delegate_to_content_creation again to poll status via wait_for_template_approval or check_template_status
+- When user clicks "Check Status Now" on the frontend, re-check via check_template_status
+- IMPORTANT: Call update_template_status with template_id and the latest status EVERY TIME you get a status update
+  so the frontend reflects the real status
+- If APPROVED: Call update_template_status with status="APPROVED", then call update_broadcast_phase to READY_TO_SEND, then call display_ready_to_send
+- If REJECTED: Call update_template_status with status="REJECTED" and rejected_reason, then Content Creation Agent analyzes reason and suggests fixes, then call update_broadcast_phase to CONTENT_CREATION, then call display_content_creation_form
+- Do NOT proceed to READY_TO_SEND unless get_template_by_id (via MCP) confirms the template is APPROVED
 
 STEP 7 - READY TO SEND:
+- Call display_ready_to_send (if not already shown) to display the final review screen
 - Show broadcast summary to user:
   * Total contacts / valid contacts
   * Selected template name and category
   * Estimated messages to send
-- Ask for FINAL CONFIRMATION before sending
-- If user confirms: Call update_broadcast_phase to SENDING
-- If user cancels: Call update_broadcast_phase to CANCELLED
+- Check if compliance returned SCHEDULE_REQUIRED earlier (time window restriction):
+  * If YES: Tell user "Everything is ready! Your broadcast will be scheduled for [datetime]
+    due to time window restrictions." Ask for confirmation.
+    - If confirmed: Call update_broadcast_phase to SCHEDULED with scheduled_for parameter,
+      then call display_scheduled_view
+    - If cancelled: Call update_broadcast_phase to CANCELLED
+  * If NO (normal flow): Ask for FINAL CONFIRMATION before sending
+    - If user confirms: Call update_broadcast_phase to SENDING, then call display_sending_view
+    - If user cancels: Call update_broadcast_phase to CANCELLED
 
 STEP 8 - SENDING (Handled by Delivery Agent):
 - Call delegate_to_delivery with user_id, broadcast_job_id, and project_id
@@ -147,14 +194,15 @@ STEP 8 - SENDING (Handled by Delivery Agent):
   7. Returns delivery summary with sent/delivered/failed/pending counts
 
 After Delivery Agent completes:
-- If all messages processed: Call update_broadcast_phase to COMPLETED
+- If all messages processed: Call update_broadcast_phase to COMPLETED, then call display_analytics_view
 - If user requests pause: Call update_broadcast_phase to PAUSED
 - If delivery failed: Call update_broadcast_phase to FAILED
 
-STEP 9 - SCHEDULED (STOP POINT - do NOT continue to segmentation or any other step):
-- Broadcast is waiting for a valid time window (compliance hold, NOT a failure)
+STEP 9 - SCHEDULED (STOP POINT - campaign fully prepared, waiting for send window):
+- Broadcast is fully prepared (contacts, compliance, segments, template all done)
+- Waiting for a valid time window to send (compliance time restriction)
 - The scheduled_for datetime is stored in the database
-- Tell the user: "Your broadcast is scheduled for [datetime]. You can cancel at any time."
+- Tell the user: "Your broadcast is fully prepared and scheduled for [datetime]. You can cancel at any time."
 - STOP HERE AND WAIT for user input. Do NOT delegate to any sub-agent.
 - If user wants to cancel: Call update_broadcast_phase to CANCELLED
 - When the scheduled time arrives (or user says "send now" during valid hours):
@@ -178,6 +226,7 @@ STEP 11 - COMPLETED (Handled by Analytics & Optimization Agent):
 
 After Analytics Agent completes:
 - Present the analytics report and recommendations to user
+- Call display_campaign_complete to show the success screen
 - Offer to view detailed breakdown or run specific reports
 
 STEP 12 - FAILED / CANCELLED:
@@ -187,20 +236,22 @@ STEP 12 - FAILED / CANCELLED:
 
 IMPORTANT RULES:
 1. ALWAYS call update_broadcast_phase after each state transition
-2. ALWAYS check tool results before proceeding to the next step
-3. ALWAYS persist state via tools - never skip database updates
-4. On ANY unrecoverable error, transition to FAILED with clear error details
+2. ALWAYS call the corresponding display_* frontend tool after each phase transition to update the UI
+3. ALWAYS check tool results before proceeding to the next step
+4. ALWAYS persist state via tools - never skip database updates
+5. On ANY unrecoverable error, transition to FAILED with clear error details
    NOTE: Time window restriction is NOT an unrecoverable error - use SCHEDULED, not FAILED.
-5. Do NOT skip phases - follow the state machine strictly
-6. Only ask for user confirmation at READY_TO_SEND (before sending) and SCHEDULE_REQUIRED (before scheduling)
-7. For first-time broadcasters (first_broadcasting=True), provide extra guidance at each step
-8. When user returns to an existing broadcast, call get_broadcast_status to resume from current phase
-9. NEVER mark a broadcast as FAILED for a time window restriction. If compliance returns
-   SCHEDULE_REQUIRED, you MUST transition to SCHEDULED (not FAILED). If the SCHEDULED transition
-   fails for any reason, inform the user about the issue - do NOT silently fall back to FAILED.
-10. After transitioning to SCHEDULED, your work is DONE for this session. Tell the user the
-    broadcast is scheduled and STOP. Do NOT proceed to segmentation, content creation, or any
-    further workflow steps. The broadcast will resume from SCHEDULED when the user triggers it.
+6. Do NOT skip phases - follow the state machine strictly
+7. Only ask for user confirmation at READY_TO_SEND (before sending) and SCHEDULE_REQUIRED (before scheduling)
+8. For first-time broadcasters (first_broadcasting=True), provide extra guidance at each step
+9. When user returns to an existing broadcast, call get_broadcast_status to resume from current phase
+10. NEVER mark a broadcast as FAILED for a time window restriction. If compliance returns
+    SCHEDULE_REQUIRED, continue through SEGMENTATION → CONTENT_CREATION → READY_TO_SEND
+    and only transition to SCHEDULED at READY_TO_SEND (after all preparation is complete).
+11. After transitioning to SCHEDULED at READY_TO_SEND, your work is DONE for this session.
+    Tell the user the broadcast is fully prepared and scheduled, then STOP.
+12. The display_* frontend tools are CopilotKit actions that render UI pages on the frontend.
+    Call them BEFORE asking the user for input so the correct form/view is visible.
 """
 
 
