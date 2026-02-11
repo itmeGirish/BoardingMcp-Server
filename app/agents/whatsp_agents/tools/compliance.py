@@ -628,3 +628,14 @@ BACKEND_TOOLS = [
 ]
 
 BACKEND_TOOL_NAMES = {t.name for t in BACKEND_TOOLS}
+
+# Focused 4-tool list for the broadcast compliance check sub-agent.
+# Only the 4 sequential check tools — no summary/opt-out to confuse the model.
+BROADCAST_CHECK_TOOLS = [
+    check_opt_in_status,
+    filter_suppression_list,
+    check_time_window,
+    check_account_health,
+]
+
+BROADCAST_CHECK_TOOL_NAMES = {t.name for t in BROADCAST_CHECK_TOOLS}

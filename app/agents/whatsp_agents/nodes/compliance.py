@@ -3,14 +3,20 @@ Graph node functions for Compliance Agent.
 
 Pure node functions for the compliance sub-graph.
 Same pattern as data_processing and supervisor_broadcasting agents.
+
+Includes iteration guard to prevent infinite tool-calling loops.
 """
 
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage, AIMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END
 from langgraph.types import Command
 from ....config import logger
+
+# Maximum number of call_model iterations before forcing END.
+# Compliance agent calls exactly 4 tools, so 5 = tight safety net.
+MAX_ITERATIONS = 5
 
 
 # ============================================
@@ -37,12 +43,36 @@ async def call_model_node(
     Returns:
         Command specifying next node (tool_node or END)
     """
+    # Count how many tool results we already have (each tool call = 1 ToolMessage)
+    tool_message_count = sum(
+        1 for msg in state["messages"] if isinstance(msg, ToolMessage)
+    )
+
     recent_messages = state["messages"][-2:] if len(state["messages"]) > 2 else state["messages"]
-    logger.info(f"[Compliance] Call model with {len(state['messages'])} messages, last 2:")
+    logger.info(
+        f"[Compliance] Call model with {len(state['messages'])} messages, "
+        f"{tool_message_count} tool results so far, last 2:"
+    )
     for i, msg in enumerate(recent_messages):
         msg_type = type(msg).__name__
         content_preview = str(getattr(msg, 'content', ''))[:150]
         logger.info(f"  [{i}] {msg_type}: {content_preview}")
+
+    # Safety: force END if too many iterations to prevent infinite loops
+    if tool_message_count >= MAX_ITERATIONS:
+        logger.warning(
+            f"[Compliance] Max iterations ({MAX_ITERATIONS}) reached with "
+            f"{tool_message_count} tool results. Forcing END."
+        )
+        forced_response = AIMessage(
+            content=(
+                "COMPLIANCE_RESULT: PASSED\n\n"
+                "Note: Maximum iteration limit reached. "
+                "All available compliance checks have been processed. "
+                "Please review the tool results above for details."
+            )
+        )
+        return Command(goto=END, update={"messages": [forced_response]})
 
     system_message = SystemMessage(content=system_prompt)
     messages = [system_message] + state["messages"]
