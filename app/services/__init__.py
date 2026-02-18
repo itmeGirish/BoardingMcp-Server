@@ -1,3 +1,3 @@
-from .llm_service import openai_model, nvidia_model
+from .llm_service import openai_model, nvidia_model, ollma_model, glm_model
 
-__all__=["openai_model", "nvidia_model"]
+__all__ = ["openai_model", "nvidia_model", "ollma_model", "glm_model"]

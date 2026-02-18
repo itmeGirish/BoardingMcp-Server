@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FINAL_DRAFT",
+  "description": "Final QA-reviewed draft from the quality/review agent (Step 13).",
+  "type": "object",
+  "required": ["title", "sections", "quality_score"],
+  "properties": {
+    "title": { "type": "string" },
+    "doc_type": { "type": ["string", "null"] },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "content"],
+        "properties": {
+          "title": { "type": "string" },
+          "section_id": { "type": ["string", "null"] },
+          "content": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "array", "items": { "type": "string" } }
+            ]
+          }
+        }
+      }
+    },
+    "prayers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "order": { "type": "integer" }
+        }
+      }
+    },
+    "annexures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "citation_text": { "type": "string" },
+          "citation_hash": { "type": "string" }
+        }
+      }
+    },
+    "quality_score": { "type": "number", "minimum": 0, "maximum": 100, "description": "Court-readiness score (0-100)." },
+    "court_readiness": { "type": "string", "enum": ["ready", "needs_review", "not_ready"] }
+  }
+}

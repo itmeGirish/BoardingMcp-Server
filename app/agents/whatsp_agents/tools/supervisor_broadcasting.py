@@ -237,7 +237,7 @@ def _run_process_contacts_sync(user_id: str, broadcast_job_id: str, phone_number
 
 
 @tool
-def process_broadcast_contacts(user_id: str, broadcast_job_id: str, phone_numbers: list) -> str:
+def process_broadcast_contacts(user_id: str, broadcast_job_id: str, phone_numbers: list[str]) -> str:
     """
     Validate and normalize contact phone numbers for the broadcast.
 
@@ -467,7 +467,7 @@ def create_broadcast_template(
     name: str,
     category: str,
     language: str,
-    components: list
+    components: list[dict]
 ) -> str:
     """
     Create a new WhatsApp message template for broadcasting.
@@ -508,7 +508,7 @@ def create_broadcast_template(
 def edit_broadcast_template(
     user_id: str,
     template_id: str,
-    components: list
+    components: list[dict]
 ) -> str:
     """
     Edit an existing WhatsApp message template.

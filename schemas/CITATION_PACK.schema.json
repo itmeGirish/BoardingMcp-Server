@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CITATION_PACK",
+  "description": "Verified citations from the citation agent (Step 9). Only DB-backed citations.",
+  "type": "object",
+  "required": ["citations"],
+  "properties": {
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["citation_text", "citation_hash"],
+        "properties": {
+          "citation_text": { "type": "string", "description": "Full citation string." },
+          "case_name": { "type": ["string", "null"] },
+          "year": { "type": ["integer", "null"] },
+          "court": { "type": ["string", "null"] },
+          "holding": { "type": ["string", "null"], "description": "Brief summary of the holding." },
+          "citation_hash": { "type": "string", "description": "SHA-256 hash for verification." },
+          "verification_hash": { "type": ["string", "null"], "description": "Alias for citation_hash." },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "source_doc_id": { "type": ["string", "null"] },
+          "source_db": { "type": ["string", "null"] },
+          "source_url": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

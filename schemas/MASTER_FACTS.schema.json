@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MASTER_FACTS",
+  "description": "Structured facts extracted by the supervisor_intake agent (Step 2).",
+  "type": "object",
+  "required": ["session_id", "facts", "document_type"],
+  "properties": {
+    "session_id": { "type": "string", "description": "Drafting session UUID." },
+    "document_type": { "type": "string", "description": "Detected or user-specified document type." },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fact_key", "fact_value", "confidence"],
+        "properties": {
+          "fact_key": { "type": "string", "description": "Semantic key (e.g. plaintiff_name, fir_number)." },
+          "fact_value": { "type": "string", "description": "Extracted fact content." },
+          "fact_type": { "type": "string", "enum": ["party", "date", "amount", "claim", "evidence", "statute", "jurisdiction", "other"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "Extraction confidence. Must be >= 0.75 for use." },
+          "source_doc_id": { "type": ["string", "null"], "description": "Reference to uploaded document. If null, confidence must be < 0.75." },
+          "source_message_idx": { "type": ["integer", "null"], "description": "Chat message index this fact came from." }
+        }
+      }
+    },
+    "hard_blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      },
+      "description": "Hard blocks that require user clarification before proceeding."
+    },
+    "uploaded_docs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_id": { "type": "string" },
+          "file_name": { "type": "string" },
+          "doc_type": { "type": "string" }
+        }
+      }
+    }
+  }
+}

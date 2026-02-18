@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DRAFT_V1",
+  "description": "First draft output from the drafting agent (Step 12).",
+  "type": "object",
+  "required": ["title", "sections"],
+  "properties": {
+    "title": { "type": "string" },
+    "doc_type": { "type": ["string", "null"] },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "content"],
+        "properties": {
+          "title": { "type": "string" },
+          "section_id": { "type": ["string", "null"] },
+          "content": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "array", "items": { "type": "string" } }
+            ]
+          },
+          "order": { "type": "integer" }
+        }
+      }
+    },
+    "prayers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "order": { "type": "integer" }
+        }
+      }
+    },
+    "annexures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "placeholders": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of {{MISSING_FIELD}} placeholders in the draft."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRAYER_PACK",
+  "description": "Prayer/relief pack from the prayer agent (Step 8).",
+  "type": "object",
+  "required": ["prayers"],
+  "properties": {
+    "prayers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["prayer_id", "text", "order"],
+        "properties": {
+          "prayer_id": { "type": "string" },
+          "text": { "type": "string", "description": "Full prayer/relief text." },
+          "order": { "type": "integer" },
+          "prayer_type": { "type": "string", "enum": ["primary", "alternative", "interim", "costs", "general"], "default": "primary" }
+        }
+      }
+    },
+    "proceeding_type": { "type": ["string", "null"], "description": "The proceeding type these prayers align with." }
+  }
+}

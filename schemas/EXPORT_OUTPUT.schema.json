@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EXPORT_OUTPUT",
+  "description": "Export output from the export engine (Step 18).",
+  "type": "object",
+  "required": ["gate", "passed", "export_format", "export_content", "metadata"],
+  "properties": {
+    "gate": { "type": "string", "const": "export_engine" },
+    "passed": { "type": "boolean" },
+    "export_format": { "type": "string", "enum": ["text", "docx"] },
+    "export_content": { "description": "Formatted document content (string for text, base64 bytes for docx)." },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "quality_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "word_count": { "type": "integer" },
+        "section_count": { "type": "integer" },
+        "has_prayers": { "type": "boolean" },
+        "has_annexures": { "type": "boolean" }
+      }
+    }
+  }
+}

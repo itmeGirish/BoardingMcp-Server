@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LLM_CLASSIFY_OUTPUT",
+  "description": "Classification output from the LLM classifier agent (Step 4B).",
+  "type": "object",
+  "required": ["doc_type", "legal_domain", "confidence"],
+  "properties": {
+    "doc_type": { "type": "string", "description": "Document type (e.g. Bail Application, Writ Petition, Legal Notice)." },
+    "legal_domain": { "type": "string", "enum": ["criminal", "civil", "family", "commercial", "property", "constitutional", "consumer", "labour", "arbitration", "other"] },
+    "court_type": { "type": ["string", "null"], "description": "Court type (HighCourt, Sessions, Magistrate, DistrictCourt, Tribunal)." },
+    "proceeding_type": { "type": ["string", "null"], "description": "Proceeding type (bail, writ petition, quash, appeal, revision, notice, suit, complaint)." },
+    "draft_goal": { "type": ["string", "null"], "description": "User's drafting goal in natural language." },
+    "language": { "type": "string", "default": "English", "description": "Draft language." },
+    "draft_style": { "type": "string", "default": "formal", "description": "Drafting style (formal, assertive, neutral)." },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "Classification confidence score." }
+  }
+}

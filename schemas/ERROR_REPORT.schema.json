@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ERROR_REPORT",
+  "description": "Error/QA report from the quality agent (Step 13). Contains candidate mistake rules for staging.",
+  "type": "object",
+  "required": ["issues", "candidate_rules"],
+  "properties": {
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "issue_type": { "type": "string", "enum": ["hallucination", "missing_section", "formatting", "citation_error", "compliance_violation", "inconsistency", "placeholder_remaining"] },
+          "severity": { "type": "string", "enum": ["low", "medium", "high"] },
+          "description": { "type": "string" },
+          "section_id": { "type": ["string", "null"] },
+          "auto_fixed": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "candidate_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_type": { "type": "string", "enum": ["template_pattern", "citation_pattern", "section_structure", "formatting_rule"] },
+          "content": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string", "description": "Generic rule description (no case-specific content)." },
+              "severity": { "type": "string", "enum": ["low", "medium", "high"] },
+              "section_id": { "type": ["string", "null"] },
+              "action": { "type": "string", "enum": ["include", "exclude", "modify"] }
+            }
+          }
+        }
+      },
+      "description": "Candidate rules for staging DB. Must be generic, not case-specific."
+    },
+    "total_issues": { "type": "integer" },
+    "auto_fixed_count": { "type": "integer" }
+  }
+}
