@@ -6,7 +6,13 @@ WARNING: This will DELETE ALL DATA in the database tables!
 """
 from sqlmodel import SQLModel
 from .postgresql_connection import engine
-from .models import User, BusinessCreation, ProjectCreation, TempMemory, BroadcastJob, TemplateCreation, ProcessedContact, ConsentLog, SuppressionList  # Import all models
+from .models import (
+    User, BusinessCreation, ProjectCreation, TempMemory, BroadcastJob,
+    TemplateCreation, ProcessedContact, ConsentLog, SuppressionList,
+    DraftingSession, DraftingFact, AgentOutput, DraftingValidation,
+    MainRule, StagingRule, PromotionLog,
+    VerifiedCitation, DraftVersion, ClarificationHistory,
+)  # Import all models
 
 
 def drop_all_tables():

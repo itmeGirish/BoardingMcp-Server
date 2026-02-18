@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RESEARCH_BUNDLE",
+  "description": "Legal research output from the research agent (Step 9). No fabricated citations.",
+  "type": "object",
+  "properties": {
+    "principles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Legal principles applicable to this case."
+    },
+    "precedents": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Case law references (names only — no fabricated case numbers)."
+    },
+    "statutes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "statute_name": { "type": "string" },
+          "section": { "type": "string" },
+          "relevance": { "type": "string" }
+        }
+      }
+    },
+    "argument_framework": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Structured argument points."
+    },
+    "grounds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Possible legal grounds."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LOCAL_RULES",
+  "description": "Localization rules from the localization agent (Step 8).",
+  "type": "object",
+  "required": ["language", "date_format"],
+  "properties": {
+    "language": { "type": "string", "default": "English" },
+    "date_format": { "type": "string", "default": "DD/MM/YYYY" },
+    "numbering_style": { "type": "string", "enum": ["roman", "arabic", "alphabetic"], "default": "roman" },
+    "court_heading_format": { "type": ["string", "null"], "description": "Court-specific heading format template." },
+    "verification_clause_format": { "type": ["string", "null"], "description": "Verification/affidavit clause template." },
+    "annexure_style": { "type": ["string", "null"], "description": "Annexure labeling convention (e.g. Annexure-P1, Annexure-A)." },
+    "local_sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "section_id": { "type": "string" },
+          "title": { "type": "string" },
+          "order": { "type": "integer" },
+          "required": { "type": "boolean" }
+        }
+      },
+      "description": "Jurisdiction-specific sections to add."
+    },
+    "hard_block": { "type": "boolean", "default": false },
+    "hard_block_reason": { "type": ["string", "null"] }
+  }
+}

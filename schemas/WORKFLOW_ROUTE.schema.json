@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WORKFLOW_ROUTE",
+  "description": "Resolved workflow route from the route resolver (Step 4C).",
+  "type": "object",
+  "required": ["doc_type", "agents_required"],
+  "properties": {
+    "doc_type": { "type": "string" },
+    "court_type": { "type": ["string", "null"] },
+    "legal_domain": { "type": ["string", "null"] },
+    "proceeding_type": { "type": ["string", "null"] },
+    "draft_goal": { "type": ["string", "null"] },
+    "language": { "type": "string", "default": "English" },
+    "draft_style": { "type": "string", "default": "formal" },
+    "agents_required": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of agents to run (template_pack, compliance, localization, prayer, research_agent, citation_agent)."
+    },
+    "source": { "type": "string", "enum": ["rule_classifier", "llm_classifier", "merged"], "description": "Which classifier provided the winning classification." }
+  }
+}

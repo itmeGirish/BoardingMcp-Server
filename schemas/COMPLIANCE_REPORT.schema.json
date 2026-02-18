@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "COMPLIANCE_REPORT",
+  "description": "Compliance validation output from the compliance agent (Step 8).",
+  "type": "object",
+  "required": ["mandatory_sections", "mandatory_annexures"],
+  "properties": {
+    "mandatory_sections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Section IDs that are mandatory for this document type/court."
+    },
+    "mandatory_annexures": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Annexure types required (e.g. fir_copy, id_proof, affidavit)."
+    },
+    "limitation_check": {
+      "type": "object",
+      "properties": {
+        "applicable": { "type": "boolean" },
+        "limitation_period": { "type": ["string", "null"] },
+        "expiry_date": { "type": ["string", "null"] },
+        "is_within_limitation": { "type": ["boolean", "null"] },
+        "needs_clarification": { "type": "boolean", "default": false }
+      }
+    },
+    "affidavit_required": { "type": "boolean", "default": false },
+    "risk_flags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Compliance risk warnings."
+    },
+    "jurisdiction": { "type": ["string", "null"] },
+    "hard_block": { "type": "boolean", "default": false },
+    "hard_block_reason": { "type": ["string", "null"] }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DRAFT_CONTEXT",
+  "description": "Merged drafting context from the context merger (Step 11).",
+  "type": "object",
+  "required": ["sections"],
+  "properties": {
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "title"],
+        "properties": {
+          "section_id": { "type": "string" },
+          "title": { "type": "string" },
+          "order": { "type": "integer" },
+          "required": { "type": "boolean" },
+          "source": { "type": "string", "description": "Origin (template, compliance, localization, prayer_pack, citation, research)." },
+          "localization": { "type": "object", "description": "Attached localization rules." },
+          "content": { "description": "Pre-filled content if available." }
+        }
+      }
+    },
+    "master_facts": { "type": "object", "description": "All extracted facts for the drafting agent." },
+    "mistake_checklist": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Mistake rules from main DB to check against."
+    },
+    "doc_type": { "type": ["string", "null"] },
+    "jurisdiction": { "type": ["string", "null"] },
+    "court_type": { "type": ["string", "null"] }
+  }
+}

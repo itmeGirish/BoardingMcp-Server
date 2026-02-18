@@ -8,4 +8,17 @@ from .processed_contact import ProcessedContact
 from .consent_log import ConsentLog
 from .suppression_list import SuppressionList
 
-__all__ = ["BusinessCreation", "ProjectCreation", "User", "TempMemory", "BroadcastJob", "TemplateCreation", "ProcessedContact", "ConsentLog", "SuppressionList"]
+# Legal drafting models (separate subfolder)
+from .drafting import (
+    DraftingSession, DraftingFact, AgentOutput, DraftingValidation,
+    MainRule, StagingRule, PromotionLog,
+    VerifiedCitation, DraftVersion, ClarificationHistory,
+)
+
+__all__ = [
+    "BusinessCreation", "ProjectCreation", "User", "TempMemory",
+    "BroadcastJob", "TemplateCreation", "ProcessedContact", "ConsentLog", "SuppressionList",
+    "DraftingSession", "DraftingFact", "AgentOutput", "DraftingValidation",
+    "MainRule", "StagingRule", "PromotionLog",
+    "VerifiedCitation", "DraftVersion", "ClarificationHistory",
+]

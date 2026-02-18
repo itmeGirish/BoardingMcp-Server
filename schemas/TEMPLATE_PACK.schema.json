@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TEMPLATE_PACK",
+  "description": "Template pack from the template_pack agent (Step 7).",
+  "type": "object",
+  "required": ["doc_type", "sections"],
+  "properties": {
+    "doc_type": { "type": "string" },
+    "court_type": { "type": ["string", "null"] },
+    "jurisdiction": { "type": ["string", "null"] },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_id", "title", "order"],
+        "properties": {
+          "section_id": { "type": "string" },
+          "title": { "type": "string" },
+          "order": { "type": "integer" },
+          "required": { "type": "boolean", "default": true },
+          "description": { "type": ["string", "null"], "description": "Guidance for the drafting agent." },
+          "mandatory_clauses": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Clauses that must appear in this section."
+          }
+        }
+      }
+    }
+  }
+}
