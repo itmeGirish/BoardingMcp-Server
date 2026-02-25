@@ -15,7 +15,7 @@ class AgentOutput(SQLModel, table=True):
     id: str = Field(primary_key=True)
     session_id: str = Field(index=True)
 
-    agent_name: str = Field()      # intake, fact_extraction, research, drafting, review
+    agent_name: str = Field()      # supervisor/intake/classifier/parallel/drafting/review agents
     output_type: str = Field()     # facts, citations, draft, review_notes
     output_data: str = Field(sa_type=Text)  # JSON blob
 

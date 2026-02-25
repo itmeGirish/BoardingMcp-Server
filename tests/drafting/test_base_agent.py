@@ -24,21 +24,12 @@ class TestDraftingModels:
         """DRAFTING_MODELS should have exactly 12 agent entries."""
         assert len(DRAFTING_MODELS) == 12
 
-    def test_glm_agents(self):
-        """GLM-4.7 agents: supervisor, llm_classifier, template_pack, compliance, localization, prayer."""
-        from app.services.llm_service import glm_model
-        glm_agents = ["supervisor", "llm_classifier", "template_pack", "compliance", "localization", "prayer"]
-        for agent in glm_agents:
-            assert DRAFTING_MODELS[agent] is glm_model, \
-                f"{agent} should use glm_model, got {DRAFTING_MODELS[agent]}"
-
-    def test_kimi_agents(self):
-        """Kimi K2.5 agents: intake, fact_extraction, research, citation, drafting, review."""
+    def test_all_agents_use_kimi(self):
+        """All agents use Kimi K2.5 (ollma_model) — GLM dropped for JSON reliability."""
         from app.services.llm_service import ollma_model
-        kimi_agents = ["intake", "fact_extraction", "research", "citation", "drafting", "review"]
-        for agent in kimi_agents:
-            assert DRAFTING_MODELS[agent] is ollma_model, \
-                f"{agent} should use ollma_model, got {DRAFTING_MODELS[agent]}"
+        for agent, model in DRAFTING_MODELS.items():
+            assert model is ollma_model, \
+                f"{agent} should use ollma_model, got {model}"
 
     def test_get_drafting_model_returns_correct(self):
         """get_drafting_model should return the registered model for a known agent."""
@@ -55,13 +46,13 @@ class TestDraftingModels:
     def test_get_drafting_model_fallback(self):
         """get_drafting_model should return default model for unknown agent names."""
         model = get_drafting_model("nonexistent_agent")
-        assert model is not None  # Should return default (glm_model)
+        assert model is not None
 
-    def test_get_drafting_model_fallback_is_glm(self):
-        """Fallback model should be glm_model."""
-        from app.services.llm_service import glm_model
+    def test_get_drafting_model_fallback_is_kimi(self):
+        """Fallback model should be ollma_model (Kimi K2.5)."""
+        from app.services.llm_service import ollma_model
         model = get_drafting_model("unknown_agent_xyz")
-        assert model is glm_model
+        assert model is ollma_model
 
 
 class TestBaseAgentNode:
@@ -209,11 +200,11 @@ class TestSupervisorNode:
         """DraftingSupervisorAgentNode must inherit from DraftingBaseAgentNode."""
         assert issubclass(DraftingSupervisorAgentNode, DraftingBaseAgentNode)
 
-    def test_model_is_glm(self):
-        """Supervisor model should resolve to glm_model."""
-        from app.services.llm_service import glm_model
+    def test_model_is_kimi(self):
+        """Supervisor model should resolve to ollma_model (Kimi K2.5)."""
+        from app.services.llm_service import ollma_model
         node = DraftingSupervisorAgentNode()
-        assert node.model is glm_model
+        assert node.model is ollma_model
 
     def test_route_after_tool_default(self):
         """route_after_tool should return 'call_model' when no delegation map."""

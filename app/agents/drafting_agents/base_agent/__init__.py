@@ -1,7 +1,6 @@
-"""Base agent classes for the legal drafting workflow."""
-
-from .base_agent_node import DraftingBaseAgentNode, DRAFTING_MODELS, get_drafting_model
-from .supervisor_agent_node import DraftingSupervisorAgentNode
+from .base import DraftingBaseAgentNode
+from .supervisor_agent import DraftingSupervisorAgentNode
+from ..config.llm_config import DRAFTING_MODELS, get_drafting_model
 
 __all__ = [
     "DraftingBaseAgentNode",

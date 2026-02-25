@@ -5,6 +5,7 @@ Implement your logic here
 
 from pydantic_settings import BaseSettings
 from pydantic import ConfigDict
+from typing import Optional
 
 class Settings(BaseSettings):
     # GOOGLE_CLIENT_ID: str
@@ -55,6 +56,7 @@ class Settings(BaseSettings):
 
     #openai api keys
     OPENAI_API_KEY:str
+    BRAVE_API_KEY: Optional[str] = None
 
     #nvidia
     NVIDIA_API_KEY:str
@@ -68,6 +70,12 @@ class Settings(BaseSettings):
     MAX_TOKENS:int=None
     TIMEOUT:str=None
     MAX_RETRIES:int
+
+    QDRANT_CLIENT_URL:str
+    QDRANT_API_KEY: Optional[str] = None
+    QUADRANT_CLIENT_URL: Optional[str] = None
+    QUADRANT_API_KEY: Optional[str] = None
+    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
 
 
     model_config = ConfigDict(

@@ -1,19 +1,28 @@
+from contextlib import contextmanager
 from typing import Annotated
+
 from fastapi import Depends
 from sqlmodel import Session, create_engine
-from ...config.settings import settings
+
 from ...config.logging import logger
-from contextlib import contextmanager
+from ...config.settings import settings
 
 
 
 # PostgreSQL connection setup
-DATABASE_URL = f"postgresql+psycopg://{settings.db_user}:{settings.db_password}@{settings.db_host}:{settings.db_port}/{settings.db_name}"
-
-print("Connecting to database with URL:", DATABASE_URL)
+DATABASE_URL = (
+    f"postgresql+psycopg://{settings.db_user}:{settings.db_password}"
+    f"@{settings.db_host}:{settings.db_port}/{settings.db_name}"
+)
 
 engine = create_engine(DATABASE_URL)
-logger.info(f"Connecting to database at {settings.db_host}:{settings.db_port}/{settings.db_name}")
+logger.info(
+    "Connecting to database at %s:%s/%s as user %s",
+    settings.db_host,
+    settings.db_port,
+    settings.db_name,
+    settings.db_user,
+)
 
 
 

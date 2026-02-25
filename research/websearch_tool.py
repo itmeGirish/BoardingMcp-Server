@@ -1,138 +1,204 @@
 """
-Integration test for web_search_tool with real Brave API
-Run this only if you have a valid BRAVE_API_KEY in your .env file
+Reusable Brave web search helper.
+
+This module is shared by research workflows and should not contain
+hardcoded credentials.
 """
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
+from __future__ import annotations
 
-# Import your actual function (adjust the import path as needed)
-# from your_module.search import web_search_tool
-
-# For this test, we'll redefine it
 from html.parser import HTMLParser
-import requests
-from typing import List, Dict
+from typing import Any
+from urllib.parse import urlparse
 
-class HTMLStripper(HTMLParser):
+import requests
+
+
+class _HTMLStripper(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.fed = []
-    def handle_data(self, d):
-        self.fed.append(d)
-    def get_data(self):
-        return ''.join(self.fed)
+        self.fed: list[str] = []
 
-def strip_html(html: str) -> str:
-    s = HTMLStripper()
-    s.feed(html)
+    def handle_data(self, d: str) -> None:
+        self.fed.append(d)
+
+    def get_data(self) -> str:
+        return "".join(self.fed)
+
+
+def _strip_html(html: str) -> str:
+    s = _HTMLStripper()
+    s.feed(html or "")
     return s.get_data()
 
 
-BRAVE_API_KEY="BSAxM8-IgA7TtoIKZ0QQLJ-lHzAqTX1"
+_HIGH_AUTHORITY_DOMAINS = {
+    "indiankanoon.org",
+    "sci.gov.in",
+    "main.sci.gov.in",
+    "ecourts.gov.in",
+    "legislative.gov.in",
+    "egazette.nic.in",
+    "indiacode.nic.in",
+}
 
-def web_search_tool(tags: str) -> List[Dict]:
-    
-    if not BRAVE_API_KEY:
-        return [{"error": "Brave API key not provided"}]
+_LEGAL_DB_DOMAINS = {
+    "scconline.com",
+    "manupatra.com",
+    "casemine.com",
+}
 
-    tag_list = [tag.strip() for tag in tags.split(",")]
-    query = " OR ".join(tag_list[:3])
+_LOW_AUTHORITY_HINTS = {
+    "blog",
+    "medium.com",
+    "wordpress.com",
+    "blogspot.com",
+}
+
+
+def _extract_domain(url: str) -> str:
+    try:
+        return (urlparse(url).netloc or "").lower().replace("www.", "")
+    except Exception:
+        return ""
+
+
+def _extract_path(url: str) -> str:
+    try:
+        return (urlparse(url).path or "").lower()
+    except Exception:
+        return ""
+
+
+def _classify_source(domain: str) -> tuple[str, int]:
+    if (
+        domain in _HIGH_AUTHORITY_DOMAINS
+        or domain.endswith(".gov.in")
+        or domain.endswith("indiacode.nic.in")
+        or domain.endswith("ecourts.gov.in")
+    ):
+        return "official_legal_source", 100
+    if domain in _LEGAL_DB_DOMAINS:
+        return "legal_database", 90
+    if any(h in domain for h in _LOW_AUTHORITY_HINTS):
+        return "blog_or_low_authority", 25
+    return "general_web", 50
+
+
+def _looks_legal_text(title: str, snippet: str) -> bool:
+    text = f"{title} {snippet}".lower()
+    legal_markers = [
+        "section",
+        "act",
+        "judgment",
+        "supreme court",
+        "high court",
+        "limitation",
+        "legal notice",
+        "petition",
+        "plaint",
+        "affidavit",
+        "tribunal",
+    ]
+    return any(m in text for m in legal_markers)
+
+
+def _looks_blog_like(url: str, title: str) -> bool:
+    path = _extract_path(url)
+    text = f"{title} {path}".lower()
+    blog_markers = [
+        "/blog",
+        " blog ",
+        "medium.com",
+        "blogspot.com",
+        "wordpress.com",
+    ]
+    return any(m in text for m in blog_markers)
+
+
+def web_search_tool(
+    query: str,
+    brave_api_key: str,
+    count: int = 5,
+    strict_legal: bool = True,
+    authoritative_only: bool = True,
+) -> dict[str, Any]:
+    """
+    Query Brave web search API and return normalized result payload.
+
+    Returns:
+      {
+        "status": "success|failed",
+        "results": [
+          {
+            "title",
+            "url",
+            "snippet",
+            "published_at",
+            "domain",
+            "source_type",
+            "authority_score"
+          }, ...
+        ],
+        "count": int,
+        "error": str (on failed)
+      }
+    """
+    if not brave_api_key:
+        return {"status": "failed", "error": "Brave API key not configured", "results": []}
 
     url = "https://api.search.brave.com/res/v1/web/search"
     headers = {
         "Accept": "application/json",
         "Accept-Encoding": "gzip",
-        "x-subscription-token": BRAVE_API_KEY
+        "x-subscription-token": brave_api_key,
     }
-    params = {
-        "q": query,
-        "count": 5,
-    }
+    params = {"q": query, "count": count}
 
     try:
-        response = requests.get(url, headers=headers, params=params)
+        response = requests.get(url, headers=headers, params=params, timeout=15)
         response.raise_for_status()
-        results = response.json().get("web", {}).get("results", [])
-    except requests.exceptions.RequestException as e:
-        return [{"error": f"HTTP Request failed: {str(e)}"}]
+        raw_results = response.json().get("web", {}).get("results", [])
+    except Exception as e:
+        return {"status": "failed", "error": str(e), "results": []}
 
-    formatted_results = []
-    for item in results:
-        content = item.get("description", "")
-        clean_content = strip_html(content)
-        formatted_results.append({
-            "title": item.get("title", ""),
-            "date": item.get("published", ""),
-            "tags": tags,
-            "content": clean_content,
-            "website": item.get("url", "")
-        })
+    def _collect() -> list[dict[str, Any]]:
+        rows: list[dict[str, Any]] = []
+        for item in raw_results:
+            title = item.get("title", "") or ""
+            url = item.get("url", "") or ""
+            snippet = _strip_html(item.get("description", ""))
+            published_at = item.get("published", "")
+            domain = _extract_domain(url)
+            source_type, authority_score = _classify_source(domain)
 
-    return formatted_results
+            if strict_legal:
+                if source_type == "blog_or_low_authority":
+                    continue
+                if _looks_blog_like(url, title) and authority_score < 90:
+                    continue
+                if source_type == "general_web" and not _looks_legal_text(title, snippet):
+                    continue
+                if authoritative_only and source_type not in {"official_legal_source", "legal_database"}:
+                    continue
 
+            rows.append(
+                {
+                    "title": title,
+                    "url": url,
+                    "snippet": snippet,
+                    "published_at": published_at,
+                    "domain": domain,
+                    "source_type": source_type,
+                    "authority_score": authority_score,
+                }
+            )
+        return rows
 
-def test_real_api():
-    """Test with real Brave API"""
-    print("Testing with real Brave API...")
-    print("=" * 60)
-    
-    # Check if API key exists
-    api_key = os.getenv("BRAVE_API_KEY")
-    if not api_key:
-        print("⚠ BRAVE_API_KEY not found in environment")
-        print("Please set it in your .env file to run this test")
-        return
-    
-    # Test 1: Single tag search
-    print("\n[Test 1] Searching for: 'python'")
-    results = web_search_tool("python")
-    
-    if results and "error" in results[0]:
-        print(f"✗ Error: {results[0]['error']}")
-        return
-    
-    print(f"✓ Found {len(results)} results")
-    for i, result in enumerate(results, 1):
-        print(f"\n  Result {i}:")
-        print(f"    Title: {result['title'][:80]}...")
-        print(f"    Date: {result['date']}")
-        print(f"    Content: {result['content'][:100]}...")
-        print(f"    URL: {result['website'][:60]}...")
-    
-    # Test 2: Multiple tags
-    print("\n" + "=" * 60)
-    print("[Test 2] Searching for: 'artificial intelligence, machine learning'")
-    results = web_search_tool("artificial intelligence, machine learning")
-    
-    if results and "error" in results[0]:
-        print(f"✗ Error: {results[0]['error']}")
-        return
-    
-    print(f"✓ Found {len(results)} results")
-    for i, result in enumerate(results[:2], 1):  # Show only first 2
-        print(f"\n  Result {i}:")
-        print(f"    Title: {result['title'][:80]}")
-        print(f"    Tags: {result['tags']}")
-        print(f"    Content length: {len(result['content'])} chars")
-    
-    # Test 3: Check content quality (should have at least some content)
-    print("\n" + "=" * 60)
-    print("[Test 3] Validating content quality...")
-    
-    has_content = sum(1 for r in results if len(r.get('content', '')) > 50)
-    print(f"✓ {has_content}/{len(results)} results have substantial content (>50 chars)")
-    
-    has_dates = sum(1 for r in results if r.get('date'))
-    print(f"✓ {has_dates}/{len(results)} results have publication dates")
-    
-    has_urls = sum(1 for r in results if r.get('website'))
-    print(f"✓ {has_urls}/{len(results)} results have URLs")
-    
-    print("\n" + "=" * 60)
-    print("✓ Integration test completed!")
+    formatted = _collect()
 
+    # Rank by authority first; then keep top `count`.
+    formatted.sort(key=lambda r: r.get("authority_score", 0), reverse=True)
+    formatted = formatted[:count]
 
-if __name__ == "__main__":
-    test_real_api()
+    return {"status": "success", "results": formatted, "count": len(formatted)}

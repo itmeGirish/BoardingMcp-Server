@@ -1,0 +1,29 @@
+System message: A backend error prevented starting the drafting session. The database role (mystartup) does not exist, causing INITIALIZATION to fail. We will retry and proceed once the intake pipeline can be started.
+
+What this means for your request:
+- We cannot draft content yet. The intake and downstream tooling will run automatically once the session initializes.
+- After intake, the workflow will route through:
+  - rule_classifier_gate
+  - llm_classifier
+  - parallel: template_pack, compliance, citation, localization, prayer
+  - context_merge_gate
+  - drafting
+  - review pass 1
+  - review pass 2
+  - Final draft will be saved after the second review pass.
+
+What will be captured during intake (for a legal notice about recovery):
+- Amount claimed: ₹8,50,000 (hand loan)
+- Purpose: Recovery of loan
+- Jurisdiction/venue: Bengaluru
+- Evidence: Bank transfer proof; no written loan agreement
+- Interest claim: 18% (to be asserted in demand/notice)
+- Parties: lender and borrower names and addresses (to be gathered by intake)
+- Timeline: dates of loan transaction, any part-payment or defaults (to be gathered by intake)
+- Notices and remedies: standard demand notice language, proposed demand period, and invocation of applicable Indian law (e.g., applicable sections on debt recovery) as per intake guidance
+- Currency and formatting preferences for the final notice
+
+Next steps:
+- The system will automatically retry initialization in the background. Once the session is successfully created, intake will begin and the full drafting pipeline will proceed, with the final draft saved after the second review pass.
+
+If you’d like, I can monitor for success and notify you as soon as the intake begins and the draft becomes available for finalization.

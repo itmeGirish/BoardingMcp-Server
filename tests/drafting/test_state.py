@@ -1,19 +1,70 @@
 """Tests for LegalDraftingState definition."""
+import sys
+import types
 import typing
+import json as _json
 import pytest
 from operator import add
+
+# Compatibility shim for environments where copilotkit expects
+# `langgraph.graph.graph.CompiledGraph`.
+if "langgraph.graph.graph" not in sys.modules:
+    try:
+        from langgraph.graph.state import CompiledStateGraph
+
+        compat_mod = types.ModuleType("langgraph.graph.graph")
+        compat_mod.CompiledGraph = CompiledStateGraph
+        sys.modules["langgraph.graph.graph"] = compat_mod
+    except Exception:
+        pass
+
+# Compatibility shim for environments without full `langchain` package.
+try:
+    from langchain.load.dump import dumps as _lc_dumps  # type: ignore # noqa: F401
+except Exception:
+    langchain_pkg = sys.modules.get("langchain")
+    if langchain_pkg is None:
+        langchain_pkg = types.ModuleType("langchain")
+        sys.modules["langchain"] = langchain_pkg
+
+    load_pkg = sys.modules.get("langchain.load")
+    if load_pkg is None:
+        load_pkg = types.ModuleType("langchain.load")
+        sys.modules["langchain.load"] = load_pkg
+
+    dump_mod = types.ModuleType("langchain.load.dump")
+
+    def _shim_dumps(value):
+        try:
+            return _json.dumps(value, default=str)
+        except Exception:
+            return str(value)
+
+    dump_mod.dumps = _shim_dumps
+    sys.modules["langchain.load.dump"] = dump_mod
+
+try:
+    from langchain.schema import BaseMessage as _LCBaseMessage  # type: ignore # noqa: F401
+except Exception:
+    schema_mod = types.ModuleType("langchain.schema")
+    from langchain_core.messages import BaseMessage, SystemMessage
+
+    schema_mod.BaseMessage = BaseMessage
+    schema_mod.SystemMessage = SystemMessage
+    sys.modules["langchain.schema"] = schema_mod
+
 from app.agents.drafting_agents.states.legal_drafting import LegalDraftingState, DraftingPhase
 
 
 class TestDraftingPhase:
     def test_valid_phases(self):
-        """All 18-step phases should be valid."""
+        """Current + retained legacy phases should be valid."""
         valid_phases = [
-            "INITIALIZED", "SECURITY", "INTAKE", "FACT_VALIDATION",
-            "CLASSIFICATION", "ROUTE_RESOLUTION", "CLARIFICATION",
-            "TEMPLATE_PACK", "PARALLEL_AGENTS", "OPTIONAL_AGENTS",
-            "CITATION_VALIDATION", "CONTEXT_MERGE", "DRAFTING",
-            "REVIEW", "STAGING_RULES", "PROMOTION", "EXPORT",
+            "INITIALIZED", "INTAKE", "CLASSIFICATION", "PARALLEL_AGENTS",
+            "CONTEXT_MERGE", "DRAFTING", "REVIEW",
+            "SECURITY", "ROUTE_RESOLUTION", "CLARIFICATION",
+            "TEMPLATE_PACK", "OPTIONAL_AGENTS", "STAGING_RULES",
+            "PROMOTION", "EXPORT",
             "COMPLETED", "PAUSED", "FAILED",
         ]
         # Verify all phases exist in the Literal type
@@ -21,8 +72,8 @@ class TestDraftingPhase:
             assert phase in DraftingPhase.__args__, f"Missing phase: {phase}"
 
     def test_phase_count(self):
-        """DraftingPhase should have exactly 20 literal values."""
-        assert len(DraftingPhase.__args__) == 20
+        """DraftingPhase should have exactly 18 literal values."""
+        assert len(DraftingPhase.__args__) == 18
 
     def test_no_duplicate_phases(self):
         """All phase names must be unique."""
@@ -42,10 +93,10 @@ class TestLegalDraftingState:
         annotations = LegalDraftingState.__annotations__
         required_fields = [
             "sanitized_input", "document_type", "jurisdiction",
-            "fact_validation_result", "rule_classification",
+            "rule_classification",
             "llm_classification", "resolved_route",
             "needs_clarification", "template_pack",
-            "parallel_outputs", "research_bundle", "citation_pack",
+            "parallel_outputs", "citation_pack",
             "draft_context", "draft_v1", "final_draft",
             "export_output", "error_message",
         ]
@@ -78,7 +129,7 @@ class TestLegalDraftingState:
             # For Annotated types, get_origin returns Annotated
             args = typing.get_args(parallel_type)
             # First arg of Annotated is the base type
-            assert args[0] is list, "parallel_outputs base type should be list"
+            assert typing.get_origin(args[0]) is list, "parallel_outputs base type should be list"
 
     def test_optional_fields_are_optional(self):
         """Most state fields should be Optional to allow incremental pipeline execution."""
@@ -86,7 +137,7 @@ class TestLegalDraftingState:
         optional_fields = [
             "drafting_phase", "drafting_session_id", "user_id",
             "sanitized_input", "document_type", "jurisdiction",
-            "fact_validation_result", "error_message",
+            "error_message",
         ]
         for field in optional_fields:
             field_type = annotations[field]
@@ -123,7 +174,7 @@ class TestLegalDraftingState:
         annotations = LegalDraftingState.__annotations__
         assert "hard_blocks" in annotations
 
-    def test_state_has_citation_validation_result(self):
-        """State must have citation_validation_result for Step 10."""
+    def test_state_has_workflow_state(self):
+        """State must carry canonical workflow_state payload."""
         annotations = LegalDraftingState.__annotations__
-        assert "citation_validation_result" in annotations
+        assert "workflow_state" in annotations

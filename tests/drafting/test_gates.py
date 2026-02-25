@@ -348,19 +348,31 @@ class TestDraftQuality:
     """Tests for check_draft_quality."""
 
     def _build_valid_demand_letter(self):
-        """Helper: build a valid demand letter draft that passes all checks."""
+        """Helper: build a valid demand letter draft that passes all checks.
+
+        Includes all required sections: subject, notice_content (numbered paras),
+        demand, verification, signature.
+        """
         return (
             "Date: 2025-01-15\n"
-            "Recipient: Jane Doe\n"
-            "Subject: Outstanding Payment\n\n"
-            "Body:\n"
-            "This letter is to formally notify you of the outstanding balance\n"
-            "of Rs. 50,000 that remains unpaid despite multiple reminders.\n\n"
+            "To: Jane Doe, 123 Main Street\n\n"
+            "Subject: Outstanding Payment of Rs. 50,000/-\n\n"
+            "1. This letter is to formally notify you of the outstanding balance "
+            "of Rs. 50,000 that remains unpaid despite multiple reminders sent by "
+            "our client John Smith.\n\n"
+            "2. You had borrowed the said sum under an agreement dated 01/01/2024 "
+            "and undertook to repay the same within six months. Despite repeated "
+            "requests and reminders, you have failed and neglected to do so.\n\n"
             "Demand:\n"
-            "You are hereby demanded to pay the full amount within 15 days.\n\n"
+            "You are hereby called upon and demanded to pay the full outstanding "
+            "amount of Rs. 50,000/- (Rupees Fifty Thousand only) within 15 days "
+            "from the date of receipt of this notice.\n\n"
+            "Verification:\n"
+            "I, the undersigned advocate, verify that the contents herein are "
+            "true and correct to the best of my knowledge and belief.\n\n"
             "Signature:\n"
             "John Smith, Advocate\n"
-            + ("Additional context. " * 20)
+            + ("Additional context. " * 10)
         )
 
     def test_pass_valid_demand_letter(self):
@@ -442,6 +454,22 @@ class TestDraftQuality:
         result = check_draft_quality(draft, "demand_letter")
         assert result["details"]["content_length"] > 200
         assert result["details"]["line_count"] >= 5
+
+    def test_fail_fast_when_policy_is_invalid(self, monkeypatch):
+        monkeypatch.setattr(
+            "app.agents.drafting_agents.gates.draft_quality.get_quality_policy",
+            lambda document_type=None: {
+                "policy_version": "invalid",
+                "policy_valid": False,
+                "policy_errors": ["schema error"],
+                "draft_quality": {"issue_policies": {"policy_invalid": {"blocking": True, "severity": "critical"}}},
+            },
+        )
+        draft = self._build_valid_demand_letter()
+        result = check_draft_quality(draft, "demand_letter")
+        assert result["passed"] is False
+        assert any("policy invalid" in issue.lower() for issue in result["issues"])
+        assert len(result["blocking_issues"]) >= 1
 
 
 # =========================================================================
@@ -999,229 +1027,149 @@ class TestClarificationNeeded:
 # =========================================================================
 
 class TestMergeContext:
-    """Tests for merge_context."""
+    """Tests for merge_context.
 
-    def _base_template(self):
-        return {
-            "doc_type": "Bail Application",
-            "sections": [
-                {"section_id": "caption", "title": "Caption", "order": 1, "required": True},
-                {"section_id": "facts", "title": "Facts", "order": 2, "required": True},
-                {"section_id": "grounds", "title": "Grounds", "order": 3, "required": False},
-            ],
-        }
+    merge_context takes parallel_agent_outputs as a flat dict keyed by agent name.
+    The expected keys are: template_pack, compliance_report, local_rules, prayer_pack,
+    citation_pack. Hard-blocks are detected from hard_block/hard_block_reason fields
+    within any payload. master_facts and mistake_checklist are separate kwargs.
+    """
 
-    def _base_compliance(self):
+    def _base_parallel_outputs(self):
         return {
-            "mandatory_sections": ["caption", "facts"],
-            "mandatory_annexures": [],
-            "jurisdiction": "Delhi",
-        }
-
-    def _base_local_rules(self):
-        return {
-            "language": "English",
-            "date_format": "DD/MM/YYYY",
-            "numbering_style": "roman",
-        }
-
-    def _base_prayer_pack(self):
-        return {
-            "prayers": [
-                {"prayer_id": "p1", "text": "Grant bail to the accused", "order": 1},
-            ],
+            "template_pack": {
+                "doc_type": "Bail Application",
+                "sections": [
+                    {"section_id": "caption", "title": "Caption", "order": 1, "required": True},
+                    {"section_id": "facts", "title": "Facts", "order": 2, "required": True},
+                    {"section_id": "grounds", "title": "Grounds", "order": 3, "required": False},
+                ],
+            },
+            "compliance_report": {
+                "mandatory_sections": ["caption", "facts"],
+                "mandatory_annexures": [],
+                "jurisdiction": "Delhi",
+            },
+            "local_rules": {
+                "language": "English",
+                "date_format": "DD/MM/YYYY",
+                "numbering_style": "roman",
+            },
+            "prayer_pack": {
+                "prayers": [
+                    {"prayer_id": "p1", "text": "Grant bail to the accused", "order": 1},
+                ],
+            },
         }
 
     def test_pass_basic_merge(self):
-        result = merge_context(
-            self._base_template(),
-            self._base_compliance(),
-            self._base_local_rules(),
-            self._base_prayer_pack(),
-        )
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
         assert result["passed"] is True
         assert result["gate"] == "context_merger"
-        assert len(result["draft_context"]["sections"]) >= 3  # template + prayer
+
+    def test_draft_context_has_all_shortcuts(self):
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
+        dc = result["draft_context"]
+        assert "citation_pack" in dc
+        assert "compliance_report" in dc
+        assert "prayer_pack" in dc
+        assert "localization_rules" in dc
+        assert "template_pack" in dc
 
     def test_sections_sorted_by_order(self):
-        result = merge_context(
-            self._base_template(),
-            self._base_compliance(),
-            self._base_local_rules(),
-            self._base_prayer_pack(),
-        )
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
         orders = [s.get("order", 0) for s in result["draft_context"]["sections"]]
         assert orders == sorted(orders)
 
-    def test_compliance_upgrades_optional_to_required(self):
-        template = self._base_template()
-        compliance = self._base_compliance()
-        compliance["mandatory_sections"] = ["caption", "facts", "grounds"]
-        result = merge_context(template, compliance, self._base_local_rules(), self._base_prayer_pack())
-        grounds = [s for s in result["draft_context"]["sections"] if s["section_id"] == "grounds"]
-        assert len(grounds) == 1
-        assert grounds[0]["required"] is True
-        assert any("upgraded to required" in w for w in result["warnings"])
-
-    def test_compliance_warns_missing_mandatory_section(self):
-        compliance = self._base_compliance()
-        compliance["mandatory_sections"] = ["caption", "facts", "non_existent_section"]
-        result = merge_context(
-            self._base_template(), compliance,
-            self._base_local_rules(), self._base_prayer_pack(),
-        )
-        assert any("non_existent_section" in w for w in result["warnings"])
-
-    def test_mandatory_annexures_appended(self):
-        compliance = self._base_compliance()
-        compliance["mandatory_annexures"] = ["fir_copy", "id_proof"]
-        result = merge_context(
-            self._base_template(), compliance,
-            self._base_local_rules(), self._base_prayer_pack(),
-        )
-        section_ids = [s["section_id"] for s in result["draft_context"]["sections"]]
-        assert "fir_copy" in section_ids
-        assert "id_proof" in section_ids
-
-    def test_localization_attached_to_sections(self):
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
-        )
-        for section in result["draft_context"]["sections"]:
-            if section.get("source") != "prayer_pack":
-                assert "localization" in section
-
-    def test_local_sections_added(self):
-        local_rules = self._base_local_rules()
-        local_rules["local_sections"] = [
-            {"section_id": "vakalatnama", "title": "Vakalatnama", "order": 0, "required": True},
-        ]
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            local_rules, self._base_prayer_pack(),
-        )
-        section_ids = [s["section_id"] for s in result["draft_context"]["sections"]]
-        assert "vakalatnama" in section_ids
-
-    def test_prayer_section_added(self):
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
-        )
-        prayer_sections = [
-            s for s in result["draft_context"]["sections"] if s["section_id"] == "prayer"
-        ]
-        assert len(prayer_sections) == 1
-        assert prayer_sections[0]["required"] is True
-
-    def test_empty_prayers_no_section(self):
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), {"prayers": []},
-        )
-        prayer_sections = [
-            s for s in result["draft_context"]["sections"] if s["section_id"] == "prayer"
-        ]
-        assert len(prayer_sections) == 0
-
-    def test_citations_added(self):
-        citation_pack = {
-            "citations": [
-                {"text": "AIR 2020 SC 1234", "confidence": 0.90},
-            ],
-        }
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
-            citation_pack=citation_pack,
-        )
-        cit_sections = [
-            s for s in result["draft_context"]["sections"] if s["section_id"] == "citations"
-        ]
-        assert len(cit_sections) == 1
-
-    def test_research_added(self):
-        research_bundle = {
-            "principles": ["Right to liberty under Article 21"],
-            "precedents": ["Arnesh Kumar v State of Bihar"],
-        }
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
-            research_bundle=research_bundle,
-        )
-        research_sections = [
-            s for s in result["draft_context"]["sections"] if s["section_id"] == "research"
-        ]
-        assert len(research_sections) == 1
-
-    def test_no_citations_no_section(self):
-        result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
-            citation_pack=None,
-        )
-        cit_sections = [
-            s for s in result["draft_context"]["sections"] if s["section_id"] == "citations"
-        ]
-        assert len(cit_sections) == 0
-
     def test_hard_block_detected(self):
-        compliance = self._base_compliance()
-        compliance["hard_block"] = True
-        compliance["hard_block_reason"] = "Jurisdiction not supported"
-        result = merge_context(
-            self._base_template(), compliance,
-            self._base_local_rules(), self._base_prayer_pack(),
-        )
+        outputs = self._base_parallel_outputs()
+        outputs["compliance_report"]["hard_block"] = True
+        outputs["compliance_report"]["hard_block_reason"] = "Jurisdiction not supported"
+        result = merge_context(parallel_agent_outputs=outputs)
         assert result["passed"] is False
         assert len(result["hard_blocks"]) > 0
         assert result["hard_blocks"][0]["reason"] == "Jurisdiction not supported"
 
     def test_multiple_hard_blocks(self):
-        compliance = self._base_compliance()
-        compliance["hard_block"] = True
-        compliance["hard_block_reason"] = "Compliance block"
-        local_rules = self._base_local_rules()
-        local_rules["hard_block"] = True
-        local_rules["hard_block_reason"] = "Localization block"
-        result = merge_context(
-            self._base_template(), compliance,
-            local_rules, self._base_prayer_pack(),
-        )
+        outputs = self._base_parallel_outputs()
+        outputs["compliance_report"]["hard_block"] = True
+        outputs["compliance_report"]["hard_block_reason"] = "Compliance block"
+        outputs["local_rules"]["hard_block"] = True
+        outputs["local_rules"]["hard_block_reason"] = "Localization block"
+        result = merge_context(parallel_agent_outputs=outputs)
         assert result["passed"] is False
         assert len(result["hard_blocks"]) == 2
 
     def test_master_facts_included(self):
-        master_facts = {"accused_name": "Rahul", "fir_number": "FIR/100/2024"}
+        master_facts = {"facts": [{"fact_key": "accused_name", "fact_value": "Rahul"}]}
         result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
+            parallel_agent_outputs=self._base_parallel_outputs(),
             master_facts=master_facts,
         )
         assert result["draft_context"]["master_facts"] == master_facts
 
-    def test_mistake_checklist_included(self):
+    def test_mistake_checklist_excluded_from_context(self):
+        """mistake_checklist is intentionally NOT in draft_context (empty DB, adds noise)."""
         mistake_checklist = {"checks": ["Verify FIR date", "Check section numbers"]}
         result = merge_context(
-            self._base_template(), self._base_compliance(),
-            self._base_local_rules(), self._base_prayer_pack(),
+            parallel_agent_outputs=self._base_parallel_outputs(),
             mistake_checklist=mistake_checklist,
         )
-        assert result["draft_context"]["mistake_checklist"] == [
-            "Verify FIR date", "Check section numbers"
-        ]
+        # mistake_checklist is accepted as input but excluded from draft_context
+        # because the rules DB is not yet populated and the empty list adds noise.
+        assert "mistake_checklist" not in result["draft_context"]
 
-    def test_conflict_detection_warns(self):
-        compliance = self._base_compliance()
-        compliance["mandatory_sections"] = ["grounds"]
-        compliance["optional_in_template"] = ["grounds"]
+    def test_no_parallel_outputs_still_passes(self):
+        result = merge_context()
+        assert result["gate"] == "context_merger"
+        assert result["passed"] is True
+        assert "draft_context" in result
+
+    def test_prayer_pack_shortcut_populated(self):
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
+        prayers = result["draft_context"]["prayer_pack"]
+        assert isinstance(prayers, dict)
+        assert "prayers" in prayers
+
+    def test_citation_pack_shortcut_empty_when_not_provided(self):
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
+        assert result["draft_context"]["citation_pack"] == {}
+
+    def test_citation_pack_populated_when_provided(self):
+        outputs = self._base_parallel_outputs()
+        outputs["citation_pack"] = {"relevant_acts": ["Indian Contract Act, 1872"]}
+        result = merge_context(parallel_agent_outputs=outputs)
+        assert result["draft_context"]["citation_pack"]["relevant_acts"] == ["Indian Contract Act, 1872"]
+
+    def test_jurisdiction_reasoning_present(self):
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
+        jr = result["draft_context"].get("jurisdiction_reasoning")
+        assert isinstance(jr, dict)
+        assert "cause_of_action_note" in jr
+
+    def test_agent_outputs_retained_for_backward_compat(self):
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
+        assert "agent_outputs" in result["draft_context"]
+
+    def test_warnings_list_present(self):
+        result = merge_context()
+        assert isinstance(result["warnings"], list)
+
+    def test_hard_blocks_from_mistake_checklist(self):
+        mc = {"hard_block": True, "hard_block_reason": "Critical mistake found", "checks": []}
         result = merge_context(
-            self._base_template(), compliance,
-            self._base_local_rules(), self._base_prayer_pack(),
+            parallel_agent_outputs=self._base_parallel_outputs(),
+            mistake_checklist=mc,
         )
-        assert any("Conflict" in w for w in result["warnings"])
+        assert result["passed"] is False
+        sources = [b["source"] for b in result["hard_blocks"]]
+        assert "mistake_checklist" in sources
+
+    def test_localization_rules_shortcut_from_local_rules_key(self):
+        result = merge_context(parallel_agent_outputs=self._base_parallel_outputs())
+        local = result["draft_context"]["localization_rules"]
+        assert isinstance(local, dict)
+        assert local.get("language") == "English"
 
 
 # =========================================================================

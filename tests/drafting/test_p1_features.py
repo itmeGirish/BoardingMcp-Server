@@ -743,11 +743,47 @@ class TestExportGateAuditTrail:
 
             result = await export_gate_node(state)
 
-            mock_val.assert_called_once()
-            assert mock_val.call_args[0][1] == "export_engine"
+            gate_names = [c[0][1] for c in mock_val.call_args_list]
+            assert "pre_final_legal_risk" in gate_names
+            assert "export_engine" in gate_names
             mock_out.assert_called_once()
             mock_phase.assert_called_once_with("sess-016", "EXPORT")
             assert result["drafting_phase"] == "EXPORT"
+
+    @pytest.mark.asyncio
+    async def test_pre_final_gate_blocks_when_quality_has_blocking_issues(self):
+        from app.agents.drafting_agents.nodes.pipeline_gates import export_gate_node
+
+        state = {
+            "drafting_session_id": "sess-016b",
+            "document_type": "Legal Notice (Money Recovery)",
+            "final_draft": {
+                "title": "LEGAL NOTICE",
+                "sections": [{"title": "Body", "content": ("Content here " * 40)}],
+            },
+        }
+
+        with patch("app.agents.drafting_agents.nodes.pipeline_gates._save_validation") as mock_val, \
+             patch("app.agents.drafting_agents.nodes.pipeline_gates._save_agent_output") as mock_out, \
+             patch("app.agents.drafting_agents.nodes.pipeline_gates._update_session_phase") as mock_phase, \
+             patch("app.agents.drafting_agents.gates.check_draft_quality") as mock_quality:
+            mock_quality.return_value = {
+                "gate": "draft_quality",
+                "passed": False,
+                "issues": ["x"],
+                "blocking_issues": ["hard legal risk"],
+                "details": {"issue_objects": []},
+            }
+
+            result = await export_gate_node(state)
+
+            gate_names = [c[0][1] for c in mock_val.call_args_list]
+            assert "pre_final_legal_risk" in gate_names
+            assert "export_engine" not in gate_names
+            assert result["drafting_phase"] == "FAILED"
+            assert "Pre-final legal risk gate blocked export" in result["error_message"]
+            mock_phase.assert_called_once_with("sess-016b", "FAILED")
+            assert mock_out.called
 
 
 class TestStagingRulesNodeAuditTrail:

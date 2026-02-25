@@ -8,32 +8,33 @@ from ...models.drafting import DraftingSession
 from app import logger
 
 
-# Valid phase transitions (18-step pipeline)
+# Valid phase transitions — full 20-phase pipeline (matches CLAUDE.md Step 0-18)
 VALID_TRANSITIONS = {
-    "INITIALIZED": ["SECURITY", "FAILED"],
-    "SECURITY": ["INTAKE", "FAILED"],
-    "INTAKE": ["FACT_VALIDATION", "FAILED"],
-    "FACT_VALIDATION": ["CLASSIFICATION", "PAUSED", "FAILED"],
-    "CLASSIFICATION": ["ROUTE_RESOLUTION", "FAILED"],
-    "ROUTE_RESOLUTION": ["CLARIFICATION", "FAILED"],
-    "CLARIFICATION": ["TEMPLATE_PACK", "PAUSED", "FAILED"],
-    "TEMPLATE_PACK": ["PARALLEL_AGENTS", "FAILED"],
-    "PARALLEL_AGENTS": ["OPTIONAL_AGENTS", "FAILED"],
-    "OPTIONAL_AGENTS": ["CITATION_VALIDATION", "FAILED"],
-    "CITATION_VALIDATION": ["CONTEXT_MERGE", "FAILED"],
-    "CONTEXT_MERGE": ["DRAFTING", "PAUSED", "FAILED"],
-    "DRAFTING": ["REVIEW", "FAILED"],
-    "REVIEW": ["STAGING_RULES", "FAILED"],
-    "STAGING_RULES": ["PROMOTION", "FAILED"],
-    "PROMOTION": ["EXPORT", "FAILED"],
-    "EXPORT": ["COMPLETED", "FAILED"],
-    "COMPLETED": [],
+    "INITIALIZED":        ["SECURITY", "FAILED"],
+    "SECURITY":           ["INTAKE", "FAILED"],
+    "INTAKE":             ["FACT_VALIDATION", "FAILED"],
+    "FACT_VALIDATION":    ["CLASSIFICATION", "PAUSED", "FAILED"],
+    "CLASSIFICATION":     ["ROUTE_RESOLUTION", "FAILED"],
+    "ROUTE_RESOLUTION":   ["CLARIFICATION", "FAILED"],
+    "CLARIFICATION":      ["TEMPLATE_PACK", "PAUSED", "FAILED"],
+    "TEMPLATE_PACK":      ["PARALLEL_AGENTS", "FAILED"],
+    "PARALLEL_AGENTS":    ["OPTIONAL_AGENTS", "FAILED"],
+    "OPTIONAL_AGENTS":    ["CITATION_VALIDATION", "FAILED"],
+    "CITATION_VALIDATION":["CONTEXT_MERGE", "FAILED"],
+    "CONTEXT_MERGE":      ["DRAFTING", "PAUSED", "FAILED"],
+    "DRAFTING":           ["REVIEW", "FAILED"],
+    "REVIEW":             ["STAGING_RULES", "FAILED"],
+    "STAGING_RULES":      ["PROMOTION", "FAILED"],
+    "PROMOTION":          ["EXPORT", "FAILED"],
+    "EXPORT":             ["COMPLETED", "FAILED"],
+    "COMPLETED":          [],
     "PAUSED": [
-        "SECURITY", "INTAKE", "FACT_VALIDATION", "CLASSIFICATION",
-        "ROUTE_RESOLUTION", "CLARIFICATION", "TEMPLATE_PACK",
-        "PARALLEL_AGENTS", "OPTIONAL_AGENTS", "CITATION_VALIDATION",
-        "CONTEXT_MERGE", "DRAFTING", "REVIEW", "STAGING_RULES",
-        "PROMOTION", "EXPORT", "FAILED",
+        "SECURITY", "INTAKE", "FACT_VALIDATION",
+        "CLASSIFICATION", "ROUTE_RESOLUTION", "CLARIFICATION",
+        "TEMPLATE_PACK", "PARALLEL_AGENTS", "OPTIONAL_AGENTS",
+        "CITATION_VALIDATION", "CONTEXT_MERGE", "DRAFTING",
+        "REVIEW", "STAGING_RULES", "PROMOTION", "EXPORT",
+        "FAILED",
     ],
     "FAILED": ["INITIALIZED"],
 }
@@ -243,7 +244,7 @@ class DraftingSessionRepository:
                 )
                 return False
 
-            target = resume_to_phase or record.previous_phase or "CLARIFICATION"
+            target = resume_to_phase or record.previous_phase or "CLASSIFICATION"
             record.previous_phase = "PAUSED"
             record.phase = target
             record.error_message = None
