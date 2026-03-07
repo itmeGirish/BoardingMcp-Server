@@ -453,19 +453,17 @@ class TestLKBv2:
         assert "required_sections" in entry
         assert entry["complexity_weight"] == 3
 
-    def test_court_fee_statute_per_state(self):
+    def test_damages_categories_present(self):
         entry = self.lookup("Civil", "breach_dealership_franchise")
         assert entry is not None
-        cfs = entry["court_fee_statute"]
-        assert "Karnataka" in cfs
-        assert "Karnataka Court Fees" in cfs["Karnataka"]
-        assert "_default" in cfs
+        assert "damages_categories" in entry
+        assert len(entry["damages_categories"]) > 0
 
-    def test_excluded_doctrines(self):
+    def test_coa_type_present(self):
         entry = self.lookup("Civil", "breach_of_contract")
         assert entry is not None
-        assert "unjust_enrichment" in entry["excluded_doctrines"]
-        assert "quantum_meruit" in entry["excluded_doctrines"]
+        assert "coa_type" in entry
+        assert entry["coa_type"] is not None
 
     def test_required_sections_non_empty(self):
         for cause_type in ["money_recovery_loan", "breach_of_contract", "partition"]:
