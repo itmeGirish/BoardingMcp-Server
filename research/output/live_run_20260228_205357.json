@@ -1,0 +1,598 @@
+{
+  "user_request": "Draft a Summary Suit under Order XXXVII CPC for recovery of Rs.9,00,000/- based on a dishonoured cheque. Cheque No. [CHEQUE_NUMBER] dated [CHEQUE_DATE] drawn on [DRAWEE_BANK], [BRANCH] Branch, Bengaluru. Cheque was returned unpaid with bank return memo endorsed 'Funds Insufficient' dated [RETURN_DATE]. Statutory legal notice was issued and duly served on the Defendant. Defendant failed to pay despite notice. Claim principal Rs.9,00,000/-, interest at 18% per annum from cheque date till realization, and costs. Draft in Commercial Court format suitable for filing before the Commercial Court at Bengaluru. Include Order XXXVII maintainability paragraph, cause of action, limitation, valuation, court fee and prayer clause. Plead limitation properly.",
+  "intake": {
+    "facts": {
+      "summary": "Drafting a Summary Suit under Order XXXVII CPC for recovery of Rs. 9,00,000/- based on a dishonoured cheque drawn on [DRAWEE_BANK], [BRANCH] Branch, Bengaluru. The cheque was returned unpaid due to insufficient funds, and a statutory legal notice was served without payment.",
+      "chronology": [
+        {
+          "date": null,
+          "event": "Cheque No. [CHEQUE_NUMBER] drawn on [DRAWEE_BANK]",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "date": null,
+          "event": "Cheque returned unpaid with reason 'Funds Insufficient'",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": null,
+          "event": "Statutory legal notice issued and duly served on Defendant",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": null,
+          "event": "Defendant failed to pay despite notice",
+          "source": "user_text",
+          "confidence": 0.9
+        }
+      ],
+      "amounts": {
+        "principal": 900000.0,
+        "interest_rate": 18.0,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": "Karnataka",
+      "city": "Bengaluru",
+      "court_type": "Commercial Court",
+      "place": "Commercial Court at Bengaluru"
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "type": "Document",
+        "description": "Dishonoured Cheque No. [CHEQUE_NUMBER] drawn on [DRAWEE_BANK], [BRANCH] Branch",
+        "relevance": "Primary cause of action",
+        "ref": null
+      },
+      {
+        "type": "Document",
+        "description": "Bank return memo endorsed 'Funds Insufficient'",
+        "relevance": "Proof of dishonour",
+        "ref": null
+      },
+      {
+        "type": "Document",
+        "description": "Statutory legal notice",
+        "relevance": "Proof of demand prior to suit",
+        "ref": null
+      }
+    ],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "suit_type",
+          "value": "Summary Suit under Order XXXVII CPC",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "cheque_number",
+          "value": "[CHEQUE_NUMBER]",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "key": "drawee_bank",
+          "value": "[DRAWEE_BANK]",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "key": "branch",
+          "value": "[BRANCH]",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "key": "return_reason",
+          "value": "Funds Insufficient",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "interest_calculation_basis",
+          "value": "from cheque date till realization",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Recovery",
+        "Dishonour of Cheque",
+        "Summary Suit",
+        "Commercial Dispute"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Cheque Date",
+        "Return Date",
+        "Drawee Bank Name",
+        "Branch Name",
+        "Cheque Number",
+        "Legal Notice Date"
+      ],
+      "assumptions": [
+        "Jurisdiction is Bengaluru based on bank branch location",
+        "Suit is filed under Commercial Court jurisdiction"
+      ]
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "summary_suit_order_37_cpc",
+    "classification": {
+      "topics": [
+        "Summary Suit",
+        "Dishonoured Cheque",
+        "Money Recovery",
+        "Commercial Court"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Cheque Date",
+        "Return Date",
+        "Notice Service Date",
+        "Plaintiff Details",
+        "Defendant Details"
+      ],
+      "assumptions": [
+        "Debt is liquidated and based on a written instrument",
+        "Suit value falls within pecuniary jurisdiction of Commercial Court"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "Summary Suit Order XXXVII CPC drafting format",
+        "Limitation period summary suit dishonoured cheque",
+        "Karnataka court fee schedule commercial suit valuation",
+        "Order XXXVII maintainability negotiable instrument debt"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "Summary Suit Order XXXVII CPC drafting format",
+      "Limitation period summary suit dishonoured cheque",
+      "Karnataka court fee schedule commercial suit valuation",
+      "Order XXXVII maintainability negotiable instrument debt"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 68 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n33 . Gopal v. Vishnu, (1898) ILR 22 Bom 971; Lakhpat v. Ghiran, AIR 1937 All 55: 167 IC 46 : (1936) All LJ 1195.\n34 . Radha Agencies v. Vijaya Bank, AIR 2002 AP 91 [ LNIND 2001 AP 1007]: (2002) 1 Andh WR 117.\n35 . Cable Corporation of India Ltd. v. Sanghi Industries Ltd., AIR 2003 AP 282 [ LNIND 2003 AP 77]: (2003) 2 Andh LD \n558.\n36 . Kejriwal Enterprises v. General Manager Ordnance Factory, AIR 2004 Cal 225 [ LNIND 2004 CAL 226]: (2004) 2 Cal \nLJ 100 [LNIND 2004 CAL 226].\n37 . Balkrishna S.S.Kakodkar v. Rama Babal Vasta, AIR 2005 Bom 200 [ LNIND 2004 BOM 113].\n38 . Katakam Viswanathan v. Katakam China Srirama Murthy, AIR 2004 AP 522 [ LNIND 2004 AP 215]: (2004) 3 Andh LT \n791.\n39 . Balwant Kumar v. Kailash Behl, AIR 2003 HP 48 [ LNIND 2002 HP 102].\n40 . Banarsi Das v. Om Prakash, AIR 2005 P&H 200.\n41 . Salem Advocate Bar Association, Tamil Nadu v. Union of India, AIR 2005 SC 3353 [ LNIND 2005 SC 573].\n42 . Tulsi Ram v. Ram Saran Das, AIR 1925 PC 80: 86 IC 552 : (1925) 27 Bom LR 777.\n43 . Binay Kumar v. Chotan Mahto, AIR 2010 Jhar 64 [ LNIND 2009 JHAR 21]: 2009 (83) All Ind Cas 395.\n44 . Bipin Shantilal Panchal v. State of Gujarat, AIR 2001 SC 1158 [ LNIND 2001 SC 509]: (2001) 3 SCC 1 [ LNIND 2001 \nSC 509] para 12, at p. 1160-1161 (of AIR).\n45. R. 15 omitted by the CPC (Amendment) Act, 1999 (46 of 1999)",
+        "score": 0.611,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Page 27 of 29\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n24 . Salem Advocate Bar Assn. Tamil Nadu v. Union of India, AIR 2003 SC 189 [ LNIND 2005 SC 573]: (2003) 1 SCC 49 \n[LNIND 2005 SC 573].\n25 . N. Yovas v. Immanueal Jose, AIR 1996 Ker 1 [ LNIND 1995 KER 67] (DB).\n26 . Temperton v. Russell, 9 TLR 321; Briton Medical Assn v. Britannia Fire Assn., 59 LT 888.\n27 . Marriott v. Chamberlain, 17 QBD 154; Zierenberg v. Labouchere, (1893) 2 QB 187 \n ; Wootton v. Sievier, (1913) 3 \nKB 499.\n28 . Yashpal Sawhney v. Gandotra Traders, AIR 1995 J&K 32.\n29 . Banu v. Govindaperumal, AIR 2009 Mad 155 [ LNIND 2009 MAD 806]: (2009) II DMC 804.\n30 . Kokanda B. Poondacha v. K.D. Ganapathi, AIR 2011 SC 1353 [ LNIND 2011 SC 212]: (2010) 3 Scale 42.\n31 . Ibid, para 15 and 16 at p. 1357-1358 (of AIR).\n32 . Bhanwar Singh v. Gir Raj Prasad, AIR 1978 Raj 20; Sain Dass v. Narain Singh, AIR 1977 HP 64 [ LNIND 1976 HP \n27]: (1976) HP 841.\n33 . Vidhya Dhar v. Mankik Rao, (1999) 2 LRI 243.\n34 . Mange Ram v. Brij Mohan, (1983) 4 SCC 36 [ LNIND 1983 SC 185].\n35 . Rehman Hussain v. Althaf Hussain, AIR 2004 Kant 172 [ LNIND 2003 KANT 901]: (2004) 1 Kant LJ 361 (DB).\n36 . Thakur Singh Negi v. Dev Raj Negi, (1993) Supp 3 SCC 645.\n37 . Subs. by CPC (Amendment) Act 104 of 1976, s. 66 for rule 1A, (w.e.f. 1-2-1977).\n38 . Bira Jana v. Tauli Dei, AIR 1972 Ori 143 [ LNIND 1971 ORI 103].\n39 . Shimbhuram v.",
+        "score": 0.609,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Page 28 of 33\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n50 . Hazariram v. Bansidhar, AIR 1937 PC 39: (1937) 64 IA 67 : 16 Pat 127 : 41 CWN 449 : 39 Bom LR 369 : 166 IC 653.\n51 . Bansidhas v. Hazari Ram, AIR 1933 Pat 210; Nachimuthu v. Palani Ammal, AIR 1944 Mad 149 [ LNIND 1943 MAD \n209]: (1943) 2 MLJ 596 [ LNIND 1943 MAD 209]; Rajani Kant v. Manmatha Nath Das, AIR 1945 Cal 1. But see Burma \nOil Co. Ltd. v. Ma Tin, AIR 1930 Rang 68: 7 Rang 505. See in particular s 34, s 73 and O 21, r 53.\n52 . Nagar Mal v. Ram Chand, (1910) 33 All 240 : 8 IC 835; Venkata v. Dorasami, AIR 1933 Mad 63 [ LNIND 1932 MAD \n151]: (1932) 56 Mad 339 : 140 IC 378.\n53 . Rajani Kant v. Manmatha Nath Das, supra.\n54 . Uma Kanta v. Renwick & Co., AIR 1953 Cal 717 [ LNIND 1953 CAL 75]; Subramania v. Ponnuswami, (1957) 1 MLJ \n208 : AIR 1957 Mad 777 [LNIND 1956 MAD 211].\n55 . Hargobind v. Hakim, (1926) 6 Lah 548 : 93 IC 54 : AIR 1926 Lah 110.\n56 . Mono Mohan v. Upendra Mohan, (1934) 38 CWN 1085 : 153 IC 606 : AIR 1935 Cal 127.\n57 . Om Prakash v. Tahera, (1955) All 382 [ LNIND 1954 ALL 234]; Venkanna v. Chunilal Moolchand, AIR 1961 AP 182; \nPerraju v. Achanna, AIR 1964 AP 152 [LNIND 1963 AP 58].\n58 . Subs. by CPC (Amendment) Act 104 of 1976, s 72, for one year (w.e.f. 1-2-1977).\n59 . Added by CPC (Amendment) Act 8 of 1937, s 3.\n60 . Ins. by the CPC (Amendment) Act, 1976 (104 of 1976), s 72 (w.e.f.",
+        "score": 0.602,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 3 of 3\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n1. Alterations in the section. This section has been substituted for the old section by s11 of the Code of Civil \nProcedure (Amendment) Act, 1951 (2 of 1951).\nThe words subject toprescribed and or at the instances of are to avoid any possible conflict between the section \nand rr 19 to 22 of O 26.\n1 . Ins. by the CPC (Amendment) Act, 1976 (104 of 1976), s 26 (w.e.f. 1-2-1977).\n2 . Jaiswal Coal Co. v. Fatehganj Co-op. M Society, AIR 1975 Cal 303 [ LNIND 1974 CAL 194].\n3 . Madhu Sudan Pradhan v. Santosh Kumar Das, AIR 2004 Ori 86 [ LNIND 2003 ORI 105].\n4 . Budhia Dhobia v. Nakhelal Mahto, AIR 1991 NOC 64(Cal).\n5 . R. Ramakrishna Reddy v. M.Kamala Devi, AIR 2004 AP 484 [ LNIND 2004 AP 469].\n6 . Subs. for Province by AO 1950.\n6 . Subs. for “Province” by AO 1950.\n7 . Subs. by CPC (Amendment) Act 2 of 1951 for the States.\n8 . Filmistan Pvt. Ltd. v. Bhagwandas, AIR 1971 SC 61: (1970) 3 SCC 258.\n9 . JG Insurance Co. v. Dhandhiya Jewellers, AIR 1973 Raj 156.\n10 . IC Corporation v. Daewoo Corporation, AIR 1990 Bom 152 [ LNIND 1989 BOM 413].\n11 . Filmistan Private Ltd. v. Bhagwandas Sanprakash, (1970) 3 SCC 258 : AIR 1971 SC 61.\n12 . Subs. by Act 2 of 1951 s 11.\n13 . Wooster Products Inc. v. Magna Tek Inc., AIR 1989 Del 6 [ LNIND 1988 DEL 140], 9.\nEnd of Document",
+        "score": 0.598,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "Page 17 of 18\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n46 . Gadiraju Vidynlatha v. Indla Venkateswarlu, (2005) 2 ALT 587 : (2005) AIHC 1575.\n47 . G. Satyanarayana v. M. Shankar, (2001) 1 ALT 365.\n48 . Hussaini Begum v. B Ramachandraiah, (1976) 1 Andh WR 325.\n49 . Pasupuleti Subba Rao v. Nandavarapu Anjaneyulu, AIR 2003 AP 445.\n50 . G Krishna Murthy v. Hematha Chit Funds Pvt Ltd, Warangal, AIR 2006 Andh Pra 398 (DB) : 2006 (3) Andh LT 416 \n[LNIND 2006 AP 463].\n51 . S. Bala Chandran v. N. Krishnamoorthy, AIR 2009 Ker 118 [ LNIND 2009 KER 172]: 2009 (1) Ker LT 975 [ LNIND \n2009 KER 172] (DB).\n52 . Tippanna v. Ghanshyam, AIR 2004 Kant 446 [ LNIND 2003 KANT 592].\n53 . Akash Gupta v. Frankfinn Institute of Air Hostess Training, AIR 2006 Del 325 [ LNIND 2006 DEL 60]: 2006 (127) DLT \n188 [LNIND 2006 DEL 60].\n54 . New Okhala Industrial Development Authority v. Pooran Singh, AIR 2004 All 218(DB).\n55 . Subs. for Provinces by IAO 1950.\n56 . Subs. by Act 13 of 1916, sec. 2 and Sch. for each of the towns of Calcutta, Madras, Bombay, Allahabad, Lahore and \nRangoon.\n57 . The words and of the Chief Court were omitted by IAO 1948.\n58 . The brackets and words (in Burma) rep. by Act 11 of 1923, sec. 3 and Sch. II.\n59 . Subs. for cls (b) and (c) by CPC (Amendment) Act 2 of 1951 s 16.\n60 . Cl. (d) relettered as cl. (c) and (d) by Act 2 of 1951, s 16.\n61. The word and omitted by Act",
+        "score": 0.596,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 13 of 15\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n8 . Subs. for the word fifteen by the CPC (Amendment) Act, 1999 (46 of 1999) (w.e.f. 1-7-2002) vide Notfn. S.O. 603(E), \ndt. 6-6-2002.\n9 . Dadds v. Tuke, (1884) 25 CD 617.\n10 . Sitaram Motilal Kalal v. Santanuprasad J. Bhatt, AIR 1966 SC 1697 [ LNIND 1966 SC 45]: (1966) 68 Bom LR 489 \n[LNIND 1966 SC 45] : (1966) Mah LJ 881 [LNIND 1966 SC 45].\n11 . Shalimar Chemical Works Ltd. v. Surender Oil & Dal Mills, AIR 2001 AP 126: (2001) 1 Andh LT 253.\n12 . Canara Bank v. Eastern Mechnical Works, AIR 2008 Bom 188 [ LNIND 2008 BOM 279]: 2008 (5) Mah LJ 720 [ LNIND \n2008 BOM 279].\n13 . Ins. by CPC (Amendment) Act 104 of 1976, s. 62, (w.e.f. 1-2-1977).\n14 . A. Subrmanian v. Muthukrishan Reddiar, AIR 2005 Mad 43 [ LNIND 2004 MAD 750].\n15 . Ins. by CPC (Amendment) Act 66 of 1956, s. 14.\n16 . Second proviso omitted by the (Amendment) Act, 1999, s. 22 of 1999), before omission it stood as under:\nProvided also that the Court may at any time allow any party to amend or withdraw any admission so made on such terms \nas may be just.\n17 . Balwant Singh v. Gurdev Singh, AIR 1980 P&H 139 : (1980) 2 P&H 208 : (1980) Punj LJ 260.\n18 . Bhagirah v. Rishabh Kumar, AIR 1964 MP 1.\n19 . Subs. by CPC (Amendment) Act 104 of 1976, s. 62 for rule 6, (w.e.f. 1-2-1977).\n20 . Uttam Singh Duggal v. Union Bank of India, AIR 2000 SC 2740 [ LNIND",
+        "score": 0.595,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 42 of 46\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n 23. Trilok Singh v. Jamuna Devi, AIR 1978 All 129 .\n 24. Subs. for for the appearance of the defendant by the CPC (Amendment), 1999 (46 of 1999), s 15 (w.e.f. 1-7-2002) \nvide Notfn. S.O. 603(E), dt. 6-6-2002.\n 25. Subs. for all documents by the CPC (Amendment) Act, 1999 (46 of 1999), s 15 (w.e.f.1-7-2002) vide Notfn. S.O. \n603(E), dt. 6-6-2002.\n 26. Subs. by CPC (Amendment) Act, 2002 (22 of 2002), s 6 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s 6(ii).\n Earlier R. 9 was substituted by the CPC (Amendment) Act, 1999 (46 of 1999), s 15 (w.e.f. 1-7-2002) vide Notfn. S.O. \n603(E), dt. 6-6-2002 for the following:\n R. 9. Delivery or transmission of summons for service. (1) Where the defendant resides within the jurisdiction of the \nCourt in which the suit is instituted, or has an agent resident within that jurisdiction who is empowered to accept the \nservice of the summons, the summons shall, unless the Court otherwise directs, be delivered or sent to the proper \nofficer to be served by him or one of his subordinates.\n (2) The proper officer may be an officer of a Court other than that in which the suit is instituted, and, where he is such an \nofficer, the summons may be sent to him by post or in such other manner as the Court may direct.\n 27. Tripura Modern Bank Ltd. v. Bansen & Co., AIR 1952 Cal",
+        "score": 0.594,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "004 Mad 518 [ LNIND 2004 MAD 708]: (2004) 3 Mad LJ \n382(2004) 3 Mad LW 412 [LNIND 2004 MAD 708].\n19 . Sardar Darshan Singh v. Smt. Surjeeth Kaur, AIR 2007 AP 201 [ LNIND 2007 AP 190]: 2007 (3) Andh LT 193 [ LNIND \n2007 AP 190].\n20 . Ram Pratap Pandey v. Vidyadhar Pandey, AIR 2007 Pat 185.\n21 . Nemichand Burad v. Jorawarmal, AIR 2005 Raj 235.\n22 . Laxman Oraon v. Akhil Bhartiya Adivasi Vikash Parishad, AIR 2005 NOC 593(Jhar).\n23 . Milind Saran v. Vinai Kumar, AIR 1987 All 339 [ LNIND 1987 ALL 114].\n24 . Malkiyat Singh v. Om Prakash, AIR 1995 Raj 38.\n25 . Shiv Kumar Singh v. Kari Singh, AIR 1962 Pat 159.\n26 . Shaik Asha v. Shaik Moulaali, AIR 2005 NOC 585(AP) : (2005) AIHC 3606.\n27 . Nanjan v. Selai, AIR 1958 Mad 383 [ LNIND 1957 MAD 176]: (1958) Mad 584 : (1957) 2 Mad LJ 601 : 70 LW 976.\n28 . Gurusanthayya v. Veerayya, AIR 1952 Mad 825 [ LNIND 1952 MAD 1].\n29 . Shyam Sunder Bazaz v. Sanwarmal Jalan, AIR 2005 Jhar 109 [ LNIND 2005 JHAR 68].\n30 . Subs. by CPC (Amendment) Act, 2002 (22 of 2002), s 9 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s 9(iii)\nEarlier r 10. omitted by the CPC (Amendment) Act, 1999 (not enforced), prior to its omission rule stood as under:\n R. 10. Procedure when party fails to present written statement called for by Court.Where any party from whom a \nwritten statement is required under rule 1 or rule 9 fails to present the same within the time",
+        "score": 0.592,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Transfer of Property \nAct 1882. 73 The injunction sought by the plaintiff seeking an order of restraint against using a cheque, which is a \nsubject-matter of proceedings under s 138 of the Negotiable Instruments Act 1881, cannot be granted, as it would \nhave the effect of preventing the defendant from prosecuting the criminal case against the plaintiff. The same is \nbarred by s 41 (b) of the Specific Relief Act 1963, hence the plaint is rejected under O 7, r 11.74\nIn a suit for recovery of money based on promissory not executed on 12-4-2000, the last date for filing the suit was \n12-4-2003, as the date of execution of the promissory not has to be excluded in view of s 12 of the Limitation Act, \n1963. As both dates viz. 12-4-2003 to 15-4-2003 were general holidays, it was held by the Karnataka High Court \nthat suit filed on 16-4-2003 was well within time and not barred by limitation. Therefore, the rejection of the plaint \nwas not proper.75\nIn an Allahabad case, question was whether a suit seeking the eviction of a tenant was barred by s 20, Uttar \nPradesh Act 13 of 1977. The court ordered that the question shall be decided by the evidence of the parties and not \nat that stage. It was held that the trial judge had not, by deferring his decision, affected the rights of the parties. His \norder, in these circumstances, cannot be said to be an order not being in accordance with",
+        "score": 0.561,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "tablished or justified by the plaintiff is not needed. \nFurther a plain reading of the proviso of r 6 makes it clear that the mere absence of the necessary recital would not \nbe fatal to the suit, and is within the discretion of the court to permit the plaintiff to claim such an exemption, subject \nonly to the condition that such claim should not be inconsistent with the other grounds set out in the plaint.68\nThere is no doubt under s 3 of the Limitation Act, 1963, it is the duty of the court to dismiss the suit in a case which \nis barred by time and even if no plea had been taken, but exemption of acknowledgment of the liability for extending \nthe period of limitation has been prayed for, it is obligatory upon the plaintiff to plead such an exemption in the plaint \nitself.69\nTo explain how the suit was within limitation, the plaintiff made the following statement:\nThe suit was filed on 3 September, 1964 and returned for presentation on 29 February 1968 and as the suit was bona fide \npresented in a court having no jurisdiction and the period of pendency has to be excluded and, excluding the said period of \npendency the suit is within time.\nIt was held that this was a sufficient explanation, entitling the plaintiff to the benefit of s 14 Limitation Act, 1963.70\nA bank sued to recover a debt more than three years after it had become due. It did not raise any specific ground \nfor",
+        "score": 0.595,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "suit was barred by limitation in terms of Art. 58 of the Limitation Act, 1963. The High Court, \ntherefore, in our opinion, ex facie committed an error in arriving on the aforementioned finding.56\nIn a suit filed by a Bank for recovery of money, where the claim of the Bank was more than 10 lakhs, the Civil Court \nhas no jurisdiction to entertain the suit in view of the bar created under Recovery of Debts Due to Banks and \nFinancial Institutions Act, 1993 and the appropriate remedy was available before the debt recovery Tribunal. Since \nthe suit was barred by statute, it was held liable to be rejected under O 7, r 11(d) of the Code.57\nIn a suit, where permanent injunction was sought prohibiting the defendants from presenting cheques in their favour \nfor encashment, it was held by the Delhi High Court that the reliefs sought will amount to restraining the defendant \nfrom instituting civil or criminal proceedings against the plaintiff on account of non-encashment of cheques which \nwould amount to hampering access to justice. The reliefs sought is barred by law being directly hit by the provisions \nof s 41 (b), (d) of the Specific Relief Act, 1963 and as such the injunction can be refused. However, in the light of \nsubsequent events of the case, it was further held that the entire suit cannot be dismissed as infructuous.58\nIn a matrimonial case before the family courts, the Family",
+        "score": 0.59,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "planation, entitling the plaintiff to the benefit of s 14 Limitation Act, 1963.70\nA bank sued to recover a debt more than three years after it had become due. It did not raise any specific ground \nfor seeking extension of the period of limitation. As regards the acknowledgement signed by the borrowers, the \nlatter said that their signatures were obtained on blank sheets without telling them about the nature of the \ndocument. Suit was held to be beyond time.71\nHence, it is sufficient if the facts on which exemption is claimed are set out in the plaint. Thus, when the fact of \nacknowledgement is stated, it is not fatal to the maintainability of the suit that exemption is not specifically claimed \non the ground of acknowledgement. 72 Where a plaint was returned under r. 10 and represented in the proper court, \nit was held that the exemption under s 14 of the Limitation Act, 1963 could be claimed on the strength of the \nindorsement of return even though that is not expressly stated in the plaint. 73 This rule applies only when the suit is \nprima facie barred. Where the question is one on which decisions are divided, the rule has no application. 74 In \nproceedings before an arbitrator it is not necessary that averments should be made showing that the claim is saved \nfrom the bar of limitation. 75 If a plaint does not show any ground of exemption, the court of first instance should",
+        "score": 0.587,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "is from the date \nof the countersignature that the period of one month, earlier three months, is to be calculated and not from the date \nof the return made by the serving officer. Sub-rule 1 provides two alternatives, where a summons has been \nreturned unserved, (i) to apply for a fresh summons, or (ii) to apply for extension of time to apply for a fresh \nsummons on any one of the grounds set out therein. If a plaintiff fails to adopt either of the two alternatives, he \ncannot rely on s 5 of the Limitation Act 1908 for extending the period.73\nFurthermore, an order dismissing a suit before the expiry of one month, earlier three months, is premature and \nillegal.74 This rule prescribes a period of limitation, and the court has no power to extend it on an application \npresented beyond that period. 75 Where an application for fresh summons is filed within one month, earlier three \nmonths, and an extension of time is asked for, the plaintiff must establish one of the grounds specified in the rule \nbut where he does not ask for extension of time, he is entitled to an order ex debito justitiae.76\nWhere no writ of summons could be lodged with the sheriffs for service on the defendants due to the lapses and \nlaches on the part of the advocate on-record, the Calcutta High Court held that it was not a case of issuance of",
+        "score": 0.584,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "15 \n Description of suit Period of limitation Time from which period begins to run \n45. By the assured to recover premia \npaid under a policy voidable at \nthe election of the insurers. \nThree years. When the insurers elect to avoid the \npolicy. \n46. Under the Indian Succession Act, \n1925 (39 of 1925), section 360 \nor section 361, to compel a \nrefund by a person to whom an \nexecutor or administrator has \npaid a legacy or distributed \nassets. \nThree years. The date of the payment or distribution. \n47. For money paid upon an existing \nconsideration which afterwards \nfails. \nThree years. The date of the failure. \n48. For contribution by a party who has \npaid the whole or more than his \nshare of the amount due under a \njoint decree, or by a sharer in a \njoint estate who has paid the \nwhole or more than his share of \nthe amount of revenue due from \nhimself and his co-sharers. \nThree years. The date of the payment in excess of the \nplaintiff’s own share. \n49. By a co -trustee to enforce against \nthe estate of a deceased trustee a \nclaim for contribution. \nThree years. When the right to contribution accrues. \n50. By the manager of a joint estate of \nan undivided family for \ncontribution, in respect of a \npayment made by him on \naccount of the estate. \nThree years. The date of the payment. \n51. For the profits of immovable \nproperty belonging to the \nplaintiff which have been",
+        "score": 0.578,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "8 \nthe period of limitation shall not begin to run until the plaintiff or applicant has discovered the fraud or \nthe mistake or could, with reasonable diligence, have discovered it; or in the case of a concealed \ndocument, until the plaintiff or the applicant first had the means of producing the concealed document or \ncompelling its production: \nProvided that nothing in this section shall enable any suit to be instituted or application to be made to \nrecover or enforce any charge against, or set aside any transaction affecting, any property which— \n(i) in the case of fraud, has been purchased for valuable consideration by a person who was not a \nparty to the fraud and did not at the time of the purchase know, or have reason to believe, that any \nfraud had been committed, or \n(ii) in the case of mistake, has been purchased for valuable consideration subsequently to the \ntransaction in which the mistake was made, by a person who did not know, or have reason to believe, \nthat the mistake had been made, or \n(iii) in the case of a concealed document, has been purchased for valuable consideration by a \nperson who was not a party to the concealment and, did not at the time of purchase know, or have \nreason to believe, that the document had been concealed. \n(2) Where a judgment -debtor has, by fraud or force, prevented the execution of a decree or order \nwithin the period of",
+        "score": 0.575,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ciency occurred by reason of a clerical or arithmetical \nmistake on his part.\nBy the amending Act 104 of 1976, Act 127 of the Limitation Act, 1963 was amended providing for 60 days instead \nof 30 days as the period of limitation for filing an application to set aside a sale on execution of a decree, including \nany such application by a judgment debtor. A five judge bench of the Supreme Court, overruling the decision inP K \nUnni v. Nirmala Industries 113 observed\nViewed in this context the intention of the legislature in extending the period under Act 127, Limitation Act may be \nseen. It is very clear from the statement of objects and reasons, which have been set out herein above, that the \nperiod under art 127, Limitation Act was extended from 30 days to 60 days in order to give more time to persons to \nmake deposits. The legislature has noted that the period of 30 days from the date of sale was too short and often \ncaused hardships because judgment-debtors usually failed to arrange for moneys within that period.114\nThe Bench further observed (Variava J, speaking for the court) as follows in para 18 of the judgment:\nHaving given our careful consideration to the question, we are of the opinion that there is no anomaly and that there \nare no different periods of limitation for making deposits and/or filing an application for setting aside the sale. It is by \nvirtue of O 21, r",
+        "score": 0.566,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "valorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53",
+        "score": 0.642,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "(d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter showing the provisions of law \nunder which the valuation of the court-fees and jurisdiction is separately made. (1-11-1966).\nBombay (Dadra and Nagar Haveli) (Goa, Daman and Diu). The following amendments were made by \nMaharashtra Government Gazette, dated 15-9-1983, Part 4 Ka, Page 402; Goa Gazette, dated 12-10-1987, Extra., \ns 1 No. 28, Page 376, dated 1-4-1987.\nFor item (i) substitute the following:\n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of Court-fees, so far \nas the case admits, showing the provisions of law under which the valuation for Court-fees and jurisdiction is \nseparately made.\nKarnataka. The following amendments were made by Karnataka Gazette, dated 30-3-1967.\nDelete r 1 and substitute the following:",
+        "score": 0.628,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "rtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for",
+        "score": 0.616,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade",
+        "score": 0.605,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "n 48 and \ndismissed the appeal as no prejudice had been shown. The matter was taken in appeal to the Supreme Court \nand in affirming the decision of the High Court, the Supreme Court held that even an objection on the ground of \njurisdiction arising out of over-valuation or under-valuation could, in view of the provisions of s 11 of the Suit \nValuation Act, be taken only in the manner mentioned therein, that the decision of the District Court was \ntherefore, not a nullity and that a mere change of forum for appeal was not a prejudice contemplated by the \nsection, nor a mere error on the conclusion reached on the merits.49\n10. Where the subject matter of a suit does not admit of being satisfactorily valued. In some suits, the \nsubject matter is not capable of being estimated at a money value, eg, suits for restitution of conjugal rights; \nsuits to remove a karnavan, 50 suits to direct registration of a document under the Registration Act, 1908, s \n77,51etc. The court fee in such suits is Rs 10 as provided by the Court Fees Act, 1870, Sch II, Art. 17, cl (vi). \nThere is a distinction, however, between valuation for the purpose of jurisdiction and valuation for the purpose \nof ascertaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided",
+        "score": 0.595,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "eld that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court has \nlaid down that, the plaintiff would be able to drag the defendant into any court be pleases. 79 This passage was \nquoted, with approval, by the Bombay High Court in Bhikamdas v. Motilal, 80 wherein, it was held that an \nerroneous decision of the effect that a suit fell under a particular category for the purposes of court fees was \nopen to revision. And, it was further pointed out that, the jurisdiction of the court might be affected by the \ndecision. The Kerala High Court also held that, the defendant could prefer a revision against an order deciding \nthat the suit fell under a particular category and, that the court fee paid was correct. 81 The Mysore High Court \nheld that where the plaintiff, claiming exemption under a notification issued under the Hyderabad Court Fees \nAct, presented a plaint without any court fee, it was open to the defendant to challenge its validity in a revision, \nas the rule that the defendant cannot move the court under s 115, when the court fee paid has been held to be \nsufficient, has no application when no court fee has been paid.82\nIn Ratnavarma Raja v. Vimla, 83 the Supreme Court has observed that, whether proper court fee has been paid \nor",
+        "score": 0.573,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "objections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the",
+        "score": 0.554,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "1948, Clause 6 and Act 27 of 1962, Ss. 13 and 15, dated 1-12-1963, Act 81 of 1971, s 28, \ndated 25-1-1972.\nKarnataka. The following amendments were made by Karnataka Act, dated 30-3-1967.\nFor item (c) substitute the following:\n(c) Where the relief claimed is properly valued, but the court-fee act ually paid is insufficient and the plaintiff does not make \ngood the deficiency within the time, if any, granted by the Court.\nMadras (Pondicherry). The following amendments were made by Tamil Nadu Act.\nFor clause (c) substitute the following:\n(c) Where the relief claimed is properly valued, but the plaint is written on paper insufficiently stamped, and the plaintiff \ndoes not make good the deficiency within the time, if any, granted by the Court.\nOrissa. Same as in Calcutta, (Notn No 24-X-7-52; 30-3-1954)\n1. Amendment. Clauses (e) and (f) in O 7, r 11 are additional grounds for rejection of the plaint and were inserted \nby the Amending Act of 1999 and further substituted by the Amending Act of 2002. Clause (e) of r 11 states that the \nplaint shall be rejected where it is not filed in duplicate. This provision is in conformity with the provisions of O 4, r 1 \nas amended wherein it is stated that every suit shall be instituted by presenting a plaint in duplicate to the court. \nHowever, r 3 of O 4 says that the plaint shall not be deemed to be duly instituted unless it complies with the",
+        "score": 0.553,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "debtor, the delivery thereof to the purchaser shall be made by giving notice to the person in possession \nprohibiting him from delivering possession of the property to any person except the purchaser. \n(3) Where the property sold is a debt not secured by a negotiable instrument, or is a share in a corporation, \nthe delivery thereof shall be made by a written order of the Court prohibiting the creditor from receiving the \ndebt or any interest thereon, and the debtor from making payment thereof to any person except the \npurchaser, of prohibiting the person in whose name the share may be standing from making any transfer of \nthe share to any person except the purchaser, or receiving payment of any dividend or interest thereon, and \nthe manager, secretary or other proper officer of the corporation from permitting any such transfer or making \nany such payment to any person except the purchaser. \n80 . Transfer of negotiable instruments and shares— (1) Where the execution of a document or the \nendorsement of the party in whose name a negotiable instrument or a share in a corporation is standing is \nrequired to transfer such negotiable instrument or share, the Judge or such officer as he may appoint in this \nbehalf may execute such document or make such endorsement as may be necessary, and such execution or \nendorsement shall have the same effect as an execution or endorsement by the",
+        "score": 0.512,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "5 and this discretion is not excluded even if a fixed rate is mentioned in \nthe contract as payable upto realisation. 36 But though the rate of interest for the aforesaid period is \ndiscretionary, the court should, in the exercise of that discretion, award interest at the contract rate, unless it \nwould be inequitable to do so. 37 A debt advanced against a negotiable instrument is governed by the \nNegotiable Instruments Act, 1881 till its nature is converted into a decretal debt. That being so, interest for the \nperiod between the date of the suit and decree would he governed by s 79 of the Negotiable Instruments Act, \n1881 and not by this section. 38 As to compound interest, (see note under the heading Compound Interest) and \nthe undermentioned cases. 39 The court may, under this head, award interest in a suit for money, although \ninterest is not specifically asked for in the plaint.40\nIt is well-established that no interest can be allowed on damages for any period prior to the suit, 41 but there is a \nconflict of decisions whether interest can be allowed under this section on damages from the date of the suit, it \nbeing held in some cases that it can be allowed,42 and in some that it cannot be allowed.43\nWhere the High Court has refused to exercise its discretionary power to allow interest from date of suit, the \njudicial committee as a rule will not interfere. 44 An",
+        "score": 0.496,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Page 41 of 57\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nAdd the following rules:\n46A. The Court may in the case of any debt due to the judgment-debtor (other than a debt secured by a mortgage \nor a charge or a debt recoverable only in a Revenue Court or a debt on a negotiable instrument the amount of \nwhich exceeds the pecuniary jurisdiction of the Court) which has been attached under O XXI, r 46, and in the case \nof a negotiable instrument which has been attached under O XXI, r 51, upon the application of the decree-holder, \nissue notice to the person liable to pay such debt (hereinafter called the garnishee) calling upon him to appear \nbefore the Court and show cause why he should not pay the debt due from him to such judgment-debtor or so such \nthereof as may be sufficient to satisfy the decree and costs of execution.\n46B. If the granishee does not appear or show cause in answer to the notice issued under Rule 46A or if he does \nnot dispute his liability or its extent, the Court may direct the garnishee within such time as it may allow to pay into \nCourt the debt or the amount due under the negotiable instrument as the case may be or so much thereof as may \nbe sufficient to satisfy the decree and the costs of the execution proceedings.\n46C. If the garnishee disputes his liability or its extent, the Court may decide the dispute and thereafter direct the",
+        "score": 0.489,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 38 of 57\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n(3) any negotiable instrument which has been attached under rule 51 of this Order; or\n(4) any movable property of the nature referred to in (1) to (3) above in the custody of any public officer other than \nofficer of any court, which has been attached under rule 52 of the Order,\nissue notice to any person liable to pay to the judgment-debtor such debt or the amount due under such negotiable \ninstrument or liable to deliver such movable property or to account for it to the judgment-debtor (hereafter referred \nto as the Garnishee) calling upon him within the period specified in the notice either to pay into Court the said debt \nor amount payable under the said negotiable instrument or deliver into Court the said movable property, as the case \nmay be, or so much thereof as may be sufficient to satisfy the decree or order and the cost of execution or to \nappear before the Court and show cause why he should not be ordered to do so.\nThe notice shall be served on the Garnishee and, if the Court so directs on the judgment-debtor also. The notice \nshall be served eight clear days before the returnable date thereof:\nProvided that, subject to the proviso to Rule 46-C, if by any law for the time being in force, the jurisdiction to \nadjudicate upon the debt or claim relating to the negotiable instrument or movable",
+        "score": 0.487,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "r r 46, the following rules shall be inserted, namely:\n46A. Procedure when debt or any movable property not in the possession of the judgment-debtor. The \nCourt may, in the case of any debt due to the judgment-debtor (other than debt secured by a mortgage or a charge \nor by negotiable instrument), or any movable property in which he has an interest, but not in his possession, which \nhas been attached under Rule 46 of this order upon the application of the attaching creditor, issue notice to any \nperson liable to pay such debt or delivery an account for such movable property (such person to be hereinafter",
+        "score": 0.477,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "regarding the attachment of mortgage debt may be studied as \nfollows. In a case, A executes a mortgage of immovable property to B to secure payment of Rs 5,000 lent to him by \nB. It is provided by the mortgage bond that if A fails to pay the mortgage debt on the due date, B should have the \nright to sue A personally for the debt, and also to realise the debt by the sale of the mortgaged property. In such a \ncase, B's interest in the mortgage bond comprises (i) the right to sue A personally for the mortgage debt, and (ii) the \nright to realise the debt by sale of the mortgaged property. If C obtains a decree against B for Rs 5,000, and seeks \nan execution of the decree to attach the mortgage debt due to B, how is the attachment effected? Whether the \nmortgage debt is a debt not secured by a negotiable instrument within the meaning of this rule and attachable in the \nmode prescribed by this rule, or, being secured by a mortgage of immovable property, is it immovable property \nwithin the meaning of r 54 and attachable in the mode prescribed by that rule? The answer afforded by the \ndecisions on the subject, eliminating what are merely obiter dicta, 161 is that a mortgage debt is a debt within the \nmeaning of this rule and it is, therefore, to be attached in the manner prescribed by this rule. Again, if the mortgage \ndebt due to B is attached under this rule in execution of C's",
+        "score": 0.469,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "9. The following debts are due to me:—C 0\n(give particulars) \n(a) Form . . . . . . . of . . . . . . . . . . . . . . . . . . . . . . . . . . .\nRs.\n(b) From . . . . . . .of . . . . . . . . . . . . . . . . . . . . . . . . . . .\nRs. . . . . . . .(etc.)\nSworn before me, etc.]\nNo. 17\nAttachment in Execution Prohibitory Order, where the Property Consists of\nDebts not Secured by Negotiable Instruments\n(O. 21, R. 46) \n(Title) \nTo \nWhereas. . . . . . .has failed to satisfy a decree passed against . . . . . . . . . on the . . . . . . . . . day of . . . . . . . . \n. 19. . ., in Suit No. . . . . . . . . . of 19 . . . . . . . , in favour of until the further order of this Court, from receiving \nfrom you a certain debt alleged now to be due from you to the said defendant, namely, . . . . . . . . . and that \nyou, the said . . . . . . . . . be, and you are hereby, prohibited and restrained, until the further order of this \nCourt, from making payment of the said debt, or any part thereof, to any person whomsoever or otherwise \nthan into this Court. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of 19 . . . \nJudge. \nNo. 18\nAttachment in Execution Prohibitory Order, where the Property Consists of\nShares in the Capital of a Corporation\n(O. 21, R. 46) \n(Title) \nTo \nDefendant and to . . . . . . . . . , Secretary of Corporation \nWhereas . . . had failed to satisfy a decree",
+        "score": 0.503,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "(Title)\nTo\nWhereas . . . . . . . . . , judgment-debtor in the above-named case, is a (describe officer of judgment-debtor)\nreceiving his salary (or allowances) at your hands; and whereas . . . . . . . . . , decree-holder in the said case, \nhas applied in this Court for the attachment of the salary (or allowances) of the said . . . . . . . . to the extent of \n. . . . . . . . due to him under the decree; You are hereby required to withhold the said sum of. . . . . . . . . . from \nthe salary of the said . . . . . . . . . in monthly instalments of . . . . . . . . and to remit the said sum (or monthly \ninstalments) to this Court. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of . . . . . 19. . . \nJudge. \nNo. 20 \nOrder of Attachment of Negotiable Instrument \n(O. 21, R. 51) \n(Title) \nTo \nThe Bailiff of the Court. \nWhereas an order has been passed by this Court on the . . . . . day of . . . . . . . . . 19 . . ., for the attachment \nof . . . ; You are hereby directed to seize the said . . . . . . . . . and bring the same into Court. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of . . . . . . . . . 19... \nJudge. \nNo. 21\nAttachment Prohibitory Order, where the Property Consists of Money or of\nany Security in the Custody of a Court of Justice of Public Officer\n(O. 21, R. 52). \n(Title) \nTo \nSir, \nThe plaintiff having applied, under",
+        "score": 0.491,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1827:C7285]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1827:C7285 | commentary | 491014025-MULLA-on-CPC-pdf | p.1827 | score=0.611]:\nPage 68 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n33 . Gopal v. Vishnu, (1898) ILR 22 Bom 971; Lakhpat v. Ghiran, AIR 1937 All 55: 167 IC 46 : (1936) All LJ 1195.\n34 . Radha Agencies v. Vijaya Bank, AIR 2002 AP 91 [ LNIND 2001 AP 1007]: (2002) 1 Andh WR 117.\n35 . Cable Corporation of India Ltd. v. Sanghi Industries Ltd., AIR 2003 AP 282 [ LNIND 2003 AP 77]: (2003) 2 Andh LD \n558.\n36 . Kejriwal Enterprises v. General Manager Ordnance Factory, AIR 2004 Cal 225 [ LNIND 2004 CAL 226]: (2004) 2 Cal \nLJ 100 [LNIND 2004 CAL 226].\n37 . Balkrishna S.S.Kakodkar v. Rama Babal Vasta, AIR 2005 Bom 200 [ LNIND 2004 BOM 113].\n38 . Katakam Viswanathan v. Katakam China Srirama Murthy, AIR 2004 AP 522 [ LNIND 2004 AP 215]: (2004) 3 Andh LT \n791.\n39 . Balwant Kumar v. Kailash Behl, AIR 2003 HP 48 [ LNIND 2002 HP 102].\n40 . Banarsi Das v. Om Prakash, AIR 2005 P&H 200.\n41 . Salem Advocate Bar Association, Tamil Nadu v. Union of India, AIR 2005 SC 3353 [ LNIND 2005 SC 573].\n42 . Tulsi Ram v. Ram Saran Das, AIR 1925 PC 80: 86 IC 552 : (1925) 27 Bom LR 777.\n43 . Binay Kumar v. Chotan Mahto, AIR 2010 Jhar 64 [ LNIND 2009 JHAR 21]: 2009 (83) All Ind Cas 395.\n44 . Bipin Shantilal Panchal v. State of Gujarat, AIR 2001 SC 1158 [ LNIND 2001 SC 509]: (2001) 3 SCC 1 [ LNIND 2001 \nSC 509] para 12, at p. 1160-1161 (of AIR).\n45. R. 15 omitted by the CPC (Amendment) Act, 1999 (46 of 1999)\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2105:C8371 | commentary | 491014025-MULLA-on-CPC-pdf | p.2105 | score=0.609]:\nPage 27 of 29\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n24 . Salem Advocate Bar Assn. Tamil Nadu v. Union of India, AIR 2003 SC 189 [ LNIND 2005 SC 573]: (2003) 1 SCC 49 \n[LNIND 2005 SC 573].\n25 . N. Yovas v. Immanueal Jose, AIR 1996 Ker 1 [ LNIND 1995 KER 67] (DB).\n26 . Temperton v. Russell, 9 TLR 321; Briton Medical Assn v. Britannia Fire Assn., 59 LT 888.\n27 . Marriott v. Chamberlain, 17 QBD 154; Zierenberg v. Labouchere, (1893) 2 QB 187 \n ; Wootton v. Sievier, (1913) 3 \nKB 499.\n28 . Yashpal Sawhney v. Gandotra Traders, AIR 1995 J&K 32.\n29 . Banu v. Govindaperumal, AIR 2009 Mad 155 [ LNIND 2009 MAD 806]: (2009) II DMC 804.\n30 . Kokanda B. Poondacha v. K.D. Ganapathi, AIR 2011 SC 1353 [ LNIND 2011 SC 212]: (2010) 3 Scale 42.\n31 . Ibid, para 15 and 16 at p. 1357-1358 (of AIR).\n32 . Bhanwar Singh v. Gir Raj Prasad, AIR 1978 Raj 20; Sain Dass v. Narain Singh, AIR 1977 HP 64 [ LNIND 1976 HP \n27]: (1976) HP 841.\n33 . Vidhya Dhar v. Mankik Rao, (1999) 2 LRI 243.\n34 . Mange Ram v. Brij Mohan, (1983) 4 SCC 36 [ LNIND 1983 SC 185].\n35 . Rehman Hussain v. Althaf Hussain, AIR 2004 Kant 172 [ LNIND 2003 KANT 901]: (2004) 1 Kant LJ 361 (DB).\n36 . Thakur Singh Negi v. Dev Raj Negi, (1993) Supp 3 SCC 645.\n37 . Subs. by CPC (Amendment) Act 104 of 1976, s. 66 for rule 1A, (w.e.f. 1-2-1977).\n38 . Bira Jana v. Tauli Dei, AIR 1972 Ori 143 [ LNIND 1971 ORI 103].\n39 . Shimbhuram v.\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2355:C9370 | commentary | 491014025-MULLA-on-CPC-pdf | p.2355 | score=0.602]:\nPage 28 of 33\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n50 . Hazariram v. Bansidhar, AIR 1937 PC 39: (1937) 64 IA 67 : 16 Pat 127 : 41 CWN 449 : 39 Bom LR 369 : 166 IC 653.\n51 . Bansidhas v. Hazari Ram, AIR 1933 Pat 210; Nachimuthu v. Palani Ammal, AIR 1944 Mad 149 [ LNIND 1943 MAD \n209]: (1943) 2 MLJ 596 [ LNIND 1943 MAD 209]; Rajani Kant v. Manmatha Nath Das, AIR 1945 Cal 1. But see Burma \nOil Co. Ltd. v. Ma Tin, AIR 1930 Rang 68: 7 Rang 505. See in particular s 34, s 73 and O 21, r 53.\n52 . Nagar Mal v. Ram Chand, (1910) 33 All 240 : 8 IC 835; Venkata v. Dorasami, AIR 1933 Mad 63 [ LNIND 1932 MAD \n151]: (1932) 56 Mad 339 : 140 IC 378.\n53 . Rajani Kant v. Manmatha Nath Das, supra.\n54 . Uma Kanta v. Renwick & Co., AIR 1953 Cal 717 [ LNIND 1953 CAL 75]; Subramania v. Ponnuswami, (1957) 1 MLJ \n208 : AIR 1957 Mad 777 [LNIND 1956 MAD 211].\n55 . Hargobind v. Hakim, (1926) 6 Lah 548 : 93 IC 54 : AIR 1926 Lah 110.\n56 . Mono Mohan v. Upendra Mohan, (1934) 38 CWN 1085 : 153 IC 606 : AIR 1935 Cal 127.\n57 . Om Prakash v. Tahera, (1955) All 382 [ LNIND 1954 ALL 234]; Venkanna v. Chunilal Moolchand, AIR 1961 AP 182; \nPerraju v. Achanna, AIR 1964 AP 152 [LNIND 1963 AP 58].\n58 . Subs. by CPC (Amendment) Act 104 of 1976, s 72, for one year (w.e.f. 1-2-1977).\n59 . Added by CPC (Amendment) Act 8 of 1937, s 3.\n60 . Ins. by the CPC (Amendment) Act, 1976 (104 of 1976), s 72 (w.e.f.\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P852:C3272 | commentary | 491014025-MULLA-on-CPC-pdf | p.852 | score=0.598]:\nPage 3 of 3\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n1. Alterations in the section. This section has been substituted for the old section by s11 of the Code of Civil \nProcedure (Amendment) Act, 1951 (2 of 1951).\nThe words subject toprescribed and or at the instances of are to avoid any possible conflict between the section \nand rr 19 to 22 of O 26.\n1 . Ins. by the CPC (Amendment) Act, 1976 (104 of 1976), s 26 (w.e.f. 1-2-1977).\n2 . Jaiswal Coal Co. v. Fatehganj Co-op. M Society, AIR 1975 Cal 303 [ LNIND 1974 CAL 194].\n3 . Madhu Sudan Pradhan v. Santosh Kumar Das, AIR 2004 Ori 86 [ LNIND 2003 ORI 105].\n4 . Budhia Dhobia v. Nakhelal Mahto, AIR 1991 NOC 64(Cal).\n5 . R. Ramakrishna Reddy v. M.Kamala Devi, AIR 2004 AP 484 [ LNIND 2004 AP 469].\n6 . Subs. for Province by AO 1950.\n6 . Subs. for “Province” by AO 1950.\n7 . Subs. by CPC (Amendment) Act 2 of 1951 for the States.\n8 . Filmistan Pvt. Ltd. v. Bhagwandas, AIR 1971 SC 61: (1970) 3 SCC 258.\n9 . JG Insurance Co. v. Dhandhiya Jewellers, AIR 1973 Raj 156.\n10 . IC Corporation v. Daewoo Corporation, AIR 1990 Bom 152 [ LNIND 1989 BOM 413].\n11 . Filmistan Private Ltd. v. Bhagwandas Sanprakash, (1970) 3 SCC 258 : AIR 1971 SC 61.\n12 . Subs. by Act 2 of 1951 s 11.\n13 . Wooster Products Inc. v. Magna Tek Inc., AIR 1989 Del 6 [ LNIND 1988 DEL 140], 9.\nEnd of Document\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1265:C5001 | commentary | 491014025-MULLA-on-CPC-pdf | p.1265 | score=0.596]:\nPage 17 of 18\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n46 . Gadiraju Vidynlatha v. Indla Venkateswarlu, (2005) 2 ALT 587 : (2005) AIHC 1575.\n47 . G. Satyanarayana v. M. Shankar, (2001) 1 ALT 365.\n48 . Hussaini Begum v. B Ramachandraiah, (1976) 1 Andh WR 325.\n49 . Pasupuleti Subba Rao v. Nandavarapu Anjaneyulu, AIR 2003 AP 445.\n50 . G Krishna Murthy v. Hematha Chit Funds Pvt Ltd, Warangal, AIR 2006 Andh Pra 398 (DB) : 2006 (3) Andh LT 416 \n[LNIND 2006 AP 463].\n51 . S. Bala Chandran v. N. Krishnamoorthy, AIR 2009 Ker 118 [ LNIND 2009 KER 172]: 2009 (1) Ker LT 975 [ LNIND \n2009 KER 172] (DB).\n52 . Tippanna v. Ghanshyam, AIR 2004 Kant 446 [ LNIND 2003 KANT 592].\n53 . Akash Gupta v. Frankfinn Institute of Air Hostess Training, AIR 2006 Del 325 [ LNIND 2006 DEL 60]: 2006 (127) DLT \n188 [LNIND 2006 DEL 60].\n54 . New Okhala Industrial Development Authority v. Pooran Singh, AIR 2004 All 218(DB).\n55 . Subs. for Provinces by IAO 1950.\n56 . Subs. by Act 13 of 1916, sec. 2 and Sch. for each of the towns of Calcutta, Madras, Bombay, Allahabad, Lahore and \nRangoon.\n57 . The words and of the Chief Court were omitted by IAO 1948.\n58 . The brackets and words (in Burma) rep. by Act 11 of 1923, sec. 3 and Sch. II.\n59 . Subs. for cls (b) and (c) by CPC (Amendment) Act 2 of 1951 s 16.\n60 . Cl. (d) relettered as cl. (c) and (d) by Act 2 of 1951, s 16.\n61. The word and omitted by Act\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2024:C8079 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 6 | p.2024 | score=0.595]:\nPage 13 of 15\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n8 . Subs. for the word fifteen by the CPC (Amendment) Act, 1999 (46 of 1999) (w.e.f. 1-7-2002) vide Notfn. S.O. 603(E), \ndt. 6-6-2002.\n9 . Dadds v. Tuke, (1884) 25 CD 617.\n10 . Sitaram Motilal Kalal v. Santanuprasad J. Bhatt, AIR 1966 SC 1697 [ LNIND 1966 SC 45]: (1966) 68 Bom LR 489 \n[LNIND 1966 SC 45] : (1966) Mah LJ 881 [LNIND 1966 SC 45].\n11 . Shalimar Chemical Works Ltd. v. Surender Oil & Dal Mills, AIR 2001 AP 126: (2001) 1 Andh LT 253.\n12 . Canara Bank v. Eastern Mechnical Works, AIR 2008 Bom 188 [ LNIND 2008 BOM 279]: 2008 (5) Mah LJ 720 [ LNIND \n2008 BOM 279].\n13 . Ins. by CPC (Amendment) Act 104 of 1976, s. 62, (w.e.f. 1-2-1977).\n14 . A. Subrmanian v. Muthukrishan Reddiar, AIR 2005 Mad 43 [ LNIND 2004 MAD 750].\n15 . Ins. by CPC (Amendment) Act 66 of 1956, s. 14.\n16 . Second proviso omitted by the (Amendment) Act, 1999, s. 22 of 1999), before omission it stood as under:\nProvided also that the Court may at any time allow any party to amend or withdraw any admission so made on such terms \nas may be just.\n17 . Balwant Singh v. Gurdev Singh, AIR 1980 P&H 139 : (1980) 2 P&H 208 : (1980) Punj LJ 260.\n18 . Bhagirah v. Rishabh Kumar, AIR 1964 MP 1.\n19 . Subs. by CPC (Amendment) Act 104 of 1976, s. 62 for rule 6, (w.e.f. 1-2-1977).\n20 . Uttam Singh Duggal v. Union Bank of India, AIR 2000 SC 2740 [ LNIND\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1645:C6516 | commentary | 491014025-MULLA-on-CPC-pdf | p.1645 | score=0.594]:\nPage 42 of 46\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n 23. Trilok Singh v. Jamuna Devi, AIR 1978 All 129 .\n 24. Subs. for for the appearance of the defendant by the CPC (Amendment), 1999 (46 of 1999), s 15 (w.e.f. 1-7-2002) \nvide Notfn. S.O. 603(E), dt. 6-6-2002.\n 25. Subs. for all documents by the CPC (Amendment) Act, 1999 (46 of 1999), s 15 (w.e.f.1-7-2002) vide Notfn. S.O. \n603(E), dt. 6-6-2002.\n 26. Subs. by CPC (Amendment) Act, 2002 (22 of 2002), s 6 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s 6(ii).\n Earlier R. 9 was substituted by the CPC (Amendment) Act, 1999 (46 of 1999), s 15 (w.e.f. 1-7-2002) vide Notfn. S.O. \n603(E), dt. 6-6-2002 for the following:\n R. 9. Delivery or transmission of summons for service. (1) Where the defendant resides within the jurisdiction of the \nCourt in which the suit is instituted, or has an agent resident within that jurisdiction who is empowered to accept the \nservice of the summons, the summons shall, unless the Court otherwise directs, be delivered or sent to the proper \nofficer to be served by him or one of his subordinates.\n (2) The proper officer may be an officer of a Court other than that in which the suit is instituted, and, where he is such an \nofficer, the summons may be sent to him by post or in such other manner as the Court may direct.\n 27. Tripura Modern Bank Ltd. v. Bansen & Co., AIR 1952 Cal\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1890:C7541 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 1 | p.1890 | score=0.592]:\n004 Mad 518 [ LNIND 2004 MAD 708]: (2004) 3 Mad LJ \n382(2004) 3 Mad LW 412 [LNIND 2004 MAD 708].\n19 . Sardar Darshan Singh v. Smt. Surjeeth Kaur, AIR 2007 AP 201 [ LNIND 2007 AP 190]: 2007 (3) Andh LT 193 [ LNIND \n2007 AP 190].\n20 . Ram Pratap Pandey v. Vidyadhar Pandey, AIR 2007 Pat 185.\n21 . Nemichand Burad v. Jorawarmal, AIR 2005 Raj 235.\n22 . Laxman Oraon v. Akhil Bhartiya Adivasi Vikash Parishad, AIR 2005 NOC 593(Jhar).\n23 . Milind Saran v. Vinai Kumar, AIR 1987 All 339 [ LNIND 1987 ALL 114].\n24 . Malkiyat Singh v. Om Prakash, AIR 1995 Raj 38.\n25 . Shiv Kumar Singh v. Kari Singh, AIR 1962 Pat 159.\n26 . Shaik Asha v. Shaik Moulaali, AIR 2005 NOC 585(AP) : (2005) AIHC 3606.\n27 . Nanjan v. Selai, AIR 1958 Mad 383 [ LNIND 1957 MAD 176]: (1958) Mad 584 : (1957) 2 Mad LJ 601 : 70 LW 976.\n28 . Gurusanthayya v. Veerayya, AIR 1952 Mad 825 [ LNIND 1952 MAD 1].\n29 . Shyam Sunder Bazaz v. Sanwarmal Jalan, AIR 2005 Jhar 109 [ LNIND 2005 JHAR 68].\n30 . Subs. by CPC (Amendment) Act, 2002 (22 of 2002), s 9 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s 9(iii)\nEarlier r 10. omitted by the CPC (Amendment) Act, 1999 (not enforced), prior to its omission rule stood as under:\n R. 10. Procedure when party fails to present written statement called for by Court.Where any party from whom a \nwritten statement is required under rule 1 or rule 9 fails to present the same within the time\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1797:C7170]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1797:C7170 | commentary | 491014025-MULLA-on-CPC-pdf | p.1797 | score=0.561]:\nTransfer of Property \nAct 1882. 73 The injunction sought by the plaintiff seeking an order of restraint against using a cheque, which is a \nsubject-matter of proceedings under s 138 of the Negotiable Instruments Act 1881, cannot be granted, as it would \nhave the effect of preventing the defendant from prosecuting the criminal case against the plaintiff. The same is \nbarred by s 41 (b) of the Specific Relief Act 1963, hence the plaint is rejected under O 7, r 11.74\nIn a suit for recovery of money based on promissory not executed on 12-4-2000, the last date for filing the suit was \n12-4-2003, as the date of execution of the promissory not has to be excluded in view of s 12 of the Limitation Act, \n1963. As both dates viz. 12-4-2003 to 15-4-2003 were general holidays, it was held by the Karnataka High Court \nthat suit filed on 16-4-2003 was well within time and not barred by limitation. Therefore, the rejection of the plaint \nwas not proper.75\nIn an Allahabad case, question was whether a suit seeking the eviction of a tenant was barred by s 20, Uttar \nPradesh Act 13 of 1977. The court ordered that the question shall be decided by the evidence of the parties and not \nat that stage. It was held that the trial judge had not, by deferring his decision, affected the rights of the parties. His \norder, in these circumstances, cannot be said to be an order not being in accordance with\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1768:C7031 | commentary | 491014025-MULLA-on-CPC-pdf | p.1768 | score=0.595]:\ntablished or justified by the plaintiff is not needed. \nFurther a plain reading of the proviso of r 6 makes it clear that the mere absence of the necessary recital would not \nbe fatal to the suit, and is within the discretion of the court to permit the plaintiff to claim such an exemption, subject \nonly to the condition that such claim should not be inconsistent with the other grounds set out in the plaint.68\nThere is no doubt under s 3 of the Limitation Act, 1963, it is the duty of the court to dismiss the suit in a case which \nis barred by time and even if no plea had been taken, but exemption of acknowledgment of the liability for extending \nthe period of limitation has been prayed for, it is obligatory upon the plaintiff to plead such an exemption in the plaint \nitself.69\nTo explain how the suit was within limitation, the plaintiff made the following statement:\nThe suit was filed on 3 September, 1964 and returned for presentation on 29 February 1968 and as the suit was bona fide \npresented in a court having no jurisdiction and the period of pendency has to be excluded and, excluding the said period of \npendency the suit is within time.\nIt was held that this was a sufficient explanation, entitling the plaintiff to the benefit of s 14 Limitation Act, 1963.70\nA bank sued to recover a debt more than three years after it had become due. It did not raise any specific ground \nfor\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1795:C7161 | commentary | 491014025-MULLA-on-CPC-pdf | p.1795 | score=0.590]:\nsuit was barred by limitation in terms of Art. 58 of the Limitation Act, 1963. The High Court, \ntherefore, in our opinion, ex facie committed an error in arriving on the aforementioned finding.56\nIn a suit filed by a Bank for recovery of money, where the claim of the Bank was more than 10 lakhs, the Civil Court \nhas no jurisdiction to entertain the suit in view of the bar created under Recovery of Debts Due to Banks and \nFinancial Institutions Act, 1993 and the appropriate remedy was available before the debt recovery Tribunal. Since \nthe suit was barred by statute, it was held liable to be rejected under O 7, r 11(d) of the Code.57\nIn a suit, where permanent injunction was sought prohibiting the defendants from presenting cheques in their favour \nfor encashment, it was held by the Delhi High Court that the reliefs sought will amount to restraining the defendant \nfrom instituting civil or criminal proceedings against the plaintiff on account of non-encashment of cheques which \nwould amount to hampering access to justice. The reliefs sought is barred by law being directly hit by the provisions \nof s 41 (b), (d) of the Specific Relief Act, 1963 and as such the injunction can be refused. However, in the light of \nsubsequent events of the case, it was further held that the entire suit cannot be dismissed as infructuous.58\nIn a matrimonial case before the family courts, the Family\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1768:C7032 | commentary | 491014025-MULLA-on-CPC-pdf | p.1768 | score=0.587]:\nplanation, entitling the plaintiff to the benefit of s 14 Limitation Act, 1963.70\nA bank sued to recover a debt more than three years after it had become due. It did not raise any specific ground \nfor seeking extension of the period of limitation. As regards the acknowledgement signed by the borrowers, the \nlatter said that their signatures were obtained on blank sheets without telling them about the nature of the \ndocument. Suit was held to be beyond time.71\nHence, it is sufficient if the facts on which exemption is claimed are set out in the plaint. Thus, when the fact of \nacknowledgement is stated, it is not fatal to the maintainability of the suit that exemption is not specifically claimed \non the ground of acknowledgement. 72 Where a plaint was returned under r. 10 and represented in the proper court, \nit was held that the exemption under s 14 of the Limitation Act, 1963 could be claimed on the strength of the \nindorsement of return even though that is not expressly stated in the plaint. 73 This rule applies only when the suit is \nprima facie barred. Where the question is one on which decisions are divided, the rule has no application. 74 In \nproceedings before an arbitrator it is not necessary that averments should be made showing that the claim is saved \nfrom the bar of limitation. 75 If a plaint does not show any ground of exemption, the court of first instance should\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1900:C7578 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 1 | p.1900 | score=0.584]:\nis from the date \nof the countersignature that the period of one month, earlier three months, is to be calculated and not from the date \nof the return made by the serving officer. Sub-rule 1 provides two alternatives, where a summons has been \nreturned unserved, (i) to apply for a fresh summons, or (ii) to apply for extension of time to apply for a fresh \nsummons on any one of the grounds set out therein. If a plaintiff fails to adopt either of the two alternatives, he \ncannot rely on s 5 of the Limitation Act 1908 for extending the period.73\nFurthermore, an order dismissing a suit before the expiry of one month, earlier three months, is premature and \nillegal.74 This rule prescribes a period of limitation, and the court has no power to extend it on an application \npresented beyond that period. 75 Where an application for fresh summons is filed within one month, earlier three \nmonths, and an extension of time is asked for, the plaintiff must establish one of the grounds specified in the rule \nbut where he does not ask for extension of time, he is entitled to an order ex debito justitiae.76\nWhere no writ of summons could be lodged with the sheriffs for service on the defendants due to the lapses and \nlaches on the part of the advocate on-record, the Calcutta High Court held that it was not a case of issuance of\n\n[Document 6 | Limitation Act | Limitation Act:Section360 | bare_act | A1963-36 | Section 360 | p.15 | score=0.578]:\n15 \n Description of suit Period of limitation Time from which period begins to run \n45. By the assured to recover premia \npaid under a policy voidable at \nthe election of the insurers. \nThree years. When the insurers elect to avoid the \npolicy. \n46. Under the Indian Succession Act, \n1925 (39 of 1925), section 360 \nor section 361, to compel a \nrefund by a person to whom an \nexecutor or administrator has \npaid a legacy or distributed \nassets. \nThree years. The date of the payment or distribution. \n47. For money paid upon an existing \nconsideration which afterwards \nfails. \nThree years. The date of the failure. \n48. For contribution by a party who has \npaid the whole or more than his \nshare of the amount due under a \njoint decree, or by a sharer in a \njoint estate who has paid the \nwhole or more than his share of \nthe amount of revenue due from \nhimself and his co-sharers. \nThree years. The date of the payment in excess of the \nplaintiff’s own share. \n49. By a co -trustee to enforce against \nthe estate of a deceased trustee a \nclaim for contribution. \nThree years. When the right to contribution accrues. \n50. By the manager of a joint estate of \nan undivided family for \ncontribution, in respect of a \npayment made by him on \naccount of the estate. \nThree years. The date of the payment. \n51. For the profits of immovable \nproperty belonging to the \nplaintiff which have been\n\n[Document 7 | Limitation Act | Limitation Act:books/A1963-36.pdf:P8:C19 | bare_act | A1963-36 | p.8 | score=0.575]:\n8 \nthe period of limitation shall not begin to run until the plaintiff or applicant has discovered the fraud or \nthe mistake or could, with reasonable diligence, have discovered it; or in the case of a concealed \ndocument, until the plaintiff or the applicant first had the means of producing the concealed document or \ncompelling its production: \nProvided that nothing in this section shall enable any suit to be instituted or application to be made to \nrecover or enforce any charge against, or set aside any transaction affecting, any property which— \n(i) in the case of fraud, has been purchased for valuable consideration by a person who was not a \nparty to the fraud and did not at the time of the purchase know, or have reason to believe, that any \nfraud had been committed, or \n(ii) in the case of mistake, has been purchased for valuable consideration subsequently to the \ntransaction in which the mistake was made, by a person who did not know, or have reason to believe, \nthat the mistake had been made, or \n(iii) in the case of a concealed document, has been purchased for valuable consideration by a \nperson who was not a party to the concealment and, did not at the time of purchase know, or have \nreason to believe, that the document had been concealed. \n(2) Where a judgment -debtor has, by fraud or force, prevented the execution of a decree or order \nwithin the period of\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2551:C10141 | commentary | 491014025-MULLA-on-CPC-pdf | p.2551 | score=0.566]:\nciency occurred by reason of a clerical or arithmetical \nmistake on his part.\nBy the amending Act 104 of 1976, Act 127 of the Limitation Act, 1963 was amended providing for 60 days instead \nof 30 days as the period of limitation for filing an application to set aside a sale on execution of a decree, including \nany such application by a judgment debtor. A five judge bench of the Supreme Court, overruling the decision inP K \nUnni v. Nirmala Industries 113 observed\nViewed in this context the intention of the legislature in extending the period under Act 127, Limitation Act may be \nseen. It is very clear from the statement of objects and reasons, which have been set out herein above, that the \nperiod under art 127, Limitation Act was extended from 30 days to 60 days in order to give more time to persons to \nmake deposits. The legislature has noted that the period of 30 days from the date of sale was too short and often \ncaused hardships because judgment-debtors usually failed to arrange for moneys within that period.114\nThe Bench further observed (Variava J, speaking for the court) as follows in para 18 of the judgment:\nHaving given our careful consideration to the question, we are of the opinion that there is no anomaly and that there \nare no different periods of limitation for making deposits and/or filing an application for setting aside the sale. It is by \nvirtue of O 21, r\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4786]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4786 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.642]:\nvalorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1760:C7001 | commentary | 491014025-MULLA-on-CPC-pdf | p.1760 | score=0.628]:\n(d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter showing the provisions of law \nunder which the valuation of the court-fees and jurisdiction is separately made. (1-11-1966).\nBombay (Dadra and Nagar Haveli) (Goa, Daman and Diu). The following amendments were made by \nMaharashtra Government Gazette, dated 15-9-1983, Part 4 Ka, Page 402; Goa Gazette, dated 12-10-1987, Extra., \ns 1 No. 28, Page 376, dated 1-4-1987.\nFor item (i) substitute the following:\n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of Court-fees, so far \nas the case admits, showing the provisions of law under which the valuation for Court-fees and jurisdiction is \nseparately made.\nKarnataka. The following amendments were made by Karnataka Gazette, dated 30-3-1967.\nDelete r 1 and substitute the following:\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1513 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.616]:\nrtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C178 | commentary | 491014025-MULLA-on-CPC-pdf | p.47 | score=0.605]:\nPage 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1512 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.595]:\nn 48 and \ndismissed the appeal as no prejudice had been shown. The matter was taken in appeal to the Supreme Court \nand in affirming the decision of the High Court, the Supreme Court held that even an objection on the ground of \njurisdiction arising out of over-valuation or under-valuation could, in view of the provisions of s 11 of the Suit \nValuation Act, be taken only in the manner mentioned therein, that the decision of the District Court was \ntherefore, not a nullity and that a mere change of forum for appeal was not a prejudice contemplated by the \nsection, nor a mere error on the conclusion reached on the merits.49\n10. Where the subject matter of a suit does not admit of being satisfactorily valued. In some suits, the \nsubject matter is not capable of being estimated at a money value, eg, suits for restitution of conjugal rights; \nsuits to remove a karnavan, 50 suits to direct registration of a document under the Registration Act, 1908, s \n77,51etc. The court fee in such suits is Rs 10 as provided by the Court Fees Act, 1870, Sch II, Art. 17, cl (vi). \nThere is a distinction, however, between valuation for the purpose of jurisdiction and valuation for the purpose \nof ascertaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4784 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.573]:\neld that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court has \nlaid down that, the plaintiff would be able to drag the defendant into any court be pleases. 79 This passage was \nquoted, with approval, by the Bombay High Court in Bhikamdas v. Motilal, 80 wherein, it was held that an \nerroneous decision of the effect that a suit fell under a particular category for the purposes of court fees was \nopen to revision. And, it was further pointed out that, the jurisdiction of the court might be affected by the \ndecision. The Kerala High Court also held that, the defendant could prefer a revision against an order deciding \nthat the suit fell under a particular category and, that the court fee paid was correct. 81 The Mysore High Court \nheld that where the plaintiff, claiming exemption under a notification issued under the Hyderabad Court Fees \nAct, presented a plaint without any court fee, it was open to the defendant to challenge its validity in a revision, \nas the rule that the defendant cannot move the court under s 115, when the court fee paid has been held to be \nsufficient, has no application when no court fee has been paid.82\nIn Ratnavarma Raja v. Vimla, 83 the Supreme Court has observed that, whether proper court fee has been paid \nor\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7142 | commentary | 491014025-MULLA-on-CPC-pdf | p.1792 | score=0.554]:\nobjections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1783:C7099 | commentary | 491014025-MULLA-on-CPC-pdf | p.1783 | score=0.553]:\n1948, Clause 6 and Act 27 of 1962, Ss. 13 and 15, dated 1-12-1963, Act 81 of 1971, s 28, \ndated 25-1-1972.\nKarnataka. The following amendments were made by Karnataka Act, dated 30-3-1967.\nFor item (c) substitute the following:\n(c) Where the relief claimed is properly valued, but the court-fee act ually paid is insufficient and the plaintiff does not make \ngood the deficiency within the time, if any, granted by the Court.\nMadras (Pondicherry). The following amendments were made by Tamil Nadu Act.\nFor clause (c) substitute the following:\n(c) Where the relief claimed is properly valued, but the plaint is written on paper insufficiently stamped, and the plaintiff \ndoes not make good the deficiency within the time, if any, granted by the Court.\nOrissa. Same as in Calcutta, (Notn No 24-X-7-52; 30-3-1954)\n1. Amendment. Clauses (e) and (f) in O 7, r 11 are additional grounds for rejection of the plaint and were inserted \nby the Amending Act of 1999 and further substituted by the Amending Act of 2002. Clause (e) of r 11 states that the \nplaint shall be rejected where it is not filed in duplicate. This provision is in conformity with the provisions of O 4, r 1 \nas amended wherein it is stated that every suit shall be instituted by presenting a plaint in duplicate to the court. \nHowever, r 3 of O 4 says that the plaint shall not be deemed to be duly instituted unless it complies with the\n\n[TOP_MATCH: CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P105:C390]\n\n[Document 1 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P105:C390 | bare_act | the code of civil procedure, 1908 | p.105 | score=0.512]:\ndebtor, the delivery thereof to the purchaser shall be made by giving notice to the person in possession \nprohibiting him from delivering possession of the property to any person except the purchaser. \n(3) Where the property sold is a debt not secured by a negotiable instrument, or is a share in a corporation, \nthe delivery thereof shall be made by a written order of the Court prohibiting the creditor from receiving the \ndebt or any interest thereon, and the debtor from making payment thereof to any person except the \npurchaser, of prohibiting the person in whose name the share may be standing from making any transfer of \nthe share to any person except the purchaser, or receiving payment of any dividend or interest thereon, and \nthe manager, secretary or other proper officer of the corporation from permitting any such transfer or making \nany such payment to any person except the purchaser. \n80 . Transfer of negotiable instruments and shares— (1) Where the execution of a document or the \nendorsement of the party in whose name a negotiable instrument or a share in a corporation is standing is \nrequired to transfer such negotiable instrument or share, the Judge or such officer as he may appoint in this \nbehalf may execute such document or make such endorsement as may be necessary, and such execution or \nendorsement shall have the same effect as an execution or endorsement by the\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P554:C2048 | commentary | 491014025-MULLA-on-CPC-pdf | p.554 | score=0.496]:\n5 and this discretion is not excluded even if a fixed rate is mentioned in \nthe contract as payable upto realisation. 36 But though the rate of interest for the aforesaid period is \ndiscretionary, the court should, in the exercise of that discretion, award interest at the contract rate, unless it \nwould be inequitable to do so. 37 A debt advanced against a negotiable instrument is governed by the \nNegotiable Instruments Act, 1881 till its nature is converted into a decretal debt. That being so, interest for the \nperiod between the date of the suit and decree would he governed by s 79 of the Negotiable Instruments Act, \n1881 and not by this section. 38 As to compound interest, (see note under the heading Compound Interest) and \nthe undermentioned cases. 39 The court may, under this head, award interest in a suit for money, although \ninterest is not specifically asked for in the plaint.40\nIt is well-established that no interest can be allowed on damages for any period prior to the suit, 41 but there is a \nconflict of decisions whether interest can be allowed under this section on damages from the date of the suit, it \nbeing held in some cases that it can be allowed,42 and in some that it cannot be allowed.43\nWhere the High Court has refused to exercise its discretionary power to allow interest from date of suit, the \njudicial committee as a rule will not interfere. 44 An\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2401:C9548 | commentary | 491014025-MULLA-on-CPC-pdf | p.2401 | score=0.489]:\nPage 41 of 57\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nAdd the following rules:\n46A. The Court may in the case of any debt due to the judgment-debtor (other than a debt secured by a mortgage \nor a charge or a debt recoverable only in a Revenue Court or a debt on a negotiable instrument the amount of \nwhich exceeds the pecuniary jurisdiction of the Court) which has been attached under O XXI, r 46, and in the case \nof a negotiable instrument which has been attached under O XXI, r 51, upon the application of the decree-holder, \nissue notice to the person liable to pay such debt (hereinafter called the garnishee) calling upon him to appear \nbefore the Court and show cause why he should not pay the debt due from him to such judgment-debtor or so such \nthereof as may be sufficient to satisfy the decree and costs of execution.\n46B. If the granishee does not appear or show cause in answer to the notice issued under Rule 46A or if he does \nnot dispute his liability or its extent, the Court may direct the garnishee within such time as it may allow to pay into \nCourt the debt or the amount due under the negotiable instrument as the case may be or so much thereof as may \nbe sufficient to satisfy the decree and the costs of the execution proceedings.\n46C. If the garnishee disputes his liability or its extent, the Court may decide the dispute and thereafter direct the\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2398:C9536 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 51 | p.2398 | score=0.487]:\nPage 38 of 57\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n(3) any negotiable instrument which has been attached under rule 51 of this Order; or\n(4) any movable property of the nature referred to in (1) to (3) above in the custody of any public officer other than \nofficer of any court, which has been attached under rule 52 of the Order,\nissue notice to any person liable to pay to the judgment-debtor such debt or the amount due under such negotiable \ninstrument or liable to deliver such movable property or to account for it to the judgment-debtor (hereafter referred \nto as the Garnishee) calling upon him within the period specified in the notice either to pay into Court the said debt \nor amount payable under the said negotiable instrument or deliver into Court the said movable property, as the case \nmay be, or so much thereof as may be sufficient to satisfy the decree or order and the cost of execution or to \nappear before the Court and show cause why he should not be ordered to do so.\nThe notice shall be served on the Garnishee and, if the Court so directs on the judgment-debtor also. The notice \nshall be served eight clear days before the returnable date thereof:\nProvided that, subject to the proviso to Rule 46-C, if by any law for the time being in force, the jurisdiction to \nadjudicate upon the debt or claim relating to the negotiable instrument or movable\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2399:C9543 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 46 | p.2399 | score=0.477]:\nr r 46, the following rules shall be inserted, namely:\n46A. Procedure when debt or any movable property not in the possession of the judgment-debtor. The \nCourt may, in the case of any debt due to the judgment-debtor (other than debt secured by a mortgage or a charge \nor by negotiable instrument), or any movable property in which he has an interest, but not in his possession, which \nhas been attached under Rule 46 of this order upon the application of the attaching creditor, issue notice to any \nperson liable to pay such debt or delivery an account for such movable property (such person to be hereinafter\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2394:C9519 | commentary | 491014025-MULLA-on-CPC-pdf | p.2394 | score=0.469]:\nregarding the attachment of mortgage debt may be studied as \nfollows. In a case, A executes a mortgage of immovable property to B to secure payment of Rs 5,000 lent to him by \nB. It is provided by the mortgage bond that if A fails to pay the mortgage debt on the due date, B should have the \nright to sue A personally for the debt, and also to realise the debt by the sale of the mortgaged property. In such a \ncase, B's interest in the mortgage bond comprises (i) the right to sue A personally for the mortgage debt, and (ii) the \nright to realise the debt by sale of the mortgaged property. If C obtains a decree against B for Rs 5,000, and seeks \nan execution of the decree to attach the mortgage debt due to B, how is the attachment effected? Whether the \nmortgage debt is a debt not secured by a negotiable instrument within the meaning of this rule and attachable in the \nmode prescribed by this rule, or, being secured by a mortgage of immovable property, is it immovable property \nwithin the meaning of r 54 and attachable in the mode prescribed by that rule? The answer afforded by the \ndecisions on the subject, eliminating what are merely obiter dicta, 161 is that a mortgage debt is a debt within the \nmeaning of this rule and it is, therefore, to be attached in the manner prescribed by this rule. Again, if the mortgage \ndebt due to B is attached under this rule in execution of C's\n\n[Document 7 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P224:C769 | bare_act | the code of civil procedure, 1908 | p.224 | score=0.503]:\n9. The following debts are due to me:—C 0\n(give particulars) \n(a) Form . . . . . . . of . . . . . . . . . . . . . . . . . . . . . . . . . . .\nRs.\n(b) From . . . . . . .of . . . . . . . . . . . . . . . . . . . . . . . . . . .\nRs. . . . . . . .(etc.)\nSworn before me, etc.]\nNo. 17\nAttachment in Execution Prohibitory Order, where the Property Consists of\nDebts not Secured by Negotiable Instruments\n(O. 21, R. 46) \n(Title) \nTo \nWhereas. . . . . . .has failed to satisfy a decree passed against . . . . . . . . . on the . . . . . . . . . day of . . . . . . . . \n. 19. . ., in Suit No. . . . . . . . . . of 19 . . . . . . . , in favour of until the further order of this Court, from receiving \nfrom you a certain debt alleged now to be due from you to the said defendant, namely, . . . . . . . . . and that \nyou, the said . . . . . . . . . be, and you are hereby, prohibited and restrained, until the further order of this \nCourt, from making payment of the said debt, or any part thereof, to any person whomsoever or otherwise \nthan into this Court. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of 19 . . . \nJudge. \nNo. 18\nAttachment in Execution Prohibitory Order, where the Property Consists of\nShares in the Capital of a Corporation\n(O. 21, R. 46) \n(Title) \nTo \nDefendant and to . . . . . . . . . , Secretary of Corporation \nWhereas . . . had failed to satisfy a decree\n\n[Document 8 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P225:C771 | bare_act | the code of civil procedure, 1908 | p.225 | score=0.491]:\n(Title)\nTo\nWhereas . . . . . . . . . , judgment-debtor in the above-named case, is a (describe officer of judgment-debtor)\nreceiving his salary (or allowances) at your hands; and whereas . . . . . . . . . , decree-holder in the said case, \nhas applied in this Court for the attachment of the salary (or allowances) of the said . . . . . . . . to the extent of \n. . . . . . . . due to him under the decree; You are hereby required to withhold the said sum of. . . . . . . . . . from \nthe salary of the said . . . . . . . . . in monthly instalments of . . . . . . . . and to remit the said sum (or monthly \ninstalments) to this Court. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of . . . . . 19. . . \nJudge. \nNo. 20 \nOrder of Attachment of Negotiable Instrument \n(O. 21, R. 51) \n(Title) \nTo \nThe Bailiff of the Court. \nWhereas an order has been passed by this Court on the . . . . . day of . . . . . . . . . 19 . . ., for the attachment \nof . . . ; You are hereby directed to seize the said . . . . . . . . . and bring the same into Court. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of . . . . . . . . . 19... \nJudge. \nNo. 21\nAttachment Prohibitory Order, where the Property Consists of Money or of\nany Security in the Custody of a Court of Justice of Public Officer\n(O. 21, R. 52). \n(Title) \nTo \nSir, \nThe plaintiff having applied, under"
+  },
+  "court_fee": {
+    "query": "Karnataka court fee ad valorem percentage Commercial Court summary suit order 37 cpc civil suit Rs 9 lakh",
+    "results": [
+      {
+        "title": "1 THE KARNATAKA COURT-FEE AND SUITS VALUATION ACT, 1958.",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/7625/1/16_of_1958_(e).pdf",
+        "snippet": "Rupees fifteen if the value of plaintiff’s share is Rs.",
+        "date": ""
+      },
+      {
+        "title": "1 1 V A L U A T I O N & C O U R T-F E E S S.S. Upadhyay",
+        "url": "https://lawhelpline.in/wp-content/uploads/2024/01/COURT_FEES__VALUATION.pdf",
+        "snippet": "suits other than those referred to in Section 4, court-fees are payable ad valorem under the",
+        "date": ""
+      },
+      {
+        "title": "1 SCHEDULE I Ad valorem fees Number. . . . Proper fee. (1) (2) (3)",
+        "url": "https://upload.indiacode.nic.in/schedulefile?aid=AC_MH_166_855_00063_00063_1616477497342&rid=1066",
+        "snippet": "1 This table of rates of ad-valorem ... or part thereof over Rupees one · lakh upto Rupees 11,00,000 and over Rupees 11,00,000 at the rate of Rupees 1,200 for every Rupees ...",
+        "date": ""
+      },
+      {
+        "title": "Court Fee Calculator | Niyamam Law Offices- Delhi, India",
+        "url": "https://niyamamlawoffices.com/court-fee-calculator/",
+        "snippet": "An Ad-Valorem fee means the court fee is calculated as a percentage or slab amount based on the value of the claim .",
+        "date": ""
+      },
+      {
+        "title": "Court Fee Calculator State-wise Online - Century Law Firm",
+        "url": "https://www.centurylawfirm.in/blog/court-fee-calculator-state-wise-online/",
+        "snippet": "These court fees and jurisdiction calculators can be used to calculate court fees and jurisdiction easily in seconds for free.",
+        "date": ""
+      },
+      {
+        "title": "COURT FEES PAYABLE CIVIL CASES Sr. No. Category of Cases Court Fees 1.",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec02504c296f8eb5fd521e744da4e837/uploads/2023/05/2023052233-1.pdf",
+        "snippet": "the Suits Valuation Act have been imposed as to the · classes of land to which the rules apply, or as to the ... Court Fees Act. ... Civil Procedure. When a plaint omits to disclose the",
+        "date": ""
+      },
+      {
+        "title": "DISCLAIMER: This document is being furnished to you for your information by PRS",
+        "url": "https://prsindia.org/files/bills_acts/acts_states/karnataka/1958/1958Karnataka16.pdf",
+        "snippet": "plaint or on rupees five hundred, whichever is higher; 3. Substituted by Act No. 13 of 1982, for the words \"rupees two hundred and fifty\", . w.e.f. 1-4-1982. ... In a suit for a declaration in regard to the validity or invalidity of an adoption or the factum of an · adoption, fee shall be payable at the following rates: ... 1. The brackets and figure \"(i)\" Omitted by the Karnataka Adaptations of Laws Order 1973 w.e.f.",
+        "date": ""
+      },
+      {
+        "title": "THE KARNATAKA COURT-FEES AND SUITS VALUATION RULES, 1960 NOTIFICATION",
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_KA_71_401_00004_16_1551435305356%2Frulesindividualfile%2F&file=rules_1960-new.pdf",
+        "snippet": "Fees and Suits Valuation Act, 1958, the Government of Karnataka hereby makes ... Officer subordinate to him. ... Controlling Revenue Authority. 1 [13.A. Immediately after the exhibition of the inventory referred to in the · provision to sub-section (5) of Section 56, the Court shall send intimation of the · date of such exhibition to the Deputy Commissioner to whom the copy of the · Duplication and of valuation has been sent under sub-section 9(2) of Section 52].",
+        "date": ""
+      },
+      {
+        "title": "karnataka+court+fees+and+suits+valuation+act | Indian Case Law | Law | CaseMine",
+        "url": "https://www.casemine.com/search/in/karnataka+court+fees+and+suits+valuation+act",
+        "snippet": "Therefore, the suit should be valued under Section 35(1) of the Karnataka Court Fees and Suits Valuation Act ...35(1) of the Karnataka Court Fees and Suits Valuation Act and therefore, the plaintiffs must pay the Court fee on the market value of the property, the possessi...sub-section (1) of Section 35 of the Karnataka Court Fees and Suits Valuation Act, merely because it was contended by the defendant that the plaintiffs have adm... Tarnmanna D. Battal & Ors., Etc. v. Miss Renuka R. Reddy & Ors. Etc. ... ...under Section 4 of the said Act in view of Sections 9(xii) and 10(iv-a) of the said A",
+        "date": ""
+      }
+    ],
+    "summary": "[1 1 V A L U A T I O N & C O U R T-F E E S S.S. Upadhyay] suits other than those referred to in Section 4, court-fees are payable ad valorem under the\n[Court Fee Calculator | Niyamam Law Offices- Delhi, India] An Ad-Valorem fee means the court fee is calculated as a percentage or slab amount based on the value of the claim .\n[Court Fee Calculator State-wise Online - Century Law Firm] These court fees and jurisdiction calculators can be used to calculate court fees and jurisdiction easily in seconds for free.\n[COURT FEES PAYABLE CIVIL CASES Sr. No. Category of Cases Court Fees 1.] the Suits Valuation Act have been imposed as to the · classes of land to which the rules apply, or as to the ... Court Fees Act. ... Civil Procedure. When a plaint omits to disclose the\n[karnataka+court+fees+and+suits+valuation+act | Indian Case Law | Law | CaseMine] Therefore, the suit should be valued under Section 35(1) of the Karnataka Court Fees and Suits Valuation Act ...35(1) of the Karnataka Court Fees and Suits Valuation Act and therefore, the plaintiffs must pay the Court fee on the market value of the property, the possessi...sub-section (1) of Section 35 of the Karnataka Court Fees and Suits Valuation Act, merely because it was contended by the defendant that the plaintiffs have adm... Tarnmanna D. Battal & Ors., Etc. v. Miss Renuka R. Reddy & Ors. Etc. ... ...under Section 4 of the said Act in view of Sections 9(xii) and 10(iv-a) of the said A",
+    "error": null
+  },
+  "legal_research": {
+    "queries": [
+      "Summary Suit limitation period India years accrual date right to sue Karnataka Commercial Court",
+      "summary suit order 37 cpc mandatory procedural requirements India Karnataka Commercial Court"
+    ],
+    "results": [
+      {
+        "title": "When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law",
+        "url": "https://corporate.cyrilamarchandblogs.com/2020/06/suits-falling-under-article-113-of-the-limitation-act/",
+        "snippet": "The suit was rejected by the Trial ... it was observed by the Trial Court that the right to sue accrued to the Appellant in October 2000. ...",
+        "date": ""
+      },
+      {
+        "title": "1 THE LIMITATION ACT, 1963 _________ ARRANGEMENT OF SECTIONS __________ PART I",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/1565/5/A1963-36.pdf",
+        "snippet": "When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.",
+        "date": ""
+      },
+      {
+        "title": "12 THE SCHEDULE (PERIODS OF LIMITATION) [See sections 2(j) and 3]",
+        "url": "https://upload.indiacode.nic.in/schedulefile?aid=AC_CEN_3_20_00005_196336_1517807319297&rid=33",
+        "snippet": "When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.",
+        "date": ""
+      },
+      {
+        "title": "Summary Suit",
+        "url": "https://www.indialawoffices.com/knowledge-centre/summary-suit",
+        "snippet": "Summary Suit is given under Order 37 of CPC as civil remedy for recovery of money. The suit can be filed within limitation of 3 years from date of cause of action .",
+        "date": ""
+      },
+      {
+        "title": "SC clarifies import of “when the right to sue accrues” in article 113 of limitation Act, 1963 - Shardul Amarchand Mangaldas & Co",
+        "url": "https://www.amsshardul.com/insight/sc-clarifies-import-of-when-the-right-to-sue-accrues-in-article-113-of-limitation-act-1963/",
+        "snippet": "Central Bank of India[1] (decided ... any suit for which no period of limitation is provided, the limitation period will be three years from...",
+        "date": ""
+      },
+      {
+        "title": "Grounds for Suit Maintainability Under Order 37 of CPC, 1908 (With Case Laws) - The Edu Law",
+        "url": "https://theedulaw.com/order-37-of-cpc-1908/",
+        "snippet": "Maintainability of a suit under Order 37 CPC, 1908 depends on clear financial liability, procedural compliance, and judicial precedents .",
+        "date": ""
+      },
+      {
+        "title": "Order 37 CPC, 1908 - iPleaders",
+        "url": "https://blog.ipleaders.in/order-37-cpc-1908/",
+        "snippet": "There is a proper procedure that has to be followed while bringing a suit under Order 37 of the CPC. The procedure followed in a summary suit is as follows: The plaintiff files a complaint. Summons are given to the defendant to be present in court.",
+        "date": ""
+      },
+      {
+        "title": "Order 37 of the Code of Civil Procedure, 1908 | Legal Service India - Law Articles - Legal Resources",
+        "url": "https://www.legalserviceindia.com/legal/article-10649-order-37-of-the-code-of-civil-procedure-1908.html",
+        "snippet": "If anybody brings a claim in court ... to inquire into the details of the situation and to analyse the documents submitted in addition to the plant to ensure that it meets the requirements of Order 37 of CPC ....",
+        "date": ""
+      },
+      {
+        "title": "Summary Suit - Order XXXVII of CPC - 9310411779",
+        "url": "https://www.centurylawfirm.in/blog/summary-suit-order-xxxvii-of-cpc/",
+        "snippet": "Order 37 of Civil Procedure Code, 1908 ( Fast Track Procedure for Money/Payment Recovery ): Rule 1 Order XXXVII of Code of Civil Procedure 1908 “Court and classes of suits to which the Order is to apply” (1) This Order shall apply to the following ...",
+        "date": ""
+      },
+      {
+        "title": "Recovery Suit Order 37 of CPC| how to file Summary suit",
+        "url": "https://www.aaptaxlaw.com/CPC/Order-37-recovery-suit-Suit-how-to-file-Summary-suits-under-Civil-Procedure-Code-1908-Rules.html",
+        "snippet": "The provision has been made keeping in view certain suits, in order to prevent the unreasonable obstruction laid down by the defendant, who has no defence. Unlike other civil suits, the trial in summary suits begins after the court grants leave to the defendant to contest the suit .",
+        "date": ""
+      }
+    ],
+    "summary": "[When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law] The suit was rejected by the Trial ... it was observed by the Trial Court that the right to sue accrued to the Appellant in October 2000. ...\n[1 THE LIMITATION ACT, 1963 _________ ARRANGEMENT OF SECTIONS __________ PART I] When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.\n[12 THE SCHEDULE (PERIODS OF LIMITATION) [See sections 2(j) and 3]] When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.\n[Summary Suit] Summary Suit is given under Order 37 of CPC as civil remedy for recovery of money. The suit can be filed within limitation of 3 years from date of cause of action .\n[SC clarifies import of “when the right to sue accrues” in article 113 of limitation Act, 1963 - Shardul Amarchand Mangaldas & Co] Central Bank of India[1] (decided ... any suit for which no period of limitation is provided, the limitation period will be three years from...\n[Grounds for Suit Maintainability Under Order 37 of CPC, 1908 (With Case Laws) - The Edu Law] Maintainability of a suit under Order 37 CPC, 1908 depends on clear financial liability, procedural compliance, and judicial precedents .\n[Order 37 CPC, 1908 - iPleaders] There is a proper procedure that has to be followed while bringing a suit under Order 37 of the CPC. The procedure followed in a summary suit is as follows: The plaintiff files a complaint. Summons are given to the defendant to be present in court.\n[Order 37 of the Code of Civil Procedure, 1908 | Legal Service India - Law Articles - Legal Resources] If anybody brings a claim in court ... to inquire into the details of the situation and to analyse the documents submitted in addition to the plant to ensure that it meets the requirements of Order 37 of CPC ....\n[Summary Suit - Order XXXVII of CPC - 9310411779] Order 37 of Civil Procedure Code, 1908 ( Fast Track Procedure for Money/Payment Recovery ): Rule 1 Order XXXVII of Code of Civil Procedure 1908 “Court and classes of suits to which the Order is to apply” (1) This Order shall apply to the following ...\n[Recovery Suit Order 37 of CPC| how to file Summary suit] The provision has been made keeping in view certain suits, in order to prevent the unreasonable obstruction laid down by the defendant, who has no defence. Unlike other civil suits, the trial in summary suits begins after the court grants leave to the defendant to contest the suit .",
+    "error": null
+  },
+  "draft": null,
+  "errors": [
+    "draft_node failed: Invalid json output: \nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE "
+  ]
+}

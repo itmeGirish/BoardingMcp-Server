@@ -1,0 +1,219 @@
+{
+  "template_id": "civil/money_recovery_plaint",
+  "template_version": "1.1",
+  "doc_type": "money_recovery_plaint",
+  "law_domain": "Civil",
+  "party_labels": {
+    "primary": "Plaintiff",
+    "opposite": "Defendant"
+  },
+  "annexure_scheme": {
+    "A": "Primary transaction document (agreement/contract/invoice/purchase order)",
+    "B": "Payment or delivery proof (bank statement/receipt/UTR/delivery challan)",
+    "C": "Legal notice sent to defendant",
+    "D": "Reply to legal notice (if any)",
+    "E": "Acknowledgment/correspondence document (if any)",
+    "F": "Additional supporting documents"
+  },
+  "placeholder_dates": {
+    "AGREEMENT_DATE": "Date of the agreement/contract/transaction between parties",
+    "TRANSACTION_DATE": "Date of the primary transaction (payment made/goods delivered/invoice raised)",
+    "PERFORMANCE_DATE": "Date by which the defendant was obligated to perform/pay",
+    "DEFAULT_DATE": "Date when the defendant failed to perform/pay",
+    "NOTICE_DATE": "Date when legal notice was sent",
+    "NOTICE_REPLY_DATE": "Date when reply to legal notice was received",
+    "CAUSE_OF_ACTION_DATE": "Date when cause of action first arose",
+    "FILING_DATE": "Date of filing the suit"
+  },
+
+  "sections": [
+    {
+      "section_id": "court_heading",
+      "heading": "",
+      "type": "template",
+      "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+    },
+    {
+      "section_id": "title",
+      "heading": "",
+      "type": "template",
+      "body": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)"
+    },
+    {
+      "section_id": "parties",
+      "heading": "BETWEEN",
+      "type": "template_with_fill",
+      "instruction": "Draft the parties section listing plaintiff and defendant(s) with full particulars: name, age, occupation, and address. Use sui juris averment for competency. If any detail is missing, use the appropriate {{PLACEHOLDER}}.",
+      "context_keys": ["intake.parties"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "sui\\s+juris|competent\\s+to\\s+sue|major\\s+in\\s+age", "required": true, "description": "Competency averment"},
+        {"type": "keyword", "match": "Plaintiff", "required": true, "description": "Plaintiff label"},
+        {"type": "keyword", "match": "Defendant", "required": true, "description": "Defendant label"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "witness_names"]
+    },
+    {
+      "section_id": "jurisdiction",
+      "heading": "JURISDICTION",
+      "type": "llm_fill",
+      "instruction": "Draft the jurisdiction section establishing territorial and pecuniary jurisdiction. For territorial jurisdiction, state SPECIFIC facts: where the Defendant resides or carries on business, where payment was made, where the agreement was executed, or where the cause of action arose — with concrete place references. For pecuniary jurisdiction, state the claim amount and that it falls within this court's monetary limits.",
+      "context_keys": ["intake.jurisdiction", "intake.facts"],
+      "rag_query": null,
+      "examples": {
+        "bad": "The cause of action arose within the jurisdiction of this Court.",
+        "good": "The Defendant resides and carries on business at {{DEFENDANT_ADDRESS}}, which falls within the territorial jurisdiction of this Court. Further, the transaction was executed within the local limits of this Court's jurisdiction."
+      },
+      "must_include": [
+        {"type": "regex", "match": "territorial|within\\s+the\\s+(local\\s+)?limits", "required": true, "description": "Territorial jurisdiction ground"},
+        {"type": "regex", "match": "pecuniary|monetary\\s+jurisdiction", "required": true, "description": "Pecuniary jurisdiction ground"},
+        {"type": "regex", "match": "resid|carries\\s+on\\s+business|situate|located|executed\\s+at", "required": true, "description": "Specific territorial link (residence/business/location)"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "court_name", "place_names", "bank_names"]
+    },
+    {
+      "section_id": "facts",
+      "heading": "FACTS OF THE CASE",
+      "type": "llm_fill",
+      "instruction": "Draft the facts section as numbered paragraphs in chronological narrative form. Each paragraph must tell a story — not state conclusions. Cover: (1) How the parties came to know each other and the nature of their relationship, (2) What was agreed — the specific terms of the transaction/agreement, (3) What obligations each party undertook and the timeline for performance, (4) The specific transaction — payment made, goods/services supplied, invoice raised, loan given, etc. with amount, mode, date, (5) What exactly constituted the defendant's failure — describe the specific default with detail, (6) What happened after the default — communications, demands, legal notice and response. Reference documents as 'Annexure [LABEL]'. Do NOT state legal conclusions in this section — keep it purely factual.",
+      "context_keys": ["intake.facts", "intake.evidence"],
+      "rag_query": null,
+      "examples": {
+        "bad": "Defendant failed to pay.",
+        "good": "Despite repeated demands, the Defendant neither performed his obligations under the agreement nor paid the amount of Rs. {{CLAIM_AMOUNT}}/- to the Plaintiff. The Defendant's last communication was on {{DATE}}, wherein he sought further time but made no payment whatsoever."
+      },
+      "must_include": [
+        {"type": "regex", "match": "business|transaction|advance|paid|lent|loan|transferred|supplied|delivered|invoiced|goods|services|amount\\s+due|outstanding|purchase\\s+order", "required": true, "description": "Transaction/payment/supply stated"},
+        {"type": "regex", "match": "fail(ed|ure)|default(ed)?|breach(ed)?|did\\s+not\\s+(re)?pay|neglect(ed)?", "required": true, "description": "Default/breach pleaded"},
+        {"type": "regex", "match": "Rs\\.?\\s*[\\d,]+|₹\\s*[\\d,]+|CLAIM_AMOUNT", "required": true, "description": "Claim amount stated"},
+        {"type": "regex", "match": "Annexure|annexure", "required": true, "description": "Evidence referenced"},
+        {"type": "regex", "match": "agreed|terms|oblig", "required": true, "description": "Agreement terms mentioned (narrative quality)"},
+        {"type": "regex", "match": "legal\\s+notice|registered\\s+post|demand", "required": true, "description": "Notice/demand communication mentioned"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "bank_names", "company_names", "place_names"]
+    },
+    {
+      "section_id": "legal_basis",
+      "heading": "LEGAL BASIS AND GROUNDS",
+      "type": "llm_fill",
+      "instruction": "Draft the legal basis section in paragraph form. Choose the statutory provisions that BEST FIT the specific facts of this money recovery — the legal theory must match the nature of the transaction (e.g., breach of contract, goods sold and delivered, loan recovery, restitution, etc.). For each provision: (1) State what the provision says — the legal rule it creates, (2) Explain what factual conditions trigger its application, (3) Show how the facts of this case satisfy those conditions. If applicable, include an alternative plea using 'In the alternative and without prejudice to the above...' framing. Include defensive pleading where appropriate. Cite provisions from the VERIFIED STATUTORY PROVISIONS list in context.",
+      "context_keys": ["intake.facts", "mandatory_provisions.user_cited_provisions"],
+      "rag_query": "from_enrichment",
+      "examples": {
+        "bad": "Under Section X, the Defendant is bound to pay.",
+        "good": "[Applicable Section] of the [Applicable Act] provides that [state the legal rule]. The conditions for invoking this provision are [state conditions]. In the present case, [show how the specific facts — the nature of the transaction, the obligation, and the default — satisfy those conditions]."
+      },
+      "must_include": [
+        {"type": "regex", "match": "Section\\s+\\d+", "required": true, "description": "At least one statutory section cited"},
+        {"type": "regex", "match": "bound|obligat|liable|entitle|duty|right", "required": true, "description": "Legal consequence stated"},
+        {"type": "regex", "match": "provides?|states?|stipulates?|enacts?|lays\\s+down", "required": true, "description": "Statutory provision explained (not just cited)"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "statutory_provisions"]
+    },
+    {
+      "section_id": "cause_of_action",
+      "heading": "CAUSE OF ACTION",
+      "type": "llm_fill",
+      "instruction": "Draft the cause of action section in PARAGRAPH prose (not numbered sub-headings). Must cover: (1) ORIGIN — when and how the right to sue first arose, anchored to the default/failure date, (2) FURTHER ACCRUAL — when the cause of action further arose (e.g., failure to comply with legal notice), (3) CONTINUITY — that the cause of action is continuing because the defendant continues to wrongfully retain the money. The cause must be anchored to the failure/default date, NOT the notice date. Write in flowing paragraph form — avoid mechanical sub-headings like '(a) underlying obligation'.",
+      "context_keys": ["intake.facts", "mandatory_provisions.limitation"],
+      "rag_query": null,
+      "examples": {
+        "bad": "Cause of action arose on X date.",
+        "good": "The cause of action for the present suit first arose on {{DEFAULT_DATE}} when the Defendant failed to perform his obligations despite being bound to do so, and the Plaintiff's right to claim the amount thereby accrued. The cause of action further and continuously arose on {{NOTICE_DATE}} when the Defendant, despite receipt of the legal notice demanding payment, failed, neglected, and refused to pay the said amount."
+      },
+      "must_include": [
+        {"type": "regex", "match": "cause\\s+of\\s+action", "required": true, "description": "Cause of action stated"},
+        {"type": "regex", "match": "first\\s+arose|ar[oi]se|accrued", "required": true, "description": "Origin/accrual stated"},
+        {"type": "regex", "match": "further\\s+(arose|accrued|and\\s+continuously)", "required": true, "description": "Further accrual stated"},
+        {"type": "regex", "match": "continu(ing|es|ed)\\s+(one|cause|to)", "required": true, "description": "Continuing nature stated explicitly"},
+        {"type": "regex", "match": "wrongfully\\s+retain|without\\s+(any\\s+)?lawful|till\\s+the\\s+date\\s+of\\s+(filing|reali)|continues\\s+to\\s+retain|ongoing\\s+retention|refuses\\s+to\\s+(refund|return|repay|restore|pay)", "required": true, "description": "Wrongful retention/non-payment stated"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "place_names"]
+    },
+    {
+      "section_id": "limitation",
+      "heading": "LIMITATION",
+      "type": "llm_fill",
+      "instruction": "Draft the limitation section stating: (1) the applicable Article of the Limitation Act, 1963 Schedule (from enrichment or use placeholder), (2) the limitation period, (3) the starting date of limitation (must be anchored to cause_of_action_date/default_date, NOT notice_date), (4) that the suit is within time. If limitation article is not available in enrichment, use {{LIMITATION_ARTICLE}} placeholder.",
+      "context_keys": ["intake.facts", "mandatory_provisions.limitation"],
+      "rag_query": "from_enrichment",
+      "must_include": [
+        {"type": "regex", "match": "Article\\s+\\d+|LIMITATION_ARTICLE", "required": true, "description": "Limitation article cited or placeholdered"},
+        {"type": "regex", "match": "Limitation\\s+Act", "required": true, "description": "Limitation Act reference"},
+        {"type": "regex", "match": "within\\s+(the\\s+)?(?:period|time|limitation)", "required": true, "description": "Within limitation stated"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"]
+    },
+    {
+      "section_id": "valuation_court_fee",
+      "heading": "VALUATION AND COURT FEE",
+      "type": "template_with_fill",
+      "instruction": "Draft the valuation and court fee section stating: (1) suit valuation equals the claim amount, (2) court fee calculated per applicable state court fees act. Use court_fee context from web search if available, otherwise use {{COURT_FEE_AMOUNT}} placeholder.",
+      "context_keys": ["intake.facts.amounts", "court_fee"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "valuation|valued", "required": true, "description": "Valuation stated"},
+        {"type": "regex", "match": "court\\s+fee|COURT_FEE", "required": true, "description": "Court fee stated"}
+      ],
+      "allowed_entities": ["plaintiff_name"]
+    },
+    {
+      "section_id": "interest",
+      "heading": "INTEREST",
+      "type": "llm_fill",
+      "instruction": "Draft the interest section with a 3-part structure: (1) Pre-suit interest — from default date to filing date with rate and justification, (2) Pendente lite interest — during pendency of suit under Section 34 CPC with rate, (3) Future interest — post-decree until realization with rate. Justify the interest rate: state why the claimed rate is appropriate (commercial transaction, wrongful retention, prevailing bank rate, contractual understanding). Cite Section 34 of CPC for pendente lite interest.",
+      "context_keys": ["intake.facts.amounts"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "pre-suit|prior\\s+to\\s+(the\\s+)?filing|before\\s+the\\s+suit|from.*default.*to.*filing", "required": true, "description": "Pre-suit interest"},
+        {"type": "regex", "match": "pendente\\s+lite|during\\s+(the\\s+)?pendency", "required": true, "description": "Pendente lite interest"},
+        {"type": "regex", "match": "Section\\s+34|S\\.?\\s*34", "required": true, "description": "Section 34 CPC cited"},
+        {"type": "regex", "match": "per\\s+(cent|annum)|%\\s+per\\s+annum|INTEREST_RATE", "required": true, "description": "Interest rate stated"},
+        {"type": "regex", "match": "commercial|wrongful(ly)?\\s+retain|bank\\s+(lending\\s+)?rate|depriv|benefit", "required": true, "description": "Interest rate justification provided"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"],
+      "allow_claimed_amounts": true
+    },
+    {
+      "section_id": "prayer",
+      "heading": "PRAYER",
+      "type": "llm_fill",
+      "instruction": "Draft the prayer section with at least 6 specific sub-prayers as lettered items (a, b, c, ...). Each prayer must state exact amounts or rate placeholders — never vague. Must include: (a) decree for principal amount with Rs. figure, (b) pre-suit interest with rate and date range, (c) pendente lite interest under Section 34 CPC with rate, (d) future interest post-decree with rate until realization, (e) costs of the suit including pre-litigation costs for sending legal notice, (f) any other relief the court deems fit and proper in the facts and circumstances.",
+      "context_keys": ["intake.facts", "mandatory_provisions.user_cited_provisions"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "keyword", "match": "decree", "required": true, "description": "Decree prayer"},
+        {"type": "regex", "match": "Rs\\.?\\s*[\\d,]+|₹\\s*[\\d,]+|CLAIM_AMOUNT", "required": true, "description": "Amount in prayer"},
+        {"type": "keyword", "match": "costs", "required": true, "description": "Costs claimed"},
+        {"type": "keyword", "match": "interest", "required": true, "description": "Interest in prayer"},
+        {"type": "regex", "match": "any\\s+other\\s+(relief|order)|deem(s|ed)?\\s+fit", "required": true, "description": "General relief clause"},
+        {"type": "regex", "match": "pre-?lit|legal\\s+notice", "required": true, "description": "Pre-litigation costs mentioned"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"]
+    },
+    {
+      "section_id": "document_list",
+      "heading": "LIST OF DOCUMENTS RELIED UPON",
+      "type": "template_with_fill",
+      "instruction": "Generate a numbered list of documents the plaintiff relies upon, mapping to the annexure scheme. For each document: Serial No., Description, Annexure Label. Only list documents mentioned in evidence. If evidence is empty, list standard expected documents with {{DOCUMENT_DESCRIPTION}} placeholders.",
+      "context_keys": ["intake.evidence"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "Annexure|annexure", "required": true, "description": "Annexure labels present"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "bank_names"]
+    },
+    {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "type": "template",
+      "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+    },
+    {
+      "section_id": "advocate",
+      "heading": "",
+      "type": "template",
+      "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+    }
+  ]
+}

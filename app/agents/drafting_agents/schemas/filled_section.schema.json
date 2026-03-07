@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FilledSection",
+  "description": "Schema for section drafter output — text + claim ledger per section",
+  "type": "object",
+  "required": ["section_id", "heading", "text"],
+  "properties": {
+    "section_id": {
+      "type": "string",
+      "description": "Must match section_id from template"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string",
+      "description": "Drafted section body text"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["template", "template_with_fill", "llm_fill"]
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/claim_entry"
+      },
+      "description": "Claim ledger for this section (llm_fill sections only)"
+    },
+    "must_include_passed": {
+      "type": "boolean",
+      "description": "Whether all must_include checks passed"
+    },
+    "retries": {
+      "type": "integer",
+      "default": 0,
+      "description": "Number of retries needed for this section"
+    },
+    "validation_issues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/validation_issue"
+      },
+      "description": "Issues found by section validator"
+    }
+  },
+  "definitions": {
+    "claim_entry": {
+      "type": "object",
+      "required": ["claim_type"],
+      "properties": {
+        "claim_type": {
+          "type": "string",
+          "description": "payment|notice|breach|admission|agreement|refusal|no_benefit|failure_of_consideration|continuing_cause"
+        },
+        "entities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Entity names used in this claim"
+        },
+        "dates": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Dates or date placeholders used"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Annexure labels referenced"
+        }
+      }
+    },
+    "validation_issue": {
+      "type": "object",
+      "required": ["issue_type", "description"],
+      "properties": {
+        "issue_type": {
+          "type": "string",
+          "enum": ["unsupported_date", "unsupported_amount", "unsupported_reference", "unsupported_entity", "unsupported_claim", "claim_not_in_ledger", "ledger_not_in_text"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "original": {
+          "type": "string",
+          "description": "Original token/text that was flagged"
+        },
+        "replacement": {
+          "type": "string",
+          "description": "Placeholder or flag that replaced it"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["replaced", "flagged", "warning"]
+        }
+      }
+    }
+  }
+}

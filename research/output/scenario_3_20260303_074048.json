@@ -1,0 +1,2042 @@
+{
+  "user_request": "Draft a suit for recovery of Rs.35,00,000/- being the Plaintiff's share in a dissolved partnership firm. The Plaintiff and Defendant were partners in M/s ABC Enterprises carrying on business of construction materials. The partnership was dissolved by mutual consent on 01.06.2024. Upon dissolution, accounts were settled and the Defendant acknowledged owing Rs.35,00,000/- to the Plaintiff as his share. Despite repeated demands, the Defendant has not paid. Plead under Sections 48 and 69 of the Indian Partnership Act, 1932 and Section 65 of the Indian Contract Act, 1872. Claim interest at 12% per annum from the date of dissolution. Include cause of action, limitation, valuation and verification. Draft suitable for filing before the District Court.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks recovery of Rs. 35,00,000 as their share from a dissolved partnership firm M/s ABC Enterprises. The partnership was dissolved on 01.06.2024, and the Defendant acknowledged the debt but has failed to pay despite demands.",
+      "chronology": [
+        {
+          "date": "01.06.2024",
+          "event": "Partnership dissolved by mutual consent",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "amounts": {
+        "principal": 3500000.0,
+        "interest_rate": 12.0,
+        "damages": null
+      },
+      "cause_of_action_date": "01.06.2024"
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": "District Court",
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "firm_name",
+          "value": "M/s ABC Enterprises",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "business_nature",
+          "value": "construction materials",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "legal_sections",
+          "value": [
+            "Section 48 Indian Partnership Act, 1932",
+            "Section 69 Indian Partnership Act, 1932",
+            "Section 65 Indian Contract Act, 1872"
+          ],
+          "type": "list",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Partnership Dissolution",
+        "Recovery of Money",
+        "Contract Law"
+      ],
+      "risk_level": "low",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Plaintiff Address",
+        "Defendant Address",
+        "Jurisdiction (City/District)"
+      ],
+      "assumptions": []
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "partnership_dissolution_recovery_plaint",
+    "classification": {
+      "topics": [
+        "Partnership Dissolution",
+        "Account Settlement",
+        "Money Recovery",
+        "Indian Partnership Act",
+        "Indian Contract Act"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff and Defendant names and addresses",
+        "Jurisdictional details (District/City)",
+        "Date of demand notice",
+        "Details of acknowledgment of debt"
+      ],
+      "assumptions": [
+        "Jurisdiction lies in the District Court based on valuation or cause of action",
+        "No arbitration clause exists in the partnership deed"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "Indian Partnership Act dissolution settlement procedure",
+        "partnership recovery suit limitation period Section 69",
+        "plaint drafting format money recovery District Court",
+        "court fee calculation suit valuation Rs 35 lakhs",
+        "partnership deed dissolution accounts liability"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "Indian Partnership Act dissolution settlement procedure",
+      "partnership recovery suit limitation period Section 69",
+      "plaint drafting format money recovery District Court",
+      "court fee calculation suit valuation Rs 35 lakhs"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "dissolution \nwould be the date when the business is wound up and assets realised. 45 In a suit for the dissolution of an \nunregistered firm, the court can pass a decree for the taking and rendition of accounts.46 Where a claim for a sum of \nmoney is based on an oral agreement arrived at after the dissolution of the partnership, then such an agreement \naffords a new cause of act ion. The fact that the firm is an unregistered firm does not matter since s 69 of the \nPartnership Act, 1932 has no application to such a case of act ion. 47 But where in the partnership, a licence for the \ntrade in tobacco is in the name of an individual partner and not in that of the partnership, the court will not entertain \na suit for dissolution and accounts.48\nOnce a preliminary decree is passed, the suit cannot be dismissed even if there is default on the part of the \nplaintiff,49 nor can such a suit abate even if the legal representatives of a partner, who has died after such a decree \nhas been passed, have not been brought on record. The court in such a case must proceed to bring such legal \nrepresentatives on record and, then, pass a final decree.\nRule 15 of O 20, Code of Civil Procedure comes into play when the court finding that the partnership still subsisted \ndirects dissolution thereof. If a partnership found to be already dissolved beyond a period of three years by efflux of \ntime or by",
+        "score": 0.583,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "r praying for dissolution of the firm was held to be \nmaintainable under s 69 (3)(a) of the Indian Partnership Act 1932 and also not barred under this rule.30\nUnder the scheme of O 2, r 2 of the Code, it is necessary that parties must claim all reliefs as available at the time \nof filing of the suit. Any intentional omission bars the second suit. In a suit for partition of joint family property, the \nwhole of the property held jointly by the parties must be included. However, it is subject to exception when the \nomission in the previous suit was due to inadvertence or through ignorance about the omitted items. Therefore, \nsecond suit for partition in respect of those properties left out in the first suit due to lack of knowledge is not barred \nunder this rule.31\nWhere, in a case, it was urged that the second reference under the Arbitration and Conciliation Act 1996 was \nbarred under O 2, r 2 of the Code of Civil Procedure, it was held by the Supreme Court that the dispute with regard \nto the second reference arose after the first reference and as such the second reference cannot be said to be \nbarred.32\nIt is well settled that it is the cause which gives occasion to and forms the foundation of the suit. The test for finding \nout whether the subsequent suit would be barred because of an earlier suit is whether the claim in the subsequent \nsuit is founded on a cause of act ion",
+        "score": 0.488,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "53 \n \n260. [ Revocation of continuing guarantee by charge by change in firm .] Rep. by the Indian \nPartnership Act, 1932 (9 of 1932), s. 73 and the Second Schedule. \n261. [ Non-liability of deceased partner’s estate for subsequent obligations .] Rep. by s . 73 and the \nSecond Schedule, ibid. \n262. [Payment of partnership debts, and of separate debts .] Rep. by s . 73and the Second Schedule , \nibid. \n263. [Continuance, of partners rights and obligations after dissolution.] Rep. by s. 73and the Second \nSchedule, ibid. \n264. [Notice of dissolution.] Rep. by s. 73and the Second Schedule, ibid. \n265. [Right of partners to apply for winding -up after termination of partnership .] Rep. by s . 73 and \nthe Second Schedule, ibid. \n266. [Limited-liability partnerships, incorporate partnerships, and joint -stock companies.] Rep. by s. \n73and the Second Schedule, ibid. \nSCHEDULE.—[Enactments repealed.] Rep. by the Repealing and Amending Act, 1914 (10 of 1914), \ns. 3 and the Second Schedule.",
+        "score": 0.536,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "Page 42 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \npassed. After the partnership is found to be still subsisting and decree is made for its dissolution and rendition of \naccounts, there is no question of suit being barred by limitation even if the accounts are rendered after more than \nthree years of the date of dissolution fixed by the court in the preliminary decree.50\n2. Appeal. A preliminary decree in a suit for the dissolution for a partnership or the taking of partnership accounts is \nappealable under s 96. But the appeal must be filed within the period prescribed by the law of limitation. If no \nappeal is preferred within the period of limitation, the party aggrieved by such decree is precluded, by virtue of the \nprovisions of s 97, from disputing its correctness in an appeal from the final decree. See s 97 and notes thereto.\nWhere after a preliminary decree is passed, a question is raised and the court determines the rights of the parties, \nsuch a determination amounts to passing a supplemental preliminary decree and the aggrieved party, in such a \ncase, has a right of appeal under s 96 against such a determination.51 A decree on becoming final shall be available \nunder s 96 of the Code of Civil Procedure and so also under cl 15 of Letters Patent.52\n3. Letters Patent appeal. Where a commissioner appointed to take accounts applies to the court for",
+        "score": 0.525,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 41 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n9. Pre-emption by contract. A right of pre-emption is occasionally given in mortgage deeds to the mortgagee so \nthat in case of a sale of the equity of redemption by the mortgagor, the mortgagee shall have the refusal of the \nproperty; and in such a case the price may or may not be fixed beforehand.34\n10. Vendors title in pre-emption suit. A pre-emptor is not entitled in a pre-emption suit to put the vendor to proof \nof his title to the property which he purports to sell. The reason is that the principle of pre-emption is substitution. A \npre-emptor is, therefore, bound to take the title which the vendee was ready to take.35\nR.15. Decree in suit for dissolution of partnership.\nWhere a suit is for the dissolution of a partnership, or the taking of partnership accounts, the Court, before passing \na final decree, may pass a preliminary decree declaring the proportionate shares of the parties, fixing the day on \nwhich the partnership shall stand dissolved or be deemed to have been dissolved, and directing such accounts to \nbe taken, and other acts to be done, as it thinks fit.\n1. Preliminary decree directing accounts to be taken. The preliminary decree directing accounts to be taken \nshould always contain a declaration of the rights of the parties, and it should be in form no 21, sch I, Appendix (D).36 \nIt",
+        "score": 0.501,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 43 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nbetween the parties.67 It has been further held that an independent contractor engaged by the employer to execute \nwork cannot file a suit for accounts for work done. Such a right is not created or recognised by any statute. The \nindependent contractor is not an agent of the employer. Nor is the employer in the position of a trustee with \nreference to the independent contractor. 68 However, in a suit by contractor against employer claiming relief of \naccounting and for value of work done, where the plaint contains all averments necessary for the plaintiff to sue for \nvalue of work done, the Supreme Court held that even if the prayer for accounts could not be granted, nothing could \ncome in the way of plaintiff getting a decree for value of work done. Dismissal of the suit as not maintainable would \nbe improper.69\nIn a suit for dissolution of partnership and rendition of accounts, compromise was arrived at between the parties \nand an undertaking to this effect was filed in court. But the undertaking was not act ed upon and the parties were \nnot willing to abide by their undertaking. Under these circumstances, application for restoring the status quo prior to \neffecting the compromise was allowed.70\nWhere a suit for accounts is filed by the principal against the legal representatives of a deceased agent, or",
+        "score": 0.492,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "Page 3 of 51\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nProvided that nothing in this sub-rule shall be deemed to limit or otherwise affect the provisions of 22[s 30 of the \nIndian Partnership Act, 1932 (9 of 1932)].\n(2) Where the decree-holder claims to be entitled to cause the decree to be executed against any person other than \nsuch a person as is referred to in sub-r (1), Cl (b) and (c), as being a partner in the firm, he may apply to the Court \nwhich passed the decree for leave, and where the liability is not disputed, such Court may grant leave, or, where \nsuch liability is disputed, may order that the liability of such person be tried and determined in any manner in which \nany issue in a suit may be tried and determined.\n(3) Where the liability of any person has been tried and determined under sub-r (2), the order made thereon shall \nhave the same force and be subject to the same conditions as to appeal or otherwise as if it were a decree.\n(4) Save as against any property of the partnership, a decree against a firm shall not release, render liable or \notherwise affect any partner therein unless he has been served with a summons to appear and answer.\n23[(5) Nothing in this rule shall apply to a decree passed against a Hindu undivided family by virtue of the provisions \nof r 10 of O 30.]\nHIGH COURT AMENDMENTS\nAllahabad. The following amendments were made by",
+        "score": 0.49,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "It further mentioned the purpose for which the money was utilised \nand also mentioned that the defendant was pledging shares of the company for repayment of the loan. The \ndocument also mentioned the interest which the loan was to carry. It was held by the Division Bench of Delhi High \nCourt that the decree passed on the basis of purported admission contained in the acknowledgment was proper. \nMore so when, by vague denials coupled with same specific admissions, the whole transaction in question stood \nadmitted by the defendant even in the written statement.77\nSection 69 of the Kerala Court Fees and Suit Valuation Act, 1960 provides for refund of 50% of Court fee when the \nsuit is decided on admission. In a suit, the question arose as to whether a suit can be said to have been decided on \nadmission when the plaintiff does not press the suit? Answering the question in the affirmative, a Division Bench of \nthe Kerala High Court held that interpretation of provision should be purposive and progressive. The word \nadmission is to be interpreted in its ordinary sense. Restricted and narrower interpretation is unwarranted. Thus, \nwhere after filing the suit the plaintiff says that the suit is not pressed, he in fact makes admission that he has no \ncase and since the suit is decided without any investigation, the case falls squarely within s 69 of the said Act.78\nJ.B. Koshy, Act g.",
+        "score": 0.414,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "en later on issue the \nproclamation.70\nAs O 16, r 10 is penal in nature, action thereunder cannot be taken without strict compliance with its requirements.71 \nWhen the petitioner neither volunteers to produce the witness himself nor abuse the process of the court by not \nfiling the process-fee or summons for enforcing the attendance of the witnesses and there was no material showing \nthat the witnesses themselves undertook to appear in the court on the next date of hearing, then in the \ncircumstance, order of the closure of evidence of the petitioner on the ground of non-appearance of witnesses, in \nspite of the service of the summons on them, would not be proper.72\nIn the case of a will, a witness should not be proceeded against under O 16, r 10, unless he is the sole surviving \nwitness to the will.73\n3. Section 69. Before dispensing with the evidence of an attesting witness under s 69 of the Evidence Act, the court \nmust see that all processes under sub-rr (2)(3) have been exhausted.74\n4. Appeal and Revision. Prior to the Amendment Act 1976, an appeal lay from an order under this rule for the \nattachment of the property. This is no longer so, since cl (g) of O 43, r 1 has been deleted. In Swarlea Prasad v. \nRajkunwar Bai,75 the High Court of Madhya Pradesh has held that when the attendance of a witness is enforced by \na warrant, there is a chance of such a witness turning",
+        "score": 0.414,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of court fees, \nso far as the case admits. \n2. In money suits— Where the plaintiff seeks the recovery of money, the plaint shall state the precise amount \nclaimed: \nBut where the plaintiff sue for mesne profits, or for an amount which will be found due to him on taking \nunsettled accounts between him and the defendant, [136][or for movables in the possession of the \ndefendant, or for debts of which the value he cannot, after the exercise of reasonable diligence, estimate, the \nplaint shall state approximately the amount or value sued for]. \n3. Where the subject-matter of the suit is immovable property— Where the subject-matter of the suit is \nimmovable property, the plaint shall contain a description of the property sufficient to identify it, and, in case \nsuch property can be identified by boundaries or numbers in a record of settlement or survey, the plaint shall \nspecify such boundaries or numbers. \n57",
+        "score": 0.552,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Given under my hand and the seal of the Court, this . . . . . . . day of . . . . . . . . . 19...\nJudge. \nCosts of Suit \nPlaintiff \nDefendant \nRs. \nA. \nP. \nRs. \nA. \nP. \nstamp for plaint \nDo. For power \nDo. Of exhibits \nPleader's fee on Rs. \nSubsistence for witnesses \nCommission fee \nService of process \nTotal \nStamp for Power \nDo.for petition \nPleader's fee \nSubsistence for witnesses \nService of process \nCommissioner's fee \nTotal \nNo. 2 \nSimple Money Decree \n(Section 34) \n(Title) \nClaim for \nThis suit coming on this . . . . . . . . . day for final disposal before . . . . . . . . . in the presence of . . . . . for the \nplaintiff and of . . . . . . . . . for the defendant; It is ordered that the . . . . . . . .do pay to the . . . .. . . the sum of \nRs. . . . . . . . . . with interest thereon at the rate of . . . . . . . . . per cent per annum from . . . . . . to the date of \nrealization of the said sum and do also pay Rs.... , the cost of this suit, with interest thereon at the rate of . . . \n. . . . . . per cent per annum from this date to the date of realization. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day . . . . of . . . . 19 . . . \n194",
+        "score": 0.535,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "om the proceedings before \nthe court of first instance that though the suit was in the form on dissolution and accounts, A intended from the first \nto sue only for the recovery of his money, and B had actually pleaded to the money claim on which an issue had",
+        "score": 0.528,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "No. 2\nMoney Overpaid\n(Title)\nA.B., the above named plaintiff, states as follows :— \n1. On the . . . . . . day of. . . . 19. . . the plaintiff agreed to buy and the defendant agreed to sell . . . . bars of \nsilver at. . . . annas per tola of fine silver. \n2. The plaintiff procured the said bars to be assayed by E.F., who was paid by the defendant for such assay, \nand E.F. declared each of the bars to contain 1,500 tolas of fine silver, and the plaintiff accordingly paid the \ndefendant. . . rupees. \n3. Each of the said bars contained only 1,200 tolas of fine silver, of which fact the plaintiff was ignorant when \nhe made the payment. \n4. The defendant has not repaid the sum so overpaid.\n[As in paras 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 3\nGoods Sold at a Fixed Price and Delivered\n(Title)\nA. B., the above-named plaintiff states as follows :— \n1. On the . . . . . . day of. . . . . . . . .19. . . . . ., E.F. sold and delivered to the defendant [one hundred barrels \nof flour, or the goods mentioned in the schedule hereto annexed, or sundry goods.] \n2. The defendant promised to pay . . . . . . rupees for the said goods on delivery [or or the . . . . . . day of . . . . \n. . , some day before the plaint was filed]. \n3. He has not paid the same. \n4. E.F. died on the . . . . . . day of 19. . . . . By his last will he appointed his brother, the plaintiff his executor.\n[As in",
+        "score": 0.527,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "r recovery of bank guarantee given in US Dollars, the claim was also made in US Dollars. At several places in the \nplaint including the prayer clause, the amount was shown in US Dollars and equivalent Indian rupees. The \namendment seeking deletion of figures shown in rupees was directed to be allowed as no new case was made \nout.29\nWhere in a title suit, the plaintiff sought amendment to give further accurate description of the suit property and \nthere was only one house involved in the suit and the plaintiff had not added any other property in the list in his \namendment application, it was held that the amendment to incorporate detailed and correct narration of the property \ncannot be disallowed.30 In a suit for injunction the defendant asserted in the written statement that the plaint was not \nin accordance with the provisions of O 7, r 3 of the Code as the survey number and boundaries of the suit property \nwas not mentioned. The plaintiff sought amendment so as to adduce necessary particulars to clarify the exact \ndescription of the property, but the amendment was sought after commencement of trial after a decade of the filing \nof the suit. It was held by the Madras High Court that the question of limitation would not arise as no new cause of \naction has arisen. Moreover, as the suit was instituted in 1999 before the proviso was introduced in O 6, r 17, the \nproviso will",
+        "score": 0.523,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 6 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthe other party relies in order that he may be prepared to meet the case. 50 Accordingly, in a winding-up petition a \ndebt due to a creditor other than the petitioner and not set out in the petition cannot be relied on and an order for \nwinding up cannot be made on the strength of such a debt, even though the creditor with respect to that debt \nappears in support of the petition and the debt due to him is admittedly due.51\nIf a relief is made out from the facts pleaded in the plaint, then that relief can be granted by molding the prayer \nalthough such relief is not pleaded in the plaint. In a suit for injunction for restraining the defendant from alienating \nsuit property and also for a decree of dissolution of partnership of plaintiff and defendant to carry on real estate \nbusiness, the plaintiff produced deeds alleged to have been executed in pursuance of oral agreement of \npartnership showing receipt of Rs 1 lakh by defendant from the plaintiff and for sharing profit between the parties. \nThe defendant admitted the receipt of Rs 1 lakh but claimed it as loan from the plaintiff and was also shown to have \nmade profits out of the business. The findings of the lower court that it was a loan transaction also remained \nunchallenged. It was held that the plaintiff was entitled for a decree for recovery of Rs 1",
+        "score": 0.519,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "and \nFinancial Institutions Act, 1993, it was held by a Division Bench of the Calcutta High Court that the plaint was rightly \ndismissed under O 7, r 11(d) of Code instead of returning the same to the plaintiff under this Rule.15\nIn a case under the Recovery of Debts Due to Banks and Financial Institutions Act, 1993, where the Debt Recovery \nAppellate Tribunal came to the conclusion that it had no jurisdiction over the subject-matter and directed return of \nthe plaint (application) for presentation before the proper court, it was held by a Division Bench of the Bombay High \nCourt that the Tribunal would have no jurisdiction to direct the return of the plaint if it has no jurisdiction over the \nsubject matter. It can do so only in cases where it has pecuniary or territorial jurisdiction. 16 In arriving at the above \ndecision, the Division Bench quoted with approval, a Full Bench judgment of the Allahabad High Court in Ananti v. \nChannu,17 wherein it has been observed as follows:\nThe plaintiff chooses his forum and files his suit. It he establishes the correctness of his facts he will get his relief from the \nforum chosen. If he frames his suit in a manner not warranted by the facts and goes for his relief to a court which cannot \ngrant him relief on the true facts, he will have his suit dismissed. Then there will be no question of returning the plaint for \npresentation to the",
+        "score": 0.512,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ss an order under sub-rule (1) of this rule, unless the defendant in \naddition to the amount mentioned in sub-rule (1), deposits in Court for payment to the purchaser a sum equal \nto five per cent, of the amount of the purchase-money paid into Court by the purchaser. \nWhere such deposit has been made, the purchaser shall be entitled to an order for repayment of the amount \nof the purchase-money paid into Court by him, together with a sum equal to five per cent thereof. \n(3) Where payment in accordance with sub-rule (1) has not been made, the Court shall, on application made \nby the plaintiff in this behalf, pass a final decree directing that the mortgaged property or a sufficient part \nthereof be sold, and that the proceeds of the sale be dealt with in the manner provided in sub-rule (1) of rule \n4. \n6 . Recovery of balance due on mortgage in suit for sale— Where the net proceeds of any sale held under \n[368][rule 5] are found insufficient to pay the amount due to the plaintiff, the Court, on application by him \nmay, if the balance is legally recoverable from the defendant otherwise than out of the property sold, pass a \ndecree for such balance. \n7 . Preliminary decree is redemption suit— (1) In a suit for redemption, if the plaintiff succeeds, the Court \nshall pass a preliminary decree— \n(a) ordering that an account be taken of what was due to the defendant at the date of",
+        "score": 0.509,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade",
+        "score": 0.638,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "rtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for",
+        "score": 0.633,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "n 48 and \ndismissed the appeal as no prejudice had been shown. The matter was taken in appeal to the Supreme Court \nand in affirming the decision of the High Court, the Supreme Court held that even an objection on the ground of \njurisdiction arising out of over-valuation or under-valuation could, in view of the provisions of s 11 of the Suit \nValuation Act, be taken only in the manner mentioned therein, that the decision of the District Court was \ntherefore, not a nullity and that a mere change of forum for appeal was not a prejudice contemplated by the \nsection, nor a mere error on the conclusion reached on the merits.49\n10. Where the subject matter of a suit does not admit of being satisfactorily valued. In some suits, the \nsubject matter is not capable of being estimated at a money value, eg, suits for restitution of conjugal rights; \nsuits to remove a karnavan, 50 suits to direct registration of a document under the Registration Act, 1908, s \n77,51etc. The court fee in such suits is Rs 10 as provided by the Court Fees Act, 1870, Sch II, Art. 17, cl (vi). \nThere is a distinction, however, between valuation for the purpose of jurisdiction and valuation for the purpose \nof ascertaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided",
+        "score": 0.621,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "rt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a",
+        "score": 0.615,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "t \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is",
+        "score": 0.585,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "objections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the",
+        "score": 0.582,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "valorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53",
+        "score": 0.578,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "eld that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court has \nlaid down that, the plaintiff would be able to drag the defendant into any court be pleases. 79 This passage was \nquoted, with approval, by the Bombay High Court in Bhikamdas v. Motilal, 80 wherein, it was held that an \nerroneous decision of the effect that a suit fell under a particular category for the purposes of court fees was \nopen to revision. And, it was further pointed out that, the jurisdiction of the court might be affected by the \ndecision. The Kerala High Court also held that, the defendant could prefer a revision against an order deciding \nthat the suit fell under a particular category and, that the court fee paid was correct. 81 The Mysore High Court \nheld that where the plaintiff, claiming exemption under a notification issued under the Hyderabad Court Fees \nAct, presented a plaint without any court fee, it was open to the defendant to challenge its validity in a revision, \nas the rule that the defendant cannot move the court under s 115, when the court fee paid has been held to be \nsufficient, has no application when no court fee has been paid.82\nIn Ratnavarma Raja v. Vimla, 83 the Supreme Court has observed that, whether proper court fee has been paid \nor",
+        "score": 0.565,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2213:C8809]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2213:C8809 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 15 | p.2213 | score=0.583]:\ndissolution \nwould be the date when the business is wound up and assets realised. 45 In a suit for the dissolution of an \nunregistered firm, the court can pass a decree for the taking and rendition of accounts.46 Where a claim for a sum of \nmoney is based on an oral agreement arrived at after the dissolution of the partnership, then such an agreement \naffords a new cause of act ion. The fact that the firm is an unregistered firm does not matter since s 69 of the \nPartnership Act, 1932 has no application to such a case of act ion. 47 But where in the partnership, a licence for the \ntrade in tobacco is in the name of an individual partner and not in that of the partnership, the court will not entertain \na suit for dissolution and accounts.48\nOnce a preliminary decree is passed, the suit cannot be dismissed even if there is default on the part of the \nplaintiff,49 nor can such a suit abate even if the legal representatives of a partner, who has died after such a decree \nhas been passed, have not been brought on record. The court in such a case must proceed to bring such legal \nrepresentatives on record and, then, pass a final decree.\nRule 15 of O 20, Code of Civil Procedure comes into play when the court finding that the partnership still subsisted \ndirects dissolution thereof. If a partnership found to be already dissolved beyond a period of three years by efflux of \ntime or by\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1539:C6118 | commentary | 491014025-MULLA-on-CPC-pdf | p.1539 | score=0.488]:\nr praying for dissolution of the firm was held to be \nmaintainable under s 69 (3)(a) of the Indian Partnership Act 1932 and also not barred under this rule.30\nUnder the scheme of O 2, r 2 of the Code, it is necessary that parties must claim all reliefs as available at the time \nof filing of the suit. Any intentional omission bars the second suit. In a suit for partition of joint family property, the \nwhole of the property held jointly by the parties must be included. However, it is subject to exception when the \nomission in the previous suit was due to inadvertence or through ignorance about the omitted items. Therefore, \nsecond suit for partition in respect of those properties left out in the first suit due to lack of knowledge is not barred \nunder this rule.31\nWhere, in a case, it was urged that the second reference under the Arbitration and Conciliation Act 1996 was \nbarred under O 2, r 2 of the Code of Civil Procedure, it was held by the Supreme Court that the dispute with regard \nto the second reference arose after the first reference and as such the second reference cannot be said to be \nbarred.32\nIt is well settled that it is the cause which gives occasion to and forms the foundation of the suit. The test for finding \nout whether the subsequent suit would be barred because of an earlier suit is whether the claim in the subsequent \nsuit is founded on a cause of act ion\n\n[Document 3 | Contract Act | Contract Act:books/A187209.pdf:P53:C164 | bare_act | A187209 | p.53 | score=0.536]:\n53 \n \n260. [ Revocation of continuing guarantee by charge by change in firm .] Rep. by the Indian \nPartnership Act, 1932 (9 of 1932), s. 73 and the Second Schedule. \n261. [ Non-liability of deceased partner’s estate for subsequent obligations .] Rep. by s . 73 and the \nSecond Schedule, ibid. \n262. [Payment of partnership debts, and of separate debts .] Rep. by s . 73and the Second Schedule , \nibid. \n263. [Continuance, of partners rights and obligations after dissolution.] Rep. by s. 73and the Second \nSchedule, ibid. \n264. [Notice of dissolution.] Rep. by s. 73and the Second Schedule, ibid. \n265. [Right of partners to apply for winding -up after termination of partnership .] Rep. by s . 73 and \nthe Second Schedule, ibid. \n266. [Limited-liability partnerships, incorporate partnerships, and joint -stock companies.] Rep. by s. \n73and the Second Schedule, ibid. \nSCHEDULE.—[Enactments repealed.] Rep. by the Repealing and Amending Act, 1914 (10 of 1914), \ns. 3 and the Second Schedule.\n\n[Document 4 | Contract Act | Contract Act:C:/Users/GirishN/AppData/Local/Temp/tmp0axp5bbo/Indian_Contract_act.pdf:P53:C164 | bare_act | Indian Contract act | p.53 | score=0.536]:\n53 \n \n260. [ Revocation of continuing guarantee by charge by change in firm .] Rep. by the Indian \nPartnership Act, 1932 (9 of 1932), s. 73 and the Second Schedule. \n261. [ Non-liability of deceased partner’s estate for subsequent obligations .] Rep. by s . 73 and the \nSecond Schedule, ibid. \n262. [Payment of partnership debts, and of separate debts .] Rep. by s . 73and the Second Schedule , \nibid. \n263. [Continuance, of partners rights and obligations after dissolution.] Rep. by s. 73and the Second \nSchedule, ibid. \n264. [Notice of dissolution.] Rep. by s. 73and the Second Schedule, ibid. \n265. [Right of partners to apply for winding -up after termination of partnership .] Rep. by s . 73 and \nthe Second Schedule, ibid. \n266. [Limited-liability partnerships, incorporate partnerships, and joint -stock companies.] Rep. by s. \n73and the Second Schedule, ibid. \nSCHEDULE.—[Enactments repealed.] Rep. by the Repealing and Amending Act, 1914 (10 of 1914), \ns. 3 and the Second Schedule.\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2214:C8811 | commentary | 491014025-MULLA-on-CPC-pdf | p.2214 | score=0.525]:\nPage 42 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \npassed. After the partnership is found to be still subsisting and decree is made for its dissolution and rendition of \naccounts, there is no question of suit being barred by limitation even if the accounts are rendered after more than \nthree years of the date of dissolution fixed by the court in the preliminary decree.50\n2. Appeal. A preliminary decree in a suit for the dissolution for a partnership or the taking of partnership accounts is \nappealable under s 96. But the appeal must be filed within the period prescribed by the law of limitation. If no \nappeal is preferred within the period of limitation, the party aggrieved by such decree is precluded, by virtue of the \nprovisions of s 97, from disputing its correctness in an appeal from the final decree. See s 97 and notes thereto.\nWhere after a preliminary decree is passed, a question is raised and the court determines the rights of the parties, \nsuch a determination amounts to passing a supplemental preliminary decree and the aggrieved party, in such a \ncase, has a right of appeal under s 96 against such a determination.51 A decree on becoming final shall be available \nunder s 96 of the Code of Civil Procedure and so also under cl 15 of Letters Patent.52\n3. Letters Patent appeal. Where a commissioner appointed to take accounts applies to the court for\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2213:C8806 | commentary | 491014025-MULLA-on-CPC-pdf | p.2213 | score=0.501]:\nPage 41 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n9. Pre-emption by contract. A right of pre-emption is occasionally given in mortgage deeds to the mortgagee so \nthat in case of a sale of the equity of redemption by the mortgagor, the mortgagee shall have the refusal of the \nproperty; and in such a case the price may or may not be fixed beforehand.34\n10. Vendors title in pre-emption suit. A pre-emptor is not entitled in a pre-emption suit to put the vendor to proof \nof his title to the property which he purports to sell. The reason is that the principle of pre-emption is substitution. A \npre-emptor is, therefore, bound to take the title which the vendee was ready to take.35\nR.15. Decree in suit for dissolution of partnership.\nWhere a suit is for the dissolution of a partnership, or the taking of partnership accounts, the Court, before passing \na final decree, may pass a preliminary decree declaring the proportionate shares of the parties, fixing the day on \nwhich the partnership shall stand dissolved or be deemed to have been dissolved, and directing such accounts to \nbe taken, and other acts to be done, as it thinks fit.\n1. Preliminary decree directing accounts to be taken. The preliminary decree directing accounts to be taken \nshould always contain a declaration of the rights of the parties, and it should be in form no 21, sch I, Appendix (D).36 \nIt\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2215:C8816 | commentary | 491014025-MULLA-on-CPC-pdf | p.2215 | score=0.492]:\nPage 43 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nbetween the parties.67 It has been further held that an independent contractor engaged by the employer to execute \nwork cannot file a suit for accounts for work done. Such a right is not created or recognised by any statute. The \nindependent contractor is not an agent of the employer. Nor is the employer in the position of a trustee with \nreference to the independent contractor. 68 However, in a suit by contractor against employer claiming relief of \naccounting and for value of work done, where the plaint contains all averments necessary for the plaintiff to sue for \nvalue of work done, the Supreme Court held that even if the prayer for accounts could not be granted, nothing could \ncome in the way of plaintiff getting a decree for value of work done. Dismissal of the suit as not maintainable would \nbe improper.69\nIn a suit for dissolution of partnership and rendition of accounts, compromise was arrived at between the parties \nand an undertaking to this effect was filed in court. But the undertaking was not act ed upon and the parties were \nnot willing to abide by their undertaking. Under these circumstances, application for restoring the status quo prior to \neffecting the compromise was allowed.70\nWhere a suit for accounts is filed by the principal against the legal representatives of a deceased agent, or\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2420:C9612 | commentary | 491014025-MULLA-on-CPC-pdf | p.2420 | score=0.490]:\nPage 3 of 51\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nProvided that nothing in this sub-rule shall be deemed to limit or otherwise affect the provisions of 22[s 30 of the \nIndian Partnership Act, 1932 (9 of 1932)].\n(2) Where the decree-holder claims to be entitled to cause the decree to be executed against any person other than \nsuch a person as is referred to in sub-r (1), Cl (b) and (c), as being a partner in the firm, he may apply to the Court \nwhich passed the decree for leave, and where the liability is not disputed, such Court may grant leave, or, where \nsuch liability is disputed, may order that the liability of such person be tried and determined in any manner in which \nany issue in a suit may be tried and determined.\n(3) Where the liability of any person has been tried and determined under sub-r (2), the order made thereon shall \nhave the same force and be subject to the same conditions as to appeal or otherwise as if it were a decree.\n(4) Save as against any property of the partnership, a decree against a firm shall not release, render liable or \notherwise affect any partner therein unless he has been served with a summons to appear and answer.\n23[(5) Nothing in this rule shall apply to a decree passed against a Hindu undivided family by virtue of the provisions \nof r 10 of O 30.]\nHIGH COURT AMENDMENTS\nAllahabad. The following amendments were made by\n\n[TOP_MATCH: CPC | CPC:Section69]\n\n[Document 1 | CPC | CPC:Section69 | commentary | 491014025-MULLA-on-CPC-pdf | Section 69 | p.2020 | score=0.414]:\nIt further mentioned the purpose for which the money was utilised \nand also mentioned that the defendant was pledging shares of the company for repayment of the loan. The \ndocument also mentioned the interest which the loan was to carry. It was held by the Division Bench of Delhi High \nCourt that the decree passed on the basis of purported admission contained in the acknowledgment was proper. \nMore so when, by vague denials coupled with same specific admissions, the whole transaction in question stood \nadmitted by the defendant even in the written statement.77\nSection 69 of the Kerala Court Fees and Suit Valuation Act, 1960 provides for refund of 50% of Court fee when the \nsuit is decided on admission. In a suit, the question arose as to whether a suit can be said to have been decided on \nadmission when the plaintiff does not press the suit? Answering the question in the affirmative, a Division Bench of \nthe Kerala High Court held that interpretation of provision should be purposive and progressive. The word \nadmission is to be interpreted in its ordinary sense. Restricted and narrower interpretation is unwarranted. Thus, \nwhere after filing the suit the plaintiff says that the suit is not pressed, he in fact makes admission that he has no \ncase and since the suit is decided without any investigation, the case falls squarely within s 69 of the said Act.78\nJ.B. Koshy, Act g.\n\n[Document 2 | CPC | CPC:Section69 | commentary | 491014025-MULLA-on-CPC-pdf | Section 69 | p.2097 | score=0.414]:\nen later on issue the \nproclamation.70\nAs O 16, r 10 is penal in nature, action thereunder cannot be taken without strict compliance with its requirements.71 \nWhen the petitioner neither volunteers to produce the witness himself nor abuse the process of the court by not \nfiling the process-fee or summons for enforcing the attendance of the witnesses and there was no material showing \nthat the witnesses themselves undertook to appear in the court on the next date of hearing, then in the \ncircumstance, order of the closure of evidence of the petitioner on the ground of non-appearance of witnesses, in \nspite of the service of the summons on them, would not be proper.72\nIn the case of a will, a witness should not be proceeded against under O 16, r 10, unless he is the sole surviving \nwitness to the will.73\n3. Section 69. Before dispensing with the evidence of an attesting witness under s 69 of the Evidence Act, the court \nmust see that all processes under sub-rr (2)(3) have been exhausted.74\n4. Appeal and Revision. Prior to the Amendment Act 1976, an appeal lay from an order under this rule for the \nattachment of the property. This is no longer so, since cl (g) of O 43, r 1 has been deleted. In Swarlea Prasad v. \nRajkunwar Bai,75 the High Court of Madhya Pradesh has held that when the attendance of a witness is enforced by \na warrant, there is a chance of such a witness turning\n\n[TOP_MATCH: CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C204]\n\n[Document 1 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C204 | bare_act | the code of civil procedure, 1908 | p.57 | score=0.552]:\n; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of court fees, \nso far as the case admits. \n2. In money suits— Where the plaintiff seeks the recovery of money, the plaint shall state the precise amount \nclaimed: \nBut where the plaintiff sue for mesne profits, or for an amount which will be found due to him on taking \nunsettled accounts between him and the defendant, [136][or for movables in the possession of the \ndefendant, or for debts of which the value he cannot, after the exercise of reasonable diligence, estimate, the \nplaint shall state approximately the amount or value sued for]. \n3. Where the subject-matter of the suit is immovable property— Where the subject-matter of the suit is \nimmovable property, the plaint shall contain a description of the property sufficient to identify it, and, in case \nsuch property can be identified by boundaries or numbers in a record of settlement or survey, the plaint shall \nspecify such boundaries or numbers. \n57\n\n[Document 2 | CPC | CPC:Section34 | bare_act | the code of civil procedure, 1908 | Section 34 | p.194 | score=0.535]:\nGiven under my hand and the seal of the Court, this . . . . . . . day of . . . . . . . . . 19...\nJudge. \nCosts of Suit \nPlaintiff \nDefendant \nRs. \nA. \nP. \nRs. \nA. \nP. \nstamp for plaint \nDo. For power \nDo. Of exhibits \nPleader's fee on Rs. \nSubsistence for witnesses \nCommission fee \nService of process \nTotal \nStamp for Power \nDo.for petition \nPleader's fee \nSubsistence for witnesses \nService of process \nCommissioner's fee \nTotal \nNo. 2 \nSimple Money Decree \n(Section 34) \n(Title) \nClaim for \nThis suit coming on this . . . . . . . . . day for final disposal before . . . . . . . . . in the presence of . . . . . for the \nplaintiff and of . . . . . . . . . for the defendant; It is ordered that the . . . . . . . .do pay to the . . . .. . . the sum of \nRs. . . . . . . . . . with interest thereon at the rate of . . . . . . . . . per cent per annum from . . . . . . to the date of \nrealization of the said sum and do also pay Rs.... , the cost of this suit, with interest thereon at the rate of . . . \n. . . . . . per cent per annum from this date to the date of realization. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day . . . . of . . . . 19 . . . \n194\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1706:C6791 | commentary | 491014025-MULLA-on-CPC-pdf | p.1706 | score=0.528]:\nom the proceedings before \nthe court of first instance that though the suit was in the form on dissolution and accounts, A intended from the first \nto sue only for the recovery of his money, and B had actually pleaded to the money claim on which an issue had\n\n[Document 4 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P160:C595 | bare_act | the code of civil procedure, 1908 | p.160 | score=0.527]:\nNo. 2\nMoney Overpaid\n(Title)\nA.B., the above named plaintiff, states as follows :— \n1. On the . . . . . . day of. . . . 19. . . the plaintiff agreed to buy and the defendant agreed to sell . . . . bars of \nsilver at. . . . annas per tola of fine silver. \n2. The plaintiff procured the said bars to be assayed by E.F., who was paid by the defendant for such assay, \nand E.F. declared each of the bars to contain 1,500 tolas of fine silver, and the plaintiff accordingly paid the \ndefendant. . . rupees. \n3. Each of the said bars contained only 1,200 tolas of fine silver, of which fact the plaintiff was ignorant when \nhe made the payment. \n4. The defendant has not repaid the sum so overpaid.\n[As in paras 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 3\nGoods Sold at a Fixed Price and Delivered\n(Title)\nA. B., the above-named plaintiff states as follows :— \n1. On the . . . . . . day of. . . . . . . . .19. . . . . ., E.F. sold and delivered to the defendant [one hundred barrels \nof flour, or the goods mentioned in the schedule hereto annexed, or sundry goods.] \n2. The defendant promised to pay . . . . . . rupees for the said goods on delivery [or or the . . . . . . day of . . . . \n. . , some day before the plaint was filed]. \n3. He has not paid the same. \n4. E.F. died on the . . . . . . day of 19. . . . . By his last will he appointed his brother, the plaintiff his executor.\n[As in\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1701:C6764 | commentary | 491014025-MULLA-on-CPC-pdf | p.1701 | score=0.523]:\nr recovery of bank guarantee given in US Dollars, the claim was also made in US Dollars. At several places in the \nplaint including the prayer clause, the amount was shown in US Dollars and equivalent Indian rupees. The \namendment seeking deletion of figures shown in rupees was directed to be allowed as no new case was made \nout.29\nWhere in a title suit, the plaintiff sought amendment to give further accurate description of the suit property and \nthere was only one house involved in the suit and the plaintiff had not added any other property in the list in his \namendment application, it was held that the amendment to incorporate detailed and correct narration of the property \ncannot be disallowed.30 In a suit for injunction the defendant asserted in the written statement that the plaint was not \nin accordance with the provisions of O 7, r 3 of the Code as the survey number and boundaries of the suit property \nwas not mentioned. The plaintiff sought amendment so as to adduce necessary particulars to clarify the exact \ndescription of the property, but the amendment was sought after commencement of trial after a decade of the filing \nof the suit. It was held by the Madras High Court that the question of limitation would not arise as no new cause of \naction has arisen. Moreover, as the suit was instituted in 1999 before the proviso was introduced in O 6, r 17, the \nproviso will\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1655:C6555 | commentary | 491014025-MULLA-on-CPC-pdf | p.1655 | score=0.519]:\nPage 6 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthe other party relies in order that he may be prepared to meet the case. 50 Accordingly, in a winding-up petition a \ndebt due to a creditor other than the petitioner and not set out in the petition cannot be relied on and an order for \nwinding up cannot be made on the strength of such a debt, even though the creditor with respect to that debt \nappears in support of the petition and the debt due to him is admittedly due.51\nIf a relief is made out from the facts pleaded in the plaint, then that relief can be granted by molding the prayer \nalthough such relief is not pleaded in the plaint. In a suit for injunction for restraining the defendant from alienating \nsuit property and also for a decree of dissolution of partnership of plaintiff and defendant to carry on real estate \nbusiness, the plaintiff produced deeds alleged to have been executed in pursuance of oral agreement of \npartnership showing receipt of Rs 1 lakh by defendant from the plaintiff and for sharing profit between the parties. \nThe defendant admitted the receipt of Rs 1 lakh but claimed it as loan from the plaintiff and was also shown to have \nmade profits out of the business. The findings of the lower court that it was a loan transaction also remained \nunchallenged. It was held that the plaintiff was entitled for a decree for recovery of Rs 1\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1778:C7077 | commentary | 491014025-MULLA-on-CPC-pdf | p.1778 | score=0.512]:\nand \nFinancial Institutions Act, 1993, it was held by a Division Bench of the Calcutta High Court that the plaint was rightly \ndismissed under O 7, r 11(d) of Code instead of returning the same to the plaintiff under this Rule.15\nIn a case under the Recovery of Debts Due to Banks and Financial Institutions Act, 1993, where the Debt Recovery \nAppellate Tribunal came to the conclusion that it had no jurisdiction over the subject-matter and directed return of \nthe plaint (application) for presentation before the proper court, it was held by a Division Bench of the Bombay High \nCourt that the Tribunal would have no jurisdiction to direct the return of the plaint if it has no jurisdiction over the \nsubject matter. It can do so only in cases where it has pecuniary or territorial jurisdiction. 16 In arriving at the above \ndecision, the Division Bench quoted with approval, a Full Bench judgment of the Allahabad High Court in Ananti v. \nChannu,17 wherein it has been observed as follows:\nThe plaintiff chooses his forum and files his suit. It he establishes the correctness of his facts he will get his relief from the \nforum chosen. If he frames his suit in a manner not warranted by the facts and goes for his relief to a court which cannot \ngrant him relief on the true facts, he will have his suit dismissed. Then there will be no question of returning the plaint for \npresentation to the\n\n[Document 8 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P132:C494 | bare_act | the code of civil procedure, 1908 | Rule 4 | p.132 | score=0.509]:\nss an order under sub-rule (1) of this rule, unless the defendant in \naddition to the amount mentioned in sub-rule (1), deposits in Court for payment to the purchaser a sum equal \nto five per cent, of the amount of the purchase-money paid into Court by the purchaser. \nWhere such deposit has been made, the purchaser shall be entitled to an order for repayment of the amount \nof the purchase-money paid into Court by him, together with a sum equal to five per cent thereof. \n(3) Where payment in accordance with sub-rule (1) has not been made, the Court shall, on application made \nby the plaintiff in this behalf, pass a final decree directing that the mortgaged property or a sufficient part \nthereof be sold, and that the proceeds of the sale be dealt with in the manner provided in sub-rule (1) of rule \n4. \n6 . Recovery of balance due on mortgage in suit for sale— Where the net proceeds of any sale held under \n[368][rule 5] are found insufficient to pay the amount due to the plaintiff, the Court, on application by him \nmay, if the balance is legally recoverable from the defendant otherwise than out of the property sold, pass a \ndecree for such balance. \n7 . Preliminary decree is redemption suit— (1) In a suit for redemption, if the plaintiff succeeds, the Court \nshall pass a preliminary decree— \n(a) ordering that an account be taken of what was due to the defendant at the date of\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C178]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C178 | commentary | 491014025-MULLA-on-CPC-pdf | p.47 | score=0.638]:\nPage 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1513 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.633]:\nrtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1512 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.621]:\nn 48 and \ndismissed the appeal as no prejudice had been shown. The matter was taken in appeal to the Supreme Court \nand in affirming the decision of the High Court, the Supreme Court held that even an objection on the ground of \njurisdiction arising out of over-valuation or under-valuation could, in view of the provisions of s 11 of the Suit \nValuation Act, be taken only in the manner mentioned therein, that the decision of the District Court was \ntherefore, not a nullity and that a mere change of forum for appeal was not a prejudice contemplated by the \nsection, nor a mere error on the conclusion reached on the merits.49\n10. Where the subject matter of a suit does not admit of being satisfactorily valued. In some suits, the \nsubject matter is not capable of being estimated at a money value, eg, suits for restitution of conjugal rights; \nsuits to remove a karnavan, 50 suits to direct registration of a document under the Registration Act, 1908, s \n77,51etc. The court fee in such suits is Rs 10 as provided by the Court Fees Act, 1870, Sch II, Art. 17, cl (vi). \nThere is a distinction, however, between valuation for the purpose of jurisdiction and valuation for the purpose \nof ascertaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1791:C7139 | commentary | 491014025-MULLA-on-CPC-pdf | p.1791 | score=0.615]:\nrt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1793:C7149 | commentary | 491014025-MULLA-on-CPC-pdf | p.1793 | score=0.585]:\nt \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7142 | commentary | 491014025-MULLA-on-CPC-pdf | p.1792 | score=0.582]:\nobjections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4786 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.578]:\nvalorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4784 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.565]:\neld that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court has \nlaid down that, the plaintiff would be able to drag the defendant into any court be pleases. 79 This passage was \nquoted, with approval, by the Bombay High Court in Bhikamdas v. Motilal, 80 wherein, it was held that an \nerroneous decision of the effect that a suit fell under a particular category for the purposes of court fees was \nopen to revision. And, it was further pointed out that, the jurisdiction of the court might be affected by the \ndecision. The Kerala High Court also held that, the defendant could prefer a revision against an order deciding \nthat the suit fell under a particular category and, that the court fee paid was correct. 81 The Mysore High Court \nheld that where the plaintiff, claiming exemption under a notification issued under the Hyderabad Court Fees \nAct, presented a plaint without any court fee, it was open to the defendant to challenge its validity in a revision, \nas the rule that the defendant cannot move the court under s 115, when the court fee paid has been held to be \nsufficient, has no application when no court fee has been paid.82\nIn Ratnavarma Raja v. Vimla, 83 the Supreme Court has observed that, whether proper court fee has been paid \nor"
+  },
+  "legal_research": {
+    "queries": [
+      "Partnership Dissolution limitation period India years accrual date right to sue District Court",
+      "partnership dissolution recovery plaint mandatory procedural requirements India District Court"
+    ],
+    "results": [
+      {
+        "title": "Stopping the clock on claims arising from dissolution of partnership firms | Dispute Resolution Blog",
+        "url": "https://disputeresolution.cyrilamarchandblogs.com/2023/09/stopping-the-clock-on-claims-arising-from-dissolution-of-partnership-firms/",
+        "snippet": "The period of limitation provided for filing of a suit or any other adjudication for an account and a share of the profits of a dissolved partnership is three years from the date of dissolution [11]. Provided there is a clause for arbitration ...",
+        "date": ""
+      },
+      {
+        "title": "Stopping the clock on claims arising from dissolution of partnership firms - Lexology",
+        "url": "https://www.lexology.com/library/detail.aspx?g=6ebfb49d-503a-43fa-ae48-e9ffb759a87a",
+        "snippet": "The period of limitation provided for filing of a suit or any other adjudication for an account and a share of the profits of a dissolved partnership is three years from the date of dissolution [11]. Provided there is a clause for arbitration ...",
+        "date": ""
+      },
+      {
+        "title": "Limitation – Settlement of Accounts on dissolution of partnership firm – After 3 years right to sue would become time barred: Limitation Act Article 5:",
+        "url": "https://bcajonline.org/journal/limitation-settlement-of-accounts-on-dissolution-of-partnership-firm-after-3-years-right-to-sue-would-become-time-barred-limitation-act-article-5/",
+        "snippet": "Taking into consideration the totality ... could have sued for their part of share after the discharge of dues and other settlement within a period of three years from the date of dissolution....",
+        "date": ""
+      },
+      {
+        "title": "Dissolution of Partnership in India",
+        "url": "https://www.defactolaw.in/post/dissolution-of-partnership-in-india",
+        "snippet": "The case of Banarsi Das vs Kanshi Ram, AIR (1963) S.C. 1165 clarified that the filing of a suit for dissolution is not considered a notice under Section 43; the effective date of dissolution is the date of the preliminary decree by the court .",
+        "date": ""
+      },
+      {
+        "title": "1 THE INDIAN PARTNERSHIP ACT, 1932 ________ ARRANGEMENT OF SECTIONS ________",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/19863/1/indian_partnership_act_1932.pdf",
+        "snippet": "(2) No suit to enforce a tight arising from a contract shall be instituted in any Court by or on behalf of · a firm against any third party unless the firm is registered and the persons suing are or have been shown ... (3) The provisions of sub-sections (1) and (2) shall apply also to a claim of set-off or other proceeding · to enforce a right arising from a contract, but shall not affect— · (a) the enforcement of any right to sue for the dissolution of a firm or for accounts of a dissolved",
+        "date": ""
+      },
+      {
+        "title": "The Indian Partnership Act - Chapter VI - Dissolution of a Firm",
+        "url": "http://student.manupatra.com/Academic/Abk/Indian-Partnership-Act/Chapter6.htm",
+        "snippet": "(e) that a partner, other than the partner, suing has in any way transferred the whole of his interest in the firm to a third party, or has allowed his share to be charged under the provisions of rule 49 of Order XXI of the First Schedule to the Code of Civil Procedure, 1908 (5 of 1908), or has allowed it to be sold in the recovery of arrears of land revenue or of any dues recoverable as arrears of land revenue due by the partner. (f) that the business of the firm cannot be carried on save at a loss; or · (g) on any other ground which renders it just and equitable that the firm should be dissolved. Section 44 empowers the court, at a suit of a partner, to dissolve the firm on the happening of any one of the ground enumerated in clauses (a) to (g).",
+        "date": ""
+      },
+      {
+        "title": "2025 INSC 92 1 REPORTABLE IN THE SUPREME COURT OF INDIA",
+        "url": "https://api.sci.gov.in/supremecourt/2019/43001/43001_2019_14_44_58549_Judgement_17-Jan-2025.pdf",
+        "snippet": "a partner of a partnership firm, would be void, if such a firm was · unregistered. The relevant observations are as under: “21. A bare glance at the section is enough to show that · it is mandatory in character and its effect is to render a · suit by a plaintiff in respect of a right vested in him or",
+        "date": ""
+      },
+      {
+        "title": "The End of a Partnership: Understanding the Dissolution Process • Law Notes by TheLaw.Institute",
+        "url": "https://thelaw.institute/business-law-as-applicable-to-co-operative-ii/understanding-partnership-dissolution-process/",
+        "snippet": "If the partnership deed itself contains a clause specifying when or how the firm may be dissolved, that clause governs the process. There is no need for court intervention here — the partners simply agree and proceed .",
+        "date": ""
+      },
+      {
+        "title": "Sec 39 to 55 Chapter VI (Dissolution Of A Firm) The Indian Partnership Act, 1932 | Vidhi Judicial Academy",
+        "url": "https://vidhijudicial.com/sec-39-to-55-chapter-vi-(dissolution-of-a-firm)-the-indian-partnership-act,-1932.html",
+        "snippet": "Explore Sections 39 to 55, Chapter VI (Dissolution of a Firm) of The Indian Partnership Act, 1932 – detailing various modes of dissolution, rights and liabilities of partners, and settlement of accounts. Essential for law students and judicial services preparation.",
+        "date": ""
+      },
+      {
+        "title": "Dissolution by Court- Grounds and Procedure",
+        "url": "https://www.ezylegal.in/blogs/dissolution-of-partnership-by-order-of-court",
+        "snippet": "5. Loss of business: When the partnership’s operations can only be carried on at a loss, the partners can seek dissolution by the court. 6. Transfer of Interest: A partner may transfer all of his stake in the company to a third party or enable the court to charge or sell his participation in the recovery of land revenue arrears.",
+        "date": ""
+      }
+    ],
+    "summary": "[Stopping the clock on claims arising from dissolution of partnership firms | Dispute Resolution Blog] The period of limitation provided for filing of a suit or any other adjudication for an account and a share of the profits of a dissolved partnership is three years from the date of dissolution [11]. Provided there is a clause for arbitration ...\n[Stopping the clock on claims arising from dissolution of partnership firms - Lexology] The period of limitation provided for filing of a suit or any other adjudication for an account and a share of the profits of a dissolved partnership is three years from the date of dissolution [11]. Provided there is a clause for arbitration ...\n[Limitation – Settlement of Accounts on dissolution of partnership firm – After 3 years right to sue would become time barred: Limitation Act Article 5:] Taking into consideration the totality ... could have sued for their part of share after the discharge of dues and other settlement within a period of three years from the date of dissolution....\n[Dissolution of Partnership in India] The case of Banarsi Das vs Kanshi Ram, AIR (1963) S.C. 1165 clarified that the filing of a suit for dissolution is not considered a notice under Section 43; the effective date of dissolution is the date of the preliminary decree by the court .\n[1 THE INDIAN PARTNERSHIP ACT, 1932 ________ ARRANGEMENT OF SECTIONS ________] (2) No suit to enforce a tight arising from a contract shall be instituted in any Court by or on behalf of · a firm against any third party unless the firm is registered and the persons suing are or have been shown ... (3) The provisions of sub-sections (1) and (2) shall apply also to a claim of set-off or other proceeding · to enforce a right arising from a contract, but shall not affect— · (a) the enforcement of any right to sue for the dissolution of a firm or for accounts of a dissolved\n[The Indian Partnership Act - Chapter VI - Dissolution of a Firm] (e) that a partner, other than the partner, suing has in any way transferred the whole of his interest in the firm to a third party, or has allowed his share to be charged under the provisions of rule 49 of Order XXI of the First Schedule to the Code of Civil Procedure, 1908 (5 of 1908), or has allowed it to be sold in the recovery of arrears of land revenue or of any dues recoverable as arrears of land revenue due by the partner. (f) that the business of the firm cannot be carried on save at a loss; or · (g) on any other ground which renders it just and equitable that the firm should be dissolved. Section 44 empowers the court, at a suit of a partner, to dissolve the firm on the happening of any one of the ground enumerated in clauses (a) to (g).\n[2025 INSC 92 1 REPORTABLE IN THE SUPREME COURT OF INDIA] a partner of a partnership firm, would be void, if such a firm was · unregistered. The relevant observations are as under: “21. A bare glance at the section is enough to show that · it is mandatory in character and its effect is to render a · suit by a plaintiff in respect of a right vested in him or\n[Sec 39 to 55 Chapter VI (Dissolution Of A Firm) The Indian Partnership Act, 1932 | Vidhi Judicial Academy] Explore Sections 39 to 55, Chapter VI (Dissolution of a Firm) of The Indian Partnership Act, 1932 – detailing various modes of dissolution, rights and liabilities of partners, and settlement of accounts. Essential for law students and judicial services preparation.",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": null,
+    "user_cited_provisions": [
+      {
+        "section": "Section 48",
+        "act": "",
+        "text": "As per section 48, the sale consideration received from the asset should be converted into the foreign currency in which the asset was originally bought , even if the assessee receives Indian currency at the time of transfer of capital asset. This provision helps taxpayers navigate the exchange ...",
+        "source": "websearch"
+      },
+      {
+        "section": "Section 65",
+        "act": "Indian Contract",
+        "text": "Section 65 outlines the principle of restitution . When an agreement is found to be void (legally unenforceable) or when a valid contract subsequently becomes void, any benefit or advantage received by one party under such an agreement must be ...",
+        "source": "websearch"
+      }
+    ],
+    "enrichment_log": [
+      "limitation: NOT in RAG — web search",
+      "limitation: NOT found anywhere",
+      "Section 48 : NOT in RAG — web search",
+      "Section 48 : FOUND via websearch",
+      "Section 65 Indian Contract: NOT in RAG — web search",
+      "Section 65 Indian Contract: FOUND via websearch"
+    ]
+  },
+  "template": {
+    "template_id": "civil/money_recovery_plaint",
+    "template_version": "1.1",
+    "doc_type": "money_recovery_plaint",
+    "law_domain": "Civil",
+    "party_labels": {
+      "primary": "Plaintiff",
+      "opposite": "Defendant"
+    },
+    "annexure_scheme": {
+      "A": "Agreement/Contract document",
+      "B": "Payment proof (bank statement/receipt/UTR)",
+      "C": "Legal notice sent to defendant",
+      "D": "Reply to legal notice (if any)",
+      "E": "Acknowledgment/Admission document (if any)",
+      "F": "Additional supporting documents"
+    },
+    "placeholder_dates": {
+      "AGREEMENT_DATE": "Date of the agreement/contract between parties",
+      "ADVANCE_PAYMENT_DATE": "Date when the plaintiff made the payment/advance",
+      "PERFORMANCE_DATE": "Date by which the defendant was obligated to perform",
+      "DEFAULT_DATE": "Date when the defendant failed to repay/perform",
+      "NOTICE_DATE": "Date when legal notice was sent",
+      "NOTICE_REPLY_DATE": "Date when reply to legal notice was received",
+      "CAUSE_OF_ACTION_DATE": "Date when cause of action first arose",
+      "FILING_DATE": "Date of filing the suit"
+    },
+    "sections": [
+      {
+        "section_id": "court_heading",
+        "heading": "",
+        "type": "template",
+        "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+      },
+      {
+        "section_id": "title",
+        "heading": "",
+        "type": "template",
+        "body": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)"
+      },
+      {
+        "section_id": "parties",
+        "heading": "BETWEEN",
+        "type": "template_with_fill",
+        "instruction": "Draft the parties section listing plaintiff and defendant(s) with full particulars: name, age, occupation, and address. Use sui juris averment for competency. If any detail is missing, use the appropriate {{PLACEHOLDER}}.",
+        "context_keys": [
+          "intake.parties"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "sui\\s+juris|competent\\s+to\\s+sue|major\\s+in\\s+age",
+            "required": true,
+            "description": "Competency averment"
+          },
+          {
+            "type": "keyword",
+            "match": "Plaintiff",
+            "required": true,
+            "description": "Plaintiff label"
+          },
+          {
+            "type": "keyword",
+            "match": "Defendant",
+            "required": true,
+            "description": "Defendant label"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "witness_names"
+        ]
+      },
+      {
+        "section_id": "jurisdiction",
+        "heading": "JURISDICTION",
+        "type": "llm_fill",
+        "instruction": "Draft the jurisdiction section establishing territorial and pecuniary jurisdiction. For territorial jurisdiction, state SPECIFIC facts: where the Defendant resides or carries on business, where payment was made, where the agreement was executed, or where the cause of action arose — with concrete place references. For pecuniary jurisdiction, state the claim amount and that it falls within this court's monetary limits.",
+        "context_keys": [
+          "intake.jurisdiction",
+          "intake.facts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "territorial|within\\s+the\\s+(local\\s+)?limits",
+            "required": true,
+            "description": "Territorial jurisdiction ground"
+          },
+          {
+            "type": "regex",
+            "match": "pecuniary|monetary\\s+jurisdiction",
+            "required": true,
+            "description": "Pecuniary jurisdiction ground"
+          },
+          {
+            "type": "regex",
+            "match": "resid|carries\\s+on\\s+business|situate|located|executed\\s+at",
+            "required": true,
+            "description": "Specific territorial link (residence/business/location)"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "court_name",
+          "place_names",
+          "bank_names"
+        ]
+      },
+      {
+        "section_id": "facts",
+        "heading": "FACTS OF THE CASE",
+        "type": "llm_fill",
+        "instruction": "Draft the facts section as numbered paragraphs in chronological narrative form. Each paragraph must tell a story — not state conclusions. Cover: (1) How the parties came to know each other and the nature of their relationship, (2) What was agreed — the specific terms of the transaction/agreement, (3) What obligations each party undertook and the timeline for performance, (4) How payment was made — specific amount, mode, date, (5) What exactly constituted the defendant's failure — describe the specific default with detail, (6) What happened after the default — communications, demands, legal notice and response. Reference documents as 'Annexure [LABEL]'. Do NOT state legal conclusions in this section — keep it purely factual.",
+        "context_keys": [
+          "intake.facts",
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "business\\s+transaction|advance|paid|lent|loan|transferred",
+            "required": true,
+            "description": "Transaction/payment stated"
+          },
+          {
+            "type": "regex",
+            "match": "fail(ed|ure)|default(ed)?|breach(ed)?|did\\s+not\\s+(re)?pay|neglect(ed)?",
+            "required": true,
+            "description": "Default/breach pleaded"
+          },
+          {
+            "type": "regex",
+            "match": "Rs\\.?\\s*[\\d,]+|₹\\s*[\\d,]+|CLAIM_AMOUNT",
+            "required": true,
+            "description": "Claim amount stated"
+          },
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Evidence referenced"
+          },
+          {
+            "type": "regex",
+            "match": "agreed|terms|oblig",
+            "required": true,
+            "description": "Agreement terms mentioned (narrative quality)"
+          },
+          {
+            "type": "regex",
+            "match": "legal\\s+notice|registered\\s+post|demand",
+            "required": true,
+            "description": "Notice/demand communication mentioned"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "bank_names",
+          "company_names",
+          "place_names"
+        ]
+      },
+      {
+        "section_id": "legal_basis",
+        "heading": "LEGAL BASIS AND GROUNDS",
+        "type": "llm_fill",
+        "instruction": "Draft the legal basis section in paragraph form. For each statutory provision: (1) State what the provision says — the legal rule it creates, (2) Explain what factual conditions trigger its application, (3) Show how the facts of this case satisfy those conditions. If applicable, include an alternative plea (e.g., Section 73 ICA as alternative to Section 65 ICA) using 'In the alternative and without prejudice to the above...' framing. Include defensive pleading: pre-emptively neutralize likely defense arguments (e.g., no part performance was rendered, no forfeiture clause exists, no adjustment made, no counter-claim exists). Cite ONLY provisions from the verified list.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Section\\s+\\d+",
+            "required": true,
+            "description": "At least one statutory section cited"
+          },
+          {
+            "type": "regex",
+            "match": "total\\s+failure\\s+of\\s+consideration|failure\\s+of\\s+consideration",
+            "required": true,
+            "description": "Failure of consideration pleaded"
+          },
+          {
+            "type": "regex",
+            "match": "refund|restore|restitution|return",
+            "required": true,
+            "description": "Refund/restitution framing"
+          },
+          {
+            "type": "regex",
+            "match": "bound\\s+to\\s+restore|obligat|liable|entitle",
+            "required": true,
+            "description": "Legal consequence explained (not just section named)"
+          },
+          {
+            "type": "regex",
+            "match": "alternative|without\\s+prejudice|Section\\s+73|compensation\\s+for.*breach",
+            "required": true,
+            "description": "Alternative plea or compensation ground"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "statutory_provisions"
+        ]
+      },
+      {
+        "section_id": "cause_of_action",
+        "heading": "CAUSE OF ACTION",
+        "type": "llm_fill",
+        "instruction": "Draft the cause of action section in PARAGRAPH prose (not numbered sub-headings). Must cover: (1) ORIGIN — when and how the right to sue first arose, anchored to the default/failure date, (2) FURTHER ACCRUAL — when the cause of action further arose (e.g., failure to comply with legal notice), (3) CONTINUITY — that the cause of action is continuing because the defendant continues to wrongfully retain the money. The cause must be anchored to the failure/default date, NOT the notice date. Write in flowing paragraph form — avoid mechanical sub-headings like '(a) underlying obligation'.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "cause\\s+of\\s+action",
+            "required": true,
+            "description": "Cause of action stated"
+          },
+          {
+            "type": "regex",
+            "match": "first\\s+arose|ar[oi]se|accrued",
+            "required": true,
+            "description": "Origin/accrual stated"
+          },
+          {
+            "type": "regex",
+            "match": "further\\s+(arose|accrued|and\\s+continuously)",
+            "required": true,
+            "description": "Further accrual stated"
+          },
+          {
+            "type": "regex",
+            "match": "continu(ing|es|ed)\\s+(one|cause|to)",
+            "required": true,
+            "description": "Continuing nature stated explicitly"
+          },
+          {
+            "type": "regex",
+            "match": "wrongfully\\s+retain|without\\s+(any\\s+)?lawful|till\\s+the\\s+date\\s+of\\s+(filing|reali)",
+            "required": true,
+            "description": "Wrongful retention stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "place_names"
+        ]
+      },
+      {
+        "section_id": "limitation",
+        "heading": "LIMITATION",
+        "type": "llm_fill",
+        "instruction": "Draft the limitation section stating: (1) the applicable Article of the Limitation Act, 1963 Schedule (from enrichment or use placeholder), (2) the limitation period, (3) the starting date of limitation (must be anchored to cause_of_action_date/default_date, NOT notice_date), (4) that the suit is within time. If limitation article is not available in enrichment, use {{LIMITATION_ARTICLE}} placeholder.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Article\\s+\\d+|LIMITATION_ARTICLE",
+            "required": true,
+            "description": "Limitation article cited or placeholdered"
+          },
+          {
+            "type": "regex",
+            "match": "Limitation\\s+Act",
+            "required": true,
+            "description": "Limitation Act reference"
+          },
+          {
+            "type": "regex",
+            "match": "within\\s+(the\\s+)?(?:period|time|limitation)",
+            "required": true,
+            "description": "Within limitation stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "valuation_court_fee",
+        "heading": "VALUATION AND COURT FEE",
+        "type": "template_with_fill",
+        "instruction": "Draft the valuation and court fee section stating: (1) suit valuation equals the claim amount, (2) court fee calculated per applicable state court fees act. Use court_fee context from web search if available, otherwise use {{COURT_FEE_AMOUNT}} placeholder.",
+        "context_keys": [
+          "intake.facts.amounts",
+          "court_fee"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "valuation|valued",
+            "required": true,
+            "description": "Valuation stated"
+          },
+          {
+            "type": "regex",
+            "match": "court\\s+fee|COURT_FEE",
+            "required": true,
+            "description": "Court fee stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name"
+        ]
+      },
+      {
+        "section_id": "interest",
+        "heading": "INTEREST",
+        "type": "llm_fill",
+        "instruction": "Draft the interest section with a 3-part structure: (1) Pre-suit interest — from default date to filing date with rate and justification, (2) Pendente lite interest — during pendency of suit under Section 34 CPC with rate, (3) Future interest — post-decree until realization with rate. Justify the interest rate: state why the claimed rate is appropriate (commercial transaction, wrongful retention, prevailing bank rate, contractual understanding). Cite Section 34 of CPC for pendente lite interest.",
+        "context_keys": [
+          "intake.facts.amounts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "pre-suit|prior\\s+to\\s+(the\\s+)?filing|before\\s+the\\s+suit|from.*default.*to.*filing",
+            "required": true,
+            "description": "Pre-suit interest"
+          },
+          {
+            "type": "regex",
+            "match": "pendente\\s+lite|during\\s+(the\\s+)?pendency",
+            "required": true,
+            "description": "Pendente lite interest"
+          },
+          {
+            "type": "regex",
+            "match": "Section\\s+34|S\\.?\\s*34",
+            "required": true,
+            "description": "Section 34 CPC cited"
+          },
+          {
+            "type": "regex",
+            "match": "per\\s+(cent|annum)|%\\s+per\\s+annum|INTEREST_RATE",
+            "required": true,
+            "description": "Interest rate stated"
+          },
+          {
+            "type": "regex",
+            "match": "commercial|wrongful(ly)?\\s+retain|bank\\s+(lending\\s+)?rate|depriv|benefit",
+            "required": true,
+            "description": "Interest rate justification provided"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ],
+        "allow_claimed_amounts": true
+      },
+      {
+        "section_id": "prayer",
+        "heading": "PRAYER",
+        "type": "llm_fill",
+        "instruction": "Draft the prayer section with at least 6 specific sub-prayers as lettered items (a, b, c, ...). Each prayer must state exact amounts or rate placeholders — never vague. Must include: (a) decree for principal amount with Rs. figure, (b) pre-suit interest with rate and date range, (c) pendente lite interest under Section 34 CPC with rate, (d) future interest post-decree with rate until realization, (e) costs of the suit including pre-litigation costs for sending legal notice, (f) any other relief the court deems fit and proper in the facts and circumstances.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "keyword",
+            "match": "decree",
+            "required": true,
+            "description": "Decree prayer"
+          },
+          {
+            "type": "regex",
+            "match": "Rs\\.?\\s*[\\d,]+|₹\\s*[\\d,]+|CLAIM_AMOUNT",
+            "required": true,
+            "description": "Amount in prayer"
+          },
+          {
+            "type": "keyword",
+            "match": "costs",
+            "required": true,
+            "description": "Costs claimed"
+          },
+          {
+            "type": "keyword",
+            "match": "interest",
+            "required": true,
+            "description": "Interest in prayer"
+          },
+          {
+            "type": "regex",
+            "match": "any\\s+other\\s+(relief|order)|deem(s|ed)?\\s+fit",
+            "required": true,
+            "description": "General relief clause"
+          },
+          {
+            "type": "regex",
+            "match": "pre-?lit|legal\\s+notice",
+            "required": true,
+            "description": "Pre-litigation costs mentioned"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "document_list",
+        "heading": "LIST OF DOCUMENTS RELIED UPON",
+        "type": "template_with_fill",
+        "instruction": "Generate a numbered list of documents the plaintiff relies upon, mapping to the annexure scheme. For each document: Serial No., Description, Annexure Label. Only list documents mentioned in evidence. If evidence is empty, list standard expected documents with {{DOCUMENT_DESCRIPTION}} placeholders.",
+        "context_keys": [
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Annexure labels present"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "bank_names"
+        ]
+      },
+      {
+        "section_id": "verification",
+        "heading": "VERIFICATION",
+        "type": "template",
+        "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+      },
+      {
+        "section_id": "advocate",
+        "heading": "",
+        "type": "template",
+        "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+      }
+    ]
+  },
+  "filled_sections": [
+    {
+      "section_id": "court_heading",
+      "heading": "",
+      "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "title",
+      "heading": "",
+      "text": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "parties",
+      "heading": "BETWEEN",
+      "text": "Between Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, and Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, this action for money recovery is instituted. On {{FILING_DATE}}, the Plaintiff commenced this action by filing the plaint against the Defendant in {{JURISDICTION}}. The Plaintiff is sui juris and competent to sue; the Defendant is sui juris and competent to be sued.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "jurisdiction",
+      "heading": "JURISDICTION",
+      "text": "Territorial jurisdiction: The Defendant resides and carries on business at {{DEFENDANT_ADDRESS}}, {{STATE}}, within the local limits of this District Court at {{COURT_PLACE}}. The advance payment was made by the Plaintiff from its account at {{BANK_NAME}} Bank, {{BANK_BRANCH}}, which is situated within the same local limits. The partnership agreement between the parties was executed at {{AGREEMENT_LOCATION}} on {{AGREEMENT_DATE}}, which lies within the said territorial frame. The cause of action arose on 01.06.2024 when the partnership was dissolved by mutual consent within the territorial reach of this Court, and the Defendant acknowledged the debt but has not paid despite demands.\n\nPecuniary jurisdiction: The Plaintiff seeks Rs. 35,00,000 as the principal amount due, with interest at 12% per annum on the outstanding amount. The total value of the claim, including interest up to the date of filing, remains within the monetary limits of this District Court.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "01.06.2024",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "facts",
+      "heading": "FACTS OF THE CASE",
+      "text": "1. The Plaintiff and Defendant were partners in the partnership firm M/s ABC Enterprises, and their relationship was formalized by a partnership agreement dated {{AGREEMENT_DATE}} (Annexure A). By mutual consent, the partnership was dissolved on 01.06.2024, with the parties intending to settle all liabilities and distribute the partnership assets as per the terms of the agreement reflected in Annexure A. \n\n2. In contemplation of the dissolution, the parties agreed that the Plaintiff would receive Rs 3,500,000 as his share of the dissolved firm’s assets and liabilities, a sum which the Plaintiff contends was otherwise due to him from the Defendant. Annexure A records the dissolution arrangement and the understanding that such sums would be payable to the Plaintiff; the Plaintiff further contends that interest would accrue on any unpaid amount at the rate of 12% per annum as provided in the terms of the arrangement. \n\n3. Under the dissolution agreement, the Defendant undertook to pay Rs 3,500,000 to the Plaintiff and to discharge his share by the performance date {{PERFORMANCE_DATE}}, with any delay in payment to accrue interest at 12% per annum from the due date forward, in accordance with Annexure A. The Plaintiff relied on this undertaking as the Defendant’s binding obligation arising out of the partnership dissolution. \n\n4. The Plaintiff did not receive any payment from the Defendant in respect of the Rs 3,500,000 claim either on or after 01.06.2024 or up to the date of filing, as evidenced by Annexure B, which contains the payment proof and shows no completed payment to the Plaintiff. The Plaintiff’s claim for the amount due is Rs 3,500,000, with the agreed 12% per annum interest on any overdue amount, and Annexure B is relied upon to confirm the absence of a completed payment. \n\n5. The specific default consists of the Defendant’s failure to settle the amount of Rs 3,500,000 by the performance date {{PERFORMANCE_DATE}} despite the Defendant’s acknowledgment of the debt and the running obligation to pay, as evidenced by Annexure E (Acknowledgment/Admission document). The lack of payment persists notwithstanding the Plaintiff’s repeated reminders, and the obligation remains unsatisfied as of the date of filing this suit. \n\n6. After the default, the Plaintiff issued a legal notice demanding payment of Rs 3,500,000 along with accrued interest, dated {{NOTICE_DATE}} and served on the Defendant, as detailed in Annexure C. The Defendant’s response, if any, is contained in Annexure D, dated {{NOTICE_REPLY_DATE}}, wherein the Defendant addressed the notice but did not offer to settle the debt. The Plaintiff subsequently filed the suit on {{FILING_DATE}}, and the matter is supported by Annexure F and other accompanying documents, including Annexure E (acknowledgment) and Annexure C (notice), to establish the sequence of events and the continuing cause of action. The cause of action first arose on 01.06.2024, the date of dissolution.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "agreement",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name",
+            "M/s ABC Enterprises"
+          ],
+          "dates": [
+            "{{AGREEMENT_DATE}}",
+            "01.06.2024"
+          ],
+          "evidence_refs": [
+            "Annexure A"
+          ]
+        },
+        {
+          "claim_type": "payment",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{PERFORMANCE_DATE}}",
+            "01.06.2024"
+          ],
+          "evidence_refs": [
+            "Annexure B"
+          ]
+        },
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "01.06.2024",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure A",
+            "Annexure E"
+          ]
+        },
+        {
+          "claim_type": "admission",
+          "entities": [
+            "defendant_name",
+            "plaintiff_name"
+          ],
+          "dates": [
+            "{{AGREEMENT_DATE}}",
+            "01.06.2024"
+          ],
+          "evidence_refs": [
+            "Annexure E"
+          ]
+        },
+        {
+          "claim_type": "notice",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{NOTICE_DATE}}",
+            "{{NOTICE_REPLY_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure C",
+            "Annexure D"
+          ]
+        },
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "01.06.2024",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure F",
+            "Annexure C",
+            "Annexure E"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "legal_basis",
+      "heading": "LEGAL BASIS AND GROUNDS",
+      "text": "The Plaintiff relies on Section 65 of the Indian Contract Act, 1872 as the primary legal basis for recovery. Section 65 creates a restitutionary obligation: when an agreement is found void or when a valid contract subsequently becomes void, any benefit or advantage received by one party under such agreement must be restored to the person from whom it was received and the law imposes a duty to compensate the aggrieved party for the loss caused by the retention of such benefit. In the present case, the partnership firm M/s ABC Enterprises was dissolved by mutual consent on 01.06.2024, and the Plaintiff is entitled to his share in the dissolved assets, quantified at Rs. 3,500,000, for which the Defendant acknowledged indebtedness but has refused or failed to pay despite demands communicated around the date of dissolution. The Defendant’s retention of Rs. 3,500,000 constitutes a benefit retained under the dissolved partnership arrangement with no lawful justification, and there has been no corresponding performance or consideration rendered by the Plaintiff after dissolution; in other words, there is a clear failure of consideration, since no further value, asset, or service was exchanged to justify the Defendant’s continued possession of the Plaintiff’s funds. The Defendant’s non-payment despite a formal legal notice (Annexure C) exacerbates the breach and triggers the restitutionary remedy under Section 65, which obligates the Defendant to restore the Plaintiff’s amount in full along with interest at 12% per annum from the date of dissolution, i.e., 01.06.2024, until payment. The relief sought is, therefore, restitution of Rs. 3,500,000 and accrued interest, framed as refund/restitution to place the Plaintiff in his pre-dissolution position. The Plaintiff has not raised any counter-claim or set-off, and no forfeiture clause exists in the dissolution documents (Annexure A), nor has any valid justification been advanced by the Defendant to bar restitution; demands were duly served through Annexure C. In the alternative and without prejudice to the above, if the Court determines that the underlying dissolution does not render the contract void in the sense contemplated by Section 65, the Plaintiff maintains that the debt remains payable as a liquidated claim arising from the dissolved partnership, and the Defendant remains liable to restore the Plaintiff’s share under the same restitutionary principle, along with interest as described. The defensive arguments the Defendant is likely to raise—such as no part performance, forfeiture, adjustment, or counter-claim—are not supported by the facts: a formal dissolution on 01.06.2024, a clear acknowledgment of debt by the Defendant, and lawful notices establishing the Plaintiff’s entitlement to recovery, all of which negate any justification to withhold payment. Annexure A and Annexure C are relied upon to establish the existence of the agreement/partnership framework and the demand for payment, respectively.",
+      "type": "llm_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "cause_of_action",
+      "heading": "CAUSE OF ACTION",
+      "text": "The cause of action for the present suit first arose on 01.06.2024, when the partnership firm M/s ABC Enterprises was dissolved by mutual consent and the Defendant acknowledged the debt owed to the Plaintiff in respect of the Plaintiff's share in the dissolved firm, amounting to Rs. 35,00,000, thereby giving rise to the Plaintiff's right to sue for payment. The cause of action further accrued thereafter as the Defendant, having acknowledged the debt, repeatedly failed and refused to repay the said sum despite the Plaintiff's demands, and the outstanding amount, together with interest at 12.0% per annum, continued to accrue from 01.06.2024. The cause of action is continuing because the Defendant continues to wrongfully retain the Plaintiff's sum of Rs. 35,00,000 without any lawful authority or justification, and the Plaintiff's claim remains unpaid as of the date of filing and shall continue until actual realization.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "01.06.2024"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "limitation",
+      "heading": "LIMITATION",
+      "text": "The present suit is within the period of limitation prescribed under Article {{LIMITATION_ARTICLE}} of the Schedule to the Limitation Act, 1963. The limitation period applicable to the plaintiff's claim commences from the cause of action accrual on 01.06.2024, the date the partnership was dissolved and the debt became recoverable, and runs for three years, terminating on {{DATE}}. The plaintiff filed the suit on {{FILING_DATE}} in the appropriate court, which is before {{DATE}}. The action is timely and within the permitted period.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "01.06.2024",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": [
+        {
+          "issue_type": "unsupported_date",
+          "description": "Unsupported date: 01.06.2027",
+          "original": "01.06.2027",
+          "replacement": "{{DATE}}",
+          "severity": "replaced"
+        },
+        {
+          "issue_type": "unsupported_date",
+          "description": "Unsupported date: 01.06.2027",
+          "original": "01.06.2027",
+          "replacement": "{{DATE}}",
+          "severity": "replaced"
+        }
+      ]
+    },
+    {
+      "section_id": "valuation_court_fee",
+      "heading": "VALUATION AND COURT FEE",
+      "text": "On {{FILING_DATE}}, the Plaintiff, {{PLAINTIFF_NAME}}, filed this plaint in {{COURT_NAME}} against the Defendant, {{DEFENDANT_NAME}}, for recovery of Rs 3,500,000 as principal with interest at 12% per annum. The suit valuation is equal to the claim amount, being the principal sum of Rs 3,500,000 together with the claimed interest. The court fee payable for this suit has been calculated in accordance with the applicable state court fees act and is {{COURT_FEE_AMOUNT}}.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "interest",
+      "heading": "INTEREST",
+      "text": "The Plaintiff claims pre-suit interest on Rs. 3,500,000 at 12.0% per annum from the date of default ({{DEFAULT_DATE}}) until the filing of the suit ({{FILING_DATE}}). The facts establish that the parties entered into a contract on {{AGREEMENT_DATE}} under which the Plaintiff advanced Rs. 3,500,000 on {{ADVANCE_PAYMENT_DATE}} and, by {{DEFAULT_DATE}}, the Defendant defaulted by failing to repay the principal due. The funds remained with the Defendant, amounting to wrongful retention in a commercial transaction, thereby depriving the Plaintiff of the use of its funds. The rate of 12.0% per annum is justified because the transaction is commercial in nature and the parties had a contractual understanding that the sums would be repaid; charging a commercial rate compensates for the use of funds and the opportunity cost suffered by the Plaintiff during the pre-suit period.\n\nThe Plaintiff seeks pendente lite interest on Rs. 3,500,000 at 12.0% per annum from the filing date ({{FILING_DATE}}) to the end of the pendency of the suit ({{PENDENTE_LITE_END_DATE}}) under Section 34 CPC. The legal basis is Section 34 CPC, which authorizes interest on a money decree for the period the suit remains undecided. The facts show that the Defendant defaulted on {{DEFAULT_DATE}} and the suit was filed on {{FILING_DATE}}; the Defendant has benefited from the use of the Plaintiff's money during the pendency of the proceedings, and the Plaintiff has been deprived of the use of its funds during this period. A 12.0% per annum rate is warranted to reflect the commercial nature of the transaction and the contractual understanding, ensuring fair compensation for the Plaintiff during litigation.\n\nThe Plaintiff also seeks future interest on Rs. 3,500,000 at 12.0% per annum from the date of decree ({{DECREED_DATE}}) until realization ({{REALIZATION_DATE}}). The justification lies in the commercial character of the underlying transaction and the existence of a contractual understanding between the parties; post-decree interest is appropriate to secure full restitution and aligns with prevailing mercantile practice and rate expectations in banking norms, ensuring the Plaintiff is compensated for delayed realization of the judgment.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "Start: {{DEFAULT_DATE}}",
+            "End: {{FILING_DATE}}"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "Start: {{FILING_DATE}}",
+            "End: {{PENDENTE_LITE_END_DATE}}"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "Start: {{DECREED_DATE}}",
+            "End: {{REALIZATION_DATE}}"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "prayer",
+      "heading": "PRAYER",
+      "text": "(a) Pass a decree directing the Defendant to pay to the Plaintiff the principal sum of Rs. 3,500,000/- (Rupees Three Million Five Hundred Thousand Only) being the amount due on account of the dissolved partnership as on 01.06.2024, despite demand. \n(b) Award pre-suit interest at the rate of 12.0% per annum on the said principal sum from 01.06.2024 to the date of filing of the present suit, i.e., {{FILING_DATE}}. \n(c) In terms of Section 34 CPC, award pendente lite interest at the rate of 12.0% per annum on the said principal sum from {{FILING_DATE}} till the date of decree. \n(d) Award future interest at the rate of 12.0% per annum on the principal sum from the date of decree until realization. \n(e) Award costs of the suit including the pre-litigation costs incurred for sending the legal notice dated {{NOTICE_DATE}} and postal charges amounting to Rs. {{COSTS_AMOUNT}}/-. \n(f) Such other relief as the Court may deem fit and proper in the facts and circumstances of this case.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "payment",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "01.06.2024",
+            "{{FILING_DATE}}",
+            "{{NOTICE_DATE}}"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": [
+        {
+          "issue_type": "unsupported_claim",
+          "description": "Claim type 'payment' requires evidence but has no evidence_refs",
+          "original": "{\"claim_type\": \"payment\", \"entities\": [\"{{PLAINTIFF_NAME}}\", \"{{DEFENDANT_NAME}}\"], \"dates\": [\"01.06.2024\", \"{{FILING_DATE}}\", \"{{NOTICE_DATE}}\"], \"evidence_refs\": []}",
+          "replacement": "[[UNSUPPORTED_CLAIM: payment]]",
+          "severity": "flagged"
+        },
+        {
+          "issue_type": "unsupported_claim",
+          "description": "Claim 'payment' has no evidence reference",
+          "original": "payment",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "section_id": "document_list",
+      "heading": "LIST OF DOCUMENTS RELIED UPON",
+      "text": "1. {{DOCUMENT_DESCRIPTION}}, Annexure A\n2. {{DOCUMENT_DESCRIPTION}}, Annexure B\n3. {{DOCUMENT_DESCRIPTION}}, Annexure C\n4. {{DOCUMENT_DESCRIPTION}}, Annexure D\n5. {{DOCUMENT_DESCRIPTION}}, Annexure E\n6. {{DOCUMENT_DESCRIPTION}}, Annexure F",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "text": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "advocate",
+      "heading": "",
+      "text": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    }
+  ],
+  "claim_ledger": [
+    {
+      "claim_type": "breach",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "01.06.2024",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "agreement",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name",
+        "M/s ABC Enterprises"
+      ],
+      "dates": [
+        "{{AGREEMENT_DATE}}",
+        "01.06.2024"
+      ],
+      "evidence_refs": [
+        "Annexure A"
+      ]
+    },
+    {
+      "claim_type": "payment",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{PERFORMANCE_DATE}}",
+        "01.06.2024"
+      ],
+      "evidence_refs": [
+        "Annexure B"
+      ]
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "01.06.2024",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure A",
+        "Annexure E"
+      ]
+    },
+    {
+      "claim_type": "admission",
+      "entities": [
+        "defendant_name",
+        "plaintiff_name"
+      ],
+      "dates": [
+        "{{AGREEMENT_DATE}}",
+        "01.06.2024"
+      ],
+      "evidence_refs": [
+        "Annexure E"
+      ]
+    },
+    {
+      "claim_type": "notice",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{NOTICE_DATE}}",
+        "{{NOTICE_REPLY_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure C",
+        "Annexure D"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "01.06.2024",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure F",
+        "Annexure C",
+        "Annexure E"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "01.06.2024"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "01.06.2024",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "Start: {{DEFAULT_DATE}}",
+        "End: {{FILING_DATE}}"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "Start: {{FILING_DATE}}",
+        "End: {{PENDENTE_LITE_END_DATE}}"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "Start: {{DECREED_DATE}}",
+        "End: {{REALIZATION_DATE}}"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "payment",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "01.06.2024",
+        "{{FILING_DATE}}",
+        "{{NOTICE_DATE}}"
+      ],
+      "evidence_refs": []
+    }
+  ],
+  "postprocess_issues": [
+    {
+      "type": "numbering_fixed",
+      "count": 6
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the cause of' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'cause of action' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'with interest at' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'interest at 12%' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at 12% per' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '12% per annum' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'per annum on' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'annum on the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the date of' repeated 12 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at the rate' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the rate of' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'per annum from' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'annum from the' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of rs 3,500,000' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'from the date' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at 12.0% per' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '12.0% per annum' repeated 8 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the use of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rate of 12.0%' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of 12.0% per' repeated 4 times — consider varying language"
+    }
+  ],
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "partnership_dissolution_recovery_plaint",
+        "title": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nSUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)\n\n\nBETWEEN\n\nBetween Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, and Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, this action for money recovery is instituted. On {{FILING_DATE}}, the Plaintiff commenced this action by filing the plaint against the Defendant in {{JURISDICTION}}. The Plaintiff is sui juris and competent to sue; the Defendant is sui juris and competent to be sued.\n\n\nJURISDICTION\n\nTerritorial jurisdiction: The Defendant resides and carries on business at {{DEFENDANT_ADDRESS}}, {{STATE}}, within the local limits of this District Court at {{COURT_PLACE}}. The advance payment was made by the Plaintiff from its account at {{BANK_NAME}} Bank, {{BANK_BRANCH}}, which is situated within the same local limits. The partnership agreement between the parties was executed at {{AGREEMENT_LOCATION}} on {{AGREEMENT_DATE}}, which lies within the said territorial frame. The cause of action arose on 01.06.2024 when the partnership was dissolved by mutual consent within the territorial reach of this Court, and the Defendant acknowledged the debt but has not paid despite demands.\n\nPecuniary jurisdiction: The Plaintiff seeks Rs. 35,00,000 as the principal amount due, with interest at 12% per annum on the outstanding amount. The total value of the claim, including interest up to the date of filing, remains within the monetary limits of this District Court.\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff and Defendant were partners in the partnership firm M/s ABC Enterprises, and their relationship was formalized by a partnership agreement dated {{AGREEMENT_DATE}} (Annexure A). By mutual consent, the partnership was dissolved on 01.06.2024, with the parties intending to settle all liabilities and distribute the partnership assets as per the terms of the agreement reflected in Annexure A. \n\n2. In contemplation of the dissolution, the parties agreed that the Plaintiff would receive Rs 3,500,000 as his share of the dissolved firm’s assets and liabilities, a sum which the Plaintiff contends was otherwise due to him from the Defendant. Annexure A records the dissolution arrangement and the understanding that such sums would be payable to the Plaintiff; the Plaintiff further contends that interest would accrue on any unpaid amount at the rate of 12% per annum as provided in the terms of the arrangement. \n\n3. Under the dissolution agreement, the Defendant undertook to pay Rs 3,500,000 to the Plaintiff and to discharge his share by the performance date {{PERFORMANCE_DATE}}, with any delay in payment to accrue interest at 12% per annum from the due date forward, in accordance with Annexure A. The Plaintiff relied on this undertaking as the Defendant’s binding obligation arising out of the partnership dissolution. \n\n4. The Plaintiff did not receive any payment from the Defendant in respect of the Rs 3,500,000 claim either on or after 01.06.2024 or up to the date of filing, as evidenced by Annexure B, which contains the payment proof and shows no completed payment to the Plaintiff. The Plaintiff’s claim for the amount due is Rs 3,500,000, with the agreed 12% per annum interest on any overdue amount, and Annexure B is relied upon to confirm the absence of a completed payment. \n\n5. The specific default consists of the Defendant’s failure to settle the amount of Rs 3,500,000 by the performance date {{PERFORMANCE_DATE}} despite the Defendant’s acknowledgment of the debt and the running obligation to pay, as evidenced by Annexure E (Acknowledgment/Admission document). The lack of payment persists notwithstanding the Plaintiff’s repeated reminders, and the obligation remains unsatisfied as of the date of filing this suit. \n\n6. After the default, the Plaintiff issued a legal notice demanding payment of Rs 3,500,000 along with accrued interest, dated {{NOTICE_DATE}} and served on the Defendant, as detailed in Annexure C. The Defendant’s response, if any, is contained in Annexure D, dated {{NOTICE_REPLY_DATE}}, wherein the Defendant addressed the notice but did not offer to settle the debt. The Plaintiff subsequently filed the suit on {{FILING_DATE}}, and the matter is supported by Annexure F and other accompanying documents, including Annexure E (acknowledgment) and Annexure C (notice), to establish the sequence of events and the continuing cause of action. The cause of action first arose on 01.06.2024, the date of dissolution.\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Plaintiff relies on Section 65 of the Indian Contract Act, 1872 as the primary legal basis for recovery. Section 65 creates a restitutionary obligation: when an agreement is found void or when a valid contract subsequently becomes void, any benefit or advantage received by one party under such agreement must be restored to the person from whom it was received and the law imposes a duty to compensate the aggrieved party for the loss caused by the retention of such benefit. In the present case, the partnership firm M/s ABC Enterprises was dissolved by mutual consent on 01.06.2024, and the Plaintiff is entitled to his share in the dissolved assets, quantified at Rs. 3,500,000, for which the Defendant acknowledged indebtedness but has refused or failed to pay despite demands communicated around the date of dissolution. The Defendant’s retention of Rs. 3,500,000 constitutes a benefit retained under the dissolved partnership arrangement with no lawful justification, and there has been no corresponding performance or consideration rendered by the Plaintiff after dissolution; in other words, there is a clear failure of consideration, since no further value, asset, or service was exchanged to justify the Defendant’s continued possession of the Plaintiff’s funds. The Defendant’s non-payment despite a formal legal notice (Annexure C) exacerbates the breach and triggers the restitutionary remedy under Section 65, which obligates the Defendant to restore the Plaintiff’s amount in full along with interest at 12% per annum from the date of dissolution, i.e., 01.06.2024, until payment. The relief sought is, therefore, restitution of Rs. 3,500,000 and accrued interest, framed as refund/restitution to place the Plaintiff in his pre-dissolution position. The Plaintiff has not raised any counter-claim or set-off, and no forfeiture clause exists in the dissolution documents (Annexure A), nor has any valid justification been advanced by the Defendant to bar restitution; demands were duly served through Annexure C. In the alternative and without prejudice to the above, if the Court determines that the underlying dissolution does not render the contract void in the sense contemplated by Section 65, the Plaintiff maintains that the debt remains payable as a liquidated claim arising from the dissolved partnership, and the Defendant remains liable to restore the Plaintiff’s share under the same restitutionary principle, along with interest as described. The defensive arguments the Defendant is likely to raise—such as no part performance, forfeiture, adjustment, or counter-claim—are not supported by the facts: a formal dissolution on 01.06.2024, a clear acknowledgment of debt by the Defendant, and lawful notices establishing the Plaintiff’s entitlement to recovery, all of which negate any justification to withhold payment. Annexure A and Annexure C are relied upon to establish the existence of the agreement/partnership framework and the demand for payment, respectively.\n\n\nCAUSE OF ACTION\n\nThe cause of action for the present suit first arose on 01.06.2024, when the partnership firm M/s ABC Enterprises was dissolved by mutual consent and the Defendant acknowledged the debt owed to the Plaintiff in respect of the Plaintiff's share in the dissolved firm, amounting to Rs. 35,00,000, thereby giving rise to the Plaintiff's right to sue for payment. The cause of action further accrued thereafter as the Defendant, having acknowledged the debt, repeatedly failed and refused to repay the said sum despite the Plaintiff's demands, and the outstanding amount, together with interest at 12.0% per annum, continued to accrue from 01.06.2024. The cause of action is continuing because the Defendant continues to wrongfully retain the Plaintiff's sum of Rs. 35,00,000 without any lawful authority or justification, and the Plaintiff's claim remains unpaid as of the date of filing and shall continue until actual realization.\n\n\nLIMITATION\n\nThe present suit is within the period of limitation prescribed under Article {{LIMITATION_ARTICLE}} of the Schedule to the Limitation Act, 1963. The limitation period applicable to the plaintiff's claim commences from the cause of action accrual on 01.06.2024, the date the partnership was dissolved and the debt became recoverable, and runs for three years, terminating on {{DATE}}. The plaintiff filed the suit on {{FILING_DATE}} in the appropriate court, which is before {{DATE}}. The action is timely and within the permitted period.\n\n\nVALUATION AND COURT FEE\n\nOn {{FILING_DATE}}, the Plaintiff, {{PLAINTIFF_NAME}}, filed this plaint in {{COURT_NAME}} against the Defendant, {{DEFENDANT_NAME}}, for recovery of Rs 3,500,000 as principal with interest at 12% per annum. The suit valuation is equal to the claim amount, being the principal sum of Rs 3,500,000 together with the claimed interest. The court fee payable for this suit has been calculated in accordance with the applicable state court fees act and is {{COURT_FEE_AMOUNT}}.\n\n\nINTEREST\n\nThe Plaintiff claims pre-suit interest on Rs. 3,500,000 at 12.0% per annum from the date of default ({{DEFAULT_DATE}}) until the filing of the suit ({{FILING_DATE}}). The facts establish that the parties entered into a contract on {{AGREEMENT_DATE}} under which the Plaintiff advanced Rs. 3,500,000 on {{ADVANCE_PAYMENT_DATE}} and, by {{DEFAULT_DATE}}, the Defendant defaulted by failing to repay the principal due. The funds remained with the Defendant, amounting to wrongful retention in a commercial transaction, thereby depriving the Plaintiff of the use of its funds. The rate of 12.0% per annum is justified because the transaction is commercial in nature and the parties had a contractual understanding that the sums would be repaid; charging a commercial rate compensates for the use of funds and the opportunity cost suffered by the Plaintiff during the pre-suit period.\n\nThe Plaintiff seeks pendente lite interest on Rs. 3,500,000 at 12.0% per annum from the filing date ({{FILING_DATE}}) to the end of the pendency of the suit ({{PENDENTE_LITE_END_DATE}}) under Section 34 CPC. The legal basis is Section 34 CPC, which authorizes interest on a money decree for the period the suit remains undecided. The facts show that the Defendant defaulted on {{DEFAULT_DATE}} and the suit was filed on {{FILING_DATE}}; the Defendant has benefited from the use of the Plaintiff's money during the pendency of the proceedings, and the Plaintiff has been deprived of the use of its funds during this period. A 12.0% per annum rate is warranted to reflect the commercial nature of the transaction and the contractual understanding, ensuring fair compensation for the Plaintiff during litigation.\n\nThe Plaintiff also seeks future interest on Rs. 3,500,000 at 12.0% per annum from the date of decree ({{DECREED_DATE}}) until realization ({{REALIZATION_DATE}}). The justification lies in the commercial character of the underlying transaction and the existence of a contractual understanding between the parties; post-decree interest is appropriate to secure full restitution and aligns with prevailing mercantile practice and rate expectations in banking norms, ensuring the Plaintiff is compensated for delayed realization of the judgment.\n\n\nPRAYER\n\n(a) Pass a decree directing the Defendant to pay to the Plaintiff the principal sum of Rs. 3,500,000/- (Rupees Three Million Five Hundred Thousand Only) being the amount due on account of the dissolved partnership as on 01.06.2024, despite demand. \n(b) Award pre-suit interest at the rate of 12.0% per annum on the said principal sum from 01.06.2024 to the date of filing of the present suit, i.e., {{FILING_DATE}}. \n(c) In terms of Section 34 CPC, award pendente lite interest at the rate of 12.0% per annum on the said principal sum from {{FILING_DATE}} till the date of decree. \n(d) Award future interest at the rate of 12.0% per annum on the principal sum from the date of decree until realization. \n(e) Award costs of the suit including the pre-litigation costs incurred for sending the legal notice dated {{NOTICE_DATE}} and postal charges amounting to Rs. {{COSTS_AMOUNT}}/-. \n(f) Such other relief as the Court may deem fit and proper in the facts and circumstances of this case.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\n7. {{DOCUMENT_DESCRIPTION}}, Annexure A\n8. {{DOCUMENT_DESCRIPTION}}, Annexure B\n9. {{DOCUMENT_DESCRIPTION}}, Annexure C\n10. {{DOCUMENT_DESCRIPTION}}, Annexure D\n11. {{DOCUMENT_DESCRIPTION}}, Annexure E\n12. {{DOCUMENT_DESCRIPTION}}, Annexure F\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CLAIM_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CLAIM_AMOUNT_WORDS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "JURISDICTION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "BANK_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "BANK_BRANCH",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "AGREEMENT_LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PERFORMANCE_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "NOTICE_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "NOTICE_REPLY_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "LIMITATION_ARTICLE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFAULT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVANCE_PAYMENT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PENDENTE_LITE_END_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DECREED_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "REALIZATION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COSTS_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DOCUMENT_DESCRIPTION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "partnership_dissolution_recovery_plaint",
+        "title": "SUIT FOR RECOVERY OF Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nSUIT FOR RECOVERY OF Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only)\nWITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)\n\n\nBETWEEN:\n\n{{PLAINTIFF_NAME}},\naged about {{PLAINTIFF_AGE}} years,\n{{PLAINTIFF_OCCUPATION}},\nresiding at {{PLAINTIFF_ADDRESS}}.  \n...Plaintiff\n\nVERSUS\n\n{{DEFENDANT_NAME}},\naged about {{DEFENDANT_AGE}} years,\n{{DEFENDANT_OCCUPATION}},\nresiding at {{DEFENDANT_ADDRESS}}.  \n...Defendant\n\n\nTHE PLAINT\n\n1. The Plaintiff is a major and is competent to institute the present suit. The Defendant is a major and is competent to be sued.\n\n\nJURISDICTION\n\n2. Territorial Jurisdiction: This Hon’ble Court has territorial jurisdiction since (i) the Defendant resides and carries on business within the local limits of this Court at {{COURT_PLACE}}, and (ii) the partnership business of M/s ABC Enterprises was carried on at {{FIRM_PRINCIPAL_PLACE_OF_BUSINESS}} within the local limits of this Court, and (iii) the dissolution/settlement between the parties and the Defendant’s acknowledgment of liability were made at {{DISSOLUTION_SETTLEMENT_PLACE}} within the local limits of this Court, and (iv) the amount claimed is payable to the Plaintiff at {{PAYMENT_PLACE}} within the local limits of this Court.\n\n3. Pecuniary Jurisdiction: The suit claim is for recovery of Rs. 35,00,000/- along with interest. The suit valuation for purposes of jurisdiction is stated in the Valuation paragraph below and is within the pecuniary limits of this Hon’ble District Court.\n\n\nFACTS OF THE CASE (CHRONOLOGICAL)\n\n4. The Plaintiff and the Defendant were partners in a partnership firm in the name and style of “M/s ABC Enterprises”, carrying on the business of construction materials, inter alia at {{FIRM_PRINCIPAL_PLACE_OF_BUSINESS}}. The partnership commenced on {{PARTNERSHIP_START_DATE}}. The partnership deed, if any, is relied upon as Annexure A.\n\n5. Due to mutual differences/for business reasons, the Plaintiff and Defendant mutually agreed to dissolve the partnership firm. Accordingly, the partnership was dissolved by mutual consent on 01.06.2024 (hereinafter “Date of Dissolution”). The dissolution deed/settlement memo, if reduced into writing, is relied upon as Annexure B.\n\n6. Upon dissolution, the partners settled the accounts of the firm and agreed the manner of distribution of the assets and liabilities of the dissolved firm. In such settlement, the Defendant acknowledged that a sum of Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) is due and payable by the Defendant to the Plaintiff towards the Plaintiff’s share in the dissolved partnership firm. The written acknowledgment/settlement record (if separate) is relied upon as Annexure C.\n\n7. After 01.06.2024, the Plaintiff repeatedly demanded payment of the said sum of Rs. 35,00,000/- from the Defendant, including on {{DEMAND_DATE_1}}, {{DEMAND_DATE_2}} and thereafter. Despite repeated demands, the Defendant has failed and neglected to pay the Plaintiff the said sum and continues to wrongfully withhold the Plaintiff’s admitted share.\n\n8. The Defendant’s liability is thus a liquidated sum arising out of the settlement of accounts upon dissolution and the Defendant’s acknowledgment thereof, but remains unpaid till date.\n\n\nLEGAL BASIS AND GROUNDS\n\n9. Section 48 of the Indian Partnership Act, 1932 (user-instructed) sets out the mode of settlement of accounts between partners after dissolution, including adjustment of losses and distribution/application of the assets and surplus among the partners in their respective rights. In the present case, the partnership stood dissolved on 01.06.2024 and the accounts were settled, resulting in an admitted balance of Rs. 35,00,000/- payable to the Plaintiff as his share. The Plaintiff is therefore entitled to recover the said admitted sum from the Defendant.\n\n10. Section 69 of the Indian Partnership Act, 1932 (user-instructed) (a) does not bar the present suit because {{FIRM_REGISTRATION_STATUS_AND_PARTNERS_SHOWN}}. Without prejudice, even otherwise, the Plaintiff’s claim is founded upon settlement of accounts of a dissolved partnership and a post-dissolution acknowledgment/arrangement fixing the amount payable, and is maintainable under the applicable exception(s) under the Partnership Act including Section 69(3)(a), as applicable to the facts.\n\n11. Section 65 of the Indian Contract Act, 1872 (user-instructed) is pleaded without prejudice and in the alternative: if this Hon’ble Court holds that the post-dissolution settlement/arrangement recording the Plaintiff’s entitlement is unenforceable/void for any reason, then the Defendant—having retained and continued to retain the monetary benefit representing the Plaintiff’s admitted share—must restore/return the benefit so retained to the Plaintiff.\n\n12. The Plaintiff is entitled to interest. The Plaintiff claims interest at 12% per annum from 01.06.2024 as specifically instructed, on account of the Defendant’s wrongful retention of the Plaintiff’s admitted share after dissolution/settlement, and in view of the commercial nature of the partnership business. Pendente lite and future interest are claimed under Section 34 CPC.\n\n\nCAUSE OF ACTION\n\n13. The cause of action first arose on 01.06.2024 when (i) the partnership firm was dissolved by mutual consent, (ii) the accounts were settled, and (iii) the Defendant acknowledged that Rs. 35,00,000/- is due and payable to the Plaintiff towards the Plaintiff’s share. The cause of action further accrued on {{DEMAND_DATE_1}}, {{DEMAND_DATE_2}} and on each subsequent date when the Plaintiff demanded payment and the Defendant failed/neglected to pay. The cause of action is continuing as the Defendant continues to withhold the admitted amount and the same remains unpaid as on the date of filing of this suit.\n\n\nLIMITATION\n\n14. The present suit is within limitation. The claim arises from dissolution and settlement on 01.06.2024 and is filed within the prescribed period of limitation (three years from the Date of Dissolution/settlement, as applicable). The Plaintiff is filing the suit on {{FILING_DATE}}, which is within the said limitation period. (Specific Limitation Act entry, if required, may be stated as Article {{LIMITATION_ARTICLE}}.)\n\n\nVALUATION AND COURT FEE\n\n15. The suit is valued for the purposes of court fee at Rs. {{SUIT_VALUATION_FOR_COURT_FEE}} being the principal sum of Rs. 35,00,000/- together with pre-suit interest computed from 01.06.2024 up to {{FILING_DATE}} (as applicable under the court-fees law of the State). The suit is valued for the purposes of jurisdiction at Rs. {{SUIT_VALUATION_FOR_JURISDICTION}}.\n\n16. The requisite court fee is paid/shall be paid as per the applicable Court Fees and Suits Valuation Act and rules and is stated as {{COURT_FEE_AMOUNT}}.\n\n\nINTEREST\n\n17. The Plaintiff claims:\n\n(a) Pre-suit interest at 12% per annum on Rs. 35,00,000/- from 01.06.2024 (Date of Dissolution/settlement) to {{FILING_DATE}};\n\n(b) Pendente lite interest under Section 34 CPC at 12% per annum on Rs. 35,00,000/- from {{FILING_DATE}} till the date of decree; and\n\n(c) Future interest under Section 34 CPC at such rate (up to 12% per annum as claimed) as this Hon’ble Court deems fit, from the date of decree till realization.\n\n\nPRAYER\n\nIn the above facts and circumstances, the Plaintiff prays that this Hon’ble Court may be pleased to:\n\n(a) Pass a decree directing the Defendant to pay the Plaintiff a sum of Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only), being the Plaintiff’s admitted share payable upon dissolution of M/s ABC Enterprises;\n\n(b) Award pre-suit interest at 12% per annum on Rs. 35,00,000/- from 01.06.2024 to {{FILING_DATE}};\n\n(c) Award pendente lite interest under Section 34 CPC at 12% per annum on Rs. 35,00,000/- from {{FILING_DATE}} till the date of decree;\n\n(d) Award future interest under Section 34 CPC at such rate as this Hon’ble Court deems fit (up to 12% per annum as claimed) from the date of decree till realization;\n\n(e) Award costs of the suit; and\n\n(f) Grant such other and further relief(s) as this Hon’ble Court may deem fit and proper in the facts and circumstances of the case.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\n1. Partnership Deed of M/s ABC Enterprises dated {{PARTNERSHIP_DEED_DATE}} (if any) — Annexure A.\n2. Dissolution Deed / Mutual Dissolution Memo / Settlement Record dated 01.06.2024 (if any) — Annexure B.\n3. Acknowledgment/Admission by Defendant of amount due of Rs. 35,00,000/- dated {{ACK_DATE}} (if separate) — Annexure C.\n4. Any written demand/notice and proof of service, if issued — Annexure D.\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 8 and 13 to 16 are true and correct to my personal knowledge, and the contents of paragraphs 9 to 12 and 17 are based on legal advice which I believe to be true, and that nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Court name not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Filing location not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "To be assigned by registry"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "To be assigned/entered"
+          },
+          {
+            "key": "CLAIM_AMOUNT_WORDS",
+            "reason": "Amount in words not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Client name not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Client age not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Client occupation not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Client address not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Opposite party name not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Opposite party age not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Opposite party occupation not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Opposite party address not provided"
+          },
+          {
+            "key": "FIRM_PRINCIPAL_PLACE_OF_BUSINESS",
+            "reason": "Firm business place not specified"
+          },
+          {
+            "key": "DISSOLUTION_SETTLEMENT_PLACE",
+            "reason": "Place of dissolution/settlement not specified"
+          },
+          {
+            "key": "PAYMENT_PLACE",
+            "reason": "Place where payment is payable/receivable not specified"
+          },
+          {
+            "key": "PARTNERSHIP_START_DATE",
+            "reason": "Partnership commencement date not provided"
+          },
+          {
+            "key": "PARTNERSHIP_DEED_DATE",
+            "reason": "Partnership deed date not provided/unknown"
+          },
+          {
+            "key": "DEMAND_DATE_1",
+            "reason": "Specific demand dates not provided"
+          },
+          {
+            "key": "DEMAND_DATE_2",
+            "reason": "Specific demand dates not provided"
+          },
+          {
+            "key": "FIRM_REGISTRATION_STATUS_AND_PARTNERS_SHOWN",
+            "reason": "Whether firm is registered and whether partners are shown in Register not provided; required for Section 69 pleading"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Filing date not provided"
+          },
+          {
+            "key": "LIMITATION_ARTICLE",
+            "reason": "Specific Limitation Act article not verified for this exact framing; to be confirmed"
+          },
+          {
+            "key": "SUIT_VALUATION_FOR_COURT_FEE",
+            "reason": "Depends on jurisdictional court-fee law and whether pre-suit interest is included; not provided"
+          },
+          {
+            "key": "SUIT_VALUATION_FOR_JURISDICTION",
+            "reason": "Depends on local practice for jurisdiction valuation; not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Jurisdiction-specific court fee rate not provided; must be computed under applicable State Act"
+          },
+          {
+            "key": "ACK_DATE",
+            "reason": "Date of acknowledgment not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Counsel name not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Counsel enrollment not provided"
+          }
+        ],
+        "citations_used": [
+          "Section 26, Code of Civil Procedure, 1908",
+          "Section 34, Code of Civil Procedure, 1908",
+          "Order VI Rule 15, Code of Civil Procedure, 1908",
+          "Section 48, Indian Partnership Act, 1932",
+          "Section 69, Indian Partnership Act, 1932",
+          "Section 69(3)(a), Indian Partnership Act, 1932",
+          "Section 65, Indian Contract Act, 1872"
+        ]
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": false,
+      "blocking_issues": [
+        {
+          "issue": "User-requested statutory grounds (Sections 48 and 69 of the Indian Partnership Act, 1932) are not pleaded; the draft instead relies primarily on Section 65 of the Indian Contract Act, 1872.",
+          "fix": "Add a dedicated legal grounds section pleading Section 48 (mode of settlement of accounts after dissolution) and Section 69 (maintainability/registration and applicable exception), while preserving the user-requested Section 65 plea as an alternative/without-prejudice ground.",
+          "location": "LEGAL BASIS AND GROUNDS section",
+          "severity": "legal"
+        },
+        {
+          "issue": "Material factual narrative is inconsistent with the USER_REQUEST and introduces new transaction facts (advance payment, performance date, contractual interest clause, bank payment proof) that change the cause of action from ‘share on dissolution with acknowledged balance’ to a ‘loan/advance repayment’ style claim.",
+          "fix": "Rewrite the Facts and Interest sections as a chronological dissolution-and-settlement story: dissolution on 01.06.2024, settlement of accounts, acknowledgment of Rs.35,00,000/- payable to Plaintiff, repeated demands, non-payment. Remove/replace invented loan/advance facts and performance-date constructs; keep only placeholders for documents/events that actually exist (e.g., dissolution deed/settlement, acknowledgment, demand notice if any).",
+          "location": "FACTS OF THE CASE (paras 1–6) and INTEREST section",
+          "severity": "legal"
+        },
+        {
+          "issue": "Cause of action / limitation narrative and the Interest section are internally inconsistent: prayer seeks interest from 01.06.2024, but the Interest section claims interest from {{DEFAULT_DATE}} and alleges an advance paid on {{ADVANCE_PAYMENT_DATE}} (not pleaded in the user facts).",
+          "fix": "Align interest pleading consistently to the user instruction: claim 12% p.a. from 01.06.2024 (date of dissolution/settlement) up to filing (pre-suit), pendente lite and future interest under Section 34 CPC; remove {{DEFAULT_DATE}} / {{ADVANCE_PAYMENT_DATE}} references unless truly applicable.",
+          "location": "CAUSE OF ACTION, LIMITATION, and INTEREST sections",
+          "severity": "legal"
+        }
+      ],
+      "non_blocking_issues": [
+        {
+          "issue": "List of Documents numbering starts at 7 and uses repeated generic {{DOCUMENT_DESCRIPTION}} entries, reducing clarity though not fatal if corrected.",
+          "fix": "Renumber the list from 1 onwards and replace each entry with a specific document description matching the body references (e.g., Partnership Deed as Annexure A; Dissolution/Settlement Deed as Annexure B; Acknowledgment as Annexure C; Demand notice/postal proof only if applicable).",
+          "location": "LIST OF DOCUMENTS RELIED UPON",
+          "severity": "formatting"
+        },
+        {
+          "issue": "Jurisdiction paragraph includes specific territorial links (bank branch/advance payment/execution) that are not part of the pleaded factual matrix and may be denied; the core links should be tied to partnership business place, dissolution/settlement execution place, and payment being payable within jurisdiction.",
+          "fix": "Revise jurisdiction pleading to rely on defensible territorial links: Defendant residence/business, firm’s principal place of business, place of dissolution/settlement/acknowledgment, and place where payment was to be made/received.",
+          "location": "JURISDICTION section",
+          "severity": "formatting"
+        },
+        {
+          "issue": "Limitation paragraph uses placeholders for the Limitation Act article and end-date; while placeholders are acceptable, the pleading can be clearer by stating the applicable period (three years) and anchoring it to 01.06.2024 as pleaded accrual.",
+          "fix": "Add a clear statement that the suit is filed within three years from 01.06.2024; keep the specific article number as a placeholder if not verified for the filing jurisdiction.",
+          "location": "LIMITATION section",
+          "severity": "formatting"
+        }
+      ],
+      "unsupported_statements": [
+        {
+          "statement": "“The partnership agreement … (Annexure A)” and “Annexure A records the dissolution arrangement and the understanding that such sums would be payable … interest … as provided in the terms of the arrangement.”",
+          "reason": "USER_REQUEST does not mention any written partnership agreement or dissolution document containing an interest clause; these are introduced as facts without support.",
+          "location": "FACTS OF THE CASE paras 1–3"
+        },
+        {
+          "statement": "“performance date {{PERFORMANCE_DATE}}” for payment under dissolution agreement.",
+          "reason": "USER_REQUEST states amount was acknowledged upon dissolution and not paid despite demands; no separate performance date is provided.",
+          "location": "FACTS OF THE CASE paras 3 and 5"
+        },
+        {
+          "statement": "“Annexure B … payment proof and shows no completed payment to the Plaintiff.”",
+          "reason": "USER_REQUEST does not mention any bank/payment proof document; also the statement asserts contents of a document not provided.",
+          "location": "FACTS OF THE CASE para 4"
+        },
+        {
+          "statement": "“Annexure E (Acknowledgment/Admission document)” and “Annexure F and other accompanying documents…”",
+          "reason": "USER_REQUEST mentions acknowledgment but does not specify an annexure set A–F or any ‘Annexure F’; the draft asserts documents beyond provided context.",
+          "location": "FACTS OF THE CASE paras 5–6"
+        },
+        {
+          "statement": "“The Plaintiff issued a legal notice … Annexure C … Defendant’s response … Annexure D …”",
+          "reason": "USER_REQUEST mentions repeated demands but not a legal notice or reply; asserting notice/reply as facts is unsupported.",
+          "location": "FACTS OF THE CASE para 6"
+        },
+        {
+          "statement": "“no forfeiture clause exists in the dissolution documents (Annexure A),” and “The Plaintiff has not raised any counter-claim or set-off” and anticipated defenses framed as settled facts.",
+          "reason": "These are defensive assertions tied to specific documents/pleadings not in the USER_REQUEST; they may be pleaded carefully, but as drafted they assert unavailable documentary content.",
+          "location": "LEGAL BASIS AND GROUNDS"
+        }
+      ],
+      "final_artifacts": [
+        {
+          "doc_type": "partnership_dissolution_recovery_plaint",
+          "title": "SUIT FOR RECOVERY OF Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS",
+          "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nSUIT FOR RECOVERY OF Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only)\nWITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)\n\n\nBETWEEN:\n\n{{PLAINTIFF_NAME}},\naged about {{PLAINTIFF_AGE}} years,\n{{PLAINTIFF_OCCUPATION}},\nresiding at {{PLAINTIFF_ADDRESS}}.  \n...Plaintiff\n\nVERSUS\n\n{{DEFENDANT_NAME}},\naged about {{DEFENDANT_AGE}} years,\n{{DEFENDANT_OCCUPATION}},\nresiding at {{DEFENDANT_ADDRESS}}.  \n...Defendant\n\n\nTHE PLAINT\n\n1. The Plaintiff is a major and is competent to institute the present suit. The Defendant is a major and is competent to be sued.\n\n\nJURISDICTION\n\n2. Territorial Jurisdiction: This Hon’ble Court has territorial jurisdiction since (i) the Defendant resides and/or carries on business within the local limits of this Court at {{COURT_PLACE}}, and (ii) the partnership business of M/s ABC Enterprises was carried on at {{FIRM_PRINCIPAL_PLACE_OF_BUSINESS}} within the local limits of this Court, and (iii) the dissolution/settlement between the parties and the Defendant’s acknowledgment of liability were made at {{DISSOLUTION_SETTLEMENT_PLACE}} within the local limits of this Court, and (iv) the amount claimed is payable to the Plaintiff at {{PAYMENT_PLACE}} within the local limits of this Court.\n\n3. Pecuniary Jurisdiction: The suit claim is for recovery of Rs. 35,00,000/- along with interest. The suit valuation for purposes of jurisdiction is stated in the Valuation paragraph below and is within the pecuniary limits of this Hon’ble District Court.\n\n\nFACTS OF THE CASE (CHRONOLOGICAL)\n\n4. The Plaintiff and the Defendant were partners in a partnership firm in the name and style of “M/s ABC Enterprises”, carrying on the business of construction materials, inter alia at {{FIRM_PRINCIPAL_PLACE_OF_BUSINESS}}. The partnership commenced on {{PARTNERSHIP_START_DATE}}. The partnership deed, if any, is relied upon as Annexure A.\n\n5. Due to mutual differences/for business reasons, the Plaintiff and Defendant mutually agreed to dissolve the partnership firm. Accordingly, the partnership was dissolved by mutual consent on 01.06.2024 (hereinafter “Date of Dissolution”). The dissolution deed/settlement memo, if reduced into writing, is relied upon as Annexure B.\n\n6. Upon dissolution, the partners settled the accounts of the firm and agreed the manner of distribution of the assets and liabilities of the dissolved firm. In such settlement, the Defendant acknowledged that a sum of Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) is due and payable by the Defendant to the Plaintiff towards the Plaintiff’s share in the dissolved partnership firm. The written acknowledgment/settlement record (if separate) is relied upon as Annexure C.\n\n7. After 01.06.2024, the Plaintiff repeatedly demanded payment of the said sum of Rs. 35,00,000/- from the Defendant, including on {{DEMAND_DATE_1}}, {{DEMAND_DATE_2}} and thereafter. Despite repeated demands, the Defendant has failed and neglected to pay the Plaintiff the said sum and continues to wrongfully withhold the Plaintiff’s admitted share.\n\n8. The Defendant’s liability is thus a liquidated sum arising out of the settlement of accounts upon dissolution and the Defendant’s acknowledgment thereof, but remains unpaid till date.\n\n\nLEGAL BASIS AND GROUNDS\n\n9. Section 48 of the Indian Partnership Act, 1932 (user-instructed) sets out the mode of settlement of accounts between partners after dissolution, including adjustment of losses and distribution/application of the assets and surplus among the partners in their respective rights. In the present case, the partnership stood dissolved on 01.06.2024 and the accounts were settled, resulting in an admitted balance of Rs. 35,00,000/- payable to the Plaintiff as his share. The Plaintiff is therefore entitled to recover the said admitted sum from the Defendant.\n\n10. Section 69 of the Indian Partnership Act, 1932 (user-instructed) (a) does not bar the present suit because {{FIRM_REGISTRATION_STATUS_AND_PARTNERS_SHOWN}}. Without prejudice, even otherwise, the Plaintiff’s claim is founded upon settlement of accounts of a dissolved partnership and/or a post-dissolution acknowledgment/arrangement fixing the amount payable, and is maintainable under the applicable exception(s) under the Partnership Act including Section 69(3)(a), as applicable to the facts.\n\n11. Section 65 of the Indian Contract Act, 1872 (user-instructed) is pleaded without prejudice and in the alternative: if this Hon’ble Court holds that the post-dissolution settlement/arrangement recording the Plaintiff’s entitlement is unenforceable/void for any reason, then the Defendant—having retained and continued to retain the monetary benefit representing the Plaintiff’s admitted share—must restore/return the benefit so retained to the Plaintiff.\n\n12. The Plaintiff is entitled to interest. The Plaintiff claims interest at 12% per annum from 01.06.2024 as specifically instructed, on account of the Defendant’s wrongful retention of the Plaintiff’s admitted share after dissolution/settlement, and in view of the commercial nature of the partnership business. Pendente lite and future interest are claimed under Section 34 CPC.\n\n\nCAUSE OF ACTION\n\n13. The cause of action first arose on 01.06.2024 when (i) the partnership firm was dissolved by mutual consent, (ii) the accounts were settled, and (iii) the Defendant acknowledged that Rs. 35,00,000/- is due and payable to the Plaintiff towards the Plaintiff’s share. The cause of action further accrued on {{DEMAND_DATE_1}}, {{DEMAND_DATE_2}} and on each subsequent date when the Plaintiff demanded payment and the Defendant failed/neglected to pay. The cause of action is continuing as the Defendant continues to withhold the admitted amount and the same remains unpaid as on the date of filing of this suit.\n\n\nLIMITATION\n\n14. The present suit is within limitation. The claim arises from dissolution and settlement on 01.06.2024 and is filed within the prescribed period of limitation (three years from the Date of Dissolution/settlement, as applicable). The Plaintiff is filing the suit on {{FILING_DATE}}, which is within the said limitation period. (Specific Limitation Act entry, if required, may be stated as Article {{LIMITATION_ARTICLE}}.)\n\n\nVALUATION AND COURT FEE\n\n15. The suit is valued for the purposes of court fee at Rs. {{SUIT_VALUATION_FOR_COURT_FEE}} being the principal sum of Rs. 35,00,000/- together with pre-suit interest computed from 01.06.2024 up to {{FILING_DATE}} (as applicable under the court-fees law of the State). The suit is valued for the purposes of jurisdiction at Rs. {{SUIT_VALUATION_FOR_JURISDICTION}}.\n\n16. The requisite court fee is paid/shall be paid as per the applicable Court Fees and Suits Valuation Act and rules and is stated as {{COURT_FEE_AMOUNT}}.\n\n\nINTEREST\n\n17. The Plaintiff claims:\n\n(a) Pre-suit interest at 12% per annum on Rs. 35,00,000/- from 01.06.2024 (Date of Dissolution/settlement) to {{FILING_DATE}};\n\n(b) Pendente lite interest under Section 34 CPC at 12% per annum on Rs. 35,00,000/- from {{FILING_DATE}} till the date of decree; and\n\n(c) Future interest under Section 34 CPC at such rate (up to 12% per annum as claimed) as this Hon’ble Court deems fit, from the date of decree till realization.\n\n\nPRAYER\n\nIn the above facts and circumstances, the Plaintiff prays that this Hon’ble Court may be pleased to:\n\n(a) Pass a decree directing the Defendant to pay the Plaintiff a sum of Rs. 35,00,000/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only), being the Plaintiff’s admitted share payable upon dissolution of M/s ABC Enterprises;\n\n(b) Award pre-suit interest at 12% per annum on Rs. 35,00,000/- from 01.06.2024 to {{FILING_DATE}};\n\n(c) Award pendente lite interest under Section 34 CPC at 12% per annum on Rs. 35,00,000/- from {{FILING_DATE}} till the date of decree;\n\n(d) Award future interest under Section 34 CPC at such rate as this Hon’ble Court deems fit (up to 12% per annum as claimed) from the date of decree till realization;\n\n(e) Award costs of the suit; and\n\n(f) Grant such other and further relief(s) as this Hon’ble Court may deem fit and proper in the facts and circumstances of the case.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\n1. Partnership Deed of M/s ABC Enterprises dated {{PARTNERSHIP_DEED_DATE}} (if any) — Annexure A.\n2. Dissolution Deed / Mutual Dissolution Memo / Settlement Record dated 01.06.2024 (if any) — Annexure B.\n3. Acknowledgment/Admission by Defendant of amount due of Rs. 35,00,000/- dated {{ACK_DATE}} (if separate) — Annexure C.\n4. Any written demand/notice and proof of service, if issued — Annexure D.\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 8 and 13 to 16 are true and correct to my personal knowledge, and the contents of paragraphs 9 to 12 and 17 are based on legal advice which I believe to be true, and that nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+          "placeholders_used": [
+            {
+              "key": "COURT_NAME",
+              "reason": "Court name not provided"
+            },
+            {
+              "key": "COURT_PLACE",
+              "reason": "Filing location not provided"
+            },
+            {
+              "key": "SUIT_NUMBER",
+              "reason": "To be assigned by registry"
+            },
+            {
+              "key": "SUIT_YEAR",
+              "reason": "To be assigned/entered"
+            },
+            {
+              "key": "CLAIM_AMOUNT_WORDS",
+              "reason": "Amount in words not provided"
+            },
+            {
+              "key": "PLAINTIFF_NAME",
+              "reason": "Client name not provided"
+            },
+            {
+              "key": "PLAINTIFF_AGE",
+              "reason": "Client age not provided"
+            },
+            {
+              "key": "PLAINTIFF_OCCUPATION",
+              "reason": "Client occupation not provided"
+            },
+            {
+              "key": "PLAINTIFF_ADDRESS",
+              "reason": "Client address not provided"
+            },
+            {
+              "key": "DEFENDANT_NAME",
+              "reason": "Opposite party name not provided"
+            },
+            {
+              "key": "DEFENDANT_AGE",
+              "reason": "Opposite party age not provided"
+            },
+            {
+              "key": "DEFENDANT_OCCUPATION",
+              "reason": "Opposite party occupation not provided"
+            },
+            {
+              "key": "DEFENDANT_ADDRESS",
+              "reason": "Opposite party address not provided"
+            },
+            {
+              "key": "FIRM_PRINCIPAL_PLACE_OF_BUSINESS",
+              "reason": "Firm business place not specified"
+            },
+            {
+              "key": "DISSOLUTION_SETTLEMENT_PLACE",
+              "reason": "Place of dissolution/settlement not specified"
+            },
+            {
+              "key": "PAYMENT_PLACE",
+              "reason": "Place where payment is payable/receivable not specified"
+            },
+            {
+              "key": "PARTNERSHIP_START_DATE",
+              "reason": "Partnership commencement date not provided"
+            },
+            {
+              "key": "PARTNERSHIP_DEED_DATE",
+              "reason": "Partnership deed date not provided/unknown"
+            },
+            {
+              "key": "DEMAND_DATE_1",
+              "reason": "Specific demand dates not provided"
+            },
+            {
+              "key": "DEMAND_DATE_2",
+              "reason": "Specific demand dates not provided"
+            },
+            {
+              "key": "FIRM_REGISTRATION_STATUS_AND_PARTNERS_SHOWN",
+              "reason": "Whether firm is registered and whether partners are shown in Register not provided; required for Section 69 pleading"
+            },
+            {
+              "key": "FILING_DATE",
+              "reason": "Filing date not provided"
+            },
+            {
+              "key": "LIMITATION_ARTICLE",
+              "reason": "Specific Limitation Act article not verified for this exact framing; to be confirmed"
+            },
+            {
+              "key": "SUIT_VALUATION_FOR_COURT_FEE",
+              "reason": "Depends on jurisdictional court-fee law and whether pre-suit interest is included; not provided"
+            },
+            {
+              "key": "SUIT_VALUATION_FOR_JURISDICTION",
+              "reason": "Depends on local practice for jurisdiction valuation; not provided"
+            },
+            {
+              "key": "COURT_FEE_AMOUNT",
+              "reason": "Jurisdiction-specific court fee rate not provided; must be computed under applicable State Act"
+            },
+            {
+              "key": "ACK_DATE",
+              "reason": "Date of acknowledgment not provided"
+            },
+            {
+              "key": "ADVOCATE_NAME",
+              "reason": "Counsel name not provided"
+            },
+            {
+              "key": "ADVOCATE_ENROLLMENT",
+              "reason": "Counsel enrollment not provided"
+            }
+          ],
+          "citations_used": [
+            "Section 26, Code of Civil Procedure, 1908",
+            "Section 34, Code of Civil Procedure, 1908",
+            "Order VI Rule 15, Code of Civil Procedure, 1908",
+            "Section 48, Indian Partnership Act, 1932",
+            "Section 69, Indian Partnership Act, 1932",
+            "Section 69(3)(a), Indian Partnership Act, 1932",
+            "Section 65, Indian Contract Act, 1872"
+          ]
+        }
+      ]
+    }
+  },
+  "review_count": 1
+}

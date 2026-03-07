@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SectionTemplate",
+  "description": "Schema for legal document template JSON files",
+  "type": "object",
+  "required": ["template_id", "template_version", "doc_type", "law_domain", "party_labels", "sections"],
+  "properties": {
+    "template_id": {
+      "type": "string",
+      "description": "Unique template identifier, e.g. civil/money_recovery_plaint"
+    },
+    "template_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Schema version for compatibility check"
+    },
+    "doc_type": {
+      "type": "string",
+      "description": "Document type this template handles"
+    },
+    "law_domain": {
+      "type": "string",
+      "enum": ["Civil", "Criminal", "Family", "Corporate", "IP", "Constitutional", "Other"]
+    },
+    "party_labels": {
+      "type": "object",
+      "required": ["primary", "opposite"],
+      "properties": {
+        "primary": { "type": "string" },
+        "opposite": { "type": "string" }
+      }
+    },
+    "annexure_scheme": {
+      "type": "object",
+      "description": "Maps annexure labels to evidence types",
+      "additionalProperties": { "type": "string" }
+    },
+    "placeholder_dates": {
+      "type": "object",
+      "description": "Maps placeholder names to descriptions",
+      "additionalProperties": { "type": "string" }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/section"
+      }
+    }
+  },
+  "definitions": {
+    "section": {
+      "type": "object",
+      "required": ["section_id", "heading", "type"],
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "description": "Stable internal section ID for cross-refs"
+        },
+        "heading": {
+          "type": "string",
+          "description": "Display heading for this section"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["template", "template_with_fill", "llm_fill"],
+          "description": "template=no LLM, template_with_fill=light LLM, llm_fill=full LLM"
+        },
+        "body": {
+          "type": "string",
+          "description": "Static body text (for template type)"
+        },
+        "instruction": {
+          "type": "string",
+          "description": "LLM instruction for generating this section"
+        },
+        "context_keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "State fields this section needs access to"
+        },
+        "rag_query": {
+          "type": ["string", "null"],
+          "description": "RAG retrieval strategy: null, from_enrichment, or a query string"
+        },
+        "must_include": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/must_include_item"
+          },
+          "description": "Validation checks for section output"
+        },
+        "allowed_entities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Entity categories allowed in this section"
+        },
+        "allow_claimed_amounts": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this section can introduce claimed (non-intake) amounts"
+        },
+        "context_budget": {
+          "type": "integer",
+          "description": "Max tokens of context to send for this section"
+        }
+      }
+    },
+    "must_include_item": {
+      "type": "object",
+      "required": ["type", "match"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["keyword", "regex", "concept", "evidence_anchor"]
+        },
+        "match": {
+          "type": "string",
+          "description": "Pattern to match against section text"
+        },
+        "required": {
+          "type": "boolean",
+          "default": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of what this checks"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "query": "Draft a commercial suit seeking damages for illegal termination of dealership agreement. Plaintiff invested substantial capital and developed territory market. Termination was arbitrary and contrary to agreement terms. Claim compensation for loss of profit, goodwill and unsold stock. Draft with proper breach of contract pleadings.",
+  "timestamp": "20260305_232954",
+  "pipeline_time_s": 381.3,
+  "stage0_time_ms": 0.2,
+  "gates_time_ms": 7.7,
+  "draft_length_chars": 22404,
+  "draft_length_words": 3239,
+  "source": "final_draft",
+  "accuracy": {
+    "score": 9.7,
+    "passed": 30,
+    "total": 31,
+    "checks": {
+      "[STRUCT] Court heading (Commercial/District)": true,
+      "[STRUCT] Parties identified": true,
+      "[STRUCT] Jurisdiction section": true,
+      "[STRUCT] Facts of the case section": true,
+      "[STRUCT] Legal basis section": true,
+      "[STRUCT] Cause of action section": true,
+      "[STRUCT] Prayer section": true,
+      "[STRUCT] Verification clause": true,
+      "[STRUCT] Advocate block": true,
+      "[STRUCT] Valuation and court fee": true,
+      "[LEGAL] Breach of contract pleaded": true,
+      "[LEGAL] Section 73 ICA (damages)": true,
+      "[LEGAL] Section 39 ICA (repudiation)": true,
+      "[LEGAL] Dealership/franchise agreement": true,
+      "[LEGAL] Illegal/wrongful termination": true,
+      "[LEGAL] Loss of profit claimed": true,
+      "[LEGAL] Goodwill damages claimed": true,
+      "[LEGAL] Unsold stock claimed": true,
+      "[LEGAL] Capital investment mentioned": true,
+      "[LEGAL] Territory/market development": true,
+      "[LEGAL] Limitation article cited or placeholder": true,
+      "[LEGAL] No fabricated case citations": true,
+      "[LEGAL] Annexure labels present": true,
+      "[COMMERCIAL] Section 12A / pre-institution mediation": true,
+      "[COMMERCIAL] Statement of Truth": true,
+      "[COMMERCIAL] Damages particulars/schedule": true,
+      "[QUALITY] Continuous paragraph numbering": true,
+      "[QUALITY] Interest claimed": true,
+      "[QUALITY] Costs claimed": true,
+      "[QUALITY] Mitigation mentioned": false,
+      "[QUALITY] No and/or usage": true
+    }
+  },
+  "v7_gates": {
+    "complexity": {
+      "score": 7,
+      "tier": "MEDIUM"
+    },
+    "model_route": {
+      "model": "qwen3.5:cloud",
+      "tier": "MEDIUM",
+      "temperature": 0.7,
+      "source": "tier"
+    },
+    "theory_anchoring": {
+      "passed": false,
+      "theories_found": [
+        "unjust_enrichment",
+        "breach_of_contract",
+        "damages_s73",
+        "damages_s74",
+        "repudiatory_breach_s39",
+        "part_performance",
+        "waiver"
+      ],
+      "theories_anchored": [
+        "breach_of_contract",
+        "damages_s73",
+        "repudiatory_breach_s39",
+        "waiver"
+      ],
+      "theories_unanchored": [
+        "unjust_enrichment",
+        "damages_s74",
+        "part_performance"
+      ],
+      "flags": [
+        "UNANCHORED_THEORY: unjust_enrichment",
+        "UNANCHORED_THEORY: damages_s74",
+        "UNANCHORED_THEORY: part_performance"
+      ]
+    },
+    "procedural_prerequisites": {
+      "passed": false,
+      "checks": [
+        {
+          "id": "section_12a_mediation",
+          "description": "Section 12A pre-institution mediation (Commercial Courts Act, 2015)",
+          "found_in_intake": false,
+          "found_in_draft": true,
+          "placeholder_inserted": false
+        },
+        {
+          "id": "arbitration_clause",
+          "description": "Arbitration clause in agreement",
+          "found_in_intake": false,
+          "found_in_draft": false,
+          "placeholder_inserted": true
+        }
+      ]
+    }
+  },
+  "blocking_issues": []
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReviewFindings",
+  "description": "Schema for structured review output — claim-by-claim validation + issues",
+  "type": "object",
+  "required": ["review_pass"],
+  "properties": {
+    "review_pass": {
+      "type": "boolean",
+      "description": "True if no blocking issues found"
+    },
+    "claim_checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/claim_check"
+      },
+      "description": "Per-sentence claim validation results"
+    },
+    "blocking_issues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/review_issue"
+      },
+      "description": "Legal defects that would cause rejection"
+    },
+    "non_blocking_issues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/review_issue"
+      },
+      "description": "Style/formatting issues"
+    }
+  },
+  "definitions": {
+    "claim_check": {
+      "type": "object",
+      "required": ["claim_text", "claim_type", "verdict"],
+      "properties": {
+        "claim_text": {
+          "type": "string",
+          "description": "Exact sentence from draft"
+        },
+        "claim_type": {
+          "type": "string",
+          "description": "payment|notice|breach|admission|agreement|refusal|no_benefit|failure_of_consideration"
+        },
+        "supported_by": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Evidence references, e.g. intake.facts.amounts.principal"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["supported", "partially_supported", "unsupported"]
+        }
+      }
+    },
+    "review_issue": {
+      "type": "object",
+      "required": ["section_id", "issue_type", "severity", "fix_instruction"],
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "description": "Must match a section ID from the template"
+        },
+        "issue_type": {
+          "type": "string",
+          "enum": [
+            "missing_provision",
+            "wrong_citation",
+            "unsupported_claim",
+            "missing_alternative_plea",
+            "annexure_mismatch",
+            "missing_mandatory_section",
+            "limitation_error",
+            "jurisdiction_incomplete",
+            "interest_structure_incomplete",
+            "verification_defective",
+            "cause_of_action_incomplete"
+          ]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["blocking", "non_blocking"]
+        },
+        "quote": {
+          "type": "string",
+          "description": "Exact substring from draft text with the issue"
+        },
+        "fix_instruction": {
+          "type": "string",
+          "description": "One imperative sentence: what to fix"
+        }
+      }
+    }
+  }
+}

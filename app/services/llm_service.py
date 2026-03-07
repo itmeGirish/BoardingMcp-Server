@@ -3,14 +3,14 @@ LLM service - centralizes model connections.
 
 This module should only build model instances.
 Agent-level model assignment lives in each agent node.
+All configuration comes from settings.py — no os.getenv() or hardcoded values.
 """
 
 from __future__ import annotations
 
-import os
 import threading
 
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from ..config import settings
 
@@ -57,35 +57,40 @@ class _LazyModel:
         return f"_LazyModel(name={self._name!r}, status={status})"
 
 
-def _env_text(name: str, default: str) -> str:
-    value = os.getenv(name, "").strip()
-    return value or default
+# ---------------------------------------------------------------------------
+# Ollama builder
+# ---------------------------------------------------------------------------
 
-
-def _env_float(name: str, default: float) -> float:
-    raw = os.getenv(name, "").strip()
-    if not raw:
-        return float(default)
-    try:
-        return float(raw)
-    except ValueError:
-        return float(default)
-
-
-def _build_ollama_model(model_name: str, temperature: float):
+def _build_ollama_model(
+    model_name: str,
+    temperature: float,
+    reasoning: bool = True,
+    format: str | None = None,
+):
     if not model_name:
         return None
     try:
         from langchain_ollama import ChatOllama
 
-        return ChatOllama(
+        kwargs = dict(
             model=model_name,
             temperature=float(temperature),
-            reasoning=True,
+            reasoning=reasoning,
         )
+        # IMPORTANT: format="json" suppresses <think> token probability to zero
+        # on Ollama (GitHub issue #10538), silently disabling chain-of-thought.
+        # When reasoning is enabled, skip format constraint — LangChain's
+        # .with_structured_output() handles JSON extraction instead.
+        if format and not reasoning:
+            kwargs["format"] = format
+        return ChatOllama(**kwargs)
     except (ImportError, Exception):
         return None
 
+
+# ---------------------------------------------------------------------------
+# OpenAI builders
+# ---------------------------------------------------------------------------
 
 def _build_openai_model():
     try:
@@ -94,6 +99,37 @@ def _build_openai_model():
             model=settings.LLM_MODEL,
             max_completion_tokens=settings.MAX_TOKENS,
         )
+    except Exception:
+        return None
+
+
+def _build_draft_openai_model():
+    """OpenAI fallback for draft node."""
+    model_name = settings.DRAFT_LLM_MODEL or settings.LLM_MODEL
+    try:
+        return ChatOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            model=model_name,
+            max_completion_tokens=settings.MAX_TOKENS,
+        )
+    except Exception:
+        return None
+
+
+def _build_review_openai_model():
+    """OpenAI fallback for review node."""
+    model_name = settings.REVIEW_LLM_MODEL or settings.LLM_MODEL
+    reasoning = settings.REVIEW_REASONING_EFFORT
+    max_tokens = settings.REVIEW_MAX_TOKENS or settings.MAX_TOKENS
+    try:
+        kwargs = dict(
+            api_key=settings.OPENAI_API_KEY,
+            model=model_name,
+            max_completion_tokens=max_tokens,
+        )
+        if reasoning:
+            kwargs["model_kwargs"] = {"reasoning_effort": reasoning}
+        return ChatOpenAI(**kwargs)
     except Exception:
         return None
 
@@ -113,6 +149,10 @@ def _build_nvidia_model():
         return None
 
 
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
 def _resolve_candidate(candidate):
     if isinstance(candidate, _LazyModel):
         return candidate.resolve_model()
@@ -127,45 +167,102 @@ def _first_available(*candidates):
     return None
 
 
-# Ollama primary + fallback models (configurable by environment variables).
-# Default model family:
-# - drafting/deep generation: kimi-k2.5:cloud
-# - routing/classification:   glm-4.7:cloud
-# - fallback:                 glm-4.6:cloud
-_primary_drafting_model = _env_text("OLLAMA_PRIMARY_MODEL", "kimi-k2.5:cloud")
-_primary_router_model = _env_text("OLLAMA_ROUTER_MODEL", "glm-4.7:cloud")
-_fallback_drafting_model = _env_text("OLLAMA_FALLBACK_MODEL", "glm-4.6:cloud")
-_fallback_router_model = _env_text("OLLAMA_ROUTER_FALLBACK_MODEL", "glm-4.6:cloud")
-
-_primary_drafting_temp = _env_float("OLLAMA_PRIMARY_TEMPERATURE", 1.0)
-_primary_router_temp = _env_float("OLLAMA_ROUTER_TEMPERATURE", 0.7)
-_fallback_drafting_temp = _env_float("OLLAMA_FALLBACK_TEMPERATURE", 0.7)
-_fallback_router_temp = _env_float("OLLAMA_ROUTER_FALLBACK_TEMPERATURE", _fallback_drafting_temp)
+# ---------------------------------------------------------------------------
+# OpenAI models (fallbacks)
+# ---------------------------------------------------------------------------
 
 openai_model = _LazyModel("openai_model", _build_openai_model)
+draft_openai_model = _LazyModel("draft_openai_model", _build_draft_openai_model)
+review_openai_model = _LazyModel("review_openai_model", _build_review_openai_model)
 nvidia_model = _LazyModel("nvidia_model", _build_nvidia_model)
 
+# ---------------------------------------------------------------------------
+# Ollama models — all config from settings.*
+# ---------------------------------------------------------------------------
+
+# Intake: qwen3.5:cloud (reasoning + JSON) → fallback glm_model → OpenAI
+intake_ollama_model = _LazyModel(
+    "intake_ollama_model",
+    lambda: _first_available(
+        _build_ollama_model(
+            settings.OLLAMA_INTAKE_MODEL,
+            settings.OLLAMA_INTAKE_TEMPERATURE,
+            reasoning=settings.OLLAMA_INTAKE_REASONING,
+            format="json",
+        ),
+        openai_model,
+    ),
+)
+
+# Draft: glm-5:cloud (reasoning, #1 intelligence) → fallback OpenAI
+# No format="json" — reasoning=True needs <think> tokens; LangChain handles JSON.
+draft_ollama_model = _LazyModel(
+    "draft_ollama_model",
+    lambda: _first_available(
+        _build_ollama_model(
+            settings.OLLAMA_DRAFT_MODEL,
+            settings.OLLAMA_DRAFT_TEMPERATURE,
+            reasoning=settings.OLLAMA_DRAFT_REASONING,
+        ),
+        draft_openai_model,
+    ),
+)
+
+# Review: qwen3.5:cloud (reasoning, low hallucination) → fallback OpenAI
+# No format="json" — reasoning=True needs <think> tokens; LangChain handles JSON.
+review_ollama_model = _LazyModel(
+    "review_ollama_model",
+    lambda: _first_available(
+        _build_ollama_model(
+            settings.OLLAMA_REVIEW_MODEL,
+            settings.OLLAMA_REVIEW_TEMPERATURE,
+            reasoning=settings.OLLAMA_REVIEW_REASONING,
+        ),
+        review_openai_model,
+    ),
+)
+
+# Fallback models
 ollma_fallback_model = _LazyModel(
     "ollma_fallback_model",
-    lambda: _build_ollama_model(_fallback_drafting_model, _fallback_drafting_temp),
+    lambda: _build_ollama_model(
+        settings.OLLAMA_FALLBACK_MODEL,
+        settings.OLLAMA_FALLBACK_TEMPERATURE,
+        reasoning=settings.OLLAMA_DRAFTING_REASONING,
+    ),
 )
 glm_fallback_model = _LazyModel(
     "glm_fallback_model",
-    lambda: _build_ollama_model(_fallback_router_model, _fallback_router_temp),
+    lambda: _build_ollama_model(
+        settings.OLLAMA_ROUTER_FALLBACK_MODEL,
+        settings.OLLAMA_ROUTER_FALLBACK_TEMPERATURE,
+        reasoning=settings.OLLAMA_ROUTER_REASONING,
+    ),
 )
 
+# General-purpose Ollama: glm-5:cloud → fallback chain → OpenAI
 ollma_model = _LazyModel(
     "ollma_model",
     lambda: _first_available(
-        _build_ollama_model(_primary_drafting_model, _primary_drafting_temp),
+        _build_ollama_model(
+            settings.OLLAMA_PRIMARY_MODEL,
+            settings.OLLAMA_PRIMARY_TEMPERATURE,
+            reasoning=settings.OLLAMA_DRAFTING_REASONING,
+        ),
         ollma_fallback_model,
         openai_model,
     ),
 )
+
+# Router: glm-4.7:cloud → fallback chain → OpenAI
 glm_model = _LazyModel(
     "glm_model",
     lambda: _first_available(
-        _build_ollama_model(_primary_router_model, _primary_router_temp),
+        _build_ollama_model(
+            settings.OLLAMA_ROUTER_MODEL,
+            settings.OLLAMA_ROUTER_TEMPERATURE,
+            reasoning=settings.OLLAMA_ROUTER_REASONING,
+        ),
         glm_fallback_model,
         ollma_fallback_model,
         openai_model,
@@ -175,9 +272,19 @@ glm_model = _LazyModel(
 
 __all__ = [
     "openai_model",
+    "draft_openai_model",
+    "draft_ollama_model",
+    "review_openai_model",
+    "review_ollama_model",
     "nvidia_model",
     "ollma_model",
     "glm_model",
     "ollma_fallback_model",
     "glm_fallback_model",
+    "embeddings_model",
 ]
+
+embeddings_model = OpenAIEmbeddings(
+    api_key=settings.OPENAI_API_KEY,
+    model=settings.embeddings_model_name,
+)

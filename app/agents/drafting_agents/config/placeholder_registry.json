@@ -1,0 +1,153 @@
+{
+  "_version": "1.0",
+  "_description": "Canonical placeholder names + alias normalization. Section validator and postprocess use this to ensure consistent placeholder usage.",
+
+  "placeholders": {
+    "PLAINTIFF_NAME": {
+      "description": "Full name of the plaintiff/petitioner/applicant",
+      "aliases": ["PETITIONER_NAME", "APPLICANT_NAME", "COMPLAINANT_NAME"]
+    },
+    "PLAINTIFF_AGE": {
+      "description": "Age of the plaintiff",
+      "aliases": ["PETITIONER_AGE", "APPLICANT_AGE"]
+    },
+    "PLAINTIFF_OCCUPATION": {
+      "description": "Occupation of the plaintiff",
+      "aliases": ["PETITIONER_OCCUPATION"]
+    },
+    "PLAINTIFF_ADDRESS": {
+      "description": "Residential address of the plaintiff",
+      "aliases": ["PETITIONER_ADDRESS", "APPLICANT_ADDRESS"]
+    },
+    "DEFENDANT_NAME": {
+      "description": "Full name of the defendant/respondent/opposite party",
+      "aliases": ["RESPONDENT_NAME", "OPPOSITE_PARTY_NAME", "ACCUSED_NAME"]
+    },
+    "DEFENDANT_AGE": {
+      "description": "Age of the defendant",
+      "aliases": ["RESPONDENT_AGE"]
+    },
+    "DEFENDANT_OCCUPATION": {
+      "description": "Occupation of the defendant",
+      "aliases": ["RESPONDENT_OCCUPATION"]
+    },
+    "DEFENDANT_ADDRESS": {
+      "description": "Residential address of the defendant",
+      "aliases": ["RESPONDENT_ADDRESS", "OPPOSITE_PARTY_ADDRESS"]
+    },
+    "COURT_NAME": {
+      "description": "Full name of the court",
+      "aliases": ["HONBLE_COURT"]
+    },
+    "COURT_PLACE": {
+      "description": "Place/city where the court is located",
+      "aliases": ["COURT_CITY", "COURT_LOCATION"]
+    },
+    "SUIT_NUMBER": {
+      "description": "Civil Suit number (assigned by court)",
+      "aliases": ["OS_NUMBER", "CASE_NUMBER"]
+    },
+    "SUIT_YEAR": {
+      "description": "Year of suit filing",
+      "aliases": ["CASE_YEAR"]
+    },
+    "CLAIM_AMOUNT": {
+      "description": "Principal amount claimed",
+      "aliases": ["PRINCIPAL_AMOUNT", "SUIT_AMOUNT"]
+    },
+    "CLAIM_AMOUNT_WORDS": {
+      "description": "Principal amount in words",
+      "aliases": ["AMOUNT_IN_WORDS"]
+    },
+    "INTEREST_RATE": {
+      "description": "Rate of interest claimed (percent per annum)",
+      "aliases": ["RATE_OF_INTEREST"]
+    },
+    "INTEREST_AMOUNT": {
+      "description": "Calculated interest amount",
+      "aliases": ["PRE_SUIT_INTEREST"]
+    },
+    "COURT_FEE_AMOUNT": {
+      "description": "Court fee payable",
+      "aliases": ["COURT_FEES"]
+    },
+    "VALUATION_AMOUNT": {
+      "description": "Suit valuation for jurisdiction and court fee",
+      "aliases": ["SUIT_VALUATION"]
+    },
+    "ADVANCE_PAYMENT_DATE": {
+      "description": "Date when advance/payment was made",
+      "aliases": ["PAYMENT_DATE", "TRANSACTION_DATE"]
+    },
+    "DEFAULT_DATE": {
+      "description": "Date when defendant failed to perform/repay",
+      "aliases": ["BREACH_DATE", "FAILURE_DATE"]
+    },
+    "NOTICE_DATE": {
+      "description": "Date when legal notice was sent",
+      "aliases": ["LEGAL_NOTICE_DATE"]
+    },
+    "NOTICE_REPLY_DATE": {
+      "description": "Date when reply to notice was received (if any)",
+      "aliases": []
+    },
+    "AGREEMENT_DATE": {
+      "description": "Date of the agreement/contract",
+      "aliases": ["CONTRACT_DATE"]
+    },
+    "CAUSE_OF_ACTION_DATE": {
+      "description": "Date when cause of action arose",
+      "aliases": ["COA_DATE"]
+    },
+    "FILING_DATE": {
+      "description": "Date of filing the suit/petition",
+      "aliases": []
+    },
+    "LIMITATION_ARTICLE": {
+      "description": "Article number of the Limitation Act Schedule",
+      "aliases": []
+    },
+    "LIMITATION_PERIOD": {
+      "description": "Limitation period (e.g., 'three years')",
+      "aliases": []
+    },
+    "CHEQUE_NO": {
+      "description": "Cheque number",
+      "aliases": ["CHEQUE_NUMBER"]
+    },
+    "CHEQUE_DATE": {
+      "description": "Date on the cheque",
+      "aliases": []
+    },
+    "CHEQUE_AMOUNT": {
+      "description": "Amount on the cheque",
+      "aliases": []
+    },
+    "BANK_NAME": {
+      "description": "Name of the bank (drawee bank)",
+      "aliases": ["DRAWEE_BANK"]
+    },
+    "UTR_NUMBER": {
+      "description": "UTR/transaction reference number",
+      "aliases": ["TRANSACTION_REF", "NEFT_REF"]
+    },
+    "ADVOCATE_NAME": {
+      "description": "Name of the advocate",
+      "aliases": ["COUNSEL_NAME"]
+    },
+    "ADVOCATE_ENROLLMENT": {
+      "description": "Enrollment number of the advocate",
+      "aliases": ["BAR_ENROLLMENT"]
+    },
+    "WITNESS_NAME": {
+      "description": "Name of a witness",
+      "aliases": []
+    },
+    "PROPERTY_DESCRIPTION": {
+      "description": "Description of the property (address, survey number, etc.)",
+      "aliases": ["SCHEDULE_PROPERTY"]
+    }
+  },
+
+  "alias_map": {}
+}

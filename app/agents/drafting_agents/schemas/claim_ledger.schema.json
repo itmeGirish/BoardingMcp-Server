@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClaimLedger",
+  "description": "Schema for per-section claim ledger output from section drafter",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["claim_type"],
+    "properties": {
+      "claim_type": {
+        "type": "string",
+        "enum": [
+          "payment",
+          "notice",
+          "breach",
+          "admission",
+          "agreement",
+          "refusal",
+          "receipt",
+          "no_benefit",
+          "failure_of_consideration",
+          "continuing_cause",
+          "acknowledgment",
+          "confession",
+          "demand",
+          "delivery",
+          "service",
+          "occupation",
+          "possession",
+          "damage",
+          "injury"
+        ],
+        "description": "Type of factual claim"
+      },
+      "entities": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Entity names used in this claim"
+      },
+      "dates": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Dates or date placeholders used"
+      },
+      "evidence_refs": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Annexure labels referenced for this claim"
+      }
+    }
+  }
+}

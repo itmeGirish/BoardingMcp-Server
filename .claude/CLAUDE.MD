@@ -1,423 +1,271 @@
-# Legal Drafting Agent — Hardened Multi-Agent System (LangGraph)
+# Legal Drafting Agent — v5.1 (running) | v8.4 (target)
 
-Version: 2.0  
-Runtime: Python + LangGraph  
-Database: PostgreSQL 14+  (Running in docker)
-Output: Court-ready Draft text
+Version: 5.1 (active pipeline) | 8.4 (target architecture)
+Runtime: Python 3.11+ | LangGraph | Qdrant | PostgreSQL 14+ | Ollama Cloud
+Target: 9.5/10 | 2 LLM calls (clean draft) | Court-ready Indian legal documents
 
-# reffernce 
-Use app\agents\whatsp_agents broadcasting agent for building Multi agent
-
-already agent is built check where they reach correct requirements
-
-use ollama model:
-reffernce app\services\llm_service.py 
-
-
-Go for legal drafting workflow
-before starting .claude\skills\legal-drafting-workflow\SKILL.md
-
-check where the requirements in workflow is full filled or not,if not there plan to implement
----
-
-
-## 1. Purpose
-
-Build a court-grade legal drafting system that generates structured legal drafts with:
-
-- zero hallucination tolerance
-- verified citations only (RAG/DB-backed)
-- mistake-rule learning with anti-pollution staging + promotion
-- full workflow audit trail and replay support
+Full target architecture: `docs/architecture_drafting_agent_v8.4.md`
 
 ---
 
-## 2. Global Hard Rules (Non-Negotiable)
+## 1. Design Philosophy (8 Principles)
 
-### 2.1 Zero Hallucination Policy
-Agents must not invent facts. Every factual claim must be:
-- extracted from uploaded documents, OR
-- user-provided, OR
-- validated with confidence ≥ 0.75
+1. **Verify, Don't Hope** — every claim traceable to source or flagged as placeholder
+2. **Deterministic > LLM** — formatting, citations, compliance, court fees = deterministic. Only intake, drafting, review use LLM
+3. **Generate First, Validate After** — LLM drafts freely, gates validate output
+4. **Minimize Cloud Dependency** — 2 LLM calls for clean drafts. Cache aggressively
+5. **Graceful Degradation, Never Block** — missing facts -> `{{PLACEHOLDER}}`, enrichment fails -> `UNKNOWN`, model throttled -> fallback chain
+6. **Few-Shot > Exhaustive Rules** — one exemplar > 50 rules. Max 5 system instructions
+7. **Measure Everything** — every document produces structured metrics
+8. **Privacy by Default** — PII redacted before cloud calls, de-redacted after gates
 
-If required facts are missing → workflow must pause for clarification.
-
-### 2.2 Citation Policy
-Citations must only come from verified sources stored in database/RAG.
-
-Any citation without:
-- verified=true
-- valid verification_hash  
-must be discarded.
-
-### 2.3 Mistake Rule Anti-Pollution Policy
-Rules must never be written directly into `mistake_rules_main`.
-
-All extracted candidate rules must go into `staging_rules`.
-
-Promotion requires:
-- severity medium/high
-- appears in ≥ 3 distinct cases
-- not case-specific
-- not contradictory
-
-### 2.4 Hard Stop Conditions
-Workflow must stop and request clarification if:
-- jurisdiction (state/city) missing
-- classifier conflict unresolved
-- unverified facts remain
-- limitation date required but missing
-- hard_blocks exist in merged context
+When principles conflict, lower-numbered wins.
 
 ---
 
-## 3. Workflow Pipeline (18 Steps)
+## 2. Pipeline (v5.1 — what's actually running)
 
-Step 0  → Raw Input Collection  
-Step 1  → Security + Normalization (NO LLM)  
-Step 2  → Supervisor Intake / Fact Extraction (LLM)  
-Step 3  → Fact Validation Gate (NO LLM)  
-Step 4A → Rule Classifier (NO LLM)  
-Step 4B → LLM Classifier (LLM)  
-Step 4C → Route Resolver (NO LLM)  
-Step 5  → Clarification Handler (STOP IF REQUIRED)  
-Step 6  → Mistake Rules Fetch (Main DB)  
-Step 7  → Template Pack Agent (LLM)  
-Step 8  → Parallel Agents: Compliance + Localization + Prayer  
-Step 9  → Optional Agents: Research + Citation  
-Step 10 → Citation Validation Gate (NO LLM)  
-Step 11 → Context Merge + Conflict Resolver (NO LLM)  
-Step 12 → Drafting Agent (LLM)  
-Step 13 → Quality Agent (LLM)  
-Step 14 → Store Candidate Rules (Staging DB)  
-Step 15 → Promotion Gate (NO LLM)  
-Step 16 → Update Main Mistake DB (NO LLM)  
-Step 17 → Promotion Logging (NO LLM)  
-Step 18 → Export Engine (NO LLM)
+```
+STAGE 1: CONTEXT GATHERING (~12-15s, 1 LLM call)
+  intake_classify (1 LLM) -> rag (4 Qdrant queries) -> enrichment (limitation + provisions + LKB + court_fee parallel)
+
+STAGE 2: FREE-TEXT DRAFTING (~30-50s, 1 LLM call)
+  draft_freetext: exemplar-guided, LKB-informed, outputs complete court-ready document
+
+STAGE 3: DETERMINISTIC VALIDATION (~0.1s, zero LLM calls)
+  Gate 1: evidence_anchoring (facts -> intake)
+  Gate 2: lkb_compliance (acts, superseded laws)
+  Gate 3: postprocess (formatting, numbering, spacing)
+  Gate 4: citation_validator (provisions -> verified_provisions)
+
+STAGE 4: REVIEW (~40-70s, 1 LLM call — slim payload)
+  Slim context: draft text + gate errors + user request only (~7K tokens)
+  Phase 1: checks | Phase 2: inline fix -> END
+
+TOTAL: 2-3 LLM calls | ~60-120s end-to-end
+```
 
 ---
 
-## 4. Skills (Claude Skill Format)
+## 3. Data Stores
 
-All agents are defined as Skills with:
-- clear input/output JSON contracts
-- restrictions
-- failure conditions
+### Active Stores
+- **LKB v3.0** — 24 cause types with conditional resolution fields (`_type: "conditional"`)
+- **Qdrant** — vector search, ~12,394 points, `civil` collection
+- **Exemplars** — structural exemplars per cause type (~1,500 tokens each)
+- **Cause-type aliases** — `_CAUSE_TYPE_ALIASES` in LKB for fuzzy cause_type matching
 
----
-
-# SKILL: supervisor_intake
----
-name: supervisor_intake
-description: Extract structured case facts from user input and uploaded documents.
-model: kimi-k2.5
-output_schema: schemas/MASTER_FACTS.schema.json
----
-
-## Responsibilities
-- extract parties and roles
-- extract timeline events
-- extract legal issues
-- detect missing mandatory fields (jurisdiction, limitation date, court type)
-- assign confidence score per extracted fact
-- attach source_doc_id for every extracted fact
-
-## Constraints
-- must not invent facts
-- if a fact has no source_doc_id → confidence must be < 0.75
-- if jurisdiction missing → mark hard_block=true
-
-## Output
-Writes `MASTER_FACTS.json`
+### Planned (v8.4)
+- **statute_store** — authoritative statutory sections for citation validation
+- **court_fee_pack** — curated state-wise court fee rules
+- **agent_cache** — L1 in-process + L2 PostgreSQL
 
 ---
 
-# SKILL: classifier_agent
----
-name: classifier_agent
-description: Classify case type and draft routing metadata.
-model: glm-4.7
-output_schema: schemas/LLM_CLASSIFY_OUTPUT.schema.json
----
+## 4. Model Assignment (current)
 
-## Responsibilities
-- classify legal_domain
-- classify court_type
-- classify proceeding_type
-- detect draft language + style
+| Node | Model | Reasoning | Temp | When |
+|------|-------|-----------|------|------|
+| intake_classify | qwen3.5:cloud | OFF | 0.3 | Always |
+| enrichment (limitation) | glm-4.7:cloud | OFF | 0.3 | Cache miss only |
+| draft | glm-5:cloud | ON | 0.7 | Always |
+| review | glm-5:cloud | ON | 0.3 | When gates flag issues |
 
-## Constraints
-- must return confidence per classification label
-- must not override rule_classifier output directly
+### Fallback Chain
+```
+glm-5:cloud    -> glm-4.6:cloud -> OpenAI (REVIEW_LLM_MODEL)
+qwen3.5:cloud  -> glm-4.6:cloud -> OpenAI
+All cloud down  -> draft skeleton with all placeholders
+```
 
-## Output
-Writes `LLM_CLASSIFY_OUTPUT.json`
-
----
-
-# SKILL: compliance_agent
----
-name: compliance_agent
-description: Validate limitation, annexures, affidavit requirements, and statutory compliance.
-model: glm-4.7
-output_schema: schemas/COMPLIANCE_REPORT.schema.json
----
-
-## Responsibilities
-- limitation check
-- mandatory annexure list
-- affidavit requirements
-- missing mandatory sections
-
-## Constraints
-- must not assume limitation dates
-- if limitation unknown → mark needs_clarification=true
-
-## Output
-Writes `COMPLIANCE_REPORT.json`
+### Router/Enrichment
+```
+OLLAMA_ROUTER_MODEL: glm-4.7:cloud (classification, routing)
+OLLAMA_INTAKE_MODEL: qwen3.5:cloud (intake+classify)
+OLLAMA_DRAFT_MODEL: glm-5:cloud (draft node)
+OLLAMA_REVIEW_MODEL: glm-5:cloud (review node)
+```
 
 ---
 
-# SKILL: localization_agent
----
-name: localization_agent
-description: Apply court and state-specific formatting conventions.
-model: glm-4.7
-output_schema: schemas/LOCAL_RULES.schema.json
----
+## 5. Verification Gates (4 gates, zero LLM)
 
-## Responsibilities
-- heading and court format rules
-- verification clause formatting
-- annexure style conventions
-- date formatting rules
-
-## Constraints
-- must require state/city in input context
-- if state missing → mark hard_block=true
-
-## Output
-Writes `LOCAL_RULES.json`
+| Gate | What it checks | Auto-fix? |
+|------|---------------|-----------|
+| Evidence Anchoring | Every fact traces to intake | Yes (tokens -> placeholder) |
+| LKB Compliance | Primary acts cited, superseded law auto-replace | Yes (superseded) |
+| Postprocess | Paragraph numbering, annexure labels, verification clause, spacing | Yes |
+| Citation Validator | Every citation in verified_provisions | Flag only |
 
 ---
 
-# SKILL: prayer_agent
----
-name: prayer_agent
-description: Generate prayer/relief pack based on extracted facts and proceeding type.
-model: glm-4.7
-output_schema: schemas/PRAYER_PACK.schema.json
----
+## 6. LKB v3.0 (with Conditional Resolution + Aliases)
 
-## Responsibilities
-- primary relief
-- alternative relief
-- interim relief
-- costs clause
+```python
+from app.agents.drafting_agents.lkb import lookup
+entry = lookup("Civil", "recovery_of_possession")
+# Returns: primary_acts, alternative_acts, limitation (conditional),
+#          court_rules, damages_categories, permitted_doctrines,
+#          terminology (conditional), mandatory_averments,
+#          doc_type_keywords, coa_guidance
 
-## Constraints
-- must align with proceeding_type
-- must not include relief not supported by facts
+# Aliases resolve near-misses:
+# "property_law" -> "recovery_of_possession"
+# "money_recovery" -> "money_recovery_loan"
+# "breach_contract" -> "breach_of_contract"
 
-## Output
-Writes `PRAYER_PACK.json`
-
----
-
-# SKILL: research_agent
----
-name: research_agent
-description: Generate legal principles and argument framework (no fabricated citations).
-model: kimi-k2.5
-output_schema: schemas/RESEARCH_BUNDLE.schema.json
----
-
-## Trigger
-Run only if proceeding_type in:
-- writ petition
-- quash
-- bail
-- appeal
-- revision
-
-## Responsibilities
-- statute framework
-- legal principles summary
-- argument structure
-- possible grounds
-
-## Constraints
-- must not output fake citations
-- must not output case numbers unless provided by verified DB
-
-## Output
-Writes `RESEARCH_BUNDLE.json`
+# Conditional fields resolved at runtime:
+from app.agents.drafting_agents.lkb import resolve_entry
+resolved = resolve_entry(entry, user_request_text)
+# Flattens _type:"conditional" fields using keyword inference
+```
 
 ---
 
-# SKILL: citation_agent
----
-name: citation_agent
-description: Retrieve verified citations from database/RAG only.
-model: kimi-k2.5
-output_schema: schemas/CITATION_PACK.schema.json
----
+## 7. Review Node (Slim Payload)
 
-## Trigger
-Run only if:
-- verified_citations DB exists
-- research_agent executed
-- workflow_route.agents_required includes citation_agent
+Review receives only:
+- **Draft text** (~3K tokens) — plain text, not JSON
+- **Gate errors summary** (~200 tokens) — compact, from deterministic gates
+- **User request** (~200 tokens) — for fact fabrication check
+- **doc_type + law_domain** (~10 tokens)
 
-## Responsibilities
-- retrieve citations relevant to research bundle
-- return only verified citations with verification_hash
+**Total context: ~3.5K tokens** (was ~15K before pruning)
 
-## Constraints
-- must not fabricate citations
-- must return empty list if none found
-
-## Output
-Writes `CITATION_PACK.json`
+Review does NOT receive: RAG chunks, court fee context, legal research context, cited chunk IDs. Gates already verified all of that deterministically.
 
 ---
 
-# SKILL: drafting_agent
----
-name: drafting_agent
-description: Draft full legal document using merged verified context.
-model: kimi-k2.5
-output_schema: schemas/DRAFT_V1.schema.json
----
+## 8. Settings Pattern
 
-## Responsibilities
-- follow template pack strictly
-- insert prayers
-- apply localization formatting
-- insert compliance annexure list
-- preserve placeholders for missing required data
+- Always use `settings.FIELD_NAME` from `from app.config import settings`
+- NEVER use `os.getenv()` or `load_dotenv()`
+- Import: `from app.config import logger, settings`
 
-## Constraints
-- must not invent facts
-- missing data must remain as placeholders like: {{MISSING_FIELD}}
+### Key Settings
+```
+# Pipeline control
+DRAFTING_MAX_REVIEW_CYCLES: int = 1
+DRAFTING_REVIEW_INLINE_FIX: bool = True
+DRAFTING_DRAFT_RAG_LIMIT: int = 15
+DRAFTING_REVIEW_RAG_LIMIT: int = 5
+DRAFTING_CITATION_VALIDATOR_ENABLED: bool = True
+DRAFTING_SKIP_REVIEW: bool = False
+TEMPLATE_ENGINE_ENABLED: bool = False  # v8.1 template engine (not active)
 
-## Output
-Writes `DRAFT_V1.json`
+# Model config (in settings.py, overridable via .env)
+OLLAMA_ROUTER_MODEL: str = "glm-4.7:cloud"
+OLLAMA_INTAKE_MODEL: str = "qwen3.5:cloud"
+OLLAMA_DRAFT_MODEL: str = "glm-5:cloud"
+OLLAMA_REVIEW_MODEL: str = "glm-5:cloud"
 
----
-
-# SKILL: quality_agent
----
-name: quality_agent
-description: Final QA check and generate error report + candidate mistake rules.
-model: use kimi k2.5
-output_schema: schemas/FINAL_DRAFT.schema.json
----
-
-## Responsibilities
-- remove inconsistencies
-- verify prayers match relief structure
-- verify annexure references
-- generate error report
-- compute quality_score (0-100)
-- propose candidate mistake rules (staging only)
-
-## Constraints
-- must not invent facts or citations
-- must flag all unverifiable claims
-- candidate rules must be generic, not case-specific
-
-## Outputs
-Writes:
-- `FINAL_DRAFT.json`
-- `ERROR_REPORT.json`
+# OpenAI fallback for review (when review uses OpenAI)
+REVIEW_LLM_MODEL: Optional[str] = None
+REVIEW_REASONING_EFFORT: Optional[str] = "medium"
+```
 
 ---
 
-## 5. LangGraph Execution Rules
+## 9. File Map (actual)
 
-### 5.1 Parallel Execution (Mandatory Fan-Out)
-These must run in parallel:
-- compliance_agent
-- localization_agent
-- prayer_agent
+```
+app/agents/drafting_agents/
+├── drafting_graph.py                    # LangGraph StateGraph wiring
+├── nodes/
+│   ├── intake_classify.py               # Stage 1: merged intake + classify
+│   ├── ragDomain.py                     # Stage 1: Qdrant retrieval
+│   ├── enrichment.py                    # Stage 1: limitation + provisions + LKB + court_fee
+│   ├── draft_single_call.py             # Stage 2: draft_freetext_node (v5.0 free-text)
+│   ├── evidence_anchoring.py            # Gate 1: evidence anchoring
+│   ├── lkb_compliance.py               # Gate 2: LKB + superseded law check
+│   ├── postprocess.py                   # Gate 3: formatting fixes
+│   ├── citation_validator.py            # Gate 4: citation verification
+│   ├── reviews.py                       # Stage 4: review (slim payload)
+│   └── _utils.py                        # Shared helpers
+├── prompts/
+│   ├── intake_classify.py               # Intake+classify system/user prompts
+│   ├── draft_prompt.py                  # Draft system/user prompts + exemplar loading
+│   └── review.py                        # Review system/user prompts
+├── states/draftGraph.py                 # DraftingState + Pydantic models
+├── lkb/
+│   ├── __init__.py                      # Registry, lookup, aliases, conditional resolver
+│   └── civil.py                         # 24 cause types with conditional fields (v3.0)
+├── exemplars/                           # Structural exemplars per cause type
+├── tools/                               # Qdrant + Brave API wrappers
+└── ragDomains/
 
-### 5.2 Conditional Execution
-Run only if required by route:
-- research_agent
-- citation_agent
-
-### 5.3 Stop/Resume
-If clarification required:
-- persist workflow_state to DB
-- set drafting_sessions.status = paused
-- resume only after user response
+app/config/settings.py                   # Feature flags + model config
+app/services/llm_service.py              # Ollama Cloud client + fallback chains
+```
 
 ---
 
-## 6. Mandatory Non-LLM Gates
+## 10. Critical Rules (Non-Negotiable)
 
-These must be deterministic and non-LLM:
+### Never Hardcode Legal Content in Python
+- No `_COA_KEYWORDS`, no `must_include`, no per-scenario if/elif
+- Legal substance: LLM knowledge + LKB + RAG + user request
+- Python handles: validation, anchoring, citation verification, formatting
 
-- Security Normalization Gate
-- Fact Validation Gate
-- Route Resolver
-- Citation Validation Gate
-- Context Merge + Conflict Resolver
-- Promotion Gate
+### Generate First, Validate After
+- LLM drafts freely (plain text, exemplar-guided)
+- 4 deterministic gates validate output
+- Fix only what gates flag
+
+### Deterministic > LLM
+- Gates, LKB lookup, citation check = deterministic
+- Only intake, drafting, review use LLM
+
+### Evidence Anchoring is Mandatory
+- Every factual claim -> intake/evidence
+- Unsupported tokens -> `{{PLACEHOLDER}}`
+
+### Citation Verification is Mandatory
+- Every citation -> verified_provisions
+- Case citations (AIR/SCC/ILR) -> ERROR unless user-provided
+
+### Graceful Degradation, Never Block
+- Missing facts -> `{{PLACEHOLDER}}`
+- Enrichment fails -> `UNKNOWN` -> placeholder
+- Draft fails -> retry -> fallback model chain
+- Gate fails -> skip, log warning, continue
+- Review fails -> deliver with gates-only quality
 
 ---
 
-## 11. Forbidden Behavior
+## 11. Anti-Patterns (DO NOT DO)
 
-The system must never:
-- invent facts
-- invent citations
-- bypass validation gates
-- write directly to mistake_rules_main
-- skip clarification pause
-- create file paths outside the allowed map
+- Do NOT constrain LLM output format (no JSON section keys)
+- Do NOT hardcode legal content in Python
+- Do NOT use `os.getenv()` — use `settings.FIELD_NAME`
+- Do NOT auto-fix substantive legal content — only formatting
+- Do NOT allow case citations unless verified
+- Do NOT dump all RAG chunks into review — use slim payload
+- Do NOT add LLM calls for deterministic tasks
+- Do NOT guess court fee — use verified data or placeholder
+- Do NOT send full JSON dumps to review — only draft text + gate errors
 
-## Remember follow the steps after builing agents
+---
 
-# SKILL: code Reviewer
- review code and fixes it 
+## 12. Recent Changes (2026-03-06)
 
-skills path:
-.claude\skills\code_reviewer\SKILL.md
+- **Review slim payload** — cut review input from ~15K to ~5K tokens by removing RAG chunks, court fee, legal research (gates already verified)
+- **LKB cause-type aliases** — 16 aliases for common LLM near-misses (property_law -> recovery_of_possession, etc.)
+- **LKB conditional resolver** — `resolve_entry()` flattens `_type: "conditional"` fields using keyword inference
+- **Anti-hallucination in LKB brief** — instructs draft LLM to use RAG text, not training memory
+- **Intake prompt updated** — added `recovery_of_possession`, `eviction` to cause_type list
 
- 
-# SKILL: code tester
+---
 
-tester is NOT an implementation agent.
-tester is only responsible for testing all cases using pytest.
-- .claude/skills/tester
+## 13. Running Tests
 
-# SKILL: lawyer_validator
-as senior lawyer validates differnce use case
-and suggest imporing drafting
+```bash
+# Run pipeline
+agent_steer/Scripts/python.exe research/run_draft_live.py
 
-- .claude/skills/lawyer_validator
+# Unit tests
+agent_steer/Scripts/python.exe -m pytest tests/drafting/ -v
 
-# CRITICAL DRAFTING RULES (MANDATORY)
-
-1. Never hardcode legal drafting content in Python:
-   - Do NOT write fixed paragraphs, prayer clauses, or legal arguments directly in code.
-   - Python should only handle workflow, validation gates, routing, formatting, and schema enforcement.
-
-2. If drafting accuracy is low, improve the prompt first:
-   - Prefer refining system prompts, role prompts, and drafting instructions.
-   - Prefer better context extraction (facts, jurisdiction, court type) instead of adding hardcoded text.
-
-3. Do not overload prompts with irrelevant context:
-   - Avoid injecting full case history or unrelated documents into the drafting prompt.
-   - Only include the minimum required facts, citations, and legal issues needed for that document type.
-
-4. Prompt context must be structured and clean:
-   - Provide facts as JSON blocks or bullet points.
-   - Provide citations separately.
-   - Provide missing fields explicitly.
-
-5. Draft output must remain dynamic:
-   - Draft structure must change depending on court, state, case type, and legal section.
-   - Never force one fixed template for all drafts.
+# Review benchmark
+agent_steer/Scripts/python.exe research/run_review_benchmark.py
+```

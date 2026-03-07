@@ -1,0 +1,1654 @@
+{
+  "user_request": "Draft a civil suit for recovery of possession of immovable property. Plaintiff is owner of the property situated at Survey No. 45, Koramangala, Bangalore and Defendant is in unauthorized occupation after expiry of permissive possession/lease granted on 01.01.2020 which expired on 31.12.2022. Defendant refusing to vacate despite legal notice dated 15.03.2023. Property value is Rs.50,00,000/-. Monthly rental value is Rs.25,000/-. Seek recovery of possession, mesne profits from 01.01.2023 at Rs.25,000/- per month, and costs of the suit. File before the City Civil Court, Bangalore.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks recovery of possession of immovable property (Survey No. 45, Koramangala, Bangalore) from Defendant who is in unauthorized occupation after the expiry of a permissive possession/lease (01.01.2020 to 31.12.2022). Defendant refused to vacate despite a legal notice dated 15.03.2023.",
+      "chronology": [
+        {
+          "date": "01.01.2020",
+          "event": "Permissive possession/lease granted to Defendant",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": "31.12.2022",
+          "event": "Permissive possession/lease expired",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": "15.03.2023",
+          "event": "Legal notice issued to Defendant to vacate",
+          "source": "user_text",
+          "confidence": 0.9
+        }
+      ],
+      "amounts": {
+        "principal": 5000000.0,
+        "interest_rate": null,
+        "damages": null
+      },
+      "cause_of_action_date": "01.01.2023"
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": "Karnataka",
+      "city": "Bangalore",
+      "court_type": "City Civil Court",
+      "place": "Bangalore"
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "type": "Legal Notice",
+        "description": "Legal notice dated 15.03.2023 requesting Defendant to vacate",
+        "relevance": "High",
+        "ref": null
+      },
+      {
+        "type": "Property Documents",
+        "description": "Ownership documents for Survey No. 45, Koramangala, Bangalore",
+        "relevance": "High",
+        "ref": null
+      },
+      {
+        "type": "Lease/Permission Document",
+        "description": "Document granting permissive possession/lease from 01.01.2020 to 31.12.2022",
+        "relevance": "High",
+        "ref": null
+      }
+    ],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "property_details",
+          "value": "Survey No. 45, Koramangala, Bangalore",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "key": "mesne_profit_rate",
+          "value": 25000,
+          "type": "number",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "key": "mesne_profit_start_date",
+          "value": "01.01.2023",
+          "type": "date",
+          "source": "user_text",
+          "confidence": 0.9
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Recovery of Possession",
+        "Mesne Profits",
+        "Eviction",
+        "Immovable Property"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Plaintiff Address",
+        "Defendant Address",
+        "Specific Relief Act Section details"
+      ],
+      "assumptions": [
+        "Plaintiff has valid title documents",
+        "Legal notice was duly served",
+        "Jurisdiction lies with City Civil Court based on valuation"
+      ]
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "eviction_plaint",
+    "cause_type": "recovery_of_possession",
+    "classification": {
+      "topics": [
+        "Recovery of Possession",
+        "Mesne Profits",
+        "Eviction",
+        "Immovable Property"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Plaintiff Address",
+        "Defendant Address",
+        "Specific Relief Act Section details"
+      ],
+      "assumptions": [
+        "Plaintiff has valid title documents",
+        "Legal notice was duly served",
+        "Jurisdiction lies with City Civil Court based on valuation"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "suit for recovery of possession procedure",
+        "mesne profits calculation and claim",
+        "eviction after expiry of lease",
+        "drafting plaint for recovery of immovable property",
+        "court fee calculation for recovery of possession"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "suit for recovery of possession procedure",
+      "mesne profits calculation and claim",
+      "eviction after expiry of lease",
+      "drafting plaint for recovery of immovable property"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "4 \n \nthrough him may, by suit, recover possession thereof, notwithstanding any other title that may be set up in \nsuch suit. \n(2) No suit under this section shall be brought— \n(a) after the expiry of six months from the date of dispossession; or \n(b) against the Government. \n(3) No appeal shall lie from any order or decree passed in any suit instituted under this section, nor \nshall any review of any such order or decree be allowed. \n(4) Nothing in this section shall bar any person from suing to establish his title to such property and to \nrecover possession thereof. \n7. Recovery of specific movable property.—A person entitled to the possession of specific movable \nproperty may recover it in the manner provided by the Code of Civil Procedure, 1908 (5 of 1908). \nExplanation 1.—A trustee may sue under this section for the possession of movable property to the \nbeneficial interest in which the person for whom he is trustee is entitled. \nExplanation 2.—A special or temporary right to the present possession of movable property is \nsufficient to support a suit under this section. \n8. Liability of person in possession, not as owner, to deliver to perso ns entitled to immediate \npossession.—Any person having the possession or control of a particular article of movable property, of \nwhich he is not the owner, may be compelled specifically to deliver it to the person entitled to its",
+        "score": 0.618,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "5 \n \nhe has been in possession or any person] claiming through him may, by suit , recover possession thereof, \nnotwithstanding any other title that may be set up in such suit. \n(2) No suit under this section shall be brought— \n(a) after the expiry of six months from the date of dispossession; or \n(b) against the Government. \n(3) No appeal shall lie from any order or decree passed in any suit instituted under this section, nor \nshall any review of any such order or decree be allowed. \n(4) Nothing in this section shall bar any person from suing to establish his title to such property and to \nrecover possession thereof. \n7. Recovery of specific movable property.—A person entitled to the possession of specific movable \nproperty may recover it in the manner provided by the Code of Civil Procedure, 1908 (5 of 1908). \nExplanation 1.—A trustee may sue under this section for the possession of movable property to the \nbeneficial interest in which the person for whom he is trustee is entitled. \nExplanation 2.—A special or temporary right to the present possession of movable property is sufficient \nto support a suit under this section. \n8. Liability of person in possession, not as owner, to deliver to persons entitled to immediate \npossession.—Any person having the possession or control of a particular article of movable property, of \nwhich he is not the owner, may be compelled",
+        "score": 0.612,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "er would only be entitled to symbolic possession \nunder O 21, r 96 when the property is in possession of tenants inducted by mortgagees. 20 Where the defendants, \ninspite of knowledge of auction sale, did not challenge it and delivery of possession was effected under O 21, r 95, \nthe same cannot be challenged after three years of auction sale.21\n2. Separate suit for delivery of possession. Notes to s 47, Questions between the auction-purchaser on the one \nhand and a party to the suit or his representative on the other hand could be referred to for more details in this \nregard.\nFor recovery of possession by the auction-purchaser, a separate suit is barred under s 47 of the Code of Civil \nProcedure. The only mode available to the auction purchaser is by filing an application under O 21, r 95 of the Code \nof Civil Procedure.22\n3. Appeal. In Harnandrai v. Debidutt 23 the Supreme Court approved the view taken by the Calcutta High Court in \nKailash Chandra Tarafdar v. Gopal Chandra 24 as against the contrary view taken in Ram Singh v. Abdullah 25 and \nheld that a purchaser at an execution sale, whether he is the decree-holder or not, is a party to the suit for the \npurposes of s 47 and that all questions arising between him and the judgment-debtor must be determined by the \nexecuting court and not in a separate suit. The Rajasthan High Court had earlier followed the Lahore view in",
+        "score": 0.582,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "iled for the recovery of an amount advanced by the bank, the defendant took the amount from different \nbranches of the bank. A suit by the bank was for the consolidated amount. It was held that such a suit is \nmaintainable. Reading r 1, O 1 and r 2, O 2 of the Code of Civil Procedure 1908, together with s 3 (4) of the \nBanking Companies (Acquisition and Transfer of Undertaking) Act 1970, the right to sue vests with the bank as a \nbody corporate, rather than in any particular branch thereof. It follows that the bank can file one consolidated suit in \nrespect of a claim against the same defendants, so long as it does not violate any other provision of law (such as \njurisdiction of the court), particularly when a right to relief in respect thereof arises out of the same act or a series of \ntransactions.74\n(vii) Husband got his petition for restitution of conjugal rights dismissed as withdrawn. Subsequently, a petition filed \nfor divorce was not barred by O 2, r 2, as restitution and divorce are separate remedies provided by the law.75\n(viii) Mere pendency of a suit has no relevance for the application of the bar under O 2, r 2 where, during the \npendency of the earlier suit a fresh cause of action arises in respect of the same property. In one case, pursuant to \na sale agreement, the first buyer paid the price of the suit property and took over possession. Thereafter, he filed a",
+        "score": 0.568,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "des every person holding property in trust; \n(e) all other words and expression s used herein but not defined, and defined in the Indian \nContract Act, 1872 (9 of 1872), have the meanings respectively assigned to them in that Act. \n3. Savings.—Except as otherwise provided herein, nothing in this Act shall be deemed— \n(a) to deprive any person of any right to relief, other than specific performance, which he may \nhave under any contract; or \n(b) to affect the operation of the Indian Registration Act, 1908 (16 of 1908), on documents. \n4. Specific relief to be granted only for enforcing individual civil rights and not for enforcing \npenal laws.—Specific relief can be granted only for the purpose of enforcing individual civil rights and \nnot for the mere purpose of enforcing a penal law. \nPART II \nSPECIFIC RELIEF \nCHAPTER I \nRECOVERING POSSESSION OF PROPERTY \n5. Recovery of specific immovable property .—A person entitled to the possession of \nspecific immovable property may recover it in the manner pr ovided by the Code of Civil \nProcedure, 1908 (5 of 1908). \n6. Suit by person dispossessed of immovable property .—(1) If any person is dispossessed without \nhis consent of immovable property otherwise than in due course of law, he or any person claiming \n \n1. 1st March, 196 4, vide notification No. S.O. 189, dated 1 3th January, 196 4, see Gazette of India, Extraordinary, Part II,",
+        "score": 0.559,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "recovery of immovable property, with or without a claim for rent or mesne \nprofits, by a landlord against a tenant whose term has expired or has been duly determined by \nnotice to quit, or has become liable to forfeiture for non-payment of rent, or against persons \nclaiming under such tenant; \n(g) procedure by way of originating summons;",
+        "score": 0.691,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "the recovery of possession of immovable property, the \nplaintiff may claim mesne profits which have accrued during a period prior to the institution of the suit. He may also \nclaim mesne profits which have become due subsequent to the institution of the suit. The decree to be passed in \nsuch a case will now be as follows",
+        "score": 0.625,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "or ejectment or recovery of possession from a person in possession without title together with a claim for mesne \nprofits, past or future. It does not apply to suits by tenants-in-common for partition and accounts or by a coparcener \nfor his share and accounts from the manager of joint family. 45 A suit for compensation for use and occupation is \nmerely a suit for money and is outside this rule, and no decree can be passed therein for recovery of compensation \nafter the date of suit.46\nIn a suit for possession, the land in question was purchased by the tenant from the landlady and it was further sold \nby the tenant to a third person without previous sanction of the collector. The sale is hit by the mandatory provisions \nof s 43 and 64 of the Bombay Tenancy Act, 1939. Under these circumstances, the plaintiff, who was the only",
+        "score": 0.617,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "f there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is not the rate of rent which would be fair and equitable for the lands in question but \nthe profits which the tenants have actually received or might with ordinary diligence have received from their \nwrongful possession.23\nWhere the plaintiff did not produce any evidence in support of the rate of mesne profits claimed by him and also \nadmitted in his examination-in-chief that there was no basis for mesne profits claimed in the plaint, the court \nassessed mesne profits considering the rent of shops situated near the disputed land. 24 In the same case it was \nheld that where the plaintiff had filed a suit for mesne profits earlier also, grant of mesne profits for the period which \nwas the subject-matter of the earlier suit was held to be not proper.25\nThe claim for mesne profits is virtually a claim for damages. Hence, there is no rigid rule for determining the amount \nof mesne profits, and the amount must be assessed in every case by a proper exercise of judicial discretion. 26 In \none case the Patna High Court, on a finding that the plaintiffs had unnecessarily prolonged the litigation, declined to \naward mesne profits upto the date of the decree.27 It held that the Mesne profits",
+        "score": 0.598,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "s gatherable from the passing of the decree. 88 Where the decree awards a fixed \namount by way of mesne profits, interest must be taken to have been refused, and the executing court is \nincompetent to direct the recovery of that amount with interest. 89 It is open to the court, in fixing mesne profits, to \naward a certain amount per year, and allow interest on it with yearly or half-yearly rests.90 If the profits were payable \nfrom month to month, the interest thereon would be calculated month by month, and if they were payable from year \nto year, the interest would be calculated year by year. Calculation in this manner at the interest on the profits must \nbe allowed up to the date of ascertainment of the aggregate amount of mesne profits; 91 but in no case should it be \nallowed for a period longer than three years from the date of the decree. 92 The reason is that the item of interest \none is now considering forms an integral part of mesne profits, and since mesne profits cannot be allowed for a \nperiod longer than three years from the date of the decree, so also the interest forming part thereof cannot be \nallowed for a longer period. It must not, however, be supposed that because mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of",
+        "score": 0.577,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "rt in the case of Fateh Chand v. Balkrishna Dass, AIR 1963 \nSC 1405 [LNIND 1963 SC 20] observed that the normal measure of mesne profits is the value of the user of the land \nto the person in wrongful possession.\nThe criteria for calculation of mesne profits is not what the owner loses by reason of deprivation from \npossession but what the trespasser received or might have received with ordinary diligence. 69 Where sale deed \nin respect of half portion of a property was declared void, the vendee cannot be said to be in wrongful or \nunlawful possession and as such mesne profits cannot be claimed.70\nIn Thammana Nukiah Shetti v. Velapa Appalaraju, 71 a Division Bench of the Andhra Pradesh High Court, \nrelying on the decision of the Supreme Court in Siddeshwar Mukherjee v. Bhubaneshwar Prasad Narain, 72 \nobserved as follows:\nGoing by the principle, a purchaser of an undivided share will not be entitled to possession until he is allotted a specific \nshare in the property. Mesne profits can be claimed by him only from the date when he is deprived of his lawful \npossession. Section 2(12) of CPC defines mesne profits of property as profits which the person in wrongful possession \nof such property actually received or might have received with ordinary diligence from it. A person is said to be in \nwrongful possession when he enjoys such possession despite, another person is entitled to",
+        "score": 0.519,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ause mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of damages which the court may award according to the justice of the case. And",
+        "score": 0.658,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "Page 31 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nsince the item of interest now under consideration forms part of mesne profits, it is equally in the discretion of the \ncourt whether to allow such interest or not. 93 For the same reason, the court may, while allowing the claim for \ninterest, direct the interest to be calculated not month by month or year by year, but in a manner less advantageous \nto the plaintiff. The mode of calculation indicated in the beginning of this paragraph applies only to those cases \nwhere the decree is silent as to the mode in which interest is to be calculated.\nIn a suit, the plaintiff claimed decree for partition of her share in the partnership firm, decree for accounts and \nmesne profits with interest at 6 per cent per annum During the pendency of appeal against preliminary decree, the \nplaintiff sought amendment of rate of interest claiming 13 per cent per annum on the amount of mesne profits. The \nAppellate Court i.e. High Court, allowed the amendment and treating the suit claim as commercial transaction under \nthe amended s 34 of the Code of Civil Procedure, allowed interest at the rate charged by nationalised banks. It was \nheld by the Supreme Court that the decree passed was much more than what the amendment allowed.94\nAfter the aggregate amount of mesne profits is ascertained, the plaintiff may apply to the court for",
+        "score": 0.502,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 27 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nland which had been in the wrongful possession of two co-zamindars who had granted a lease to a putnidar, the co-\nzamindars were liable for what they actually received from the putnidar, and the putnidar was liable for the profits he \nact ually received and the liability of the zamindars was not joint and several with that of the putnidar. 19 But in a \ncase of this type, a decree for mesne profits may be passed jointly and severally against all trespassers who may \nhave combined to keep a plaintiff out of possession. 20 But where the defendants are in separate possession of \ndifferent portions of the suit land, they cannot be held jointly and severally liable for mesne profits. In such a case, \nthe mesne profits in respect of each of the portions occupied by each defendant would have to be determined on \nthe basis of the income which could have been derived from each portion of the land.21 In this situation, two courses \nare open to the court: (i) to pass a decree holding all such trespassers jointly and severally liable, leaving them to \nhave their liability adjudged in a separate suit, or (ii) to ascertain, if there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is",
+        "score": 0.489,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "esne profits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the person in possession.78\nIt cannot be said that mesne profits can be calculated only on the basis of the maximum rent that the premises \ncould have fetched if let out.79\nMesne profits can be claimed only when there is wrongful possession of the defendant. But, where \ndispossession is a joint or concerted act of several persons, each of them who participates in the commission of \nthat act would be liable for mesne profits even though he was not in possession and the profits were received \nnot by him but by some of his confederates.80\nMeasure of mesne profits is the value of wrongful possession. Rent could be a relevant factor for considering \nsuch a value, but not a decisive matter. 81 In terms of the definition of mesne profits under s 2 (12) of the Code \nof Civil Procedure, the question of proprietary of the valuation on account of the same can be decided at the \ntime of trial on evidence where the court can pass a decree for mesne profits or can direct the inquiry, or, can \nreject a prayer of mesne profits.82\nThe reservation as to profits due to",
+        "score": 0.606,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ree tentatively for Rs 5000 apart from claiming mesne profits Rs 100/- per diem. It was held that the decree on \nmesne profits may, therefore, be modified as accordingly. Thus, the High Court directed that a decree for mesne \nprofit be passed provisionally for an amount of Rs 5,000/- and further, that the mesne profits shall be determined \nfinally under O 20, r 12 of the Code of Civil Procedure.33\nWhere the order of the trial court granting mesne profits was reduced and modified by the High Court without \nconsidering the evidence adduced by parties, it was held by the Supreme Court that the order of the High Court \nwas liable to be set aside.34\n22. Mesne profits and jurisdiction. See notes to s 6 and s 38 and the undernoted cases.35\n23. Res judicata . Where after the passing of a preliminary decree under r 12, the plaintiff applies in execution for \nascertaining the mesne profits, wrongly believing that such profits are to be ascertained in execution proceedings, \nand the application is dismissed, the dismissal does not operate as res judicata so as to bar a subsequent \napplication in the suit for ascertaining the mesne profits. 36 As the award of future mesne profits is discretionary with \ncourt, a second suit therefore is not barred under s 11 by reason of the omission to claim it in a prior suit. 37 The \nposition is the same where such a claim is made but is dismissed as",
+        "score": 0.575,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 31 of 73\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nproceedings.52 When the first respondent retired from government service, the state moved the prescribed \nauthority under the Act for an order of eviction under s 5 of UP Public Premises (Eviction of Unauthorised \nOccupant) Act, 1972. On 22 March 1978, the prescribed authority passed an order for eviction dismissing the \napplication by observing that it is not possible to hold that the house in question is public premises or that the \nopposite party is unauthorised occupant of it. After the said order, the appellant sent notice to the first \nrespondent determining the lease, and on the expiry of the period specified in that notice, the appellant moved \na fresh application under s 4 of the Act, before the prescribed authority, even this time the application dismissed \non the principle of res judicata in that earlier order dated 22 March 1978, would operate as barred against the \nappellant from seeking eviction of the first respondent under the provisions of the said Act.\nAs per the order dated 22 March 1978, the prescribed authority found that the building belonged to the \ngovernment estate and that there was no evidence that the tenancy was terminated before filing the application. \nIn the present proceedings, there was no dispute that the notice was subsequently served on the first \nrespondent determining",
+        "score": 0.481,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "a brickfield to B. No lease is executed, but B enters into possession under the \nagreement. B then sues A for specific performance of the agreement, alleging that A, though frequently asked to do \nso, had neglected and refused to grant the lease. A denies that he was asked to grant the lease and express his \nreadiness to execute the lease. A also counter claims for Rs 1,500 by way of rent. After the suit is set down for trial, \nA applies for leave to amend his defence and counter-claim, and to join therewith a claim for possession of the land. \nThe application must be refused. To allow A to amend would be to allow him to present a totally distinct, new and \ninconsistent case.23\nWhere in a suit for ejectment against a tenant, his defence was that since the tenancy had been renewed, he \ncannot be allowed by an amendment, to raise the plea that he was not a tenant. 24 In eviction proceedings before \nthe rent controller, the tenant did not raise the question of notice. In that situation the landlord did not adduce \nevidence on notice though in fact he had given the notice. The tenant tried to raise the question of notice before the \nHigh Court, but was not allowed on the ground that he was estopped from charging his original stand. A defendant \nwho has deliberately and under no mistake or misapprehension admitted a material fact in his written statement \ncannot be allowed at a",
+        "score": 0.512,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "and inconceivable and it might become even decisive.8 In this case, sub-s 2 of ss 10, 12 and 13 of AP Buildings \n(Lease, Rent and Eviction ) Control Act, 1960 gave exclusive jurisdiction to the rent controller under the Act in \nthe matter of eviction of a tenant from any premises by a landlord. However, by virtue of s 32 (b) of the said \nRent Act, the provisions of the Act were not made applicable to any building constructed on or after 26 August \n1956. In the instant case, the house was constructed after 26 August 1957 and the provisions of s 32 (b) of the \nRent Act existed on the statute book on the date of the suit, hence, the present suit for eviction and arrears of \nrent was filed in the civil court. During the pendency of the suit, the provisions of s 32 (b) of the Rent Act was \nstruck down by the Supreme Court as violating of 14 of the Constitution of India. With the result that all \nbuildings, in respective of the date of their construction, came within the purview of the said Act. Accordingly, \nthe jurisdiction of the civil court from entertaining a suit for eviction of a tenant was ousted.\nThe Andhra Pradesh High Court took a contrary view in Yadamma v. K Mallesh, 9 wherein it was held that when \non the date of filing of the suit, particular right which is available to a party would be continued to be available till \nthe disposal of the suit, though such benefits",
+        "score": 0.505,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "cupation. The expression and \noccurring is meant to be conjunctive. Both the conditions must be satisfied.26\nRule 5 applies to suits for eviction by a lessor against his lessee. The effect of the rule as amended in 1976 is that \nin any suit by a lessor for eviction of his lessee after the determination of the lease and for recovery of rent in \nrespect of the period of occupation, thereof during the continuance of the lease or of compensation for the use and \noccupation thereof before or after the commencement of Act 37 of 1972, the defendant shall at or before the first \nhearing of the suit (or in the case of a suit instituted before the commencement of the said Act, the first hearing after \nsuch commencement) deposit the entire amount of rent, or compensation for use and occupation, admitted by him \nto be due, and thereafter throughout the continuation of the suit deposit regularly the amount of monthly rent or \ncompensation due at the rate admitted by him, and in the event of any default in this regard, the court may, unless \nafter considering any representation made by him in that behalf, it allows him further time on security being \nfurnished for the amount, refuse to entertain any defence or as the case may be strike off his defence. The rule \nenables the plaintiff to withdraw the amount deposited in the court by the tenant at any stage of the suit. 27 The rule \napplies",
+        "score": 0.502,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "eeking the removal \nof the lessee from the suit premises shall be treated as an eviction suit.\nIn will be seen that provisions contained in O 15-A are akin to the provisions under Rent Control laws of States. For \nexample, Section 15 of the Bihar Building (Lease, Rent and Eviction) Control Act, 1982 empowers Court to direct \nthe defendant to deposit arrears of rent and on his failure to deposit arrears of rent as well as subsequent rent",
+        "score": 0.597,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "er the interest \nof tenancy for this benefit and in view thereof, it can be said that the interest of the tenant of non-residential \npremises to which the Maharashtra Rent Control Act, 1999 applies is attachable and saleable in execution of \nthe decree against the tenant. 631 \n(za) Sub-tenant. The history of the litigation reveals that the tenant surrendered the lease with effect from 31 \nAugust 1953 by a notice, but failed to vacate it on the due date. Landlord was therefore required to file a suit \nagainst the tenant on the basis of the notice for surrender of tenancy. \nDuring pendency of the suit, the tenant entered into a compromise and in terms thereof vacated the leased \npremises. As against the sub-tenants, which the tenant had inducted during subsistence of tenancy, one of the \nterms of the compromise decree reserved liberty to the landlord to take necessary legal steps for their eviction. \nThe landlord thereafter instituted an independent suit for eviction of the sub-tenant. In that suit, the court held \nthat the remedy of the landlord is to execute the compromise decree. The firm as sub-tenant, had filed a \ncounter suit seeking declaration of its status as direct tenant under Act of 1950 and protection thereunder. In \nthe counter suit of the sub-tenant, the court took the same view that the remedies of the parties lay in execution \nproceedings. The judgment rendered",
+        "score": 0.525,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "ff the defence.\n43(3)The amount deposited under this rule shall be paid to the plaintiff lessor or licensor or his Advocate \nand the receipt of such amount shall not have the effect of prejudicing the claim of the plaintiff and it shall \nnot also be treated as a waiver of notice of termination.\nExplanation. The suit for eviction shall include suit for mandatory injunction seeking removal of \nlicensee from the premises for the purpose of this rule.]\nBombay Amendment. In a suit for eviction, the defence could be ordered to be struck off for non \npayment of arrear of rent only if the plaintiff admits lease in favour of the defendant and not when the \nplaintiff did not plead lease in his favour and the lease is put forward only as an alternative. 44 Where in \nsuit filed by tenant against the landlord for injunction for restraining the latter from interfering with \nplaintiffs possession over the tenanted premises, the Court directed the tenant to deposit rent every \nmonth and also the arrears of rent, the tenant failed to comply with the Courts order, the Court was \nheld justified in dismissing the suit.45\nCOMMENTS\nBy way of State Amendment in O 15, a new Order has been added which is O 15-A. This New Order is applicable \nto the State of Maharashtra. Sub-rule (1) of r 1 of O 15-A provides that in an eviction suit filed by the lessor against \nthe lessee for recovery of rent and",
+        "score": 0.521,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "under Act of 1950 and protection thereunder. In \nthe counter suit of the sub-tenant, the court took the same view that the remedies of the parties lay in execution \nproceedings. The judgment rendered in the counter suit of the sub-tenant, i.e. , the firm, was challenged in \nSupreme Court in special leave petition but it was withdrawn. The judgment rendered in the counter suit, as \nalso the other rendered in the suit filed by the landlord against the sub-tenant, had attained finality. It is only \nafter the landlord failed in obtaining eviction decree in the suit filed by it that it moved an application for \nexecution of the compromise decree. One of the terms of the compromise decree which reserved the right to \nthe landlord to take necessary legal steps to evict the sub-tenants, makes the decree executable to that extent. \nIt could not, therefore, be urged by the firm that the compromise decree on its terms is not executable. 632 \nWhere a suit for recovery of possession was filed against lessee of land only without including the building \nthereon which was constructed and sublet by lessee with the permission of lessor, the decree passed upon \nadmission of lessee to surrender the land would be inexecutable against the sub-lessees, particularly when no \nleave was obtained under O 2, r 2 in respect of the building. Therefore, the decree as it stood was final and \ncould be",
+        "score": 0.513,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of court fees, \nso far as the case admits. \n2. In money suits— Where the plaintiff seeks the recovery of money, the plaint shall state the precise amount \nclaimed: \nBut where the plaintiff sue for mesne profits, or for an amount which will be found due to him on taking \nunsettled accounts between him and the defendant, [136][or for movables in the possession of the \ndefendant, or for debts of which the value he cannot, after the exercise of reasonable diligence, estimate, the \nplaint shall state approximately the amount or value sued for]. \n3. Where the subject-matter of the suit is immovable property— Where the subject-matter of the suit is \nimmovable property, the plaint shall contain a description of the property sufficient to identify it, and, in case \nsuch property can be identified by boundaries or numbers in a record of settlement or survey, the plaint shall \nspecify such boundaries or numbers. \n57",
+        "score": 0.589,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "essary to set it out at length, but only to state the legal effect of it, \nthe object apparently being to prevent long pleadings. 48 Thus, it is sufficient if a plaintiff in a suit for the recovery of \nimmovable property under a Will states in his plaint the effect of the Will under which he claims. He is not bound to \nset out the precise words of the Will, although a question has arisen as to the true construction of those words. 49 At \nthe same time, it is not enough for a plaintiff to say that, under and by virtue of a certain deed, he is entitled to the \nproperty claimed by him. He must state the effect of the document on which he relies.50\nIn a suit for declaration of title and possession, the plaintiff filed some documents of title relied on by him, but the \ndescription of the property given in the documents did not correspond with the description shown in the schedule of \nthe suit. To get over the difficulty, the plaintiff re-described the suit property in the schedule. However, there was no \nnarrative in the pleadings to explain how the earlier description of the property changed. It was held that in the \nabsence of necessary pleading and proof, the plaintiff was not entitled to the relief claimed.51\nIn the matter of enforcement of the agreement or agreement of reconvenyance, time is not always the essence of \nthe contract, unless the agreement specifically stipulates",
+        "score": 0.57,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "within whose \njurisdiction the parties resided.37\n11. Clause (e): Wrong to immovable property. This refers to torts affecting immovable property such as \ntrespass,38 nuisance, infringement of easement etc.\nWhere a reading of the plaint leads to one conclusion only, viz, that it was for damages relating to immovable \nproperty in Mathura, s 16 (e) of the Code of Civil Procedure would apply, then s 20 of the the Code of Civil \nProcedure is of no avail to the plaintiff. The mere factum of the execution of the sale deed and payment of the \nsale consideration being in Delhi, does not comprise any part of cause of action relating to the claim for \ndamages to immovable property raised in this suit. Even if s 16 (e) is assumed not to have any applicability to \nthe facts of the case, Delhi courts do not possess territorial jurisdiction because the defendant does not have its \nprincipal office in this city. The fact that it has a subordinate office in Delhi, seems to be of little consequences, \nsince no part of cause of action voiced in the plaint has arisen in Delhi.39\n12. Clause (f): movable property actually under distraint or attachment. Movable property under \nattachment constitutes an exception to the general rule that movables follow the person. 40 This exception is \nprobably based on the principle that a movable property under attachment is one in session of the court. 41 The",
+        "score": 0.598,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "nient to invoke. Being an inadvertent error, not affecting the merits of the case, it may be \ncorrected under s 152 of the Code of Civil Procedure by the court which passed the decree by supplying the \nomission. Alternatively, the exact description of decretal property may be ascertained by the executing court as \na question relating to execution, discharge or satisfaction of decree within the meaning of s 47 of the Code of \nCivil Procedure. A decree of a competent court should not, as far as practicable, be allowed to be defeated on \naccount of an accidental slip or omission. 534 \nIn a suit for specific performance of agreement to sell immovable property, the map of suit property was not \nannexed to plaint, and the defendants did not object to such fact promptly, the trial court did not insist on such \nmap and the map was filed for the first time in execution proceedings. However, the draft sale deed \naccompanied by a notice requiring objections to be made by judgment-debtor as provided by sub-r (2) of r 34 of \nO 21 of the Code of Civil Procedure was not caused to be served by the executing court, and the judgment-\ndebtors repeatedly insisted, on draft sale deed being delivered to them enabling objections being filed and there \nwas no determination by the executing court that the immovable property as delineated and demonstrated in \nthe map accompanying the draft sale deed",
+        "score": 0.594,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "e \nheard to contend that the number of property is not given and hence the suit is liable to be dismissed. 45 In a suit \nrelating to immoveable property when the plaintiff gives the particulars of the boundaries or the numbers in a record \nof survey, it shall have to be presumed that sufficient particulars are given. The other aspects like the date of \npurchase, names of attestors, scribe or mediators are all matters of evidence and the plaintiffs cannot be compelled \nto disclose them to the defendants.46\nA conjoint reading of O. 7, r 3 and O. 20, r 9 of CPC makes it clear that in a suit relating to immovable property, the \nplaint must disclose the identity of the suit property without any ambiguity. The identification may either be by \nboundaries or by numbers of Revenue Records or Settlement or Survey Records. But in an ejectment suit, where \nthe boundaries of the property given in the plaint was not controverted or challenged it was held that the objection \nraised after execution that decree was wrongly drawn is untenable.47\nIn a suit for declaration of title, there was complete absence of description of the suit land. Neither measurement in \nrelation to settlement map was given nor sketch map was drawn to scale. Even boundaries or the extent of the suit \nland was mentioned. The plaintiff also failed to give the plot number and boundaries, when asked for, in his",
+        "score": 0.585,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ble and immovable property transferred by the said instrument. \n3. C.D. claims to be entitled to a beneficial interest under the instrument. \n[As in paras 4 and 5 of Form. No. 1.] \n6. The plaintiff is desirous to account for all the rents and profits of the said immovable property [and the \nproceeds of the sale of the said, or of part of the said, immovable property, or movable, or the proceeds of \nthe sale of, or of part of, the said movable property, or the profits accruing to the plaintiff as such trustee in \nthe execution of the said trust]; and he prays that the Court will take the accounts of the said trust, and also \nthat the whole of the said trust estate may be administered in the Court for the benefit of C.D., the defendant, \nand all other persons who may be interested in such administration, in the presence of C.D. and such other \npersons so interested as the Court may direct, or that C.D. may show good cause to the contrary. \n[N.B.—Where the suit is by a beneficiary, the plaint may be modelled mutatis mutandis on the plaint by a \nlegatee.] \nNo. 45 \nForeclosure or Sale \n(Title) \nA.B., the above-named plaintiff, states as follows:— \n1. The plaintiff is mortgagee of lands belonging to the defendant. \n2. The following are the particular of the mortgage:— \n(a) (date); \n(b) (names of mortgagor and mortgagee); \n(c) (sum secured); \n(d) (rate of interest); \n(e) (property",
+        "score": 0.581,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: Specific Relief Act | Specific Relief Act:books/Specific_Relief_Act_1963.pdf:P4:C7]\n\n[Document 1 | Specific Relief Act | Specific Relief Act:books/Specific_Relief_Act_1963.pdf:P4:C7 | bare_act | Specific Relief Act 1963 | p.4 | score=0.618]:\n4 \n \nthrough him may, by suit, recover possession thereof, notwithstanding any other title that may be set up in \nsuch suit. \n(2) No suit under this section shall be brought— \n(a) after the expiry of six months from the date of dispossession; or \n(b) against the Government. \n(3) No appeal shall lie from any order or decree passed in any suit instituted under this section, nor \nshall any review of any such order or decree be allowed. \n(4) Nothing in this section shall bar any person from suing to establish his title to such property and to \nrecover possession thereof. \n7. Recovery of specific movable property.—A person entitled to the possession of specific movable \nproperty may recover it in the manner provided by the Code of Civil Procedure, 1908 (5 of 1908). \nExplanation 1.—A trustee may sue under this section for the possession of movable property to the \nbeneficial interest in which the person for whom he is trustee is entitled. \nExplanation 2.—A special or temporary right to the present possession of movable property is \nsufficient to support a suit under this section. \n8. Liability of person in possession, not as owner, to deliver to perso ns entitled to immediate \npossession.—Any person having the possession or control of a particular article of movable property, of \nwhich he is not the owner, may be compelled specifically to deliver it to the person entitled to its\n\n[Document 2 | Specific Relief Act | Specific Relief Act:books/specific_relief_act.pdf:P5:C8 | bare_act | specific relief act | p.5 | score=0.612]:\n5 \n \nhe has been in possession or any person] claiming through him may, by suit , recover possession thereof, \nnotwithstanding any other title that may be set up in such suit. \n(2) No suit under this section shall be brought— \n(a) after the expiry of six months from the date of dispossession; or \n(b) against the Government. \n(3) No appeal shall lie from any order or decree passed in any suit instituted under this section, nor \nshall any review of any such order or decree be allowed. \n(4) Nothing in this section shall bar any person from suing to establish his title to such property and to \nrecover possession thereof. \n7. Recovery of specific movable property.—A person entitled to the possession of specific movable \nproperty may recover it in the manner provided by the Code of Civil Procedure, 1908 (5 of 1908). \nExplanation 1.—A trustee may sue under this section for the possession of movable property to the \nbeneficial interest in which the person for whom he is trustee is entitled. \nExplanation 2.—A special or temporary right to the present possession of movable property is sufficient \nto support a suit under this section. \n8. Liability of person in possession, not as owner, to deliver to persons entitled to immediate \npossession.—Any person having the possession or control of a particular article of movable property, of \nwhich he is not the owner, may be compelled\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2583:C10270 | commentary | 491014025-MULLA-on-CPC-pdf | p.2583 | score=0.582]:\ner would only be entitled to symbolic possession \nunder O 21, r 96 when the property is in possession of tenants inducted by mortgagees. 20 Where the defendants, \ninspite of knowledge of auction sale, did not challenge it and delivery of possession was effected under O 21, r 95, \nthe same cannot be challenged after three years of auction sale.21\n2. Separate suit for delivery of possession. Notes to s 47, Questions between the auction-purchaser on the one \nhand and a party to the suit or his representative on the other hand could be referred to for more details in this \nregard.\nFor recovery of possession by the auction-purchaser, a separate suit is barred under s 47 of the Code of Civil \nProcedure. The only mode available to the auction purchaser is by filing an application under O 21, r 95 of the Code \nof Civil Procedure.22\n3. Appeal. In Harnandrai v. Debidutt 23 the Supreme Court approved the view taken by the Calcutta High Court in \nKailash Chandra Tarafdar v. Gopal Chandra 24 as against the contrary view taken in Ram Singh v. Abdullah 25 and \nheld that a purchaser at an execution sale, whether he is the decree-holder or not, is a party to the suit for the \npurposes of s 47 and that all questions arising between him and the judgment-debtor must be determined by the \nexecuting court and not in a separate suit. The Rajasthan High Court had earlier followed the Lahore view in\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1542:C6133 | commentary | 491014025-MULLA-on-CPC-pdf | p.1542 | score=0.568]:\niled for the recovery of an amount advanced by the bank, the defendant took the amount from different \nbranches of the bank. A suit by the bank was for the consolidated amount. It was held that such a suit is \nmaintainable. Reading r 1, O 1 and r 2, O 2 of the Code of Civil Procedure 1908, together with s 3 (4) of the \nBanking Companies (Acquisition and Transfer of Undertaking) Act 1970, the right to sue vests with the bank as a \nbody corporate, rather than in any particular branch thereof. It follows that the bank can file one consolidated suit in \nrespect of a claim against the same defendants, so long as it does not violate any other provision of law (such as \njurisdiction of the court), particularly when a right to relief in respect thereof arises out of the same act or a series of \ntransactions.74\n(vii) Husband got his petition for restitution of conjugal rights dismissed as withdrawn. Subsequently, a petition filed \nfor divorce was not barred by O 2, r 2, as restitution and divorce are separate remedies provided by the law.75\n(viii) Mere pendency of a suit has no relevance for the application of the bar under O 2, r 2 where, during the \npendency of the earlier suit a fresh cause of action arises in respect of the same property. In one case, pursuant to \na sale agreement, the first buyer paid the price of the suit property and took over possession. Thereafter, he filed a\n\n[Document 5 | Specific Relief Act | Specific Relief Act:books/Specific_Relief_Act_1963.pdf:P3:C5 | bare_act | Specific Relief Act 1963 | p.3 | score=0.559]:\ndes every person holding property in trust; \n(e) all other words and expression s used herein but not defined, and defined in the Indian \nContract Act, 1872 (9 of 1872), have the meanings respectively assigned to them in that Act. \n3. Savings.—Except as otherwise provided herein, nothing in this Act shall be deemed— \n(a) to deprive any person of any right to relief, other than specific performance, which he may \nhave under any contract; or \n(b) to affect the operation of the Indian Registration Act, 1908 (16 of 1908), on documents. \n4. Specific relief to be granted only for enforcing individual civil rights and not for enforcing \npenal laws.—Specific relief can be granted only for the purpose of enforcing individual civil rights and \nnot for the mere purpose of enforcing a penal law. \nPART II \nSPECIFIC RELIEF \nCHAPTER I \nRECOVERING POSSESSION OF PROPERTY \n5. Recovery of specific immovable property .—A person entitled to the possession of \nspecific immovable property may recover it in the manner pr ovided by the Code of Civil \nProcedure, 1908 (5 of 1908). \n6. Suit by person dispossessed of immovable property .—(1) If any person is dispossessed without \nhis consent of immovable property otherwise than in due course of law, he or any person claiming \n \n1. 1st March, 196 4, vide notification No. S.O. 189, dated 1 3th January, 196 4, see Gazette of India, Extraordinary, Part II,\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1259:C4980 | commentary | 491014025-MULLA-on-CPC-pdf | p.1259 | score=0.691]:\nrecovery of immovable property, with or without a claim for rent or mesne \nprofits, by a landlord against a tenant whose term has expired or has been duly determined by \nnotice to quit, or has become liable to forfeiture for non-payment of rent, or against persons \nclaiming under such tenant; \n(g) procedure by way of originating summons;\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2195:C8723 | commentary | 491014025-MULLA-on-CPC-pdf | p.2195 | score=0.625]:\nthe recovery of possession of immovable property, the \nplaintiff may claim mesne profits which have accrued during a period prior to the institution of the suit. He may also \nclaim mesne profits which have become due subsequent to the institution of the suit. The decree to be passed in \nsuch a case will now be as follows\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2194:C8718 | commentary | 491014025-MULLA-on-CPC-pdf | p.2194 | score=0.617]:\nor ejectment or recovery of possession from a person in possession without title together with a claim for mesne \nprofits, past or future. It does not apply to suits by tenants-in-common for partition and accounts or by a coparcener \nfor his share and accounts from the manager of joint family. 45 A suit for compensation for use and occupation is \nmerely a suit for money and is outside this rule, and no decree can be passed therein for recovery of compensation \nafter the date of suit.46\nIn a suit for possession, the land in question was purchased by the tenant from the landlady and it was further sold \nby the tenant to a third person without previous sanction of the collector. The sale is hit by the mandatory provisions \nof s 43 and 64 of the Bombay Tenancy Act, 1939. Under these circumstances, the plaintiff, who was the only\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2199:C8740]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2199:C8740 | commentary | 491014025-MULLA-on-CPC-pdf | p.2199 | score=0.598]:\nf there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is not the rate of rent which would be fair and equitable for the lands in question but \nthe profits which the tenants have actually received or might with ordinary diligence have received from their \nwrongful possession.23\nWhere the plaintiff did not produce any evidence in support of the rate of mesne profits claimed by him and also \nadmitted in his examination-in-chief that there was no basis for mesne profits claimed in the plaint, the court \nassessed mesne profits considering the rent of shops situated near the disputed land. 24 In the same case it was \nheld that where the plaintiff had filed a suit for mesne profits earlier also, grant of mesne profits for the period which \nwas the subject-matter of the earlier suit was held to be not proper.25\nThe claim for mesne profits is virtually a claim for damages. Hence, there is no rigid rule for determining the amount \nof mesne profits, and the amount must be assessed in every case by a proper exercise of judicial discretion. 26 In \none case the Patna High Court, on a finding that the plaintiffs had unnecessarily prolonged the litigation, declined to \naward mesne profits upto the date of the decree.27 It held that the Mesne profits\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2202:C8759 | commentary | 491014025-MULLA-on-CPC-pdf | p.2202 | score=0.577]:\ns gatherable from the passing of the decree. 88 Where the decree awards a fixed \namount by way of mesne profits, interest must be taken to have been refused, and the executing court is \nincompetent to direct the recovery of that amount with interest. 89 It is open to the court, in fixing mesne profits, to \naward a certain amount per year, and allow interest on it with yearly or half-yearly rests.90 If the profits were payable \nfrom month to month, the interest thereon would be calculated month by month, and if they were payable from year \nto year, the interest would be calculated year by year. Calculation in this manner at the interest on the profits must \nbe allowed up to the date of ascertainment of the aggregate amount of mesne profits; 91 but in no case should it be \nallowed for a period longer than three years from the date of the decree. 92 The reason is that the item of interest \none is now considering forms an integral part of mesne profits, and since mesne profits cannot be allowed for a \nperiod longer than three years from the date of the decree, so also the interest forming part thereof cannot be \nallowed for a longer period. It must not, however, be supposed that because mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of\n\n[Document 3 | CPC | CPC:Section2 | commentary | 491014025-MULLA-on-CPC-pdf | Section 2 | p.38 | score=0.519]:\nrt in the case of Fateh Chand v. Balkrishna Dass, AIR 1963 \nSC 1405 [LNIND 1963 SC 20] observed that the normal measure of mesne profits is the value of the user of the land \nto the person in wrongful possession.\nThe criteria for calculation of mesne profits is not what the owner loses by reason of deprivation from \npossession but what the trespasser received or might have received with ordinary diligence. 69 Where sale deed \nin respect of half portion of a property was declared void, the vendee cannot be said to be in wrongful or \nunlawful possession and as such mesne profits cannot be claimed.70\nIn Thammana Nukiah Shetti v. Velapa Appalaraju, 71 a Division Bench of the Andhra Pradesh High Court, \nrelying on the decision of the Supreme Court in Siddeshwar Mukherjee v. Bhubaneshwar Prasad Narain, 72 \nobserved as follows:\nGoing by the principle, a purchaser of an undivided share will not be entitled to possession until he is allotted a specific \nshare in the property. Mesne profits can be claimed by him only from the date when he is deprived of his lawful \npossession. Section 2(12) of CPC defines mesne profits of property as profits which the person in wrongful possession \nof such property actually received or might have received with ordinary diligence from it. A person is said to be in \nwrongful possession when he enjoys such possession despite, another person is entitled to\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2202:C8760 | commentary | 491014025-MULLA-on-CPC-pdf | p.2202 | score=0.658]:\nause mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of damages which the court may award according to the justice of the case. And\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2203:C8761 | commentary | 491014025-MULLA-on-CPC-pdf | p.2203 | score=0.502]:\nPage 31 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nsince the item of interest now under consideration forms part of mesne profits, it is equally in the discretion of the \ncourt whether to allow such interest or not. 93 For the same reason, the court may, while allowing the claim for \ninterest, direct the interest to be calculated not month by month or year by year, but in a manner less advantageous \nto the plaintiff. The mode of calculation indicated in the beginning of this paragraph applies only to those cases \nwhere the decree is silent as to the mode in which interest is to be calculated.\nIn a suit, the plaintiff claimed decree for partition of her share in the partnership firm, decree for accounts and \nmesne profits with interest at 6 per cent per annum During the pendency of appeal against preliminary decree, the \nplaintiff sought amendment of rate of interest claiming 13 per cent per annum on the amount of mesne profits. The \nAppellate Court i.e. High Court, allowed the amendment and treating the suit claim as commercial transaction under \nthe amended s 34 of the Code of Civil Procedure, allowed interest at the rate charged by nationalised banks. It was \nheld by the Supreme Court that the decree passed was much more than what the amendment allowed.94\nAfter the aggregate amount of mesne profits is ascertained, the plaintiff may apply to the court for\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2199:C8739 | commentary | 491014025-MULLA-on-CPC-pdf | p.2199 | score=0.489]:\nPage 27 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nland which had been in the wrongful possession of two co-zamindars who had granted a lease to a putnidar, the co-\nzamindars were liable for what they actually received from the putnidar, and the putnidar was liable for the profits he \nact ually received and the liability of the zamindars was not joint and several with that of the putnidar. 19 But in a \ncase of this type, a decree for mesne profits may be passed jointly and severally against all trespassers who may \nhave combined to keep a plaintiff out of possession. 20 But where the defendants are in separate possession of \ndifferent portions of the suit land, they cannot be held jointly and severally liable for mesne profits. In such a case, \nthe mesne profits in respect of each of the portions occupied by each defendant would have to be determined on \nthe basis of the income which could have been derived from each portion of the land.21 In this situation, two courses \nare open to the court: (i) to pass a decree holding all such trespassers jointly and severally liable, leaving them to \nhave their liability adjudged in a separate suit, or (ii) to ascertain, if there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P39:C147 | commentary | 491014025-MULLA-on-CPC-pdf | p.39 | score=0.606]:\nesne profits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the person in possession.78\nIt cannot be said that mesne profits can be calculated only on the basis of the maximum rent that the premises \ncould have fetched if let out.79\nMesne profits can be claimed only when there is wrongful possession of the defendant. But, where \ndispossession is a joint or concerted act of several persons, each of them who participates in the commission of \nthat act would be liable for mesne profits even though he was not in possession and the profits were received \nnot by him but by some of his confederates.80\nMeasure of mesne profits is the value of wrongful possession. Rent could be a relevant factor for considering \nsuch a value, but not a decisive matter. 81 In terms of the definition of mesne profits under s 2 (12) of the Code \nof Civil Procedure, the question of proprietary of the valuation on account of the same can be decided at the \ntime of trial on evidence where the court can pass a decree for mesne profits or can direct the inquiry, or, can \nreject a prayer of mesne profits.82\nThe reservation as to profits due to\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2205:C8772 | commentary | 491014025-MULLA-on-CPC-pdf | p.2205 | score=0.575]:\nree tentatively for Rs 5000 apart from claiming mesne profits Rs 100/- per diem. It was held that the decree on \nmesne profits may, therefore, be modified as accordingly. Thus, the High Court directed that a decree for mesne \nprofit be passed provisionally for an amount of Rs 5,000/- and further, that the mesne profits shall be determined \nfinally under O 20, r 12 of the Code of Civil Procedure.33\nWhere the order of the trial court granting mesne profits was reduced and modified by the High Court without \nconsidering the evidence adduced by parties, it was held by the Supreme Court that the order of the High Court \nwas liable to be set aside.34\n22. Mesne profits and jurisdiction. See notes to s 6 and s 38 and the undernoted cases.35\n23. Res judicata . Where after the passing of a preliminary decree under r 12, the plaintiff applies in execution for \nascertaining the mesne profits, wrongly believing that such profits are to be ascertained in execution proceedings, \nand the application is dismissed, the dismissal does not operate as res judicata so as to bar a subsequent \napplication in the suit for ascertaining the mesne profits. 36 As the award of future mesne profits is discretionary with \ncourt, a second suit therefore is not barred under s 11 by reason of the omission to claim it in a prior suit. 37 The \nposition is the same where such a claim is made but is dismissed as\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P361:C1224]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P361:C1224 | commentary | 491014025-MULLA-on-CPC-pdf | p.361 | score=0.481]:\nPage 31 of 73\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nproceedings.52 When the first respondent retired from government service, the state moved the prescribed \nauthority under the Act for an order of eviction under s 5 of UP Public Premises (Eviction of Unauthorised \nOccupant) Act, 1972. On 22 March 1978, the prescribed authority passed an order for eviction dismissing the \napplication by observing that it is not possible to hold that the house in question is public premises or that the \nopposite party is unauthorised occupant of it. After the said order, the appellant sent notice to the first \nrespondent determining the lease, and on the expiry of the period specified in that notice, the appellant moved \na fresh application under s 4 of the Act, before the prescribed authority, even this time the application dismissed \non the principle of res judicata in that earlier order dated 22 March 1978, would operate as barred against the \nappellant from seeking eviction of the first respondent under the provisions of the said Act.\nAs per the order dated 22 March 1978, the prescribed authority found that the building belonged to the \ngovernment estate and that there was no evidence that the tenancy was terminated before filing the application. \nIn the present proceedings, there was no dispute that the notice was subsequently served on the first \nrespondent determining\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1716:C6836 | commentary | 491014025-MULLA-on-CPC-pdf | p.1716 | score=0.512]:\na brickfield to B. No lease is executed, but B enters into possession under the \nagreement. B then sues A for specific performance of the agreement, alleging that A, though frequently asked to do \nso, had neglected and refused to grant the lease. A denies that he was asked to grant the lease and express his \nreadiness to execute the lease. A also counter claims for Rs 1,500 by way of rent. After the suit is set down for trial, \nA applies for leave to amend his defence and counter-claim, and to join therewith a claim for possession of the land. \nThe application must be refused. To allow A to amend would be to allow him to present a totally distinct, new and \ninconsistent case.23\nWhere in a suit for ejectment against a tenant, his defence was that since the tenancy had been renewed, he \ncannot be allowed by an amendment, to raise the plea that he was not a tenant. 24 In eviction proceedings before \nthe rent controller, the tenant did not raise the question of notice. In that situation the landlord did not adduce \nevidence on notice though in fact he had given the notice. The tenant tried to raise the question of notice before the \nHigh Court, but was not allowed on the ground that he was estopped from charging his original stand. A defendant \nwho has deliberately and under no mistake or misapprehension admitted a material fact in his written statement \ncannot be allowed at a\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P73:C269 | commentary | 491014025-MULLA-on-CPC-pdf | p.73 | score=0.505]:\nand inconceivable and it might become even decisive.8 In this case, sub-s 2 of ss 10, 12 and 13 of AP Buildings \n(Lease, Rent and Eviction ) Control Act, 1960 gave exclusive jurisdiction to the rent controller under the Act in \nthe matter of eviction of a tenant from any premises by a landlord. However, by virtue of s 32 (b) of the said \nRent Act, the provisions of the Act were not made applicable to any building constructed on or after 26 August \n1956. In the instant case, the house was constructed after 26 August 1957 and the provisions of s 32 (b) of the \nRent Act existed on the statute book on the date of the suit, hence, the present suit for eviction and arrears of \nrent was filed in the civil court. During the pendency of the suit, the provisions of s 32 (b) of the Rent Act was \nstruck down by the Supreme Court as violating of 14 of the Constitution of India. With the result that all \nbuildings, in respective of the date of their construction, came within the purview of the said Act. Accordingly, \nthe jurisdiction of the civil court from entertaining a suit for eviction of a tenant was ousted.\nThe Andhra Pradesh High Court took a contrary view in Yadamma v. K Mallesh, 9 wherein it was held that when \non the date of filing of the suit, particular right which is available to a party would be continued to be available till \nthe disposal of the suit, though such benefits\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2074:C8266 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 5 | p.2074 | score=0.502]:\ncupation. The expression and \noccurring is meant to be conjunctive. Both the conditions must be satisfied.26\nRule 5 applies to suits for eviction by a lessor against his lessee. The effect of the rule as amended in 1976 is that \nin any suit by a lessor for eviction of his lessee after the determination of the lease and for recovery of rent in \nrespect of the period of occupation, thereof during the continuance of the lease or of compensation for the use and \noccupation thereof before or after the commencement of Act 37 of 1972, the defendant shall at or before the first \nhearing of the suit (or in the case of a suit instituted before the commencement of the said Act, the first hearing after \nsuch commencement) deposit the entire amount of rent, or compensation for use and occupation, admitted by him \nto be due, and thereafter throughout the continuation of the suit deposit regularly the amount of monthly rent or \ncompensation due at the rate admitted by him, and in the event of any default in this regard, the court may, unless \nafter considering any representation made by him in that behalf, it allows him further time on security being \nfurnished for the amount, refuse to entertain any defence or as the case may be strike off his defence. The rule \nenables the plaintiff to withdraw the amount deposited in the court by the tenant at any stage of the suit. 27 The rule \napplies\n\n[Document 5 | CPC | CPC:Section15 | commentary | 491014025-MULLA-on-CPC-pdf | Section 15 | p.2076 | score=0.597]:\neeking the removal \nof the lessee from the suit premises shall be treated as an eviction suit.\nIn will be seen that provisions contained in O 15-A are akin to the provisions under Rent Control laws of States. For \nexample, Section 15 of the Bihar Building (Lease, Rent and Eviction) Control Act, 1982 empowers Court to direct \nthe defendant to deposit arrears of rent and on his failure to deposit arrears of rent as well as subsequent rent\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P675:C2565 | commentary | 491014025-MULLA-on-CPC-pdf | p.675 | score=0.525]:\ner the interest \nof tenancy for this benefit and in view thereof, it can be said that the interest of the tenant of non-residential \npremises to which the Maharashtra Rent Control Act, 1999 applies is attachable and saleable in execution of \nthe decree against the tenant. 631 \n(za) Sub-tenant. The history of the litigation reveals that the tenant surrendered the lease with effect from 31 \nAugust 1953 by a notice, but failed to vacate it on the due date. Landlord was therefore required to file a suit \nagainst the tenant on the basis of the notice for surrender of tenancy. \nDuring pendency of the suit, the tenant entered into a compromise and in terms thereof vacated the leased \npremises. As against the sub-tenants, which the tenant had inducted during subsistence of tenancy, one of the \nterms of the compromise decree reserved liberty to the landlord to take necessary legal steps for their eviction. \nThe landlord thereafter instituted an independent suit for eviction of the sub-tenant. In that suit, the court held \nthat the remedy of the landlord is to execute the compromise decree. The firm as sub-tenant, had filed a \ncounter suit seeking declaration of its status as direct tenant under Act of 1950 and protection thereunder. In \nthe counter suit of the sub-tenant, the court took the same view that the remedies of the parties lay in execution \nproceedings. The judgment rendered\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2076:C8275 | commentary | 491014025-MULLA-on-CPC-pdf | p.2076 | score=0.521]:\nff the defence.\n43(3)The amount deposited under this rule shall be paid to the plaintiff lessor or licensor or his Advocate \nand the receipt of such amount shall not have the effect of prejudicing the claim of the plaintiff and it shall \nnot also be treated as a waiver of notice of termination.\nExplanation. The suit for eviction shall include suit for mandatory injunction seeking removal of \nlicensee from the premises for the purpose of this rule.]\nBombay Amendment. In a suit for eviction, the defence could be ordered to be struck off for non \npayment of arrear of rent only if the plaintiff admits lease in favour of the defendant and not when the \nplaintiff did not plead lease in his favour and the lease is put forward only as an alternative. 44 Where in \nsuit filed by tenant against the landlord for injunction for restraining the latter from interfering with \nplaintiffs possession over the tenanted premises, the Court directed the tenant to deposit rent every \nmonth and also the arrears of rent, the tenant failed to comply with the Courts order, the Court was \nheld justified in dismissing the suit.45\nCOMMENTS\nBy way of State Amendment in O 15, a new Order has been added which is O 15-A. This New Order is applicable \nto the State of Maharashtra. Sub-rule (1) of r 1 of O 15-A provides that in an eviction suit filed by the lessor against \nthe lessee for recovery of rent and\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P675:C2566 | commentary | 491014025-MULLA-on-CPC-pdf | p.675 | score=0.513]:\nunder Act of 1950 and protection thereunder. In \nthe counter suit of the sub-tenant, the court took the same view that the remedies of the parties lay in execution \nproceedings. The judgment rendered in the counter suit of the sub-tenant, i.e. , the firm, was challenged in \nSupreme Court in special leave petition but it was withdrawn. The judgment rendered in the counter suit, as \nalso the other rendered in the suit filed by the landlord against the sub-tenant, had attained finality. It is only \nafter the landlord failed in obtaining eviction decree in the suit filed by it that it moved an application for \nexecution of the compromise decree. One of the terms of the compromise decree which reserved the right to \nthe landlord to take necessary legal steps to evict the sub-tenants, makes the decree executable to that extent. \nIt could not, therefore, be urged by the firm that the compromise decree on its terms is not executable. 632 \nWhere a suit for recovery of possession was filed against lessee of land only without including the building \nthereon which was constructed and sublet by lessee with the permission of lessor, the decree passed upon \nadmission of lessee to surrender the land would be inexecutable against the sub-lessees, particularly when no \nleave was obtained under O 2, r 2 in respect of the building. Therefore, the decree as it stood was final and \ncould be\n\n[TOP_MATCH: CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C204]\n\n[Document 1 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C204 | bare_act | the code of civil procedure, 1908 | p.57 | score=0.589]:\n; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of court fees, \nso far as the case admits. \n2. In money suits— Where the plaintiff seeks the recovery of money, the plaint shall state the precise amount \nclaimed: \nBut where the plaintiff sue for mesne profits, or for an amount which will be found due to him on taking \nunsettled accounts between him and the defendant, [136][or for movables in the possession of the \ndefendant, or for debts of which the value he cannot, after the exercise of reasonable diligence, estimate, the \nplaint shall state approximately the amount or value sued for]. \n3. Where the subject-matter of the suit is immovable property— Where the subject-matter of the suit is \nimmovable property, the plaint shall contain a description of the property sufficient to identify it, and, in case \nsuch property can be identified by boundaries or numbers in a record of settlement or survey, the plaint shall \nspecify such boundaries or numbers. \n57\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1674:C6645 | commentary | 491014025-MULLA-on-CPC-pdf | p.1674 | score=0.570]:\nessary to set it out at length, but only to state the legal effect of it, \nthe object apparently being to prevent long pleadings. 48 Thus, it is sufficient if a plaintiff in a suit for the recovery of \nimmovable property under a Will states in his plaint the effect of the Will under which he claims. He is not bound to \nset out the precise words of the Will, although a question has arisen as to the true construction of those words. 49 At \nthe same time, it is not enough for a plaintiff to say that, under and by virtue of a certain deed, he is entitled to the \nproperty claimed by him. He must state the effect of the document on which he relies.50\nIn a suit for declaration of title and possession, the plaintiff filed some documents of title relied on by him, but the \ndescription of the property given in the documents did not correspond with the description shown in the schedule of \nthe suit. To get over the difficulty, the plaintiff re-described the suit property in the schedule. However, there was no \nnarrative in the pleadings to explain how the earlier description of the property changed. It was held that in the \nabsence of necessary pleading and proof, the plaintiff was not entitled to the relief claimed.51\nIn the matter of enforcement of the agreement or agreement of reconvenyance, time is not always the essence of \nthe contract, unless the agreement specifically stipulates\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1259:C4980 | commentary | 491014025-MULLA-on-CPC-pdf | p.1259 | score=0.628]:\nrecovery of immovable property, with or without a claim for rent or mesne \nprofits, by a landlord against a tenant whose term has expired or has been duly determined by \nnotice to quit, or has become liable to forfeiture for non-payment of rent, or against persons \nclaiming under such tenant; \n(g) procedure by way of originating summons;\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2195:C8723 | commentary | 491014025-MULLA-on-CPC-pdf | p.2195 | score=0.612]:\nthe recovery of possession of immovable property, the \nplaintiff may claim mesne profits which have accrued during a period prior to the institution of the suit. He may also \nclaim mesne profits which have become due subsequent to the institution of the suit. The decree to be passed in \nsuch a case will now be as follows\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P434:C1543 | commentary | 491014025-MULLA-on-CPC-pdf | p.434 | score=0.598]:\nwithin whose \njurisdiction the parties resided.37\n11. Clause (e): Wrong to immovable property. This refers to torts affecting immovable property such as \ntrespass,38 nuisance, infringement of easement etc.\nWhere a reading of the plaint leads to one conclusion only, viz, that it was for damages relating to immovable \nproperty in Mathura, s 16 (e) of the Code of Civil Procedure would apply, then s 20 of the the Code of Civil \nProcedure is of no avail to the plaintiff. The mere factum of the execution of the sale deed and payment of the \nsale consideration being in Delhi, does not comprise any part of cause of action relating to the claim for \ndamages to immovable property raised in this suit. Even if s 16 (e) is assumed not to have any applicability to \nthe facts of the case, Delhi courts do not possess territorial jurisdiction because the defendant does not have its \nprincipal office in this city. The fact that it has a subordinate office in Delhi, seems to be of little consequences, \nsince no part of cause of action voiced in the plaint has arisen in Delhi.39\n12. Clause (f): movable property actually under distraint or attachment. Movable property under \nattachment constitutes an exception to the general rule that movables follow the person. 40 This exception is \nprobably based on the principle that a movable property under attachment is one in session of the court. 41 The\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P666:C2519 | commentary | 491014025-MULLA-on-CPC-pdf | p.666 | score=0.594]:\nnient to invoke. Being an inadvertent error, not affecting the merits of the case, it may be \ncorrected under s 152 of the Code of Civil Procedure by the court which passed the decree by supplying the \nomission. Alternatively, the exact description of decretal property may be ascertained by the executing court as \na question relating to execution, discharge or satisfaction of decree within the meaning of s 47 of the Code of \nCivil Procedure. A decree of a competent court should not, as far as practicable, be allowed to be defeated on \naccount of an accidental slip or omission. 534 \nIn a suit for specific performance of agreement to sell immovable property, the map of suit property was not \nannexed to plaint, and the defendants did not object to such fact promptly, the trial court did not insist on such \nmap and the map was filed for the first time in execution proceedings. However, the draft sale deed \naccompanied by a notice requiring objections to be made by judgment-debtor as provided by sub-r (2) of r 34 of \nO 21 of the Code of Civil Procedure was not caused to be served by the executing court, and the judgment-\ndebtors repeatedly insisted, on draft sale deed being delivered to them enabling objections being filed and there \nwas no determination by the executing court that the immovable property as delineated and demonstrated in \nthe map accompanying the draft sale deed\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1765:C7020 | commentary | 491014025-MULLA-on-CPC-pdf | p.1765 | score=0.585]:\ne \nheard to contend that the number of property is not given and hence the suit is liable to be dismissed. 45 In a suit \nrelating to immoveable property when the plaintiff gives the particulars of the boundaries or the numbers in a record \nof survey, it shall have to be presumed that sufficient particulars are given. The other aspects like the date of \npurchase, names of attestors, scribe or mediators are all matters of evidence and the plaintiffs cannot be compelled \nto disclose them to the defendants.46\nA conjoint reading of O. 7, r 3 and O. 20, r 9 of CPC makes it clear that in a suit relating to immovable property, the \nplaint must disclose the identity of the suit property without any ambiguity. The identification may either be by \nboundaries or by numbers of Revenue Records or Settlement or Survey Records. But in an ejectment suit, where \nthe boundaries of the property given in the plaint was not controverted or challenged it was held that the objection \nraised after execution that decree was wrongly drawn is untenable.47\nIn a suit for declaration of title, there was complete absence of description of the suit land. Neither measurement in \nrelation to settlement map was given nor sketch map was drawn to scale. Even boundaries or the extent of the suit \nland was mentioned. The plaintiff also failed to give the plot number and boundaries, when asked for, in his\n\n[Document 8 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P174:C633 | bare_act | the code of civil procedure, 1908 | p.174 | score=0.581]:\nble and immovable property transferred by the said instrument. \n3. C.D. claims to be entitled to a beneficial interest under the instrument. \n[As in paras 4 and 5 of Form. No. 1.] \n6. The plaintiff is desirous to account for all the rents and profits of the said immovable property [and the \nproceeds of the sale of the said, or of part of the said, immovable property, or movable, or the proceeds of \nthe sale of, or of part of, the said movable property, or the profits accruing to the plaintiff as such trustee in \nthe execution of the said trust]; and he prays that the Court will take the accounts of the said trust, and also \nthat the whole of the said trust estate may be administered in the Court for the benefit of C.D., the defendant, \nand all other persons who may be interested in such administration, in the presence of C.D. and such other \npersons so interested as the Court may direct, or that C.D. may show good cause to the contrary. \n[N.B.—Where the suit is by a beneficiary, the plaint may be modelled mutatis mutandis on the plaint by a \nlegatee.] \nNo. 45 \nForeclosure or Sale \n(Title) \nA.B., the above-named plaintiff, states as follows:— \n1. The plaintiff is mortgagee of lands belonging to the defendant. \n2. The following are the particular of the mortgage:— \n(a) (date); \n(b) (names of mortgagor and mortgagee); \n(c) (sum secured); \n(d) (rate of interest); \n(e) (property"
+  },
+  "court_fee": {
+    "query": "Karnataka court fee ad valorem percentage City Civil Court eviction plaint civil suit Rs 50 lakh",
+    "results": [
+      {
+        "title": "1 THE KARNATAKA COURT-FEE AND SUITS VALUATION ACT, 1958.",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/7625/1/16_of_1958_(e).pdf",
+        "snippet": "Rupees fifteen if the value of plaintiff’s share is Rs.",
+        "date": ""
+      },
+      {
+        "title": "Court Fee Calculator State-wise Online - Century Law Firm",
+        "url": "https://www.centurylawfirm.in/blog/court-fee-calculator-state-wise-online/",
+        "snippet": "These court fees and jurisdiction calculators can be used to calculate court fees and jurisdiction easily in seconds for free.",
+        "date": ""
+      },
+      {
+        "title": "COURT FEES PAYABLE CIVIL CASES Sr. No. Category of Cases Court Fees 1.",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec02504c296f8eb5fd521e744da4e837/uploads/2023/05/2023052233-1.pdf",
+        "snippet": "Civil Suits of Jurisdiction Rs.200/- · Civil Suits of Jurisdiction Rs.400/-",
+        "date": ""
+      },
+      {
+        "title": "THE FIRST SCHEDULE (See section 3 ) Ad valorem fees Number Proper fee 1 2",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec0360a70bb05b08d6cd95deb3bdb750/uploads/2023/05/2023051461.pdf",
+        "snippet": "THE FIRST SCHEDULE · (See section 3 ) · Ad valorem fees · Number · Proper fee · 1 Plaint ,written statement · pleading a set off or · counterclaim or memorandum of · appeal (not otherwise provided · for in this Act) or of cross-",
+        "date": ""
+      },
+      {
+        "title": "Court Fees Calculator | Supreme Court of India | India",
+        "url": "https://www.sci.gov.in/court-fees-calculator/",
+        "snippet": "All fields marked with * are required · Accessibility Citizen's Charter Guided Tour FAQs Webcast India Code Pay Scales Telephone Directory Argument Transcripts Accounts Steps taken during COVID-19 Employee Corner Officers Servant Rules Important Links Officers / Officials Download App From",
+        "date": ""
+      },
+      {
+        "title": "DISCLAIMER: This document is being furnished to you for your information by PRS",
+        "url": "https://prsindia.org/files/bills_acts/acts_states/karnataka/1958/1958Karnataka16.pdf",
+        "snippet": "3. Substituted for the words \"Civil Judge, Junior Division\" by the Karnataka Adaptations of Laws Order ... (c) in any other case, whether the subject-matter of the suit has a market value or not, fee shall be · computed on the amount at which the relief sought is valued in the plaint or on3[rupees one",
+        "date": ""
+      },
+      {
+        "title": "THE KARNATAKA COURT-FEES AND SUITS VALUATION RULES, 1960 NOTIFICATION",
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_KA_71_401_00004_16_1551435305356%2Frulesindividualfile%2F&file=rules_1960-new.pdf",
+        "snippet": "THE KARNATAKA COURT-FEES AND SUITS VALUATION · No. HD 3 JCF 58, dated, Bangalore, 5th August 1960",
+        "date": ""
+      },
+      {
+        "title": "Section 79 in Karnataka Court-Fees and Suits Valuation Act, 1958",
+        "url": "https://indiankanoon.org/doc/68090202/",
+        "snippet": "Take notes as you read a judgment using our Virtual Legal Assistant and get email alerts whenever a new judgment matches your query (Query Alert Service). Try out our Premium Member Services -- Sign up today and get free trial for one month",
+        "date": ""
+      }
+    ],
+    "summary": "[Court Fee Calculator State-wise Online - Century Law Firm] These court fees and jurisdiction calculators can be used to calculate court fees and jurisdiction easily in seconds for free.\n[THE FIRST SCHEDULE (See section 3 ) Ad valorem fees Number Proper fee 1 2] THE FIRST SCHEDULE · (See section 3 ) · Ad valorem fees · Number · Proper fee · 1 Plaint ,written statement · pleading a set off or · counterclaim or memorandum of · appeal (not otherwise provided · for in this Act) or of cross-",
+    "error": null
+  },
+  "legal_research": {
+    "queries": [
+      "Recovery of Possession limitation period India years accrual date right to sue Karnataka City Civil Court",
+      "eviction plaint mandatory procedural requirements India Karnataka City Civil Court"
+    ],
+    "results": [
+      {
+        "title": "Limitation Period For Filing A Suit For Declaration Along With Recovery Of Possession Is 12 Years And Not 3 Years: Supreme Court",
+        "url": "https://www.indialaw.in/blog/civil/limitation-for-suit-recovery-supreme-court-sets-12-years-rule/",
+        "snippet": "The Hon’ble Supreme Court (“SC”) ... with a relief for the recovery of possession shall be 12 years from the date the possession of the defendant becomes adverse , in terms of Article 65 of the Schedule […]...",
+        "date": ""
+      },
+      {
+        "title": "3 years or 12 years? Supreme Court clarifies the period of limitation to regain title and recover possession of suit property by setting aside the sale deed",
+        "url": "https://www.scconline.com/blog/post/2025/01/09/period-of-limitation-to-regain-title-of-property-by-setting-aside-sale-deed-is-3-yrs-sc/",
+        "snippet": "Further, the Court noted that Article 65 stipulates that a suit filed for recovery of possession based on title should be filed within a period of 12 years when possession of the defendant becomes adverse to the plaintiff concerned.",
+        "date": ""
+      },
+      {
+        "title": "2024 INSC 1021 Page 1 of 35 REPORTABLE IN THE SUPREME COURT OF INDIA",
+        "url": "https://api.sci.gov.in/supremecourt/2019/39144/39144_2019_15_1501_58154_Judgement_20-Dec-2024.pdf",
+        "snippet": "would begin to run from the date when the right of sue first · accrued. In other words, the Court held that successive violation · of the right would not give rise to fresh cause and the suit would ... The reason is simple. Ordinarily when, a suit is filed for · cancellation of Sale Deed and recovery of possession, the same",
+        "date": ""
+      },
+      {
+        "title": "1 THE LIMITATION ACT, 1963 _________ ARRANGEMENT OF SECTIONS __________ PART I",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/1565/5/A1963-36.pdf",
+        "snippet": "When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.",
+        "date": ""
+      },
+      {
+        "title": "DISTRICT JUDICIARY ANANTHAPURAMU LAW ON LIMITATION PAPER PRESENTATIONS",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec030655f117444fc1911ab9c6f6b013/uploads/2025/04/2025042027.pdf",
+        "snippet": "brought after the period of limitation, it is open to a defendant in a suit for recovery of · possession brought by a transferor to take a plea in defence of part-performance of the · contract to protect his possession, though he may not be able to enforce that right through a ... Section 4 has nothing to do with period of limitation. It does not add to the period of · Limitation. It only extends the concession that is notwithstanding that the period of limitation · expires on a day when the court is closed suit appeal or application may be filed on the day on",
+        "date": ""
+      },
+      {
+        "title": "1 EXECUTION OF DECREES FOR EVICTION AND DELIVERY OF",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec03333cb763facc6ce398ff83845f22/uploads/2024/06/2024061951.pdf",
+        "snippet": "By virtue of Code of Civil Procedure (Amendment) Act, 1976 Act no.",
+        "date": ""
+      },
+      {
+        "title": "1THE KARNATAKA CIVIL RULES OF PRACTICE, 1967",
+        "url": "https://karnatakajudiciary.kar.nic.in/hcklibrary/PDF/kar-crp-civil.pdf",
+        "snippet": "High Court of Karnataka · I have always imagined that Paradise will be a kind of library",
+        "date": ""
+      },
+      {
+        "title": "1 REPORTABLE IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION",
+        "url": "https://api.sci.gov.in/supremecourt/2013/2620/2620_2013_Judgement_20-Feb-2018.pdf",
+        "snippet": "Procedure Code or Criminal Procedure Code.",
+        "date": ""
+      },
+      {
+        "title": "Steps of the Eviction Process: How Does Eviction Work in Indian Courts?",
+        "url": "https://www.nrilegalservices.com/eviction-process-and-work-in-indian-courts/",
+        "snippet": "The authority empowered under the Rent Acts to entertain the eviction petition is designated as the Rent Controller. The rules of Civil Procedure Code applicable to civil suits in Indian Court, as modified by the respective State Rent Acts, apply to the proceedings before the Rent Controller.",
+        "date": ""
+      },
+      {
+        "title": "CPC Order 7 Rule 11 : Rejection of a Plaint -",
+        "url": "https://legallyin.com/cpc-order-7-rule-11-rejection-of-a-plaint/",
+        "snippet": "The Supreme Court upheld the rejection of the plaint under Order 7 Rule 11(d), stating that failure to comply with procedural requirements renders the suit barred by law . 2. In State Bank of India vs.",
+        "date": ""
+      }
+    ],
+    "summary": "[Limitation Period For Filing A Suit For Declaration Along With Recovery Of Possession Is 12 Years And Not 3 Years: Supreme Court] The Hon’ble Supreme Court (“SC”) ... with a relief for the recovery of possession shall be 12 years from the date the possession of the defendant becomes adverse , in terms of Article 65 of the Schedule […]...\n[3 years or 12 years? Supreme Court clarifies the period of limitation to regain title and recover possession of suit property by setting aside the sale deed] Further, the Court noted that Article 65 stipulates that a suit filed for recovery of possession based on title should be filed within a period of 12 years when possession of the defendant becomes adverse to the plaintiff concerned.\n[1 THE LIMITATION ACT, 1963 _________ ARRANGEMENT OF SECTIONS __________ PART I] When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.\n[DISTRICT JUDICIARY ANANTHAPURAMU LAW ON LIMITATION PAPER PRESENTATIONS] brought after the period of limitation, it is open to a defendant in a suit for recovery of · possession brought by a transferor to take a plea in defence of part-performance of the · contract to protect his possession, though he may not be able to enforce that right through a ... Section 4 has nothing to do with period of limitation. It does not add to the period of · Limitation. It only extends the concession that is notwithstanding that the period of limitation · expires on a day when the court is closed suit appeal or application may be filed on the day on\n[1 EXECUTION OF DECREES FOR EVICTION AND DELIVERY OF] By virtue of Code of Civil Procedure (Amendment) Act, 1976 Act no.\n[1 REPORTABLE IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION] Procedure Code or Criminal Procedure Code.\n[Steps of the Eviction Process: How Does Eviction Work in Indian Courts?] The authority empowered under the Rent Acts to entertain the eviction petition is designated as the Rent Controller. The rules of Civil Procedure Code applicable to civil suits in Indian Court, as modified by the respective State Rent Acts, apply to the proceedings before the Rent Controller.\n[CPC Order 7 Rule 11 : Rejection of a Plaint -] The Supreme Court upheld the rejection of the plaint under Order 7 Rule 11(d), stating that failure to comply with procedural requirements renders the suit barred by law . 2. In State Bank of India vs.",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": {
+      "article": "65",
+      "description": "The 12-year clock under Article 65 runs only when possession is open, hostile, and unbroken. Courts scrutinise gaps: if the owner successfully interrupts possession by legal notice, entry, or eviction attempts, the limitation period resets.",
+      "period": "",
+      "accrual": "",
+      "source": "websearch",
+      "reason": "Suit for possession of immovable property based on previous ownership or possession when the defendant is in unauthorized occupation after the expiry of a lease."
+    },
+    "user_cited_provisions": [],
+    "verified_provisions": [
+      {
+        "section": "Section 20",
+        "act": "",
+        "text": "nducted by mortgagees. 20 Where the defendants, \ninspite of knowledge of auction sale, did not challenge it and delivery of possession was effected under O 21, r 95, \nthe same cannot be challenged after three years of auction sale.21\n2. Separate suit for delivery of possession. Notes to s 47, Questions between the auction-p",
+        "source": "rag"
+      },
+      {
+        "section": "Section 47",
+        "act": "",
+        "text": "ossession. Notes to s 47, Questions between the auction-purchaser on the one \nhand and a party to the suit or his representative on the other hand could be referred to for more details in this \nregard.\nFor recovery of possession by the auction-purchaser, a separate suit is barred under s 47 of the Code of Civil \nProcedure.",
+        "source": "rag"
+      },
+      {
+        "section": "Section 47",
+        "act": "the Code",
+        "text": "uit is barred under s 47 of the Code of Civil \nProcedure. The only mode available to the auction purchaser is by filing an application under O 21, r 95 of the Code \nof Civil Procedure.22\n3. Appeal. In Harnandrai v. Debidutt 23 the Supreme Court approved the view taken by the Calcutta High Court in \nKailash Chandra Tarafdar v. Gopal Cha",
+        "source": "rag"
+      },
+      {
+        "section": "Section 3",
+        "act": "",
+        "text": "1908, together with s 3 (4) of the \nBanking Companies (Acquisition and Transfer of Undertaking) Act 1970, the right to sue vests with the bank as a \nbody corporate, rather than in any particular branch thereof. It follows that the bank can file one consolidated suit in \nrespect of a claim against the same defendants, so l",
+        "source": "rag"
+      },
+      {
+        "section": "Section 4",
+        "act": "",
+        "text": "f 1908), on documents. \n4. Specific relief to be granted only for enforcing individual civil rights and not for enforcing \npenal laws.—Specific relief can be granted only for the purpose of enforcing individual civil rights and \nnot for the mere purpose of enforcing a penal law. \nPART II \nSPECIFIC RELIEF \nCHAPTER I \nRECOVER",
+        "source": "rag"
+      },
+      {
+        "section": "Section 43",
+        "act": "",
+        "text": "tory provisions \nof s 43 and 64 of the Bombay Tenancy Act, 1939. Under these circumstances, the plaintiff, who was the only",
+        "source": "rag"
+      },
+      {
+        "section": "Section 2",
+        "act": "",
+        "text": "lawful \npossession. Section 2(12) of CPC defines mesne profits of property as profits which the person in wrongful possession \nof such property actually received or might have received with ordinary diligence from it. A person is said to be in \nwrongful possession when he enjoys such possession despite, another person is entitl",
+        "source": "rag"
+      },
+      {
+        "section": "Section 34",
+        "act": "the Code",
+        "text": "under \nthe amended s 34 of the Code of Civil Procedure, allowed interest at the rate charged by nationalised banks. It was \nheld by the Supreme Court that the decree passed was much more than what the amendment allowed.94\nAfter the aggregate amount of mesne profits is ascertained, the plaintiff may apply to the court for",
+        "source": "rag"
+      },
+      {
+        "section": "Section 5000",
+        "act": "",
+        "text": "ee tentatively for Rs 5000 apart from claiming mesne profits Rs 100/- per diem. It was held that the decree on \nmesne profits may, therefore, be modified as accordingly. Thus, the High Court directed that a decree for mesne \nprofit be passed provisionally for an amount of Rs 5,000/- and further, that the mesne profits shall",
+        "source": "rag"
+      },
+      {
+        "section": "Section 100",
+        "act": "",
+        "text": "ming mesne profits Rs 100/- per diem. It was held that the decree on \nmesne profits may, therefore, be modified as accordingly. Thus, the High Court directed that a decree for mesne \nprofit be passed provisionally for an amount of Rs 5,000/- and further, that the mesne profits shall be determined \nfinally under O 20, r 12 o",
+        "source": "rag"
+      },
+      {
+        "section": "Section 5",
+        "act": "",
+        "text": "y for an amount of Rs 5,000/- and further, that the mesne profits shall be determined \nfinally under O 20, r 12 of the Code of Civil Procedure.33\nWhere the order of the trial court granting mesne profits was reduced and modified by the High Court without \nconsidering the evidence adduced by parties, it was held by the Sup",
+        "source": "rag"
+      },
+      {
+        "section": "Section 6",
+        "act": "",
+        "text": "ction. See notes to s 6 and s 38 and the undernoted cases.35\n23. Res judicata . Where after the passing of a preliminary decree under r 12, the plaintiff applies in execution for \nascertaining the mesne profits, wrongly believing that such profits are to be ascertained in execution proceedings, \nand the application is dis",
+        "source": "rag"
+      },
+      {
+        "section": "Section 38",
+        "act": "",
+        "text": "ee notes to s 6 and s 38 and the undernoted cases.35\n23. Res judicata . Where after the passing of a preliminary decree under r 12, the plaintiff applies in execution for \nascertaining the mesne profits, wrongly believing that such profits are to be ascertained in execution proceedings, \nand the application is dismissed, t",
+        "source": "rag"
+      },
+      {
+        "section": "Section 36",
+        "act": "",
+        "text": "ing the mesne profits. 36 As the award of future mesne profits is discretionary with \ncourt, a second suit therefore is not barred under s 11 by reason of the omission to claim it in a prior suit. 37 The \nposition is the same where such a claim is made but is dismissed as",
+        "source": "rag"
+      },
+      {
+        "section": "Section 11",
+        "act": "",
+        "text": "is not barred under s 11 by reason of the omission to claim it in a prior suit. 37 The \nposition is the same where such a claim is made but is dismissed as",
+        "source": "rag"
+      },
+      {
+        "section": "Section 4",
+        "act": "the Act,",
+        "text": "h application under s 4 of the Act, before the prescribed authority, even this time the application dismissed \non the principle of res judicata in that earlier order dated 22 March 1978, would operate as barred against the \nappellant from seeking eviction of the first respondent under the provisions of the said Act.\nAs per the order d",
+        "source": "rag"
+      },
+      {
+        "section": "Section 1",
+        "act": "",
+        "text": "counter claims for Rs 1,500 by way of rent. After the suit is set down for trial, \nA applies for leave to amend his defence and counter-claim, and to join therewith a claim for possession of the land. \nThe application must be refused. To allow A to amend would be to allow him to present a totally distinct, new and \nincons",
+        "source": "rag"
+      },
+      {
+        "section": "Section 10",
+        "act": "",
+        "text": "s case, sub-s 2 of ss 10, 12 and 13 of AP Buildings \n(Lease, Rent and Eviction ) Control Act, 1960 gave exclusive jurisdiction to the rent controller under the Act in \nthe matter of eviction of a tenant from any premises by a landlord. However, by virtue of s 32 (b) of the said \nRent Act, the provisions of the Act were not",
+        "source": "rag"
+      },
+      {
+        "section": "Section 32",
+        "act": "",
+        "text": "wever, by virtue of s 32 (b) of the said \nRent Act, the provisions of the Act were not made applicable to any building constructed on or after 26 August \n1956. In the instant case, the house was constructed after 26 August 1957 and the provisions of s 32 (b) of the \nRent Act existed on the statute book on the date of the s",
+        "source": "rag"
+      },
+      {
+        "section": "Section 15",
+        "act": "",
+        "text": "ates. For \nexample, Section 15 of the Bihar Building (Lease, Rent and Eviction) Control Act, 1982 empowers Court to direct \nthe defendant to deposit arrears of rent and on his failure to deposit arrears of rent as well as subsequent rent",
+        "source": "rag"
+      },
+      {
+        "section": "Section 57",
+        "act": "",
+        "text": "boundaries or numbers. \n57",
+        "source": "rag"
+      },
+      {
+        "section": "Section 48",
+        "act": "",
+        "text": "revent long pleadings. 48 Thus, it is sufficient if a plaintiff in a suit for the recovery of \nimmovable property under a Will states in his plaint the effect of the Will under which he claims. He is not bound to \nset out the precise words of the Will, although a question has arisen as to the true construction of those word",
+        "source": "rag"
+      },
+      {
+        "section": "Section 49",
+        "act": "",
+        "text": "uction of those words. 49 At \nthe same time, it is not enough for a plaintiff to say that, under and by virtue of a certain deed, he is entitled to the \nproperty claimed by him. He must state the effect of the document on which he relies.50\nIn a suit for declaration of title and possession, the plaintiff filed some document",
+        "source": "rag"
+      },
+      {
+        "section": "Section 16",
+        "act": "",
+        "text": "roperty in Mathura, s 16 (e) of the Code of Civil Procedure would apply, then s 20 of the the Code of Civil \nProcedure is of no avail to the plaintiff. The mere factum of the execution of the sale deed and payment of the \nsale consideration being in Delhi, does not comprise any part of cause of action relating to the claim",
+        "source": "rag"
+      },
+      {
+        "section": "Section 20",
+        "act": "the Code",
+        "text": "e would apply, then s 20 of the the Code of Civil \nProcedure is of no avail to the plaintiff. The mere factum of the execution of the sale deed and payment of the \nsale consideration being in Delhi, does not comprise any part of cause of action relating to the claim for \ndamages to immovable property raised in this suit. Even if s 16 (e) i",
+        "source": "rag"
+      },
+      {
+        "section": "Section 152",
+        "act": "the Code",
+        "text": "be \ncorrected under s 152 of the Code of Civil Procedure by the court which passed the decree by supplying the \nomission. Alternatively, the exact description of decretal property may be ascertained by the executing court as \na question relating to execution, discharge or satisfaction of decree within the meaning of s 47 of the Code of",
+        "source": "rag"
+      },
+      {
+        "section": "Article 65",
+        "act": "Limitation Act, 1963",
+        "text": "The 12-year clock under Article 65 runs only when possession is open, hostile, and unbroken. Courts scrutinise gaps: if the owner successfully interrupts possession by legal notice, entry, or eviction attempts, the limitation period resets.",
+        "source": "websearch"
+      }
+    ],
+    "enrichment_log": [
+      "limitation: 0 candidates from RAG",
+      "limitation: +1 candidates from websearch",
+      "limitation: LLM selected Article 65 (Suit for possession of immovable property based on previous ownership or possession when the defendant is in unauthorized occupation after the expiry of a lease.)",
+      "rag_provisions: 26 found in RAG chunks",
+      "lkb: cause_type normalized to 'recovery_of_possession'",
+      "lkb: found entry for recovery_of_possession"
+    ],
+    "rag_provisions": [
+      {
+        "section": "Section 20",
+        "act": "",
+        "text": "nducted by mortgagees. 20 Where the defendants, \ninspite of knowledge of auction sale, did not challenge it and delivery of possession was effected under O 21, r 95, \nthe same cannot be challenged after three years of auction sale.21\n2. Separate suit for delivery of possession. Notes to s 47, Questions between the auction-p",
+        "source": "rag"
+      },
+      {
+        "section": "Section 47",
+        "act": "",
+        "text": "ossession. Notes to s 47, Questions between the auction-purchaser on the one \nhand and a party to the suit or his representative on the other hand could be referred to for more details in this \nregard.\nFor recovery of possession by the auction-purchaser, a separate suit is barred under s 47 of the Code of Civil \nProcedure.",
+        "source": "rag"
+      },
+      {
+        "section": "Section 47",
+        "act": "the Code",
+        "text": "uit is barred under s 47 of the Code of Civil \nProcedure. The only mode available to the auction purchaser is by filing an application under O 21, r 95 of the Code \nof Civil Procedure.22\n3. Appeal. In Harnandrai v. Debidutt 23 the Supreme Court approved the view taken by the Calcutta High Court in \nKailash Chandra Tarafdar v. Gopal Cha",
+        "source": "rag"
+      },
+      {
+        "section": "Section 3",
+        "act": "",
+        "text": "1908, together with s 3 (4) of the \nBanking Companies (Acquisition and Transfer of Undertaking) Act 1970, the right to sue vests with the bank as a \nbody corporate, rather than in any particular branch thereof. It follows that the bank can file one consolidated suit in \nrespect of a claim against the same defendants, so l",
+        "source": "rag"
+      },
+      {
+        "section": "Section 4",
+        "act": "",
+        "text": "f 1908), on documents. \n4. Specific relief to be granted only for enforcing individual civil rights and not for enforcing \npenal laws.—Specific relief can be granted only for the purpose of enforcing individual civil rights and \nnot for the mere purpose of enforcing a penal law. \nPART II \nSPECIFIC RELIEF \nCHAPTER I \nRECOVER",
+        "source": "rag"
+      },
+      {
+        "section": "Section 43",
+        "act": "",
+        "text": "tory provisions \nof s 43 and 64 of the Bombay Tenancy Act, 1939. Under these circumstances, the plaintiff, who was the only",
+        "source": "rag"
+      },
+      {
+        "section": "Section 2",
+        "act": "",
+        "text": "lawful \npossession. Section 2(12) of CPC defines mesne profits of property as profits which the person in wrongful possession \nof such property actually received or might have received with ordinary diligence from it. A person is said to be in \nwrongful possession when he enjoys such possession despite, another person is entitl",
+        "source": "rag"
+      },
+      {
+        "section": "Section 34",
+        "act": "the Code",
+        "text": "under \nthe amended s 34 of the Code of Civil Procedure, allowed interest at the rate charged by nationalised banks. It was \nheld by the Supreme Court that the decree passed was much more than what the amendment allowed.94\nAfter the aggregate amount of mesne profits is ascertained, the plaintiff may apply to the court for",
+        "source": "rag"
+      },
+      {
+        "section": "Section 5000",
+        "act": "",
+        "text": "ee tentatively for Rs 5000 apart from claiming mesne profits Rs 100/- per diem. It was held that the decree on \nmesne profits may, therefore, be modified as accordingly. Thus, the High Court directed that a decree for mesne \nprofit be passed provisionally for an amount of Rs 5,000/- and further, that the mesne profits shall",
+        "source": "rag"
+      },
+      {
+        "section": "Section 100",
+        "act": "",
+        "text": "ming mesne profits Rs 100/- per diem. It was held that the decree on \nmesne profits may, therefore, be modified as accordingly. Thus, the High Court directed that a decree for mesne \nprofit be passed provisionally for an amount of Rs 5,000/- and further, that the mesne profits shall be determined \nfinally under O 20, r 12 o",
+        "source": "rag"
+      },
+      {
+        "section": "Section 5",
+        "act": "",
+        "text": "y for an amount of Rs 5,000/- and further, that the mesne profits shall be determined \nfinally under O 20, r 12 of the Code of Civil Procedure.33\nWhere the order of the trial court granting mesne profits was reduced and modified by the High Court without \nconsidering the evidence adduced by parties, it was held by the Sup",
+        "source": "rag"
+      },
+      {
+        "section": "Section 6",
+        "act": "",
+        "text": "ction. See notes to s 6 and s 38 and the undernoted cases.35\n23. Res judicata . Where after the passing of a preliminary decree under r 12, the plaintiff applies in execution for \nascertaining the mesne profits, wrongly believing that such profits are to be ascertained in execution proceedings, \nand the application is dis",
+        "source": "rag"
+      },
+      {
+        "section": "Section 38",
+        "act": "",
+        "text": "ee notes to s 6 and s 38 and the undernoted cases.35\n23. Res judicata . Where after the passing of a preliminary decree under r 12, the plaintiff applies in execution for \nascertaining the mesne profits, wrongly believing that such profits are to be ascertained in execution proceedings, \nand the application is dismissed, t",
+        "source": "rag"
+      },
+      {
+        "section": "Section 36",
+        "act": "",
+        "text": "ing the mesne profits. 36 As the award of future mesne profits is discretionary with \ncourt, a second suit therefore is not barred under s 11 by reason of the omission to claim it in a prior suit. 37 The \nposition is the same where such a claim is made but is dismissed as",
+        "source": "rag"
+      },
+      {
+        "section": "Section 11",
+        "act": "",
+        "text": "is not barred under s 11 by reason of the omission to claim it in a prior suit. 37 The \nposition is the same where such a claim is made but is dismissed as",
+        "source": "rag"
+      },
+      {
+        "section": "Section 4",
+        "act": "the Act,",
+        "text": "h application under s 4 of the Act, before the prescribed authority, even this time the application dismissed \non the principle of res judicata in that earlier order dated 22 March 1978, would operate as barred against the \nappellant from seeking eviction of the first respondent under the provisions of the said Act.\nAs per the order d",
+        "source": "rag"
+      },
+      {
+        "section": "Section 1",
+        "act": "",
+        "text": "counter claims for Rs 1,500 by way of rent. After the suit is set down for trial, \nA applies for leave to amend his defence and counter-claim, and to join therewith a claim for possession of the land. \nThe application must be refused. To allow A to amend would be to allow him to present a totally distinct, new and \nincons",
+        "source": "rag"
+      },
+      {
+        "section": "Section 10",
+        "act": "",
+        "text": "s case, sub-s 2 of ss 10, 12 and 13 of AP Buildings \n(Lease, Rent and Eviction ) Control Act, 1960 gave exclusive jurisdiction to the rent controller under the Act in \nthe matter of eviction of a tenant from any premises by a landlord. However, by virtue of s 32 (b) of the said \nRent Act, the provisions of the Act were not",
+        "source": "rag"
+      },
+      {
+        "section": "Section 32",
+        "act": "",
+        "text": "wever, by virtue of s 32 (b) of the said \nRent Act, the provisions of the Act were not made applicable to any building constructed on or after 26 August \n1956. In the instant case, the house was constructed after 26 August 1957 and the provisions of s 32 (b) of the \nRent Act existed on the statute book on the date of the s",
+        "source": "rag"
+      },
+      {
+        "section": "Section 15",
+        "act": "",
+        "text": "ates. For \nexample, Section 15 of the Bihar Building (Lease, Rent and Eviction) Control Act, 1982 empowers Court to direct \nthe defendant to deposit arrears of rent and on his failure to deposit arrears of rent as well as subsequent rent",
+        "source": "rag"
+      },
+      {
+        "section": "Section 57",
+        "act": "",
+        "text": "boundaries or numbers. \n57",
+        "source": "rag"
+      },
+      {
+        "section": "Section 48",
+        "act": "",
+        "text": "revent long pleadings. 48 Thus, it is sufficient if a plaintiff in a suit for the recovery of \nimmovable property under a Will states in his plaint the effect of the Will under which he claims. He is not bound to \nset out the precise words of the Will, although a question has arisen as to the true construction of those word",
+        "source": "rag"
+      },
+      {
+        "section": "Section 49",
+        "act": "",
+        "text": "uction of those words. 49 At \nthe same time, it is not enough for a plaintiff to say that, under and by virtue of a certain deed, he is entitled to the \nproperty claimed by him. He must state the effect of the document on which he relies.50\nIn a suit for declaration of title and possession, the plaintiff filed some document",
+        "source": "rag"
+      },
+      {
+        "section": "Section 16",
+        "act": "",
+        "text": "roperty in Mathura, s 16 (e) of the Code of Civil Procedure would apply, then s 20 of the the Code of Civil \nProcedure is of no avail to the plaintiff. The mere factum of the execution of the sale deed and payment of the \nsale consideration being in Delhi, does not comprise any part of cause of action relating to the claim",
+        "source": "rag"
+      },
+      {
+        "section": "Section 20",
+        "act": "the Code",
+        "text": "e would apply, then s 20 of the the Code of Civil \nProcedure is of no avail to the plaintiff. The mere factum of the execution of the sale deed and payment of the \nsale consideration being in Delhi, does not comprise any part of cause of action relating to the claim for \ndamages to immovable property raised in this suit. Even if s 16 (e) i",
+        "source": "rag"
+      },
+      {
+        "section": "Section 152",
+        "act": "the Code",
+        "text": "be \ncorrected under s 152 of the Code of Civil Procedure by the court which passed the decree by supplying the \nomission. Alternatively, the exact description of decretal property may be ascertained by the executing court as \na question relating to execution, discharge or satisfaction of decree within the meaning of s 47 of the Code of",
+        "source": "rag"
+      }
+    ],
+    "procedural_provisions": [],
+    "procedural_context": ""
+  },
+  "lkb_brief": {
+    "cause_type": "recovery_of_possession",
+    "display_name": "Recovery of possession of immovable property",
+    "primary_acts": [
+      {
+        "act": "Specific Relief Act, 1963",
+        "sections": [
+          "Section 5"
+        ]
+      },
+      {
+        "act": "Code of Civil Procedure, 1908",
+        "sections": [
+          "Section 26",
+          "Order VII Rule 1"
+        ]
+      }
+    ],
+    "alternative_acts": [
+      {
+        "act": "Transfer of Property Act, 1882",
+        "sections": [
+          "Section 106",
+          "Section 111",
+          "Section 116"
+        ]
+      },
+      {
+        "act": "Indian Easements Act, 1882",
+        "sections": [
+          "Section 52",
+          "Section 60",
+          "Section 61",
+          "Section 62",
+          "Section 63"
+        ]
+      }
+    ],
+    "limitation": {
+      "article": "67",
+      "period": "Twelve years",
+      "from": "When the tenancy is determined / lease expires",
+      "description": "Article 67: by a landlord to recover possession from a tenant. This is the specific article for landlord versus tenant."
+    },
+    "court_rules": {
+      "default": {
+        "court": "District Court",
+        "format": "O.S. No.",
+        "heading": "IN THE COURT OF THE {court_type}"
+      }
+    },
+    "damages_categories": [
+      "mesne_profits",
+      "damages_for_use_and_occupation"
+    ],
+    "coa_type": "continuing",
+    "coa_guidance": "Continuing — defendant continues to be in wrongful possession day to day.",
+    "defensive_points": [
+      "plaintiff_has_clear_title",
+      "defendant_occupation_unauthorized",
+      "legal_notice_served_and_ignored"
+    ],
+    "interest_basis": "deprivation_of_property",
+    "interest_guidance": "Mesne profits for wrongful use and occupation under Section 2(12) CPC and Order XX Rule 12.",
+    "doc_type_keywords": [
+      "possession",
+      "trespass",
+      "encroachment",
+      "vacate",
+      "evict",
+      "occupy"
+    ],
+    "permitted_doctrines": [
+      "recovery_possession_s5_sra",
+      "determination_lease_s111_tpa",
+      "notice_to_quit_s106_tpa",
+      "mesne_profits_s2_12_cpc",
+      "mesne_profits_inquiry_order_xx_r12"
+    ],
+    "excluded_doctrines": [
+      "holding_over_s116_tpa",
+      "natural_justice"
+    ],
+    "terminology": {
+      "defendant_label": "erstwhile tenant whose tenancy stands determined",
+      "entry_description": "was inducted as tenant under a lease which has since been determined / expired",
+      "possession_basis": "The Defendant was a tenant whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882"
+    },
+    "procedural_prerequisites": [],
+    "court_fee_statute": {
+      "Karnataka": "Karnataka Court Fees and Suits Valuation Act, 1958",
+      "Maharashtra": "Maharashtra Court Fees Act, 1959",
+      "Tamil Nadu": "Tamil Nadu Court Fees and Suits Valuation Act, 1955",
+      "Telangana": "Telangana Court Fees and Suits Valuation Act, 1956",
+      "Delhi": "Court Fees Act, 1870",
+      "_default": "Court Fees Act, 1870"
+    },
+    "required_sections": [
+      "court_heading",
+      "title",
+      "parties",
+      "jurisdiction",
+      "facts",
+      "title_and_ownership",
+      "defendant_occupation",
+      "legal_notice",
+      "legal_basis",
+      "cause_of_action",
+      "limitation",
+      "valuation_court_fee",
+      "mesne_profits_claim",
+      "prayer",
+      "schedule_of_property",
+      "document_list",
+      "verification"
+    ],
+    "required_reliefs": [
+      "possession_decree",
+      "mesne_profits_inquiry_order_xx_r12",
+      "permanent_injunction",
+      "costs"
+    ],
+    "required_averments": [
+      "jurisdiction_basis",
+      "limitation_statement",
+      "cause_of_action_dates",
+      "valuation_statement",
+      "court_fee_basis",
+      "verification_clause",
+      "title_basis",
+      "defendant_occupation_basis"
+    ],
+    "mandatory_averments": [],
+    "complexity_weight": 2,
+    "detected_court": {
+      "court": "District Court",
+      "format": "O.S. No.",
+      "heading": "IN THE COURT OF THE {court_type}"
+    }
+  },
+  "postprocess_issues": [
+    {
+      "type": "heading_spacing_fixed",
+      "count": 5
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'for recovery of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the code' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of civil procedure,' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the plaintiff is' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the defendant is' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'this hon'ble court' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the present suit' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the suit property,' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'immovable property bearing' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'property bearing survey' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'bearing survey no.' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'survey no. 45,' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'no. 45, koramangala,' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'and the defendant' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'in unauthorized occupation' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'occupation of the' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the suit property' repeated 19 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the suit' repeated 18 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'in favour of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'favour of the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'by efflux of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'expiry of the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'possession of the' repeated 8 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the expiry of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the defendant has' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'in wrongful possession' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'wrongful possession of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'value of the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'is entitled to' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at the rate' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the rate of' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rate of rs.' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of rs. 25,000/-' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the transfer' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the transfer of' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'transfer of property' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of property act,' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'cause of action' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the cause of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the date of' repeated 4 times — consider varying language"
+    }
+  ],
+  "citation_issues": [
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 25",
+      "message": "'Section 25' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 25",
+      "message": "'Section 25' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 111 Transfer of Property Act, 1882",
+      "message": "'Section 111 Transfer of Property Act, 1882' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 12",
+      "message": "'Section 12' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 111 Transfer of Property Act, 1882",
+      "message": "'Section 111 Transfer of Property Act, 1882' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 111 Transfer of Property Act, 1882",
+      "message": "'Section 111 Transfer of Property Act, 1882' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 106 Transfer of Property Act, 1882",
+      "message": "'Section 106 Transfer of Property Act, 1882' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 116 Transfer of Property Act, 1882",
+      "message": "'Section 116 Transfer of Property Act, 1882' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 25",
+      "message": "'Section 25' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 60",
+      "message": "'Section 60' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 23",
+      "message": "'Section 23' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 25",
+      "message": "'Section 25' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 25",
+      "message": "'Section 25' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 25",
+      "message": "'Section 25' not in verified_provisions — may be correct but unverified"
+    }
+  ],
+  "evidence_anchoring_issues": [],
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "eviction_plaint",
+        "title": "Eviction Plaint",
+        "text": "IN THE COURT OF THE CITY CIVIL COURT\n\nAT BANGALORE\n\nO.S. No. __________ / 2024\n\n{{PLAINTIFF_NAME}},\nAged about {{PLAINTIFF_AGE}} years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: {{PLAINTIFF_ADDRESS}}.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\n{{DEFENDANT_NAME}},\nAged about {{DEFENDANT_AGE}} years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: {{DEFENDANT_ADDRESS}}.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF POSSESSION OF IMMOVABLE PROPERTY WITH MESNE PROFITS UNDER SECTION 5 OF THE SPECIFIC RELIEF ACT, 1963 READ WITH SECTION 26 OF THE CODE OF CIVIL PROCEDURE, 1908\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the suit property, being immovable property bearing Survey No. 45, Koramangala, Bangalore, is situate within the local limits of the jurisdiction of this Hon'ble Court, and the Defendant is in unauthorized occupation of the said property within such territorial limits.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. 50,00,000/- (Rupees Fifty Lakhs Only), which is within the pecuniary limits prescribed for this Hon'ble Court. This Court has subject matter jurisdiction to entertain suits for recovery of possession of immovable property.\n\nFACTS OF THE CASE\n\n4. The Plaintiff is the absolute owner of the immovable property bearing Survey No. 45, Koramangala, Bangalore, more particularly described in the schedule hereunder written (hereinafter referred to as \"the suit property\"). The Plaintiff has derived title to the suit property through valid ownership documents (copies of the ownership documents are annexed hereto and marked as Annexure A).\n\n5. The Defendant is an erstwhile tenant whose tenancy stands determined. The Defendant was inducted as a tenant under a lease agreement in respect of the suit property for a period of three years commencing from 01.01.2020 and ending on 31.12.2022 (a copy of the lease/permission document granting permissive possession is annexed hereto and marked as Annexure B).\n\n6. The said lease in favour of the Defendant stood determined and expired by efflux of time on 31.12.2022. Upon expiry of the lease period, the Defendant's right to occupy the suit property ceased, and the Defendant became liable to deliver vacant and peaceful possession of the suit property to the Plaintiff.\n\n7. However, despite the expiry of the lease on 31.12.2022, the Defendant has wrongfully continued in occupation of the suit property without any lawful authority, right or title. The Defendant is in unauthorized occupation of the suit property from 01.01.2023 onwards.\n\n8. The Plaintiff, through his advocate, caused a legal notice dated 15.03.2023 to be served upon the Defendant, calling upon the Defendant to vacate and deliver vacant possession of the suit property to the Plaintiff (a true copy of the legal notice along with the postal receipt and acknowledgment card is annexed hereto and marked as Annexure C).\n\n9. Despite receipt of the said legal notice, the Defendant has failed, neglected and refused to vacate the suit property or to deliver possession thereof to the Plaintiff. The Defendant continues to be in wrongful possession of the suit property without any lawful justification.\n\n10. The monthly rental value of the suit property is Rs. 25,000/-. The Plaintiff is entitled to mesne profits for the wrongful use and occupation of the suit property by the Defendant from 01.01.2023 onwards at the rate of Rs. 25,000/- per month.\n\n11. The Plaintiff has clear title to the suit property and the Defendant's occupation is unauthorized. The Defendant has no right, title or interest in the suit property and is merely a trespasser whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882.\n\nLEGAL BASIS\n\n12. The Plaintiff submits that he is entitled to recover possession of the suit property under Section 5 of the Specific Relief Act, 1963. Section 5 of the Specific Relief Act, 1963 provides that a person entitled to the possession of specific immovable property may recover the same in the manner prescribed by the Code of Civil Procedure, 1908. In the present case, the Plaintiff, being the owner of the suit property, is entitled to possession thereof, and the Defendant, being an erstwhile tenant whose tenancy has expired, is bound to deliver possession.\n\n13. The Plaintiff further submits that the Defendant was a tenant whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882. Section 111 of the Transfer of Property Act, 1882 provides for the determination of lease, inter alia, by efflux of time. The lease in favour of the Defendant having expired on 31.12.2022, the tenancy stood determined by efflux of time, and the Defendant's continued possession is unauthorized.\n\n14. The Plaintiff relies upon Section 106 of the Transfer of Property Act, 1882 which provides for the duration of certain leases in the absence of a written contract or local custom. However, in the present case, the lease was for a fixed term which has expired by efflux of time.\n\n15. The Plaintiff further relies upon Section 116 of the Transfer of Property Act, 1882 which provides for the effect of holding over after the expiry of the lease. The Defendant, by continuing in possession after the determination of the lease, has become a tenant at will or a tenant holding on a month-to-month basis, and the Plaintiff is entitled to evict the Defendant.\n\n16. The Plaintiff submits that he is entitled to claim mesne profits under Section 2(12) of the Code of Civil Procedure, 1908 read with Order XX Rule 12 of the Code of Civil Procedure, 1908. Section 2(12) of the CPC defines mesne profits as profits which the person in wrongful possession of such property actually received or might have received with ordinary diligence from it. The Defendant being in wrongful possession of the suit property, the Plaintiff is entitled to mesne profits at the rate of Rs. 25,000/- per month, being the fair rental value of the suit property.\n\n17. The Plaintiff further relies upon the provisions of the Indian Easements Act, 1882, particularly Sections 60 to 63 thereof, which provide for the extinction and suspension of easements and the right to recover possession. The Plaintiff's right to possession of the suit property is absolute and the Defendant has no easementary right to continue in occupation.\n\nCAUSE OF ACTION\n\n18. The cause of action for the present suit first arose on 01.01.2023 when the Defendant, despite the expiry of the lease on 31.12.2022, failed and refused to vacate the suit property and deliver vacant possession thereof to the Plaintiff, thereby continuing in unauthorized occupation and giving rise to the Plaintiff's right to sue for recovery of possession.\n\n19. The cause of action further arose on 15.03.2023 when the Plaintiff, through his advocate, caused a legal notice to be served upon the Defendant calling upon the Defendant to vacate the suit property, and the Defendant despite receipt of the said notice failed and refused to comply with the demand therein.\n\n20. The cause of action is a continuing one as the Defendant continues to be in wrongful possession of the suit property from day to day, and the said cause of action continues to accrue and subsist from day to day within the territorial jurisdiction of this Hon'ble Court.\n\nLIMITATION\n\n21. The present suit is within the period of limitation prescribed under Article 65 of the Schedule to the Limitation Act, 1963, which provides a period of twelve years for a suit for possession of immovable property based on previous ownership or possession when the defendant is in unauthorized occupation after the expiry of a lease. The cause of action having first arisen on 01.01.2023 when the Defendant's tenancy determined, and the suit being filed within the prescribed period of twelve years from the said date, the present suit is well within limitation.\n\nVALUATION AND COURT FEE\n\n22. The suit is valued at Rs. 50,00,000/- (Rupees Fifty Lakhs Only) for the purposes of jurisdiction and court fee, being the market value of the suit property. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint in accordance with the Karnataka Court Fees and Suits Valuation Act, 1958, computed on the suit valuation at the applicable ad valorem rate.\n\nMESNE PROFITS\n\n23. The Plaintiff claims mesne profits for the wrongful use and occupation of the suit property by the Defendant as follows:\n\n    (a) Past mesne profits from 01.01.2023 till the date of filing of this suit at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month, being the fair monthly rental value of the suit property;\n\n    (b) Future mesne profits from the date of filing of this suit till the date of delivery of possession at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month or at such rate as this Hon'ble Court deems just and reasonable;\n\n    (c) The Plaintiff reserves the right to claim enhanced mesne profits if the actual profits received or receivable by the Defendant are found to be higher than the claimed rate.\n\nPRAYER\n\n24. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\n\n    (a) Pass a decree for recovery of possession in favour of the Plaintiff and against the Defendant directing the Defendant to deliver vacant and peaceful possession of the suit property, being immovable property bearing Survey No. 45, Koramangala, Bangalore, more particularly described in the schedule hereunder written;\n\n    (b) Pass a preliminary decree for mesne profits in favour of the Plaintiff and against the Defendant for the period from 01.01.2023 till the date of delivery of possession at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month, and direct an inquiry under Order XX Rule 12 of the Code of Civil Procedure, 1908 for determination of the final amount of mesne profits;\n\n    (c) Award costs of this suit including court fees, advocate fees and all pre-litigation costs incurred for issuing the legal notice;\n\n    (d) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\nAND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL, AS IN DUTY BOUND, EVER PRAY.\n\nSCHEDULE OF PROPERTY\n\nAll that piece and parcel of immovable property bearing Survey No. 45, situated at Koramangala, Bangalore, more particularly described as follows:\n\nBOUNDARIES:\nNorth : {{BOUNDARY_NORTH}}\nSouth : {{BOUNDARY_SOUTH}}\nEast : {{BOUNDARY_EAST}}\nWest : {{BOUNDARY_WEST}}\n\nMeasuring: {{PROPERTY_AREA}} sq. ft. approximately.\n\nLIST OF DOCUMENTS\n\n| Sr. No. | Description | Annexure |\n\n|---------|-------------|----------|\n| 1. | Ownership documents for Survey No. 45, Koramangala, Bangalore | Annexure A |\n| 2. | Lease/Permission Document granting permissive possession from 01.01.2020 to 31.12.2022 | Annexure B |\n| 3. | Legal notice dated 15.03.2023 with postal receipt and AD card | Annexure C |\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby solemnly verify and state on oath that the contents of paragraphs 1 to 24 of this plaint are true and correct to my personal knowledge based upon the records and documents available with me, that the contents relating to legal submissions are based upon legal advice received and are believed to be correct, that the suit property is situate within the jurisdiction of this Hon'ble Court, and that nothing material has been concealed therefrom. Verified at Bangalore on this the ____ day of __________ 2024.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}",
+        "placeholders_used": [
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "BOUNDARY_NORTH",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "BOUNDARY_SOUTH",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "BOUNDARY_EAST",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "BOUNDARY_WEST",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PROPERTY_AREA",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "eviction_plaint",
+        "title": "Suit for Recovery of Possession of Immovable Property with Mesne Profits",
+        "text": "IN THE COURT OF THE CITY CIVIL COURT\n\nAT BANGALORE\n\nO.S. No. __________ / 2024\n\n{{PLAINTIFF_NAME}},\nAged about {{PLAINTIFF_AGE}} years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: {{PLAINTIFF_ADDRESS}}.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\n{{DEFENDANT_NAME}},\nAged about {{DEFENDANT_AGE}} years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: {{DEFENDANT_ADDRESS}}.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF POSSESSION OF IMMOVABLE PROPERTY WITH MESNE PROFITS UNDER SECTION 5 OF THE SPECIFIC RELIEF ACT, 1963 READ WITH SECTION 26 OF THE CODE OF CIVIL PROCEDURE, 1908\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the suit property, being immovable property bearing Survey No. 45, Koramangala, Bangalore, is situate within the local limits of the jurisdiction of this Hon'ble Court, and the Defendant is in unauthorized occupation of the said property within such territorial limits.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. 50,00,000/- (Rupees Fifty Lakhs Only), which is within the pecuniary limits prescribed for this Hon'ble Court. This Court has subject matter jurisdiction to entertain suits for recovery of possession of immovable property.\n\nFACTS OF THE CASE\n\n4. The Plaintiff is the absolute owner of the immovable property bearing Survey No. 45, Koramangala, Bangalore, more particularly described in the schedule hereunder written (hereinafter referred to as \"the suit property\"). The Plaintiff has derived title to the suit property through valid ownership documents (copies of the ownership documents are annexed hereto and marked as Annexure A).\n\n5. The Defendant is an erstwhile tenant whose tenancy stands determined. The Defendant was inducted as a tenant under a lease agreement in respect of the suit property for a period of three years commencing from 01.01.2020 and ending on 31.12.2022 (a copy of the lease/permission document granting permissive possession is annexed hereto and marked as Annexure B).\n\n6. The said lease in favour of the Defendant stood determined and expired by efflux of time on 31.12.2022. Upon expiry of the lease period, the Defendant's right to occupy the suit property ceased, and the Defendant became liable to deliver vacant and peaceful possession of the suit property to the Plaintiff.\n\n7. However, despite the expiry of the lease on 31.12.2022, the Defendant has wrongfully continued in occupation of the suit property without any lawful authority, right or title. The Defendant is in unauthorized occupation of the suit property from 01.01.2023 onwards.\n\n8. The Plaintiff, through his advocate, caused a legal notice dated 15.03.2023 to be served upon the Defendant, calling upon the Defendant to vacate and deliver vacant possession of the suit property to the Plaintiff (a true copy of the legal notice along with the postal receipt and acknowledgment card is annexed hereto and marked as Annexure C).\n\n9. Despite receipt of the said legal notice, the Defendant has failed, neglected and refused to vacate the suit property or to deliver possession thereof to the Plaintiff. The Defendant continues to be in wrongful possession of the suit property without any lawful justification.\n\n10. The monthly rental value of the suit property is Rs. 25,000/-. The Plaintiff is entitled to mesne profits for the wrongful use and occupation of the suit property by the Defendant from 01.01.2023 onwards at the rate of Rs. 25,000/- per month.\n\n11. The Plaintiff has clear title to the suit property and the Defendant's occupation is unauthorized. The Defendant has no right, title or interest in the suit property and is merely a trespasser whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882.\n\nLEGAL BASIS\n\n12. The Plaintiff submits that he is entitled to recover possession of the suit property under Section 5 of the Specific Relief Act, 1963. Section 5 of the Specific Relief Act, 1963 provides that a person entitled to the possession of specific immovable property may recover the same in the manner prescribed by the Code of Civil Procedure, 1908. In the present case, the Plaintiff, being the owner of the suit property, is entitled to possession thereof, and the Defendant, being an erstwhile tenant whose tenancy has expired, is bound to deliver possession.\n\n13. The Plaintiff further submits that the Defendant was a tenant whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882. Section 111 of the Transfer of Property Act, 1882 provides for the determination of lease, inter alia, by efflux of time. The lease in favour of the Defendant having expired on 31.12.2022, the tenancy stood determined by efflux of time, and the Defendant's continued possession is unauthorized.\n\n14. The Plaintiff relies upon Section 106 of the Transfer of Property Act, 1882 which provides for the duration of certain leases in the absence of a written contract or local custom. However, in the present case, the lease was for a fixed term which has expired by efflux of time.\n\n15. The Plaintiff further relies upon Section 116 of the Transfer of Property Act, 1882 which provides for the effect of holding over after the expiry of the lease. The Defendant, by continuing in possession after the determination of the lease, has become a tenant at will or a tenant holding on a month-to-month basis, and the Plaintiff is entitled to evict the Defendant.\n\n16. The Plaintiff submits that he is entitled to claim mesne profits under Section 2(12) of the Code of Civil Procedure, 1908 read with Order XX Rule 12 of the Code of Civil Procedure, 1908. Section 2(12) of the CPC defines mesne profits as profits which the person in wrongful possession of such property actually received or might have received with ordinary diligence from it. The Defendant being in wrongful possession of the suit property, the Plaintiff is entitled to mesne profits at the rate of Rs. 25,000/- per month, being the fair rental value of the suit property.\n\nCAUSE OF ACTION\n\n17. The cause of action for the present suit first arose on 01.01.2023 when the Defendant, despite the expiry of the lease on 31.12.2022, failed and refused to vacate the suit property and deliver vacant possession thereof to the Plaintiff, thereby continuing in unauthorized occupation and giving rise to the Plaintiff's right to sue for recovery of possession.\n\n18. The cause of action is a continuing one as the Defendant continues to be in wrongful possession of the suit property from day to day, and the said cause of action continues to accrue and subsist from day to day within the territorial jurisdiction of this Hon'ble Court.\n\nLIMITATION\n\n19. The present suit is within the period of limitation prescribed under Article 65 of the Schedule to the Limitation Act, 1963, which provides a period of twelve years for a suit for possession of immovable property based on previous ownership or possession when the defendant is in unauthorized occupation after the expiry of a lease. The cause of action having first arisen on 01.01.2023 when the Defendant's tenancy determined, and the suit being filed within the prescribed period of twelve years from the said date, the present suit is well within limitation.\n\nVALUATION AND COURT FEE\n\n20. The suit is valued at Rs. 50,00,000/- (Rupees Fifty Lakhs Only) for the purposes of jurisdiction and court fee, being the market value of the suit property. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint in accordance with the Karnataka Court Fees and Suits Valuation Act, 1958, computed on the suit valuation at the applicable ad valorem rate.\n\nMESNE PROFITS\n\n21. The Plaintiff claims mesne profits for the wrongful use and occupation of the suit property by the Defendant as follows:\n\n    (a) Past mesne profits from 01.01.2023 till the date of filing of this suit at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month, being the fair monthly rental value of the suit property;\n\n    (b) Future mesne profits from the date of filing of this suit till the date of delivery of possession at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month or at such rate as this Hon'ble Court deems just and reasonable;\n\n    (c) The Plaintiff reserves the right to claim enhanced mesne profits if the actual profits received or receivable by the Defendant are found to be higher than the claimed rate.\n\nPRAYER\n\n22. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\n\n    (a) Pass a decree for recovery of possession in favour of the Plaintiff and against the Defendant directing the Defendant to deliver vacant and peaceful possession of the suit property, being immovable property bearing Survey No. 45, Koramangala, Bangalore, more particularly described in the schedule hereunder written;\n\n    (b) Pass a preliminary decree for mesne profits in favour of the Plaintiff and against the Defendant for the period from 01.01.2023 till the date of delivery of possession at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month, and direct an inquiry under Order XX Rule 12 of the Code of Civil Procedure, 1908 for determination of the final amount of mesne profits;\n\n    (c) Award costs of this suit including court fees, advocate fees and all pre-litigation costs incurred for issuing the legal notice;\n\n    (d) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\nAND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL, AS IN DUTY BOUND, EVER PRAY.\n\nSCHEDULE OF PROPERTY\n\nAll that piece and parcel of immovable property bearing Survey No. 45, situated at Koramangala, Bangalore, more particularly described as follows:\n\nBOUNDARIES:\nNorth : {{BOUNDARY_NORTH}}\nSouth : {{BOUNDARY_SOUTH}}\nEast : {{BOUNDARY_EAST}}\nWest : {{BOUNDARY_WEST}}\n\nMeasuring: {{PROPERTY_AREA}} sq. ft. approximately.\n\nLIST OF DOCUMENTS\n\n| Sr. No. | Description | Annexure |\n\n|---------|-------------|----------|\n| 1. | Ownership documents for Survey No. 45, Koramangala, Bangalore | Annexure A |\n| 2. | Lease/Permission Document granting permissive possession from 01.01.2020 to 31.12.2022 | Annexure B |\n| 3. | Legal notice dated 15.03.2023 with postal receipt and AD card | Annexure C |\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby solemnly verify and state on oath that the contents of paragraphs 1 to 22 of this plaint are true and correct to my personal knowledge based upon the records and documents available with me, that the contents relating to legal submissions are based upon legal advice received and are believed to be correct, that the suit property is situate within the jurisdiction of this Hon'ble Court, and that nothing material has been concealed therefrom. Verified at Bangalore on this the ____ day of __________ 2024.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}",
+        "placeholders_used": [
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Plaintiff name not provided in USER_REQUEST"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Plaintiff age not provided in USER_REQUEST"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Plaintiff occupation not provided in USER_REQUEST"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Plaintiff address not provided in USER_REQUEST"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Defendant name not provided in USER_REQUEST"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Defendant age not provided in USER_REQUEST"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Defendant occupation not provided in USER_REQUEST"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Defendant address not provided in USER_REQUEST"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Court fee amount requires computation based on Karnataka Court Fees Act rates"
+          },
+          {
+            "key": "BOUNDARY_NORTH",
+            "reason": "Property boundary details not provided in USER_REQUEST"
+          },
+          {
+            "key": "BOUNDARY_SOUTH",
+            "reason": "Property boundary details not provided in USER_REQUEST"
+          },
+          {
+            "key": "BOUNDARY_EAST",
+            "reason": "Property boundary details not provided in USER_REQUEST"
+          },
+          {
+            "key": "BOUNDARY_WEST",
+            "reason": "Property boundary details not provided in USER_REQUEST"
+          },
+          {
+            "key": "PROPERTY_AREA",
+            "reason": "Property area measurement not provided in USER_REQUEST"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Advocate name not provided in USER_REQUEST"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Advocate enrollment number not provided in USER_REQUEST"
+          },
+          {
+            "key": "ADVOCATE_ADDRESS",
+            "reason": "Advocate address not provided in USER_REQUEST"
+          }
+        ],
+        "citations_used": [
+          "Section 5 of the Specific Relief Act, 1963",
+          "Section 26 of the Code of Civil Procedure, 1908",
+          "Section 111 of the Transfer of Property Act, 1882",
+          "Section 106 of the Transfer of Property Act, 1882",
+          "Section 116 of the Transfer of Property Act, 1882",
+          "Section 2(12) of the Code of Civil Procedure, 1908",
+          "Order XX Rule 12 of the Code of Civil Procedure, 1908",
+          "Article 65 of the Schedule to the Limitation Act, 1963",
+          "Karnataka Court Fees and Suits Valuation Act, 1958"
+        ]
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": false,
+      "blocking_issues": [
+        {
+          "issue": "Cause of action anchored to a procedural step rather than the date when the right to sue actually accrued under the applicable law",
+          "fix": "Remove Paragraph 19's suggestion that cause of action arose on 15.03.2023 (legal notice date). The cause of action accrued on 01.01.2023 when the lease expired and Defendant's right to occupy ended. Procedural steps like legal notices are not accrual events for limitation purposes.",
+          "location": "Paragraph 19 (Cause of Action section)",
+          "severity": "legal"
+        },
+        {
+          "issue": "Indian Easements Act, 1882 Sections 60-63 cited for a lease/tenancy matter - this provision governs easementary rights (like right of way), not leasehold/tenancy interests",
+          "fix": "Remove Paragraph 17 entirely. The Indian Easements Act does not apply to lease/tenancy disputes. The correct legal basis is Transfer of Property Act (Sections 106, 111, 116) and Specific Relief Act (Section 5) which are already cited.",
+          "location": "Paragraph 17 (Legal Basis section)",
+          "severity": "legal"
+        }
+      ],
+      "non_blocking_issues": [
+        {
+          "issue": "Excessive repetition of phrases throughout the draft affecting readability",
+          "fix": "Vary language for repeated phrases such as 'the suit property', 'of the suit', 'in unauthorized occupation', 'cause of action', 'the Plaintiff is', 'the Defendant is'. Use pronouns and alternative phrasing where appropriate.",
+          "location": "Throughout the draft",
+          "severity": "formatting"
+        }
+      ],
+      "unsupported_statements": [],
+      "final_artifacts": [
+        {
+          "doc_type": "eviction_plaint",
+          "title": "Suit for Recovery of Possession of Immovable Property with Mesne Profits",
+          "text": "IN THE COURT OF THE CITY CIVIL COURT\n\nAT BANGALORE\n\nO.S. No. __________ / 2024\n\n{{PLAINTIFF_NAME}},\nAged about {{PLAINTIFF_AGE}} years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: {{PLAINTIFF_ADDRESS}}.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\n{{DEFENDANT_NAME}},\nAged about {{DEFENDANT_AGE}} years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: {{DEFENDANT_ADDRESS}}.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF POSSESSION OF IMMOVABLE PROPERTY WITH MESNE PROFITS UNDER SECTION 5 OF THE SPECIFIC RELIEF ACT, 1963 READ WITH SECTION 26 OF THE CODE OF CIVIL PROCEDURE, 1908\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the suit property, being immovable property bearing Survey No. 45, Koramangala, Bangalore, is situate within the local limits of the jurisdiction of this Hon'ble Court, and the Defendant is in unauthorized occupation of the said property within such territorial limits.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. 50,00,000/- (Rupees Fifty Lakhs Only), which is within the pecuniary limits prescribed for this Hon'ble Court. This Court has subject matter jurisdiction to entertain suits for recovery of possession of immovable property.\n\nFACTS OF THE CASE\n\n4. The Plaintiff is the absolute owner of the immovable property bearing Survey No. 45, Koramangala, Bangalore, more particularly described in the schedule hereunder written (hereinafter referred to as \"the suit property\"). The Plaintiff has derived title to the suit property through valid ownership documents (copies of the ownership documents are annexed hereto and marked as Annexure A).\n\n5. The Defendant is an erstwhile tenant whose tenancy stands determined. The Defendant was inducted as a tenant under a lease agreement in respect of the suit property for a period of three years commencing from 01.01.2020 and ending on 31.12.2022 (a copy of the lease/permission document granting permissive possession is annexed hereto and marked as Annexure B).\n\n6. The said lease in favour of the Defendant stood determined and expired by efflux of time on 31.12.2022. Upon expiry of the lease period, the Defendant's right to occupy the suit property ceased, and the Defendant became liable to deliver vacant and peaceful possession of the suit property to the Plaintiff.\n\n7. However, despite the expiry of the lease on 31.12.2022, the Defendant has wrongfully continued in occupation of the suit property without any lawful authority, right or title. The Defendant is in unauthorized occupation of the suit property from 01.01.2023 onwards.\n\n8. The Plaintiff, through his advocate, caused a legal notice dated 15.03.2023 to be served upon the Defendant, calling upon the Defendant to vacate and deliver vacant possession of the suit property to the Plaintiff (a true copy of the legal notice along with the postal receipt and acknowledgment card is annexed hereto and marked as Annexure C).\n\n9. Despite receipt of the said legal notice, the Defendant has failed, neglected and refused to vacate the suit property or to deliver possession thereof to the Plaintiff. The Defendant continues to be in wrongful possession of the suit property without any lawful justification.\n\n10. The monthly rental value of the suit property is Rs. 25,000/-. The Plaintiff is entitled to mesne profits for the wrongful use and occupation of the suit property by the Defendant from 01.01.2023 onwards at the rate of Rs. 25,000/- per month.\n\n11. The Plaintiff has clear title to the suit property and the Defendant's occupation is unauthorized. The Defendant has no right, title or interest in the suit property and is merely a trespasser whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882.\n\nLEGAL BASIS\n\n12. The Plaintiff submits that he is entitled to recover possession of the suit property under Section 5 of the Specific Relief Act, 1963. Section 5 of the Specific Relief Act, 1963 provides that a person entitled to the possession of specific immovable property may recover the same in the manner prescribed by the Code of Civil Procedure, 1908. In the present case, the Plaintiff, being the owner of the suit property, is entitled to possession thereof, and the Defendant, being an erstwhile tenant whose tenancy has expired, is bound to deliver possession.\n\n13. The Plaintiff further submits that the Defendant was a tenant whose tenancy has been lawfully determined under Section 111 of the Transfer of Property Act, 1882. Section 111 of the Transfer of Property Act, 1882 provides for the determination of lease, inter alia, by efflux of time. The lease in favour of the Defendant having expired on 31.12.2022, the tenancy stood determined by efflux of time, and the Defendant's continued possession is unauthorized.\n\n14. The Plaintiff relies upon Section 106 of the Transfer of Property Act, 1882 which provides for the duration of certain leases in the absence of a written contract or local custom. However, in the present case, the lease was for a fixed term which has expired by efflux of time.\n\n15. The Plaintiff further relies upon Section 116 of the Transfer of Property Act, 1882 which provides for the effect of holding over after the expiry of the lease. The Defendant, by continuing in possession after the determination of the lease, has become a tenant at will or a tenant holding on a month-to-month basis, and the Plaintiff is entitled to evict the Defendant.\n\n16. The Plaintiff submits that he is entitled to claim mesne profits under Section 2(12) of the Code of Civil Procedure, 1908 read with Order XX Rule 12 of the Code of Civil Procedure, 1908. Section 2(12) of the CPC defines mesne profits as profits which the person in wrongful possession of such property actually received or might have received with ordinary diligence from it. The Defendant being in wrongful possession of the suit property, the Plaintiff is entitled to mesne profits at the rate of Rs. 25,000/- per month, being the fair rental value of the suit property.\n\nCAUSE OF ACTION\n\n17. The cause of action for the present suit first arose on 01.01.2023 when the Defendant, despite the expiry of the lease on 31.12.2022, failed and refused to vacate the suit property and deliver vacant possession thereof to the Plaintiff, thereby continuing in unauthorized occupation and giving rise to the Plaintiff's right to sue for recovery of possession.\n\n18. The cause of action is a continuing one as the Defendant continues to be in wrongful possession of the suit property from day to day, and the said cause of action continues to accrue and subsist from day to day within the territorial jurisdiction of this Hon'ble Court.\n\nLIMITATION\n\n19. The present suit is within the period of limitation prescribed under Article 65 of the Schedule to the Limitation Act, 1963, which provides a period of twelve years for a suit for possession of immovable property based on previous ownership or possession when the defendant is in unauthorized occupation after the expiry of a lease. The cause of action having first arisen on 01.01.2023 when the Defendant's tenancy determined, and the suit being filed within the prescribed period of twelve years from the said date, the present suit is well within limitation.\n\nVALUATION AND COURT FEE\n\n20. The suit is valued at Rs. 50,00,000/- (Rupees Fifty Lakhs Only) for the purposes of jurisdiction and court fee, being the market value of the suit property. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint in accordance with the Karnataka Court Fees and Suits Valuation Act, 1958, computed on the suit valuation at the applicable ad valorem rate.\n\nMESNE PROFITS\n\n21. The Plaintiff claims mesne profits for the wrongful use and occupation of the suit property by the Defendant as follows:\n\n    (a) Past mesne profits from 01.01.2023 till the date of filing of this suit at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month, being the fair monthly rental value of the suit property;\n\n    (b) Future mesne profits from the date of filing of this suit till the date of delivery of possession at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month or at such rate as this Hon'ble Court deems just and reasonable;\n\n    (c) The Plaintiff reserves the right to claim enhanced mesne profits if the actual profits received or receivable by the Defendant are found to be higher than the claimed rate.\n\nPRAYER\n\n22. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\n\n    (a) Pass a decree for recovery of possession in favour of the Plaintiff and against the Defendant directing the Defendant to deliver vacant and peaceful possession of the suit property, being immovable property bearing Survey No. 45, Koramangala, Bangalore, more particularly described in the schedule hereunder written;\n\n    (b) Pass a preliminary decree for mesne profits in favour of the Plaintiff and against the Defendant for the period from 01.01.2023 till the date of delivery of possession at the rate of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) per month, and direct an inquiry under Order XX Rule 12 of the Code of Civil Procedure, 1908 for determination of the final amount of mesne profits;\n\n    (c) Award costs of this suit including court fees, advocate fees and all pre-litigation costs incurred for issuing the legal notice;\n\n    (d) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\nAND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL, AS IN DUTY BOUND, EVER PRAY.\n\nSCHEDULE OF PROPERTY\n\nAll that piece and parcel of immovable property bearing Survey No. 45, situated at Koramangala, Bangalore, more particularly described as follows:\n\nBOUNDARIES:\nNorth : {{BOUNDARY_NORTH}}\nSouth : {{BOUNDARY_SOUTH}}\nEast : {{BOUNDARY_EAST}}\nWest : {{BOUNDARY_WEST}}\n\nMeasuring: {{PROPERTY_AREA}} sq. ft. approximately.\n\nLIST OF DOCUMENTS\n\n| Sr. No. | Description | Annexure |\n\n|---------|-------------|----------|\n| 1. | Ownership documents for Survey No. 45, Koramangala, Bangalore | Annexure A |\n| 2. | Lease/Permission Document granting permissive possession from 01.01.2020 to 31.12.2022 | Annexure B |\n| 3. | Legal notice dated 15.03.2023 with postal receipt and AD card | Annexure C |\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby solemnly verify and state on oath that the contents of paragraphs 1 to 22 of this plaint are true and correct to my personal knowledge based upon the records and documents available with me, that the contents relating to legal submissions are based upon legal advice received and are believed to be correct, that the suit property is situate within the jurisdiction of this Hon'ble Court, and that nothing material has been concealed therefrom. Verified at Bangalore on this the ____ day of __________ 2024.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}",
+          "placeholders_used": [
+            {
+              "key": "PLAINTIFF_NAME",
+              "reason": "Plaintiff name not provided in USER_REQUEST"
+            },
+            {
+              "key": "PLAINTIFF_AGE",
+              "reason": "Plaintiff age not provided in USER_REQUEST"
+            },
+            {
+              "key": "PLAINTIFF_OCCUPATION",
+              "reason": "Plaintiff occupation not provided in USER_REQUEST"
+            },
+            {
+              "key": "PLAINTIFF_ADDRESS",
+              "reason": "Plaintiff address not provided in USER_REQUEST"
+            },
+            {
+              "key": "DEFENDANT_NAME",
+              "reason": "Defendant name not provided in USER_REQUEST"
+            },
+            {
+              "key": "DEFENDANT_AGE",
+              "reason": "Defendant age not provided in USER_REQUEST"
+            },
+            {
+              "key": "DEFENDANT_OCCUPATION",
+              "reason": "Defendant occupation not provided in USER_REQUEST"
+            },
+            {
+              "key": "DEFENDANT_ADDRESS",
+              "reason": "Defendant address not provided in USER_REQUEST"
+            },
+            {
+              "key": "COURT_FEE_AMOUNT",
+              "reason": "Court fee amount requires computation based on Karnataka Court Fees Act rates"
+            },
+            {
+              "key": "BOUNDARY_NORTH",
+              "reason": "Property boundary details not provided in USER_REQUEST"
+            },
+            {
+              "key": "BOUNDARY_SOUTH",
+              "reason": "Property boundary details not provided in USER_REQUEST"
+            },
+            {
+              "key": "BOUNDARY_EAST",
+              "reason": "Property boundary details not provided in USER_REQUEST"
+            },
+            {
+              "key": "BOUNDARY_WEST",
+              "reason": "Property boundary details not provided in USER_REQUEST"
+            },
+            {
+              "key": "PROPERTY_AREA",
+              "reason": "Property area measurement not provided in USER_REQUEST"
+            },
+            {
+              "key": "ADVOCATE_NAME",
+              "reason": "Advocate name not provided in USER_REQUEST"
+            },
+            {
+              "key": "ADVOCATE_ENROLLMENT",
+              "reason": "Advocate enrollment number not provided in USER_REQUEST"
+            },
+            {
+              "key": "ADVOCATE_ADDRESS",
+              "reason": "Advocate address not provided in USER_REQUEST"
+            }
+          ],
+          "citations_used": [
+            "Section 5 of the Specific Relief Act, 1963",
+            "Section 26 of the Code of Civil Procedure, 1908",
+            "Section 111 of the Transfer of Property Act, 1882",
+            "Section 106 of the Transfer of Property Act, 1882",
+            "Section 116 of the Transfer of Property Act, 1882",
+            "Section 2(12) of the Code of Civil Procedure, 1908",
+            "Order XX Rule 12 of the Code of Civil Procedure, 1908",
+            "Article 65 of the Schedule to the Limitation Act, 1963",
+            "Karnataka Court Fees and Suits Valuation Act, 1958"
+          ]
+        }
+      ]
+    }
+  },
+  "review_count": 1,
+  "_meta": {
+    "query": "Draft a civil suit for recovery of possession of immovable property. Plaintiff is owner of the property situated at Survey No. 45, Koramangala, Bangalore and Defendant is in unauthorized occupation after expiry of permissive possession/lease granted on 01.01.2020 which expired on 31.12.2022. Defendant refusing to vacate despite legal notice dated 15.03.2023. Property value is Rs.50,00,000/-. Monthly rental value is Rs.25,000/-. Seek recovery of possession, mesne profits from 01.01.2023 at Rs.25,000/- per month, and costs of the suit. File before the City Civil Court, Bangalore.",
+    "total_elapsed_s": 141.0,
+    "score": {
+      "checks": {
+        "[STRUCT] Court heading (City Civil Court Bangalore)": true,
+        "[STRUCT] Parties block present": true,
+        "[STRUCT] Property description (Survey No. 45)": true,
+        "[STRUCT] Koramangala/Bangalore location": true,
+        "[STRUCT] Lease/permissive possession stated": true,
+        "[STRUCT] Lease dates (01.01.2020 / 31.12.2022)": true,
+        "[STRUCT] Legal notice dated 15.03.2023": true,
+        "[STRUCT] Property value Rs.50,00,000": true,
+        "[STRUCT] Mesne profits Rs.25,000/month": true,
+        "[STRUCT] Prayer section present": true,
+        "[STRUCT] Verification clause": true,
+        "[LEGAL] Recovery of possession as relief": true,
+        "[LEGAL] Mesne profits as relief": true,
+        "[LEGAL] Costs as relief": true,
+        "[LEGAL] Specific Relief Act cited": true,
+        "[LEGAL] CPC/Order provisions cited": true,
+        "[LEGAL] Unauthorized occupation pleaded": true,
+        "[LEGAL] Expiry of lease/permission": true,
+        "[LEGAL] Jurisdiction stated": true,
+        "[LEGAL] Limitation correct (Art 64/65/67 or placeholder)": true,
+        "[LEGAL] No fabricated case citations": true,
+        "[LEGAL] Cause of action paragraph": true,
+        "[QUALITY] Narrative depth (15+ sentences)": true,
+        "[QUALITY] No 'and/or' usage": true,
+        "[QUALITY] Paragraph numbering present": true,
+        "[QUALITY] Annexure references": true,
+        "[QUALITY] No superseded acts (IPC/CrPC/Evidence Act)": true,
+        "[QUALITY] Valuation and court fee stated": true
+      },
+      "passed": 28,
+      "total": 28,
+      "percent": 100.0
+    },
+    "cause_type": "recovery_of_possession",
+    "lkb_resolved": false,
+    "draft_chars": 11547,
+    "placeholders": 17,
+    "review_pass": false,
+    "blocking_issues": 2
+  }
+}

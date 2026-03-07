@@ -1,0 +1,790 @@
+{
+  "user_request": "Draft a suit for damages for defamation against a Defendant who published false and malicious allegations on Facebook damaging the Plaintiff's business reputation. Reproduce the defamatory statements in the body of the plaint. Plead malice, publication to third parties, loss of goodwill, and mental agony. Claim Rs.10,00,000/- as damages. Include prayer for permanent injunction restraining further publication on Facebook or any other social media platform. Draft suitable for filing before the District Court. Plead limitation correctly for defamation suits. Include cause of action paragraph with accrual date, continuing nature of cause of action, valuation, court fee, and proper verification clause.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks damages for defamation against a Defendant for publishing false and malicious allegations on Facebook that damaged the Plaintiff's business reputation. The suit includes claims for loss of goodwill, mental agony, and a permanent injunction against further publication.",
+      "chronology": [],
+      "amounts": {
+        "principal": 1000000.0,
+        "interest_rate": null,
+        "damages": 1000000.0
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": "District Court",
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "platform",
+          "value": "Facebook",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "relief_type",
+          "value": "Permanent Injunction",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "defamation_type",
+          "value": "Business Reputation / Trade Libel",
+          "type": "string",
+          "source": "inferred",
+          "confidence": 0.9
+        },
+        {
+          "key": "continuing_cause_of_action",
+          "value": true,
+          "type": "bool",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Defamation",
+        "Civil Damages",
+        "Injunction",
+        "Cyber Law / Social Media"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Date of Defamatory Publication",
+        "Content of Defamatory Statements",
+        "Jurisdiction (City/District)",
+        "Valuation and Court Fee Details",
+        "Specific Losses Incurred"
+      ],
+      "assumptions": [
+        "Jurisdiction is based on the location of the Defendant or where the cause of action arose (not specified).",
+        "The defamatory content is accessible to the public on Facebook."
+      ]
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "defamation damages plaint",
+    "classification": {
+      "topics": [
+        "Defamation",
+        "Trade Libel",
+        "Damages",
+        "Permanent Injunction",
+        "Limitation",
+        "Social Media Liability"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Date of publication",
+        "Specific content of defamatory statements",
+        "Plaintiff's business details",
+        "Defendant's identity",
+        "Jurisdiction details (District/City)"
+      ],
+      "assumptions": [
+        "Jurisdiction lies with the District Court based on residence or cause of action",
+        "Defamatory content is accessible to the public on Facebook"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "defamation damages plaint format India",
+        "limitation period defamation suit India",
+        "court fee calculation damages plaint District Court",
+        "permanent injunction pleading requirements social media",
+        "cause of action accrual continuing defamation",
+        "essential pleadings malice publication defamation"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "defamation damages plaint format India",
+      "limitation period defamation suit India",
+      "court fee calculation damages plaint District Court",
+      "permanent injunction pleading requirements social media"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "d amendment of plaint, the plaintiff wanted to recover damages on the basis of defamation. It was held \nthat the tort of defamation, being a different tort, would introduce an entirely different cause of act ion.60\nIf, under the guise of an amendment, a new cause of action altogether different from the one mentioned in the \nplaint, is sought to be introduced, then the amendment has to be refused. In the instant case, apart from changing \nthe survey number, no fresh pleadings were sought to be added nor the cause of act ion and the relief claimed \naltered. Only certain allegations are sought to be included to explain the change in survey number. Under the \ncircumstances, the amendment sought for cannot be said to be introducing altogether a new cause of action to the \ndetriment of the other party.61\nIn considering an application for leave to amend pleadings, subsequent events can be taken into account.62\nIn a Bombay case, some partners converted a partnership firm into a private company. Remaining partners, who \ndid not find place in the articles of association of the company, sued for a declaration that the partnership subsisted. \nDuring the pendency of the suit, the plaintiff gave notice to dissolve the partnership and applied to amend the plaint \nfor inserting relief to declare the firm as dissolved. It was held that the amendment should be allowed. It was \nnecessitated by",
+        "score": 0.523,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "having been already discharged; 52 a suit for possession grounded \non a purchase from the father into one of inheritance as heir to him. 53 Where A filed a suit on a promissory note \nexecuted by B in favour of C, claiming that he was the real beneficiary, an amendment praying that a decree might \nbe passed in favour of C, who had been impleaded as defendant in the suit was permitted. 54 A petition for divorce \nunder the Hindu Marriage Act 1955, praying for divorce was allowed to be amended by adding an alternative prayer \nfor judicial separation.55 So also the relief of annulment of marriage on ground of non-consummation.56\nIn brief, amendments praying for new reliefs could be permitted so long as the character of the suit is not changed \nand no injustice is caused to the opponent; 57 and so also it is permissible for the plaintiff to set up as many roots of \ntitle as possible and sometimes they may be even mutually conflicting and inconsistent. 58 However, leave will be \nrefused if the frame of the plaint was a device to avoid payment of court-fee.59\nClaim for damages in the plaint was for a tort affecting economic interests under the head Conspiracy to injure. By \nthe proposed amendment of plaint, the plaintiff wanted to recover damages on the basis of defamation. It was held \nthat the tort of defamation, being a different tort, would introduce an entirely different cause",
+        "score": 0.5,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "essary implication, arises only where a written statement is filed. 70 Omission to file a written statement does \nnot amount to an admission of the facts stated in the plaint. 71 The Bombay High Court has construed the rule more \nstrictly and has held that if there is no pleading by the defendant denying the allegations in the plaint, the court may \ntake the facts stated in the plaint as admitted unless the court in its discretion under the proviso requires any fact so \nadmitted, to be proved otherwise than by such admission. 72 The Karnataka High Court has accepted the Bombay \nview.73 In another case the Karnataka High Court has held that a judgment in favour of the plaintiff is not automatic \non the failure of the defendant to file written statement. The court has to consider the case of the plaintiff before \ngranting a decree in his favour. 74 The Calcutta High Court, in a suit for damages for defamation, has held that if the \ndefendant merely enters appearance, but does not file a written statement, the statement contained in the plaint \nshall be taken to be admitted. 75 The new sub-r (2) confirms the view taken by the Bombay and Karnataka High \nCourts except in the case of a person under disability. The view taken by Bombay, Karnataka and Calcutta High \nCourts have been upheld by the Honble Supreme Court. It was held that O 8, rr 5 and 10, O 9, r 11 and O 15, r 2",
+        "score": 0.478,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "uit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "score": 0.543,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "ding names of informants in \ndefamation cases, see Chapman v. Leach, (1920) 1 KB 336 (slander); Lyle Samuel v. Odhams Ltd, (1920) 1 KB 135 \n(action for libel in a newspaper).\n31 . Sutherland (Duke) v. British Dominions Land Settlement Corpn, (1926) 1 Ch 746 \n .\n32 . Perlak Petroleum Maatschappij v. Deen, (1924) 1 KB 111.\n33 . Mercier v. Cotton, (1876) 1 QBD 442; Strong v. Tappin, (1876) WN (Eng) 22.\n34 . This is action assigned by the Judicature Act 1873, s 34 to the Chancery Division.\n35 . Harbord v. Monk, (1878) 9 CD 616; Union Bank of London v. Manby, (1879) 13 CD 239.\n36 . Disney v. Longbourne, (1876) 2 CD 704; Hawley v. Reade, (1876) WN (Eng) 64.\n37 . Sham Kishore v. Shoshinbhoosun, (1880) 5 Cal 707; Prem Sukh v. Indra Nath, (1891) 18 Cal 420. See r 2 below.\n38 . Molloy v. Kirby, (1880) 15 CD 162; Shaw v. Smith, (1886) 18 QBD 193; Birchal v. Birch Crisp & Co., (1913) 2 Ch 375.\n39 . See r 23 below.\n40 . Allhusen v. Labouchere, (1878) 3 QBD 654; Kennedy v. Dodson, (1895) 1 Ch 334; Bhagwandas v. Burjori, (1913) 37 \nBom 347 : 17 IC 152.\n41 . AIR 1972 SC 1302 [ LNIND 1972 SC 168].\n42 . Attorney-General v. Gaskill, (1882) 20 CD 519.\n43 . Rahimbhoy v. Turner, (1893) 17 Bom 341; Burchard v. Macfarlane, (1891) 2 QB 241.\n44 . Attorney-General v. Gaskill, (1882) 20 CD 519.\n45 . Anilabala v. Rajendranath, (1916) 43 Cal 300 : 34 IC 227.\n46 . British India Steam Navigation Co v. Secy",
+        "score": 0.537,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 18 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthat the relief could not be granted. 56 The commentary on O 6, r 3 be referred for detailed discussion on Forms 47 \nand 48 of the Code of Civil Procedure.\nIn a suit for damages for wrongful repudiation of contract, it is not necessary to plead that the repudiation has been \naccepted.57 If it is an implied agreement, it should appear from what facts or circumstances it is to be implied.58\nIn a suit, where the validity of the sale deed was challenged by the seller-defendant on the grounds that the sale \ndeed did not confine to the property covered by the agreement for sale and its contents were not read over to him \nand it was vitiated by fraud, it was held by the Gauhati High Court that the provision of O 6, r 4 are mandatory and \nthe pleadings of the defendant did not disclose the necessary particulars with specification to establish fraud. \nMoreover, after having executed the sale deed containing necessary recitals, the defendant cannot be permitted to \nturn around and deny the same as such oral denials are hit by s 91 of the Evidence Act.59\n(d) Defamation. In an act ion for slander, the plaintiff must give particulars of the names of the persons to whom the \nalleged slander was made.60\nIn an action for libel, where the charge made against the plaintiff in the alleged libel is general in its nature, a",
+        "score": 0.535,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "laintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is",
+        "score": 0.501,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ed, the suit being substantially against the company. 117 Likewise, in a case, a suit filed \nagainst the Republic Government of India was allowed to be amended into one against the Union of India. 118 \nSimilarly, a description of the defendant in the plaint as Sassoon Rice Mills Ltd was allowed to be amended by \nomitting the word Limited. 119 In another case, a petition under s 543 of the Companies Act 1956 setting out the \ncompany in liquidation as the petitioner was permitted to be amended as one by the Official Liquidator. 120 However, \nif the relief claimed was as against the agent personally, the amendment can be allowed only if there is no question \nof limitation,121 it cannot be allowed after the expiry of the period of limitation for the suit. 122 Where a suit is brought \nby or against a joint Hindu family firm in the name of the firm, the title of the plaint may be amended by substituting \nthe names of the members of the joint family even after the period of limitation prescribed for the institution of the \nsuit.123 However, if an alternative claim is made by an amendment suing them as a firm under O 30 of the Code of \nCivil Procedure 1908, that alternative case will be subject to the provisions of s 22 of the Limitation Act 1963. 124 \nWhere a partner in a firm carrying on business out of British India and to which O 30 does not apply, files a suit in \nthe name of the",
+        "score": 0.5,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "endants and it is seen that the plaintiffs approached the court beyond three years of the date of notice. Such is not \nthe case here.86\nHowever, the Bombay High Court has held that where specific plea is taken by the defendant that the suit claim \nwas barred by limitation and the pleadings clearly showed that the suit claim was barred by limitation, the order \ndismissing the suit on the preliminary issue of limitation was proper.87\nS. 10. Stay of suit.\nNo Court shall proceed with the trial of any suit in which the matter in issue is also directly and substantially in \nissue in a previously instituted suit between the same parties, or between parties under whom they or any of \nthem claim litigating under the same title where such suit is pending in the same or any other Court in 88[India] \nhaving jurisdiction to grant the relief claimed, or in any Court beyond the limits of 89[India] established or \ncontinued by the 90[Central Government] 91[***] and having like jurisdiction, or before 92[the Supreme Court].\nExplanation. The pendency of a suit in a foreign Court does not preclude the Courts in 93[India] from trying a \nsuit founded on the same cause of act ion.\n1. Alterations in the section. The words proceed with the trial have been substituted for the word try. The \nwords except where a suit has been stayed under s 20, which occurred at the commencement of the \ncorresponding",
+        "score": 0.572,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Page 10 of 32\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nunder s 53A of the Transfer of Property Act 1882; 80 a claim for marshalling under s 56 of the Transfer of Property \nAct 1882; 81 a plea that a partnership was not registered; 82 or that a contract had become discharged by \nfrustration.83 A point not taken in pleading should not ordinarily be allowed to be taken in appeal. 84 A plea as to \nmaintainability of the suit must be raised in the written statement. If not so taken the defendant would be barred \nfrom raising it in a subsequent suit by him. 85 However, the plea that plaintiff firm is not a registered firm and hence \nthe suit filed by it is not maintainable is a jurisdictional fact and not a question of fact. Such fact need not he pleaded \nin the written statement by defendant to take such defence at the hearing. 86 The court will not allow a defendant to \nset up a defence that he has not pleaded, though it may grant him leave to amend.87\n3. Limitation. In India, a suit instituted after the expiry of the period of limitation shall be dismissed, although \nlimitation has not been set up as a defence, under the Limitation Act 1963, s 3. Under s 184 of the Bihar Tenancy \nAct 1885, a suit instituted after the period of limitation is liable to be dismissed. In view of this provision, a defendant \nwould be allowed to raise the point of limitation even if it",
+        "score": 0.547,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "e v. Anjuman Dehi Imdad, \nAIR 1942 Lah 487; Vasant v. Khaddathar, AIR 1949 Nag 25.\n154 . Kuppu Govindan Chetty v. Uthukottai Co-op Society, AIR 1940 Mad 831 [ LNIND 1940 MAD 123]: (1940) ILR Mad \n929; Jhansi Co-op Mills v. Lala Makanlal, AIR 1957 All 492 [LNIND 1957 ALL 24].\n155 . Sukumari Gupta v. Dhrendara Nath Roy Chowdhury, AIR 1941 Cal 643: 73 CLJ 356; Beni Madhab v. Deb Narayan, \nAIR 1932 Cal 275: (1919) 59 Cal 961.\n156 . Rebatimohan v. Jatindramohan, AIR 1934 PC 96: (1934) 61 IA 171 : 61 Cal 470.\n157 . Limitation Act, 1963 s 15(2);Jai Chand Sawhney v. Union of India, (1969) 3 SCC 642 [ LNIND 1969 SC 448]; State v. \nR.D. Singh, AIR 1972 Raj 241; North-Western Rly v. Ram Dhanshib Lal, (1917) PR No 52 p. 187; Mohd. Quaranuddin \nv. State of Andhra Pradesh, (1994) 5 SCC 118.\n158 . T.P.K. Nair v. The Union of India, AIR 1991 Ker 80 [LNIND 1990 KER 195] (S. Padmanabhan J.).\n159 . See s 15(2) of the Limitation Act 1963. Also, see notes to s 79 above, jurisdiction.\n160 . Bata Shoe Co. v. Union of India 55 Bom LR 746; Azizuddin v. Union of India, AIR 1959 Cal 273 [ LNIND 1958 CAL \n142]; Naranjan v. Union of India, AIR 1960 Cal 391 [ LNIND 1960 CAL 21]: 64 CWN 503; contra P.C. Biswas v. Union \nof India, AIR 1956 Assam 85; Union of India v. Kedar Prasad, AIR 1970 Pat212. See notes under s 20.\n161 . Ramasundari v. Collector of Ludhianan, (1959) ILR Punj 413.",
+        "score": 0.544,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ent \nor sanction and the date of receipt of the order of the Government or other authority shall both be \ncounted. \n(3) In computing the period of limitation for any suit or applicatio n for execution of a decree by any \nreceiver or interim receiver appointed in proceedings for the adjudication of a person as an insolvent or by \nany liquidator or provisional liquidator appointed in proceedings for the winding up of a company, the \nperiod be ginning with the date of institution of such proceeding and ending with the expiry of three \nmonths from the date of appointment of such receiver or liquidator, as the case may be, shall be excluded. \n(4) In computing the period of limitation for a suit for possession by a purchaser at a sale in execution \nof a decree, the time during which a proceeding to set aside the sale has been prosecuted shall be \nexcluded. \n(5) In computing the period of limitation for any suit the time during which the defendant has bee n \nabsent from India and from the territories outside India under the administration of the Central \nGovernment, shall be excluded. \n16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if \nhe were living, have a right to institute a suit or make an application dies before the right accrues, or \nwhere a right to institute a suit or make an application accrues only on the death of a person,",
+        "score": 0.544,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "3 \nTHE LIMITATION ACT, 1963 \nACT NO. 36 OF 1963 \n[5th October, 1963.] \nAn Act to consolidate and amend the law for the limitation of suits and other proceedings and for \npurposes connected therewith. \nBE it enacted by Parliament in the Fourteenth Year of the Republic of India as follows:— \nPART I \nPRELIMINARY \n1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. \n(2) It extends to the whole of India 1***. \n(3) It shall come into force on such date 2 as the Central Government may, by notification in the \nOfficial Gazette, appoint. \n2. Definitions.—In this Act, unless the context otherwise requires,— \n(a) “applicant” includes— \n(i) a petitioner; \n(ii) any person from or through whom an applicant derives his right to apply; \n(iii) any person whose estate is represented by the applicant as executor, administrator or \nother representative; \n(b) “application” includes a petition; \n(c) “bill of exchange” includes a hundi and a cheque; \n(d) “bond” includes any instrument whereby a person obliges himself to pay money to another, \non condition that the obligation shall be void if a specified act is performed, or is not performed, as \nthe case may be; \n(e) “defendant” includes— \n(i) any person from or through whom a defendant derives his liability to be sued; \n(ii) any person whose estate is represented by the defendant as executor, administrator",
+        "score": 0.54,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "parties were Germans, and the petition \nwas filed while England was at war with Germany. At the time of filing the petition, A was residing in Lucknow \napparently with the permission of the Government of India, while her husband was in Germany. After filing the \npetition, A applied for an order directing the summons together with a copy of the petition to be sent to the \nProbate, Divorce and Admiralty Division of the High Court in England for transmission to the Foreign Office for \nservice upon the respondent. The court granted the application. 218 In a recent decision, the Calcutta High Court \nheld that where there was no bar to the institution of the suit against the plaintiff at its commencement, but \nduring its pendency, the plaintiff became disqualified to prosecute it as a result of the declaration of emergency \nby India, the proper order by the court is to suspend the trial during the period of the plaintiffs disqualification \nand not to dismiss it.219\nThe words may sue are to be understood with reference to the point of time when the suit is instituted and not \nto any subsequent stage in the suit.220\n4. Limitation. Where the right of alien enemies to sue is suspended by an order of the Government, the period \nduring which the right is suspended will not be excluded from the time prescribed by the Limitation Act for the",
+        "score": 0.534,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "under the Indian Limitation Act, 1908 (9 of 1908), as has already expired before the commencement \nof this Act is shorter than the period prescribed for such suit under this Act, then, the suit may be \ninstituted within the period of limitation prescribed therefor under this Act;] \n \n1. Subs. by Act 10 of 1969, s. 2, for “five years” (retrospectively). \n2. Ins. by s. 2, ibid. (retrospectively).",
+        "score": 0.595,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "ngs to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the Court has ample power to direct a party to affix a proper court-fee. Therefore, in a suit for rendition of \naccounts, where the plaintiff-respondent was not aware of the exact profit earned by the defendant, it was held that \nthe plaint cannot be rejected at the threshold for want of proper court-fees.4\n9. Clause (c): Where a plaint is written upon paper insufficiently stamped. The following points are to be noted \nin connection with this clause:\n(i) Where a plaint is written upon paper insufficiently stamped, the court is bound to give the plaintiff time to make \ngood the deficiency. This follows from the terms of cl (c) itself. 5 Reasonable time must be allowed after the court \nhas decided that the court-fee paid is insufficient, 6 and within the time allowed, if the plaintiff cannot pay, he may \napply to continue the suit as a pauper.7\n(ii) If the plaintiff fails to supply the requisite stamp-paper within the period fixed by the court, the plaint may be \nrejected under this rule, even after it has been numbered and registered as a suit. The reason is that the power to \nreject a plaint under this rule is not exhausted when the plaint has been admitted and registered.8\n(iii) A",
+        "score": 0.609,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "objections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the",
+        "score": 0.6,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "t \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is",
+        "score": 0.645,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "limits of the courts jurisdiction, the court may pass a decree for the sum in \nexcess of the pecuniary limits of its jurisdiction. 10 The court has no jurisdiction to grant reliefs not claimed in the \nplaint if by reason of their inclusion, the suit would be beyond the pecuniary jurisdiction of the court. 11 Where \ndifferent suits which are severally within the jurisdiction of the court are consolidated for hearing, the court does \nnot lose its jurisdiction to hear it by reason of the value of all the suits exceeding its jurisdiction if taken \ntogether.12\nThe Bombay High Court has held that in a case of damages, the amount of damage which the Court can award \nis limited to the pecuniary jurisdiction of the Court.13\nILLUSTRATION\nA sues B in the court of second class subordinate judge for an account and values his suit for a court fee at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and not by the amount decreed.15\n4. Mesne profits after suit do not",
+        "score": 0.541,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "rt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a",
+        "score": 0.613,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is not paid, as not filed at all.24\nIn an Allahabad case, the plaint was rejected by the trial court for insufficient court-fee. It was held that plaintiff can \nfile a regular appeal or he can make an application before the trial court under ss 148, 149 and 151. The plaintiff \npaid the amount for purchase of court-fees stamp worth lakhs of rupees. However, the counsel for the plaintiff \ncolluded with the defendant and did not deposit the court-fees in the court. The plaint was rejected under O 7, r 11, \nalthough it was restored under s 151. Further, the criminal case was directed to be registered against the defendant \nand the counsel for the plaintiff. 25 If the circumstances for invoking the courts discretion under ss 148, 149 and 151 \nexist, the court can entertain the application, even though the plaintiff had the alternative remedy by way of \nappeal.26 A rejected plaint can be ordered to be restored under inherent powers of the court, 27 but this decision has \nbeen overruled by a Division Bench of the Kerala High Court in Mable v. Dolores 28 wherein it has been held that \ninherent powers cannot be invoked against an order rejecting plaint, when a substantive right by way of",
+        "score": 0.602,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "y \njurisdiction and payment of court-fees. 55 Where the pleadings in a plaint are sought to be amended in such a \nmanner that it would oust the jurisdiction of the court in which the suit is initially instituted, for the interest of justice, \nprocedure of the court would be to consider and dispose of the application for amendment of the plaint and if the \namendment is allowed by the court then it will return the plaint of the plaintiff under O 7, r 10.56\n8. Court-fee. If the court has no jurisdiction, it should return the plaint even though the claim is undervalued; 57 and \nwhen it is presented to the proper court, the latter court is bound to give credit for the fee levied by the former \ncourt.58 The court returning the plaint has no jurisdiction on valuation being corrected to demand additional court-fee \nor to dismiss the suit in default under r 11.59\nWhere there is amendment in valuation clause of plaint, the court must return the plaint for presentation to the \nproper court having pecuniary jurisdiction, even if a higher court-fee is paid.60\n9. High Courts. This rule does not apply to the High Courts in the exercise of their ordinary or extraordinary original \nCivil jurisdiction (O 49 r 3, cl (1)). Thus where a suit was instituted in the High Court of Bombay on a mortgage of \nproperties situated outside Bombay, it was held that the court should dismiss the suit and not",
+        "score": 0.601,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "lacs and full court fee on Rs 2 lacs was paid at the time \nof institution of the suit, and during evidence it transpires that the amount due to plaintiff is actually Rs 5 lacs \nand not Rs 2 lacs, the question of permitting the plaintiff to pay deficit court fee at that stage by calling in aid of \ns 149, does not arise, as no court fee becomes payable at that stage. Plaintiff can increase the claim only by \nseeking amendment of the plaint and paying additional court fee on the amended claim. In regard to such \namended claim also, s 149 may be pressed into service. But then amendment would depend on limitation and \nmay not be permitted after the period of limitation. Where there is no deficit in court fee at the time of institution \nand when there is no amendment to plaint increasing the suit claim, there is no occasion for pressing s 149 into \nservice in regard to court fee payable on plaints.56\n6. Condonation of delay in presenting plaint condones delay in filing Court fee also. Where plaintiff failed \nto make up such deficiency within time granted by court and filed application seeking condonation of delay in \npresenting plaint, which was allowed by trial court, in view of reasons stated by plaintiffs counsel in his affidavit. \nIt was held, said order of trial court allowing application in question should be deemed to have condoned delay \nin payment of deficit court fee as",
+        "score": 0.591,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "cific terms, contains the necessary averments to make out a particular case and the issues \nframed also generally cover the question involved and the parties proceed on the basis that such case was at issue and \nhad led evidence thereon. As the very requirements indicate, this should be only in exceptional cases where the court is \nfully satisfied that the pleadings and issues generally cover the case subsequently put forward and that the parties being \nconscious of the issue, had led evidence on such issue.10\nAs per the law of pleading, the pleading must be complete. Only in certain cases, the party can obtain leave from \nthe court for filing additional pleadings. But the party cannot have suo moto reservation of the right to file additional \npleading later on. In a case where the respondent was called upon by the court only to show cause as to why the \ninterim relief should not be granted then, he could urge and contend that he had filed the pleading only for the \npurpose for which he was served with the notice and he was not called upon to meet the claim made in the petition, \nhe may meet the limited claim of interim relief and may file his pleadings to that effect only. But when there is no \nsuch order by the court then it is not open for the respondent to contend that he has filed his pleadings only for the \nlimited purpose.11\nIn a suit for injunction under O 39, r 1 and",
+        "score": 0.458,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "nd allow pleas to be taken, which are not \navailable in the pleading.\nIn a petition for divorce filed by the husband, letters written by the husband to the wife were produced by the wife in \nevidence. It was held that husband cannot rely on them in support of ground of cruelty, not made out by him either \nin his petition or in the advocates notice.89 Once it is pleaded that the alienation by a manager was for the discharge \nof an antecedent debt, then the person who challenges the alienation can assail the same, either by establishing \nthat the debt in question was not antecedent at all or by establishing that the debt had been incurred for immoral or \nillegal purposes. But the party must plead the same in the pleadings so that the other side is not prejudiced.90\nIn a suit for permanent injunction, where the plaintiff clearly stated in the plaint that he is the Bhumidhar and owner \nin possession of the property in suit for more than 12 years, it was held by the Allahabad High Court that these were \nthe crucial facts which are essential for the ownership and possession of the property and in view of these clear \naverments he cannot be non-suited for non-compliance of O 6, r 2 of the Code. It was not necessary for the plaintiff \nto state as to how and with what evidence the factum of ownership and possession was to be proved.91\nRule 2 of O 6 mandates that the pleadings must be",
+        "score": 0.454,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "be barred under this rule.81\nIn a suit for permanent injunction for restraining the defendants from selling the suit land to third party, the court \npermitted withdrawal of the suit on the ground that plaintiffs suit might fail as the remedy of specific performance of \ncontract was not resorted to with the condition to file fresh suit on the same cause of action. It was held that fresh \nsuit is not hit by O 2, r 2 of the Code of Civil Procedure.82",
+        "score": 0.459,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 51 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nstatement on the ground that such an application cannot be entertained in the second appeal, the Supreme Court \nset aside the order and remanded the case back to the High Court for consideration of the application afresh in \naccordance with law.10\nIn a suit for temporary and permanent injunction and for recovery of damages, the plaint contained assertions as to \nthe damage caused. The plaint was also valued accordingly for the purposes of court-fees and jurisdiction. There \nwas, however, an omission to claim the relief of damages, in the prayer clause. The omission being accidental, \namendment of the plaint for the inclusion of relief could be allowed. 11 Thus, where the averments regarding adverse \npossession have already been incorporated by the plaintiff in the suit, the amendment of relief clause for declaring \nownership is based on the pleadings. The amendment neither changes the cause of act ion nor the nature of suit, \nhence the application can be allowed. 12 Where the two principal orders have been challenged, simply because of a \ntechnical flaw in not challenging the said three orders, the amendment for seeking to incorporate a ground, and \nthree prayers, which do not in any way change the nature and character of the proceedings, in such a case the \namendment sought to be incorporated, by no",
+        "score": 0.454,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "as allowed with costs.54\nHowever, in a suit for partition filed by the plaintiff against his three brothers with relief of permanent injunction, \ncertain facts relating to the execution of sale by the father of the parties way back in 1978, was sought to be brought \non record. The application seeking amendment for addition of purchasers from the deceased father and also the \nprayer clause, was filed after seven years of filing the suit without giving any explanation for omitting these facts \ninitially in the plaint. It was held by the High Court that these facts cannot be said to be subsequent development \nand merely saying that these facts were not mentioned by mistake would not be sufficient.55\nWhere in an election petition, the petitioner had made positive assertion that illegal acceptance of nomination of \nrespondent had materially affected the results, but the verification clause did not specify that the facts stated in the \nsaid para was true to his knowledge or information, it was held that the verification clause can be cured through \namendment as it does not amount to introduction of new statement of material fact.56\nIn a suit for permanent injunction for restraining the defendant from interfering with possession, the plaintiff by \namendment, sought to add a new relief seeking declaration of title. The defendant disputed addition of the new \nrelief on the ground that",
+        "score": 0.453,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "ion that the ryots of A village were entitled to irrigate \ntheir lands through a particular sluice for two days and for a permanent injunction restraining the ryots of B village \nfrom closing the said sluice for two days and from otherwise preventing the ryots of A village taking water from the \nsaid sluice. The trial court dismissed the suit but in appeal to the subordinate judge, the suit was decreed. The \nplaintiff, then, took out an execution proceedings in which they sought an order for impleading respondents 4 to 12 \nas defendants and for an order of attachment of the said respondents properties and for committing them to civil jail \nfor contempt of court in disobeying the order of injunction. The respondents contended that the decree could not be \nexecuted personally against them as they were not parties to the suit. The trial court accepted this contention and",
+        "score": 0.447,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "t was filed for permanent \ninjunction for restraining the defendant from asserting any right, title or interest in the motorcycle of the plaintiff. \nThe defendant filed a miscellaneous application for an order directing the plaintiff to hand over the motorcycle \nto him. The hearing was adjourned on failure of the plaintiff to file his reply, subject to payment of costs. On the \nadjourned date, the plaintiff failed to appear. Held that the suit cannot be dismissed for non-payment of costs. \nOnly the defendants application can be disposed of.53",
+        "score": 0.445,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "Page 31 of 97\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nbehalf the plaintiff purports to sue is dissatisfied with an order made in the suit, he may apply to be added as a \ndefendant, but he cannot appeal from the order. 345 The application to be added as a defendant, must be made \nwithout unnecessary delay. 346 Where in a suit by a creditor, for the administration of the estate of the deceased \ndebtor, on behalf of himself and other creditors, one of the creditors applied to be joined as a party, it was held that \nhe should not be so joined unless the court was satisfied that his interests would be seriously prejudiced if he was \nnot so joined. 347 When once a suit is duly constituted under this rule, it does not lose its representative character \nmerely because one of the plaintiffs withdraws from it.348\nMere apprehension of an impending event cannot be ground for adding parties. In a suit for permanent injunction \nfiled under this rule for restraining the use of property as burial ground, the plaintiff sought to implead the state \ngovernment as a party. There was no dispute about the plaintiffs title over the land. It was held that apprehension \nthat state government would initiate land acquisition proceedings would not be a ground to implead the government \nas a necessary party.349\nIn a suit for declaration of title and possession the plaintiff made a prayer",
+        "score": 0.444,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1718:C6847]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1718:C6847 | commentary | 491014025-MULLA-on-CPC-pdf | p.1718 | score=0.523]:\nd amendment of plaint, the plaintiff wanted to recover damages on the basis of defamation. It was held \nthat the tort of defamation, being a different tort, would introduce an entirely different cause of act ion.60\nIf, under the guise of an amendment, a new cause of action altogether different from the one mentioned in the \nplaint, is sought to be introduced, then the amendment has to be refused. In the instant case, apart from changing \nthe survey number, no fresh pleadings were sought to be added nor the cause of act ion and the relief claimed \naltered. Only certain allegations are sought to be included to explain the change in survey number. Under the \ncircumstances, the amendment sought for cannot be said to be introducing altogether a new cause of action to the \ndetriment of the other party.61\nIn considering an application for leave to amend pleadings, subsequent events can be taken into account.62\nIn a Bombay case, some partners converted a partnership firm into a private company. Remaining partners, who \ndid not find place in the articles of association of the company, sued for a declaration that the partnership subsisted. \nDuring the pendency of the suit, the plaintiff gave notice to dissolve the partnership and applied to amend the plaint \nfor inserting relief to declare the firm as dissolved. It was held that the amendment should be allowed. It was \nnecessitated by\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1718:C6846 | commentary | 491014025-MULLA-on-CPC-pdf | p.1718 | score=0.500]:\nhaving been already discharged; 52 a suit for possession grounded \non a purchase from the father into one of inheritance as heir to him. 53 Where A filed a suit on a promissory note \nexecuted by B in favour of C, claiming that he was the real beneficiary, an amendment praying that a decree might \nbe passed in favour of C, who had been impleaded as defendant in the suit was permitted. 54 A petition for divorce \nunder the Hindu Marriage Act 1955, praying for divorce was allowed to be amended by adding an alternative prayer \nfor judicial separation.55 So also the relief of annulment of marriage on ground of non-consummation.56\nIn brief, amendments praying for new reliefs could be permitted so long as the character of the suit is not changed \nand no injustice is caused to the opponent; 57 and so also it is permissible for the plaintiff to set up as many roots of \ntitle as possible and sometimes they may be even mutually conflicting and inconsistent. 58 However, leave will be \nrefused if the frame of the plaint was a device to avoid payment of court-fee.59\nClaim for damages in the plaint was for a tort affecting economic interests under the head Conspiracy to injure. By \nthe proposed amendment of plaint, the plaintiff wanted to recover damages on the basis of defamation. It was held \nthat the tort of defamation, being a different tort, would introduce an entirely different cause\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1842:C7354 | commentary | 491014025-MULLA-on-CPC-pdf | p.1842 | score=0.478]:\nessary implication, arises only where a written statement is filed. 70 Omission to file a written statement does \nnot amount to an admission of the facts stated in the plaint. 71 The Bombay High Court has construed the rule more \nstrictly and has held that if there is no pleading by the defendant denying the allegations in the plaint, the court may \ntake the facts stated in the plaint as admitted unless the court in its discretion under the proviso requires any fact so \nadmitted, to be proved otherwise than by such admission. 72 The Karnataka High Court has accepted the Bombay \nview.73 In another case the Karnataka High Court has held that a judgment in favour of the plaintiff is not automatic \non the failure of the defendant to file written statement. The court has to consider the case of the plaintiff before \ngranting a decree in his favour. 74 The Calcutta High Court, in a suit for damages for defamation, has held that if the \ndefendant merely enters appearance, but does not file a written statement, the statement contained in the plaint \nshall be taken to be admitted. 75 The new sub-r (2) confirms the view taken by the Bombay and Karnataka High \nCourts except in the case of a person under disability. The view taken by Bombay, Karnataka and Calcutta High \nCourts have been upheld by the Honble Supreme Court. It was held that O 8, rr 5 and 10, O 9, r 11 and O 15, r 2\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.543]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2004:C8006 | commentary | 491014025-MULLA-on-CPC-pdf | p.2004 | score=0.537]:\nding names of informants in \ndefamation cases, see Chapman v. Leach, (1920) 1 KB 336 (slander); Lyle Samuel v. Odhams Ltd, (1920) 1 KB 135 \n(action for libel in a newspaper).\n31 . Sutherland (Duke) v. British Dominions Land Settlement Corpn, (1926) 1 Ch 746 \n .\n32 . Perlak Petroleum Maatschappij v. Deen, (1924) 1 KB 111.\n33 . Mercier v. Cotton, (1876) 1 QBD 442; Strong v. Tappin, (1876) WN (Eng) 22.\n34 . This is action assigned by the Judicature Act 1873, s 34 to the Chancery Division.\n35 . Harbord v. Monk, (1878) 9 CD 616; Union Bank of London v. Manby, (1879) 13 CD 239.\n36 . Disney v. Longbourne, (1876) 2 CD 704; Hawley v. Reade, (1876) WN (Eng) 64.\n37 . Sham Kishore v. Shoshinbhoosun, (1880) 5 Cal 707; Prem Sukh v. Indra Nath, (1891) 18 Cal 420. See r 2 below.\n38 . Molloy v. Kirby, (1880) 15 CD 162; Shaw v. Smith, (1886) 18 QBD 193; Birchal v. Birch Crisp & Co., (1913) 2 Ch 375.\n39 . See r 23 below.\n40 . Allhusen v. Labouchere, (1878) 3 QBD 654; Kennedy v. Dodson, (1895) 1 Ch 334; Bhagwandas v. Burjori, (1913) 37 \nBom 347 : 17 IC 152.\n41 . AIR 1972 SC 1302 [ LNIND 1972 SC 168].\n42 . Attorney-General v. Gaskill, (1882) 20 CD 519.\n43 . Rahimbhoy v. Turner, (1893) 17 Bom 341; Burchard v. Macfarlane, (1891) 2 QB 241.\n44 . Attorney-General v. Gaskill, (1882) 20 CD 519.\n45 . Anilabala v. Rajendranath, (1916) 43 Cal 300 : 34 IC 227.\n46 . British India Steam Navigation Co v. Secy\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1667:C6612 | commentary | 491014025-MULLA-on-CPC-pdf | p.1667 | score=0.535]:\nPage 18 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthat the relief could not be granted. 56 The commentary on O 6, r 3 be referred for detailed discussion on Forms 47 \nand 48 of the Code of Civil Procedure.\nIn a suit for damages for wrongful repudiation of contract, it is not necessary to plead that the repudiation has been \naccepted.57 If it is an implied agreement, it should appear from what facts or circumstances it is to be implied.58\nIn a suit, where the validity of the sale deed was challenged by the seller-defendant on the grounds that the sale \ndeed did not confine to the property covered by the agreement for sale and its contents were not read over to him \nand it was vitiated by fraud, it was held by the Gauhati High Court that the provision of O 6, r 4 are mandatory and \nthe pleadings of the defendant did not disclose the necessary particulars with specification to establish fraud. \nMoreover, after having executed the sale deed containing necessary recitals, the defendant cannot be permitted to \nturn around and deny the same as such oral denials are hit by s 91 of the Evidence Act.59\n(d) Defamation. In an act ion for slander, the plaintiff must give particulars of the names of the persons to whom the \nalleged slander was made.60\nIn an action for libel, where the charge made against the plaintiff in the alleged libel is general in its nature, a\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1695:C6735 | commentary | 491014025-MULLA-on-CPC-pdf | p.1695 | score=0.501]:\nlaintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1499:C5970 | commentary | 491014025-MULLA-on-CPC-pdf | p.1499 | score=0.500]:\ned, the suit being substantially against the company. 117 Likewise, in a case, a suit filed \nagainst the Republic Government of India was allowed to be amended into one against the Union of India. 118 \nSimilarly, a description of the defendant in the plaint as Sassoon Rice Mills Ltd was allowed to be amended by \nomitting the word Limited. 119 In another case, a petition under s 543 of the Companies Act 1956 setting out the \ncompany in liquidation as the petitioner was permitted to be amended as one by the Official Liquidator. 120 However, \nif the relief claimed was as against the agent personally, the amendment can be allowed only if there is no question \nof limitation,121 it cannot be allowed after the expiry of the period of limitation for the suit. 122 Where a suit is brought \nby or against a joint Hindu family firm in the name of the firm, the title of the plaint may be amended by substituting \nthe names of the members of the joint family even after the period of limitation prescribed for the institution of the \nsuit.123 However, if an alternative claim is made by an amendment suing them as a firm under O 30 of the Code of \nCivil Procedure 1908, that alternative case will be subject to the provisions of s 22 of the Limitation Act 1963. 124 \nWhere a partner in a firm carrying on business out of British India and to which O 30 does not apply, files a suit in \nthe name of the\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P152:C619]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P152:C619 | commentary | 491014025-MULLA-on-CPC-pdf | p.152 | score=0.572]:\nendants and it is seen that the plaintiffs approached the court beyond three years of the date of notice. Such is not \nthe case here.86\nHowever, the Bombay High Court has held that where specific plea is taken by the defendant that the suit claim \nwas barred by limitation and the pleadings clearly showed that the suit claim was barred by limitation, the order \ndismissing the suit on the preliminary issue of limitation was proper.87\nS. 10. Stay of suit.\nNo Court shall proceed with the trial of any suit in which the matter in issue is also directly and substantially in \nissue in a previously instituted suit between the same parties, or between parties under whom they or any of \nthem claim litigating under the same title where such suit is pending in the same or any other Court in 88[India] \nhaving jurisdiction to grant the relief claimed, or in any Court beyond the limits of 89[India] established or \ncontinued by the 90[Central Government] 91[***] and having like jurisdiction, or before 92[the Supreme Court].\nExplanation. The pendency of a suit in a foreign Court does not preclude the Courts in 93[India] from trying a \nsuit founded on the same cause of act ion.\n1. Alterations in the section. The words proceed with the trial have been substituted for the word try. The \nwords except where a suit has been stayed under s 20, which occurred at the commencement of the \ncorresponding\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1837:C7327 | commentary | 491014025-MULLA-on-CPC-pdf | p.1837 | score=0.547]:\nPage 10 of 32\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nunder s 53A of the Transfer of Property Act 1882; 80 a claim for marshalling under s 56 of the Transfer of Property \nAct 1882; 81 a plea that a partnership was not registered; 82 or that a contract had become discharged by \nfrustration.83 A point not taken in pleading should not ordinarily be allowed to be taken in appeal. 84 A plea as to \nmaintainability of the suit must be raised in the written statement. If not so taken the defendant would be barred \nfrom raising it in a subsequent suit by him. 85 However, the plea that plaintiff firm is not a registered firm and hence \nthe suit filed by it is not maintainable is a jurisdictional fact and not a question of fact. Such fact need not he pleaded \nin the written statement by defendant to take such defence at the hearing. 86 The court will not allow a defendant to \nset up a defence that he has not pleaded, though it may grant him leave to amend.87\n3. Limitation. In India, a suit instituted after the expiry of the period of limitation shall be dismissed, although \nlimitation has not been set up as a defence, under the Limitation Act 1963, s 3. Under s 184 of the Bihar Tenancy \nAct 1885, a suit instituted after the period of limitation is liable to be dismissed. In view of this provision, a defendant \nwould be allowed to raise the point of limitation even if it\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P880:C3394 | commentary | 491014025-MULLA-on-CPC-pdf | p.880 | score=0.544]:\ne v. Anjuman Dehi Imdad, \nAIR 1942 Lah 487; Vasant v. Khaddathar, AIR 1949 Nag 25.\n154 . Kuppu Govindan Chetty v. Uthukottai Co-op Society, AIR 1940 Mad 831 [ LNIND 1940 MAD 123]: (1940) ILR Mad \n929; Jhansi Co-op Mills v. Lala Makanlal, AIR 1957 All 492 [LNIND 1957 ALL 24].\n155 . Sukumari Gupta v. Dhrendara Nath Roy Chowdhury, AIR 1941 Cal 643: 73 CLJ 356; Beni Madhab v. Deb Narayan, \nAIR 1932 Cal 275: (1919) 59 Cal 961.\n156 . Rebatimohan v. Jatindramohan, AIR 1934 PC 96: (1934) 61 IA 171 : 61 Cal 470.\n157 . Limitation Act, 1963 s 15(2);Jai Chand Sawhney v. Union of India, (1969) 3 SCC 642 [ LNIND 1969 SC 448]; State v. \nR.D. Singh, AIR 1972 Raj 241; North-Western Rly v. Ram Dhanshib Lal, (1917) PR No 52 p. 187; Mohd. Quaranuddin \nv. State of Andhra Pradesh, (1994) 5 SCC 118.\n158 . T.P.K. Nair v. The Union of India, AIR 1991 Ker 80 [LNIND 1990 KER 195] (S. Padmanabhan J.).\n159 . See s 15(2) of the Limitation Act 1963. Also, see notes to s 79 above, jurisdiction.\n160 . Bata Shoe Co. v. Union of India 55 Bom LR 746; Azizuddin v. Union of India, AIR 1959 Cal 273 [ LNIND 1958 CAL \n142]; Naranjan v. Union of India, AIR 1960 Cal 391 [ LNIND 1960 CAL 21]: 64 CWN 503; contra P.C. Biswas v. Union \nof India, AIR 1956 Assam 85; Union of India v. Kedar Prasad, AIR 1970 Pat212. See notes under s 20.\n161 . Ramasundari v. Collector of Ludhianan, (1959) ILR Punj 413.\n\n[Document 4 | Limitation Act | Limitation Act:books/A1963-36.pdf:P7:C16 | bare_act | A1963-36 | p.7 | score=0.544]:\nent \nor sanction and the date of receipt of the order of the Government or other authority shall both be \ncounted. \n(3) In computing the period of limitation for any suit or applicatio n for execution of a decree by any \nreceiver or interim receiver appointed in proceedings for the adjudication of a person as an insolvent or by \nany liquidator or provisional liquidator appointed in proceedings for the winding up of a company, the \nperiod be ginning with the date of institution of such proceeding and ending with the expiry of three \nmonths from the date of appointment of such receiver or liquidator, as the case may be, shall be excluded. \n(4) In computing the period of limitation for a suit for possession by a purchaser at a sale in execution \nof a decree, the time during which a proceeding to set aside the sale has been prosecuted shall be \nexcluded. \n(5) In computing the period of limitation for any suit the time during which the defendant has bee n \nabsent from India and from the territories outside India under the administration of the Central \nGovernment, shall be excluded. \n16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if \nhe were living, have a right to institute a suit or make an application dies before the right accrues, or \nwhere a right to institute a suit or make an application accrues only on the death of a person,\n\n[Document 5 | Limitation Act | Limitation Act:books/A1963-36.pdf:P3:C3 | bare_act | A1963-36 | p.3 | score=0.540]:\n3 \nTHE LIMITATION ACT, 1963 \nACT NO. 36 OF 1963 \n[5th October, 1963.] \nAn Act to consolidate and amend the law for the limitation of suits and other proceedings and for \npurposes connected therewith. \nBE it enacted by Parliament in the Fourteenth Year of the Republic of India as follows:— \nPART I \nPRELIMINARY \n1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. \n(2) It extends to the whole of India 1***. \n(3) It shall come into force on such date 2 as the Central Government may, by notification in the \nOfficial Gazette, appoint. \n2. Definitions.—In this Act, unless the context otherwise requires,— \n(a) “applicant” includes— \n(i) a petitioner; \n(ii) any person from or through whom an applicant derives his right to apply; \n(iii) any person whose estate is represented by the applicant as executor, administrator or \nother representative; \n(b) “application” includes a petition; \n(c) “bill of exchange” includes a hundi and a cheque; \n(d) “bond” includes any instrument whereby a person obliges himself to pay money to another, \non condition that the obligation shall be void if a specified act is performed, or is not performed, as \nthe case may be; \n(e) “defendant” includes— \n(i) any person from or through whom a defendant derives his liability to be sued; \n(ii) any person whose estate is represented by the defendant as executor, administrator\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P883:C3402 | commentary | 491014025-MULLA-on-CPC-pdf | p.883 | score=0.534]:\nparties were Germans, and the petition \nwas filed while England was at war with Germany. At the time of filing the petition, A was residing in Lucknow \napparently with the permission of the Government of India, while her husband was in Germany. After filing the \npetition, A applied for an order directing the summons together with a copy of the petition to be sent to the \nProbate, Divorce and Admiralty Division of the High Court in England for transmission to the Foreign Office for \nservice upon the respondent. The court granted the application. 218 In a recent decision, the Calcutta High Court \nheld that where there was no bar to the institution of the suit against the plaintiff at its commencement, but \nduring its pendency, the plaintiff became disqualified to prosecute it as a result of the declaration of emergency \nby India, the proper order by the court is to suspend the trial during the period of the plaintiffs disqualification \nand not to dismiss it.219\nThe words may sue are to be understood with reference to the point of time when the suit is instituted and not \nto any subsequent stage in the suit.220\n4. Limitation. Where the right of alien enemies to sue is suspended by an order of the Government, the period \nduring which the right is suspended will not be excluded from the time prescribed by the Limitation Act for the\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1499:C5970 | commentary | 491014025-MULLA-on-CPC-pdf | p.1499 | score=0.534]:\ned, the suit being substantially against the company. 117 Likewise, in a case, a suit filed \nagainst the Republic Government of India was allowed to be amended into one against the Union of India. 118 \nSimilarly, a description of the defendant in the plaint as Sassoon Rice Mills Ltd was allowed to be amended by \nomitting the word Limited. 119 In another case, a petition under s 543 of the Companies Act 1956 setting out the \ncompany in liquidation as the petitioner was permitted to be amended as one by the Official Liquidator. 120 However, \nif the relief claimed was as against the agent personally, the amendment can be allowed only if there is no question \nof limitation,121 it cannot be allowed after the expiry of the period of limitation for the suit. 122 Where a suit is brought \nby or against a joint Hindu family firm in the name of the firm, the title of the plaint may be amended by substituting \nthe names of the members of the joint family even after the period of limitation prescribed for the institution of the \nsuit.123 However, if an alternative claim is made by an amendment suing them as a firm under O 30 of the Code of \nCivil Procedure 1908, that alternative case will be subject to the provisions of s 22 of the Limitation Act 1963. 124 \nWhere a partner in a firm carrying on business out of British India and to which O 30 does not apply, files a suit in \nthe name of the\n\n[Document 8 | Limitation Act | Limitation Act:books/A1963-36.pdf:P10:C30 | bare_act | A1963-36 | p.10 | score=0.595]:\nunder the Indian Limitation Act, 1908 (9 of 1908), as has already expired before the commencement \nof this Act is shorter than the period prescribed for such suit under this Act, then, the suit may be \ninstituted within the period of limitation prescribed therefor under this Act;] \n \n1. Subs. by Act 10 of 1969, s. 2, for “five years” (retrospectively). \n2. Ins. by s. 2, ibid. (retrospectively).\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7143]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7143 | commentary | 491014025-MULLA-on-CPC-pdf | p.1792 | score=0.609]:\nngs to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the Court has ample power to direct a party to affix a proper court-fee. Therefore, in a suit for rendition of \naccounts, where the plaintiff-respondent was not aware of the exact profit earned by the defendant, it was held that \nthe plaint cannot be rejected at the threshold for want of proper court-fees.4\n9. Clause (c): Where a plaint is written upon paper insufficiently stamped. The following points are to be noted \nin connection with this clause:\n(i) Where a plaint is written upon paper insufficiently stamped, the court is bound to give the plaintiff time to make \ngood the deficiency. This follows from the terms of cl (c) itself. 5 Reasonable time must be allowed after the court \nhas decided that the court-fee paid is insufficient, 6 and within the time allowed, if the plaintiff cannot pay, he may \napply to continue the suit as a pauper.7\n(ii) If the plaintiff fails to supply the requisite stamp-paper within the period fixed by the court, the plaint may be \nrejected under this rule, even after it has been numbered and registered as a suit. The reason is that the power to \nreject a plaint under this rule is not exhausted when the plaint has been admitted and registered.8\n(iii) A\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7142 | commentary | 491014025-MULLA-on-CPC-pdf | p.1792 | score=0.600]:\nobjections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1793:C7149 | commentary | 491014025-MULLA-on-CPC-pdf | p.1793 | score=0.645]:\nt \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C180 | commentary | 491014025-MULLA-on-CPC-pdf | p.47 | score=0.541]:\nlimits of the courts jurisdiction, the court may pass a decree for the sum in \nexcess of the pecuniary limits of its jurisdiction. 10 The court has no jurisdiction to grant reliefs not claimed in the \nplaint if by reason of their inclusion, the suit would be beyond the pecuniary jurisdiction of the court. 11 Where \ndifferent suits which are severally within the jurisdiction of the court are consolidated for hearing, the court does \nnot lose its jurisdiction to hear it by reason of the value of all the suits exceeding its jurisdiction if taken \ntogether.12\nThe Bombay High Court has held that in a case of damages, the amount of damage which the Court can award \nis limited to the pecuniary jurisdiction of the Court.13\nILLUSTRATION\nA sues B in the court of second class subordinate judge for an account and values his suit for a court fee at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and not by the amount decreed.15\n4. Mesne profits after suit do not\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1791:C7139 | commentary | 491014025-MULLA-on-CPC-pdf | p.1791 | score=0.613]:\nrt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1793:C7150 | commentary | 491014025-MULLA-on-CPC-pdf | p.1793 | score=0.602]:\nthe Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is not paid, as not filed at all.24\nIn an Allahabad case, the plaint was rejected by the trial court for insufficient court-fee. It was held that plaintiff can \nfile a regular appeal or he can make an application before the trial court under ss 148, 149 and 151. The plaintiff \npaid the amount for purchase of court-fees stamp worth lakhs of rupees. However, the counsel for the plaintiff \ncolluded with the defendant and did not deposit the court-fees in the court. The plaint was rejected under O 7, r 11, \nalthough it was restored under s 151. Further, the criminal case was directed to be registered against the defendant \nand the counsel for the plaintiff. 25 If the circumstances for invoking the courts discretion under ss 148, 149 and 151 \nexist, the court can entertain the application, even though the plaintiff had the alternative remedy by way of \nappeal.26 A rejected plaint can be ordered to be restored under inherent powers of the court, 27 but this decision has \nbeen overruled by a Division Bench of the Kerala High Court in Mable v. Dolores 28 wherein it has been held that \ninherent powers cannot be invoked against an order rejecting plaint, when a substantive right by way of\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1780:C7088 | commentary | 491014025-MULLA-on-CPC-pdf | p.1780 | score=0.601]:\ny \njurisdiction and payment of court-fees. 55 Where the pleadings in a plaint are sought to be amended in such a \nmanner that it would oust the jurisdiction of the court in which the suit is initially instituted, for the interest of justice, \nprocedure of the court would be to consider and dispose of the application for amendment of the plaint and if the \namendment is allowed by the court then it will return the plaint of the plaintiff under O 7, r 10.56\n8. Court-fee. If the court has no jurisdiction, it should return the plaint even though the claim is undervalued; 57 and \nwhen it is presented to the proper court, the latter court is bound to give credit for the fee levied by the former \ncourt.58 The court returning the plaint has no jurisdiction on valuation being corrected to demand additional court-fee \nor to dismiss the suit in default under r 11.59\nWhere there is amendment in valuation clause of plaint, the court must return the plaint for presentation to the \nproper court having pecuniary jurisdiction, even if a higher court-fee is paid.60\n9. High Courts. This rule does not apply to the High Courts in the exercise of their ordinary or extraordinary original \nCivil jurisdiction (O 49 r 3, cl (1)). Thus where a suit was instituted in the High Court of Bombay on a mortgage of \nproperties situated outside Bombay, it was held that the court should dismiss the suit and not\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1351:C5360 | commentary | 491014025-MULLA-on-CPC-pdf | p.1351 | score=0.591]:\nlacs and full court fee on Rs 2 lacs was paid at the time \nof institution of the suit, and during evidence it transpires that the amount due to plaintiff is actually Rs 5 lacs \nand not Rs 2 lacs, the question of permitting the plaintiff to pay deficit court fee at that stage by calling in aid of \ns 149, does not arise, as no court fee becomes payable at that stage. Plaintiff can increase the claim only by \nseeking amendment of the plaint and paying additional court fee on the amended claim. In regard to such \namended claim also, s 149 may be pressed into service. But then amendment would depend on limitation and \nmay not be permitted after the period of limitation. Where there is no deficit in court fee at the time of institution \nand when there is no amendment to plaint increasing the suit claim, there is no occasion for pressing s 149 into \nservice in regard to court fee payable on plaints.56\n6. Condonation of delay in presenting plaint condones delay in filing Court fee also. Where plaintiff failed \nto make up such deficiency within time granted by court and filed application seeking condonation of delay in \npresenting plaint, which was allowed by trial court, in view of reasons stated by plaintiffs counsel in his affidavit. \nIt was held, said order of trial court allowing application in question should be deemed to have condoned delay \nin payment of deficit court fee as\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1651:C6539]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1651:C6539 | commentary | 491014025-MULLA-on-CPC-pdf | p.1651 | score=0.458]:\ncific terms, contains the necessary averments to make out a particular case and the issues \nframed also generally cover the question involved and the parties proceed on the basis that such case was at issue and \nhad led evidence thereon. As the very requirements indicate, this should be only in exceptional cases where the court is \nfully satisfied that the pleadings and issues generally cover the case subsequently put forward and that the parties being \nconscious of the issue, had led evidence on such issue.10\nAs per the law of pleading, the pleading must be complete. Only in certain cases, the party can obtain leave from \nthe court for filing additional pleadings. But the party cannot have suo moto reservation of the right to file additional \npleading later on. In a case where the respondent was called upon by the court only to show cause as to why the \ninterim relief should not be granted then, he could urge and contend that he had filed the pleading only for the \npurpose for which he was served with the notice and he was not called upon to meet the claim made in the petition, \nhe may meet the limited claim of interim relief and may file his pleadings to that effect only. But when there is no \nsuch order by the court then it is not open for the respondent to contend that he has filed his pleadings only for the \nlimited purpose.11\nIn a suit for injunction under O 39, r 1 and\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1657:C6566 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 2 | p.1657 | score=0.454]:\nnd allow pleas to be taken, which are not \navailable in the pleading.\nIn a petition for divorce filed by the husband, letters written by the husband to the wife were produced by the wife in \nevidence. It was held that husband cannot rely on them in support of ground of cruelty, not made out by him either \nin his petition or in the advocates notice.89 Once it is pleaded that the alienation by a manager was for the discharge \nof an antecedent debt, then the person who challenges the alienation can assail the same, either by establishing \nthat the debt in question was not antecedent at all or by establishing that the debt had been incurred for immoral or \nillegal purposes. But the party must plead the same in the pleadings so that the other side is not prejudiced.90\nIn a suit for permanent injunction, where the plaintiff clearly stated in the plaint that he is the Bhumidhar and owner \nin possession of the property in suit for more than 12 years, it was held by the Allahabad High Court that these were \nthe crucial facts which are essential for the ownership and possession of the property and in view of these clear \naverments he cannot be non-suited for non-compliance of O 6, r 2 of the Code. It was not necessary for the plaintiff \nto state as to how and with what evidence the factum of ownership and possession was to be proved.91\nRule 2 of O 6 mandates that the pleadings must be\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1549:C6169 | commentary | 491014025-MULLA-on-CPC-pdf | p.1549 | score=0.459]:\nbe barred under this rule.81\nIn a suit for permanent injunction for restraining the defendants from selling the suit land to third party, the court \npermitted withdrawal of the suit on the ground that plaintiffs suit might fail as the remedy of specific performance of \ncontract was not resorted to with the condition to file fresh suit on the same cause of action. It was held that fresh \nsuit is not hit by O 2, r 2 of the Code of Civil Procedure.82\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1700:C6758 | commentary | 491014025-MULLA-on-CPC-pdf | p.1700 | score=0.454]:\nPage 51 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nstatement on the ground that such an application cannot be entertained in the second appeal, the Supreme Court \nset aside the order and remanded the case back to the High Court for consideration of the application afresh in \naccordance with law.10\nIn a suit for temporary and permanent injunction and for recovery of damages, the plaint contained assertions as to \nthe damage caused. The plaint was also valued accordingly for the purposes of court-fees and jurisdiction. There \nwas, however, an omission to claim the relief of damages, in the prayer clause. The omission being accidental, \namendment of the plaint for the inclusion of relief could be allowed. 11 Thus, where the averments regarding adverse \npossession have already been incorporated by the plaintiff in the suit, the amendment of relief clause for declaring \nownership is based on the pleadings. The amendment neither changes the cause of act ion nor the nature of suit, \nhence the application can be allowed. 12 Where the two principal orders have been challenged, simply because of a \ntechnical flaw in not challenging the said three orders, the amendment for seeking to incorporate a ground, and \nthree prayers, which do not in any way change the nature and character of the proceedings, in such a case the \namendment sought to be incorporated, by no\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1703:C6774 | commentary | 491014025-MULLA-on-CPC-pdf | p.1703 | score=0.453]:\nas allowed with costs.54\nHowever, in a suit for partition filed by the plaintiff against his three brothers with relief of permanent injunction, \ncertain facts relating to the execution of sale by the father of the parties way back in 1978, was sought to be brought \non record. The application seeking amendment for addition of purchasers from the deceased father and also the \nprayer clause, was filed after seven years of filing the suit without giving any explanation for omitting these facts \ninitially in the plaint. It was held by the High Court that these facts cannot be said to be subsequent development \nand merely saying that these facts were not mentioned by mistake would not be sufficient.55\nWhere in an election petition, the petitioner had made positive assertion that illegal acceptance of nomination of \nrespondent had materially affected the results, but the verification clause did not specify that the facts stated in the \nsaid para was true to his knowledge or information, it was held that the verification clause can be cured through \namendment as it does not amount to introduction of new statement of material fact.56\nIn a suit for permanent injunction for restraining the defendant from interfering with possession, the plaintiff by \namendment, sought to add a new relief seeking declaration of title. The defendant disputed addition of the new \nrelief on the ground that\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1464:C5797 | commentary | 491014025-MULLA-on-CPC-pdf | p.1464 | score=0.447]:\nion that the ryots of A village were entitled to irrigate \ntheir lands through a particular sluice for two days and for a permanent injunction restraining the ryots of B village \nfrom closing the said sluice for two days and from otherwise preventing the ryots of A village taking water from the \nsaid sluice. The trial court dismissed the suit but in appeal to the subordinate judge, the suit was decreed. The \nplaintiff, then, took out an execution proceedings in which they sought an order for impleading respondents 4 to 12 \nas defendants and for an order of attachment of the said respondents properties and for committing them to civil jail \nfor contempt of court in disobeying the order of injunction. The respondents contended that the decree could not be \nexecuted personally against them as they were not parties to the suit. The trial court accepted this contention and\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P588:C2197 | commentary | 491014025-MULLA-on-CPC-pdf | p.588 | score=0.445]:\nt was filed for permanent \ninjunction for restraining the defendant from asserting any right, title or interest in the motorcycle of the plaintiff. \nThe defendant filed a miscellaneous application for an order directing the plaintiff to hand over the motorcycle \nto him. The hearing was adjourned on failure of the plaintiff to file his reply, subject to payment of costs. On the \nadjourned date, the plaintiff failed to appear. Held that the suit cannot be dismissed for non-payment of costs. \nOnly the defendants application can be disposed of.53\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1464:C5793 | commentary | 491014025-MULLA-on-CPC-pdf | p.1464 | score=0.444]:\nPage 31 of 97\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nbehalf the plaintiff purports to sue is dissatisfied with an order made in the suit, he may apply to be added as a \ndefendant, but he cannot appeal from the order. 345 The application to be added as a defendant, must be made \nwithout unnecessary delay. 346 Where in a suit by a creditor, for the administration of the estate of the deceased \ndebtor, on behalf of himself and other creditors, one of the creditors applied to be joined as a party, it was held that \nhe should not be so joined unless the court was satisfied that his interests would be seriously prejudiced if he was \nnot so joined. 347 When once a suit is duly constituted under this rule, it does not lose its representative character \nmerely because one of the plaintiffs withdraws from it.348\nMere apprehension of an impending event cannot be ground for adding parties. In a suit for permanent injunction \nfiled under this rule for restraining the use of property as burial ground, the plaintiff sought to implead the state \ngovernment as a party. There was no dispute about the plaintiffs title over the land. It was held that apprehension \nthat state government would initiate land acquisition proceedings would not be a ground to implead the government \nas a necessary party.349\nIn a suit for declaration of title and possession the plaintiff made a prayer"
+  },
+  "legal_research": {
+    "queries": [
+      "Defamation limitation period India years accrual date right to sue District Court",
+      "defamation damages plaint mandatory procedural requirements India District Court"
+    ],
+    "results": [
+      {
+        "title": "Time Limit To File Defamation Case In India",
+        "url": "https://www.leadindia.law/blog/en/time-limit-to-file-defamation-case-in-india/",
+        "snippet": "In India, you have a year from the date of the allegedly defamatory utterance to launch a defamation lawsuit.",
+        "date": ""
+      },
+      {
+        "title": "What is the time limit fixed to file a defamation (civil and criminal) cases in India? - Quora",
+        "url": "https://www.quora.com/What-is-the-time-limit-fixed-to-file-a-defamation-civil-and-criminal-cases-in-India",
+        "snippet": "Answer (1 of 3): CRIMINAL DEFAMATION: ... shall be- 1. six months, if the offence is punishable with fine only; 2. one year, if the offence is punishable with imprisonment for a term not exceeding one year ; 3. three years, if ...",
+        "date": ""
+      },
+      {
+        "title": "Limitation Period for Defamation Case in India - Lawgical Shots",
+        "url": "https://lawgicalshots.com/limitation-period-for-defamation-case-in-india/",
+        "snippet": "Consequence of delay: If the defamed person fails to file the lawsuit within one year limitation period, the suit may be dismissed by the Court as “time – barred”. This means that the Court will not hear the case since it was not filed ...",
+        "date": ""
+      },
+      {
+        "title": "How to File Defamation Case in India | Call +91 8920599818",
+        "url": "https://advocateravi.com/how-to-file-defamation-case-in-india/",
+        "snippet": "Civil Defamation: 1-year limitation from the date of defamation (under Limitation Act). ... Lawyer fees (₹20,000 – ₹1,00,000+ depending on case complexity). Court fees (approx.",
+        "date": ""
+      },
+      {
+        "title": "N.N.S. Rana vs Union Of India And Others on 16 September, 2011",
+        "url": "https://indiankanoon.org/doc/45410912/",
+        "snippet": "05.02.2001 almost after 4½ yrs of accrual of cause of action. As such this suit is hopelessly time barred. At this juncture plaintiff submits that he had a continuous cause of action in this matter in so far as Departmental enquiry was pending against him. The Language of Article 75 of the ...",
+        "date": ""
+      },
+      {
+        "title": "r]-Iri,t a?;t GOVERNMENT OF INDIA LAW COMMISSION OF INDIA",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ca0daec69b5adc880fb464895726dbdf/uploads/2024/02/202402021139959703.pdf",
+        "snippet": "There must be procedural guarantees against abuse of such interference . Therefore, a review of criminal defamation which has also been adjudged · by the Supreme Court in the case of Subramanian Swamy v.",
+        "date": ""
+      },
+      {
+        "title": "Defamation Laws in India – Complete Legal Guide",
+        "url": "https://kapildixitco.com/defamation-laws-in-india-complete-guide/",
+        "snippet": "For a Civil Case: A suit for damages can be filed in a District Court or a High Court, depending on the monetary value of the claim. ... File an e-FIR : You can register an electronic First Information Report (FIR) on the state’s cybercrime portal.",
+        "date": ""
+      },
+      {
+        "title": "How to File a Defamation Case in India: A Guide to Understanding the Process.",
+        "url": "https://restthecase.com/knowledge-bank/how-to-file-defamation-case-in-india",
+        "snippet": "If the court rules in favor of the plaintiff and awards damages, the defendant is obligated to pay the amount . If the defendant fails to pay, the plaintiff can initiate execution proceedings to enforce the decree.",
+        "date": ""
+      },
+      {
+        "title": "Defamation",
+        "url": "https://www.indialawoffices.com/knowledge-centre/defamation",
+        "snippet": "In Civil Defamation, a person who is defamed can move the competent Court having pecuniary jurisdiction and seek damages in the form of monetary compensation. Under Section 19 of Civil Procedure Code (CPC) civil suit can be filed either where the Defendant resides or where the Defamatory statement was made/published. Court Fees for Civil Defamation suit is to be paid in accordance to the value of the monetary compensation claimed. Court Fees varies State to State. Regardless of whether a defamation action is framed in libel or slander, the plaintiff must always prove the following:",
+        "date": ""
+      },
+      {
+        "title": "How to file a defamation case in India - iPleaders",
+        "url": "https://blog.ipleaders.in/how-to-file-a-defamation-case-in-india/",
+        "snippet": "The complaint regarding defamation ... the criminal trial will start. For a civil suit, the plaint must be filed by the plaintiff in the civil court under Section 19, CPC ....",
+        "date": ""
+      }
+    ],
+    "summary": "[What is the time limit fixed to file a defamation (civil and criminal) cases in India? - Quora] Answer (1 of 3): CRIMINAL DEFAMATION: ... shall be- 1. six months, if the offence is punishable with fine only; 2. one year, if the offence is punishable with imprisonment for a term not exceeding one year ; 3. three years, if ...\n[Limitation Period for Defamation Case in India - Lawgical Shots] Consequence of delay: If the defamed person fails to file the lawsuit within one year limitation period, the suit may be dismissed by the Court as “time – barred”. This means that the Court will not hear the case since it was not filed ...\n[How to File Defamation Case in India | Call +91 8920599818] Civil Defamation: 1-year limitation from the date of defamation (under Limitation Act). ... Lawyer fees (₹20,000 – ₹1,00,000+ depending on case complexity). Court fees (approx.\n[N.N.S. Rana vs Union Of India And Others on 16 September, 2011] 05.02.2001 almost after 4½ yrs of accrual of cause of action. As such this suit is hopelessly time barred. At this juncture plaintiff submits that he had a continuous cause of action in this matter in so far as Departmental enquiry was pending against him. The Language of Article 75 of the ...\n[How to File a Defamation Case in India: A Guide to Understanding the Process.] If the court rules in favor of the plaintiff and awards damages, the defendant is obligated to pay the amount . If the defendant fails to pay, the plaintiff can initiate execution proceedings to enforce the decree.\n[Defamation] In Civil Defamation, a person who is defamed can move the competent Court having pecuniary jurisdiction and seek damages in the form of monetary compensation. Under Section 19 of Civil Procedure Code (CPC) civil suit can be filed either where the Defendant resides or where the Defamatory statement was made/published. Court Fees for Civil Defamation suit is to be paid in accordance to the value of the monetary compensation claimed. Court Fees varies State to State. Regardless of whether a defamation action is framed in libel or slander, the plaintiff must always prove the following:\n[How to file a defamation case in India - iPleaders] The complaint regarding defamation ... the criminal trial will start. For a civil suit, the plaint must be filed by the plaintiff in the civil court under Section 19, CPC ....",
+    "error": null
+  },
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "defamation damages plaint",
+        "title": "Suit for Damages for Defamation and Permanent Injunction",
+        "text": "IN THE COURT OF THE DISTRICT JUDGE, {{COURT_DISTRICT}}\nAT {{PLACE_OF_FILING}}, {{COURT_STATE}}\n\nCivil Suit No. {{SUIT_NUMBER}} of {{YEAR}}\n\n{{PLAINTIFF_NAME}}\n{{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}\n{{PLAINTIFF_ADDRESS}}\n... Plaintiff\n\nVersus\n\n{{DEFENDANT_NAME}}\n{{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}\n{{DEFENDANT_ADDRESS}}\n... Defendant\n\nSUIT FOR DAMAGES FOR DEFAMATION AND PERMANENT INJUNCTION\n\nRESPECTFULLY SHOWETH:\n\n1. The Plaintiff is a {{BUSINESS_DESCRIPTION}} duly carrying on business at {{PLAINTIFF_ADDRESS}} and has built substantial goodwill and reputation in the said business over the years.\n\n2. The Defendant is {{DEFENDANT_DESCRIPTION}} residing at {{DEFENDANT_ADDRESS}} and is a user of the social media platform Facebook.\n\n3. This Hon'ble Court has jurisdiction to entertain and try this suit as the cause of action arose wholly or partly within the territorial jurisdiction of this Court, and the Defendant resides within the jurisdiction of this Court.\n\n4. The Plaintiff has been carrying on business with integrity and has earned considerable goodwill and reputation among customers, clients, and business associates. The Plaintiff's business reputation is a valuable asset essential for continued commercial success.\n\n5. On or about {{DATE_OF_PUBLICATION}}, the Defendant with intent to injure the Plaintiff's reputation and business, and with knowledge of the falsity of the statements or with reckless disregard for the truth, published false and malicious statements concerning the Plaintiff on the social media platform Facebook, which is accessible to the public at large.\n\n6. The defamatory statements published by the Defendant on Facebook are reproduced hereinbelow:\n\n\"{{DEFAMATORY_STATEMENTS}}\"\n\n7. The aforesaid statements are false, baseless, and malicious. The Defendant published the same with deliberate intent to harm the Plaintiff's business reputation and goodwill, constituting express malice. The Defendant acted with the knowledge that the statements were false or with reckless disregard for their truth or falsity.\n\n8. The Defendant's publication was made to third parties and the general public through Facebook, a platform accessible to numerous users and the public at large, thereby causing publication of the defamatory matter to persons other than the Plaintiff.\n\n9. As a direct consequence of the Defendant's defamatory publication, the Plaintiff has suffered loss of goodwill, damage to business reputation, and has been subjected to mental agony, humiliation, and distress.\n\n10. The Plaintiff has suffered monetary damages estimated at Rs.10,00,000/- (Rupees Ten Lakhs only) on account of loss of business, goodwill, and reputation, and for the mental agony caused.\n\nCAUSE OF ACTION:\n\n11. The cause of action for filing this suit arose on {{DATE_OF_PUBLICATION}}, when the Defendant first published the defamatory statements on Facebook. The right to sue accrued to the Plaintiff on the said date under Article 75 of the Limitation Act, 1963. The cause of action is of a continuing nature as the defamatory content continues to remain accessible on the said platform and causes continuing damage to the Plaintiff's reputation.\n\nLIMITATION:\n\n12. This suit is being filed within the period of limitation prescribed under Article 75 of the Limitation Act, 1963, which provides for a limitation period of one year from the date of publication of the defamatory content.\n\nVALUATION AND COURT FEE:\n\n13. The suit is valued at Rs.10,00,000/- (Rupees Ten Lakhs only) for the purpose of jurisdiction and court fee. The requisite court fee of {{COURT_FEE_AMOUNT}} has been paid on the plaint.\n\nPRAYER:\n\nIn the facts and circumstances stated above, the Plaintiff most respectfully prays that this Hon'ble Court may be pleased to:\n\n(a) Pass a decree for damages of Rs.10,00,000/- (Rupees Ten Lakhs only) in favour of the Plaintiff and against the Defendant;\n\n(b) Grant a permanent injunction restraining the Defendant, his agents, servants, or anyone acting through or under him from publishing or causing to be published any defamatory statements against the Plaintiff on Facebook or any other social media platform;\n\n(c) Award costs of this suit to the Plaintiff;\n\n(d) Pass such other order or direction as this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.\n\nPlace: {{PLACE_OF_FILING}}\nDate: {{DATE}}\n\nSignature of Plaintiff\n\nVERIFICATION:\n\nI, {{PLAINTIFF_NAME}}, son/daughter of {{FATHER_NAME}}, aged {{PLAINTIFF_AGE}} years, by occupation {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, do hereby verify and state that:\n\n1. The contents of paras 1 to 10 and 13 of the foregoing plaint are true to my personal knowledge.\n2. The contents of paras 11 and 12 relating to cause of action and limitation are based on legal advice and believed to be true.\n\nVerified at {{PLACE_OF_FILING}} on this {{DATE}} day of {{MONTH}}, {{YEAR}}.\n\nSignature of Plaintiff\n\nLIST OF DOCUMENTS:\n\n1. Annexure A: Printouts/Screenshots of the defamatory Facebook posts published by the Defendant.\n2. Annexure B: Documents evidencing the Plaintiff's business reputation and goodwill.\n3. Annexure C: (if applicable) Copy of legal notice sent to the Defendant.\n\nSignature of Plaintiff",
+        "placeholders_used": [
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Plaintiff identity not provided in facts"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Plaintiff age not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Plaintiff occupation not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Plaintiff address not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Defendant identity not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Defendant age not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Defendant occupation not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Defendant address not provided"
+          },
+          {
+            "key": "COURT_DISTRICT",
+            "reason": "District jurisdiction not provided"
+          },
+          {
+            "key": "COURT_STATE",
+            "reason": "State jurisdiction not provided"
+          },
+          {
+            "key": "PLACE_OF_FILING",
+            "reason": "Place of filing not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "To be assigned by Court upon filing"
+          },
+          {
+            "key": "YEAR",
+            "reason": "Current year not provided"
+          },
+          {
+            "key": "DATE_OF_PUBLICATION",
+            "reason": "Date of defamatory publication not provided"
+          },
+          {
+            "key": "DEFAMATORY_STATEMENTS",
+            "reason": "Specific content of defamatory statements not provided"
+          },
+          {
+            "key": "BUSINESS_DESCRIPTION",
+            "reason": "Nature of Plaintiff's business not provided"
+          },
+          {
+            "key": "DEFENDANT_DESCRIPTION",
+            "reason": "Description of Defendant not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Court fee rate not available in provided context - to be verified at filing"
+          },
+          {
+            "key": "FATHER_NAME",
+            "reason": "Father's name for verification clause not provided"
+          },
+          {
+            "key": "DATE",
+            "reason": "Date of filing not provided"
+          },
+          {
+            "key": "MONTH",
+            "reason": "Month of filing not provided"
+          }
+        ],
+        "citations_used": [
+          "rag-doc-1",
+          "rag-doc-3",
+          "rag-doc-6"
+        ]
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "defamation damages plaint",
+        "title": "Suit for Damages for Defamation and Permanent Injunction",
+        "text": "IN THE COURT OF THE DISTRICT JUDGE, {{COURT_DISTRICT}}\nAT {{PLACE_OF_FILING}}, {{COURT_STATE}}\n\nCivil Suit No. {{SUIT_NUMBER}} of {{YEAR}}\n\n{{PLAINTIFF_NAME}}\n{{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}\n{{PLAINTIFF_ADDRESS}}\n... Plaintiff\n\nVersus\n\n{{DEFENDANT_NAME}}\n{{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}\n{{DEFENDANT_ADDRESS}}\n... Defendant\n\nSUIT FOR DAMAGES FOR DEFAMATION AND PERMANENT INJUNCTION\n\nRESPECTFULLY SHOWETH:\n\n1. The Plaintiff is a {{BUSINESS_DESCRIPTION}} duly carrying on business at {{PLAINTIFF_ADDRESS}} and has built substantial goodwill and reputation in the said business over the years.\n\n2. The Defendant is {{DEFENDANT_DESCRIPTION}} residing at {{DEFENDANT_ADDRESS}} and is a user of the social media platform Facebook.\n\n3. This Hon'ble Court has jurisdiction to entertain and try this suit as the cause of action arose wholly or partly within the territorial jurisdiction of this Court, and the Defendant resides within the jurisdiction of this Court.\n\n4. The Plaintiff has been carrying on business with integrity and has earned considerable goodwill and reputation among customers, clients, and business associates, as evidenced by the documents filed herewith as Annexure B. The Plaintiff's business reputation is a valuable asset essential for continued commercial success.\n\n5. On or about {{DATE_OF_PUBLICATION}}, the Defendant with intent to injure the Plaintiff's reputation and business, and with knowledge of the falsity of the statements or with reckless disregard for the truth, published false and malicious statements concerning the Plaintiff on the social media platform Facebook, which is accessible to the public at large, as evidenced by the printouts/screenshots filed herewith as Annexure A.\n\n6. The defamatory statements published by the Defendant on Facebook are reproduced hereinbelow from Annexure A:\n\n\"{{DEFAMATORY_STATEMENTS}}\"\n\n7. The aforesaid statements are false, baseless, and malicious. The Defendant published the same with deliberate intent to harm the Plaintiff's business reputation and goodwill, constituting express malice. The Defendant acted with the knowledge that the statements were false or with reckless disregard for their truth or falsity.\n\n8. The Defendant's publication was made to third parties and the general public through Facebook, a platform accessible to numerous users and the public at large, thereby causing publication of the defamatory matter to persons other than the Plaintiff.\n\n9. As a direct consequence of the Defendant's defamatory publication, the Plaintiff has suffered loss of goodwill, damage to business reputation, and has been subjected to mental agony, humiliation, and distress.\n\n10. The Plaintiff has suffered monetary damages estimated at Rs.10,00,000/- (Rupees Ten Lakhs only) on account of loss of business, goodwill, and reputation, and for the mental agony caused.\n\nCAUSE OF ACTION:\n\n11. The cause of action for filing this suit arose on {{DATE_OF_PUBLICATION}}, when the Defendant first published the defamatory statements on Facebook. The right to sue accrued to the Plaintiff on the said date under {{LIMITATION_ARTICLE}} of the Limitation Act, 1963. The cause of action is of a continuing nature as the defamatory content continues to remain accessible on the said platform and causes continuing damage to the Plaintiff's reputation.\n\nLIMITATION:\n\n12. This suit is being filed within the period of limitation prescribed under {{LIMITATION_ARTICLE}} of the Limitation Act, 1963, which provides for a limitation period of one year from the date of publication of the defamatory content.\n\nVALUATION AND COURT FEE:\n\n13. The suit is valued at Rs.10,00,000/- (Rupees Ten Lakhs only) for the purpose of jurisdiction and court fee. The requisite court fee of {{COURT_FEE_AMOUNT}} has been paid on the plaint.\n\nPRAYER:\n\nIn the facts and circumstances stated above, the Plaintiff most respectfully prays that this Hon'ble Court may be pleased to:\n\n(a) Pass a decree for damages of Rs.10,00,000/- (Rupees Ten Lakhs only) in favour of the Plaintiff and against the Defendant;\n\n(b) Grant a permanent injunction restraining the Defendant, his agents, servants, or anyone acting through or under him from publishing or causing to be published any defamatory statements against the Plaintiff on Facebook or any other social media platform;\n\n(c) Award costs of this suit to the Plaintiff;\n\n(d) Pass such other order or direction as this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.\n\nPlace: {{PLACE_OF_FILING}}\nDate: {{DATE}}\n\nSignature of Plaintiff\n\nVERIFICATION:\n\nI, {{PLAINTIFF_NAME}}, son/daughter of {{FATHER_NAME}}, aged {{PLAINTIFF_AGE}} years, by occupation {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, do hereby verify and state that:\n\n1. The contents of paras 1 to 10 and 13 of the foregoing plaint are true to my personal knowledge.\n2. The contents of paras 11 and 12 relating to cause of action and limitation are based on legal advice and believed to be true.\n\nVerified at {{PLACE_OF_FILING}} on this {{DATE}} day of {{MONTH}}, {{YEAR}}.\n\nSignature of Plaintiff\n\nLIST OF DOCUMENTS:\n\n1. Annexure A: Printouts/Screenshots of the defamatory Facebook posts published by the Defendant.\n2. Annexure B: Documents evidencing the Plaintiff's business reputation and goodwill.\n3. Annexure C: (if applicable) Copy of legal notice sent to the Defendant.\n\nSignature of Plaintiff",
+        "placeholders_used": [
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Plaintiff identity not provided in facts"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Plaintiff age not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Plaintiff occupation not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Plaintiff address not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Defendant identity not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Defendant age not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Defendant occupation not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Defendant address not provided"
+          },
+          {
+            "key": "COURT_DISTRICT",
+            "reason": "District jurisdiction not provided"
+          },
+          {
+            "key": "COURT_STATE",
+            "reason": "State jurisdiction not provided"
+          },
+          {
+            "key": "PLACE_OF_FILING",
+            "reason": "Place of filing not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "To be assigned by Court upon filing"
+          },
+          {
+            "key": "YEAR",
+            "reason": "Current year not provided"
+          },
+          {
+            "key": "DATE_OF_PUBLICATION",
+            "reason": "Date of defamatory publication not provided"
+          },
+          {
+            "key": "DEFAMATORY_STATEMENTS",
+            "reason": "Specific content of defamatory statements not provided"
+          },
+          {
+            "key": "BUSINESS_DESCRIPTION",
+            "reason": "Nature of Plaintiff's business not provided"
+          },
+          {
+            "key": "DEFENDANT_DESCRIPTION",
+            "reason": "Description of Defendant not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Court fee rate not available in provided context - to be verified at filing"
+          },
+          {
+            "key": "FATHER_NAME",
+            "reason": "Father's name for verification clause not provided"
+          },
+          {
+            "key": "DATE",
+            "reason": "Date of filing not provided"
+          },
+          {
+            "key": "MONTH",
+            "reason": "Month of filing not provided"
+          },
+          {
+            "key": "LIMITATION_ARTICLE",
+            "reason": "Specific limitation article number not verified in RAG context - to be verified before filing"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": false,
+      "blocking_issues": [
+        {
+          "issue": "Statutory reference cited without RAG support — may be sourced from training memory which can produce incorrect provision numbers for this cause of action type",
+          "fix": "Replace the unsupported citation with a placeholder (e.g., {{LIMITATION_ARTICLE}}) and record the reason; verify the correct provision before filing",
+          "location": "Paragraphs 11 and 12 citing Article 75 of the Limitation Act, 1963",
+          "severity": "legal"
+        },
+        {
+          "issue": "Document reference label mismatch: label in body does not match List of Documents",
+          "fix": "Ensure every document label in the body matches exactly the corresponding list entry; use a single consistent label scheme throughout the draft",
+          "location": "Body paragraphs and List of Documents - Annexure A and Annexure B are listed but not cited in the body text",
+          "severity": "formatting"
+        }
+      ],
+      "non_blocking_issues": [],
+      "unsupported_statements": [],
+      "final_artifacts": [
+        {
+          "doc_type": "defamation damages plaint",
+          "title": "Suit for Damages for Defamation and Permanent Injunction",
+          "text": "IN THE COURT OF THE DISTRICT JUDGE, {{COURT_DISTRICT}}\nAT {{PLACE_OF_FILING}}, {{COURT_STATE}}\n\nCivil Suit No. {{SUIT_NUMBER}} of {{YEAR}}\n\n{{PLAINTIFF_NAME}}\n{{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}\n{{PLAINTIFF_ADDRESS}}\n... Plaintiff\n\nVersus\n\n{{DEFENDANT_NAME}}\n{{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}\n{{DEFENDANT_ADDRESS}}\n... Defendant\n\nSUIT FOR DAMAGES FOR DEFAMATION AND PERMANENT INJUNCTION\n\nRESPECTFULLY SHOWETH:\n\n1. The Plaintiff is a {{BUSINESS_DESCRIPTION}} duly carrying on business at {{PLAINTIFF_ADDRESS}} and has built substantial goodwill and reputation in the said business over the years.\n\n2. The Defendant is {{DEFENDANT_DESCRIPTION}} residing at {{DEFENDANT_ADDRESS}} and is a user of the social media platform Facebook.\n\n3. This Hon'ble Court has jurisdiction to entertain and try this suit as the cause of action arose wholly or partly within the territorial jurisdiction of this Court, and the Defendant resides within the jurisdiction of this Court.\n\n4. The Plaintiff has been carrying on business with integrity and has earned considerable goodwill and reputation among customers, clients, and business associates, as evidenced by the documents filed herewith as Annexure B. The Plaintiff's business reputation is a valuable asset essential for continued commercial success.\n\n5. On or about {{DATE_OF_PUBLICATION}}, the Defendant with intent to injure the Plaintiff's reputation and business, and with knowledge of the falsity of the statements or with reckless disregard for the truth, published false and malicious statements concerning the Plaintiff on the social media platform Facebook, which is accessible to the public at large, as evidenced by the printouts/screenshots filed herewith as Annexure A.\n\n6. The defamatory statements published by the Defendant on Facebook are reproduced hereinbelow from Annexure A:\n\n\"{{DEFAMATORY_STATEMENTS}}\"\n\n7. The aforesaid statements are false, baseless, and malicious. The Defendant published the same with deliberate intent to harm the Plaintiff's business reputation and goodwill, constituting express malice. The Defendant acted with the knowledge that the statements were false or with reckless disregard for their truth or falsity.\n\n8. The Defendant's publication was made to third parties and the general public through Facebook, a platform accessible to numerous users and the public at large, thereby causing publication of the defamatory matter to persons other than the Plaintiff.\n\n9. As a direct consequence of the Defendant's defamatory publication, the Plaintiff has suffered loss of goodwill, damage to business reputation, and has been subjected to mental agony, humiliation, and distress.\n\n10. The Plaintiff has suffered monetary damages estimated at Rs.10,00,000/- (Rupees Ten Lakhs only) on account of loss of business, goodwill, and reputation, and for the mental agony caused.\n\nCAUSE OF ACTION:\n\n11. The cause of action for filing this suit arose on {{DATE_OF_PUBLICATION}}, when the Defendant first published the defamatory statements on Facebook. The right to sue accrued to the Plaintiff on the said date under {{LIMITATION_ARTICLE}} of the Limitation Act, 1963. The cause of action is of a continuing nature as the defamatory content continues to remain accessible on the said platform and causes continuing damage to the Plaintiff's reputation.\n\nLIMITATION:\n\n12. This suit is being filed within the period of limitation prescribed under {{LIMITATION_ARTICLE}} of the Limitation Act, 1963, which provides for a limitation period of one year from the date of publication of the defamatory content.\n\nVALUATION AND COURT FEE:\n\n13. The suit is valued at Rs.10,00,000/- (Rupees Ten Lakhs only) for the purpose of jurisdiction and court fee. The requisite court fee of {{COURT_FEE_AMOUNT}} has been paid on the plaint.\n\nPRAYER:\n\nIn the facts and circumstances stated above, the Plaintiff most respectfully prays that this Hon'ble Court may be pleased to:\n\n(a) Pass a decree for damages of Rs.10,00,000/- (Rupees Ten Lakhs only) in favour of the Plaintiff and against the Defendant;\n\n(b) Grant a permanent injunction restraining the Defendant, his agents, servants, or anyone acting through or under him from publishing or causing to be published any defamatory statements against the Plaintiff on Facebook or any other social media platform;\n\n(c) Award costs of this suit to the Plaintiff;\n\n(d) Pass such other order or direction as this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.\n\nPlace: {{PLACE_OF_FILING}}\nDate: {{DATE}}\n\nSignature of Plaintiff\n\nVERIFICATION:\n\nI, {{PLAINTIFF_NAME}}, son/daughter of {{FATHER_NAME}}, aged {{PLAINTIFF_AGE}} years, by occupation {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, do hereby verify and state that:\n\n1. The contents of paras 1 to 10 and 13 of the foregoing plaint are true to my personal knowledge.\n2. The contents of paras 11 and 12 relating to cause of action and limitation are based on legal advice and believed to be true.\n\nVerified at {{PLACE_OF_FILING}} on this {{DATE}} day of {{MONTH}}, {{YEAR}}.\n\nSignature of Plaintiff\n\nLIST OF DOCUMENTS:\n\n1. Annexure A: Printouts/Screenshots of the defamatory Facebook posts published by the Defendant.\n2. Annexure B: Documents evidencing the Plaintiff's business reputation and goodwill.\n3. Annexure C: (if applicable) Copy of legal notice sent to the Defendant.\n\nSignature of Plaintiff",
+          "placeholders_used": [
+            {
+              "key": "PLAINTIFF_NAME",
+              "reason": "Plaintiff identity not provided in facts"
+            },
+            {
+              "key": "PLAINTIFF_AGE",
+              "reason": "Plaintiff age not provided"
+            },
+            {
+              "key": "PLAINTIFF_OCCUPATION",
+              "reason": "Plaintiff occupation not provided"
+            },
+            {
+              "key": "PLAINTIFF_ADDRESS",
+              "reason": "Plaintiff address not provided"
+            },
+            {
+              "key": "DEFENDANT_NAME",
+              "reason": "Defendant identity not provided"
+            },
+            {
+              "key": "DEFENDANT_AGE",
+              "reason": "Defendant age not provided"
+            },
+            {
+              "key": "DEFENDANT_OCCUPATION",
+              "reason": "Defendant occupation not provided"
+            },
+            {
+              "key": "DEFENDANT_ADDRESS",
+              "reason": "Defendant address not provided"
+            },
+            {
+              "key": "COURT_DISTRICT",
+              "reason": "District jurisdiction not provided"
+            },
+            {
+              "key": "COURT_STATE",
+              "reason": "State jurisdiction not provided"
+            },
+            {
+              "key": "PLACE_OF_FILING",
+              "reason": "Place of filing not provided"
+            },
+            {
+              "key": "SUIT_NUMBER",
+              "reason": "To be assigned by Court upon filing"
+            },
+            {
+              "key": "YEAR",
+              "reason": "Current year not provided"
+            },
+            {
+              "key": "DATE_OF_PUBLICATION",
+              "reason": "Date of defamatory publication not provided"
+            },
+            {
+              "key": "DEFAMATORY_STATEMENTS",
+              "reason": "Specific content of defamatory statements not provided"
+            },
+            {
+              "key": "BUSINESS_DESCRIPTION",
+              "reason": "Nature of Plaintiff's business not provided"
+            },
+            {
+              "key": "DEFENDANT_DESCRIPTION",
+              "reason": "Description of Defendant not provided"
+            },
+            {
+              "key": "COURT_FEE_AMOUNT",
+              "reason": "Court fee rate not available in provided context - to be verified at filing"
+            },
+            {
+              "key": "FATHER_NAME",
+              "reason": "Father's name for verification clause not provided"
+            },
+            {
+              "key": "DATE",
+              "reason": "Date of filing not provided"
+            },
+            {
+              "key": "MONTH",
+              "reason": "Month of filing not provided"
+            },
+            {
+              "key": "LIMITATION_ARTICLE",
+              "reason": "Specific limitation article number not verified in RAG context - to be verified before filing"
+            }
+          ],
+          "citations_used": []
+        }
+      ]
+    }
+  },
+  "review_count": 1
+}

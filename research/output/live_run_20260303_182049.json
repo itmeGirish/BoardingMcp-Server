@@ -1,0 +1,1037 @@
+{
+  "user_request": "Draft a commercial suit seeking damages for illegal termination of dealership agreement. Plaintiff invested substantial capital and developed territory market. Termination was arbitrary and contrary to agreement terms. Claim compensation for loss of profit, goodwill and unsold stock. Draft with proper breach of contract pleading.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks damages for illegal termination of a commercial dealership agreement. The plaintiff invested capital and developed the territory, but claims the termination was arbitrary and breached contract terms. Compensation is sought for loss of profit, goodwill, and unsold stock.",
+      "chronology": [],
+      "amounts": {
+        "principal": null,
+        "interest_rate": null,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": null,
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": []
+    },
+    "evidence": [],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "agreement_type",
+          "value": "dealership agreement",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "claim_type",
+          "value": "commercial suit for damages",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "relief_sought",
+          "value": [
+            "loss of profit",
+            "goodwill",
+            "unsold stock"
+          ],
+          "type": "list",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "ground_for_termination",
+          "value": "arbitrary and contrary to agreement terms",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Commercial Law",
+        "Contract Law",
+        "Breach of Contract",
+        "Damages"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Agreement Date",
+        "Termination Date",
+        "Jurisdiction (City/District)",
+        "Principal Amount / Valuation of Claim",
+        "Specific Agreement Terms Breached",
+        "Details of Unsold Stock"
+      ],
+      "assumptions": []
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "damages_plaint",
+    "classification": {
+      "topics": [
+        "breach of contract",
+        "commercial dealership agreement",
+        "damages for loss of profit",
+        "goodwill compensation",
+        "arbitrary termination"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "date of agreement execution",
+        "date of termination notice",
+        "specific clauses breached",
+        "valuation of unsold stock",
+        "calculation of claimed damages",
+        "jurisdiction (city/district)"
+      ],
+      "assumptions": [
+        "Termination occurred without valid cause as per agreement terms",
+        "Plaintiff has complied with all pre-litigation conditions if any"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "breach of dealership agreement damages pleading",
+        "measure of damages loss of profit goodwill",
+        "commercial suit limitation period breach of contract",
+        "court fee calculation suit for damages",
+        "essential elements plaint for damages India"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "breach of dealership agreement damages pleading",
+      "measure of damages loss of profit goodwill",
+      "commercial suit limitation period breach of contract",
+      "court fee calculation suit for damages"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "laintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is",
+        "score": 0.475,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "ibed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and willingness to perform that part of the contract. 25 The rule that in a suit for specific \nperformance, the plaintiff should aver that he is able and willing to perform his part of the contract is sufficiently",
+        "score": 0.463,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "ice in writing expressing the lessors intention to determine the tenancy is a \ncondition precedent, the performance of which is to be implied in the plaintiffs pleading.21\nWhen the plaintiff bases his claim on a sale of an occupancy holding, which, under the statute is valid only if the \ntransferee is a resident of the police area, it is for the defendant who questions the validity of the sale on the ground \nthat this condition has not been fulfilled, to raise such a plea. 22 Where the plaintiffs who were carrying on business \nas partners sued to recover a loan advanced by them to the defendants, it is for the latter to raise the plea that the \npartnership is not registered as required by s 69 of the Indian Partnership Act 1932 and that in consequence the \nsuit is not maintainable. 23 Where, however, the plaintiff files a suit for a declaration that he is not liable to pay land \nrevenue, in view of the bar to such a suit imposed by s 152 of the Central Provinces Land Revenue Act 1881, and \nthe exception thereto provided in s 114, where the plaintiff pays the revenue under protest, it was held that it was \nfor him to plead that he had satisfied the condition precedent prescribed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and",
+        "score": 0.451,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "that raised in his Statement of Claim; nor can he in his \nReply set up facts inconsistent with those set up in his Statement of Claim. A reply is not the proper place in which \nto raise new claims. A plaintiff who wishes to add new claims can do so only by amending the Statement of Claim. \nSimilar remarks apply to a defendants Rejoinder. As a plaintiffs Reply must be consistent with his Statement of \nClaim, so a defendants Rejoinder must be consistent with his Defence. Thus, if a plaintiff alleges merely a negligent \nbreach of trust in his Statement of Claim, the Reply must not assert that the breach of trust was fraudulent. 31 \nSimilarly, if the Defence alleges that the arbitrators did not make any award, the Rejoinder must not assert that the \naward was not tendered by the proper time; for it is one thing not to make an award, and another thing not to tender \nit when made.32 Upon the same principle, a plaintiff who claims rent on the basis of a lease cannot claim the same \nsum in his Reply as damages for unlawfully holding over; for by his Statement of Claim he treats the defendant as \nhis tenant, and he cannot turn round in his Reply and say: If the defendant is not liable as a tenant, he is liable as a \ntrespasser.33\nThe word pleading at the commencement of this rule refers to subsequent pleading. A reply is not the proper place \nin which to raise new claims. A plaintiff",
+        "score": 0.442,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "Court that \nthe rule of pleadings is not to be strictly interpreted in a manner that each and every allegation should be brought \nout in the plaint. What is necessary is to plead all the materials and relevant facts on which the case of plaintiff \nstands. If inference of negligence or carelessness is axiomatic, merely because the mechanical repetition of words \nnegligence or carelessness has not been used cannot mean that the pleading lacks in material particulars.52\n(c) Agreement. Where an agreement is alleged, the pleading should state the date of the agreement, the names of \nthe parties to it, and whether it was in writing or verbal.53\nAn averment in the plaint with regard to the willingness and readiness of the plaintiff to perform his part of the \ncontract is essential to sustain an act ion for specific performance. In its absence, the suit cannot be decreed. But \ncompliance with this requirement need only be substantial to the satisfaction of the court. What the court is \ninterested in, is to find out the truth and to do justice between parties. In the instant case, the plaintiff was put in \npossession of land in pursuance of the agreement to sell, and the patta for the land was given to him. In spite of \nrepeated demands, the vendor did not execute the sale deed. It was held that in view of the allegations in the plaint \nand the conduct of the plaintiff, it could not be",
+        "score": 0.511,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "uit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "score": 0.505,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "ance). \n5. The plaintiff's title to the property agreed to be sold is not such as the defendant is bound to accept by \nreason of the following matter—(State why). \n6. The agreement is uncertain in the following respects—(State them). \n7. (or) The plaintiff has been guilty of delay. \n8. (or) The plaintiff has been guilty of fraud (or misrepresentation). \n9. (or) The agreement is unfair. \n10. (or) The agreement was entered into by mistake. \n11. The following are particulars of (7), (8), (9), (10) (or as the case may be). \n12. The agreement was rescinded under Conditions of Sale, No. 11 (or by mutual agreement).\n(In cases where damages are claimed and the defendant disputes his liability to damages, he must deny the\nagreement or the alleged breaches, or show whatever other ground of defence he intends to rely on, e.g.,\nthe [448][Indian Limitation Act,] accord and satisfaction, release, fraud, etc.)\nNo. 14\nDefence In Administration Suit By Pecuniary Legatee\n1. A. B.'s will contained a charge of debts; he died insolvent; he was entitled at his death to some immovable \nproperty which the defendant sold and which produced the net sum of Rs. . . . . . . . . . , and the testator had \nsome movable property which the defendant got in, and which produced the net sum of Rs. . . . . . . . . . \n2. The defendant applied the whole of the said sums and the sum of Rs. . . . . . . . . . which the",
+        "score": 0.493,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "rder of attachment and the direction \nto issue duplicate debentures are furnished. Therefore, it was held to be not a case on non-compliance of O 6, r 4 \nwhich may entail rejection of the plaint.34\n3. Misrepresentation. Where it is alleged in the plaint that the defendants represented to the plaintiff, etc, it should \nbe stated whether the representation was verbal or in writing.35 It is not enough in an act ion to restrain infringement \nof a trademark to allege that diverse persons were induced by the acts of the defendant to purchase his goods as \nand for those of the plaintiff. The plaintiff should state, in the plaint, particulars of the names and addresses of those \ndiverse persons.36 When a plea of misrepresentation was raised, but no particulars were given in spite of objection \ntaken in the written statement, it was held that it could not be considered.37\n4. Breach of trust. Where breach of trust is charged, the pleading must specify the acts constituting the alleged \nbreach of trust. It is not enough to say that the defendant had in various ways misapplied rent and profits of \nleaseholds, which he had received on behalf of the plaintiff, and had committed breaches of trust.38\n5. Undue influence. It has been observed by the Supreme Court that undue influence and coercion may overlap in \npart in some cases but they are separate and separable categories in law and must",
+        "score": 0.49,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "its not on the basis of \nthe value of the user of land to the person in wrongful possession, but on an estimated return on the value of the \nproperty.12 The decision in the undermentioned case 13 that mesne profit against a tenant who refuses to vacate the \npremises after the termination of the tenancy should be assessed on the basis of reasonable market value of the \npremises, does not appear to be correct. A person in wrongful possession is not liable for failure to realise the \nhighest possible rates of rent and premium, if a fair return has been realised from the land.14\nThe test set by the statutory definition of mesne profits is not what the plaintiff has lost by his exclusion, but what \nthe defendant has, or might reasonably have, made by his wrongful possession. If the person charged has merely \nlet the land to others, the rent which he has received would be the measure of the profits for which he is liable \nunless there is evidence that a higher rent could, with ordinary diligence, have been obtained. 15 However, if the \nwrongdoers cultivate the land themselves, the cultivation profits are the primary consideration, and if it is contended \nthat other and more profitable crops could have been grown, the true test is what the ordinary prudent agriculturist \nwould have grown. Therefore, when the person in wrongful possession planted indigo for use in his adjacent",
+        "score": 0.449,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "th the Government. A is entitled to receive from B, by way of compensation, the average amount of profit which \nwould have b een made by the working of the mill during the time that delivery of it was delayed, but not the loss sustained \nthrough the loss of the Government contract. \n(j) A, having contracted with B to supply B with 1,000 tons of iron at 100 rupees a ton, to be delivered at a stated time, \ncontracts with C for the pur chase of 1,000 tons of iron at 80 rupees a ton, telling C that he does so for the purpose of performing \nhis contract with B. C fails to perform his contract with A, who cannot procure other iron, and B, in consequence, rescinds the \ncontract. C must pay to A 20,000 rupees, being the profit which A would have made by the performance of his contract with B. \n(k) A contracts with B to make and deliver to B, by a fixed day, for a specified price, a certain piece of machinery. A does \nnot deliver the piece of machinery at the time specified, and in consequence of this, B is obliged to procure another at a high er \nprice than that which he was to have paid to A, and is prevented from performing a contract which B had made with a third \nperson at the time of his contract with A (but which had not been then communicated to A), and is compelled to make \ncompensation for breach of that contract. A must pay to B, by way of compensation, the differ ence",
+        "score": 0.419,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "ause mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of damages which the court may award according to the justice of the case. And",
+        "score": 0.469,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "f there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is not the rate of rent which would be fair and equitable for the lands in question but \nthe profits which the tenants have actually received or might with ordinary diligence have received from their \nwrongful possession.23\nWhere the plaintiff did not produce any evidence in support of the rate of mesne profits claimed by him and also \nadmitted in his examination-in-chief that there was no basis for mesne profits claimed in the plaint, the court \nassessed mesne profits considering the rent of shops situated near the disputed land. 24 In the same case it was \nheld that where the plaintiff had filed a suit for mesne profits earlier also, grant of mesne profits for the period which \nwas the subject-matter of the earlier suit was held to be not proper.25\nThe claim for mesne profits is virtually a claim for damages. Hence, there is no rigid rule for determining the amount \nof mesne profits, and the amount must be assessed in every case by a proper exercise of judicial discretion. 26 In \none case the Patna High Court, on a finding that the plaintiffs had unnecessarily prolonged the litigation, declined to \naward mesne profits upto the date of the decree.27 It held that the Mesne profits",
+        "score": 0.459,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "esne profits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the person in possession.78\nIt cannot be said that mesne profits can be calculated only on the basis of the maximum rent that the premises \ncould have fetched if let out.79\nMesne profits can be claimed only when there is wrongful possession of the defendant. But, where \ndispossession is a joint or concerted act of several persons, each of them who participates in the commission of \nthat act would be liable for mesne profits even though he was not in possession and the profits were received \nnot by him but by some of his confederates.80\nMeasure of mesne profits is the value of wrongful possession. Rent could be a relevant factor for considering \nsuch a value, but not a decisive matter. 81 In terms of the definition of mesne profits under s 2 (12) of the Code \nof Civil Procedure, the question of proprietary of the valuation on account of the same can be decided at the \ntime of trial on evidence where the court can pass a decree for mesne profits or can direct the inquiry, or, can \nreject a prayer of mesne profits.82\nThe reservation as to profits due to",
+        "score": 0.456,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "possession of such property either act ually received or might have received with due diligence. It is not always \nnecessary that there should be proof of actual receipt.66\nFor entitling him to grant of mesne profits, the plaintiff must lead evidence to prove what would be the \ncompensation the defendant might have received with due diligence for his wrongful possession. Where the \nplaintiff did not lead any evidence, it was held that he was not entitled to claim mesne profits.67\nThe observations made in the above case,68 are worth nothing:\nHowever, the concept of mesne profits appear to be different. Section 2(12) of Civil Procedure Code, defines mesne \nprofits to mean those profits which the person in wrongful possession of such property act ually received or might with \nordinary dilegence have received therefrom, together with interest on such profits, but shall not include profits due to \nimprovements made by the person in wrongful possession. The words Mesne Profits suggest value of house for \noccupation of land during the time it was held by one in wrongful possession and is commonly measured in terms of \nrent and profits (See Blacks Law Dictionary). The Apex Court in the case of Fateh Chand v. Balkrishna Dass, AIR 1963 \nSC 1405 [LNIND 1963 SC 20] observed that the normal measure of mesne profits is the value of the user of the land \nto the person in wrongful",
+        "score": 0.442,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "18 \n Description of suit Period of \nlimitation \nTime from which period begins to run \n71. To recover movable property \ndeposited or pawned , and \nafterwards bought from the \ndepository or pawnee for a \nvaluable consideration. \nThree years. When the sale becomes known to the \nplaintiff. \nPART VII.—SUITS RELATING TO TORT \n72. For compensation for doing or for \nomitting to do an act alleged to \nbe in pursuance of any enactment \nin force for the time being in the \nterritories to which this Act \nextends. \nOne year. When the act or omission takes place. \n73. For compensation for false \nimprisonment. \nOne year. When the imprisonment ends. \n74. For compensation for a malicious \nprosecution. \nOne year. When the plaintiff is acquitted or the \nprosecution is otherwise terminated. \n75. For compensation for libel. One year. When the libel is published. \n76. For compensation for slander. One year. When the words are spoken , or, if the \nwords are not actionable in \nthemselves, when the special damage \ncomplained of results. \n77. For compensation for loss of service \noccasioned by the seduction of \nthe plaintiff ’s servant or \ndaughter. \nOne year. When the loss occurs. \n78. For compensation for inducing a \nperson to break a contract with \nthe plaintiff. \nOne year. The date of the breach. \n79. For compensation for an illegal, \nirregular or excessive distress. \nOne year. The date of the",
+        "score": 0.539,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "4 \n(j) “period of limitation ” means the period of limitation prescribed for any suit, appeal or \napplication by the Schedule, and “prescribed period” means the period of limitation computed in \naccordance with the provisions of this Act; \n(k) “promissory note ” means any instrument whereby the maker engages absolutely to pay a \nspecified sum of money to another at a time therein limited, or on demand, or at sight; \n(l) “suit” does not include an appeal or an application; \n(m) “tort\" means a civil wrong which is not exclusively the breach of a contract or the breach of a \ntrust; \n(n) “trustee” does not include a benamidar, a mortgagee remaining in possession after the \nmortgage has been satisfied or a person in wrongful possession without title. \nPART II \nLIMITATION OF SUITS, APPEALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is presented to the proper officer; \n(ii) in the case of a pauper, when his application for leave to sue as a pauper is made; and \n(iii) in the case of a claim against a company which is being wound up by the court,",
+        "score": 0.531,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "me contract, the cause of action was but one, and that the subsequent suit was therefore barred. The opinion \nof Wilson J, was followed in Duncan v. Jeetmull, 17 which also was a case of breach of one and the same contract. \nThese two cases show that all existing breaches of the same contract must be joined in the same suit, however, \nthey have been held not to apply to the case where there are separate contracts, though contained in the same \ninstrument.18 Thus, where it is expressly provided by an indent that each monthly shipment and item should be \ntreated as a separate contract, the plaintiff is entitled to bring a separate suit for damages in respect of each \nshipment.19 Conversely, where goods are delivered under separate orders, each order and delivery of goods is a \nseparate contract, and gives rise to separate cause of act ion, unless it be proved that all the goods were delivered \nas under a single contract.20\nClosely connected with this question is a point which was left open by their Lordships of the Privy Council, namely, \nwhether a mortgagee who holds several mortgages on the same property, can treat them, with respect to the \nprovisions of this rule, as separate cause of action, or whether he must bring one suit on all the mortgages.21\n9. Omits to sue in respect of any portion of his claim. Rule 2 refers to cases where a suit has been filed and the \nplaintiff",
+        "score": 0.562,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "y doubt or dispute show that the suit is barred \nby any law in force. Where the plaintiff in the plaint makes a statement that suit was within limitation as the cause of \nact ion arose on a particular date, the provisions of O 7, r 11(d) cannot be attracted. 40 However, where the plaint \nappears to be barred by time even after considering the averments of the acknowledgment of the debt in the plaint, \nthe plaint can be rejected under O 7, r 11.41 There remains no doubt that the question of limitation would be a mixed \nquestion of law and fact. 42 Where a suit is brought against the Secretary of State without giving the notice required \nunder s 80, the plaint should be rejected under this clause. 43 Where in a suit against the government, the plaint \ndoes not allege that notice has been served as required by s 80, 44 or where the suit has been filed before the expiry \nof the period prescribed therein, 45 the plaint is liable to be rejected under this provision. When a suit instituted \nagainst a number of defendants is as against some of them barred, but not as against the others, this rule has no \napplication. The proper order to pass in such a case is to strike out the plaint against those defendants against \nwhom it is barred and proceed with the suit as against the rest.46\nIn another instance, suit for specific performance of contract was filed. Facts averred clearly showed",
+        "score": 0.543,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "ihar Tenancy \nAct 1885, a suit instituted after the period of limitation is liable to be dismissed. In view of this provision, a defendant \nwould be allowed to raise the point of limitation even if it is not taken in his written statement.88\n4. Claims against joint contractors for breach. Where in a suit against joint contractors, separate defences are \nput in, a successful defence pleaded and proved by one only ensures for the benefit of all.89\nR.3. Denial to be specific.\nIt shall not be sufficient for a defendant in his written statement to deny generally the grounds alleged by the \nplaintiff, but the defendant must deal specifically with each allegation of fact of which he does not admit the truth, \nexcept damages.\n1. Deal specifically with each allegation of fact. The defendant must take each fact which is alleged against him \nseparately, and say that he admits it, or denies it, or does not admit it. It is not merely denial which is meant, but the \nrule covers non-admission, for [the defendants] is to deal specifically with every allegation of fact of he does not \nadmit the truth.90 Every allegation of fact in the plaint will be taken to be admitted if it is\nnot denied specifically or by necessary implication or stated to be not admitted (r 5). Similarly if no counter is filed to \nthe averments made in the writ petition on an affidavit, the contentions made therein are",
+        "score": 0.523,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ut in a case of breach of confidentiality \nclause in a service contract, the place where the breach has taken place will have jurisdiction.52\nAll terms of the contract were negotiated and finalised in Bombay. It was, thereafter, that the formal contract \nwas engrossed and sent to Ludhiana for the signatures of respondent. The respondents director signed the \ncontract, document and forwarded it to its broker at Bombay, for onward transmission to the petitioner for taking \nnecessary act ion. This issue can be looked at in two ways. If the contract is said to have been concluded when \nthe terms were prepared, then obviously that took place in Bombay. If the contract is said to have been finalised \nonly after both parties had signed, then it is clear that only one of the parties signed at Ludhiana and other \nsigned it in Bombay.53\nIn a suit for damages for breach of contract, the cause of action consists of the making of the contract, and of \nits breach; so that the suit may be filed either at the place where the contract was made or at the place where it \nshould have been performed and the breach occurred. 54 Thus, if a contract is made in Poona to be performed \nin Poona, the whole cause of act ion arises in Poona and the suit for breach can only be filed in the Poona \nCourt; but, if the contract is made in Poona to be performed in Belgaum the suit for its breach can be filed",
+        "score": 0.517,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "objections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the",
+        "score": 0.626,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "ngs to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the Court has ample power to direct a party to affix a proper court-fee. Therefore, in a suit for rendition of \naccounts, where the plaintiff-respondent was not aware of the exact profit earned by the defendant, it was held that \nthe plaint cannot be rejected at the threshold for want of proper court-fees.4\n9. Clause (c): Where a plaint is written upon paper insufficiently stamped. The following points are to be noted \nin connection with this clause:\n(i) Where a plaint is written upon paper insufficiently stamped, the court is bound to give the plaintiff time to make \ngood the deficiency. This follows from the terms of cl (c) itself. 5 Reasonable time must be allowed after the court \nhas decided that the court-fee paid is insufficient, 6 and within the time allowed, if the plaintiff cannot pay, he may \napply to continue the suit as a pauper.7\n(ii) If the plaintiff fails to supply the requisite stamp-paper within the period fixed by the court, the plaint may be \nrejected under this rule, even after it has been numbered and registered as a suit. The reason is that the power to \nreject a plaint under this rule is not exhausted when the plaint has been admitted and registered.8\n(iii) A",
+        "score": 0.599,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "curs insert or value.\n1. Suit for damages. In a suit for damage, the plaintiff must state the amount of damages claimed and pay court-\nfees thereon.35\n2. Suit for mesne profits. A claim for past mesne profits must be valued even though approximately and court-fee \npaid thereon. But it is not necessary that future mesne profits should be valued.36\n3. Suit for Accounts. This rule is applicable to a suit by an agent against his principal praying that accounts be \ntaken of amounts due to him.37\nWhere in the case of export of garments to a foreign purchaser, the purchaser got his foreign German bank to issue \nan irrevocable letter of credit, the respondent bank act ed as the appellants bank in negotiating the documents \nprescribed under the letter of credit under reserve and credited amount to appellants account. When the documents \nwere not honoured and reimbursement was refused by the foreign bank, the respondent debited the amount to \nappellants account. It was held that the appellant was not entitled to claim recovery from the respondent bank.38\nWhere the legal heirs of a pronote holder filed a suit for recovery of money on the basis of the pronote, the trial \ncourt recorded a finding in favour of the legal heirs but dismissed the suit on the ground of non-production of \nsuccession certificate. The proceedings for issuance of succession certificate were pending in court, but no",
+        "score": 0.578,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "limits of the courts jurisdiction, the court may pass a decree for the sum in \nexcess of the pecuniary limits of its jurisdiction. 10 The court has no jurisdiction to grant reliefs not claimed in the \nplaint if by reason of their inclusion, the suit would be beyond the pecuniary jurisdiction of the court. 11 Where \ndifferent suits which are severally within the jurisdiction of the court are consolidated for hearing, the court does \nnot lose its jurisdiction to hear it by reason of the value of all the suits exceeding its jurisdiction if taken \ntogether.12\nThe Bombay High Court has held that in a case of damages, the amount of damage which the Court can award \nis limited to the pecuniary jurisdiction of the Court.13\nILLUSTRATION\nA sues B in the court of second class subordinate judge for an account and values his suit for a court fee at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and not by the amount decreed.15\n4. Mesne profits after suit do not",
+        "score": 0.576,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "ost of the time spent by the successful party, the transportation and lodging, if any, or any other incidental cost \nbesides the payment of the court fee lawyers fee, typing and other cost in relation to the litigation. It is for the \nHigh Courts to examine these aspects and wherever necessary make requisite rules regulations or practice \ndirection so as to provide appropriate guidelines for the subordinate courts to follow.25\nIt cannot be said of a claim that it is frivolous when it involves complicated questions calling for elaborate \nconsideration.26 Where a suit was filed for damages for breach of a contract and it was found that the contract \nwas forged, compensatory costs were awarded under this section. 27 The Supreme Court has, in a recent case, \nexhorted the trial courts to exercise power under this section once they are satisfied that the litigation was \ninspired by vexatious motives and was altogether groundless. 28 Costs under this section have been awarded in \nwrit petitions. 29 Extraordinary jurisdiction under Art. 226 of the Constitution should not be allowed to be \nmisused. Where the High Court comes to the conclusion that the petitioner has approached the court with \nunclean hands, or has filed a writ petition stating facts which are false, the petitioner must be penalised with \npenal consequences. If the High Court finds that either a false statement has been",
+        "score": 0.553,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "y the suit in so far as the counterclaim is \nconcerned and ordering the payment against the Appellant in so far as the admission rent. The twin course are \nwholly wrong. The Supreme Court remanded the matter back to the original side of the High Court for disposal in \naccordance with law.43\nWhere a Counter-claim filed by the defendant exceeded the pecuniary limits of jurisdiction of the Court, it cannot be \nallowed. Thus where a Court returned the plaint instead of the written statement, the order was held to be not \nproper.44\nO 8, r 6-A lays down procedure for deciding counter-claim and for the said purpose counter claim is to be treated as \na plaint. But it does not mean that the exemption from payment of Court-fee available on plaint for persons of low \nincome shall be available to counter-claim.45\nWhere in a suit for recovery of money, the plaintiff does not lay any claim against one of the defendants, that \ndefendant, against whom no claim is made by the plaintiff, cannot set up a counter-claim against the plaintiff.46\nIn a suit for recovery of money, the defendant made a counter-claim in respect of amount spent in the year 1989-\n90. The counter-claim was held to be barred by limitation.47\nWhere the defendant had filed counter-claim for damages for wrongful detention of her goods and moveables, it",
+        "score": 0.549,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "rtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for",
+        "score": 0.624,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "rt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a",
+        "score": 0.62,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1695:C6735]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1695:C6735 | commentary | 491014025-MULLA-on-CPC-pdf | p.1695 | score=0.475]:\nlaintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1671:C6634 | commentary | 491014025-MULLA-on-CPC-pdf | p.1671 | score=0.463]:\nibed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and willingness to perform that part of the contract. 25 The rule that in a suit for specific \nperformance, the plaintiff should aver that he is able and willing to perform his part of the contract is sufficiently\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1671:C6633 | commentary | 491014025-MULLA-on-CPC-pdf | p.1671 | score=0.451]:\nice in writing expressing the lessors intention to determine the tenancy is a \ncondition precedent, the performance of which is to be implied in the plaintiffs pleading.21\nWhen the plaintiff bases his claim on a sale of an occupancy holding, which, under the statute is valid only if the \ntransferee is a resident of the police area, it is for the defendant who questions the validity of the sale on the ground \nthat this condition has not been fulfilled, to raise such a plea. 22 Where the plaintiffs who were carrying on business \nas partners sued to recover a loan advanced by them to the defendants, it is for the latter to raise the plea that the \npartnership is not registered as required by s 69 of the Indian Partnership Act 1932 and that in consequence the \nsuit is not maintainable. 23 Where, however, the plaintiff files a suit for a declaration that he is not liable to pay land \nrevenue, in view of the bar to such a suit imposed by s 152 of the Central Provinces Land Revenue Act 1881, and \nthe exception thereto provided in s 114, where the plaintiff pays the revenue under protest, it was held that it was \nfor him to plead that he had satisfied the condition precedent prescribed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1673:C6639 | commentary | 491014025-MULLA-on-CPC-pdf | p.1673 | score=0.442]:\nthat raised in his Statement of Claim; nor can he in his \nReply set up facts inconsistent with those set up in his Statement of Claim. A reply is not the proper place in which \nto raise new claims. A plaintiff who wishes to add new claims can do so only by amending the Statement of Claim. \nSimilar remarks apply to a defendants Rejoinder. As a plaintiffs Reply must be consistent with his Statement of \nClaim, so a defendants Rejoinder must be consistent with his Defence. Thus, if a plaintiff alleges merely a negligent \nbreach of trust in his Statement of Claim, the Reply must not assert that the breach of trust was fraudulent. 31 \nSimilarly, if the Defence alleges that the arbitrators did not make any award, the Rejoinder must not assert that the \naward was not tendered by the proper time; for it is one thing not to make an award, and another thing not to tender \nit when made.32 Upon the same principle, a plaintiff who claims rent on the basis of a lease cannot claim the same \nsum in his Reply as damages for unlawfully holding over; for by his Statement of Claim he treats the defendant as \nhis tenant, and he cannot turn round in his Reply and say: If the defendant is not liable as a tenant, he is liable as a \ntrespasser.33\nThe word pleading at the commencement of this rule refers to subsequent pleading. A reply is not the proper place \nin which to raise new claims. A plaintiff\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1666:C6609 | commentary | 491014025-MULLA-on-CPC-pdf | p.1666 | score=0.511]:\nCourt that \nthe rule of pleadings is not to be strictly interpreted in a manner that each and every allegation should be brought \nout in the plaint. What is necessary is to plead all the materials and relevant facts on which the case of plaintiff \nstands. If inference of negligence or carelessness is axiomatic, merely because the mechanical repetition of words \nnegligence or carelessness has not been used cannot mean that the pleading lacks in material particulars.52\n(c) Agreement. Where an agreement is alleged, the pleading should state the date of the agreement, the names of \nthe parties to it, and whether it was in writing or verbal.53\nAn averment in the plaint with regard to the willingness and readiness of the plaintiff to perform his part of the \ncontract is essential to sustain an act ion for specific performance. In its absence, the suit cannot be decreed. But \ncompliance with this requirement need only be substantial to the satisfaction of the court. What the court is \ninterested in, is to find out the truth and to do justice between parties. In the instant case, the plaintiff was put in \npossession of land in pursuance of the agreement to sell, and the patta for the land was given to him. In spite of \nrepeated demands, the vendor did not execute the sale deed. It was held that in view of the allegations in the plaint \nand the conduct of the plaintiff, it could not be\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.505]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 7 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P180:C646 | bare_act | the code of civil procedure, 1908 | p.180 | score=0.493]:\nance). \n5. The plaintiff's title to the property agreed to be sold is not such as the defendant is bound to accept by \nreason of the following matter—(State why). \n6. The agreement is uncertain in the following respects—(State them). \n7. (or) The plaintiff has been guilty of delay. \n8. (or) The plaintiff has been guilty of fraud (or misrepresentation). \n9. (or) The agreement is unfair. \n10. (or) The agreement was entered into by mistake. \n11. The following are particulars of (7), (8), (9), (10) (or as the case may be). \n12. The agreement was rescinded under Conditions of Sale, No. 11 (or by mutual agreement).\n(In cases where damages are claimed and the defendant disputes his liability to damages, he must deny the\nagreement or the alleged breaches, or show whatever other ground of defence he intends to rely on, e.g.,\nthe [448][Indian Limitation Act,] accord and satisfaction, release, fraud, etc.)\nNo. 14\nDefence In Administration Suit By Pecuniary Legatee\n1. A. B.'s will contained a charge of debts; he died insolvent; he was entitled at his death to some immovable \nproperty which the defendant sold and which produced the net sum of Rs. . . . . . . . . . , and the testator had \nsome movable property which the defendant got in, and which produced the net sum of Rs. . . . . . . . . . \n2. The defendant applied the whole of the said sums and the sum of Rs. . . . . . . . . . which the\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1665:C6605 | commentary | 491014025-MULLA-on-CPC-pdf | p.1665 | score=0.490]:\nrder of attachment and the direction \nto issue duplicate debentures are furnished. Therefore, it was held to be not a case on non-compliance of O 6, r 4 \nwhich may entail rejection of the plaint.34\n3. Misrepresentation. Where it is alleged in the plaint that the defendants represented to the plaintiff, etc, it should \nbe stated whether the representation was verbal or in writing.35 It is not enough in an act ion to restrain infringement \nof a trademark to allege that diverse persons were induced by the acts of the defendant to purchase his goods as \nand for those of the plaintiff. The plaintiff should state, in the plaint, particulars of the names and addresses of those \ndiverse persons.36 When a plea of misrepresentation was raised, but no particulars were given in spite of objection \ntaken in the written statement, it was held that it could not be considered.37\n4. Breach of trust. Where breach of trust is charged, the pleading must specify the acts constituting the alleged \nbreach of trust. It is not enough to say that the defendant had in various ways misapplied rent and profits of \nleaseholds, which he had received on behalf of the plaintiff, and had committed breaches of trust.38\n5. Undue influence. It has been observed by the Supreme Court that undue influence and coercion may overlap in \npart in some cases but they are separate and separable categories in law and must\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2198:C8737]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2198:C8737 | commentary | 491014025-MULLA-on-CPC-pdf | p.2198 | score=0.449]:\nits not on the basis of \nthe value of the user of land to the person in wrongful possession, but on an estimated return on the value of the \nproperty.12 The decision in the undermentioned case 13 that mesne profit against a tenant who refuses to vacate the \npremises after the termination of the tenancy should be assessed on the basis of reasonable market value of the \npremises, does not appear to be correct. A person in wrongful possession is not liable for failure to realise the \nhighest possible rates of rent and premium, if a fair return has been realised from the land.14\nThe test set by the statutory definition of mesne profits is not what the plaintiff has lost by his exclusion, but what \nthe defendant has, or might reasonably have, made by his wrongful possession. If the person charged has merely \nlet the land to others, the rent which he has received would be the measure of the profits for which he is liable \nunless there is evidence that a higher rent could, with ordinary diligence, have been obtained. 15 However, if the \nwrongdoers cultivate the land themselves, the cultivation profits are the primary consideration, and if it is contended \nthat other and more profitable crops could have been grown, the true test is what the ordinary prudent agriculturist \nwould have grown. Therefore, when the person in wrongful possession planted indigo for use in his adjacent\n\n[Document 2 | Contract Act | Contract Act:books/A187209.pdf:P30:C86 | bare_act | A187209 | p.30 | score=0.419]:\nth the Government. A is entitled to receive from B, by way of compensation, the average amount of profit which \nwould have b een made by the working of the mill during the time that delivery of it was delayed, but not the loss sustained \nthrough the loss of the Government contract. \n(j) A, having contracted with B to supply B with 1,000 tons of iron at 100 rupees a ton, to be delivered at a stated time, \ncontracts with C for the pur chase of 1,000 tons of iron at 80 rupees a ton, telling C that he does so for the purpose of performing \nhis contract with B. C fails to perform his contract with A, who cannot procure other iron, and B, in consequence, rescinds the \ncontract. C must pay to A 20,000 rupees, being the profit which A would have made by the performance of his contract with B. \n(k) A contracts with B to make and deliver to B, by a fixed day, for a specified price, a certain piece of machinery. A does \nnot deliver the piece of machinery at the time specified, and in consequence of this, B is obliged to procure another at a high er \nprice than that which he was to have paid to A, and is prevented from performing a contract which B had made with a third \nperson at the time of his contract with A (but which had not been then communicated to A), and is compelled to make \ncompensation for breach of that contract. A must pay to B, by way of compensation, the differ ence\n\n[Document 3 | Contract Act | Contract Act:C:/Users/GirishN/AppData/Local/Temp/tmp0axp5bbo/Indian_Contract_act.pdf:P30:C86 | bare_act | Indian Contract act | p.30 | score=0.419]:\nth the Government. A is entitled to receive from B, by way of compensation, the average amount of profit which \nwould have b een made by the working of the mill during the time that delivery of it was delayed, but not the loss sustained \nthrough the loss of the Government contract. \n(j) A, having contracted with B to supply B with 1,000 tons of iron at 100 rupees a ton, to be delivered at a stated time, \ncontracts with C for the pur chase of 1,000 tons of iron at 80 rupees a ton, telling C that he does so for the purpose of performing \nhis contract with B. C fails to perform his contract with A, who cannot procure other iron, and B, in consequence, rescinds the \ncontract. C must pay to A 20,000 rupees, being the profit which A would have made by the performance of his contract with B. \n(k) A contracts with B to make and deliver to B, by a fixed day, for a specified price, a certain piece of machinery. A does \nnot deliver the piece of machinery at the time specified, and in consequence of this, B is obliged to procure another at a high er \nprice than that which he was to have paid to A, and is prevented from performing a contract which B had made with a third \nperson at the time of his contract with A (but which had not been then communicated to A), and is compelled to make \ncompensation for breach of that contract. A must pay to B, by way of compensation, the differ ence\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.477]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2202:C8760 | commentary | 491014025-MULLA-on-CPC-pdf | p.2202 | score=0.469]:\nause mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of damages which the court may award according to the justice of the case. And\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2199:C8740 | commentary | 491014025-MULLA-on-CPC-pdf | p.2199 | score=0.459]:\nf there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is not the rate of rent which would be fair and equitable for the lands in question but \nthe profits which the tenants have actually received or might with ordinary diligence have received from their \nwrongful possession.23\nWhere the plaintiff did not produce any evidence in support of the rate of mesne profits claimed by him and also \nadmitted in his examination-in-chief that there was no basis for mesne profits claimed in the plaint, the court \nassessed mesne profits considering the rent of shops situated near the disputed land. 24 In the same case it was \nheld that where the plaintiff had filed a suit for mesne profits earlier also, grant of mesne profits for the period which \nwas the subject-matter of the earlier suit was held to be not proper.25\nThe claim for mesne profits is virtually a claim for damages. Hence, there is no rigid rule for determining the amount \nof mesne profits, and the amount must be assessed in every case by a proper exercise of judicial discretion. 26 In \none case the Patna High Court, on a finding that the plaintiffs had unnecessarily prolonged the litigation, declined to \naward mesne profits upto the date of the decree.27 It held that the Mesne profits\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P39:C147 | commentary | 491014025-MULLA-on-CPC-pdf | p.39 | score=0.456]:\nesne profits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the person in possession.78\nIt cannot be said that mesne profits can be calculated only on the basis of the maximum rent that the premises \ncould have fetched if let out.79\nMesne profits can be claimed only when there is wrongful possession of the defendant. But, where \ndispossession is a joint or concerted act of several persons, each of them who participates in the commission of \nthat act would be liable for mesne profits even though he was not in possession and the profits were received \nnot by him but by some of his confederates.80\nMeasure of mesne profits is the value of wrongful possession. Rent could be a relevant factor for considering \nsuch a value, but not a decisive matter. 81 In terms of the definition of mesne profits under s 2 (12) of the Code \nof Civil Procedure, the question of proprietary of the valuation on account of the same can be decided at the \ntime of trial on evidence where the court can pass a decree for mesne profits or can direct the inquiry, or, can \nreject a prayer of mesne profits.82\nThe reservation as to profits due to\n\n[Document 8 | CPC | CPC:Section2 | commentary | 491014025-MULLA-on-CPC-pdf | Section 2 | p.38 | score=0.442]:\npossession of such property either act ually received or might have received with due diligence. It is not always \nnecessary that there should be proof of actual receipt.66\nFor entitling him to grant of mesne profits, the plaintiff must lead evidence to prove what would be the \ncompensation the defendant might have received with due diligence for his wrongful possession. Where the \nplaintiff did not lead any evidence, it was held that he was not entitled to claim mesne profits.67\nThe observations made in the above case,68 are worth nothing:\nHowever, the concept of mesne profits appear to be different. Section 2(12) of Civil Procedure Code, defines mesne \nprofits to mean those profits which the person in wrongful possession of such property act ually received or might with \nordinary dilegence have received therefrom, together with interest on such profits, but shall not include profits due to \nimprovements made by the person in wrongful possession. The words Mesne Profits suggest value of house for \noccupation of land during the time it was held by one in wrongful possession and is commonly measured in terms of \nrent and profits (See Blacks Law Dictionary). The Apex Court in the case of Fateh Chand v. Balkrishna Dass, AIR 1963 \nSC 1405 [LNIND 1963 SC 20] observed that the normal measure of mesne profits is the value of the user of the land \nto the person in wrongful\n\n[TOP_MATCH: Limitation Act | Limitation Act:books/A1963-36.pdf:P18:C47]\n\n[Document 1 | Limitation Act | Limitation Act:books/A1963-36.pdf:P18:C47 | bare_act | A1963-36 | p.18 | score=0.539]:\n18 \n Description of suit Period of \nlimitation \nTime from which period begins to run \n71. To recover movable property \ndeposited or pawned , and \nafterwards bought from the \ndepository or pawnee for a \nvaluable consideration. \nThree years. When the sale becomes known to the \nplaintiff. \nPART VII.—SUITS RELATING TO TORT \n72. For compensation for doing or for \nomitting to do an act alleged to \nbe in pursuance of any enactment \nin force for the time being in the \nterritories to which this Act \nextends. \nOne year. When the act or omission takes place. \n73. For compensation for false \nimprisonment. \nOne year. When the imprisonment ends. \n74. For compensation for a malicious \nprosecution. \nOne year. When the plaintiff is acquitted or the \nprosecution is otherwise terminated. \n75. For compensation for libel. One year. When the libel is published. \n76. For compensation for slander. One year. When the words are spoken , or, if the \nwords are not actionable in \nthemselves, when the special damage \ncomplained of results. \n77. For compensation for loss of service \noccasioned by the seduction of \nthe plaintiff ’s servant or \ndaughter. \nOne year. When the loss occurs. \n78. For compensation for inducing a \nperson to break a contract with \nthe plaintiff. \nOne year. The date of the breach. \n79. For compensation for an illegal, \nirregular or excessive distress. \nOne year. The date of the\n\n[Document 2 | Limitation Act | Limitation Act:books/A1963-36.pdf:P4:C5 | bare_act | A1963-36 | p.4 | score=0.531]:\n4 \n(j) “period of limitation ” means the period of limitation prescribed for any suit, appeal or \napplication by the Schedule, and “prescribed period” means the period of limitation computed in \naccordance with the provisions of this Act; \n(k) “promissory note ” means any instrument whereby the maker engages absolutely to pay a \nspecified sum of money to another at a time therein limited, or on demand, or at sight; \n(l) “suit” does not include an appeal or an application; \n(m) “tort\" means a civil wrong which is not exclusively the breach of a contract or the breach of a \ntrust; \n(n) “trustee” does not include a benamidar, a mortgagee remaining in possession after the \nmortgage has been satisfied or a person in wrongful possession without title. \nPART II \nLIMITATION OF SUITS, APPEALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is presented to the proper officer; \n(ii) in the case of a pauper, when his application for leave to sue as a pauper is made; and \n(iii) in the case of a claim against a company which is being wound up by the court,\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1545:C6146 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 2 | p.1545 | score=0.562]:\nme contract, the cause of action was but one, and that the subsequent suit was therefore barred. The opinion \nof Wilson J, was followed in Duncan v. Jeetmull, 17 which also was a case of breach of one and the same contract. \nThese two cases show that all existing breaches of the same contract must be joined in the same suit, however, \nthey have been held not to apply to the case where there are separate contracts, though contained in the same \ninstrument.18 Thus, where it is expressly provided by an indent that each monthly shipment and item should be \ntreated as a separate contract, the plaintiff is entitled to bring a separate suit for damages in respect of each \nshipment.19 Conversely, where goods are delivered under separate orders, each order and delivery of goods is a \nseparate contract, and gives rise to separate cause of act ion, unless it be proved that all the goods were delivered \nas under a single contract.20\nClosely connected with this question is a point which was left open by their Lordships of the Privy Council, namely, \nwhether a mortgagee who holds several mortgages on the same property, can treat them, with respect to the \nprovisions of this rule, as separate cause of action, or whether he must bring one suit on all the mortgages.21\n9. Omits to sue in respect of any portion of his claim. Rule 2 refers to cases where a suit has been filed and the \nplaintiff\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1794:C7155 | commentary | 491014025-MULLA-on-CPC-pdf | p.1794 | score=0.543]:\ny doubt or dispute show that the suit is barred \nby any law in force. Where the plaintiff in the plaint makes a statement that suit was within limitation as the cause of \nact ion arose on a particular date, the provisions of O 7, r 11(d) cannot be attracted. 40 However, where the plaint \nappears to be barred by time even after considering the averments of the acknowledgment of the debt in the plaint, \nthe plaint can be rejected under O 7, r 11.41 There remains no doubt that the question of limitation would be a mixed \nquestion of law and fact. 42 Where a suit is brought against the Secretary of State without giving the notice required \nunder s 80, the plaint should be rejected under this clause. 43 Where in a suit against the government, the plaint \ndoes not allege that notice has been served as required by s 80, 44 or where the suit has been filed before the expiry \nof the period prescribed therein, 45 the plaint is liable to be rejected under this provision. When a suit instituted \nagainst a number of defendants is as against some of them barred, but not as against the others, this rule has no \napplication. The proper order to pass in such a case is to strike out the plaint against those defendants against \nwhom it is barred and proceed with the suit as against the rest.46\nIn another instance, suit for specific performance of contract was filed. Facts averred clearly showed\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1671:C6634 | commentary | 491014025-MULLA-on-CPC-pdf | p.1671 | score=0.534]:\nibed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and willingness to perform that part of the contract. 25 The rule that in a suit for specific \nperformance, the plaintiff should aver that he is able and willing to perform his part of the contract is sufficiently\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.525]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1837:C7328 | commentary | 491014025-MULLA-on-CPC-pdf | p.1837 | score=0.523]:\nihar Tenancy \nAct 1885, a suit instituted after the period of limitation is liable to be dismissed. In view of this provision, a defendant \nwould be allowed to raise the point of limitation even if it is not taken in his written statement.88\n4. Claims against joint contractors for breach. Where in a suit against joint contractors, separate defences are \nput in, a successful defence pleaded and proved by one only ensures for the benefit of all.89\nR.3. Denial to be specific.\nIt shall not be sufficient for a defendant in his written statement to deny generally the grounds alleged by the \nplaintiff, but the defendant must deal specifically with each allegation of fact of which he does not admit the truth, \nexcept damages.\n1. Deal specifically with each allegation of fact. The defendant must take each fact which is alleged against him \nseparately, and say that he admits it, or denies it, or does not admit it. It is not merely denial which is meant, but the \nrule covers non-admission, for [the defendants] is to deal specifically with every allegation of fact of he does not \nadmit the truth.90 Every allegation of fact in the plaint will be taken to be admitted if it is\nnot denied specifically or by necessary implication or stated to be not admitted (r 5). Similarly if no counter is filed to \nthe averments made in the writ petition on an affidavit, the contentions made therein are\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P451:C1620 | commentary | 491014025-MULLA-on-CPC-pdf | p.451 | score=0.517]:\nut in a case of breach of confidentiality \nclause in a service contract, the place where the breach has taken place will have jurisdiction.52\nAll terms of the contract were negotiated and finalised in Bombay. It was, thereafter, that the formal contract \nwas engrossed and sent to Ludhiana for the signatures of respondent. The respondents director signed the \ncontract, document and forwarded it to its broker at Bombay, for onward transmission to the petitioner for taking \nnecessary act ion. This issue can be looked at in two ways. If the contract is said to have been concluded when \nthe terms were prepared, then obviously that took place in Bombay. If the contract is said to have been finalised \nonly after both parties had signed, then it is clear that only one of the parties signed at Ludhiana and other \nsigned it in Bombay.53\nIn a suit for damages for breach of contract, the cause of action consists of the making of the contract, and of \nits breach; so that the suit may be filed either at the place where the contract was made or at the place where it \nshould have been performed and the breach occurred. 54 Thus, if a contract is made in Poona to be performed \nin Poona, the whole cause of act ion arises in Poona and the suit for breach can only be filed in the Poona \nCourt; but, if the contract is made in Poona to be performed in Belgaum the suit for its breach can be filed\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7142]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7142 | commentary | 491014025-MULLA-on-CPC-pdf | p.1792 | score=0.626]:\nobjections irrespective of the nature of the suit.93\nWhere the plaintiff valued a suit property on the basis of value given in sale deed, the plaint cannot be rejected on \nthe ground that the property was not correctly valued on the basis of the fact that while giving description of the \nproperty in the sale deed, the market value of the property was given much higher almost double the sale price. 1 \nWhere the valuation of suit property by the plaintiff is arbitrary and unreasonable, the court can interfere with it \nunder O 7, r 11.2\nIn a case where defendant moved an application under O 7, r 11 of the Code for rejection of the plaint for not \naffixing proper court-fees at the state when the case was fixed for evidence, was as held by the Punjab and \nHaryana High Court that dismissed of the application on the ground that issue had been framed regarding court-fee \nand the same would be decided alongwith other issued on the basis of evidence led by parties, was not improper \nexercise of jurisdiction. It was observed that mere error or wrong exercise of jurisdiction cannot entitle the defendant \nto invoke Art. 227 of the Constitution.3\nThe Court has power at any stage of the proceedings to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1792:C7143 | commentary | 491014025-MULLA-on-CPC-pdf | p.1792 | score=0.599]:\nngs to direct the plaintiff to affix the court-fees according to the \ndamages assessed by it in a suit for rendition of accounts. In cases of undervaluation or improper fraction of the \ncourt-fee, the Court has ample power to direct a party to affix a proper court-fee. Therefore, in a suit for rendition of \naccounts, where the plaintiff-respondent was not aware of the exact profit earned by the defendant, it was held that \nthe plaint cannot be rejected at the threshold for want of proper court-fees.4\n9. Clause (c): Where a plaint is written upon paper insufficiently stamped. The following points are to be noted \nin connection with this clause:\n(i) Where a plaint is written upon paper insufficiently stamped, the court is bound to give the plaintiff time to make \ngood the deficiency. This follows from the terms of cl (c) itself. 5 Reasonable time must be allowed after the court \nhas decided that the court-fee paid is insufficient, 6 and within the time allowed, if the plaintiff cannot pay, he may \napply to continue the suit as a pauper.7\n(ii) If the plaintiff fails to supply the requisite stamp-paper within the period fixed by the court, the plaint may be \nrejected under this rule, even after it has been numbered and registered as a suit. The reason is that the power to \nreject a plaint under this rule is not exhausted when the plaint has been admitted and registered.8\n(iii) A\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1764:C7015 | commentary | 491014025-MULLA-on-CPC-pdf | p.1764 | score=0.578]:\ncurs insert or value.\n1. Suit for damages. In a suit for damage, the plaintiff must state the amount of damages claimed and pay court-\nfees thereon.35\n2. Suit for mesne profits. A claim for past mesne profits must be valued even though approximately and court-fee \npaid thereon. But it is not necessary that future mesne profits should be valued.36\n3. Suit for Accounts. This rule is applicable to a suit by an agent against his principal praying that accounts be \ntaken of amounts due to him.37\nWhere in the case of export of garments to a foreign purchaser, the purchaser got his foreign German bank to issue \nan irrevocable letter of credit, the respondent bank act ed as the appellants bank in negotiating the documents \nprescribed under the letter of credit under reserve and credited amount to appellants account. When the documents \nwere not honoured and reimbursement was refused by the foreign bank, the respondent debited the amount to \nappellants account. It was held that the appellant was not entitled to claim recovery from the respondent bank.38\nWhere the legal heirs of a pronote holder filed a suit for recovery of money on the basis of the pronote, the trial \ncourt recorded a finding in favour of the legal heirs but dismissed the suit on the ground of non-production of \nsuccession certificate. The proceedings for issuance of succession certificate were pending in court, but no\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C180 | commentary | 491014025-MULLA-on-CPC-pdf | p.47 | score=0.576]:\nlimits of the courts jurisdiction, the court may pass a decree for the sum in \nexcess of the pecuniary limits of its jurisdiction. 10 The court has no jurisdiction to grant reliefs not claimed in the \nplaint if by reason of their inclusion, the suit would be beyond the pecuniary jurisdiction of the court. 11 Where \ndifferent suits which are severally within the jurisdiction of the court are consolidated for hearing, the court does \nnot lose its jurisdiction to hear it by reason of the value of all the suits exceeding its jurisdiction if taken \ntogether.12\nThe Bombay High Court has held that in a case of damages, the amount of damage which the Court can award \nis limited to the pecuniary jurisdiction of the Court.13\nILLUSTRATION\nA sues B in the court of second class subordinate judge for an account and values his suit for a court fee at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and not by the amount decreed.15\n4. Mesne profits after suit do not\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P594:C2220 | commentary | 491014025-MULLA-on-CPC-pdf | p.594 | score=0.553]:\nost of the time spent by the successful party, the transportation and lodging, if any, or any other incidental cost \nbesides the payment of the court fee lawyers fee, typing and other cost in relation to the litigation. It is for the \nHigh Courts to examine these aspects and wherever necessary make requisite rules regulations or practice \ndirection so as to provide appropriate guidelines for the subordinate courts to follow.25\nIt cannot be said of a claim that it is frivolous when it involves complicated questions calling for elaborate \nconsideration.26 Where a suit was filed for damages for breach of a contract and it was found that the contract \nwas forged, compensatory costs were awarded under this section. 27 The Supreme Court has, in a recent case, \nexhorted the trial courts to exercise power under this section once they are satisfied that the litigation was \ninspired by vexatious motives and was altogether groundless. 28 Costs under this section have been awarded in \nwrit petitions. 29 Extraordinary jurisdiction under Art. 226 of the Constitution should not be allowed to be \nmisused. Where the High Court comes to the conclusion that the petitioner has approached the court with \nunclean hands, or has filed a writ petition stating facts which are false, the petitioner must be penalised with \npenal consequences. If the High Court finds that either a false statement has been\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1864:C7438 | commentary | 491014025-MULLA-on-CPC-pdf | p.1864 | score=0.549]:\ny the suit in so far as the counterclaim is \nconcerned and ordering the payment against the Appellant in so far as the admission rent. The twin course are \nwholly wrong. The Supreme Court remanded the matter back to the original side of the High Court for disposal in \naccordance with law.43\nWhere a Counter-claim filed by the defendant exceeded the pecuniary limits of jurisdiction of the Court, it cannot be \nallowed. Thus where a Court returned the plaint instead of the written statement, the order was held to be not \nproper.44\nO 8, r 6-A lays down procedure for deciding counter-claim and for the said purpose counter claim is to be treated as \na plaint. But it does not mean that the exemption from payment of Court-fee available on plaint for persons of low \nincome shall be available to counter-claim.45\nWhere in a suit for recovery of money, the plaintiff does not lay any claim against one of the defendants, that \ndefendant, against whom no claim is made by the plaintiff, cannot set up a counter-claim against the plaintiff.46\nIn a suit for recovery of money, the defendant made a counter-claim in respect of amount spent in the year 1989-\n90. The counter-claim was held to be barred by limitation.47\nWhere the defendant had filed counter-claim for damages for wrongful detention of her goods and moveables, it\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1513 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.624]:\nrtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1791:C7139 | commentary | 491014025-MULLA-on-CPC-pdf | p.1791 | score=0.620]:\nrt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a"
+  },
+  "legal_research": {
+    "queries": [
+      "breach of contract limitation period India years accrual date right to sue",
+      "damages plaint mandatory procedural requirements India"
+    ],
+    "results": [
+      {
+        "title": "Statute of limitations in contract claims : an overview - iPleaders",
+        "url": "https://blog.ipleaders.in/statute-of-limitations-in-contract-claims-an-overview/",
+        "snippet": "Under normal circumstances, the Indian Limitation Act of 1963, under Section 14 of the Limitation Act, provides that a claim for breach of contract must be made within three years from the date of such breach .",
+        "date": ""
+      },
+      {
+        "title": "Applicabilty of Limitation Act to Indian Contract Act",
+        "url": "https://www.linkedin.com/pulse/applicabilty-limitation-act-indian-contract-vipin-tyagi",
+        "snippet": "In other words, if there is no specific provision in the Limitation Act or any other law that prescribes a limitation period for a particular type of suit, then the plaintiff can file such a suit within three years from the date when the right ...",
+        "date": ""
+      },
+      {
+        "title": "The Period of Limitation For A Suit For Compensation For The Breach of Any Contract | PDF | Breach Of Contract | Damages",
+        "url": "https://www.scribd.com/document/173440558/The-Period-of-Limitation-for-a-Suit-for-Compensation-for-the-Breach-of-Any-Contract",
+        "snippet": "It is three years from the date the contract was broken, or from the date of the most recent breach if there were successive breaches, or from the date the continuing breach ceased .",
+        "date": ""
+      },
+      {
+        "title": "1 Limitation Periods: Overview (India)",
+        "url": "https://trilegal.com/wp-content/uploads/2023/06/Limitation-Periods-Overview-India-1.pdf",
+        "snippet": "Limitation Act prescribes separate periods for the preference of suit in tort, and for breach of · obligations under contract.",
+        "date": ""
+      },
+      {
+        "title": "Dhapai vs Dalla And Ors. on 2 April, 1969",
+        "url": "https://indiankanoon.org/doc/1119466/",
+        "snippet": "Three years When the contract is broken, or (where there are successive breaches) when the breach in respect of which the suit is instituted occurs or (where the breach is continuing) when it ceases . 120. Suit for which no period of limitation is provided elsewhere in this Schedule.",
+        "date": ""
+      },
+      {
+        "title": "The Plaint: Foundational Document in Civil Litigation under the Code of Civil Procedure, 1908 - Bhatt & Joshi Associates",
+        "url": "https://bhattandjoshiassociates.com/the-plaint-a-legal-instrument-in-civil-litigation/",
+        "snippet": "Order IV, Rule 1 of the CPC mandates that “ Every suit shall be instituted by presenting a plaint in duplicate to the Court or such officer as it appoints in this behalf ” and that “Every plaint shall comply with the rules contained in Orders ...",
+        "date": ""
+      },
+      {
+        "title": "Adjudication of claim for damages under",
+        "url": "https://docs.manupatra.in/newsline/articles/Upload/30C28D5D-262B-4A4A-AE17-C4D86F92BCE0.pdf",
+        "snippet": "act of the defendant, the plaintiff becomes entitled to damages. How the damages would be · calculated, what factors would be taken into consideration and what arithmetical process would be · adopted would depend upon the facts and circumstances of each case. Now, the damages which can be awarded in an action based on may be contemptuous, nominal, ordinary or, for that matter, exemplary. [Common Cause, A Registered Society v. Union of India...",
+        "date": ""
+      },
+      {
+        "title": "Strict Compliance with Section 80 of the Civil Procedure Code for Suits Against the Government: Amar Nath Dogra v. Union of India: Supreme Court Of India | CaseMine",
+        "url": "https://www.casemine.com/commentary/in/strict-compliance-with-section-80-of-the-civil-procedure-code-for-suits-against-the-government:-amar-nath-dogra-v.-union-of-india/view",
+        "snippet": "During the tenure of his license, Dogra alleged breaches of contractual stipulations by the Excise Authorities, leading him to serve a notice under Section 80 of the Civil Procedure Code (CPC) and subsequently file a suit claiming damages.",
+        "date": ""
+      },
+      {
+        "title": "Revisiting The Principles Of Damages Under The Contract Regime In India - Contracts and Commercial Law - India",
+        "url": "https://www.mondaq.com/india/contracts-and-commercial-law/1079412/revisiting-the-principles-of-damages-under-the-contract-regime-in-india",
+        "snippet": "The Supreme Court in M.N. Gangappa v. Atmakur Nagabhushanam Shetty & Co. and Anr., (AIR 1972 SC 696) has observed that in absence of a strict procedure for calculation of damages arising out of breach of contract, damages would be calculated based on the facts and circumstances of each case.",
+        "date": ""
+      },
+      {
+        "title": "Documents Filed with Plaint: Comprehensive Legal Framework and Judicial Interpretation - Bhatt & Joshi Associates",
+        "url": "https://bhattandjoshiassociates.com/filing-of-documents-with-plaint-a-legal-overview/",
+        "snippet": "The judgment highlighted that allowing parties to introduce documents at later stages without proper justification would undermine the procedural integrity of civil suits and potentially prejudice the opposing party’s ability to prepare an adequate defense. The decision also clarified that the requirement to file documents with the plaint is not merely directory but mandatory, meaning that non-compliance carries substantive consequences.",
+        "date": ""
+      }
+    ],
+    "summary": "[Statute of limitations in contract claims : an overview - iPleaders] Under normal circumstances, the Indian Limitation Act of 1963, under Section 14 of the Limitation Act, provides that a claim for breach of contract must be made within three years from the date of such breach .\n[Applicabilty of Limitation Act to Indian Contract Act] In other words, if there is no specific provision in the Limitation Act or any other law that prescribes a limitation period for a particular type of suit, then the plaintiff can file such a suit within three years from the date when the right ...\n[The Period of Limitation For A Suit For Compensation For The Breach of Any Contract | PDF | Breach Of Contract | Damages] It is three years from the date the contract was broken, or from the date of the most recent breach if there were successive breaches, or from the date the continuing breach ceased .\n[1 Limitation Periods: Overview (India)] Limitation Act prescribes separate periods for the preference of suit in tort, and for breach of · obligations under contract.\n[Dhapai vs Dalla And Ors. on 2 April, 1969] Three years When the contract is broken, or (where there are successive breaches) when the breach in respect of which the suit is instituted occurs or (where the breach is continuing) when it ceases . 120. Suit for which no period of limitation is provided elsewhere in this Schedule.\n[The Plaint: Foundational Document in Civil Litigation under the Code of Civil Procedure, 1908 - Bhatt & Joshi Associates] Order IV, Rule 1 of the CPC mandates that “ Every suit shall be instituted by presenting a plaint in duplicate to the Court or such officer as it appoints in this behalf ” and that “Every plaint shall comply with the rules contained in Orders ...\n[Strict Compliance with Section 80 of the Civil Procedure Code for Suits Against the Government: Amar Nath Dogra v. Union of India: Supreme Court Of India | CaseMine] During the tenure of his license, Dogra alleged breaches of contractual stipulations by the Excise Authorities, leading him to serve a notice under Section 80 of the Civil Procedure Code (CPC) and subsequently file a suit claiming damages.\n[Revisiting The Principles Of Damages Under The Contract Regime In India - Contracts and Commercial Law - India] The Supreme Court in M.N. Gangappa v. Atmakur Nagabhushanam Shetty & Co. and Anr., (AIR 1972 SC 696) has observed that in absence of a strict procedure for calculation of damages arising out of breach of contract, damages would be calculated based on the facts and circumstances of each case.\n[Documents Filed with Plaint: Comprehensive Legal Framework and Judicial Interpretation - Bhatt & Joshi Associates] The judgment highlighted that allowing parties to introduce documents at later stages without proper justification would undermine the procedural integrity of civil suits and potentially prejudice the opposing party’s ability to prepare an adequate defense. The decision also clarified that the requirement to file documents with the plaint is not merely directory but mandatory, meaning that non-compliance carries substantive consequences.",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": {
+      "article": "55",
+      "description": "For compensation for breach of any contract, express or implied, not herein specially provided for",
+      "period": "Three years",
+      "accrual": "When the contract is broken",
+      "source": "schedule_fallback",
+      "reason": "breach of contract for illegal termination of dealership agreement"
+    },
+    "user_cited_provisions": [],
+    "verified_provisions": [
+      {
+        "section": "Section 114",
+        "act": "",
+        "text": "ibed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and willingness to perform that part of the contract. 25 The rule that in a suit for specific \nperformance, the plai",
+        "source": "rag"
+      },
+      {
+        "section": "Section 69",
+        "act": "Indian Partnership Act 1932",
+        "text": "ered as required by s 69 of the Indian Partnership Act 1932 and that in consequence the \nsuit is not maintainable. 23 Where, however, the plaintiff files a suit for a declaration that he is not liable to pay land \nrevenue, in view of the bar to such a suit imposed by s 152 of the Central Provinces Land Revenue Act 1881, and \nthe exception thereto provided i",
+        "source": "rag"
+      },
+      {
+        "section": "Section 152",
+        "act": "Central Provinces Land Revenue Act 1881",
+        "text": "h a suit imposed by s 152 of the Central Provinces Land Revenue Act 1881, and \nthe exception thereto provided in s 114, where the plaintiff pays the revenue under protest, it was held that it was \nfor him to plead that he had satisfied the condition precedent prescribed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for",
+        "source": "rag"
+      },
+      {
+        "section": "Section 19",
+        "act": "Specific Relief Act 1877",
+        "text": "laimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the",
+        "source": "rag"
+      },
+      {
+        "section": "Section 29",
+        "act": "that Act",
+        "text": "since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "source": "rag"
+      },
+      {
+        "section": "Section 2",
+        "act": "",
+        "text": "ofits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the perso",
+        "source": "rag"
+      },
+      {
+        "section": "Section 74",
+        "act": "",
+        "text": "the imprisonment ends. \n74. For compensation for a malicious \nprosecution. \nOne year. When the plaintiff is acquitted or the \nprosecution is otherwise terminated. \n75. For compensation for libel. One year. When the libel is published. \n76. For compensation for slander. One year. When the words are spoken , or, if the \nwords",
+        "source": "rag"
+      },
+      {
+        "section": "Section 77",
+        "act": "",
+        "text": "complained of results. \n77. For compensation for loss of service \noccasioned by the seduction of \nthe plaintiff ’s servant or \ndaughter. \nOne year. When the loss occurs. \n78. For compensation for inducing a \nperson to break a contract with \nthe plaintiff. \nOne year. The date of the breach. \n79. For compensation for an illega",
+        "source": "rag"
+      },
+      {
+        "section": "Section 78",
+        "act": "",
+        "text": "When the loss occurs. \n78. For compensation for inducing a \nperson to break a contract with \nthe plaintiff. \nOne year. The date of the breach. \n79. For compensation for an illegal, \nirregular or excessive distress. \nOne year. The date of the",
+        "source": "rag"
+      },
+      {
+        "section": "Section 3",
+        "act": "",
+        "text": "EALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(",
+        "source": "rag"
+      },
+      {
+        "section": "Section 4",
+        "act": "",
+        "text": "contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is pres",
+        "source": "rag"
+      },
+      {
+        "section": "Section 80",
+        "act": "",
+        "text": "ice required \nunder s 80, the plaint should be rejected under this clause. 43 Where in a suit against the government, the plaint \ndoes not allege that notice has been served as required by s 80, 44 or where the suit has been filed before the expiry \nof the period prescribed therein, 45 the plaint is liable to be rejected u",
+        "source": "rag"
+      },
+      {
+        "section": "Section 1",
+        "act": "",
+        "text": "ruth, \nexcept damages.\n1. Deal specifically with each allegation of fact. The defendant must take each fact which is alleged against him \nseparately, and say that he admits it, or denies it, or does not admit it. It is not merely denial which is meant, but the \nrule covers non-admission, for [the defendants] is to deal spe",
+        "source": "rag"
+      },
+      {
+        "section": "Section 130",
+        "act": "",
+        "text": "for a court fee at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, althoug",
+        "source": "rag"
+      },
+      {
+        "section": "Section 8",
+        "act": "Suits Valuation Act, 1887",
+        "text": "e at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof w",
+        "source": "rag"
+      },
+      {
+        "section": "Section 6",
+        "act": "",
+        "text": "efendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and no",
+        "source": "rag"
+      },
+      {
+        "section": "Section 5",
+        "act": "",
+        "text": "e second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and not by the amount decreed.15\n4. Mesn",
+        "source": "rag"
+      },
+      {
+        "section": "Section 28",
+        "act": "",
+        "text": "altogether groundless. 28 Costs under this section have been awarded in \nwrit petitions. 29 Extraordinary jurisdiction under Art. 226 of the Constitution should not be allowed to be \nmisused. Where the High Court comes to the conclusion that the petitioner has approached the court with \nunclean hands, or has filed a writ pe",
+        "source": "rag"
+      },
+      {
+        "section": "Section 29",
+        "act": "",
+        "text": "ed in \nwrit petitions. 29 Extraordinary jurisdiction under Art. 226 of the Constitution should not be allowed to be \nmisused. Where the High Court comes to the conclusion that the petitioner has approached the court with \nunclean hands, or has filed a writ petition stating facts which are false, the petitioner must be penal",
+        "source": "rag"
+      },
+      {
+        "section": "Section 9",
+        "act": "Suits Valuation Act, 1887",
+        "text": ", it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as",
+        "source": "rag"
+      },
+      {
+        "section": "Section 80",
+        "act": "",
+        "text": "ral requirements of Section 80 CPC , which mandates that a notice must be served before initiating a lawsuit against the government.",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Section 26",
+        "act": "",
+        "text": "tion to resolution. Section 26 of the CPC establishes the fundamental principle governing the institution of civil suits, providing that “Every suit shall be instituted by the presentation of a plaint or in such other manner as may be prescribed.” This provision underscores the mandatory nature of the plaint in civil litigation,",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Section 12A",
+        "act": "",
+        "text": "would be barred by Section 12A and, therefore, liable to be rejected at the threshold itself ...",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Section 12A",
+        "act": "Commercial Courts Act, 2015",
+        "text": "ion mediation under Section 12A of the Commercial Courts Act, 2015 (“Commercial Courts Act”) is a mandatory requirement, even in respect of counterclaims in a commercial dispute .",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Article 55",
+        "act": "Limitation Act, 1963",
+        "text": "For compensation for breach of any contract, express or implied, not herein specially provided for",
+        "source": "schedule_fallback"
+      }
+    ],
+    "enrichment_log": [
+      "limitation: 9 candidates from RAG",
+      "limitation: LLM UNKNOWN — retrying with targeted query",
+      "limitation: +3 from retry websearch",
+      "limitation: trying common articles fallback",
+      "limitation: fallback selected Article 55",
+      "rag_provisions: 20 found in RAG chunks",
+      "procedural: 4 provisions found via websearch"
+    ],
+    "rag_provisions": [
+      {
+        "section": "Section 114",
+        "act": "",
+        "text": "ibed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for breach of contract, the plaintiff is dispensed, by this rule, \nfrom pleading his readiness and willingness to perform that part of the contract. 25 The rule that in a suit for specific \nperformance, the plai",
+        "source": "rag"
+      },
+      {
+        "section": "Section 69",
+        "act": "Indian Partnership Act 1932",
+        "text": "ered as required by s 69 of the Indian Partnership Act 1932 and that in consequence the \nsuit is not maintainable. 23 Where, however, the plaintiff files a suit for a declaration that he is not liable to pay land \nrevenue, in view of the bar to such a suit imposed by s 152 of the Central Provinces Land Revenue Act 1881, and \nthe exception thereto provided i",
+        "source": "rag"
+      },
+      {
+        "section": "Section 152",
+        "act": "Central Provinces Land Revenue Act 1881",
+        "text": "h a suit imposed by s 152 of the Central Provinces Land Revenue Act 1881, and \nthe exception thereto provided in s 114, where the plaintiff pays the revenue under protest, it was held that it was \nfor him to plead that he had satisfied the condition precedent prescribed in s 114 for maintaining the suit. 24 The \nLahore High Court has held that in a suit for damages for",
+        "source": "rag"
+      },
+      {
+        "section": "Section 19",
+        "act": "Specific Relief Act 1877",
+        "text": "laimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the",
+        "source": "rag"
+      },
+      {
+        "section": "Section 29",
+        "act": "that Act",
+        "text": "since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "source": "rag"
+      },
+      {
+        "section": "Section 2",
+        "act": "",
+        "text": "ofits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the perso",
+        "source": "rag"
+      },
+      {
+        "section": "Section 74",
+        "act": "",
+        "text": "the imprisonment ends. \n74. For compensation for a malicious \nprosecution. \nOne year. When the plaintiff is acquitted or the \nprosecution is otherwise terminated. \n75. For compensation for libel. One year. When the libel is published. \n76. For compensation for slander. One year. When the words are spoken , or, if the \nwords",
+        "source": "rag"
+      },
+      {
+        "section": "Section 77",
+        "act": "",
+        "text": "complained of results. \n77. For compensation for loss of service \noccasioned by the seduction of \nthe plaintiff ’s servant or \ndaughter. \nOne year. When the loss occurs. \n78. For compensation for inducing a \nperson to break a contract with \nthe plaintiff. \nOne year. The date of the breach. \n79. For compensation for an illega",
+        "source": "rag"
+      },
+      {
+        "section": "Section 78",
+        "act": "",
+        "text": "When the loss occurs. \n78. For compensation for inducing a \nperson to break a contract with \nthe plaintiff. \nOne year. The date of the breach. \n79. For compensation for an illegal, \nirregular or excessive distress. \nOne year. The date of the",
+        "source": "rag"
+      },
+      {
+        "section": "Section 3",
+        "act": "",
+        "text": "EALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(",
+        "source": "rag"
+      },
+      {
+        "section": "Section 4",
+        "act": "",
+        "text": "contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is pres",
+        "source": "rag"
+      },
+      {
+        "section": "Section 80",
+        "act": "",
+        "text": "ice required \nunder s 80, the plaint should be rejected under this clause. 43 Where in a suit against the government, the plaint \ndoes not allege that notice has been served as required by s 80, 44 or where the suit has been filed before the expiry \nof the period prescribed therein, 45 the plaint is liable to be rejected u",
+        "source": "rag"
+      },
+      {
+        "section": "Section 1",
+        "act": "",
+        "text": "ruth, \nexcept damages.\n1. Deal specifically with each allegation of fact. The defendant must take each fact which is alleged against him \nseparately, and say that he admits it, or denies it, or does not admit it. It is not merely denial which is meant, but the \nrule covers non-admission, for [the defendants] is to deal spe",
+        "source": "rag"
+      },
+      {
+        "section": "Section 130",
+        "act": "",
+        "text": "for a court fee at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, althoug",
+        "source": "rag"
+      },
+      {
+        "section": "Section 8",
+        "act": "Suits Valuation Act, 1887",
+        "text": "e at Rs \n130. Under s 8 of the Suits Valuation Act, 1887, the value of the subject matter of the suit is Rs 130. The parties \narrive at a compromise whereby the first defendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof w",
+        "source": "rag"
+      },
+      {
+        "section": "Section 6",
+        "act": "",
+        "text": "efendant is to pay Rs 6,000 and the second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and no",
+        "source": "rag"
+      },
+      {
+        "section": "Section 5",
+        "act": "",
+        "text": "e second defendant Rs 5,000 to \nthe plaintiff. The court may pass a decree in terms of the compromise, although it has jurisdiction limited to suits \nof which the value of the subject matter does not exceed Rs 5,000.14\nThe forum of appeal also is determined by the value of the suit and not by the amount decreed.15\n4. Mesn",
+        "source": "rag"
+      },
+      {
+        "section": "Section 28",
+        "act": "",
+        "text": "altogether groundless. 28 Costs under this section have been awarded in \nwrit petitions. 29 Extraordinary jurisdiction under Art. 226 of the Constitution should not be allowed to be \nmisused. Where the High Court comes to the conclusion that the petitioner has approached the court with \nunclean hands, or has filed a writ pe",
+        "source": "rag"
+      },
+      {
+        "section": "Section 29",
+        "act": "",
+        "text": "ed in \nwrit petitions. 29 Extraordinary jurisdiction under Art. 226 of the Constitution should not be allowed to be \nmisused. Where the High Court comes to the conclusion that the petitioner has approached the court with \nunclean hands, or has filed a writ petition stating facts which are false, the petitioner must be penal",
+        "source": "rag"
+      },
+      {
+        "section": "Section 9",
+        "act": "Suits Valuation Act, 1887",
+        "text": ", it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as",
+        "source": "rag"
+      }
+    ],
+    "procedural_provisions": [
+      {
+        "section": "Section 80",
+        "act": "",
+        "text": "ral requirements of Section 80 CPC , which mandates that a notice must be served before initiating a lawsuit against the government.",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Section 26",
+        "act": "",
+        "text": "tion to resolution. Section 26 of the CPC establishes the fundamental principle governing the institution of civil suits, providing that “Every suit shall be instituted by the presentation of a plaint or in such other manner as may be prescribed.” This provision underscores the mandatory nature of the plaint in civil litigation,",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Section 12A",
+        "act": "",
+        "text": "would be barred by Section 12A and, therefore, liable to be rejected at the threshold itself ...",
+        "source": "websearch_procedural"
+      },
+      {
+        "section": "Section 12A",
+        "act": "Commercial Courts Act, 2015",
+        "text": "ion mediation under Section 12A of the Commercial Courts Act, 2015 (“Commercial Courts Act”) is a mandatory requirement, even in respect of counterclaims in a commercial dispute .",
+        "source": "websearch_procedural"
+      }
+    ],
+    "procedural_context": "[Documents Filed with Plaint: Comprehensive Legal Framework and Judicial Interpretation - Bhatt & Joshi Associates] The decision also clarified that the requirement to file documents with the plaint is not merely directory but mandatory , meaning that non-compliance carries substantive consequences.\n[How to File a Civil Suit in India | Expert Tips |Kaleeyantey] A cause of action is required before filing a civil lawsuit, and it must have violated a civil right, and there shall be damage recovery or compensation in the complaint . The plaintiff will make all statements, which is the first step in the ...\n[The basic court procedure for filing a civil suit in India | SoOLEGAL] File requisite amount of procedure - fee in the court. File 2 copies of plaint for each defendant in the court . Of, the 2 copies for each defendant, one shall be sent by Register/post/courier, and one by Ordinary post.\n[Strict Compliance with Section 80 of the Civil Procedure Code for Suits Against the Government: Amar Nath Dogra v. Union of India: Supreme Court Of India | CaseMine] The Supreme Court examined whether Amar Nath Dogra’s suit against the Union of India complied with the procedural requirements of Section 80 CPC , which mandates that a notice must be served before initiating a lawsuit against the government.\n[The Plaint: Foundational Document in Civil Litigation under the Code of Civil Procedure, 1908 - Bhatt & Joshi Associates] The plaint thus functions as both a procedural requirement and a substantive pleading that shapes the contours of litigation from inception to resolution. Section 26 of the CPC establishes the fundamental principle governing the institution of civil suits, providing that “Every suit shall be instituted by the presentation of a plaint or in such other manner as may be prescribed.” This provision underscores the mandatory nature of the plaint in civil litigation, making it an indispensable prerequisite for the valid institution of any civil suit in Indian courts.\n[Compliance Of Section 12A of the Commercial Courts Act When Both Parties Refuse to Participate in the Pre-Institution Mediation - Lexology] “12A(1) – A suit which does ... that any suit in respect of a commercial dispute filed without attempting mediation would be barred by Section 12A and, therefore, liable to be rejected at the threshold itself ...\n[1 THE COMMERCIAL COURTS ACT, 2015 ________ ARRANGEMENT OF SECTIONS ________] finding that it has jurisdiction to hear a commercial dispute under this Act . ... interim relief under this Act, shall not be instituted unless the plaintiff exhausts the remedy of pre- institution mediation in accordance with such manner and procedure as may be prescribed by rules made\n[Deepak Raheja vs Ganga Taro Vazirani on 1 October, 2021] According to the Appellant, the consequence of the breach of Section 12A is that the plaint will have to be returned . 23. The Respondents contend that compulsory pre- institution mediation will impede speedy resolution of disputes, and therefore holding Section 12A as a mandatory provision ...\n[Section 12A of Commercial Courts Act : Resolving Territorial Ambiguity in Pre-litigation Mediation – The HNLU CCLS Blog] Indian courts have reaffirmed the mandatory nature of pre-institution mediation. In Patil Automation (P) Ltd v. Rakheja Engineers, the Supreme Court categorically established the procedural mandatory character of section 12A. Likewise, in Ganga Taro Vazirani v. Deepak Raheja, the Bombay High Court emphasized the necessity for efficient dispute resolution and judicial backlog reduction, underlining the importance of pre-litigation mediation.\n[Pre-litigation mediation under Section 12A of the Commercial Courts Act, 2015 is mandatory to file a counterclaim in a commercial suit - Lexology] Saroj Tandon has held that pre-litigation mediation under Section 12A of the Commercial Courts Act, 2015 (“Commercial Courts Act”) is a mandatory requirement, even in respect of counterclaims in a commercial dispute ."
+  },
+  "filled_sections": {
+    "court_heading": "IN THE COURT OF THE {{COURT_TYPE}} AT {{PLACE}}",
+    "title": "O.S. No. __________ / 20____ — DAMAGES PLAINT FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT",
+    "parties": "PLAINTIFF: {{PLAINTIFF_NAME}}, Aged about {{PLAINTIFF_AGE}} years, Occupation: {{PLAINTIFF_OCCUPATION}}, Residing at: {{PLAINTIFF_ADDRESS}}.                                                        ... PLAINTIFF\n\nVERSUS\n\n{{DEFENDANT_NAME}}, Aged about {{DEFENDANT_AGE}} years, Occupation: {{DEFENDANT_OCCUPATION}}, Residing at: {{DEFENDANT_ADDRESS}}.                                                        ... DEFENDANT",
+    "jurisdiction": "1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is identifiable as {{DEFENDANT_NAME}} and is capable of being sued.\\n2. This Hon'ble Court has territorial jurisdiction to try the present suit as the Defendant carries on dealership activities within the local limits and the cause of action arose within such limits. This Court has pecuniary jurisdiction to entertain the suit as the claim for damages falls within the pecuniary limits prescribed. This Court has subject matter jurisdiction to entertain suits of this nature.\\n3. The Court has jurisdiction to entertain the present suit under the applicable provisions and within the territorial and pecuniary limits related to the cause of action.",
+    "facts": "4. The Plaintiff and Defendant entered into a dealership agreement on {{AGREEMENT_DATE}} (a true copy annexed as Annexure A).\n5. The Plaintiff invested substantial capital and developed the Territory in reliance on the said dealership agreement.\n6. The Defendant terminated the dealership on {{TERMINATION_DATE}}, which termination was arbitrary and contrary to the express terms of the dealership agreement and the Plaintiff's performance thereunder.\n7. The Plaintiff served a legal notice dated {{NOTICE_DATE}} through registered post A.D., demanding {{NOTICE_DEMAND}} within 15 days, a true copy of which is annexed as Annexure C.\n8. Despite receipt of the said legal notice, the Defendant has failed and neglected to rectify the breach or reinstate the dealership, thereby necessitating the filing of the present suit.\n9. The Plaintiff seeks damages for loss of profits, diminution of goodwill, and for unsold stock resulting from the unlawful termination.\n10. The Plaintiff has complied with mandatory pre-institution mediation under Section 12A of the Commercial Courts Act, 2015; a Mediation Certificate under Section 12A is annexed as Annexure D.",
+    "legal_basis": "11. The suit is maintainable under Section 26 CPC inasmuch as the Plaintiff seeks relief for breach of contract and damages arising therefrom.\\n12. The mandatory pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 has been complied with; a Mediation CertificateUnder Section 12A is annexed as Annexure D.\\n13. The limitation for compensation for breach of contract is governed by Article 55 of the Schedule to the Limitation Act, 1963, prescribing a period of three years; the cause of action accrued on {{TERMINATION_DATE}} and the suit is within such period.",
+    "cause_of_action": "14. The cause of action first arose on {{TERMINATION_DATE}} upon termination of the dealership agreement and is a continuing cause of action which subsists and continues till realization of the suit amount.\\n15. The breach of the dealership agreement by the Defendant entitled the Plaintiff to damages for loss of profits, goodwill, and unsold stock, as claimed in the prayers.",
+    "limitation": "16. Limitation: Article 55 of the Schedule to the Limitation Act, 1963. Period: Three years. Reason: For compensation for breach of any contract, express or implied, not herein specially provided for; accrual from the date of breach ({{TERMINATION_DATE}}).",
+    "valuation_court_fee": "17. The suit is valued at Rs. {{DAMAGES_AMOUNT}}/- (Rupees {{DAMAGES_WORDS}} Only) for purposes of jurisdiction and court fee. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint, payable as per COURT FEE CONTEXT.",
+    "interest": "18. The Plaintiff claims interest on the suit amount as follows:\\n   (a) Pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_DATE}} till the filing of this suit;\\n   (b) Pendente lite interest at the rate of {{INTEREST_RATE}}% per annum during the pendency of this suit;\\n   (c) Future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till actual realization.",
+    "prayer": "19. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\\n   (a) Pass a decree in favour of the Plaintiff and against the Defendant for the sum of Rs. {{DAMAGES_AMOUNT}}/- (Rupees {{DAMAGES_WORDS}} Only) together with interest as claimed hereinabove;\\n   (b) Award pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_DATE}} till the date of filing;\\n   (c) Award pendente lite interest at such rate as this Hon'ble Court deems just and reasonable;\\n   (d) Award future interest from the date of decree till the date of actual realization;\\n   (e) Award costs of this suit including pre-litigation costs incurred for issuing legal notice;\\n   (f) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.",
+    "document_list": "Sr. No. 1. Dealership Agreement dated {{AGREEMENT_DATE}} — Annexure A\\nSr. No. 2. Proof of investment and development of Territory — Annexure B\\nSr. No. 3. Legal notice dated {{NOTICE_DATE}} with postal receipt and A.D. — Annexure C\\nSr. No. 4. Mediation Certificate under Section 12A, Commercial Courts Act, 2015 — Annexure D",
+    "verification": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 21 of this plaint are true to my personal knowledge and belief, that no part of the cause of action has arisen in any other court, and that I have not concealed any material facts. Verified at {{COURT_PLACE}} on this the ____ day of __________ 20____.\\n\\n                                                        {{PLAINTIFF_NAME}}\\n                                                        PLAINTIFF\\n\\nThrough:\\n{{ADVOCATE_NAME}}\\nAdvocate\\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\\n{{ADVOCATE_ADDRESS}}"
+  },
+  "postprocess_issues": [
+    {
+      "type": "numbering_fixed",
+      "count": 13
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'this hon'ble court' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the cause of' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'cause of action' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'annexed as annexure' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the date of' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'interest at the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at the rate' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the rate of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rate of {{interest_rate}}%' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of {{interest_rate}}% per' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '{{interest_rate}}% per annum' repeated 4 times — consider varying language"
+    }
+  ],
+  "evidence_anchoring_issues": [],
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "damages_plaint",
+        "title": "O.S. No. __________ / 20____ — DAMAGES PLAINT FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT",
+        "text": "IN THE COURT OF THE {{COURT_TYPE}} AT {{PLACE}}\n\nO.S. No. __________ / 20____ — DAMAGES PLAINT FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT\n\nPLAINTIFF: {{PLAINTIFF_NAME}}, Aged about {{PLAINTIFF_AGE}} years, Occupation: {{PLAINTIFF_OCCUPATION}}, Residing at: {{PLAINTIFF_ADDRESS}}.                                                        ... PLAINTIFF\n\nVERSUS\n\n{{DEFENDANT_NAME}}, Aged about {{DEFENDANT_AGE}} years, Occupation: {{DEFENDANT_OCCUPATION}}, Residing at: {{DEFENDANT_ADDRESS}}.                                                        ... DEFENDANT\n\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is identifiable as {{DEFENDANT_NAME}} and is capable of being sued.\\n2. This Hon'ble Court has territorial jurisdiction to try the present suit as the Defendant carries on dealership activities within the local limits and the cause of action arose within such limits. This Court has pecuniary jurisdiction to entertain the suit as the claim for damages falls within the pecuniary limits prescribed. This Court has subject matter jurisdiction to entertain suits of this nature.\\n3. The Court has jurisdiction to entertain the present suit under the applicable provisions and within the territorial and pecuniary limits related to the cause of action.\n\n\nFACTS OF THE CASE\n\n2. The Plaintiff and Defendant entered into a dealership agreement on {{AGREEMENT_DATE}} (a true copy annexed as Annexure A).\n3. The Plaintiff invested substantial capital and developed the Territory in reliance on the said dealership agreement.\n4. The Defendant terminated the dealership on {{TERMINATION_DATE}}, which termination was arbitrary and contrary to the express terms of the dealership agreement and the Plaintiff's performance thereunder.\n5. The Plaintiff served a legal notice dated {{NOTICE_DATE}} through registered post A.D., demanding {{NOTICE_DEMAND}} within 15 days, a true copy of which is annexed as Annexure C.\n6. Despite receipt of the said legal notice, the Defendant has failed and neglected to rectify the breach or reinstate the dealership, thereby necessitating the filing of the present suit.\n7. The Plaintiff seeks damages for loss of profits, diminution of goodwill, and for unsold stock resulting from the unlawful termination.\n8. The Plaintiff has complied with mandatory pre-institution mediation under Section 12A of the Commercial Courts Act, 2015; a Mediation Certificate under Section 12A is annexed as Annexure D.\n\n\nLEGAL BASIS\n\n9. The suit is maintainable under Section 26 CPC inasmuch as the Plaintiff seeks relief for breach of contract and damages arising therefrom.\\n12. The mandatory pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 has been complied with; a Mediation CertificateUnder Section 12A is annexed as Annexure D.\\n13. The limitation for compensation for breach of contract is governed by Article 55 of the Schedule to the Limitation Act, 1963, prescribing a period of three years; the cause of action accrued on {{TERMINATION_DATE}} and the suit is within such period.\n\n\nCAUSE OF ACTION\n\n10. The cause of action first arose on {{TERMINATION_DATE}} upon termination of the dealership agreement and is a continuing cause of action which subsists and continues till realization of the suit amount.\\n15. The breach of the dealership agreement by the Defendant entitled the Plaintiff to damages for loss of profits, goodwill, and unsold stock, as claimed in the prayers.\n\n\nLIMITATION\n\n11. Limitation: Article 55 of the Schedule to the Limitation Act, 1963. Period: Three years. Reason: For compensation for breach of any contract, express or implied, not herein specially provided for; accrual from the date of breach ({{TERMINATION_DATE}}).\n\n\nVALUATION AND COURT FEE\n\n12. The suit is valued at Rs. {{DAMAGES_AMOUNT}}/- (Rupees {{DAMAGES_WORDS}} Only) for purposes of jurisdiction and court fee. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint, payable as per COURT FEE CONTEXT.\n\n\nINTEREST\n\n13. The Plaintiff claims interest on the suit amount as follows:\\n   (a) Pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_DATE}} till the filing of this suit;\\n   (b) Pendente lite interest at the rate of {{INTEREST_RATE}}% per annum during the pendency of this suit;\\n   (c) Future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till actual realization.\n\n\nPRAYER\n\n14. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\\n   (a) Pass a decree in favour of the Plaintiff and against the Defendant for the sum of Rs. {{DAMAGES_AMOUNT}}/- (Rupees {{DAMAGES_WORDS}} Only) together with interest as claimed hereinabove;\\n   (b) Award pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_DATE}} till the date of filing;\\n   (c) Award pendente lite interest at such rate as this Hon'ble Court deems just and reasonable;\\n   (d) Award future interest from the date of decree till the date of actual realization;\\n   (e) Award costs of this suit including pre-litigation costs incurred for issuing legal notice;\\n   (f) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\n\nLIST OF DOCUMENTS\n\nSr. No. 1. Dealership Agreement dated {{AGREEMENT_DATE}} — Annexure A\\nSr. No. 2. Proof of investment and development of Territory — Annexure B\\nSr. No. 3. Legal notice dated {{NOTICE_DATE}} with postal receipt and A.D. — Annexure C\\nSr. No. 4. Mediation Certificate under Section 12A, Commercial Courts Act, 2015 — Annexure D\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 21 of this plaint are true to my personal knowledge and belief, that no part of the cause of action has arisen in any other court, and that I have not concealed any material facts. Verified at {{COURT_PLACE}} on this the ____ day of __________ 20____.\\n\\n                                                        {{PLAINTIFF_NAME}}\\n                                                        PLAINTIFF\\n\\nThrough:\\n{{ADVOCATE_NAME}}\\nAdvocate\\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\\n{{ADVOCATE_ADDRESS}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_TYPE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TERMINATION_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NOTICE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NOTICE_DEMAND",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DAMAGES_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DAMAGES_WORDS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "INTEREST_RATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "damages_plaint",
+        "title": "O.S. No. __________ / 20____ — DAMAGES PLAINT FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT",
+        "text": "IN THE COURT OF THE {{COURT_TYPE}} AT {{PLACE}}\n\nO.S. No. __________ / 20____ — DAMAGES PLAINT FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT\n\nPLAINTIFF: {{PLAINTIFF_NAME}}, Aged about {{PLAINTIFF_AGE}} years, Occupation: {{PLAINTIFF_OCCUPATION}}, Residing at: {{PLAINTIFF_ADDRESS}}.                                                        ... PLAINTIFF\n\nVERSUS\n\n{{DEFENDANT_NAME}}, Aged about {{DEFENDANT_AGE}} years, Occupation: {{DEFENDANT_OCCUPATION}}, Residing at: {{DEFENDANT_ADDRESS}}.                                                        ... DEFENDANT\n\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is identifiable as {{DEFENDANT_NAME}} and is capable of being sued.\\n2. This Hon'ble Court has territorial jurisdiction to try the present suit as the Defendant carries on dealership activities within the local limits and the cause of action arose within such limits. This Court has pecuniary jurisdiction to entertain the suit as the claim for damages falls within the pecuniary limits prescribed. This Court has subject matter jurisdiction to entertain suits of this nature.\\n3. The Court has jurisdiction to entertain the present suit under the applicable provisions and within the territorial and pecuniary limits related to the cause of action.\n\n\nFACTS OF THE CASE\n\n2. The Plaintiff and Defendant entered into a dealership agreement on {{AGREEMENT_DATE}} (a true copy annexed as Annexure A).\n3. The Plaintiff invested substantial capital and developed the Territory in reliance on the said dealership agreement.\n4. The Defendant terminated the dealership on {{TERMINATION_DATE}}, which termination was arbitrary and contrary to the express terms of the dealership agreement and the Plaintiff's performance thereunder.\n5. The Plaintiff served a legal notice dated {{NOTICE_DATE}} through registered post A.D., demanding {{NOTICE_DEMAND}} within 15 days, a true copy of which is annexed as Annexure C.\n6. Despite receipt of the said legal notice, the Defendant has failed and neglected to rectify the breach or reinstate the dealership, thereby necessitating the filing of the present suit.\n7. The Plaintiff seeks damages for loss of profits, diminution of goodwill, and for unsold stock resulting from the unlawful termination.\n8. The Plaintiff has complied with mandatory pre-institution mediation under Section 12A of the Commercial Courts Act, 2015; a Mediation Certificate under Section 12A is annexed as Annexure D.\n\n\nLEGAL BASIS\n\n9. The suit is maintainable under Section 26 CPC inasmuch as the Plaintiff seeks relief for breach of contract and damages arising therefrom.\\n12. The mandatory pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 has been complied with; a Mediation CertificateUnder Section 12A is annexed as Annexure D.\\n13. The limitation for compensation for breach of contract is governed by Article 55 of the Schedule to the Limitation Act, 1963, prescribing a period of three years; the cause of action accrued on {{TERMINATION_DATE}} and the suit is within such period.\n\n\nCAUSE OF ACTION\n\n10. The cause of action first arose on {{TERMINATION_DATE}} upon termination of the dealership agreement and is a continuing cause of action which subsists and continues till realization of the suit amount.\\n15. The breach of the dealership agreement by the Defendant entitled the Plaintiff to damages for loss of profits, goodwill, and unsold stock, as claimed in the prayers.\n\n\nLIMITATION\n\n11. Limitation: Article 55 of the Schedule to the Limitation Act, 1963. Period: Three years. Reason: For compensation for breach of any contract, express or implied, not herein specially provided for; accrual from the date of breach ({{TERMINATION_DATE}}).\n\n\nVALUATION AND COURT FEE\n\n12. The suit is valued at Rs. {{DAMAGES_AMOUNT}}/- (Rupees {{DAMAGES_WORDS}} Only) for purposes of jurisdiction and court fee. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint, payable as per COURT FEE CONTEXT.\n\n\nINTEREST\n\n13. The Plaintiff claims interest on the suit amount as follows:\\n   (a) Pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_DATE}} till the filing of this suit;\\n   (b) Pendente lite interest at the rate of {{INTEREST_RATE}}% per annum during the pendency of this suit;\\n   (c) Future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till actual realization.\n\n\nPRAYER\n\n14. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\\n   (a) Pass a decree in favour of the Plaintiff and against the Defendant for the sum of Rs. {{DAMAGES_AMOUNT}}/- (Rupees {{DAMAGES_WORDS}} Only) together with interest as claimed hereinabove;\\n   (b) Award pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_DATE}} till the date of filing;\\n   (c) Award pendente lite interest at such rate as this Hon'ble Court deems just and reasonable;\\n   (d) Award future interest from the date of decree till the date of actual realization;\\n   (e) Award costs of this suit including pre-litigation costs incurred for issuing legal notice;\\n   (f) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\n\nLIST OF DOCUMENTS\n\nSr. No. 1. Dealership Agreement dated {{AGREEMENT_DATE}} — Annexure A\\nSr. No. 2. Proof of investment and development of Territory — Annexure B\\nSr. No. 3. Legal notice dated {{NOTICE_DATE}} with postal receipt and A.D. — Annexure C\\nSr. No. 4. Mediation Certificate under Section 12A, Commercial Courts Act, 2015 — Annexure D\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 21 of this plaint are true to my personal knowledge and belief, that no part of the cause of action has arisen in any other court, and that I have not concealed any material facts. Verified at {{COURT_PLACE}} on this the ____ day of __________ 20____.\\n\\n                                                        {{PLAINTIFF_NAME}}\\n                                                        PLAINTIFF\\n\\nThrough:\\n{{ADVOCATE_NAME}}\\nAdvocate\\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\\n{{ADVOCATE_ADDRESS}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_TYPE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TERMINATION_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NOTICE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NOTICE_DEMAND",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DAMAGES_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DAMAGES_WORDS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "INTEREST_RATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  }
+}

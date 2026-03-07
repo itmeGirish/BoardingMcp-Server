@@ -1,10 +1,8 @@
-from .base import DraftingBaseAgentNode
-from .supervisor_agent import DraftingSupervisorAgentNode
-from ..config.llm_config import DRAFTING_MODELS, get_drafting_model
+"""
+Legacy placeholder package.
 
-__all__ = [
-    "DraftingBaseAgentNode",
-    "DraftingSupervisorAgentNode",
-    "DRAFTING_MODELS",
-    "get_drafting_model",
-]
+`drafting_agents` currently uses direct node functions and does not require
+the base-agent abstraction.
+"""
+
+__all__: list[str] = []

@@ -1,0 +1,1775 @@
+{
+  "user_request": "Draft a recovery suit for Rs. 5,00,000/- being unpaid invoices for goods supplied by Plaintiff (a textile trading firm) to Defendant (a garment manufacturer). Goods were supplied on credit over 3 months per purchase orders, delivery challans signed by Defendant. Multiple invoices raised but Defendant failed to pay despite repeated reminders and legal notice. File before the appropriate Civil Court. Include cause of action, limitation, valuation, court fee, interest, and verification.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff, a textile trading firm, seeks recovery of Rs. 5,00,000 for unpaid invoices against Defendant, a garment manufacturer. Goods were supplied on credit over three months with signed delivery challans, but payment was not made despite reminders and a legal notice.",
+      "chronology": [
+        {
+          "date": null,
+          "event": "Goods supplied on credit over 3 months per purchase orders",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "date": null,
+          "event": "Delivery challans signed by Defendant",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "date": null,
+          "event": "Multiple invoices raised",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "date": null,
+          "event": "Repeated reminders sent to Defendant",
+          "source": "user_text",
+          "confidence": 0.8
+        },
+        {
+          "date": null,
+          "event": "Legal notice sent to Defendant",
+          "source": "user_text",
+          "confidence": 0.8
+        }
+      ],
+      "amounts": {
+        "principal": 500000.0,
+        "interest_rate": null,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": "Civil Court",
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": "Textile trading firm",
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": "Garment manufacturer",
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "type": "Purchase Orders",
+        "description": "Orders placed by Defendant for goods",
+        "relevance": "Establishes transaction terms",
+        "ref": null
+      },
+      {
+        "type": "Delivery Challans",
+        "description": "Challans signed by Defendant acknowledging receipt",
+        "relevance": "Proof of delivery and acceptance",
+        "ref": null
+      },
+      {
+        "type": "Invoices",
+        "description": "Invoices raised for the supplied goods",
+        "relevance": "Proof of amount due",
+        "ref": null
+      },
+      {
+        "type": "Legal Notice",
+        "description": "Notice sent demanding payment",
+        "relevance": "Pre-litigation requirement",
+        "ref": null
+      }
+    ],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "claim_type",
+          "value": "Recovery Suit",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "nature_of_transaction",
+          "value": "Supply of goods on credit",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "key": "duration_of_supply",
+          "value": "3 months",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.9
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Recovery",
+        "Commercial Dispute",
+        "Breach of Contract"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Plaintiff Address",
+        "Defendant Address",
+        "Specific dates of supply",
+        "Date of legal notice",
+        "Invoice numbers and dates",
+        "Jurisdiction (City/District)"
+      ],
+      "assumptions": []
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "money_recovery_plaint",
+    "classification": {
+      "topics": [
+        "Recovery of Money",
+        "Unpaid Invoices",
+        "Supply of Goods",
+        "Breach of Contract",
+        "Civil Procedure Code"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Date of cause of action (last invoice/date of default)",
+        "Date of legal notice",
+        "Interest rate claimed",
+        "Specific jurisdiction (District/City)"
+      ],
+      "assumptions": [
+        "Suit is within limitation period from cause of action",
+        "Jurisdiction is proper based on defendant's residence or contract performance"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "money recovery plaint format unpaid invoices",
+        "limitation period money recovery suit goods supplied",
+        "court fee calculation civil suit recovery five lakhs",
+        "cause of action accrual money recovery unpaid goods",
+        "mandatory plaint contents Order 7 Rule 9 CPC"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "money recovery plaint format unpaid invoices",
+      "limitation period money recovery suit goods supplied",
+      "court fee calculation civil suit recovery five lakhs",
+      "cause of action accrual money recovery unpaid goods"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of court fees, \nso far as the case admits. \n2. In money suits— Where the plaintiff seeks the recovery of money, the plaint shall state the precise amount \nclaimed: \nBut where the plaintiff sue for mesne profits, or for an amount which will be found due to him on taking \nunsettled accounts between him and the defendant, [136][or for movables in the possession of the \ndefendant, or for debts of which the value he cannot, after the exercise of reasonable diligence, estimate, the \nplaint shall state approximately the amount or value sued for]. \n3. Where the subject-matter of the suit is immovable property— Where the subject-matter of the suit is \nimmovable property, the plaint shall contain a description of the property sufficient to identify it, and, in case \nsuch property can be identified by boundaries or numbers in a record of settlement or survey, the plaint shall \nspecify such boundaries or numbers. \n57",
+        "score": 0.422,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "No. 2\nMoney Overpaid\n(Title)\nA.B., the above named plaintiff, states as follows :— \n1. On the . . . . . . day of. . . . 19. . . the plaintiff agreed to buy and the defendant agreed to sell . . . . bars of \nsilver at. . . . annas per tola of fine silver. \n2. The plaintiff procured the said bars to be assayed by E.F., who was paid by the defendant for such assay, \nand E.F. declared each of the bars to contain 1,500 tolas of fine silver, and the plaintiff accordingly paid the \ndefendant. . . rupees. \n3. Each of the said bars contained only 1,200 tolas of fine silver, of which fact the plaintiff was ignorant when \nhe made the payment. \n4. The defendant has not repaid the sum so overpaid.\n[As in paras 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 3\nGoods Sold at a Fixed Price and Delivered\n(Title)\nA. B., the above-named plaintiff states as follows :— \n1. On the . . . . . . day of. . . . . . . . .19. . . . . ., E.F. sold and delivered to the defendant [one hundred barrels \nof flour, or the goods mentioned in the schedule hereto annexed, or sundry goods.] \n2. The defendant promised to pay . . . . . . rupees for the said goods on delivery [or or the . . . . . . day of . . . . \n. . , some day before the plaint was filed]. \n3. He has not paid the same. \n4. E.F. died on the . . . . . . day of 19. . . . . By his last will he appointed his brother, the plaintiff his executor.\n[As in",
+        "score": 0.465,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": ", some day before the plaint was filed]. \n3. He has not paid the same. \n4. E.F. died on the . . . . . . day of 19. . . . . By his last will he appointed his brother, the plaintiff his executor.\n[As in paras 4 and 5 of Form No. 1.]\n7. The plaintiff as executor of E.F. claims [Relief Claimed].\nNo. 4\nGoods Sold at a Reasonable Price and Delivered\n(Title)\nA. B., the above-named plaintiff, states as follows:— \n1. On the . . . . . . day of. . . . . . . 19. . . , plaintiff sold and delivered to the defendant [sundry articles of house-\nfurniture], but no express agreement was made as to the price. \n2. The goods were reasonably worth . . . . rupees. \n3. The defendant has not paid the money.\n[As in paras 4 and 5 of Form No. 1, and relief claimed.]\nNo. 5\nGoods Made at Dependent's Request, and not Accepted\n(Title)\nA. B., the above-named plaintiff, states as follows:-\n160",
+        "score": 0.436,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 6 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthe other party relies in order that he may be prepared to meet the case. 50 Accordingly, in a winding-up petition a \ndebt due to a creditor other than the petitioner and not set out in the petition cannot be relied on and an order for \nwinding up cannot be made on the strength of such a debt, even though the creditor with respect to that debt \nappears in support of the petition and the debt due to him is admittedly due.51\nIf a relief is made out from the facts pleaded in the plaint, then that relief can be granted by molding the prayer \nalthough such relief is not pleaded in the plaint. In a suit for injunction for restraining the defendant from alienating \nsuit property and also for a decree of dissolution of partnership of plaintiff and defendant to carry on real estate \nbusiness, the plaintiff produced deeds alleged to have been executed in pursuance of oral agreement of \npartnership showing receipt of Rs 1 lakh by defendant from the plaintiff and for sharing profit between the parties. \nThe defendant admitted the receipt of Rs 1 lakh but claimed it as loan from the plaintiff and was also shown to have \nmade profits out of the business. The findings of the lower court that it was a loan transaction also remained \nunchallenged. It was held that the plaintiff was entitled for a decree for recovery of Rs 1",
+        "score": 0.429,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "at the \ndecretal amount should be payable by instalments.10\nRelying on the difference in language in rr 142 and 143 of the Ahmedabad City Civil court Rules 1961, and the \nlanguage of O 37, the Gujarat High Court has distinguished the Bombay decision in Pestonji v. Jamshedji, 11 and \nhas held that r 11(1) is in general terms and applies to all suits including summary suits. It has held that rr 142 and \n143 do not take away the right of a defendant to apply for an order under sub-r (1) of this rule.12\n7. Uttar Pradesh Agriculturists Relief Act. The provisions of the Act do not derogate from the provisions of this \nrule.13\n8. Financial Institutions. The fact that a creditor is a public financial institution does not deprive the court of its \npower to award instalments. However, specific statutory restrictions on this power must be kept in mind.14\nAn order allowing the debtor to pay the decretal amount in instalments under the courts inherent power is illegal. By \nvirtue of s 31 of the State Financial Corporations Act, the only mode of recovery of money due is attachment and \nsale of properties hypothecated to the bank. Section 46B of the Act specifically provides that the Act and the Rules \nmade thereunder shall prevail, notwithstanding anything inconsistent contained in any order or law in force. Hence, \nO 20, r 11, Code of Civil Procedure is excluded for proceedings under the",
+        "score": 0.421,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 19 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nO 20, r 11 of the Code of Civil Procedure dealt with money suit simpliciter allowing instalment-wise payment, but the \naforesaid provision never prevents any court to exercise inherent power under s 151 of the Code of Civil \nProcedure.1\n2. Judgment and decree. A decree which is not in conformity with the judgment is liable to be reversed and set \naside. For example, in a suit filed by a bank for the recovery of loan amount with interests, the defendants admitted \nthe claim of the bank, but prayed for instalments and reduction of the rate of interest. The trial court passed a \ncompromise decree, despite the objections of the bank to the decree being passed as suggested by defendants. It \nwas held that the decree, being contrary to the facts narrated in the judgment, was liable to be reversed and set \naside.2\nIf the direction regarding instalments is not yet incorporated in decree, ie, so long as the decree incorporating the \norder regarding instalments in terms of amended O 20, r 11, is not drawn up, the direction or order regarding \ninstalments retains, in law, the character of an order.3\n3. Sufficient reason. The possibility of a judgment-debtor obtaining a cross decree in another pending litigation has \nbeen held not to be a sufficient cause for postponing payment of the decretal amount. 4 The rule gives",
+        "score": 0.414,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "original document is \nannexed hereto. \n2. On the . . . . . . day of . . . . . . 19. . . , the arbitrators awarded that the defendant should [pay the plaintiff . . . \nrupees]. \n3. The defendant has not paid the money.\n[As in paras. 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 11\nOn a Foreign Judgment\n(Title)\nA. B., the above-named plaintiff, states as follows:— \n1. On the . . . . . . day of . . . . . . 19. . . , at . . . , in the State [or Kingdom] of the . . . . . . Court of that State [or \nKingdom,] in a suit therein pending between the plaintiff and the defendant, duly adjudged that the defendant \nshould pay to the plaintiff . . . . . . . . .rupees, with interest from the said date. \n2. The defendant has not paid the money.\n[As in paras 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 12\nAgainst Surety for Payment of Rent\n(Title)\nA. B., the above-named plaintiff, states as follows:— \n162",
+        "score": 0.481,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "l Insolvency Act, \n1920)\nPayment under Decree\n2[R.1. Modes of paying money under decree.\n(1) All money payable under a decree shall be paid as follows, namely:\n(a) by deposit into the Court whose duty it is to execute the decree, or sent to that Court by postal money \norder or through a bank; or\n(b) out of Court to the decree-holder by postal money order or through a bank or by any other mode wherein \npayment is evidenced in writing; or\n(c) otherwise, as the Court which made the decree, directs.\n(2) Where any payment is made under clause (a) or clause (c) of sub-rule (1), the judgment-debtor shall give notice \nthereof to the decree-holder either through the Court or directly to him by registered post, acknowledgement due.\n(3) Where money is paid by postal money order or through a bank under clause (a) or clause (b) of sub-rule (1), the \nmoney order or payment through bank, as the case may be, shall accurately state the following particulars, namely:\n(a) the number of the original suit;\n(b) the names of the parties or where there are more than two plaintiffs or more than two defendants, as the \ncase may be, the names of the first two plaintiffs and the first two defendants;\n(c) how the money remitted is to be adjusted, that is to say, whether it is towards the principal, interest or \ncosts;\n(d) the number of the execution case of the Court, whether such case is pending; and\n(e)",
+        "score": 0.458,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "13 \n Description of suit Period of limitation Time from which period begins to run \n16. For the price of goods sold and \ndelivered to be paid for by a bill \nof exchange, no such bill being \ngiven. \nThree years. When the period of the proposed bill \nelapses. \n17. For the price of trees or growing \ncrops sold by the plaintiff to the \ndefendant where no fixed period \nof credit is agreed upon. \nThree years. The date of the sale. \n18. For the price of work done by the \nplaintiff for the defendant at his \nrequest, where no time has been \nfixed for payment. \nThree years. When the work is done. \n19. For money payable for money lent. Three years. When the loan is made. \n20. Like suit when the lender has given \na cheque for the money. \nThree years. When the cheque is paid. \n21. For money lent under an agreement \nthat it shall be payable on \ndemand. \nThree years. When the loan is made. \n22. For money deposited under an \nagreement that it shall be \npayable on demand, including \nmoney of a customer in the \nhands of his banker so payable. \nThree years. When the demand is made. \n23. For money payable to the plaintiff \nfor money paid for the \ndefendant. \nThree years. When the money is paid. \n24. For money payable by the \ndefendant to the plaintiff for \nmoney received by the \ndefendant, for the plaintiff's use. \nThree years. When the money is received. \n25. For money payable for interest \nupon",
+        "score": 0.555,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "suit was barred by limitation in terms of Art. 58 of the Limitation Act, 1963. The High Court, \ntherefore, in our opinion, ex facie committed an error in arriving on the aforementioned finding.56\nIn a suit filed by a Bank for recovery of money, where the claim of the Bank was more than 10 lakhs, the Civil Court \nhas no jurisdiction to entertain the suit in view of the bar created under Recovery of Debts Due to Banks and \nFinancial Institutions Act, 1993 and the appropriate remedy was available before the debt recovery Tribunal. Since \nthe suit was barred by statute, it was held liable to be rejected under O 7, r 11(d) of the Code.57\nIn a suit, where permanent injunction was sought prohibiting the defendants from presenting cheques in their favour \nfor encashment, it was held by the Delhi High Court that the reliefs sought will amount to restraining the defendant \nfrom instituting civil or criminal proceedings against the plaintiff on account of non-encashment of cheques which \nwould amount to hampering access to justice. The reliefs sought is barred by law being directly hit by the provisions \nof s 41 (b), (d) of the Specific Relief Act, 1963 and as such the injunction can be refused. However, in the light of \nsubsequent events of the case, it was further held that the entire suit cannot be dismissed as infructuous.58\nIn a matrimonial case before the family courts, the Family",
+        "score": 0.544,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Transfer of Property \nAct 1882. 73 The injunction sought by the plaintiff seeking an order of restraint against using a cheque, which is a \nsubject-matter of proceedings under s 138 of the Negotiable Instruments Act 1881, cannot be granted, as it would \nhave the effect of preventing the defendant from prosecuting the criminal case against the plaintiff. The same is \nbarred by s 41 (b) of the Specific Relief Act 1963, hence the plaint is rejected under O 7, r 11.74\nIn a suit for recovery of money based on promissory not executed on 12-4-2000, the last date for filing the suit was \n12-4-2003, as the date of execution of the promissory not has to be excluded in view of s 12 of the Limitation Act, \n1963. As both dates viz. 12-4-2003 to 15-4-2003 were general holidays, it was held by the Karnataka High Court \nthat suit filed on 16-4-2003 was well within time and not barred by limitation. Therefore, the rejection of the plaint \nwas not proper.75\nIn an Allahabad case, question was whether a suit seeking the eviction of a tenant was barred by s 20, Uttar \nPradesh Act 13 of 1977. The court ordered that the question shall be decided by the evidence of the parties and not \nat that stage. It was held that the trial judge had not, by deferring his decision, affected the rights of the parties. His \norder, in these circumstances, cannot be said to be an order not being in accordance with",
+        "score": 0.516,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "15 \n Description of suit Period of limitation Time from which period begins to run \n45. By the assured to recover premia \npaid under a policy voidable at \nthe election of the insurers. \nThree years. When the insurers elect to avoid the \npolicy. \n46. Under the Indian Succession Act, \n1925 (39 of 1925), section 360 \nor section 361, to compel a \nrefund by a person to whom an \nexecutor or administrator has \npaid a legacy or distributed \nassets. \nThree years. The date of the payment or distribution. \n47. For money paid upon an existing \nconsideration which afterwards \nfails. \nThree years. The date of the failure. \n48. For contribution by a party who has \npaid the whole or more than his \nshare of the amount due under a \njoint decree, or by a sharer in a \njoint estate who has paid the \nwhole or more than his share of \nthe amount of revenue due from \nhimself and his co-sharers. \nThree years. The date of the payment in excess of the \nplaintiff’s own share. \n49. By a co -trustee to enforce against \nthe estate of a deceased trustee a \nclaim for contribution. \nThree years. When the right to contribution accrues. \n50. By the manager of a joint estate of \nan undivided family for \ncontribution, in respect of a \npayment made by him on \naccount of the estate. \nThree years. The date of the payment. \n51. For the profits of immovable \nproperty belonging to the \nplaintiff which have been",
+        "score": 0.568,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "of suit or by an application \nunder this section, the defendant is not entitled to any compensation unless the attachment has been effected. \nMerely procuring an order for attachment before judgment, however, maliciously is not sufficient to entitle the \ndefendant to compensation. 22(As to the period of limitation for a suit, see Limitation Act, 1963, Sch 1, Arts 73, \n80 and 90 and the undermentioned cases). 23 (As to suits for damages for temporary injunction, see the \nundermentioned cases). 24 On determination of lease by efflux of time, plaintiff was granted decree for \npossession. Defendant had obtained ad interim injunction under O 21, r 101 restraining the decree-holder from \ndealing with the goods stored in the premises (oil seeds). It appeared that the defendants had wrongfully stored \noil seeds in the plaintiffs godown. It was held that the plaintiff could claim damages from the defendant. Apart \nfrom s 95 (1), an aggrieved party can sue for damages for wrongful occupation. The scope of such a suit was \nmuch wider than s 95. Malice also need not be proved. Where malice is the gist of the action, neither section 95 \nnor the ingredients of an action for malicious prosecution stand in the way. Damage, with all the legal \nimplications pleaded and proved, should govern the fate of such a suit.25\n4. On insufficient grounds. These words are equivalent to without reasonable",
+        "score": 0.56,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "4 \n(j) “period of limitation ” means the period of limitation prescribed for any suit, appeal or \napplication by the Schedule, and “prescribed period” means the period of limitation computed in \naccordance with the provisions of this Act; \n(k) “promissory note ” means any instrument whereby the maker engages absolutely to pay a \nspecified sum of money to another at a time therein limited, or on demand, or at sight; \n(l) “suit” does not include an appeal or an application; \n(m) “tort\" means a civil wrong which is not exclusively the breach of a contract or the breach of a \ntrust; \n(n) “trustee” does not include a benamidar, a mortgagee remaining in possession after the \nmortgage has been satisfied or a person in wrongful possession without title. \nPART II \nLIMITATION OF SUITS, APPEALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is presented to the proper officer; \n(ii) in the case of a pauper, when his application for leave to sue as a pauper is made; and \n(iii) in the case of a claim against a company which is being wound up by the court,",
+        "score": 0.555,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "receiver.\nMinority—The defendant was a minor at the time of making the alleged contract .\nPayment into Court—The defendant as to the whole claim (or as to Rs. . . . . . . part of the money claimed, o r\nas the case may be) has paid into Court Rs. . . . . . . and says that this sum is enough to satisfy the plaintiff's\nclaim (or the part aforesaid).\nPerformance remitted—The performance of the promise alleged was remitted on the (date) .\nRescission—The contract was rescinded by agreement between the plaintiff and defendant .\nRes judicata—The plaintiff's claim is barred by the decree in suit (give the reference).\nEstoppel—The plaintiff is estopped from denying the truth of (insert statement as to which estoppel i s\nclaimed) because (here state the facts relied on as creating the estoppel.)\nGround of defence subsequent to institution of suit—Since the institution of the suit, that is to say, on the. . .\n.. day of. . . . . . (set out facts.)\nNo. 1\nDefence in Suits for Goods Sold and Delivered\n1. The defendant did not order the goods.\n2. The goods were not delivered to the defendant.\n3. The price was not Rs.\n[or]\n4. 1.\n5. Except as to Rs. . . . . . . , same as 2.\n6. 3.\n177",
+        "score": 0.549,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "a conclusive adjudication as to those rights, which may be subsequently readjusted in \na suit brought under the penultimate paragraph of the section. 2078 Such a suit is virtually a suit for money had \nand received, and the period of limitation is three years from the date of the receipt of the assets by the \ndefendant. 2079 The suit being one for money had and received, it would be premature if it were brought before \nthe moneys were actually paid to the defendant. A mere order for the payment of money under the section is \nnot sufficient to found the act ion. 2080 \nSuit by Subsequent Mortgagee to Recover Balance of Money Realised by Sale in a Prior Mortgage.X \nmortgages his property to A . He then mortgages the same property to B . Subsequently he executes a further \ncharge on the property in favour of A. A sues X on the first mortgage, joining B as a defendant, and obtains a \ndecree on the mortgage. The property is sold in execution of the decree and a balance of Rs 12,000 which \nremains after satisfying A s decree is deposited in court. A then obtains a decree for sale on further charge and \nin execution of the decree draws out the balance deposited in court. B is not joined as a party to this suit, nor is \nany notice given to him that A was drawing out of court, the balance of Rs 12,000. B then sues A to recover the \namount drawn out by A , that is, Rs 12,000. Such a suit",
+        "score": 0.547,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade",
+        "score": 0.591,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "valorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53",
+        "score": 0.548,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is not paid, as not filed at all.24\nIn an Allahabad case, the plaint was rejected by the trial court for insufficient court-fee. It was held that plaintiff can \nfile a regular appeal or he can make an application before the trial court under ss 148, 149 and 151. The plaintiff \npaid the amount for purchase of court-fees stamp worth lakhs of rupees. However, the counsel for the plaintiff \ncolluded with the defendant and did not deposit the court-fees in the court. The plaint was rejected under O 7, r 11, \nalthough it was restored under s 151. Further, the criminal case was directed to be registered against the defendant \nand the counsel for the plaintiff. 25 If the circumstances for invoking the courts discretion under ss 148, 149 and 151 \nexist, the court can entertain the application, even though the plaintiff had the alternative remedy by way of \nappeal.26 A rejected plaint can be ordered to be restored under inherent powers of the court, 27 but this decision has \nbeen overruled by a Division Bench of the Kerala High Court in Mable v. Dolores 28 wherein it has been held that \ninherent powers cannot be invoked against an order rejecting plaint, when a substantive right by way of",
+        "score": 0.532,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "t \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is",
+        "score": 0.584,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "rtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for",
+        "score": 0.581,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "n 48 and \ndismissed the appeal as no prejudice had been shown. The matter was taken in appeal to the Supreme Court \nand in affirming the decision of the High Court, the Supreme Court held that even an objection on the ground of \njurisdiction arising out of over-valuation or under-valuation could, in view of the provisions of s 11 of the Suit \nValuation Act, be taken only in the manner mentioned therein, that the decision of the District Court was \ntherefore, not a nullity and that a mere change of forum for appeal was not a prejudice contemplated by the \nsection, nor a mere error on the conclusion reached on the merits.49\n10. Where the subject matter of a suit does not admit of being satisfactorily valued. In some suits, the \nsubject matter is not capable of being estimated at a money value, eg, suits for restitution of conjugal rights; \nsuits to remove a karnavan, 50 suits to direct registration of a document under the Registration Act, 1908, s \n77,51etc. The court fee in such suits is Rs 10 as provided by the Court Fees Act, 1870, Sch II, Art. 17, cl (vi). \nThere is a distinction, however, between valuation for the purpose of jurisdiction and valuation for the purpose \nof ascertaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided",
+        "score": 0.562,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 64 of 106\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nbefore the court. That order is formal expression of an adjudication, which so far as regards the court \nexpressing it, conclusively determines the rights of the parties. In fact, s 2 of the Code of Civil Procedure which \ndefines the term decree specifically states that the decree shall be deemed to include rejection of the plaint. \nSection 96 of the Code of Civil Procedure deals with appeal from original decrees.29\nIn the Full Bench decision of Madras High Court in Satyanarayanacharyulu v. Ramalingam, 30 the petitioners \nfiled a suit in the subordinate court for declaration and for other reliefs and paid a fixed court fee of Rs 100 \nunder s 17 A of sch II, Court Fees Act, 1870, valuing the suit for the purposes of jurisdiction at Rs 3,600. The \nquestion arose whether the court fee paid had been correct and after considering the objection the subordinate \njudge came to the conclusion that the suit had been grossly under valued and directed the petitioner/plaintiff to \npay an additional court fee of Rs 400. The order directing payment of additional court fees was made on 14 \nMarch, 1947 and a period ten days time was given for payment of the deficit court fee. The suit was adjourned \nto 24 March, 1947 and by that time, as the deficit court fee was not paid as per the order dated 14 March, 1947, \nthe plaint",
+        "score": 0.562,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "rt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a",
+        "score": 0.561,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "action for recovery of money based on a medium term loan transaction simpliciter or in \nenforcement of the hypothecation of the bus available in the present case, is a cause of act ion different from the \ncause of action arising out of an equitable mortgage, though the ultimate relief that the plaintiff-Bank is entitled to is \nthe recovery of the term loan that was granted to the appellant. On the scope of O 2, r 2, the Privy Council in \nPayana Reena Saminatha v. Pana Lana Palaniappa, (XLI Ind App 142) has held that O 2, r 2 is directed to securing",
+        "score": 0.553,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "place where cause of action in part \nwould arise and not the place where it came to be received. 57 In this case, the petitioner entered into an \nagreement with the Government of Maharashtra in 1968. In 1972, the petitioner abandoned the work. Under cl \n3(b) of the agreement, the appropriate authority of the Government of Maharashtra determined a sum to be \nrecovered from the petitioner. Thereafter, a recovery certificate was issued by the Officer of Maharashtra to the \ncollector of Jhansi (UP) for recovering the above amount as arrears of land revenue. The construction contract \nwas executed in the State of Maharashtra. The liability of the contractor for abandonment of the contract arose \nin Maharashtra. It was held that the challenge to the liability as determined by the officer of Maharashtra cannot \nbe challenged in the courts in Uttar Pradesh. 58 When, port of loading was Bombay, and the consignee was \nlocated in Zurich, Switzerland, no part of cause of act ion, had arisen in Delhi, the defendant did not have \nprincipal place of business or habitual residence in Delhi, the goods were to travel firstly by sea and thereafter \nby road, rail or air, the subject carriage would constitute [multimodal transport] thereby attracting the provisions \nof s 20. It was held that Delhi High Court has no jurisdiction to entertain the suit.59",
+        "score": 0.497,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "nation. Hence, a part of the cause of act ion arises at the destination. 13 If \nthe contract is to be performed at the place where it is made, the suit on the contract must be filed there and \nnowhere else. A suit for prompt dower by a Mahomeddan wife is a suit on contract and the place of \nperformance must be deemed to be the place where the wife has been residing. 14 In Dadabhai v. Diogo, 15A at \nKarwar sent money to his agent in Bombay with instructions to negotiate a contract for the purchase and \nshipment of goods from Bombay to Karwar. The agent entered into a contract with B and paid him the money, \nbut B failed to ship the goods. A sued B at Karwar, but the court there had no jurisdiction for the contract was \nmade and the money paid in Bombay, and the performance was also to be in Bombay by the shipment of \ngoods from there. A suit for damages for breach of contract and refund of earnest money paid thereunder can \nbe filed at the place where the earnest money was paid as that is part of the cause of action and where that \nwas paid by bill and that was accepted, that amount must be deemed to have been paid at the place of \nacceptance and a suit can be instituted at the place.16 The rejection or repudiation of a claim under a contract of \ninsurance has been held not to be part of the cause of act ion.17\n15. Cause of action in other suits. In an administration suit, the",
+        "score": 0.488,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "manifestly found to be vexatious and meritless, in the sense of \nnot disclosing a right to sue, the judge should exercise his power under O 7, r 11,Code of Civil Procedure taking \ncare to see that the ground mentioned therein is fulfilled, and if clever drafting has created the illusion of a cause of \nact ion, the judge should nip it in the bud at the first hearing, by examining the party searchingly, under O 10, Code \nof Civil Procedure.67\nThe plea of non-disclosure of cause of action should be raised at the earliest and cannot be allowed to be raised in \nappeal, revision or execution after seven years of institution of eviction case, especially when no prejudice has been \ncaused to the party so seeking to raise a delayed plea. 68 Likewise, a non-diligent decree holder cannot be favoured \nby a threshold disposal of objections against attachment of property, where third party interest have been created \nas a result of the delay. Order 7, r 11 could not be available where triable issues have arisen.69\nTechnically O 7, r 11, applies to a counterclaim also. But it should not be rejected after evidence is recorded.70\nWhere the agent enters into a contract in his own name, he may be personally liable. In a Calcutta case, the agent \nentered into a contract for the purchase of goods from the plaintiff in his own name. He described himself as the \npurchaser, and did not disclose that",
+        "score": 0.483,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "ance, an account, payment of a money claim or damages. In \na suit for injunction, counterclaim of possession by the defendant can be entertained under O 8, r 6A of the Code of \nCivil Procedure. 4 In a suit for declaration of a right and title, the defendant is permitted to raise a counterclaim of \nhaving acquired possession of the suit property from the performa defendant. 5 Unless otherwise restricted, a \ncounterclaim for divorce would be maintainable in proceedings for grants of maintenance under s 18 of the Hindu \nAdoption and Maintenance Act 1956.6 Further, in a suit for injunction, the counterclaim for possession also could be \nentertained.7 In a suit for judicial separation by the wife, the husband can have a counterclaim of divorce on any \ngrounds stated in s 13 of the Hindu Marriage Act 1955.8\nThe words both before or after the filing of the suit in r 6A show that a defendant may set up a cause of act ion \nwhich has accrued since the suit was filed. In a suit for injunction, counterclaim for injunction in respect of sale or a \ndifferent property is maintainable. A defendant can claim any right by way of a counterclaim in respect of any cause \nof action accrued to him even though it is independent of the cause of act ion averred by the plaintiff and have the \nsame cause of action adjudicated without relegating the defendant to file a separate suit. Thereby, it is no",
+        "score": 0.483,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 15 of 44\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nobliged to file a suit against her husband in the family court and another suit against the father-in-law in the ordinary \ncivil court, when she has a common cause of act ion against the husband and the father-in-law. No splitting up of \nsuch cause of action is contemplated even in the Code of Civil Procedure.15\nIn Anderson v. Kalagarla, 16A agreed to purchase 10 bales of yarn from B. A took delivery of 7 bales, but failed to \npay the price of those bales, and as regards the remaining 3 bales refused to take delivery thereof. Garth C.J., \nexpressed the opinion that a suit by B against A to recover damages for failure to take delivery of the three bales \nwas not a bar to a subsequent suit by B to recover from A the price of 7 bales. The learned judge observed that a \nclaim for the price of goods sold, was a cause of action of different nature from a claim for damages for the non-\nacceptance of goods and the fact that both claims arose under the same contract did not constitute them as one \nand the same cause of act ion. Wilson J, expressed a different opinion, stating that the claims having arisen under \nthe same contract, the cause of action was but one, and that the subsequent suit was therefore barred. The opinion \nof Wilson J, was followed in Duncan v. Jeetmull, 17 which also was a case of breach of one",
+        "score": 0.474,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "f goods is not a suit for wrong done to property within s 19 but one for \ndamages for breach of contract and must be instituted under s 20 in the court within whose jurisdiction the \ndefendant resides or the cause of act ion has arisen wholly or in part.5\nThe plaintiff may sue either where the defendant resides or the wrong was committed. 6 A wrong may, however, \nconsist of a series of acts and it is sometimes not easy to specify the place where it was committed. Thus, in a \ncase from Burma 7 the defendant at Pyapon wrongfully obtained a magistrates order for the seizure of plaintiffs \nboats at Rangoon and it was held that the Rangoon court had jurisdiction as the wrong was done at Rangoon. \nIn an act ion for malicious prosecution, the court within whose jurisdiction the plaintiff was served with the \nsummons in the criminal case instituted against him has jurisdiction to entertain the suit. The reason given is \nthat though such service is not part of the cause of action for such a suit, the essence of malicious prosecution \nis the malicious abuse of the process of the court viz service of the summons. Hence, the court within whose \njurisdiction such abuse has taken place can entertain such a suit under this section; 8 but it is only at either of \nthe two places mentioned in the section that the suit lies. 9 The High Court of Bombay, however, has extended \nthe meaning of the",
+        "score": 0.474,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "r at all if the principal had not become due at the \ndate of the first suit.98\nIn Mahommad Hafiz v. Mahommad Zakariya,1A executed a simple mortgage in 1910. The mortgage provided under \ncl 2, that the interest should be paid monthly, and that if it was not paid for 6 months the mortgagee could realize \neither the unpaid interest only, or both the principal and interest, by bringing a suit without waiting for the expiration \nof the time provided for repayment of the principal. Clause 7 provided that if the principal with interest was not paid \nwithin 3 years, the mortgagee should be entitled to sue for principal and interest. In 1914, the mortgagee sued in \nrespect of the interest due and obtained a decree. In 1915, he brought a second suit in respect of the principal and \nthe interest then due. Their Lordships of the Privy Council held that the second suit could not be maintained, having \nregard to the provisions of this rule. Their Lordships said\nWhat was the cause of action that the plaintiffs possessed when the proceedings were first instituted? It was the \ncause of act ion due either to the fact that the interest had been unpaid for more than six months, or that the three \nyears had elapsed, and the principal was also unpaid, and in either case they could have sued for realisation to \nprovide for the whole, amount secured by the deed.\nThe plaintiffs having not done so were",
+        "score": 0.463,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C204]\n\n[Document 1 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C204 | bare_act | the code of civil procedure, 1908 | p.57 | score=0.422]:\n; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of court fees, \nso far as the case admits. \n2. In money suits— Where the plaintiff seeks the recovery of money, the plaint shall state the precise amount \nclaimed: \nBut where the plaintiff sue for mesne profits, or for an amount which will be found due to him on taking \nunsettled accounts between him and the defendant, [136][or for movables in the possession of the \ndefendant, or for debts of which the value he cannot, after the exercise of reasonable diligence, estimate, the \nplaint shall state approximately the amount or value sued for]. \n3. Where the subject-matter of the suit is immovable property— Where the subject-matter of the suit is \nimmovable property, the plaint shall contain a description of the property sufficient to identify it, and, in case \nsuch property can be identified by boundaries or numbers in a record of settlement or survey, the plaint shall \nspecify such boundaries or numbers. \n57\n\n[Document 2 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P160:C595 | bare_act | the code of civil procedure, 1908 | p.160 | score=0.465]:\nNo. 2\nMoney Overpaid\n(Title)\nA.B., the above named plaintiff, states as follows :— \n1. On the . . . . . . day of. . . . 19. . . the plaintiff agreed to buy and the defendant agreed to sell . . . . bars of \nsilver at. . . . annas per tola of fine silver. \n2. The plaintiff procured the said bars to be assayed by E.F., who was paid by the defendant for such assay, \nand E.F. declared each of the bars to contain 1,500 tolas of fine silver, and the plaintiff accordingly paid the \ndefendant. . . rupees. \n3. Each of the said bars contained only 1,200 tolas of fine silver, of which fact the plaintiff was ignorant when \nhe made the payment. \n4. The defendant has not repaid the sum so overpaid.\n[As in paras 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 3\nGoods Sold at a Fixed Price and Delivered\n(Title)\nA. B., the above-named plaintiff states as follows :— \n1. On the . . . . . . day of. . . . . . . . .19. . . . . ., E.F. sold and delivered to the defendant [one hundred barrels \nof flour, or the goods mentioned in the schedule hereto annexed, or sundry goods.] \n2. The defendant promised to pay . . . . . . rupees for the said goods on delivery [or or the . . . . . . day of . . . . \n. . , some day before the plaint was filed]. \n3. He has not paid the same. \n4. E.F. died on the . . . . . . day of 19. . . . . By his last will he appointed his brother, the plaintiff his executor.\n[As in\n\n[Document 3 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P160:C596 | bare_act | the code of civil procedure, 1908 | p.160 | score=0.436]:\n, some day before the plaint was filed]. \n3. He has not paid the same. \n4. E.F. died on the . . . . . . day of 19. . . . . By his last will he appointed his brother, the plaintiff his executor.\n[As in paras 4 and 5 of Form No. 1.]\n7. The plaintiff as executor of E.F. claims [Relief Claimed].\nNo. 4\nGoods Sold at a Reasonable Price and Delivered\n(Title)\nA. B., the above-named plaintiff, states as follows:— \n1. On the . . . . . . day of. . . . . . . 19. . . , plaintiff sold and delivered to the defendant [sundry articles of house-\nfurniture], but no express agreement was made as to the price. \n2. The goods were reasonably worth . . . . rupees. \n3. The defendant has not paid the money.\n[As in paras 4 and 5 of Form No. 1, and relief claimed.]\nNo. 5\nGoods Made at Dependent's Request, and not Accepted\n(Title)\nA. B., the above-named plaintiff, states as follows:-\n160\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1655:C6555 | commentary | 491014025-MULLA-on-CPC-pdf | p.1655 | score=0.429]:\nPage 6 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthe other party relies in order that he may be prepared to meet the case. 50 Accordingly, in a winding-up petition a \ndebt due to a creditor other than the petitioner and not set out in the petition cannot be relied on and an order for \nwinding up cannot be made on the strength of such a debt, even though the creditor with respect to that debt \nappears in support of the petition and the debt due to him is admittedly due.51\nIf a relief is made out from the facts pleaded in the plaint, then that relief can be granted by molding the prayer \nalthough such relief is not pleaded in the plaint. In a suit for injunction for restraining the defendant from alienating \nsuit property and also for a decree of dissolution of partnership of plaintiff and defendant to carry on real estate \nbusiness, the plaintiff produced deeds alleged to have been executed in pursuance of oral agreement of \npartnership showing receipt of Rs 1 lakh by defendant from the plaintiff and for sharing profit between the parties. \nThe defendant admitted the receipt of Rs 1 lakh but claimed it as loan from the plaintiff and was also shown to have \nmade profits out of the business. The findings of the lower court that it was a loan transaction also remained \nunchallenged. It was held that the plaintiff was entitled for a decree for recovery of Rs 1\n\n[Document 5 | CPC | CPC:Section46B | commentary | 491014025-MULLA-on-CPC-pdf | Section 46B | p.2191 | score=0.421]:\nat the \ndecretal amount should be payable by instalments.10\nRelying on the difference in language in rr 142 and 143 of the Ahmedabad City Civil court Rules 1961, and the \nlanguage of O 37, the Gujarat High Court has distinguished the Bombay decision in Pestonji v. Jamshedji, 11 and \nhas held that r 11(1) is in general terms and applies to all suits including summary suits. It has held that rr 142 and \n143 do not take away the right of a defendant to apply for an order under sub-r (1) of this rule.12\n7. Uttar Pradesh Agriculturists Relief Act. The provisions of the Act do not derogate from the provisions of this \nrule.13\n8. Financial Institutions. The fact that a creditor is a public financial institution does not deprive the court of its \npower to award instalments. However, specific statutory restrictions on this power must be kept in mind.14\nAn order allowing the debtor to pay the decretal amount in instalments under the courts inherent power is illegal. By \nvirtue of s 31 of the State Financial Corporations Act, the only mode of recovery of money due is attachment and \nsale of properties hypothecated to the bank. Section 46B of the Act specifically provides that the Act and the Rules \nmade thereunder shall prevail, notwithstanding anything inconsistent contained in any order or law in force. Hence, \nO 20, r 11, Code of Civil Procedure is excluded for proceedings under the\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2191:C8702 | commentary | 491014025-MULLA-on-CPC-pdf | p.2191 | score=0.414]:\nPage 19 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nO 20, r 11 of the Code of Civil Procedure dealt with money suit simpliciter allowing instalment-wise payment, but the \naforesaid provision never prevents any court to exercise inherent power under s 151 of the Code of Civil \nProcedure.1\n2. Judgment and decree. A decree which is not in conformity with the judgment is liable to be reversed and set \naside. For example, in a suit filed by a bank for the recovery of loan amount with interests, the defendants admitted \nthe claim of the bank, but prayed for instalments and reduction of the rate of interest. The trial court passed a \ncompromise decree, despite the objections of the bank to the decree being passed as suggested by defendants. It \nwas held that the decree, being contrary to the facts narrated in the judgment, was liable to be reversed and set \naside.2\nIf the direction regarding instalments is not yet incorporated in decree, ie, so long as the decree incorporating the \norder regarding instalments in terms of amended O 20, r 11, is not drawn up, the direction or order regarding \ninstalments retains, in law, the character of an order.3\n3. Sufficient reason. The possibility of a judgment-debtor obtaining a cross decree in another pending litigation has \nbeen held not to be a sufficient cause for postponing payment of the decretal amount. 4 The rule gives\n\n[Document 7 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P162:C601 | bare_act | the code of civil procedure, 1908 | p.162 | score=0.481]:\noriginal document is \nannexed hereto. \n2. On the . . . . . . day of . . . . . . 19. . . , the arbitrators awarded that the defendant should [pay the plaintiff . . . \nrupees]. \n3. The defendant has not paid the money.\n[As in paras. 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 11\nOn a Foreign Judgment\n(Title)\nA. B., the above-named plaintiff, states as follows:— \n1. On the . . . . . . day of . . . . . . 19. . . , at . . . , in the State [or Kingdom] of the . . . . . . Court of that State [or \nKingdom,] in a suit therein pending between the plaintiff and the defendant, duly adjudged that the defendant \nshould pay to the plaintiff . . . . . . . . .rupees, with interest from the said date. \n2. The defendant has not paid the money.\n[As in paras 4 and 5 of Form No. 1, and Relief claimed.]\nNo. 12\nAgainst Surety for Payment of Rent\n(Title)\nA. B., the above-named plaintiff, states as follows:— \n162\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2253:C8961 | commentary | 491014025-MULLA-on-CPC-pdf | p.2253 | score=0.458]:\nl Insolvency Act, \n1920)\nPayment under Decree\n2[R.1. Modes of paying money under decree.\n(1) All money payable under a decree shall be paid as follows, namely:\n(a) by deposit into the Court whose duty it is to execute the decree, or sent to that Court by postal money \norder or through a bank; or\n(b) out of Court to the decree-holder by postal money order or through a bank or by any other mode wherein \npayment is evidenced in writing; or\n(c) otherwise, as the Court which made the decree, directs.\n(2) Where any payment is made under clause (a) or clause (c) of sub-rule (1), the judgment-debtor shall give notice \nthereof to the decree-holder either through the Court or directly to him by registered post, acknowledgement due.\n(3) Where money is paid by postal money order or through a bank under clause (a) or clause (b) of sub-rule (1), the \nmoney order or payment through bank, as the case may be, shall accurately state the following particulars, namely:\n(a) the number of the original suit;\n(b) the names of the parties or where there are more than two plaintiffs or more than two defendants, as the \ncase may be, the names of the first two plaintiffs and the first two defendants;\n(c) how the money remitted is to be adjusted, that is to say, whether it is towards the principal, interest or \ncosts;\n(d) the number of the execution case of the Court, whether such case is pending; and\n(e)\n\n[TOP_MATCH: Limitation Act | Limitation Act:books/A1963-36.pdf:P13:C36]\n\n[Document 1 | Limitation Act | Limitation Act:books/A1963-36.pdf:P13:C36 | bare_act | A1963-36 | p.13 | score=0.555]:\n13 \n Description of suit Period of limitation Time from which period begins to run \n16. For the price of goods sold and \ndelivered to be paid for by a bill \nof exchange, no such bill being \ngiven. \nThree years. When the period of the proposed bill \nelapses. \n17. For the price of trees or growing \ncrops sold by the plaintiff to the \ndefendant where no fixed period \nof credit is agreed upon. \nThree years. The date of the sale. \n18. For the price of work done by the \nplaintiff for the defendant at his \nrequest, where no time has been \nfixed for payment. \nThree years. When the work is done. \n19. For money payable for money lent. Three years. When the loan is made. \n20. Like suit when the lender has given \na cheque for the money. \nThree years. When the cheque is paid. \n21. For money lent under an agreement \nthat it shall be payable on \ndemand. \nThree years. When the loan is made. \n22. For money deposited under an \nagreement that it shall be \npayable on demand, including \nmoney of a customer in the \nhands of his banker so payable. \nThree years. When the demand is made. \n23. For money payable to the plaintiff \nfor money paid for the \ndefendant. \nThree years. When the money is paid. \n24. For money payable by the \ndefendant to the plaintiff for \nmoney received by the \ndefendant, for the plaintiff's use. \nThree years. When the money is received. \n25. For money payable for interest \nupon\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1795:C7161 | commentary | 491014025-MULLA-on-CPC-pdf | p.1795 | score=0.544]:\nsuit was barred by limitation in terms of Art. 58 of the Limitation Act, 1963. The High Court, \ntherefore, in our opinion, ex facie committed an error in arriving on the aforementioned finding.56\nIn a suit filed by a Bank for recovery of money, where the claim of the Bank was more than 10 lakhs, the Civil Court \nhas no jurisdiction to entertain the suit in view of the bar created under Recovery of Debts Due to Banks and \nFinancial Institutions Act, 1993 and the appropriate remedy was available before the debt recovery Tribunal. Since \nthe suit was barred by statute, it was held liable to be rejected under O 7, r 11(d) of the Code.57\nIn a suit, where permanent injunction was sought prohibiting the defendants from presenting cheques in their favour \nfor encashment, it was held by the Delhi High Court that the reliefs sought will amount to restraining the defendant \nfrom instituting civil or criminal proceedings against the plaintiff on account of non-encashment of cheques which \nwould amount to hampering access to justice. The reliefs sought is barred by law being directly hit by the provisions \nof s 41 (b), (d) of the Specific Relief Act, 1963 and as such the injunction can be refused. However, in the light of \nsubsequent events of the case, it was further held that the entire suit cannot be dismissed as infructuous.58\nIn a matrimonial case before the family courts, the Family\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1797:C7170 | commentary | 491014025-MULLA-on-CPC-pdf | p.1797 | score=0.516]:\nTransfer of Property \nAct 1882. 73 The injunction sought by the plaintiff seeking an order of restraint against using a cheque, which is a \nsubject-matter of proceedings under s 138 of the Negotiable Instruments Act 1881, cannot be granted, as it would \nhave the effect of preventing the defendant from prosecuting the criminal case against the plaintiff. The same is \nbarred by s 41 (b) of the Specific Relief Act 1963, hence the plaint is rejected under O 7, r 11.74\nIn a suit for recovery of money based on promissory not executed on 12-4-2000, the last date for filing the suit was \n12-4-2003, as the date of execution of the promissory not has to be excluded in view of s 12 of the Limitation Act, \n1963. As both dates viz. 12-4-2003 to 15-4-2003 were general holidays, it was held by the Karnataka High Court \nthat suit filed on 16-4-2003 was well within time and not barred by limitation. Therefore, the rejection of the plaint \nwas not proper.75\nIn an Allahabad case, question was whether a suit seeking the eviction of a tenant was barred by s 20, Uttar \nPradesh Act 13 of 1977. The court ordered that the question shall be decided by the evidence of the parties and not \nat that stage. It was held that the trial judge had not, by deferring his decision, affected the rights of the parties. His \norder, in these circumstances, cannot be said to be an order not being in accordance with\n\n[Document 4 | Limitation Act | Limitation Act:Section360 | bare_act | A1963-36 | Section 360 | p.15 | score=0.568]:\n15 \n Description of suit Period of limitation Time from which period begins to run \n45. By the assured to recover premia \npaid under a policy voidable at \nthe election of the insurers. \nThree years. When the insurers elect to avoid the \npolicy. \n46. Under the Indian Succession Act, \n1925 (39 of 1925), section 360 \nor section 361, to compel a \nrefund by a person to whom an \nexecutor or administrator has \npaid a legacy or distributed \nassets. \nThree years. The date of the payment or distribution. \n47. For money paid upon an existing \nconsideration which afterwards \nfails. \nThree years. The date of the failure. \n48. For contribution by a party who has \npaid the whole or more than his \nshare of the amount due under a \njoint decree, or by a sharer in a \njoint estate who has paid the \nwhole or more than his share of \nthe amount of revenue due from \nhimself and his co-sharers. \nThree years. The date of the payment in excess of the \nplaintiff’s own share. \n49. By a co -trustee to enforce against \nthe estate of a deceased trustee a \nclaim for contribution. \nThree years. When the right to contribution accrues. \n50. By the manager of a joint estate of \nan undivided family for \ncontribution, in respect of a \npayment made by him on \naccount of the estate. \nThree years. The date of the payment. \n51. For the profits of immovable \nproperty belonging to the \nplaintiff which have been\n\n[Document 5 | CPC | CPC:Section95 | commentary | 491014025-MULLA-on-CPC-pdf | Section 95 | p.959 | score=0.560]:\nof suit or by an application \nunder this section, the defendant is not entitled to any compensation unless the attachment has been effected. \nMerely procuring an order for attachment before judgment, however, maliciously is not sufficient to entitle the \ndefendant to compensation. 22(As to the period of limitation for a suit, see Limitation Act, 1963, Sch 1, Arts 73, \n80 and 90 and the undermentioned cases). 23 (As to suits for damages for temporary injunction, see the \nundermentioned cases). 24 On determination of lease by efflux of time, plaintiff was granted decree for \npossession. Defendant had obtained ad interim injunction under O 21, r 101 restraining the decree-holder from \ndealing with the goods stored in the premises (oil seeds). It appeared that the defendants had wrongfully stored \noil seeds in the plaintiffs godown. It was held that the plaintiff could claim damages from the defendant. Apart \nfrom s 95 (1), an aggrieved party can sue for damages for wrongful occupation. The scope of such a suit was \nmuch wider than s 95. Malice also need not be proved. Where malice is the gist of the action, neither section 95 \nnor the ingredients of an action for malicious prosecution stand in the way. Damage, with all the legal \nimplications pleaded and proved, should govern the fate of such a suit.25\n4. On insufficient grounds. These words are equivalent to without reasonable\n\n[Document 6 | Limitation Act | Limitation Act:books/A1963-36.pdf:P4:C5 | bare_act | A1963-36 | p.4 | score=0.555]:\n4 \n(j) “period of limitation ” means the period of limitation prescribed for any suit, appeal or \napplication by the Schedule, and “prescribed period” means the period of limitation computed in \naccordance with the provisions of this Act; \n(k) “promissory note ” means any instrument whereby the maker engages absolutely to pay a \nspecified sum of money to another at a time therein limited, or on demand, or at sight; \n(l) “suit” does not include an appeal or an application; \n(m) “tort\" means a civil wrong which is not exclusively the breach of a contract or the breach of a \ntrust; \n(n) “trustee” does not include a benamidar, a mortgagee remaining in possession after the \nmortgage has been satisfied or a person in wrongful possession without title. \nPART II \nLIMITATION OF SUITS, APPEALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is presented to the proper officer; \n(ii) in the case of a pauper, when his application for leave to sue as a pauper is made; and \n(iii) in the case of a claim against a company which is being wound up by the court,\n\n[Document 7 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P177:C640 | bare_act | the code of civil procedure, 1908 | p.177 | score=0.549]:\nreceiver.\nMinority—The defendant was a minor at the time of making the alleged contract .\nPayment into Court—The defendant as to the whole claim (or as to Rs. . . . . . . part of the money claimed, o r\nas the case may be) has paid into Court Rs. . . . . . . and says that this sum is enough to satisfy the plaintiff's\nclaim (or the part aforesaid).\nPerformance remitted—The performance of the promise alleged was remitted on the (date) .\nRescission—The contract was rescinded by agreement between the plaintiff and defendant .\nRes judicata—The plaintiff's claim is barred by the decree in suit (give the reference).\nEstoppel—The plaintiff is estopped from denying the truth of (insert statement as to which estoppel i s\nclaimed) because (here state the facts relied on as creating the estoppel.)\nGround of defence subsequent to institution of suit—Since the institution of the suit, that is to say, on the. . .\n.. day of. . . . . . (set out facts.)\nNo. 1\nDefence in Suits for Goods Sold and Delivered\n1. The defendant did not order the goods.\n2. The goods were not delivered to the defendant.\n3. The price was not Rs.\n[or]\n4. 1.\n5. Except as to Rs. . . . . . . , same as 2.\n6. 3.\n177\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P840:C3234 | commentary | 491014025-MULLA-on-CPC-pdf | p.840 | score=0.547]:\na conclusive adjudication as to those rights, which may be subsequently readjusted in \na suit brought under the penultimate paragraph of the section. 2078 Such a suit is virtually a suit for money had \nand received, and the period of limitation is three years from the date of the receipt of the assets by the \ndefendant. 2079 The suit being one for money had and received, it would be premature if it were brought before \nthe moneys were actually paid to the defendant. A mere order for the payment of money under the section is \nnot sufficient to found the act ion. 2080 \nSuit by Subsequent Mortgagee to Recover Balance of Money Realised by Sale in a Prior Mortgage.X \nmortgages his property to A . He then mortgages the same property to B . Subsequently he executes a further \ncharge on the property in favour of A. A sues X on the first mortgage, joining B as a defendant, and obtains a \ndecree on the mortgage. The property is sold in execution of the decree and a balance of Rs 12,000 which \nremains after satisfying A s decree is deposited in court. A then obtains a decree for sale on further charge and \nin execution of the decree draws out the balance deposited in court. B is not joined as a party to this suit, nor is \nany notice given to him that A was drawing out of court, the balance of Rs 12,000. B then sues A to recover the \namount drawn out by A , that is, Rs 12,000. Such a suit\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C178]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C178 | commentary | 491014025-MULLA-on-CPC-pdf | p.47 | score=0.591]:\nPage 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4786 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.548]:\nvalorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1793:C7150 | commentary | 491014025-MULLA-on-CPC-pdf | p.1793 | score=0.532]:\nthe Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is not paid, as not filed at all.24\nIn an Allahabad case, the plaint was rejected by the trial court for insufficient court-fee. It was held that plaintiff can \nfile a regular appeal or he can make an application before the trial court under ss 148, 149 and 151. The plaintiff \npaid the amount for purchase of court-fees stamp worth lakhs of rupees. However, the counsel for the plaintiff \ncolluded with the defendant and did not deposit the court-fees in the court. The plaint was rejected under O 7, r 11, \nalthough it was restored under s 151. Further, the criminal case was directed to be registered against the defendant \nand the counsel for the plaintiff. 25 If the circumstances for invoking the courts discretion under ss 148, 149 and 151 \nexist, the court can entertain the application, even though the plaintiff had the alternative remedy by way of \nappeal.26 A rejected plaint can be ordered to be restored under inherent powers of the court, 27 but this decision has \nbeen overruled by a Division Bench of the Kerala High Court in Mable v. Dolores 28 wherein it has been held that \ninherent powers cannot be invoked against an order rejecting plaint, when a substantive right by way of\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1793:C7149 | commentary | 491014025-MULLA-on-CPC-pdf | p.1793 | score=0.584]:\nt \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1513 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.581]:\nrtaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided by s 9 of the \nSuits Valuation Act, 1887, that the value of the suit for purposes of jurisdiction is what the High Court may \nspecify by rules made under that section. Where no rules are made, the High Courts of Allahabad and Calcutta \nhave said that the safest and most convenient course is to treat the valuation made by the plaintiff as prima \nfacie the true valuation, but subject to correction by the court. If the defective valuation has been due to an \nimproper motive, the court must decide what should be considered to be the proper value. 53 The cases in which \nthe above rule was laid down were suits for restitution of conjugal rights. In a subsequent case, however, the \nHigh Court of Madras said that, though the rule adopted by the High Courts of Allahabad and Calcutta might be \nappropriate in suits for restitution of conjugal rights, it was not so in suits which affected property, and that the \nbest rule in such cases was to value the suits according to the value of the property liable to be affected \nthereby.54 Thus, a suit to compel registration of an instrument whether the instrument be registrable \ncompulsorily (for example, an instrument of gift) or voluntarily (for\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P428:C1512 | commentary | 491014025-MULLA-on-CPC-pdf | p.428 | score=0.562]:\nn 48 and \ndismissed the appeal as no prejudice had been shown. The matter was taken in appeal to the Supreme Court \nand in affirming the decision of the High Court, the Supreme Court held that even an objection on the ground of \njurisdiction arising out of over-valuation or under-valuation could, in view of the provisions of s 11 of the Suit \nValuation Act, be taken only in the manner mentioned therein, that the decision of the District Court was \ntherefore, not a nullity and that a mere change of forum for appeal was not a prejudice contemplated by the \nsection, nor a mere error on the conclusion reached on the merits.49\n10. Where the subject matter of a suit does not admit of being satisfactorily valued. In some suits, the \nsubject matter is not capable of being estimated at a money value, eg, suits for restitution of conjugal rights; \nsuits to remove a karnavan, 50 suits to direct registration of a document under the Registration Act, 1908, s \n77,51etc. The court fee in such suits is Rs 10 as provided by the Court Fees Act, 1870, Sch II, Art. 17, cl (vi). \nThere is a distinction, however, between valuation for the purpose of jurisdiction and valuation for the purpose \nof ascertaining court fee.52 The subject now under consideration is valuation for purposes of jurisdiction.\nIn case where the subject matter is not capable of being estimated at a money value, it is provided\n\n[Document 7 | CPC | CPC:Section96 | commentary | 491014025-MULLA-on-CPC-pdf | Section 96 | p.1203 | score=0.562]:\nPage 64 of 106\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nbefore the court. That order is formal expression of an adjudication, which so far as regards the court \nexpressing it, conclusively determines the rights of the parties. In fact, s 2 of the Code of Civil Procedure which \ndefines the term decree specifically states that the decree shall be deemed to include rejection of the plaint. \nSection 96 of the Code of Civil Procedure deals with appeal from original decrees.29\nIn the Full Bench decision of Madras High Court in Satyanarayanacharyulu v. Ramalingam, 30 the petitioners \nfiled a suit in the subordinate court for declaration and for other reliefs and paid a fixed court fee of Rs 100 \nunder s 17 A of sch II, Court Fees Act, 1870, valuing the suit for the purposes of jurisdiction at Rs 3,600. The \nquestion arose whether the court fee paid had been correct and after considering the objection the subordinate \njudge came to the conclusion that the suit had been grossly under valued and directed the petitioner/plaintiff to \npay an additional court fee of Rs 400. The order directing payment of additional court fees was made on 14 \nMarch, 1947 and a period ten days time was given for payment of the deficit court fee. The suit was adjourned \nto 24 March, 1947 and by that time, as the deficit court fee was not paid as per the order dated 14 March, 1947, \nthe plaint\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1791:C7139 | commentary | 491014025-MULLA-on-CPC-pdf | p.1791 | score=0.561]:\nrt must accept the plaintiffs valuation. 85 If the correct valuation would render the court incompetent to \nentertain the suit, cl (b) does not apply. In such a case, the plaint must be returned under r 10 to be presented to \nthe proper court and the deficient court-fee will be paid in the court having jurisdiction to hear the suit. 86 In \nconsidering the question of correct valuation, the court is not confined to what appears on the plaint. It can, rely on \nadmissions made in interlocutory proceedings.87 When a suit is not correctly valued, the appropriate order to pass is \nto call upon the plaintiff to give the correct valuation and no order should be passed at that stage for payment of the \ndeficient court-fee.88 A composite order requiring the party to give the correct valuation and to pay deficient court-\nfee is not warranted.89 Where the court holds that the relief has been undervalued and orders it to be corrected, it is \nopen to the plaintiff to amend the valuation at any time before an order rejecting the plaint is made so as to limit the \nclaim to the court-fee paid.90 In suit for accounts, in coming to the conclusion that the relief is undervalued the court \nwill have to take into account that in a suit for account the plaintiff is not obliged to state exact amount which would \nresult after the taking of accounts. If he cannot estimate the exact amount he can put a\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1548:C6164]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1548:C6164 | commentary | 491014025-MULLA-on-CPC-pdf | p.1548 | score=0.553]:\naction for recovery of money based on a medium term loan transaction simpliciter or in \nenforcement of the hypothecation of the bus available in the present case, is a cause of act ion different from the \ncause of action arising out of an equitable mortgage, though the ultimate relief that the plaintiff-Bank is entitled to is \nthe recovery of the term loan that was granted to the appellant. On the scope of O 2, r 2, the Privy Council in \nPayana Reena Saminatha v. Pana Lana Palaniappa, (XLI Ind App 142) has held that O 2, r 2 is directed to securing\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P451:C1622 | commentary | 491014025-MULLA-on-CPC-pdf | p.451 | score=0.497]:\nplace where cause of action in part \nwould arise and not the place where it came to be received. 57 In this case, the petitioner entered into an \nagreement with the Government of Maharashtra in 1968. In 1972, the petitioner abandoned the work. Under cl \n3(b) of the agreement, the appropriate authority of the Government of Maharashtra determined a sum to be \nrecovered from the petitioner. Thereafter, a recovery certificate was issued by the Officer of Maharashtra to the \ncollector of Jhansi (UP) for recovering the above amount as arrears of land revenue. The construction contract \nwas executed in the State of Maharashtra. The liability of the contractor for abandonment of the contract arose \nin Maharashtra. It was held that the challenge to the liability as determined by the officer of Maharashtra cannot \nbe challenged in the courts in Uttar Pradesh. 58 When, port of loading was Bombay, and the consignee was \nlocated in Zurich, Switzerland, no part of cause of act ion, had arisen in Delhi, the defendant did not have \nprincipal place of business or habitual residence in Delhi, the goods were to travel firstly by sea and thereafter \nby road, rail or air, the subject carriage would constitute [multimodal transport] thereby attracting the provisions \nof s 20. It was held that Delhi High Court has no jurisdiction to entertain the suit.59\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P454:C1637 | commentary | 491014025-MULLA-on-CPC-pdf | p.454 | score=0.488]:\nnation. Hence, a part of the cause of act ion arises at the destination. 13 If \nthe contract is to be performed at the place where it is made, the suit on the contract must be filed there and \nnowhere else. A suit for prompt dower by a Mahomeddan wife is a suit on contract and the place of \nperformance must be deemed to be the place where the wife has been residing. 14 In Dadabhai v. Diogo, 15A at \nKarwar sent money to his agent in Bombay with instructions to negotiate a contract for the purchase and \nshipment of goods from Bombay to Karwar. The agent entered into a contract with B and paid him the money, \nbut B failed to ship the goods. A sued B at Karwar, but the court there had no jurisdiction for the contract was \nmade and the money paid in Bombay, and the performance was also to be in Bombay by the shipment of \ngoods from there. A suit for damages for breach of contract and refund of earnest money paid thereunder can \nbe filed at the place where the earnest money was paid as that is part of the cause of action and where that \nwas paid by bill and that was accepted, that amount must be deemed to have been paid at the place of \nacceptance and a suit can be instituted at the place.16 The rejection or repudiation of a claim under a contract of \ninsurance has been held not to be part of the cause of act ion.17\n15. Cause of action in other suits. In an administration suit, the\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1790:C7132 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 | p.1790 | score=0.483]:\nmanifestly found to be vexatious and meritless, in the sense of \nnot disclosing a right to sue, the judge should exercise his power under O 7, r 11,Code of Civil Procedure taking \ncare to see that the ground mentioned therein is fulfilled, and if clever drafting has created the illusion of a cause of \nact ion, the judge should nip it in the bud at the first hearing, by examining the party searchingly, under O 10, Code \nof Civil Procedure.67\nThe plea of non-disclosure of cause of action should be raised at the earliest and cannot be allowed to be raised in \nappeal, revision or execution after seven years of institution of eviction case, especially when no prejudice has been \ncaused to the party so seeking to raise a delayed plea. 68 Likewise, a non-diligent decree holder cannot be favoured \nby a threshold disposal of objections against attachment of property, where third party interest have been created \nas a result of the delay. Order 7, r 11 could not be available where triable issues have arisen.69\nTechnically O 7, r 11, applies to a counterclaim also. But it should not be rejected after evidence is recorded.70\nWhere the agent enters into a contract in his own name, he may be personally liable. In a Calcutta case, the agent \nentered into a contract for the purchase of goods from the plaintiff in his own name. He described himself as the \npurchaser, and did not disclose that\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1861:C7423 | commentary | 491014025-MULLA-on-CPC-pdf | p.1861 | score=0.483]:\nance, an account, payment of a money claim or damages. In \na suit for injunction, counterclaim of possession by the defendant can be entertained under O 8, r 6A of the Code of \nCivil Procedure. 4 In a suit for declaration of a right and title, the defendant is permitted to raise a counterclaim of \nhaving acquired possession of the suit property from the performa defendant. 5 Unless otherwise restricted, a \ncounterclaim for divorce would be maintainable in proceedings for grants of maintenance under s 18 of the Hindu \nAdoption and Maintenance Act 1956.6 Further, in a suit for injunction, the counterclaim for possession also could be \nentertained.7 In a suit for judicial separation by the wife, the husband can have a counterclaim of divorce on any \ngrounds stated in s 13 of the Hindu Marriage Act 1955.8\nThe words both before or after the filing of the suit in r 6A show that a defendant may set up a cause of act ion \nwhich has accrued since the suit was filed. In a suit for injunction, counterclaim for injunction in respect of sale or a \ndifferent property is maintainable. A defendant can claim any right by way of a counterclaim in respect of any cause \nof action accrued to him even though it is independent of the cause of act ion averred by the plaintiff and have the \nsame cause of action adjudicated without relegating the defendant to file a separate suit. Thereby, it is no\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1545:C6145 | commentary | 491014025-MULLA-on-CPC-pdf | p.1545 | score=0.474]:\nPage 15 of 44\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nobliged to file a suit against her husband in the family court and another suit against the father-in-law in the ordinary \ncivil court, when she has a common cause of act ion against the husband and the father-in-law. No splitting up of \nsuch cause of action is contemplated even in the Code of Civil Procedure.15\nIn Anderson v. Kalagarla, 16A agreed to purchase 10 bales of yarn from B. A took delivery of 7 bales, but failed to \npay the price of those bales, and as regards the remaining 3 bales refused to take delivery thereof. Garth C.J., \nexpressed the opinion that a suit by B against A to recover damages for failure to take delivery of the three bales \nwas not a bar to a subsequent suit by B to recover from A the price of 7 bales. The learned judge observed that a \nclaim for the price of goods sold, was a cause of action of different nature from a claim for damages for the non-\nacceptance of goods and the fact that both claims arose under the same contract did not constitute them as one \nand the same cause of act ion. Wilson J, expressed a different opinion, stating that the claims having arisen under \nthe same contract, the cause of action was but one, and that the subsequent suit was therefore barred. The opinion \nof Wilson J, was followed in Duncan v. Jeetmull, 17 which also was a case of breach of one\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P440:C1566 | commentary | 491014025-MULLA-on-CPC-pdf | p.440 | score=0.474]:\nf goods is not a suit for wrong done to property within s 19 but one for \ndamages for breach of contract and must be instituted under s 20 in the court within whose jurisdiction the \ndefendant resides or the cause of act ion has arisen wholly or in part.5\nThe plaintiff may sue either where the defendant resides or the wrong was committed. 6 A wrong may, however, \nconsist of a series of acts and it is sometimes not easy to specify the place where it was committed. Thus, in a \ncase from Burma 7 the defendant at Pyapon wrongfully obtained a magistrates order for the seizure of plaintiffs \nboats at Rangoon and it was held that the Rangoon court had jurisdiction as the wrong was done at Rangoon. \nIn an act ion for malicious prosecution, the court within whose jurisdiction the plaintiff was served with the \nsummons in the criminal case instituted against him has jurisdiction to entertain the suit. The reason given is \nthat though such service is not part of the cause of action for such a suit, the essence of malicious prosecution \nis the malicious abuse of the process of the court viz service of the summons. Hence, the court within whose \njurisdiction such abuse has taken place can entertain such a suit under this section; 8 but it is only at either of \nthe two places mentioned in the section that the suit lies. 9 The High Court of Bombay, however, has extended \nthe meaning of the\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1543:C6138 | commentary | 491014025-MULLA-on-CPC-pdf | p.1543 | score=0.463]:\nr at all if the principal had not become due at the \ndate of the first suit.98\nIn Mahommad Hafiz v. Mahommad Zakariya,1A executed a simple mortgage in 1910. The mortgage provided under \ncl 2, that the interest should be paid monthly, and that if it was not paid for 6 months the mortgagee could realize \neither the unpaid interest only, or both the principal and interest, by bringing a suit without waiting for the expiration \nof the time provided for repayment of the principal. Clause 7 provided that if the principal with interest was not paid \nwithin 3 years, the mortgagee should be entitled to sue for principal and interest. In 1914, the mortgagee sued in \nrespect of the interest due and obtained a decree. In 1915, he brought a second suit in respect of the principal and \nthe interest then due. Their Lordships of the Privy Council held that the second suit could not be maintained, having \nregard to the provisions of this rule. Their Lordships said\nWhat was the cause of action that the plaintiffs possessed when the proceedings were first instituted? It was the \ncause of act ion due either to the fact that the interest had been unpaid for more than six months, or that the three \nyears had elapsed, and the principal was also unpaid, and in either case they could have sued for realisation to \nprovide for the whole, amount secured by the deed.\nThe plaintiffs having not done so were"
+  },
+  "legal_research": {
+    "queries": [
+      "Recovery of Money limitation period India years accrual date right to sue Civil Court",
+      "money recovery plaint mandatory procedural requirements India Civil Court"
+    ],
+    "results": [
+      {
+        "title": "When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law",
+        "url": "https://corporate.cyrilamarchandblogs.com/2020/06/suits-falling-under-article-113-of-the-limitation-act/",
+        "snippet": "A single residuary article may be provided fixing the period of limitation as three years from the time when the right to sue accrues”. As is evident, the Law Commission was mindful to omit the term “first” in Article 120, as far back as 1956.",
+        "date": ""
+      },
+      {
+        "title": "12 THE SCHEDULE (PERIODS OF LIMITATION) [See sections 2(j) and 3]",
+        "url": "https://upload.indiacode.nic.in/schedulefile?aid=AC_CEN_3_20_00005_196336_1517807319297&rid=33",
+        "snippet": "PART IV.—SUITS RELATING TO DECREES AND INSTRUMENTS ... Three years. ... Three years. When the ward attains majority. ... Three years. When the ward attains majority. ... Three years. When the ward dies. ... Thirty years. ... Twelve years . ... Three years. ... Twelve years . When the money ...",
+        "date": ""
+      },
+      {
+        "title": "Limitation Period For Filing A Suit For Declaration Along With Recovery Of Possession Is 12 Years And Not 3 Years: Supreme Court",
+        "url": "https://www.indialaw.in/blog/civil/limitation-for-suit-recovery-supreme-court-sets-12-years-rule/",
+        "snippet": "The Hon’ble Supreme Court (“SC”) ... with a relief for the recovery of possession shall be 12 years from the date the possession of the defendant becomes adverse , in terms of Article 65 of the Schedule […]...",
+        "date": ""
+      },
+      {
+        "title": "What is the limitation period for filing a recovery suit in India? | Law4u",
+        "url": "https://law4u.in/answer/9605/What-is-the-limitation-period-for-filing-a-recovery-suit-in-India",
+        "snippet": "The courts are, therefore directed ... limitation period for filing a recovery suit in India is generally three years from the date the money becomes due ....",
+        "date": ""
+      },
+      {
+        "title": "Money Recovery Suit in India: A Complete Legal Guide",
+        "url": "https://litem.in/money-recovery-suit.php",
+        "snippet": "The time within which the claimant is allowed to initiate a money recovery suit is three years from the time the debt is due . Such acts as acknowledgment of the amount of the debt or part payment made by the debtor can restart the running of ...",
+        "date": ""
+      },
+      {
+        "title": "Civil Suits For Money Recovery In Delhi",
+        "url": "https://www.raizadaassociates.com/blog/money-recovery-in-delhi/",
+        "snippet": "The following steps are imperative: ... A declaration that the suit is not barred by limitation. The plaint must be signed and verified by the plaintiff or an authorised representative .",
+        "date": ""
+      },
+      {
+        "title": "Recovery Suit",
+        "url": "https://www.indialawoffices.com/knowledge-centre/recovery-suit",
+        "snippet": "Recovery Suit or Ordinary Suit is a civil remedy under Order 4 CPC for recovery of money. Time limit to file a suit is within 3 years from date of cause of action .",
+        "date": ""
+      },
+      {
+        "title": "How To File A Money Recovery Suit? - leadindia.law",
+        "url": "https://www.leadindia.law/legal-services/civil/money-recovery",
+        "snippet": "Yes, it is mandatory to pay the ... matter or the relief being sought. The Money Recovery Suit is filed under Order 37, Code of Civil Procedure ....",
+        "date": ""
+      },
+      {
+        "title": "Civil Recovery Suit & Affidavit in India: Procedure, Limitation & Drafting Formats",
+        "url": "https://evaakil.com/civil-recovery-suit-affidavit-in-india/",
+        "snippet": "Garnishee Orders: Directing third parties (who owe money to the debtor) to pay the Plaintiff directly . Arrest and Detention: In cases where the debtor has means but refuses to pay.",
+        "date": ""
+      },
+      {
+        "title": "Suit for recovery of money under CPC: Step by Step Process and Sample",
+        "url": "https://www.legalbites.in/suit-for-recovery-of-money-under-cpc",
+        "snippet": "This implies that the steps of filing a WS within a time period of 30 days and not later than 90 days , a response, admission of documents, formulation of issues by the Court, leading testimony, cross-examination by parties, concluding arguments, ...",
+        "date": ""
+      }
+    ],
+    "summary": "[When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law] A single residuary article may be provided fixing the period of limitation as three years from the time when the right to sue accrues”. As is evident, the Law Commission was mindful to omit the term “first” in Article 120, as far back as 1956.\n[12 THE SCHEDULE (PERIODS OF LIMITATION) [See sections 2(j) and 3]] PART IV.—SUITS RELATING TO DECREES AND INSTRUMENTS ... Three years. ... Three years. When the ward attains majority. ... Three years. When the ward attains majority. ... Three years. When the ward dies. ... Thirty years. ... Twelve years . ... Three years. ... Twelve years . When the money ...\n[Limitation Period For Filing A Suit For Declaration Along With Recovery Of Possession Is 12 Years And Not 3 Years: Supreme Court] The Hon’ble Supreme Court (“SC”) ... with a relief for the recovery of possession shall be 12 years from the date the possession of the defendant becomes adverse , in terms of Article 65 of the Schedule […]...\n[What is the limitation period for filing a recovery suit in India? | Law4u] The courts are, therefore directed ... limitation period for filing a recovery suit in India is generally three years from the date the money becomes due ....\n[Money Recovery Suit in India: A Complete Legal Guide] The time within which the claimant is allowed to initiate a money recovery suit is three years from the time the debt is due . Such acts as acknowledgment of the amount of the debt or part payment made by the debtor can restart the running of ...\n[Civil Suits For Money Recovery In Delhi] The following steps are imperative: ... A declaration that the suit is not barred by limitation. The plaint must be signed and verified by the plaintiff or an authorised representative .\n[Recovery Suit] Recovery Suit or Ordinary Suit is a civil remedy under Order 4 CPC for recovery of money. Time limit to file a suit is within 3 years from date of cause of action .\n[How To File A Money Recovery Suit? - leadindia.law] Yes, it is mandatory to pay the ... matter or the relief being sought. The Money Recovery Suit is filed under Order 37, Code of Civil Procedure ....\n[Civil Recovery Suit & Affidavit in India: Procedure, Limitation & Drafting Formats] Garnishee Orders: Directing third parties (who owe money to the debtor) to pay the Plaintiff directly . Arrest and Detention: In cases where the debtor has means but refuses to pay.",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": {
+      "article": "47",
+      "description": "For money paid upon an existing \nconsideration which afterwards \nfails.",
+      "period": "Three years.",
+      "accrual": "The date of the failure.",
+      "source": "rag"
+    },
+    "user_cited_provisions": [
+      {
+        "section": "Section 5",
+        "act": "",
+        "text": "s not Rs.\n[or]\n4. 1.\n5. Except as to Rs. . . . . . . , same as 2.\n6. 3.\n177",
+        "source": "rag"
+      }
+    ],
+    "enrichment_log": [
+      "limitation: FOUND in RAG (Article 47)",
+      "Section 5 : FOUND in RAG"
+    ]
+  },
+  "template": {
+    "template_id": "civil/money_recovery_plaint",
+    "template_version": "1.1",
+    "doc_type": "money_recovery_plaint",
+    "law_domain": "Civil",
+    "party_labels": {
+      "primary": "Plaintiff",
+      "opposite": "Defendant"
+    },
+    "annexure_scheme": {
+      "A": "Primary transaction document (agreement/contract/invoice/purchase order)",
+      "B": "Payment or delivery proof (bank statement/receipt/UTR/delivery challan)",
+      "C": "Legal notice sent to defendant",
+      "D": "Reply to legal notice (if any)",
+      "E": "Acknowledgment/correspondence document (if any)",
+      "F": "Additional supporting documents"
+    },
+    "placeholder_dates": {
+      "AGREEMENT_DATE": "Date of the agreement/contract/transaction between parties",
+      "TRANSACTION_DATE": "Date of the primary transaction (payment made/goods delivered/invoice raised)",
+      "PERFORMANCE_DATE": "Date by which the defendant was obligated to perform/pay",
+      "DEFAULT_DATE": "Date when the defendant failed to perform/pay",
+      "NOTICE_DATE": "Date when legal notice was sent",
+      "NOTICE_REPLY_DATE": "Date when reply to legal notice was received",
+      "CAUSE_OF_ACTION_DATE": "Date when cause of action first arose",
+      "FILING_DATE": "Date of filing the suit"
+    },
+    "sections": [
+      {
+        "section_id": "court_heading",
+        "heading": "",
+        "type": "template",
+        "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+      },
+      {
+        "section_id": "title",
+        "heading": "",
+        "type": "template",
+        "body": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)"
+      },
+      {
+        "section_id": "parties",
+        "heading": "BETWEEN",
+        "type": "template_with_fill",
+        "instruction": "Draft the parties section listing plaintiff and defendant(s) with full particulars: name, age, occupation, and address. Use sui juris averment for competency. If any detail is missing, use the appropriate {{PLACEHOLDER}}.",
+        "context_keys": [
+          "intake.parties"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "sui\\s+juris|competent\\s+to\\s+sue|major\\s+in\\s+age",
+            "required": true,
+            "description": "Competency averment"
+          },
+          {
+            "type": "keyword",
+            "match": "Plaintiff",
+            "required": true,
+            "description": "Plaintiff label"
+          },
+          {
+            "type": "keyword",
+            "match": "Defendant",
+            "required": true,
+            "description": "Defendant label"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "witness_names"
+        ]
+      },
+      {
+        "section_id": "jurisdiction",
+        "heading": "JURISDICTION",
+        "type": "llm_fill",
+        "instruction": "Draft the jurisdiction section establishing territorial and pecuniary jurisdiction. For territorial jurisdiction, state SPECIFIC facts: where the Defendant resides or carries on business, where payment was made, where the agreement was executed, or where the cause of action arose — with concrete place references. For pecuniary jurisdiction, state the claim amount and that it falls within this court's monetary limits.",
+        "context_keys": [
+          "intake.jurisdiction",
+          "intake.facts"
+        ],
+        "rag_query": null,
+        "examples": {
+          "bad": "The cause of action arose within the jurisdiction of this Court.",
+          "good": "The Defendant resides and carries on business at {{DEFENDANT_ADDRESS}}, which falls within the territorial jurisdiction of this Court. Further, the transaction was executed within the local limits of this Court's jurisdiction."
+        },
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "territorial|within\\s+the\\s+(local\\s+)?limits",
+            "required": true,
+            "description": "Territorial jurisdiction ground"
+          },
+          {
+            "type": "regex",
+            "match": "pecuniary|monetary\\s+jurisdiction",
+            "required": true,
+            "description": "Pecuniary jurisdiction ground"
+          },
+          {
+            "type": "regex",
+            "match": "resid|carries\\s+on\\s+business|situate|located|executed\\s+at",
+            "required": true,
+            "description": "Specific territorial link (residence/business/location)"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "court_name",
+          "place_names",
+          "bank_names"
+        ]
+      },
+      {
+        "section_id": "facts",
+        "heading": "FACTS OF THE CASE",
+        "type": "llm_fill",
+        "instruction": "Draft the facts section as numbered paragraphs in chronological narrative form. Each paragraph must tell a story — not state conclusions. Cover: (1) How the parties came to know each other and the nature of their relationship, (2) What was agreed — the specific terms of the transaction/agreement, (3) What obligations each party undertook and the timeline for performance, (4) The specific transaction — payment made, goods/services supplied, invoice raised, loan given, etc. with amount, mode, date, (5) What exactly constituted the defendant's failure — describe the specific default with detail, (6) What happened after the default — communications, demands, legal notice and response. Reference documents as 'Annexure [LABEL]'. Do NOT state legal conclusions in this section — keep it purely factual.",
+        "context_keys": [
+          "intake.facts",
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "examples": {
+          "bad": "Defendant failed to pay.",
+          "good": "Despite repeated demands, the Defendant neither performed his obligations under the agreement nor paid the amount of Rs. {{CLAIM_AMOUNT}}/- to the Plaintiff. The Defendant's last communication was on {{DATE}}, wherein he sought further time but made no payment whatsoever."
+        },
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "business|transaction|advance|paid|lent|loan|transferred|supplied|delivered|invoiced|goods|services|amount\\s+due|outstanding|purchase\\s+order",
+            "required": true,
+            "description": "Transaction/payment/supply stated"
+          },
+          {
+            "type": "regex",
+            "match": "fail(ed|ure)|default(ed)?|breach(ed)?|did\\s+not\\s+(re)?pay|neglect(ed)?",
+            "required": true,
+            "description": "Default/breach pleaded"
+          },
+          {
+            "type": "regex",
+            "match": "Rs\\.?\\s*[\\d,]+|₹\\s*[\\d,]+|CLAIM_AMOUNT",
+            "required": true,
+            "description": "Claim amount stated"
+          },
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Evidence referenced"
+          },
+          {
+            "type": "regex",
+            "match": "agreed|terms|oblig",
+            "required": true,
+            "description": "Agreement terms mentioned (narrative quality)"
+          },
+          {
+            "type": "regex",
+            "match": "legal\\s+notice|registered\\s+post|demand",
+            "required": true,
+            "description": "Notice/demand communication mentioned"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "bank_names",
+          "company_names",
+          "place_names"
+        ]
+      },
+      {
+        "section_id": "legal_basis",
+        "heading": "LEGAL BASIS AND GROUNDS",
+        "type": "llm_fill",
+        "instruction": "Draft the legal basis section in paragraph form. Choose the statutory provisions that BEST FIT the specific facts of this money recovery — the legal theory must match the nature of the transaction (e.g., breach of contract, goods sold and delivered, loan recovery, restitution, etc.). For each provision: (1) State what the provision says — the legal rule it creates, (2) Explain what factual conditions trigger its application, (3) Show how the facts of this case satisfy those conditions. If applicable, include an alternative plea using 'In the alternative and without prejudice to the above...' framing. Include defensive pleading where appropriate. Cite provisions from the VERIFIED STATUTORY PROVISIONS list in context.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": "from_enrichment",
+        "examples": {
+          "bad": "Under Section X, the Defendant is bound to pay.",
+          "good": "[Applicable Section] of the [Applicable Act] provides that [state the legal rule]. The conditions for invoking this provision are [state conditions]. In the present case, [show how the specific facts — the nature of the transaction, the obligation, and the default — satisfy those conditions]."
+        },
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Section\\s+\\d+",
+            "required": true,
+            "description": "At least one statutory section cited"
+          },
+          {
+            "type": "regex",
+            "match": "bound|obligat|liable|entitle|duty|right",
+            "required": true,
+            "description": "Legal consequence stated"
+          },
+          {
+            "type": "regex",
+            "match": "provides?|states?|stipulates?|enacts?|lays\\s+down",
+            "required": true,
+            "description": "Statutory provision explained (not just cited)"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "statutory_provisions"
+        ]
+      },
+      {
+        "section_id": "cause_of_action",
+        "heading": "CAUSE OF ACTION",
+        "type": "llm_fill",
+        "instruction": "Draft the cause of action section in PARAGRAPH prose (not numbered sub-headings). Must cover: (1) ORIGIN — when and how the right to sue first arose, anchored to the default/failure date, (2) FURTHER ACCRUAL — when the cause of action further arose (e.g., failure to comply with legal notice), (3) CONTINUITY — that the cause of action is continuing because the defendant continues to wrongfully retain the money. The cause must be anchored to the failure/default date, NOT the notice date. Write in flowing paragraph form — avoid mechanical sub-headings like '(a) underlying obligation'.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": null,
+        "examples": {
+          "bad": "Cause of action arose on X date.",
+          "good": "The cause of action for the present suit first arose on {{DEFAULT_DATE}} when the Defendant failed to perform his obligations despite being bound to do so, and the Plaintiff's right to claim the amount thereby accrued. The cause of action further and continuously arose on {{NOTICE_DATE}} when the Defendant, despite receipt of the legal notice demanding payment, failed, neglected, and refused to pay the said amount."
+        },
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "cause\\s+of\\s+action",
+            "required": true,
+            "description": "Cause of action stated"
+          },
+          {
+            "type": "regex",
+            "match": "first\\s+arose|ar[oi]se|accrued",
+            "required": true,
+            "description": "Origin/accrual stated"
+          },
+          {
+            "type": "regex",
+            "match": "further\\s+(arose|accrued|and\\s+continuously)",
+            "required": true,
+            "description": "Further accrual stated"
+          },
+          {
+            "type": "regex",
+            "match": "continu(ing|es|ed)\\s+(one|cause|to)",
+            "required": true,
+            "description": "Continuing nature stated explicitly"
+          },
+          {
+            "type": "regex",
+            "match": "wrongfully\\s+retain|without\\s+(any\\s+)?lawful|till\\s+the\\s+date\\s+of\\s+(filing|reali)|continues\\s+to\\s+retain|ongoing\\s+retention|refuses\\s+to\\s+(refund|return|repay|restore|pay)",
+            "required": true,
+            "description": "Wrongful retention/non-payment stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "place_names"
+        ]
+      },
+      {
+        "section_id": "limitation",
+        "heading": "LIMITATION",
+        "type": "llm_fill",
+        "instruction": "Draft the limitation section stating: (1) the applicable Article of the Limitation Act, 1963 Schedule (from enrichment or use placeholder), (2) the limitation period, (3) the starting date of limitation (must be anchored to cause_of_action_date/default_date, NOT notice_date), (4) that the suit is within time. If limitation article is not available in enrichment, use {{LIMITATION_ARTICLE}} placeholder.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Article\\s+\\d+|LIMITATION_ARTICLE",
+            "required": true,
+            "description": "Limitation article cited or placeholdered"
+          },
+          {
+            "type": "regex",
+            "match": "Limitation\\s+Act",
+            "required": true,
+            "description": "Limitation Act reference"
+          },
+          {
+            "type": "regex",
+            "match": "within\\s+(the\\s+)?(?:period|time|limitation)",
+            "required": true,
+            "description": "Within limitation stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "valuation_court_fee",
+        "heading": "VALUATION AND COURT FEE",
+        "type": "template_with_fill",
+        "instruction": "Draft the valuation and court fee section stating: (1) suit valuation equals the claim amount, (2) court fee calculated per applicable state court fees act. Use court_fee context from web search if available, otherwise use {{COURT_FEE_AMOUNT}} placeholder.",
+        "context_keys": [
+          "intake.facts.amounts",
+          "court_fee"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "valuation|valued",
+            "required": true,
+            "description": "Valuation stated"
+          },
+          {
+            "type": "regex",
+            "match": "court\\s+fee|COURT_FEE",
+            "required": true,
+            "description": "Court fee stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name"
+        ]
+      },
+      {
+        "section_id": "interest",
+        "heading": "INTEREST",
+        "type": "llm_fill",
+        "instruction": "Draft the interest section with a 3-part structure: (1) Pre-suit interest — from default date to filing date with rate and justification, (2) Pendente lite interest — during pendency of suit under Section 34 CPC with rate, (3) Future interest — post-decree until realization with rate. Justify the interest rate: state why the claimed rate is appropriate (commercial transaction, wrongful retention, prevailing bank rate, contractual understanding). Cite Section 34 of CPC for pendente lite interest.",
+        "context_keys": [
+          "intake.facts.amounts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "pre-suit|prior\\s+to\\s+(the\\s+)?filing|before\\s+the\\s+suit|from.*default.*to.*filing",
+            "required": true,
+            "description": "Pre-suit interest"
+          },
+          {
+            "type": "regex",
+            "match": "pendente\\s+lite|during\\s+(the\\s+)?pendency",
+            "required": true,
+            "description": "Pendente lite interest"
+          },
+          {
+            "type": "regex",
+            "match": "Section\\s+34|S\\.?\\s*34",
+            "required": true,
+            "description": "Section 34 CPC cited"
+          },
+          {
+            "type": "regex",
+            "match": "per\\s+(cent|annum)|%\\s+per\\s+annum|INTEREST_RATE",
+            "required": true,
+            "description": "Interest rate stated"
+          },
+          {
+            "type": "regex",
+            "match": "commercial|wrongful(ly)?\\s+retain|bank\\s+(lending\\s+)?rate|depriv|benefit",
+            "required": true,
+            "description": "Interest rate justification provided"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ],
+        "allow_claimed_amounts": true
+      },
+      {
+        "section_id": "prayer",
+        "heading": "PRAYER",
+        "type": "llm_fill",
+        "instruction": "Draft the prayer section with at least 6 specific sub-prayers as lettered items (a, b, c, ...). Each prayer must state exact amounts or rate placeholders — never vague. Must include: (a) decree for principal amount with Rs. figure, (b) pre-suit interest with rate and date range, (c) pendente lite interest under Section 34 CPC with rate, (d) future interest post-decree with rate until realization, (e) costs of the suit including pre-litigation costs for sending legal notice, (f) any other relief the court deems fit and proper in the facts and circumstances.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "keyword",
+            "match": "decree",
+            "required": true,
+            "description": "Decree prayer"
+          },
+          {
+            "type": "regex",
+            "match": "Rs\\.?\\s*[\\d,]+|₹\\s*[\\d,]+|CLAIM_AMOUNT",
+            "required": true,
+            "description": "Amount in prayer"
+          },
+          {
+            "type": "keyword",
+            "match": "costs",
+            "required": true,
+            "description": "Costs claimed"
+          },
+          {
+            "type": "keyword",
+            "match": "interest",
+            "required": true,
+            "description": "Interest in prayer"
+          },
+          {
+            "type": "regex",
+            "match": "any\\s+other\\s+(relief|order)|deem(s|ed)?\\s+fit",
+            "required": true,
+            "description": "General relief clause"
+          },
+          {
+            "type": "regex",
+            "match": "pre-?lit|legal\\s+notice",
+            "required": true,
+            "description": "Pre-litigation costs mentioned"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "document_list",
+        "heading": "LIST OF DOCUMENTS RELIED UPON",
+        "type": "template_with_fill",
+        "instruction": "Generate a numbered list of documents the plaintiff relies upon, mapping to the annexure scheme. For each document: Serial No., Description, Annexure Label. Only list documents mentioned in evidence. If evidence is empty, list standard expected documents with {{DOCUMENT_DESCRIPTION}} placeholders.",
+        "context_keys": [
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Annexure labels present"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "bank_names"
+        ]
+      },
+      {
+        "section_id": "verification",
+        "heading": "VERIFICATION",
+        "type": "template",
+        "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+      },
+      {
+        "section_id": "advocate",
+        "heading": "",
+        "type": "template",
+        "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+      }
+    ]
+  },
+  "filled_sections": [
+    {
+      "section_id": "court_heading",
+      "heading": "",
+      "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "title",
+      "heading": "",
+      "text": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "parties",
+      "heading": "BETWEEN",
+      "text": "The Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, a textile trading firm, having its address at {{PLAINTIFF_ADDRESS}}, is sui juris and competent to sue and be sued in this Court. The Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, a garment manufacturer, having its address at {{DEFENDANT_ADDRESS}}, is sui juris and competent to be sued and to defend this action.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "jurisdiction",
+      "heading": "JURISDICTION",
+      "text": "The Defendant resides and carries on business at {{DEFENDANT_ADDRESS}} within the territorial jurisdiction of the Civil Court at {{COURT_PLACE}}, State of {{STATE}}. The Plaintiff and Defendant entered into the sale of textiles on credit, with the primary transactions and deliveries taking place during the period covered by the purchase orders and delivery challans; the delivery challans were signed by the Defendant at its premises located at {{DELIVERY_LOCATION}} in {{STATE}} and the invoices were raised in respect of those deliveries. The cause of action arose in this State when the Defendant failed to discharge the admitted indebtedness despite repeated reminders and a legal notice dated {{NOTICE_DATE}}, rendering the Defendant liable to pay the amounts due under the said invoices totaling Rs. 5,00,000/-. This Court therefore has territorial jurisdiction to entertain the suit.\n\nPecuniary jurisdiction: The suit seeks Rs. 5,00,000/-, which falls within the monetary limits of this Civil Court.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "payment",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{TRANSACTION_DATE}}",
+            "{{NOTICE_DATE}}",
+            "{{CAUSE_OF_ACTION_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure B",
+            "Annexure C"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "facts",
+      "heading": "FACTS OF THE CASE",
+      "text": "1. The Plaintiff, a textile trading firm, and the Defendant, a garment manufacturer, began their business relationship when the Defendant placed purchase orders for textiles with the Plaintiff, which were fulfilled over a period of three months. The Plaintiff delivered the goods in accordance with the purchase orders, and the Defendant signed delivery challans acknowledging receipt of each delivery. The sequence of purchase orders, the corresponding delivery challans, and the invoices evidencing these transactions are collectively evidenced by Annexure A (primary transaction documents) and Annexure B (delivery proofs).\n\n2. The parties’ agreement contemplated supply on credit for a period of three months from the date of each purchase order, with the Plaintiff raising invoices for each shipment and the Defendant obligated to discharge payment within the three-month credit window. The terms of the credit arrangement, the purchase orders, and the issued invoices are described in Annexure A, while the delivery receipts reflecting acceptance of goods are captured in Annexure B.\n\n3. In performance of the agreement, the Plaintiff delivered goods in three installments over the three-month credit cycle, and the Defendant undertook to pay the invoiced amounts within the applicable three-month period. Each delivery was accompanied by a signed delivery challan evidencing receipt of goods by the Defendant, with the corresponding invoices being issued by the Plaintiff and annexed as Annexure A.\n\n4. The cumulative principal amount claimed is Rs. 5,00,000, representing the unpaid invoices raised in connection with the three-month credit periods. The goods delivered and the invoices issued for these shipments are evidenced by Annexure A, and the delivery of the goods is evidenced by the signed delivery challans in Annexure B. The invoices set out the due dates for payment, and the Plaintiff reserves the right to claim interest on overdue amounts as per applicable law.\n\n5. On {{DEFAULT_DATE}}, the Defendant defaulted by failing to make payment of the outstanding Rs. 5,00,000, thereby breaching the agreed credit terms. Thereafter, the Plaintiff sent reminders on several occasions demanding payment, and a legal notice demanding immediate payment was served on the Defendant on {{NOTICE_DATE}}. Annexure C contains the copy of the legal notice; Annexure D, if any, contains any reply to the legal notice.\n\n6. After the default and the legal notice, no payment was received from the Defendant, and there has been no satisfactory response to the notices issued. This suit was filed on {{FILING_DATE}} before the appropriate Civil Court seeking recovery of Rs. 5,00,000 along with interest and costs, based on the unpaid invoices and the underlying delivery and purchase documentation referenced above. The claim is supported by Annexure A (purchase orders and invoices), Annexure B (delivery challans), and Annexure C (legal notice).",
+      "type": "llm_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "legal_basis",
+      "heading": "LEGAL BASIS AND GROUNDS",
+      "text": "The Plaintiff relies on a statutory basis for recovery of money payable on a sale of goods on credit, the rule being that where goods are supplied on credit and the price remains unpaid, the creditor is entitled to recover the unpaid price from the buyer. This ground is triggered by delivery of the goods under a credit arrangement, the signing of delivery challans by the Defendant, and the issuance of multiple invoices, followed by demand for payment and issuance of a legal notice, all of which culminated in nonpayment by the Defendant for a sum of Rs. 5,00,000, which remains due. In the present case, goods were supplied on credit over a period of three months pursuant to purchase orders, with delivery challans signed by the Defendant and invoices raised, and despite repeated reminders and the sending of a legal notice, the Defendant has not discharged its obligation, thereby binding the Defendant to pay the principal amount of Rs. 5,00,000 to the Plaintiff. The Plaintiff further submits that, in the alternative and without prejudice to the above, the facts establish a debt arising from a contract for the sale of goods on credit, and the Plaintiff seeks to recover the principal along with permissible interest and costs. The amount claimed is Rs. 5,00,000, and court fees and valuation shall be computed in accordance with the applicable court’s schedule, with interest on the outstanding amount to be awarded from the due date until actual payment as may be directed by the Court. For purposes of verification and clarity, the Plaintiff relies on Annexures A through C to establish the existence of the transaction documents, payment/delivery proof, and the legal notice, respectively, with Annexure A being the primary transaction documents such as purchase orders and invoices, Annexure B providing delivery or delivery challan evidence, and Annexure C evidencing the legal notice sent to the Defendant. The claim is being pursued before the appropriate Civil Court having jurisdiction to entertain money recovery suits, and the Plaintiff prays for payment of Rs. 5,00,000 along with interest, costs, and such other relief as the Court may deem fit in law. The Plaintiff reserves the right to amend or supplement this basis of action consistent with the facts evidenced by the Annexures and any additional documents produced at the hearing. In light of the above, the Plaintiff seeks relief in terms of the principal amount along with interest, and all incidental costs, including court fees, to be determined in accordance with law. {PLACEHOLDER_FOR_VERIFICATION}",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "payment",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{DATE_OF_LAST_DEFAULT}}",
+            "{{DATE_OF_FILINGS}}"
+          ],
+          "evidence_refs": [
+            "Annexure A",
+            "Annexure B",
+            "Annexure C"
+          ]
+        }
+      ],
+      "must_include_passed": false,
+      "retries": 3,
+      "validation_issues": []
+    },
+    {
+      "section_id": "cause_of_action",
+      "heading": "CAUSE OF ACTION",
+      "text": "The cause of action herein first arose on {{DEFAULT_DATE}} when the Defendant failed to pay the Plaintiff the sum of Rs. 5,00,000 for textiles supplied by the Plaintiff under three purchase orders executed over a three-month credit period, the goods having been delivered to the Defendant at place_names with delivery challans signed by the Defendant and invoices raised for each shipment. The Plaintiff’s right to sue accrued as each payment fell due and the Defendant defaulted on those due dates. The cause of action further accrued on {{NOTICE_DATE}} when the Defendant, despite service of a legal notice demanding payment of the principal amount, continued to neglect, refuse and fail to pay. The action is continuing because the Defendant still retains the entire unpaid amount and has not discharged its obligation; the Plaintiff remains entitled to recover the principal sum, with interest at the lawful rate from {{DEFAULT_DATE}} until realization and costs as may be awarded by the Court.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{DEFAULT_DATE}}",
+            "{{NOTICE_DATE}}",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure A",
+            "Annexure B",
+            "Annexure C"
+          ]
+        }
+      ],
+      "must_include_passed": false,
+      "retries": 3,
+      "validation_issues": []
+    },
+    {
+      "section_id": "limitation",
+      "heading": "LIMITATION",
+      "text": "Limitation: Article 47 of the Schedule to the Limitation Act, 1963 applies to money payable on an existing consideration which afterwards fails. The period prescribed is three years, and the accrual date is the date of default, i.e., {{DEFAULT_DATE}}; the cause of action first arose on {{CAUSE_OF_ACTION_DATE}}. The suit is within time as it is filed on {{FILING_DATE}}, which falls within three years from {{DEFAULT_DATE}}.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "payment",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{DEFAULT_DATE}}",
+            "{{CAUSE_OF_ACTION_DATE}}",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure [LIMITATION_ARTICLE]"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "valuation_court_fee",
+      "heading": "VALUATION AND COURT FEE",
+      "text": "Valuation and Court Fee: The suit is valued at Rs. 5,00,000 for purposes of court fee and jurisdiction, being the principal amount claimed by the Plaintiff as unpaid invoices for goods supplied on credit. The Court Fee payable on the plaint is Rs. {{COURT_FEE_AMOUNT}}, calculated in accordance with the applicable State Court Fees Act.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "interest",
+      "heading": "INTEREST",
+      "text": "Pre-suit interest is sought on the principal sum of Rs. 5,00,000 that remained unpaid after Defendant defaulted on {{DEFAULT_DATE}} despite delivery of goods on credit under Purchase Orders dated {{AGREEMENT_DATE}} and corresponding Delivery Challans signed by Defendant, with invoices raised in aggregate. The Plaintiff, a textile trading firm, had supplied goods to the Defendant on credit over a three-month period and has been sending repeated reminders for payment; however, the Defendant continued to neglect payment obligations and the amount remained outstanding as of the filing of this suit on {{FILING_DATE}}. The Plaintiff therefore claims simple interest on Rs. 5,00,000 at the rate of 12% per annum from {{DEFAULT_DATE}} to {{FILING_DATE}} to compensate for the time value of money and to deter wrongful retention of Plaintiff’s funds. The rate of 12% per annum reflects the commercial nature of the textile trade, the customary lending rate for trade credit in similar transactions, and the contractual understanding that outstanding invoices bear interest in case of default. The pre-suit interest is calculated on the principal amount of Rs. 5,00,000 and runs from {{DEFAULT_DATE}} up to the date of filing this suit, i.e., {{FILING_DATE}}.\n\nPendente lite interest is claimed on the decretable amount during the pendency of this litigation under Section 34 of the Code of Civil Procedure, 1908. From the date of filing, i.e., {{FILING_DATE}}, until the date of decree, Plaintiff seeks pendente lite interest at the rate of 12% per annum on the entire principal sum and accrued interest, so as to compensate for the period of delay caused by Defendant’s non-payment and to prevent unjust enrichment. Section 34 CPC empowers the Court to award interest on the principal amount during the pendency of the suit at such rate as may be deemed just, and the Plaintiff contends that 12% per annum is justly warranted here given the commercial context, the Defendant’s known default, and the need to preserve the remedy of the Plaintiff. The precise quantum and calculation shall be determined by the Court in accordance with Section 34 CPC, with interest accruing from {{FILING_DATE}} to the date of decree.\n\nFuture interest, if any sum is decreed in favor of the Plaintiff, shall be calculated at the rate of 12% per annum simple from the date of decree until realization on the amount decreed, to be incorporated in the final decree and subject to execution. This plea for post-decree interest is grounded in the same commercial considerations and the Defendant’s ongoing obligation to satisfy the decreed amount, and it is intended to ensure timely realization of the amount due to Plaintiff.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{DEFAULT_DATE}}",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure A",
+            "Annexure B",
+            "Annexure C"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "prayer",
+      "heading": "PRAYER",
+      "text": "PRAYER\n\n(a) A decree be passed in favour of the Plaintiff and against the Defendant for payment of Rs. 5,00,000/- as the principal amount due on account of goods supplied to the Defendant by the Plaintiff on credit, the invoices having been raised and multiple delivery challans signed by the Defendant at the Plaintiff’s premises located in {{PLACE}} on the dates corresponding to {{TRANSACTION_DATE}}, and acknowledged by the Defendant through delivery challans, with costs.\n\n(b) Pre-suit interest on the principal sum of Rs. 5,00,000/- at the rate of {{PRE_SUIT_INTEREST_RATE}} per annum from {{CAUSE_OF_ACTION_DATE}} to {{FILING_DATE}} on the amounts due under the invoices, calculated and payable along with the principal, in accordance with law.\n\n(c) Pendente lite interest on the decretal sum under Section 34 CPC at the rate of {{PENDENTE_LITE_RATE}} per annum on Rs. 5,00,000/- from {{FILING_DATE}} until the date of decree, as the amount remained unpaid despite demand and legal notice.\n\n(d) Post-decree interest at the rate of {{POST_DECREE_INTEREST_RATE}} per annum on the principal amount from the date of decree until realization, to be awarded to the Plaintiff in order to compensate for the delay in recovery of the outstanding amount.\n\n(e) Costs of the suit including the court fee and the pre-litigation costs incurred for sending the legal notice dated {{NOTICE_DATE}}, being Rs. {{COURT_FEE}} as court fee and Rs. {{PRE_LITIGATION_COSTS}} incurred for the legal notice, payable by the Defendant to the Plaintiff, in addition to the decretal amount.\n\n(f) Any other relief which the Court may deem fit and proper in the facts and circumstances of the case, including ancillary orders for recovery and enforcement of the decree, as may be necessary to serve the ends of justice.\n\n(g) General relief: Pass such other order or directions as the Court may deem fit and proper in the facts and circumstances of the case to meet the ends of justice.\n\nVerification and further relief, if any, are prayed for in the manner consistent with the facts stated in the plaint and in accordance with law.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "payment",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{CAUSE_OF_ACTION_DATE}}",
+            "{{FILING_DATE}}",
+            "{{NOTICE_DATE}}"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": [
+        {
+          "issue_type": "unsupported_claim",
+          "description": "Claim type 'payment' requires evidence but has no evidence_refs",
+          "original": "{\"claim_type\": \"payment\", \"entities\": [\"plaintiff_name\", \"defendant_name\"], \"dates\": [\"{{CAUSE_OF_ACTION_DATE}}\", \"{{FILING_DATE}}\", \"{{NOTICE_DATE}}\"], \"evidence_refs\": []}",
+          "replacement": "[[UNSUPPORTED_CLAIM: payment]]",
+          "severity": "flagged"
+        },
+        {
+          "issue_type": "unsupported_claim",
+          "description": "Claim 'payment' has no evidence reference",
+          "original": "payment",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "section_id": "document_list",
+      "heading": "LIST OF DOCUMENTS RELIED UPON",
+      "text": "1. Serial No.: 1; Description: Purchase Orders placed by Defendant for goods; Annexure Label: Annexure A\n2. Serial No.: 2; Description: Delivery Challans signed by Defendant acknowledging receipt of goods; Annexure Label: Annexure B\n3. Serial No.: 3; Description: Invoices raised for the supplied goods; Annexure Label: Annexure A\n4. Serial No.: 4; Description: Legal Notice sent demanding payment; Annexure Label: Annexure C",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "text": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "advocate",
+      "heading": "",
+      "text": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    }
+  ],
+  "claim_ledger": [
+    {
+      "claim_type": "payment",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{TRANSACTION_DATE}}",
+        "{{NOTICE_DATE}}",
+        "{{CAUSE_OF_ACTION_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure B",
+        "Annexure C"
+      ]
+    },
+    {
+      "claim_type": "payment",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{DATE_OF_LAST_DEFAULT}}",
+        "{{DATE_OF_FILINGS}}"
+      ],
+      "evidence_refs": [
+        "Annexure A",
+        "Annexure B",
+        "Annexure C"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{DEFAULT_DATE}}",
+        "{{NOTICE_DATE}}",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure A",
+        "Annexure B",
+        "Annexure C"
+      ]
+    },
+    {
+      "claim_type": "payment",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{DEFAULT_DATE}}",
+        "{{CAUSE_OF_ACTION_DATE}}",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure [LIMITATION_ARTICLE]"
+      ]
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{DEFAULT_DATE}}",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure A",
+        "Annexure B",
+        "Annexure C"
+      ]
+    },
+    {
+      "claim_type": "payment",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{CAUSE_OF_ACTION_DATE}}",
+        "{{FILING_DATE}}",
+        "{{NOTICE_DATE}}"
+      ],
+      "evidence_refs": []
+    }
+  ],
+  "postprocess_issues": [
+    {
+      "type": "placeholder_normalized",
+      "count": 1
+    },
+    {
+      "type": "numbering_fixed",
+      "count": 4
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'signed by the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'by the defendant' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the cause of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'cause of action' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'to pay the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'in accordance with' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'and the defendant' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'from the date' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the date of' repeated 9 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'by the plaintiff' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'and the plaintiff' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of rs. 5,00,000' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'sum of rs.' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'delivery challans signed' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'challans signed by' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the principal amount' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'interest on the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'as may be' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'on the principal' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at the rate' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the rate of' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rate of 12%' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of 12% per' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '12% per annum' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'annexure label: annexure' repeated 4 times — consider varying language"
+    }
+  ],
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "money_recovery_plaint",
+        "title": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nSUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)\n\n\nBETWEEN\n\nThe Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, a textile trading firm, having its address at {{PLAINTIFF_ADDRESS}}, is sui juris and competent to sue and be sued in this Court. The Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, a garment manufacturer, having its address at {{DEFENDANT_ADDRESS}}, is sui juris and competent to be sued and to defend this action.\n\n\nJURISDICTION\n\nThe Defendant resides and carries on business at {{DEFENDANT_ADDRESS}} within the territorial jurisdiction of the Civil Court at {{COURT_PLACE}}, State of {{STATE}}. The Plaintiff and Defendant entered into the sale of textiles on credit, with the primary transactions and deliveries taking place during the period covered by the purchase orders and delivery challans; the delivery challans were signed by the Defendant at its premises located at {{DELIVERY_LOCATION}} in {{STATE}} and the invoices were raised in respect of those deliveries. The cause of action arose in this State when the Defendant failed to discharge the admitted indebtedness despite repeated reminders and a legal notice dated {{NOTICE_DATE}}, rendering the Defendant liable to pay the amounts due under the said invoices totaling Rs. 5,00,000/-. This Court therefore has territorial jurisdiction to entertain the suit.\n\nPecuniary jurisdiction: The suit seeks Rs. 5,00,000/-, which falls within the monetary limits of this Civil Court.\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff, a textile trading firm, and the Defendant, a garment manufacturer, began their business relationship when the Defendant placed purchase orders for textiles with the Plaintiff, which were fulfilled over a period of three months. The Plaintiff delivered the goods in accordance with the purchase orders, and the Defendant signed delivery challans acknowledging receipt of each delivery. The sequence of purchase orders, the corresponding delivery challans, and the invoices evidencing these transactions are collectively evidenced by Annexure A (primary transaction documents) and Annexure B (delivery proofs).\n\n2. The parties’ agreement contemplated supply on credit for a period of three months from the date of each purchase order, with the Plaintiff raising invoices for each shipment and the Defendant obligated to discharge payment within the three-month credit window. The terms of the credit arrangement, the purchase orders, and the issued invoices are described in Annexure A, while the delivery receipts reflecting acceptance of goods are captured in Annexure B.\n\n3. In performance of the agreement, the Plaintiff delivered goods in three installments over the three-month credit cycle, and the Defendant undertook to pay the invoiced amounts within the applicable three-month period. Each delivery was accompanied by a signed delivery challan evidencing receipt of goods by the Defendant, with the corresponding invoices being issued by the Plaintiff and annexed as Annexure A.\n\n4. The cumulative principal amount claimed is Rs. 5,00,000, representing the unpaid invoices raised in connection with the three-month credit periods. The goods delivered and the invoices issued for these shipments are evidenced by Annexure A, and the delivery of the goods is evidenced by the signed delivery challans in Annexure B. The invoices set out the due dates for payment, and the Plaintiff reserves the right to claim interest on overdue amounts as per applicable law.\n\n5. On {{DEFAULT_DATE}}, the Defendant defaulted by failing to make payment of the outstanding Rs. 5,00,000, thereby breaching the agreed credit terms. Thereafter, the Plaintiff sent reminders on several occasions demanding payment, and a legal notice demanding immediate payment was served on the Defendant on {{NOTICE_DATE}}. Annexure C contains the copy of the legal notice; Annexure D, if any, contains any reply to the legal notice.\n\n6. After the default and the legal notice, no payment was received from the Defendant, and there has been no satisfactory response to the notices issued. This suit was filed on {{FILING_DATE}} before the appropriate Civil Court seeking recovery of Rs. 5,00,000 along with interest and costs, based on the unpaid invoices and the underlying delivery and purchase documentation referenced above. The claim is supported by Annexure A (purchase orders and invoices), Annexure B (delivery challans), and Annexure C (legal notice).\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Plaintiff relies on a statutory basis for recovery of money payable on a sale of goods on credit, the rule being that where goods are supplied on credit and the price remains unpaid, the creditor is entitled to recover the unpaid price from the buyer. This ground is triggered by delivery of the goods under a credit arrangement, the signing of delivery challans by the Defendant, and the issuance of multiple invoices, followed by demand for payment and issuance of a legal notice, all of which culminated in nonpayment by the Defendant for a sum of Rs. 5,00,000, which remains due. In the present case, goods were supplied on credit over a period of three months pursuant to purchase orders, with delivery challans signed by the Defendant and invoices raised, and despite repeated reminders and the sending of a legal notice, the Defendant has not discharged its obligation, thereby binding the Defendant to pay the principal amount of Rs. 5,00,000 to the Plaintiff. The Plaintiff further submits that, in the alternative and without prejudice to the above, the facts establish a debt arising from a contract for the sale of goods on credit, and the Plaintiff seeks to recover the principal along with permissible interest and costs. The amount claimed is Rs. 5,00,000, and court fees and valuation shall be computed in accordance with the applicable court’s schedule, with interest on the outstanding amount to be awarded from the due date until actual payment as may be directed by the Court. For purposes of verification and clarity, the Plaintiff relies on Annexures A through C to establish the existence of the transaction documents, payment/delivery proof, and the legal notice, respectively, with Annexure A being the primary transaction documents such as purchase orders and invoices, Annexure B providing delivery or delivery challan evidence, and Annexure C evidencing the legal notice sent to the Defendant. The claim is being pursued before the appropriate Civil Court having jurisdiction to entertain money recovery suits, and the Plaintiff prays for payment of Rs. 5,00,000 along with interest, costs, and such other relief as the Court may deem fit in law. The Plaintiff reserves the right to amend or supplement this basis of action consistent with the facts evidenced by the Annexures and any additional documents produced at the hearing. In light of the above, the Plaintiff seeks relief in terms of the principal amount along with interest, and all incidental costs, including court fees, to be determined in accordance with law. {PLACEHOLDER_FOR_VERIFICATION}\n\n\nCAUSE OF ACTION\n\nThe cause of action herein first arose on {{DEFAULT_DATE}} when the Defendant failed to pay the Plaintiff the sum of Rs. 5,00,000 for textiles supplied by the Plaintiff under three purchase orders executed over a three-month credit period, the goods having been delivered to the Defendant at place_names with delivery challans signed by the Defendant and invoices raised for each shipment. The Plaintiff’s right to sue accrued as each payment fell due and the Defendant defaulted on those due dates. The cause of action further accrued on {{NOTICE_DATE}} when the Defendant, despite service of a legal notice demanding payment of the principal amount, continued to neglect, refuse and fail to pay. The action is continuing because the Defendant still retains the entire unpaid amount and has not discharged its obligation; the Plaintiff remains entitled to recover the principal sum, with interest at the lawful rate from {{DEFAULT_DATE}} until realization and costs as may be awarded by the Court.\n\n\nLIMITATION\n\nLimitation: Article 47 of the Schedule to the Limitation Act, 1963 applies to money payable on an existing consideration which afterwards fails. The period prescribed is three years, and the accrual date is the date of default, i.e., {{DEFAULT_DATE}}; the cause of action first arose on {{CAUSE_OF_ACTION_DATE}}. The suit is within time as it is filed on {{FILING_DATE}}, which falls within three years from {{DEFAULT_DATE}}.\n\n\nVALUATION AND COURT FEE\n\nValuation and Court Fee: The suit is valued at Rs. 5,00,000 for purposes of court fee and jurisdiction, being the principal amount claimed by the Plaintiff as unpaid invoices for goods supplied on credit. The Court Fee payable on the plaint is Rs. {{COURT_FEE_AMOUNT}}, calculated in accordance with the applicable State Court Fees Act.\n\n\nINTEREST\n\nPre-suit interest is sought on the principal sum of Rs. 5,00,000 that remained unpaid after Defendant defaulted on {{DEFAULT_DATE}} despite delivery of goods on credit under Purchase Orders dated {{AGREEMENT_DATE}} and corresponding Delivery Challans signed by Defendant, with invoices raised in aggregate. The Plaintiff, a textile trading firm, had supplied goods to the Defendant on credit over a three-month period and has been sending repeated reminders for payment; however, the Defendant continued to neglect payment obligations and the amount remained outstanding as of the filing of this suit on {{FILING_DATE}}. The Plaintiff therefore claims simple interest on Rs. 5,00,000 at the rate of 12% per annum from {{DEFAULT_DATE}} to {{FILING_DATE}} to compensate for the time value of money and to deter wrongful retention of Plaintiff’s funds. The rate of 12% per annum reflects the commercial nature of the textile trade, the customary lending rate for trade credit in similar transactions, and the contractual understanding that outstanding invoices bear interest in case of default. The pre-suit interest is calculated on the principal amount of Rs. 5,00,000 and runs from {{DEFAULT_DATE}} up to the date of filing this suit, i.e., {{FILING_DATE}}.\n\nPendente lite interest is claimed on the decretable amount during the pendency of this litigation under Section 34 of the Code of Civil Procedure, 1908. From the date of filing, i.e., {{FILING_DATE}}, until the date of decree, Plaintiff seeks pendente lite interest at the rate of 12% per annum on the entire principal sum and accrued interest, so as to compensate for the period of delay caused by Defendant’s non-payment and to prevent unjust enrichment. Section 34 CPC empowers the Court to award interest on the principal amount during the pendency of the suit at such rate as may be deemed just, and the Plaintiff contends that 12% per annum is justly warranted here given the commercial context, the Defendant’s known default, and the need to preserve the remedy of the Plaintiff. The precise quantum and calculation shall be determined by the Court in accordance with Section 34 CPC, with interest accruing from {{FILING_DATE}} to the date of decree.\n\nFuture interest, if any sum is decreed in favor of the Plaintiff, shall be calculated at the rate of 12% per annum simple from the date of decree until realization on the amount decreed, to be incorporated in the final decree and subject to execution. This plea for post-decree interest is grounded in the same commercial considerations and the Defendant’s ongoing obligation to satisfy the decreed amount, and it is intended to ensure timely realization of the amount due to Plaintiff.\n\n\nPRAYER\n\nPRAYER\n\n(a) A decree be passed in favour of the Plaintiff and against the Defendant for payment of Rs. 5,00,000/- as the principal amount due on account of goods supplied to the Defendant by the Plaintiff on credit, the invoices having been raised and multiple delivery challans signed by the Defendant at the Plaintiff’s premises located in {{PLACE}} on the dates corresponding to {{ADVANCE_PAYMENT_DATE}}, and acknowledged by the Defendant through delivery challans, with costs.\n\n(b) Pre-suit interest on the principal sum of Rs. 5,00,000/- at the rate of {{PRE_SUIT_INTEREST_RATE}} per annum from {{CAUSE_OF_ACTION_DATE}} to {{FILING_DATE}} on the amounts due under the invoices, calculated and payable along with the principal, in accordance with law.\n\n(c) Pendente lite interest on the decretal sum under Section 34 CPC at the rate of {{PENDENTE_LITE_RATE}} per annum on Rs. 5,00,000/- from {{FILING_DATE}} until the date of decree, as the amount remained unpaid despite demand and legal notice.\n\n(d) Post-decree interest at the rate of {{POST_DECREE_INTEREST_RATE}} per annum on the principal amount from the date of decree until realization, to be awarded to the Plaintiff in order to compensate for the delay in recovery of the outstanding amount.\n\n(e) Costs of the suit including the court fee and the pre-litigation costs incurred for sending the legal notice dated {{NOTICE_DATE}}, being Rs. {{COURT_FEE}} as court fee and Rs. {{PRE_LITIGATION_COSTS}} incurred for the legal notice, payable by the Defendant to the Plaintiff, in addition to the decretal amount.\n\n(f) Any other relief which the Court may deem fit and proper in the facts and circumstances of the case, including ancillary orders for recovery and enforcement of the decree, as may be necessary to serve the ends of justice.\n\n(g) General relief: Pass such other order or directions as the Court may deem fit and proper in the facts and circumstances of the case to meet the ends of justice.\n\nVerification and further relief, if any, are prayed for in the manner consistent with the facts stated in the plaint and in accordance with law.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\n7. Serial No.: 1; Description: Purchase Orders placed by Defendant for goods; Annexure Label: Annexure A\n8. Serial No.: 2; Description: Delivery Challans signed by Defendant acknowledging receipt of goods; Annexure Label: Annexure B\n9. Serial No.: 3; Description: Invoices raised for the supplied goods; Annexure Label: Annexure A\n10. Serial No.: 4; Description: Legal Notice sent demanding payment; Annexure Label: Annexure C\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CLAIM_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CLAIM_AMOUNT_WORDS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DELIVERY_LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "NOTICE_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFAULT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CAUSE_OF_ACTION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "TRANSACTION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PRE_SUIT_INTEREST_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PENDENTE_LITE_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "POST_DECREE_INTEREST_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PRE_LITIGATION_COSTS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "money_recovery_plaint",
+        "title": "SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nSUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/- (Rupees {{CLAIM_AMOUNT_WORDS}} Only) WITH INTEREST AND COSTS\n(Filed under Section 26 of the Code of Civil Procedure, 1908)\n\n\nBETWEEN\n\nThe Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, a textile trading firm, having its address at {{PLAINTIFF_ADDRESS}}, is sui juris and competent to sue and be sued in this Court. The Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, a garment manufacturer, having its address at {{DEFENDANT_ADDRESS}}, is sui juris and competent to be sued and to defend this action.\n\n\nJURISDICTION\n\nThe Defendant resides and carries on business at {{DEFENDANT_ADDRESS}} within the territorial jurisdiction of the Civil Court at {{COURT_PLACE}}, State of {{STATE}}. The Plaintiff and Defendant entered into the sale of textiles on credit, with the primary transactions and deliveries taking place during the period covered by the purchase orders and delivery challans; the delivery challans were signed by the Defendant at its premises located at {{DELIVERY_LOCATION}} in {{STATE}} and the invoices were raised in respect of those deliveries. The cause of action arose in this State when the Defendant failed to discharge the admitted indebtedness despite repeated reminders and a legal notice dated {{NOTICE_DATE}}, rendering the Defendant liable to pay the amounts due under the said invoices totaling Rs. 5,00,000/-. This Court therefore has territorial jurisdiction to entertain the suit.\n\nPecuniary jurisdiction: The suit seeks Rs. 5,00,000/-, which falls within the monetary limits of this Civil Court.\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff, a textile trading firm, and the Defendant, a garment manufacturer, began their business relationship when the Defendant placed purchase orders for textiles with the Plaintiff, which were fulfilled over a period of three months. The Plaintiff delivered the goods in accordance with the purchase orders, and the Defendant signed delivery challans acknowledging receipt of each delivery. The sequence of purchase orders, the corresponding delivery challans, and the invoices evidencing these transactions are collectively evidenced by Annexure A (primary transaction documents) and Annexure B (delivery proofs).\n\n2. The parties’ agreement contemplated supply on credit for a period of three months from the date of each purchase order, with the Plaintiff raising invoices for each shipment and the Defendant obligated to discharge payment within the three-month credit window. The terms of the credit arrangement, the purchase orders, and the issued invoices are described in Annexure A, while the delivery receipts reflecting acceptance of goods are captured in Annexure B.\n\n3. In performance of the agreement, the Plaintiff delivered goods in three installments over the three-month credit cycle, and the Defendant undertook to pay the invoiced amounts within the applicable three-month period. Each delivery was accompanied by a signed delivery challan evidencing receipt of goods by the Defendant, with the corresponding invoices being issued by the Plaintiff and annexed as Annexure A.\n\n4. The cumulative principal amount claimed is Rs. 5,00,000, representing the unpaid invoices raised in connection with the three-month credit periods. The goods delivered and the invoices issued for these shipments are evidenced by Annexure A, and the delivery of the goods is evidenced by the signed delivery challans in Annexure B. The invoices set out the due dates for payment, and the Plaintiff reserves the right to claim interest on overdue amounts as per applicable law.\n\n5. On {{DEFAULT_DATE}}, the Defendant defaulted by failing to make payment of the outstanding Rs. 5,00,000, thereby breaching the agreed credit terms. Thereafter, the Plaintiff sent reminders on several occasions demanding payment, and a legal notice demanding immediate payment was served on the Defendant on {{NOTICE_DATE}}. Annexure C contains the copy of the legal notice; Annexure D, if any, contains any reply to the legal notice.\n\n6. After the default and the legal notice, no payment was received from the Defendant, and there has been no satisfactory response to the notices issued. This suit was filed on {{FILING_DATE}} before the appropriate Civil Court seeking recovery of Rs. 5,00,000 along with interest and costs, based on the unpaid invoices and the underlying delivery and purchase documentation referenced above. The claim is supported by Annexure A (purchase orders and invoices), Annexure B (delivery challans), and Annexure C (legal notice).\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Plaintiff relies on a statutory basis for recovery of money payable on a sale of goods on credit, the rule being that where goods are supplied on credit and the price remains unpaid, the creditor is entitled to recover the unpaid price from the buyer. This ground is triggered by delivery of the goods under a credit arrangement, the signing of delivery challans by the Defendant, and the issuance of multiple invoices, followed by demand for payment and issuance of a legal notice, all of which culminated in nonpayment by the Defendant for a sum of Rs. 5,00,000, which remains due. In the present case, goods were supplied on credit over a period of three months pursuant to purchase orders, with delivery challans signed by the Defendant and invoices raised, and despite repeated reminders and the sending of a legal notice, the Defendant has not discharged its obligation, thereby binding the Defendant to pay the principal amount of Rs. 5,00,000 to the Plaintiff. The Plaintiff further submits that, in the alternative and without prejudice to the above, the facts establish a debt arising from a contract for the sale of goods on credit, and the Plaintiff seeks to recover the principal along with permissible interest and costs. The amount claimed is Rs. 5,00,000, and court fees and valuation shall be computed in accordance with the applicable court’s schedule, with interest on the outstanding amount to be awarded from the due date until actual payment as may be directed by the Court. For purposes of verification and clarity, the Plaintiff relies on Annexures A through C to establish the existence of the transaction documents, payment/delivery proof, and the legal notice, respectively, with Annexure A being the primary transaction documents such as purchase orders and invoices, Annexure B providing delivery or delivery challan evidence, and Annexure C evidencing the legal notice sent to the Defendant. The claim is being pursued before the appropriate Civil Court having jurisdiction to entertain money recovery suits, and the Plaintiff prays for payment of Rs. 5,00,000 along with interest, costs, and such other relief as the Court may deem fit in law. The Plaintiff reserves the right to amend or supplement this basis of action consistent with the facts evidenced by the Annexures and any additional documents produced at the hearing. In light of the above, the Plaintiff seeks relief in terms of the principal amount along with interest, and all incidental costs, including court fees, to be determined in accordance with law. {PLACEHOLDER_FOR_VERIFICATION}\n\n\nCAUSE OF ACTION\n\nThe cause of action herein first arose on {{DEFAULT_DATE}} when the Defendant failed to pay the Plaintiff the sum of Rs. 5,00,000 for textiles supplied by the Plaintiff under three purchase orders executed over a three-month credit period, the goods having been delivered to the Defendant at place_names with delivery challans signed by the Defendant and invoices raised for each shipment. The Plaintiff’s right to sue accrued as each payment fell due and the Defendant defaulted on those due dates. The cause of action further accrued on {{NOTICE_DATE}} when the Defendant, despite service of a legal notice demanding payment of the principal amount, continued to neglect, refuse and fail to pay. The action is continuing because the Defendant still retains the entire unpaid amount and has not discharged its obligation; the Plaintiff remains entitled to recover the principal sum, with interest at the lawful rate from {{DEFAULT_DATE}} until realization and costs as may be awarded by the Court.\n\n\nLIMITATION\n\nLimitation: Article 47 of the Schedule to the Limitation Act, 1963 applies to money payable on an existing consideration which afterwards fails. The period prescribed is three years, and the accrual date is the date of default, i.e., {{DEFAULT_DATE}}; the cause of action first arose on {{CAUSE_OF_ACTION_DATE}}. The suit is within time as it is filed on {{FILING_DATE}}, which falls within three years from {{DEFAULT_DATE}}.\n\n\nVALUATION AND COURT FEE\n\nValuation and Court Fee: The suit is valued at Rs. 5,00,000 for purposes of court fee and jurisdiction, being the principal amount claimed by the Plaintiff as unpaid invoices for goods supplied on credit. The Court Fee payable on the plaint is Rs. {{COURT_FEE_AMOUNT}}, calculated in accordance with the applicable State Court Fees Act.\n\n\nINTEREST\n\nPre-suit interest is sought on the principal sum of Rs. 5,00,000 that remained unpaid after Defendant defaulted on {{DEFAULT_DATE}} despite delivery of goods on credit under Purchase Orders dated {{AGREEMENT_DATE}} and corresponding Delivery Challans signed by Defendant, with invoices raised in aggregate. The Plaintiff, a textile trading firm, had supplied goods to the Defendant on credit over a three-month period and has been sending repeated reminders for payment; however, the Defendant continued to neglect payment obligations and the amount remained outstanding as of the filing of this suit on {{FILING_DATE}}. The Plaintiff therefore claims simple interest on Rs. 5,00,000 at the rate of 12% per annum from {{DEFAULT_DATE}} to {{FILING_DATE}} to compensate for the time value of money and to deter wrongful retention of Plaintiff’s funds. The rate of 12% per annum reflects the commercial nature of the textile trade, the customary lending rate for trade credit in similar transactions, and the contractual understanding that outstanding invoices bear interest in case of default. The pre-suit interest is calculated on the principal amount of Rs. 5,00,000 and runs from {{DEFAULT_DATE}} up to the date of filing this suit, i.e., {{FILING_DATE}}.\n\nPendente lite interest is claimed on the decretable amount during the pendency of this litigation under Section 34 of the Code of Civil Procedure, 1908. From the date of filing, i.e., {{FILING_DATE}}, until the date of decree, Plaintiff seeks pendente lite interest at the rate of 12% per annum on the entire principal sum and accrued interest, so as to compensate for the period of delay caused by Defendant’s non-payment and to prevent unjust enrichment. Section 34 CPC empowers the Court to award interest on the principal amount during the pendency of the suit at such rate as may be deemed just, and the Plaintiff contends that 12% per annum is justly warranted here given the commercial context, the Defendant’s known default, and the need to preserve the remedy of the Plaintiff. The precise quantum and calculation shall be determined by the Court in accordance with Section 34 CPC, with interest accruing from {{FILING_DATE}} to the date of decree.\n\nFuture interest, if any sum is decreed in favor of the Plaintiff, shall be calculated at the rate of 12% per annum simple from the date of decree until realization on the amount decreed, to be incorporated in the final decree and subject to execution. This plea for post-decree interest is grounded in the same commercial considerations and the Defendant’s ongoing obligation to satisfy the decreed amount, and it is intended to ensure timely realization of the amount due to Plaintiff.\n\n\nPRAYER\n\nPRAYER\n\n(a) A decree be passed in favour of the Plaintiff and against the Defendant for payment of Rs. 5,00,000/- as the principal amount due on account of goods supplied to the Defendant by the Plaintiff on credit, the invoices having been raised and multiple delivery challans signed by the Defendant at the Plaintiff’s premises located in {{PLACE}} on the dates corresponding to {{ADVANCE_PAYMENT_DATE}}, and acknowledged by the Defendant through delivery challans, with costs.\n\n(b) Pre-suit interest on the principal sum of Rs. 5,00,000/- at the rate of {{PRE_SUIT_INTEREST_RATE}} per annum from {{CAUSE_OF_ACTION_DATE}} to {{FILING_DATE}} on the amounts due under the invoices, calculated and payable along with the principal, in accordance with law.\n\n(c) Pendente lite interest on the decretal sum under Section 34 CPC at the rate of {{PENDENTE_LITE_RATE}} per annum on Rs. 5,00,000/- from {{FILING_DATE}} until the date of decree, as the amount remained unpaid despite demand and legal notice.\n\n(d) Post-decree interest at the rate of {{POST_DECREE_INTEREST_RATE}} per annum on the principal amount from the date of decree until realization, to be awarded to the Plaintiff in order to compensate for the delay in recovery of the outstanding amount.\n\n(e) Costs of the suit including the court fee and the pre-litigation costs incurred for sending the legal notice dated {{NOTICE_DATE}}, being Rs. {{COURT_FEE}} as court fee and Rs. {{PRE_LITIGATION_COSTS}} incurred for the legal notice, payable by the Defendant to the Plaintiff, in addition to the decretal amount.\n\n(f) Any other relief which the Court may deem fit and proper in the facts and circumstances of the case, including ancillary orders for recovery and enforcement of the decree, as may be necessary to serve the ends of justice.\n\n(g) General relief: Pass such other order or directions as the Court may deem fit and proper in the facts and circumstances of the case to meet the ends of justice.\n\nVerification and further relief, if any, are prayed for in the manner consistent with the facts stated in the plaint and in accordance with law.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\n7. Serial No.: 1; Description: Purchase Orders placed by Defendant for goods; Annexure Label: Annexure A\n8. Serial No.: 2; Description: Delivery Challans signed by Defendant acknowledging receipt of goods; Annexure Label: Annexure B\n9. Serial No.: 3; Description: Invoices raised for the supplied goods; Annexure Label: Annexure A\n10. Serial No.: 4; Description: Legal Notice sent demanding payment; Annexure Label: Annexure C\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CLAIM_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CLAIM_AMOUNT_WORDS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DELIVERY_LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "NOTICE_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFAULT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "CAUSE_OF_ACTION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "TRANSACTION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PRE_SUIT_INTEREST_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PENDENTE_LITE_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "POST_DECREE_INTEREST_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PRE_LITIGATION_COSTS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": true,
+      "blocking_issues": [],
+      "non_blocking_issues": [
+        {
+          "issue": "PRAYER SPECIFICITY: Prayer items are not expressed with exact monetary amounts and specific sub-prayers (principal, pre-suit interest, pendente lite interest, future interest, costs).",
+          "fix": "Fill in exact amounts and rates for each prayer sub-item; break into individual sub-prayers with clear amounts and dates.",
+          "location": "PRAYER section of plaint (a–g)",
+          "severity": "formatting"
+        },
+        {
+          "issue": "DEFENSIVE PLEADING: Draft does not anticipate or state possible defenses (e.g., No part performance, No set-off, Payment made, etc.).",
+          "fix": "Add brief defensive pleadings in Legal Basis section outlining anticipated defenses to strengthen the plaintiff's position.",
+          "location": "Legal Basis / Cause of Action",
+          "severity": "formatting"
+        }
+      ],
+      "unsupported_statements": [],
+      "final_artifacts": []
+    }
+  },
+  "review_count": 1
+}

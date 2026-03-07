@@ -1,0 +1,1653 @@
+{
+  "user_request": "Draft a suit for partition and separate possession of ancestral property. Plaintiff entitled to 1/3rd share. Defendant refusing amicable partition. Include genealogy table and schedule of property. Seek preliminary decree. Draft suitable for filing before the District Court.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks suit for partition and separate possession of ancestral property, claiming a 1/3rd share. Defendant is refusing amicable partition. Plaintiff seeks a preliminary decree.",
+      "chronology": [],
+      "amounts": {
+        "principal": null,
+        "interest_rate": null,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": "District Court",
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "share_fraction",
+          "value": "1/3rd",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "property_type",
+          "value": "ancestral property",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "relief_sought",
+          "value": "preliminary decree",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "include_genealogy",
+          "value": true,
+          "type": "bool",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "include_schedule",
+          "value": true,
+          "type": "bool",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Partition Suit",
+        "Civil Law",
+        "Property Law"
+      ],
+      "risk_level": "low",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Property Details/Schedule",
+        "Genealogy Details",
+        "Jurisdiction (District/City)",
+        "Cause of Action Date"
+      ],
+      "assumptions": []
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "partition_suit_plaint",
+    "classification": {
+      "topics": [
+        "Suit for Partition",
+        "Ancestral Property",
+        "Preliminary Decree",
+        "Separate Possession"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Property description and details",
+        "Genealogy details of the family",
+        "Date of cause of action",
+        "Names and addresses of parties",
+        "Jurisdictional valuation of property"
+      ],
+      "assumptions": [
+        "Jurisdiction lies with the District Court based on property valuation or location",
+        "Property is not already partitioned by a valid decree"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "format plaint partition suit preliminary decree",
+        "procedure partition suit ancestral property Hindu law",
+        "limitation period filing partition suit India",
+        "court fee calculation partition suit preliminary decree",
+        "contents schedule property partition plaint",
+        "essential averments partition suit separate possession"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "format plaint partition suit preliminary decree",
+      "procedure partition suit ancestral property Hindu law",
+      "limitation period filing partition suit India",
+      "court fee calculation partition suit preliminary decree"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 48 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nproperty during the pendency of the suit. 41 Changes in circumstances, such as transfers made after the preliminary \ndecree has been passed, can be taken into account. 42 A preliminary decree is a step in a pending suit and the suit \ncontinues until the final decree is passed. Hence, an application for amendment of the plaint can be made if an \nevent changing the shares of the parties occurs. 43 In the view of the Calcutta High Court, since a partition suit \ninvolves questions as to accounts, assets of the estate and joint liabilities, it would not matter if the plaint does not \ncontain a separate prayer for the rendition of accounts. 44 A suit by a member of a joint family for partition involves \nthe rendition of accounts. A plaintiff can pray for an inquiry into the profits realised by the defendant at the stage of \nthe making of the final decree, though such a prayer has not been made in the plaint nor such a direction has been \ngiven in the preliminary decree. The reason why such an application must be entertained is that it is only after the \npreliminary decree determines the shares of the parties that the occasion for rendition of accounts arises. 45 There \ncan, however, be one decree only, namely, the final decree, as for instance, where the decree embodies a \ncompromise allotting specific parcels to",
+        "score": 0.628,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "utable or becomes an instrument duly \nstamped. Thus, the condition precedent is to draw a final decree and then to engross it on stamped paper(s) of \nrequired value. These two acts together constitute final decree, crystallising the rights of the parties in terms of \npreliminary decree, till then there is no executable decree.83 Hence, the legal representatives of a deceased party in \nthe partition suit can legally make the application for a final decree in accordance with the shares determined in the \npreliminary decree.84 However, where the trial judge erred in including the self-acquired properties of the father of \nthe plaintiff in the preliminary decree as they were mentioned in the schedule of the plaint, it was held that to that \nextent, the preliminary decree is required to be modified. 85 Where no appeal was filed from a preliminary decree \nand the respondent claimed through the defendant in the suit, he cannot at the time of passing of final decree raise \nthe plea that he was the tenant because the batai patra on the basis of which the claim was made was executed \nduring the pendency of the suit and was hit by the doctrine of lis pendens.86",
+        "score": 0.625,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "record of \ncourt and imposed costs.21\nA suit was filed for declaration that defendants did not acquire any right on the strength of a particular document. An \namendment raising question about validity of the document should be allowed as it does not change the nature and \ncharacter of the suit.22\nIn a suit for partition preliminary decree had already been passed and the plaintiff sought amendment of plaint at \nthe stage of final decree proceedings seeking addition of properties which were joint ancestral properties and were \ncovered under the same set of facts already decided at the time of possing preliminary decree. It was held by Patna \nHigh Court that the proposed amendment would neither change the nature of the suit nor it would take the other \nside by surprise, rather such addition is deemed necessary to settle the controversy as a whole and prevent any \nmultiplicity of proceedings.23\nWhere a suit for permanent injunction in respect of joint property was filed and the relief of declaration of vested \nremainder rights was sought by the plaintiff by way of amendment, it was held that the relief claimed by the plaintiff \nwas not barred by limitation since Art. 65 of the Limitation Act governed such suits for vested remainder rights and \nthe plaintiff could have instituted a fresh suit for the said relief. Hence, to avoid multiplicity of proceedings, the \namendment was",
+        "score": 0.587,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "amount was directed to hand over vacant and peaceful possession of his portion of the building to the respondent.30\n6. Partition decree. In a suit for partition, there are normally two decrees: (i) a preliminary decree; and (ii) a final \ndecree. There might be a preliminary decree or even more than one preliminary decree, which would determine the \nshare of the party, but which would not divide the properties deliverable to the co-sharer. Another stage is that of \npassing of final decree after inquiry is held, as per the directions contained in the preliminary decree. The shares of \nthe party are determined first at the stage of preliminary decree, and the actual partition is effected as per the final \ndecree.31\nWhen the parties to a suit filed a compromise petition with the plan partitioning their respective shares by metes and \nbounds, no further inquiry is needed unless it is found to be not genuine. In such a case passing a preliminary \ndecree is not necessary and the court can directly pass a final decree in terms of the compromise.32\nGenerally speaking, a final decree cannot amend or go behind the preliminary decree on a matter decided by the \npreliminary decree. 33 However, where some of the parties after the passing of the preliminary decree give up \ncertain rights in favour of one of the parties, the effect of such giving up should be given while passing the final",
+        "score": 0.654,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "and may proceed straightaway to pass a decree for the amount determined as due. 75 The \nquestion has sometimes arisen for decision whether there can be more than one preliminary decree and one \nfinal decree in a suit. On that, judicial opinion was divided; some decisions took the view that there could be \nonly one preliminary decree and one final decree,76 while others held that there was nothing in the Code of Civil \nProcedure prohibiting the passing of more than one preliminary or final decree.77\nIn accordance with this view, where the plaintiff was found to be entitled to contribution but the amount was left \nto be determined later on, it was held that the order was a preliminary decree.78\n(i) Preliminary decree in partition suit. Where the preliminary decree in a suit for partition, while declaring the \nshares to which the parties were entitled, failed to give any direction as to profits after the institution of the suit, \nit was held that it was competent for the court in a subsequent application to pass an order directing inquiry into \nsuch profits and that it was, in substance, a preliminary decree. 79 Likewise, a supplemental order determining \nthe period for which the party is liable for mesne profits was held to be a preliminary decree. 80 In a suit for \npartition, a preliminary decree was passed declaring the plaintiff entitled to one-eighth share and thereafter,",
+        "score": 0.646,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "or partition is only a declaration \nof the rights of the parties and the shares they have in the joint family or coparcenary property. The final decree \nshould specify the division by metes and bounds and it needs to be engrossed on stamp paper. 51 If that has not for \nsome reason or the other been done, the aggrieved party can have the preliminary decree amended either on a \nreview or in appeal. 52 Where appeal has not been filed against a preliminary decree, the rights determined therein \nbecomes final and conclusive and cannot be questioned in the final decree. 53 But if the preliminary decree has not \ndeclared the rights of the contesting defendants, it is not competent of the commissioner to make separate \nallotment of shares of such defendants. In such a case, steps should be taken to have such a decree modified. 54 \nThus, where some of the defendants die after a preliminary decree and a final decree is passed without bringing on \nrecord their legal representatives, that decree is a nullity and an application by them to revive the suit must be \nallowed.55 According to O 1, r 10 of the Code of Civil Procedure, it is clear that impleading either as a plaintiff or a \ndefendant is only when the suit is pending before the court and when that stage has totally crossed, the impleading \napplicant cannot resort to this application at the appellate stage. 56 Further, where the",
+        "score": 0.624,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "occasion for rendition of accounts arises. 45 There \ncan, however, be one decree only, namely, the final decree, as for instance, where the decree embodies a \ncompromise allotting specific parcels to parties and the rights of the parties would be governed from the date of the \ndecree and not when the stamps are engrossed.46 But such an additional preliminary decree can only be passed so \nlong as the final decree has not been given. 47 The court will not drive the parties to a fresh suit and will direct \npartition of properties among the defendants in which the plaintiff has been found to have no interest. 48 In a suit for \npartition by a co-heir, the court should not give a decree only for the plaintiffs share. It should consider the share of \nall the heirs, after making them parties and then, pass a preliminary decree. 49 Further, where there is land and a \nbuilding thereon, a decree declaring the shares only in land is not valid. 50 The words declaring the rights of the \nseveral parties in the properties in sub-r (2) show that the shares of parties other than the plaintiffs have to be taken \ninto account while passing the preliminary decree. Therefore, a preliminary decree for partition is only a declaration \nof the rights of the parties and the shares they have in the joint family or coparcenary property. The final decree \nshould specify the division by metes and bounds",
+        "score": 0.621,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "etermine their individual shares.79\nIn a partition, there is no executable decree until the final decree proceedings are disposed of. 80 Bearing in mind \nsuch a nature of the provisions contained in O 20, r 18, it would be premature to decide in the preliminary decree \nwhether the property in defendants possession is available for or capable of partition, as such a question has \nnecessarily to be left to be decided at the inquiry subsequent to the preliminary decree. It is only when it is found \nthat the property is either not available for partition or the property is not partible that the determination of value \nthereof is required to be made. It is, therefore, clear that such a value cannot be made as on the date of suit. It has \nnecessarily to be made as on the date of final decree.81\nA preliminary decree declares the rights and liabilities of the parties. In a given case, a decree may be both \npreliminary and final. However, what can be executed is a final decree, and not a preliminary decree, unless and \nuntil final decree is a part of preliminary decree. Thus, where in a case, the house property was found to be an \nimpartible one, but a preliminary decree having been passed, the valuation thereof and final allotment of the \nproperty could have been done only in a final decree proceeding. Only when final allotments were made or a \ndetermination is made that the property",
+        "score": 0.619,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 15 of 27\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \ndecree between the decree-holder and the representative of the judgment-debtor within the meaning of s 47, \nand it should be determined by the court executing the decree. 1225 This coincides with the view taken by the \nHigh Courts of Bombay and Calcutta under the Code of Civil Procedure 1882. 1226 According to the Madras and \nAllahabad decisions under that Code, a decree against a Hindu father could not be executed against ancestral \nproperty in the hands of the sons, even to the extent of the fathers interest in the property, and the only remedy \nof the decree-holder was to institute a regular suit against the sons. This view proceeded on the ground that the \nquestion whether the debts were tainted with immorality was not one that could be gone into in execution \nproceedings, and that the sons were not the legal representatives of their father so far as the ancestral property \nwas concerned within the meaning of s 234 of the Code of Civil Procedure 1882 (now replaced by Code of Civil \nProcedure, 1908).1227 These decisions are no longer law. 1228 \nPartition. Under Hindu Law, the son, meaning thereby, a male descendant within three decrees, is under a \npious obligation to discharge, out of his share in the joint family properties, the debts of his father which are \nneither illegal nor immoral even though",
+        "score": 0.611,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "ll debts of his ancestor, \nnot incurred for immoral or illegal purposes. In the case of a decree against a Hindu father, there was a conflict \nof decisions under the Code of Civil Procedure 1882 as to the procedure for enforcing this liability. The section \nsettles this question of procedure. 1223 We proceed to consider the subject under the following four heads: \n(a) Money Decree against Father : Execution after his Death: Partition.A and his sons B and C constitute a joint \nHindu family owning an ancestral house. D obtains a decree against A for Rs 5,000 . A dies and on his death, B \nand C take the ancestral property by survivorship . D, whose remedy is not confined to the one-third share of \nthe father, 1224 applies for execution of the decree against B and C by attachment and sale of the whole of the \nfamily house. Is he entitled to do so or must he institute a fresh suit against B and C to recover the debt? \nAccording to the procedure prescribed by the Code of Civil Procedure, D should bring B and C on the record as \nthe legal representatives of A under s 50, and then apply under that section to the court which passed the \ndecree to execute it against B and C to the extent of the ancestral property come to their hands. The words in s \n50 are, to the extent of the property of the deceased which has come to his [legal representatives] hands. \nAccording to the present",
+        "score": 0.6,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Page 49 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \ncannot be presumed to be joint family property. It was further held that the settlement deed is in the name \nof wife of the defendant and in her absence the said property cannot be included or partitioned by the \nparties to the suit.61\nWhere in a suit for partition of joint family property a plea was taken by the defendant that the plaintiff had been \ngiven in adoption to other family but no document was produced to substantiate the plea and there was no evidence \nto prove alleged prior partition excluding the plaintiff, it was held that the decree for partition was not liable to be set \naside.62\nIn a partition suit where the parties belonged to the Mitakshara School of Hindu Law under which there is \npresumption of jointness, the plea of defendants was that partition by metes and bounds had taken place about \nsixty years ago, but documentary evidence like rent receipts and canal parchas not establishing partition. It was \nheld that property may be subjected to partition.63\nWhere plaintiff averred that father of the parties had purchased the suit property in the name of the defendant who \nwas the eldest son and evidence showed that defendant had no financial capacity to purchase property, it was held \nthat it was quite probable that the property was purchased benami and it was liable for partition.64\nIn a",
+        "score": 0.674,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 26 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nportion, that is, a portion to the profits of which the plaintiff is exclusively entitled. Hence, the provisions of this rule \ndo not apply to a suit for partition by a member of a joint Hindu family, for until partition, no member is entitled to a \nspecific share of the property.3 In a partition act ion, the lis gets terminated for all purposes at the time of passing of \nthe final decree even with regard to the future mesne profits, and as such it is not open to the parties to claim to the \nrelief of mesne profits beyond the date of passing of final decree unless the final decree provides for such a relief. 4 \nThis does not mean that a member of a joint Hindu family is not entitled in a suit for partition to claim his share of \nthe rents and profits of the joint property from which he may have been wrongfully excluded. He is entitled to such a \nshare,5 but the court in deciding upon his claim must be guided, not by the provisions of this rule, but by the rules of \nHindu law relating to partition.6\nIn a suit for land belonging to joint Hindu Family, the Karta and four of his five sons executed sale deed in favour of \nthe plaintiffs and also put them in possession. The non-consenting son of the Karta sold his undivided share in \nfavour of the defendants. However, no suit for partition was instituted either",
+        "score": 0.654,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "Page 46 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nIn a suit for partition where the plaintiff sought separate possession of their shares in the property on the basis of \ngift deed, the said gift deed was proved to be valid. Defendants, though aware of the gift deed filed a separate suit \nas counterblast on the basis of oral gift which was proved to be not correct. It was held that the suit was liable to be \ndismissd.16\nIn a partition suit the defendants plea that there was earlier family settlement was not supported by evidence. \nPartnership deeds which were entered into between different members of the family in different combination were \nheld to be no proof of separation. It was held by the Supreme Court that finding of the High Court was based on \nevidence and cogent reasons.17\nUnder Hindu Law a common passage or road for ingress and egress is indivisible. Thus, where a common passage \nwas kept joint by registered partition deed, the plaintiff cannot file a suit for partition of the common passage on the \nground that characteristic of the same has changed.18\nA compromise decree in a partition suit in respect of joint family properties, was set aside in a subsequent suit \nallotting specific shares and deciding the status of one of the defendants as not being the son of coparceners. His \nplea of revival of the earlier suit from the stage where it was",
+        "score": 0.638,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "udes any other person who has independent rights in the property. Thus, a suit for partition \nbetween husband and wife where son is a party is maintainable before civil court. It was observed that the \nwords or of either of them following the expression with respect to the property of the parties in Explanation (c) \nto Secion 7(1) of the Act would unmistakably lead to the conclusion that the expression refers to parties to a \nmarriage and not parties to the proceedings.29\nWhere in a suit for partition an application under Section 19 of the Hindu Adoption and Maintenance Act, 1956, \nit was held by the Gauhati High Court that Family Court has exclusive jurisdiction to deal with suits or \nproceedings referred to in s 7 (1) of the Family Courts Act, 1984.30\n51. Chit Fund. The Chit Funds Act (40 of 1982) came into force in the State of Karnataka wef 2 January 1984. \nIf that is so the suit filed on the basis of the chit which commenced in the year 1982 is not barred and is \nmaintainable before civil court.31\n52. Code of Criminal Procedure 1898. An order made by a magistrate under s 137 of the Code of Criminal \nProcedure cannot be called into question in a civil court, but a suit will lie for a declaration of exclusive \nownership of land which a magistrate has declared to be a public highway; 32 but not a suit to close the road. 33 \nNo suit lies by a proclaimed person against an",
+        "score": 0.63,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "rt of the assets of the father. 1215 This section applies in the case of the sons of a judgment-debtor \nonly, and not in the case of his brother, 1216 or mother, 1217 or father 1218 or uncle. 1219 The judgments mentioned \nherein are all prior to the coming in force of the Hindu Succession Act, 1956, hence, will not be applicable in \npresent circumstances. Where a suit on a mortgage by the father was filed against the sons and the grandsons \nbut was dismissed against the latter, it was held that the interest of the grandsons in the joint property was not \nliable to attachment under the decree.1220 \nIf the father dies leaving sons and also his own father and subsequently the fathers father dies, it was held that \nthe decree could not be executed against the ancestral property in the hands of the sons. 1221 This view has \nbeen dissented from, in the undermentioned case. 1222 \nThe expression other descendant shall include heirs as mentioned in the Schedule to the Hindu Succession \nAct, 1956.\n5. Liability of ancestral property in execution proceedings. Under the Hindu Law, when a son or grandson \ntakes any ancestral property by survivorship, he is bound to pay out of such property, all debts of his ancestor, \nnot incurred for immoral or illegal purposes. In the case of a decree against a Hindu father, there was a conflict \nof decisions under the Code of Civil Procedure 1882 as to",
+        "score": 0.606,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "Page 13 of 27\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nestate. \nS. 53. Liability of ancestral property. \nFor the purposes of Section 50 and Section 52, property in the hands of a son or other descendant which is \nliable under Hindu law for the payment of the debt of deceased ancestor, in respect of which a decree has been \npassed, shall be deemed to be property of the deceased which has come to the hands of the son or other \ndescendant as his legal representative. \n1. Scope of the section. This section enacts a rule of procedure and its operation is attracted only when the \nson is under a liability under the Hindu Law. It does not, by itself, create or take away any substantive right. 1194 \nIt has no application when the ancestor against whom a decree has been passed, is still alive. 1195 It has been \ndesigned to enlarge the class of property liable for execution under ss 50 and 52 by deeming certain property to \nhave come into the hands of the legal representative as property of the deceased, which, in fact, has not done \nso. The class of property to which the section is applied is property in the hands of a son or other descendant of \nthe deceased, which may not have descended to him from the deceased ancestor, but which under the Hindu \nLaw, would be liable for the payment of his debt. It is, thus, descriptive of the class of property, which can be \nreached",
+        "score": 0.602,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "parties were Germans, and the petition \nwas filed while England was at war with Germany. At the time of filing the petition, A was residing in Lucknow \napparently with the permission of the Government of India, while her husband was in Germany. After filing the \npetition, A applied for an order directing the summons together with a copy of the petition to be sent to the \nProbate, Divorce and Admiralty Division of the High Court in England for transmission to the Foreign Office for \nservice upon the respondent. The court granted the application. 218 In a recent decision, the Calcutta High Court \nheld that where there was no bar to the institution of the suit against the plaintiff at its commencement, but \nduring its pendency, the plaintiff became disqualified to prosecute it as a result of the declaration of emergency \nby India, the proper order by the court is to suspend the trial during the period of the plaintiffs disqualification \nand not to dismiss it.219\nThe words may sue are to be understood with reference to the point of time when the suit is instituted and not \nto any subsequent stage in the suit.220\n4. Limitation. Where the right of alien enemies to sue is suspended by an order of the Government, the period \nduring which the right is suspended will not be excluded from the time prescribed by the Limitation Act for the",
+        "score": 0.656,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Page 52 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nArticle 136 of the Limitation Act, 1963 prescribes a period of 12 years for the execution of a decree other than a \ndecree granting a mandatory injunction or order of civil court. The requirement of Art. 136 in the matter of \nenforcement of a decree is the date on which the decree becomes enforceable or capable of being enforced.96\nAn application filed by the plaintiff in a suit for partition, after passing of preliminary decree, for drawing up final \ndecree is not subject to any period of limitation. As the provisions of the code stand at present, initiation of final \ndecree proceedings does not depend upon an application for final decree for initiation (unless the local \namendments require the same). Therefore, when a preliminary decree is passed in a partition suit, the proceedings \nshould be continued for fixing dates for further proceedings till a final decree is passed.97\nRecommending conceptual change regarding civil litigation, R.V. Raveendran, J., speaking for the Supreme Court \nBench in the above case, observed as follows:\n14. In the present system, when preliminary decree for partition is passed, there is no guarantee that the plaintiff will see \nthe fruits of the decree. The proverbial observation by the Privy Council that the difficulties of a litigant begin when he \nobtains a decree. It is",
+        "score": 0.649,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "ent \nor sanction and the date of receipt of the order of the Government or other authority shall both be \ncounted. \n(3) In computing the period of limitation for any suit or applicatio n for execution of a decree by any \nreceiver or interim receiver appointed in proceedings for the adjudication of a person as an insolvent or by \nany liquidator or provisional liquidator appointed in proceedings for the winding up of a company, the \nperiod be ginning with the date of institution of such proceeding and ending with the expiry of three \nmonths from the date of appointment of such receiver or liquidator, as the case may be, shall be excluded. \n(4) In computing the period of limitation for a suit for possession by a purchaser at a sale in execution \nof a decree, the time during which a proceeding to set aside the sale has been prosecuted shall be \nexcluded. \n(5) In computing the period of limitation for any suit the time during which the defendant has bee n \nabsent from India and from the territories outside India under the administration of the Central \nGovernment, shall be excluded. \n16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if \nhe were living, have a right to institute a suit or make an application dies before the right accrues, or \nwhere a right to institute a suit or make an application accrues only on the death of a person,",
+        "score": 0.632,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "Page 17 of 80\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n(ii) Add as sub-r (3) the following, namely:\n(3) The provisions of s 5 of the Indian Limitation Act, 1908, shall apply to applications under sub-r \n(1)(14-11-1956).\n1. Application of the rule. This rule provides for restoration of suits dismissed under r 8 for non appearance. \nWhere the dismissal was not for default of appearance, the rule is not applicable. The court gets jurisdiction to \nconsider an application under this rule, only if an order has been passed under r 8.69\nWhere a suit for partition is dismissed as withdrawn O 9, r 9 does not apply. Such dismissal is not for default of \nappearance.70 But where a partition suit is dismissed for default and the restoration application under O 9, r 9 is \nrejected, a subsequent suit for partition is not barred as cause of action in partition cases is continuous. The right to \nenforce partition is a legal incident of a joint tenancy and so long such tenancy subsists, a party has a continuous \nright for partition.71\nIt has been held that even when a suit was dismissed for non-appearance, this rule would have no application if the \ndate of hearing had not been fixed or if the same had not been notified to the plaintiff and that an application for \nrestoration of such a suit would fall under s 151 and the period of limitation would be three years under Art. 181",
+        "score": 0.631,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "3 \nTHE LIMITATION ACT, 1963 \nACT NO. 36 OF 1963 \n[5th October, 1963.] \nAn Act to consolidate and amend the law for the limitation of suits and other proceedings and for \npurposes connected therewith. \nBE it enacted by Parliament in the Fourteenth Year of the Republic of India as follows:— \nPART I \nPRELIMINARY \n1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. \n(2) It extends to the whole of India 1***. \n(3) It shall come into force on such date 2 as the Central Government may, by notification in the \nOfficial Gazette, appoint. \n2. Definitions.—In this Act, unless the context otherwise requires,— \n(a) “applicant” includes— \n(i) a petitioner; \n(ii) any person from or through whom an applicant derives his right to apply; \n(iii) any person whose estate is represented by the applicant as executor, administrator or \nother representative; \n(b) “application” includes a petition; \n(c) “bill of exchange” includes a hundi and a cheque; \n(d) “bond” includes any instrument whereby a person obliges himself to pay money to another, \non condition that the obligation shall be void if a specified act is performed, or is not performed, as \nthe case may be; \n(e) “defendant” includes— \n(i) any person from or through whom a defendant derives his liability to be sued; \n(ii) any person whose estate is represented by the defendant as executor, administrator",
+        "score": 0.631,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "endants and it is seen that the plaintiffs approached the court beyond three years of the date of notice. Such is not \nthe case here.86\nHowever, the Bombay High Court has held that where specific plea is taken by the defendant that the suit claim \nwas barred by limitation and the pleadings clearly showed that the suit claim was barred by limitation, the order \ndismissing the suit on the preliminary issue of limitation was proper.87\nS. 10. Stay of suit.\nNo Court shall proceed with the trial of any suit in which the matter in issue is also directly and substantially in \nissue in a previously instituted suit between the same parties, or between parties under whom they or any of \nthem claim litigating under the same title where such suit is pending in the same or any other Court in 88[India] \nhaving jurisdiction to grant the relief claimed, or in any Court beyond the limits of 89[India] established or \ncontinued by the 90[Central Government] 91[***] and having like jurisdiction, or before 92[the Supreme Court].\nExplanation. The pendency of a suit in a foreign Court does not preclude the Courts in 93[India] from trying a \nsuit founded on the same cause of act ion.\n1. Alterations in the section. The words proceed with the trial have been substituted for the word try. The \nwords except where a suit has been stayed under s 20, which occurred at the commencement of the \ncorresponding",
+        "score": 0.629,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "virtue of any claim made by the plaintiff in the plaint, but by virtue of the provisions of O 20, r 12, Code of Civil \nProcedure.28 Where, in a suit for partition, a claim for future mesne profits is declined in the decree, the claim \ncannot be raised in execution proceedings.29\nIn view of Art. 87 Limitation Act, 1963, a plaintiff cannot get past mesne profits for a period more than three years \npreceding the institution of the suit.30",
+        "score": 0.626,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "Page 10 of 32\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nunder s 53A of the Transfer of Property Act 1882; 80 a claim for marshalling under s 56 of the Transfer of Property \nAct 1882; 81 a plea that a partnership was not registered; 82 or that a contract had become discharged by \nfrustration.83 A point not taken in pleading should not ordinarily be allowed to be taken in appeal. 84 A plea as to \nmaintainability of the suit must be raised in the written statement. If not so taken the defendant would be barred \nfrom raising it in a subsequent suit by him. 85 However, the plea that plaintiff firm is not a registered firm and hence \nthe suit filed by it is not maintainable is a jurisdictional fact and not a question of fact. Such fact need not he pleaded \nin the written statement by defendant to take such defence at the hearing. 86 The court will not allow a defendant to \nset up a defence that he has not pleaded, though it may grant him leave to amend.87\n3. Limitation. In India, a suit instituted after the expiry of the period of limitation shall be dismissed, although \nlimitation has not been set up as a defence, under the Limitation Act 1963, s 3. Under s 184 of the Bihar Tenancy \nAct 1885, a suit instituted after the period of limitation is liable to be dismissed. In view of this provision, a defendant \nwould be allowed to raise the point of limitation even if it",
+        "score": 0.619,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "rtition \nand separate possession of his share but no prayer was made for cancellation of partition deed by paying court-fee. \nIt was held that partition deed cannot be set aside.70\nWhere the claim for ownership and right of partition was leased not only on joint patta granted by the Settlement \nAuthorities but also on judgments rendered between the same parties in a previous suit for eviction against the \npresent plaintiff which was dismissed. It was held by the Supreme Court that the suit for partition was entitled to be \ndecreed.71 Where the question is whether a partition deed between two brothers was nominal or not, it will have to \nbe looked into whether the parties acted on it or not. When one of the brothers sold properties allotted to him under \nthe deed and utilised the proceeds for himself, it was held that he is estopped from alleging that the partition was \nnominal.72\nWhere the defendants did not contest the partition suit, the preliminary decree did not contain any declaration as to \ntheir rights, but the very fact that the plaintiff was declared to be entitled to one-seventh share is a clear indication \nthat equal rights of other six co-sharers had been kept in mind. Hence defendants can have their shares declared \nby modification of the preliminary decree. 73 A Division Bench of the Madras High Court ruled that where the trial \ncourt considered every aspect of",
+        "score": 0.578,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "etween the judgment and the decree, the real intendment of the result of the suit should be \ngathered by re-conciliation between the judgment and the decree. Neither the decree nor the judgment should \nbe read in isolation, but in combination. The executing court is duty bound to give effect to the decree in its \nsubstance and should not pass any order rendering the judgment a futile attempt. \nWhere the executing court failed to take into consideration the interest imposed by the trial court in passing the \npreliminary decree followed by final decree, decree holder was directed to submit a draft calculation sheet to \nassist the executing court and writ execution was to be issued after proper calculation. 384 \n5. Bar of suit. The bar for suit under s 47 of the Code of Civil Procedure could be applicable only in cases \nwhere the question can be determined by the court executing the decree. Once it is clear that the civil court is \nnot the court executing the decree for partition of the estate which is subject to the assessment for payment of \nrevenue to the government, the bar provided under s 47 of the Code of Civil Procedure for an independent suit \nby the parties to the decree cannot come in the way of the party approaching the court with such suit regarding \nthe grievance. Undoubtedly, the scope of such suit will be subject to the other laws which may bar the \njurisdiction",
+        "score": 0.574,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "t have jurisdiction on your \napplication. \nA sum of Rs. . . . . . . . . . . . . . , being your fee in the above, is herewith forwarded. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of . . . . . . . 19 . . . . \nJudge. \nNo. 10 \nCommission to Make a Partition \n(O. 26, R. 13) \n(Title) \nTo \nWhereas it is deemed requisite for the purposes of this suit that a commission should be issued to make the \npartition or separation of the property specified in, and according to the rights as declared in, the decree of \nthis Court, dated the . . . . . . . . . day of . . . . . . . 19 . . . .; You are hereby appointed Commissioner for the \nsaid purpose and are directed to make such inquiry as may be necessary, to divide the said property \naccording to the best of your skill and judgment in the shares set out in the said decree, and to allot suh \nshares to the several parties. You are hereby authorized to award sums to be paid to any party by any other \nparty for the purpose of equalizing the value of the shares.",
+        "score": 0.62,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2220:C8840]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2220:C8840 | commentary | 491014025-MULLA-on-CPC-pdf | p.2220 | score=0.628]:\nPage 48 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nproperty during the pendency of the suit. 41 Changes in circumstances, such as transfers made after the preliminary \ndecree has been passed, can be taken into account. 42 A preliminary decree is a step in a pending suit and the suit \ncontinues until the final decree is passed. Hence, an application for amendment of the plaint can be made if an \nevent changing the shares of the parties occurs. 43 In the view of the Calcutta High Court, since a partition suit \ninvolves questions as to accounts, assets of the estate and joint liabilities, it would not matter if the plaint does not \ncontain a separate prayer for the rendition of accounts. 44 A suit by a member of a joint family for partition involves \nthe rendition of accounts. A plaintiff can pray for an inquiry into the profits realised by the defendant at the stage of \nthe making of the final decree, though such a prayer has not been made in the plaint nor such a direction has been \ngiven in the preliminary decree. The reason why such an application must be entertained is that it is only after the \npreliminary decree determines the shares of the parties that the occasion for rendition of accounts arises. 45 There \ncan, however, be one decree only, namely, the final decree, as for instance, where the decree embodies a \ncompromise allotting specific parcels to\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2222:C8855 | commentary | 491014025-MULLA-on-CPC-pdf | p.2222 | score=0.625]:\nutable or becomes an instrument duly \nstamped. Thus, the condition precedent is to draw a final decree and then to engross it on stamped paper(s) of \nrequired value. These two acts together constitute final decree, crystallising the rights of the parties in terms of \npreliminary decree, till then there is no executable decree.83 Hence, the legal representatives of a deceased party in \nthe partition suit can legally make the application for a final decree in accordance with the shares determined in the \npreliminary decree.84 However, where the trial judge erred in including the self-acquired properties of the father of \nthe plaintiff in the preliminary decree as they were mentioned in the schedule of the plaint, it was held that to that \nextent, the preliminary decree is required to be modified. 85 Where no appeal was filed from a preliminary decree \nand the respondent claimed through the defendant in the suit, he cannot at the time of passing of final decree raise \nthe plea that he was the tenant because the batai patra on the basis of which the claim was made was executed \nduring the pendency of the suit and was hit by the doctrine of lis pendens.86\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1700:C6761 | commentary | 491014025-MULLA-on-CPC-pdf | p.1700 | score=0.587]:\nrecord of \ncourt and imposed costs.21\nA suit was filed for declaration that defendants did not acquire any right on the strength of a particular document. An \namendment raising question about validity of the document should be allowed as it does not change the nature and \ncharacter of the suit.22\nIn a suit for partition preliminary decree had already been passed and the plaintiff sought amendment of plaint at \nthe stage of final decree proceedings seeking addition of properties which were joint ancestral properties and were \ncovered under the same set of facts already decided at the time of possing preliminary decree. It was held by Patna \nHigh Court that the proposed amendment would neither change the nature of the suit nor it would take the other \nside by surprise, rather such addition is deemed necessary to settle the controversy as a whole and prevent any \nmultiplicity of proceedings.23\nWhere a suit for permanent injunction in respect of joint property was filed and the relief of declaration of vested \nremainder rights was sought by the plaintiff by way of amendment, it was held that the relief claimed by the plaintiff \nwas not barred by limitation since Art. 65 of the Limitation Act governed such suits for vested remainder rights and \nthe plaintiff could have instituted a fresh suit for the said relief. Hence, to avoid multiplicity of proceedings, the \namendment was\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2219:C8836 | commentary | 491014025-MULLA-on-CPC-pdf | p.2219 | score=0.654]:\namount was directed to hand over vacant and peaceful possession of his portion of the building to the respondent.30\n6. Partition decree. In a suit for partition, there are normally two decrees: (i) a preliminary decree; and (ii) a final \ndecree. There might be a preliminary decree or even more than one preliminary decree, which would determine the \nshare of the party, but which would not divide the properties deliverable to the co-sharer. Another stage is that of \npassing of final decree after inquiry is held, as per the directions contained in the preliminary decree. The shares of \nthe party are determined first at the stage of preliminary decree, and the actual partition is effected as per the final \ndecree.31\nWhen the parties to a suit filed a compromise petition with the plan partitioning their respective shares by metes and \nbounds, no further inquiry is needed unless it is found to be not genuine. In such a case passing a preliminary \ndecree is not necessary and the court can directly pass a final decree in terms of the compromise.32\nGenerally speaking, a final decree cannot amend or go behind the preliminary decree on a matter decided by the \npreliminary decree. 33 However, where some of the parties after the passing of the preliminary decree give up \ncertain rights in favour of one of the parties, the effect of such giving up should be given while passing the final\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P22:C73 | commentary | 491014025-MULLA-on-CPC-pdf | p.22 | score=0.646]:\nand may proceed straightaway to pass a decree for the amount determined as due. 75 The \nquestion has sometimes arisen for decision whether there can be more than one preliminary decree and one \nfinal decree in a suit. On that, judicial opinion was divided; some decisions took the view that there could be \nonly one preliminary decree and one final decree,76 while others held that there was nothing in the Code of Civil \nProcedure prohibiting the passing of more than one preliminary or final decree.77\nIn accordance with this view, where the plaintiff was found to be entitled to contribution but the amount was left \nto be determined later on, it was held that the order was a preliminary decree.78\n(i) Preliminary decree in partition suit. Where the preliminary decree in a suit for partition, while declaring the \nshares to which the parties were entitled, failed to give any direction as to profits after the institution of the suit, \nit was held that it was competent for the court in a subsequent application to pass an order directing inquiry into \nsuch profits and that it was, in substance, a preliminary decree. 79 Likewise, a supplemental order determining \nthe period for which the party is liable for mesne profits was held to be a preliminary decree. 80 In a suit for \npartition, a preliminary decree was passed declaring the plaintiff entitled to one-eighth share and thereafter,\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2220:C8842 | commentary | 491014025-MULLA-on-CPC-pdf | p.2220 | score=0.624]:\nor partition is only a declaration \nof the rights of the parties and the shares they have in the joint family or coparcenary property. The final decree \nshould specify the division by metes and bounds and it needs to be engrossed on stamp paper. 51 If that has not for \nsome reason or the other been done, the aggrieved party can have the preliminary decree amended either on a \nreview or in appeal. 52 Where appeal has not been filed against a preliminary decree, the rights determined therein \nbecomes final and conclusive and cannot be questioned in the final decree. 53 But if the preliminary decree has not \ndeclared the rights of the contesting defendants, it is not competent of the commissioner to make separate \nallotment of shares of such defendants. In such a case, steps should be taken to have such a decree modified. 54 \nThus, where some of the defendants die after a preliminary decree and a final decree is passed without bringing on \nrecord their legal representatives, that decree is a nullity and an application by them to revive the suit must be \nallowed.55 According to O 1, r 10 of the Code of Civil Procedure, it is clear that impleading either as a plaintiff or a \ndefendant is only when the suit is pending before the court and when that stage has totally crossed, the impleading \napplicant cannot resort to this application at the appellate stage. 56 Further, where the\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2220:C8841 | commentary | 491014025-MULLA-on-CPC-pdf | p.2220 | score=0.621]:\noccasion for rendition of accounts arises. 45 There \ncan, however, be one decree only, namely, the final decree, as for instance, where the decree embodies a \ncompromise allotting specific parcels to parties and the rights of the parties would be governed from the date of the \ndecree and not when the stamps are engrossed.46 But such an additional preliminary decree can only be passed so \nlong as the final decree has not been given. 47 The court will not drive the parties to a fresh suit and will direct \npartition of properties among the defendants in which the plaintiff has been found to have no interest. 48 In a suit for \npartition by a co-heir, the court should not give a decree only for the plaintiffs share. It should consider the share of \nall the heirs, after making them parties and then, pass a preliminary decree. 49 Further, where there is land and a \nbuilding thereon, a decree declaring the shares only in land is not valid. 50 The words declaring the rights of the \nseveral parties in the properties in sub-r (2) show that the shares of parties other than the plaintiffs have to be taken \ninto account while passing the preliminary decree. Therefore, a preliminary decree for partition is only a declaration \nof the rights of the parties and the shares they have in the joint family or coparcenary property. The final decree \nshould specify the division by metes and bounds\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2222:C8853 | commentary | 491014025-MULLA-on-CPC-pdf | p.2222 | score=0.619]:\netermine their individual shares.79\nIn a partition, there is no executable decree until the final decree proceedings are disposed of. 80 Bearing in mind \nsuch a nature of the provisions contained in O 20, r 18, it would be premature to decide in the preliminary decree \nwhether the property in defendants possession is available for or capable of partition, as such a question has \nnecessarily to be left to be decided at the inquiry subsequent to the preliminary decree. It is only when it is found \nthat the property is either not available for partition or the property is not partible that the determination of value \nthereof is required to be made. It is, therefore, clear that such a value cannot be made as on the date of suit. It has \nnecessarily to be made as on the date of final decree.81\nA preliminary decree declares the rights and liabilities of the parties. In a given case, a decree may be both \npreliminary and final. However, what can be executed is a final decree, and not a preliminary decree, unless and \nuntil final decree is a part of preliminary decree. Thus, where in a case, the house property was found to be an \nimpartible one, but a preliminary decree having been passed, the valuation thereof and final allotment of the \nproperty could have been done only in a final decree proceeding. Only when final allotments were made or a \ndetermination is made that the property\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P738:C2830]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P738:C2830 | commentary | 491014025-MULLA-on-CPC-pdf | p.738 | score=0.611]:\nPage 15 of 27\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \ndecree between the decree-holder and the representative of the judgment-debtor within the meaning of s 47, \nand it should be determined by the court executing the decree. 1225 This coincides with the view taken by the \nHigh Courts of Bombay and Calcutta under the Code of Civil Procedure 1882. 1226 According to the Madras and \nAllahabad decisions under that Code, a decree against a Hindu father could not be executed against ancestral \nproperty in the hands of the sons, even to the extent of the fathers interest in the property, and the only remedy \nof the decree-holder was to institute a regular suit against the sons. This view proceeded on the ground that the \nquestion whether the debts were tainted with immorality was not one that could be gone into in execution \nproceedings, and that the sons were not the legal representatives of their father so far as the ancestral property \nwas concerned within the meaning of s 234 of the Code of Civil Procedure 1882 (now replaced by Code of Civil \nProcedure, 1908).1227 These decisions are no longer law. 1228 \nPartition. Under Hindu Law, the son, meaning thereby, a male descendant within three decrees, is under a \npious obligation to discharge, out of his share in the joint family properties, the debts of his father which are \nneither illegal nor immoral even though\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P737:C2828 | commentary | 491014025-MULLA-on-CPC-pdf | p.737 | score=0.600]:\nll debts of his ancestor, \nnot incurred for immoral or illegal purposes. In the case of a decree against a Hindu father, there was a conflict \nof decisions under the Code of Civil Procedure 1882 as to the procedure for enforcing this liability. The section \nsettles this question of procedure. 1223 We proceed to consider the subject under the following four heads: \n(a) Money Decree against Father : Execution after his Death: Partition.A and his sons B and C constitute a joint \nHindu family owning an ancestral house. D obtains a decree against A for Rs 5,000 . A dies and on his death, B \nand C take the ancestral property by survivorship . D, whose remedy is not confined to the one-third share of \nthe father, 1224 applies for execution of the decree against B and C by attachment and sale of the whole of the \nfamily house. Is he entitled to do so or must he institute a fresh suit against B and C to recover the debt? \nAccording to the procedure prescribed by the Code of Civil Procedure, D should bring B and C on the record as \nthe legal representatives of A under s 50, and then apply under that section to the court which passed the \ndecree to execute it against B and C to the extent of the ancestral property come to their hands. The words in s \n50 are, to the extent of the property of the deceased which has come to his [legal representatives] hands. \nAccording to the present\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2221:C8846 | commentary | 491014025-MULLA-on-CPC-pdf | p.2221 | score=0.674]:\nPage 49 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \ncannot be presumed to be joint family property. It was further held that the settlement deed is in the name \nof wife of the defendant and in her absence the said property cannot be included or partitioned by the \nparties to the suit.61\nWhere in a suit for partition of joint family property a plea was taken by the defendant that the plaintiff had been \ngiven in adoption to other family but no document was produced to substantiate the plea and there was no evidence \nto prove alleged prior partition excluding the plaintiff, it was held that the decree for partition was not liable to be set \naside.62\nIn a partition suit where the parties belonged to the Mitakshara School of Hindu Law under which there is \npresumption of jointness, the plea of defendants was that partition by metes and bounds had taken place about \nsixty years ago, but documentary evidence like rent receipts and canal parchas not establishing partition. It was \nheld that property may be subjected to partition.63\nWhere plaintiff averred that father of the parties had purchased the suit property in the name of the defendant who \nwas the eldest son and evidence showed that defendant had no financial capacity to purchase property, it was held \nthat it was quite probable that the property was purchased benami and it was liable for partition.64\nIn a\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2198:C8734 | commentary | 491014025-MULLA-on-CPC-pdf | p.2198 | score=0.654]:\nPage 26 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nportion, that is, a portion to the profits of which the plaintiff is exclusively entitled. Hence, the provisions of this rule \ndo not apply to a suit for partition by a member of a joint Hindu family, for until partition, no member is entitled to a \nspecific share of the property.3 In a partition act ion, the lis gets terminated for all purposes at the time of passing of \nthe final decree even with regard to the future mesne profits, and as such it is not open to the parties to claim to the \nrelief of mesne profits beyond the date of passing of final decree unless the final decree provides for such a relief. 4 \nThis does not mean that a member of a joint Hindu family is not entitled in a suit for partition to claim his share of \nthe rents and profits of the joint property from which he may have been wrongfully excluded. He is entitled to such a \nshare,5 but the court in deciding upon his claim must be guided, not by the provisions of this rule, but by the rules of \nHindu law relating to partition.6\nIn a suit for land belonging to joint Hindu Family, the Karta and four of his five sons executed sale deed in favour of \nthe plaintiffs and also put them in possession. The non-consenting son of the Karta sold his undivided share in \nfavour of the defendants. However, no suit for partition was instituted either\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2218:C8830 | commentary | 491014025-MULLA-on-CPC-pdf | p.2218 | score=0.638]:\nPage 46 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nIn a suit for partition where the plaintiff sought separate possession of their shares in the property on the basis of \ngift deed, the said gift deed was proved to be valid. Defendants, though aware of the gift deed filed a separate suit \nas counterblast on the basis of oral gift which was proved to be not correct. It was held that the suit was liable to be \ndismissd.16\nIn a partition suit the defendants plea that there was earlier family settlement was not supported by evidence. \nPartnership deeds which were entered into between different members of the family in different combination were \nheld to be no proof of separation. It was held by the Supreme Court that finding of the High Court was based on \nevidence and cogent reasons.17\nUnder Hindu Law a common passage or road for ingress and egress is indivisible. Thus, where a common passage \nwas kept joint by registered partition deed, the plaintiff cannot file a suit for partition of the common passage on the \nground that characteristic of the same has changed.18\nA compromise decree in a partition suit in respect of joint family properties, was set aside in a subsequent suit \nallotting specific shares and deciding the status of one of the defendants as not being the son of coparceners. His \nplea of revival of the earlier suit from the stage where it was\n\n[Document 6 | CPC | CPC:Section19 | commentary | 491014025-MULLA-on-CPC-pdf | Section 19 | p.114 | score=0.630]:\nudes any other person who has independent rights in the property. Thus, a suit for partition \nbetween husband and wife where son is a party is maintainable before civil court. It was observed that the \nwords or of either of them following the expression with respect to the property of the parties in Explanation (c) \nto Secion 7(1) of the Act would unmistakably lead to the conclusion that the expression refers to parties to a \nmarriage and not parties to the proceedings.29\nWhere in a suit for partition an application under Section 19 of the Hindu Adoption and Maintenance Act, 1956, \nit was held by the Gauhati High Court that Family Court has exclusive jurisdiction to deal with suits or \nproceedings referred to in s 7 (1) of the Family Courts Act, 1984.30\n51. Chit Fund. The Chit Funds Act (40 of 1982) came into force in the State of Karnataka wef 2 January 1984. \nIf that is so the suit filed on the basis of the chit which commenced in the year 1982 is not barred and is \nmaintainable before civil court.31\n52. Code of Criminal Procedure 1898. An order made by a magistrate under s 137 of the Code of Criminal \nProcedure cannot be called into question in a civil court, but a suit will lie for a declaration of exclusive \nownership of land which a magistrate has declared to be a public highway; 32 but not a suit to close the road. 33 \nNo suit lies by a proclaimed person against an\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P737:C2827 | commentary | 491014025-MULLA-on-CPC-pdf | p.737 | score=0.606]:\nrt of the assets of the father. 1215 This section applies in the case of the sons of a judgment-debtor \nonly, and not in the case of his brother, 1216 or mother, 1217 or father 1218 or uncle. 1219 The judgments mentioned \nherein are all prior to the coming in force of the Hindu Succession Act, 1956, hence, will not be applicable in \npresent circumstances. Where a suit on a mortgage by the father was filed against the sons and the grandsons \nbut was dismissed against the latter, it was held that the interest of the grandsons in the joint property was not \nliable to attachment under the decree.1220 \nIf the father dies leaving sons and also his own father and subsequently the fathers father dies, it was held that \nthe decree could not be executed against the ancestral property in the hands of the sons. 1221 This view has \nbeen dissented from, in the undermentioned case. 1222 \nThe expression other descendant shall include heirs as mentioned in the Schedule to the Hindu Succession \nAct, 1956.\n5. Liability of ancestral property in execution proceedings. Under the Hindu Law, when a son or grandson \ntakes any ancestral property by survivorship, he is bound to pay out of such property, all debts of his ancestor, \nnot incurred for immoral or illegal purposes. In the case of a decree against a Hindu father, there was a conflict \nof decisions under the Code of Civil Procedure 1882 as to\n\n[Document 8 | CPC | CPC:Section50 | commentary | 491014025-MULLA-on-CPC-pdf | Section 50 | p.736 | score=0.602]:\nPage 13 of 27\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nestate. \nS. 53. Liability of ancestral property. \nFor the purposes of Section 50 and Section 52, property in the hands of a son or other descendant which is \nliable under Hindu law for the payment of the debt of deceased ancestor, in respect of which a decree has been \npassed, shall be deemed to be property of the deceased which has come to the hands of the son or other \ndescendant as his legal representative. \n1. Scope of the section. This section enacts a rule of procedure and its operation is attracted only when the \nson is under a liability under the Hindu Law. It does not, by itself, create or take away any substantive right. 1194 \nIt has no application when the ancestor against whom a decree has been passed, is still alive. 1195 It has been \ndesigned to enlarge the class of property liable for execution under ss 50 and 52 by deeming certain property to \nhave come into the hands of the legal representative as property of the deceased, which, in fact, has not done \nso. The class of property to which the section is applied is property in the hands of a son or other descendant of \nthe deceased, which may not have descended to him from the deceased ancestor, but which under the Hindu \nLaw, would be liable for the payment of his debt. It is, thus, descriptive of the class of property, which can be \nreached\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P883:C3402]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P883:C3402 | commentary | 491014025-MULLA-on-CPC-pdf | p.883 | score=0.656]:\nparties were Germans, and the petition \nwas filed while England was at war with Germany. At the time of filing the petition, A was residing in Lucknow \napparently with the permission of the Government of India, while her husband was in Germany. After filing the \npetition, A applied for an order directing the summons together with a copy of the petition to be sent to the \nProbate, Divorce and Admiralty Division of the High Court in England for transmission to the Foreign Office for \nservice upon the respondent. The court granted the application. 218 In a recent decision, the Calcutta High Court \nheld that where there was no bar to the institution of the suit against the plaintiff at its commencement, but \nduring its pendency, the plaintiff became disqualified to prosecute it as a result of the declaration of emergency \nby India, the proper order by the court is to suspend the trial during the period of the plaintiffs disqualification \nand not to dismiss it.219\nThe words may sue are to be understood with reference to the point of time when the suit is instituted and not \nto any subsequent stage in the suit.220\n4. Limitation. Where the right of alien enemies to sue is suspended by an order of the Government, the period \nduring which the right is suspended will not be excluded from the time prescribed by the Limitation Act for the\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2224:C8861 | commentary | 491014025-MULLA-on-CPC-pdf | p.2224 | score=0.649]:\nPage 52 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nArticle 136 of the Limitation Act, 1963 prescribes a period of 12 years for the execution of a decree other than a \ndecree granting a mandatory injunction or order of civil court. The requirement of Art. 136 in the matter of \nenforcement of a decree is the date on which the decree becomes enforceable or capable of being enforced.96\nAn application filed by the plaintiff in a suit for partition, after passing of preliminary decree, for drawing up final \ndecree is not subject to any period of limitation. As the provisions of the code stand at present, initiation of final \ndecree proceedings does not depend upon an application for final decree for initiation (unless the local \namendments require the same). Therefore, when a preliminary decree is passed in a partition suit, the proceedings \nshould be continued for fixing dates for further proceedings till a final decree is passed.97\nRecommending conceptual change regarding civil litigation, R.V. Raveendran, J., speaking for the Supreme Court \nBench in the above case, observed as follows:\n14. In the present system, when preliminary decree for partition is passed, there is no guarantee that the plaintiff will see \nthe fruits of the decree. The proverbial observation by the Privy Council that the difficulties of a litigant begin when he \nobtains a decree. It is\n\n[Document 3 | Limitation Act | Limitation Act:books/A1963-36.pdf:P7:C16 | bare_act | A1963-36 | p.7 | score=0.632]:\nent \nor sanction and the date of receipt of the order of the Government or other authority shall both be \ncounted. \n(3) In computing the period of limitation for any suit or applicatio n for execution of a decree by any \nreceiver or interim receiver appointed in proceedings for the adjudication of a person as an insolvent or by \nany liquidator or provisional liquidator appointed in proceedings for the winding up of a company, the \nperiod be ginning with the date of institution of such proceeding and ending with the expiry of three \nmonths from the date of appointment of such receiver or liquidator, as the case may be, shall be excluded. \n(4) In computing the period of limitation for a suit for possession by a purchaser at a sale in execution \nof a decree, the time during which a proceeding to set aside the sale has been prosecuted shall be \nexcluded. \n(5) In computing the period of limitation for any suit the time during which the defendant has bee n \nabsent from India and from the territories outside India under the administration of the Central \nGovernment, shall be excluded. \n16. Effect of death on or before the accrual of the right to sue.—(1) Where a person who would, if \nhe were living, have a right to institute a suit or make an application dies before the right accrues, or \nwhere a right to institute a suit or make an application accrues only on the death of a person,\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1909:C7611 | commentary | 491014025-MULLA-on-CPC-pdf | p.1909 | score=0.631]:\nPage 17 of 80\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n(ii) Add as sub-r (3) the following, namely:\n(3) The provisions of s 5 of the Indian Limitation Act, 1908, shall apply to applications under sub-r \n(1)(14-11-1956).\n1. Application of the rule. This rule provides for restoration of suits dismissed under r 8 for non appearance. \nWhere the dismissal was not for default of appearance, the rule is not applicable. The court gets jurisdiction to \nconsider an application under this rule, only if an order has been passed under r 8.69\nWhere a suit for partition is dismissed as withdrawn O 9, r 9 does not apply. Such dismissal is not for default of \nappearance.70 But where a partition suit is dismissed for default and the restoration application under O 9, r 9 is \nrejected, a subsequent suit for partition is not barred as cause of action in partition cases is continuous. The right to \nenforce partition is a legal incident of a joint tenancy and so long such tenancy subsists, a party has a continuous \nright for partition.71\nIt has been held that even when a suit was dismissed for non-appearance, this rule would have no application if the \ndate of hearing had not been fixed or if the same had not been notified to the plaintiff and that an application for \nrestoration of such a suit would fall under s 151 and the period of limitation would be three years under Art. 181\n\n[Document 5 | Limitation Act | Limitation Act:books/A1963-36.pdf:P3:C3 | bare_act | A1963-36 | p.3 | score=0.631]:\n3 \nTHE LIMITATION ACT, 1963 \nACT NO. 36 OF 1963 \n[5th October, 1963.] \nAn Act to consolidate and amend the law for the limitation of suits and other proceedings and for \npurposes connected therewith. \nBE it enacted by Parliament in the Fourteenth Year of the Republic of India as follows:— \nPART I \nPRELIMINARY \n1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. \n(2) It extends to the whole of India 1***. \n(3) It shall come into force on such date 2 as the Central Government may, by notification in the \nOfficial Gazette, appoint. \n2. Definitions.—In this Act, unless the context otherwise requires,— \n(a) “applicant” includes— \n(i) a petitioner; \n(ii) any person from or through whom an applicant derives his right to apply; \n(iii) any person whose estate is represented by the applicant as executor, administrator or \nother representative; \n(b) “application” includes a petition; \n(c) “bill of exchange” includes a hundi and a cheque; \n(d) “bond” includes any instrument whereby a person obliges himself to pay money to another, \non condition that the obligation shall be void if a specified act is performed, or is not performed, as \nthe case may be; \n(e) “defendant” includes— \n(i) any person from or through whom a defendant derives his liability to be sued; \n(ii) any person whose estate is represented by the defendant as executor, administrator\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P152:C619 | commentary | 491014025-MULLA-on-CPC-pdf | p.152 | score=0.629]:\nendants and it is seen that the plaintiffs approached the court beyond three years of the date of notice. Such is not \nthe case here.86\nHowever, the Bombay High Court has held that where specific plea is taken by the defendant that the suit claim \nwas barred by limitation and the pleadings clearly showed that the suit claim was barred by limitation, the order \ndismissing the suit on the preliminary issue of limitation was proper.87\nS. 10. Stay of suit.\nNo Court shall proceed with the trial of any suit in which the matter in issue is also directly and substantially in \nissue in a previously instituted suit between the same parties, or between parties under whom they or any of \nthem claim litigating under the same title where such suit is pending in the same or any other Court in 88[India] \nhaving jurisdiction to grant the relief claimed, or in any Court beyond the limits of 89[India] established or \ncontinued by the 90[Central Government] 91[***] and having like jurisdiction, or before 92[the Supreme Court].\nExplanation. The pendency of a suit in a foreign Court does not preclude the Courts in 93[India] from trying a \nsuit founded on the same cause of act ion.\n1. Alterations in the section. The words proceed with the trial have been substituted for the word try. The \nwords except where a suit has been stayed under s 20, which occurred at the commencement of the \ncorresponding\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2204:C8770 | commentary | 491014025-MULLA-on-CPC-pdf | p.2204 | score=0.626]:\nvirtue of any claim made by the plaintiff in the plaint, but by virtue of the provisions of O 20, r 12, Code of Civil \nProcedure.28 Where, in a suit for partition, a claim for future mesne profits is declined in the decree, the claim \ncannot be raised in execution proceedings.29\nIn view of Art. 87 Limitation Act, 1963, a plaintiff cannot get past mesne profits for a period more than three years \npreceding the institution of the suit.30\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1837:C7327 | commentary | 491014025-MULLA-on-CPC-pdf | p.1837 | score=0.619]:\nPage 10 of 32\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nunder s 53A of the Transfer of Property Act 1882; 80 a claim for marshalling under s 56 of the Transfer of Property \nAct 1882; 81 a plea that a partnership was not registered; 82 or that a contract had become discharged by \nfrustration.83 A point not taken in pleading should not ordinarily be allowed to be taken in appeal. 84 A plea as to \nmaintainability of the suit must be raised in the written statement. If not so taken the defendant would be barred \nfrom raising it in a subsequent suit by him. 85 However, the plea that plaintiff firm is not a registered firm and hence \nthe suit filed by it is not maintainable is a jurisdictional fact and not a question of fact. Such fact need not he pleaded \nin the written statement by defendant to take such defence at the hearing. 86 The court will not allow a defendant to \nset up a defence that he has not pleaded, though it may grant him leave to amend.87\n3. Limitation. In India, a suit instituted after the expiry of the period of limitation shall be dismissed, although \nlimitation has not been set up as a defence, under the Limitation Act 1963, s 3. Under s 184 of the Bihar Tenancy \nAct 1885, a suit instituted after the period of limitation is liable to be dismissed. In view of this provision, a defendant \nwould be allowed to raise the point of limitation even if it\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2221:C8849]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2221:C8849 | commentary | 491014025-MULLA-on-CPC-pdf | p.2221 | score=0.578]:\nrtition \nand separate possession of his share but no prayer was made for cancellation of partition deed by paying court-fee. \nIt was held that partition deed cannot be set aside.70\nWhere the claim for ownership and right of partition was leased not only on joint patta granted by the Settlement \nAuthorities but also on judgments rendered between the same parties in a previous suit for eviction against the \npresent plaintiff which was dismissed. It was held by the Supreme Court that the suit for partition was entitled to be \ndecreed.71 Where the question is whether a partition deed between two brothers was nominal or not, it will have to \nbe looked into whether the parties acted on it or not. When one of the brothers sold properties allotted to him under \nthe deed and utilised the proceeds for himself, it was held that he is estopped from alleging that the partition was \nnominal.72\nWhere the defendants did not contest the partition suit, the preliminary decree did not contain any declaration as to \ntheir rights, but the very fact that the plaintiff was declared to be entitled to one-seventh share is a clear indication \nthat equal rights of other six co-sharers had been kept in mind. Hence defendants can have their shares declared \nby modification of the preliminary decree. 73 A Division Bench of the Madras High Court ruled that where the trial \ncourt considered every aspect of\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P655:C2460 | commentary | 491014025-MULLA-on-CPC-pdf | p.655 | score=0.574]:\netween the judgment and the decree, the real intendment of the result of the suit should be \ngathered by re-conciliation between the judgment and the decree. Neither the decree nor the judgment should \nbe read in isolation, but in combination. The executing court is duty bound to give effect to the decree in its \nsubstance and should not pass any order rendering the judgment a futile attempt. \nWhere the executing court failed to take into consideration the interest imposed by the trial court in passing the \npreliminary decree followed by final decree, decree holder was directed to submit a draft calculation sheet to \nassist the executing court and writ execution was to be issued after proper calculation. 384 \n5. Bar of suit. The bar for suit under s 47 of the Code of Civil Procedure could be applicable only in cases \nwhere the question can be determined by the court executing the decree. Once it is clear that the civil court is \nnot the court executing the decree for partition of the estate which is subject to the assessment for payment of \nrevenue to the government, the bar provided under s 47 of the Code of Civil Procedure for an independent suit \nby the parties to the decree cannot come in the way of the party approaching the court with such suit regarding \nthe grievance. Undoubtedly, the scope of such suit will be subject to the other laws which may bar the \njurisdiction\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P22:C73 | commentary | 491014025-MULLA-on-CPC-pdf | p.22 | score=0.670]:\nand may proceed straightaway to pass a decree for the amount determined as due. 75 The \nquestion has sometimes arisen for decision whether there can be more than one preliminary decree and one \nfinal decree in a suit. On that, judicial opinion was divided; some decisions took the view that there could be \nonly one preliminary decree and one final decree,76 while others held that there was nothing in the Code of Civil \nProcedure prohibiting the passing of more than one preliminary or final decree.77\nIn accordance with this view, where the plaintiff was found to be entitled to contribution but the amount was left \nto be determined later on, it was held that the order was a preliminary decree.78\n(i) Preliminary decree in partition suit. Where the preliminary decree in a suit for partition, while declaring the \nshares to which the parties were entitled, failed to give any direction as to profits after the institution of the suit, \nit was held that it was competent for the court in a subsequent application to pass an order directing inquiry into \nsuch profits and that it was, in substance, a preliminary decree. 79 Likewise, a supplemental order determining \nthe period for which the party is liable for mesne profits was held to be a preliminary decree. 80 In a suit for \npartition, a preliminary decree was passed declaring the plaintiff entitled to one-eighth share and thereafter,\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2220:C8841 | commentary | 491014025-MULLA-on-CPC-pdf | p.2220 | score=0.632]:\noccasion for rendition of accounts arises. 45 There \ncan, however, be one decree only, namely, the final decree, as for instance, where the decree embodies a \ncompromise allotting specific parcels to parties and the rights of the parties would be governed from the date of the \ndecree and not when the stamps are engrossed.46 But such an additional preliminary decree can only be passed so \nlong as the final decree has not been given. 47 The court will not drive the parties to a fresh suit and will direct \npartition of properties among the defendants in which the plaintiff has been found to have no interest. 48 In a suit for \npartition by a co-heir, the court should not give a decree only for the plaintiffs share. It should consider the share of \nall the heirs, after making them parties and then, pass a preliminary decree. 49 Further, where there is land and a \nbuilding thereon, a decree declaring the shares only in land is not valid. 50 The words declaring the rights of the \nseveral parties in the properties in sub-r (2) show that the shares of parties other than the plaintiffs have to be taken \ninto account while passing the preliminary decree. Therefore, a preliminary decree for partition is only a declaration \nof the rights of the parties and the shares they have in the joint family or coparcenary property. The final decree \nshould specify the division by metes and bounds\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2222:C8853 | commentary | 491014025-MULLA-on-CPC-pdf | p.2222 | score=0.631]:\netermine their individual shares.79\nIn a partition, there is no executable decree until the final decree proceedings are disposed of. 80 Bearing in mind \nsuch a nature of the provisions contained in O 20, r 18, it would be premature to decide in the preliminary decree \nwhether the property in defendants possession is available for or capable of partition, as such a question has \nnecessarily to be left to be decided at the inquiry subsequent to the preliminary decree. It is only when it is found \nthat the property is either not available for partition or the property is not partible that the determination of value \nthereof is required to be made. It is, therefore, clear that such a value cannot be made as on the date of suit. It has \nnecessarily to be made as on the date of final decree.81\nA preliminary decree declares the rights and liabilities of the parties. In a given case, a decree may be both \npreliminary and final. However, what can be executed is a final decree, and not a preliminary decree, unless and \nuntil final decree is a part of preliminary decree. Thus, where in a case, the house property was found to be an \nimpartible one, but a preliminary decree having been passed, the valuation thereof and final allotment of the \nproperty could have been done only in a final decree proceeding. Only when final allotments were made or a \ndetermination is made that the property\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2219:C8836 | commentary | 491014025-MULLA-on-CPC-pdf | p.2219 | score=0.624]:\namount was directed to hand over vacant and peaceful possession of his portion of the building to the respondent.30\n6. Partition decree. In a suit for partition, there are normally two decrees: (i) a preliminary decree; and (ii) a final \ndecree. There might be a preliminary decree or even more than one preliminary decree, which would determine the \nshare of the party, but which would not divide the properties deliverable to the co-sharer. Another stage is that of \npassing of final decree after inquiry is held, as per the directions contained in the preliminary decree. The shares of \nthe party are determined first at the stage of preliminary decree, and the actual partition is effected as per the final \ndecree.31\nWhen the parties to a suit filed a compromise petition with the plan partitioning their respective shares by metes and \nbounds, no further inquiry is needed unless it is found to be not genuine. In such a case passing a preliminary \ndecree is not necessary and the court can directly pass a final decree in terms of the compromise.32\nGenerally speaking, a final decree cannot amend or go behind the preliminary decree on a matter decided by the \npreliminary decree. 33 However, where some of the parties after the passing of the preliminary decree give up \ncertain rights in favour of one of the parties, the effect of such giving up should be given while passing the final\n\n[Document 7 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P247:C826 | bare_act | the code of civil procedure, 1908 | p.247 | score=0.620]:\nt have jurisdiction on your \napplication. \nA sum of Rs. . . . . . . . . . . . . . , being your fee in the above, is herewith forwarded. \nGiven under my hand and the seal of the Court, this . . . . . . . . . day of . . . . . . . 19 . . . . \nJudge. \nNo. 10 \nCommission to Make a Partition \n(O. 26, R. 13) \n(Title) \nTo \nWhereas it is deemed requisite for the purposes of this suit that a commission should be issued to make the \npartition or separation of the property specified in, and according to the rights as declared in, the decree of \nthis Court, dated the . . . . . . . . . day of . . . . . . . 19 . . . .; You are hereby appointed Commissioner for the \nsaid purpose and are directed to make such inquiry as may be necessary, to divide the said property \naccording to the best of your skill and judgment in the shares set out in the said decree, and to allot suh \nshares to the several parties. You are hereby authorized to award sums to be paid to any party by any other \nparty for the purpose of equalizing the value of the shares.\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2220:C8840 | commentary | 491014025-MULLA-on-CPC-pdf | p.2220 | score=0.607]:\nPage 48 of 75\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nproperty during the pendency of the suit. 41 Changes in circumstances, such as transfers made after the preliminary \ndecree has been passed, can be taken into account. 42 A preliminary decree is a step in a pending suit and the suit \ncontinues until the final decree is passed. Hence, an application for amendment of the plaint can be made if an \nevent changing the shares of the parties occurs. 43 In the view of the Calcutta High Court, since a partition suit \ninvolves questions as to accounts, assets of the estate and joint liabilities, it would not matter if the plaint does not \ncontain a separate prayer for the rendition of accounts. 44 A suit by a member of a joint family for partition involves \nthe rendition of accounts. A plaintiff can pray for an inquiry into the profits realised by the defendant at the stage of \nthe making of the final decree, though such a prayer has not been made in the plaint nor such a direction has been \ngiven in the preliminary decree. The reason why such an application must be entertained is that it is only after the \npreliminary decree determines the shares of the parties that the occasion for rendition of accounts arises. 45 There \ncan, however, be one decree only, namely, the final decree, as for instance, where the decree embodies a \ncompromise allotting specific parcels to"
+  },
+  "legal_research": {
+    "queries": [
+      "Suit for Partition limitation period India years accrual date right to sue District Court",
+      "partition suit plaint mandatory procedural requirements India District Court"
+    ],
+    "results": [
+      {
+        "title": "Partition Suit in India - Court Fees, Limitation and Format",
+        "url": "https://www.nobroker.in/blog/partition-suit-explained/",
+        "snippet": "The limitation period for a partition suit in India is 12 years from the date when the right to sue accrued.",
+        "date": ""
+      },
+      {
+        "title": "Latest Supreme Court Judgement on Partition Suit | Key Legal Insights & Updates",
+        "url": "https://restthecase.com/knowledge-bank/latest-supreme-court-judgement-on-partition-suit",
+        "snippet": "The time limit for filing a partition suit is 12 years , commencing when the right to file the suit accrues. The latest Supreme Court judgment on partition suits in India (as of September 2025) clarified several key principles regarding the division ...",
+        "date": ""
+      },
+      {
+        "title": "article+113+of+limitation+act+partition | Indian Case Law | Law | CaseMine",
+        "url": "https://www.casemine.com/search/in/article+113+of+limitation+act+partition",
+        "snippet": "According to him Article 113 of the Limitation Act is attracted since it was suit purely for partition and separate...years, from the date of adoption (the suit was filed on 11-10-1971).",
+        "date": ""
+      },
+      {
+        "title": "limitation+for+suit+for+partition | Indian Case Law | Law | CaseMine",
+        "url": "https://www.casemine.com/search/in/limitation+for+suit+for+partition",
+        "snippet": "...suit for partition primarily ... point of limitation is - when the right to sue accrues, that is, when the plaintiff ha...in the year 2008. ...",
+        "date": ""
+      },
+      {
+        "title": "DISTRICT JUDICIARY ANANTHAPURAMU LAW ON LIMITATION PAPER PRESENTATIONS",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec030655f117444fc1911ab9c6f6b013/uploads/2025/04/2025042027.pdf",
+        "snippet": "Section 3 limits the time after which a suit or other proceeding would be barred. The right to · sue and the commencement of the running of time for purpose of the limitation depend on the",
+        "date": ""
+      },
+      {
+        "title": "Process of filing Partition Suit in India",
+        "url": "https://www.myadvo.in/blog/process-of-filing-partition-suit",
+        "snippet": "The steps that have to be followed ... by the party filing such a suit. The plaint has to be drafted and printed in accordance to the format that has been specified and mandated by the Court ....",
+        "date": ""
+      },
+      {
+        "title": "How to file a partition suit in India - iPleaders",
+        "url": "https://blog.ipleaders.in/file-partition-suit-india/",
+        "snippet": "Hearing : On the first day of hearing, ... The plaintiff is then required to file the appropriate amount of procedure fee in the court and two copies of plaint for each defendant within 7 days ....",
+        "date": ""
+      },
+      {
+        "title": "How To File Partition Suit For Property Division",
+        "url": "https://www.indialawoffices.com/knowledge-centre/partition-suit",
+        "snippet": "The Court then determines the share of each co-owner based on this report and accordingly partition the property by metes and bound. a. Objectives of Filing a Partition Suit for the declaration of Plaintiff’s share in the Suit properties under the Preliminary Decree.",
+        "date": ""
+      },
+      {
+        "title": "sarin advocate - MODELS OF PLAINT IN PARTITION SUIT",
+        "url": "https://sites.google.com/site/sarinadvocate/partition-suit/models-of-plaints-in-partition-suit",
+        "snippet": "7. That the plaintiff claims partition of the said property and separate possession of his 1/5th share . 8. That the cause of action for the said suit arose on……………when………………………. 9. That the suit property is situated in Dehradun and all the parties permanently residing ...",
+        "date": ""
+      }
+    ],
+    "summary": "[Partition Suit in India - Court Fees, Limitation and Format] The limitation period for a partition suit in India is 12 years from the date when the right to sue accrued.\n[Latest Supreme Court Judgement on Partition Suit | Key Legal Insights & Updates] The time limit for filing a partition suit is 12 years , commencing when the right to file the suit accrues. The latest Supreme Court judgment on partition suits in India (as of September 2025) clarified several key principles regarding the division ...\n[article+113+of+limitation+act+partition | Indian Case Law | Law | CaseMine] According to him Article 113 of the Limitation Act is attracted since it was suit purely for partition and separate...years, from the date of adoption (the suit was filed on 11-10-1971).\n[limitation+for+suit+for+partition | Indian Case Law | Law | CaseMine] ...suit for partition primarily ... point of limitation is - when the right to sue accrues, that is, when the plaintiff ha...in the year 2008. ...\n[DISTRICT JUDICIARY ANANTHAPURAMU LAW ON LIMITATION PAPER PRESENTATIONS] Section 3 limits the time after which a suit or other proceeding would be barred. The right to · sue and the commencement of the running of time for purpose of the limitation depend on the\n[How to file a partition suit in India - iPleaders] Hearing : On the first day of hearing, ... The plaintiff is then required to file the appropriate amount of procedure fee in the court and two copies of plaint for each defendant within 7 days ....\n[sarin advocate - MODELS OF PLAINT IN PARTITION SUIT] 7. That the plaintiff claims partition of the said property and separate possession of his 1/5th share . 8. That the cause of action for the said suit arose on……………when………………………. 9. That the suit property is situated in Dehradun and all the parties permanently residing ...",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": {
+      "article": "136",
+      "description": "vil Procedure, 18th Edition\n \nArticle 136 of the Limitation Act, 1963 prescribes a period of 12 years for the execution of a decree other than a \ndecree granting a mandatory injunction or order of civil court. The requirement of Art. 136 in the matte",
+      "period": "",
+      "accrual": "",
+      "source": "rag"
+    },
+    "user_cited_provisions": [],
+    "enrichment_log": [
+      "limitation: FOUND in RAG (Article 136)"
+    ]
+  },
+  "template": {
+    "template_id": "civil/_fallback",
+    "template_version": "1.1",
+    "doc_type": "_fallback",
+    "law_domain": "Civil",
+    "party_labels": {
+      "primary": "Plaintiff",
+      "opposite": "Defendant"
+    },
+    "annexure_scheme": {},
+    "placeholder_dates": {},
+    "sections": [
+      {
+        "section_id": "court_heading",
+        "heading": "",
+        "type": "template",
+        "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+      },
+      {
+        "section_id": "title",
+        "heading": "",
+        "type": "template_with_fill",
+        "instruction": "Draft the suit title line based on the nature of the suit, relief sought, and any monetary amount involved. Use standard Indian court pleading format. If this is a property suit use 'SUIT FOR PARTITION AND SEPARATE POSSESSION' style. If recovery suit use 'SUIT FOR RECOVERY OF Rs. {{CLAIM_AMOUNT}}/-' style. Adapt to the actual suit type from the classified doc_type and intake facts.",
+        "context_keys": [
+          "intake.facts"
+        ],
+        "must_include": []
+      },
+      {
+        "section_id": "parties",
+        "heading": "BETWEEN",
+        "type": "template_with_fill",
+        "instruction": "Draft the parties section listing plaintiff(s) and defendant(s) with full particulars: name, age, occupation, address. Use competency averment (sui juris / competent to sue). If any detail is missing, use {{PLACEHOLDER}}. Adapt party labels to the suit type (e.g., Petitioner/Respondent for writ petitions).",
+        "context_keys": [
+          "intake.parties"
+        ],
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "sui\\s+juris|competent\\s+to\\s+sue|major\\s+in\\s+age",
+            "required": true,
+            "description": "Competency averment"
+          },
+          {
+            "type": "keyword",
+            "match": "Plaintiff",
+            "required": true,
+            "description": "Plaintiff label"
+          },
+          {
+            "type": "keyword",
+            "match": "Defendant",
+            "required": true,
+            "description": "Defendant label"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "witness_names"
+        ]
+      },
+      {
+        "section_id": "jurisdiction",
+        "heading": "JURISDICTION",
+        "type": "llm_fill",
+        "instruction": "Draft the jurisdiction section establishing territorial and pecuniary jurisdiction based on the facts. For territorial jurisdiction, state the SPECIFIC factual basis: where the defendant resides, where property is situated, where the cause of action arose, or where the transaction occurred. For suits involving immovable property, jurisdiction is based on where the property is situated (Section 16 CPC). For pecuniary jurisdiction, state the suit valuation and that it falls within the court's monetary limits.",
+        "context_keys": [
+          "intake.jurisdiction",
+          "intake.facts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "territorial|within\\s+the\\s+(local\\s+)?limits|Section\\s+16",
+            "required": true,
+            "description": "Territorial jurisdiction ground"
+          },
+          {
+            "type": "regex",
+            "match": "pecuniary|monetary\\s+jurisdiction",
+            "required": true,
+            "description": "Pecuniary jurisdiction ground"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "court_name",
+          "place_names",
+          "property_address"
+        ]
+      },
+      {
+        "section_id": "facts",
+        "heading": "FACTS OF THE CASE",
+        "type": "llm_fill",
+        "instruction": "Draft the facts section as numbered paragraphs in chronological narrative form. Each paragraph must tell a story — not state conclusions. Adapt the narrative to the actual nature of the suit: for property suits describe ownership chain and possession history, for recovery suits describe the transaction and default, for family matters describe relationships and events. Reference documents as Annexure labels. Do NOT state legal conclusions in this section — keep it purely factual.",
+        "context_keys": [
+          "intake.facts",
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Evidence referenced"
+          },
+          {
+            "type": "regex",
+            "match": "\\d{4}|DATE|date",
+            "required": true,
+            "description": "At least one date or date placeholder"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "witness_names",
+          "place_names",
+          "property_address"
+        ]
+      },
+      {
+        "section_id": "legal_basis",
+        "heading": "LEGAL BASIS AND GROUNDS",
+        "type": "llm_fill",
+        "instruction": "Draft the legal basis section citing relevant statutory provisions and legal principles. For EACH provision: (1) State the legal rule it creates, (2) State what conditions trigger it, (3) Show how the facts satisfy those conditions. Cite ONLY provisions from the verified list or those naturally applicable to the suit type. If applicable, include alternative pleas using 'In the alternative and without prejudice...' framing. Include defensive pleading to pre-emptively neutralize likely defense arguments.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Section\\s+\\d+|Article\\s+\\d+|Order\\s+[IVXLC]+",
+            "required": true,
+            "description": "At least one statutory provision cited"
+          },
+          {
+            "type": "regex",
+            "match": "bound|obligat|liable|entitle|right|duty",
+            "required": true,
+            "description": "Legal consequence stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "statutory_provisions"
+        ]
+      },
+      {
+        "section_id": "cause_of_action",
+        "heading": "CAUSE OF ACTION",
+        "type": "llm_fill",
+        "instruction": "Draft the cause of action section in PARAGRAPH prose. Must cover: (1) ORIGIN — when and how the right to sue first arose (the specific event: default, refusal, denial, dispossession, etc.), (2) FURTHER ACCRUAL — subsequent acts that sustain the right (further demands, further refusals), (3) CONTINUITY — why the cause of action is continuing. Anchor to the actual triggering event from the facts, not to procedural dates like notice.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "cause\\s+of\\s+action",
+            "required": true,
+            "description": "Cause of action stated"
+          },
+          {
+            "type": "regex",
+            "match": "first\\s+arose|ar[oi]se|accrued",
+            "required": true,
+            "description": "Origin/accrual stated"
+          },
+          {
+            "type": "regex",
+            "match": "continu(ing|es|ed)",
+            "required": true,
+            "description": "Continuing nature stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "place_names",
+          "property_address"
+        ]
+      },
+      {
+        "section_id": "limitation",
+        "heading": "LIMITATION",
+        "type": "llm_fill",
+        "instruction": "Draft the limitation section stating: (1) the applicable Article of the Limitation Act 1963 (from enrichment or use {{LIMITATION_ARTICLE}} placeholder), (2) the limitation period, (3) the starting date of limitation anchored to the cause of action accrual event, (4) that the suit is within time.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Article\\s+\\d+|LIMITATION_ARTICLE",
+            "required": true,
+            "description": "Limitation article cited or placeholdered"
+          },
+          {
+            "type": "regex",
+            "match": "Limitation\\s+Act",
+            "required": true,
+            "description": "Limitation Act reference"
+          },
+          {
+            "type": "regex",
+            "match": "within\\s+(the\\s+)?(?:period|time|limitation)",
+            "required": true,
+            "description": "Within limitation stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "valuation_court_fee",
+        "heading": "VALUATION AND COURT FEE",
+        "type": "template_with_fill",
+        "instruction": "Draft the valuation and court fee section. State the suit valuation and basis (claim amount for money suits, property value for property suits, etc.). State court fee as per applicable State Court Fees Act or use {{COURT_FEE_AMOUNT}} placeholder. For property suits, state valuation per Section 7 of the Court Fees Act (market value of share) if applicable.",
+        "context_keys": [
+          "intake.facts.amounts",
+          "court_fee"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "valuation|valued",
+            "required": true,
+            "description": "Valuation stated"
+          },
+          {
+            "type": "regex",
+            "match": "court\\s+fee|COURT_FEE",
+            "required": true,
+            "description": "Court fee stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name"
+        ]
+      },
+      {
+        "section_id": "interest",
+        "heading": "INTEREST",
+        "type": "llm_fill",
+        "instruction": "Draft the interest section IF applicable to this suit type. For money recovery suits: pre-suit interest, pendente lite interest (Section 34 CPC), and future interest with rates and justification. For property suits: mesne profits or compensation if applicable, or state that interest is not the primary relief. Adapt to the actual nature of the suit. If interest is not relevant to this suit type, state briefly that the Plaintiff claims mesne profits / compensation as applicable, or omit interest entirely and instead address any financial relief that fits.",
+        "context_keys": [
+          "intake.facts.amounts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "interest|mesne\\s+profit|compensation|per\\s+annum|Section\\s+34",
+            "required": true,
+            "description": "Some form of financial relief or interest stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ],
+        "allow_claimed_amounts": true
+      },
+      {
+        "section_id": "prayer",
+        "heading": "PRAYER",
+        "type": "llm_fill",
+        "instruction": "Draft the prayer section with specific sub-prayers as lettered items (a, b, c, ...). Each prayer must be specific and tied to the relief sought. Adapt prayers to the actual suit type: for partition suits seek preliminary decree declaring share + final decree for division + separate possession + commissioner appointment; for recovery suits seek decree for principal amount + interest + costs; for injunction suits seek permanent injunction + damages. Always include a general relief clause 'any other relief the Court deems fit'.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "keyword",
+            "match": "decree",
+            "required": true,
+            "description": "Decree prayer"
+          },
+          {
+            "type": "keyword",
+            "match": "costs",
+            "required": true,
+            "description": "Costs claimed"
+          },
+          {
+            "type": "regex",
+            "match": "any\\s+other\\s+(relief|order)|deem(s|ed)?\\s+fit",
+            "required": true,
+            "description": "General relief clause"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "document_list",
+        "heading": "LIST OF DOCUMENTS RELIED UPON",
+        "type": "template_with_fill",
+        "instruction": "Generate a numbered list of documents the plaintiff relies upon. Map to annexure labels. Adapt documents to the suit type: for property suits include title deeds, genealogy, revenue records, survey sketches; for recovery suits include agreement, payment proof, notice; for family suits include marriage certificate, birth records. If evidence is empty, list standard expected documents for this suit type with {{DOCUMENT_DESCRIPTION}} placeholders.",
+        "context_keys": [
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Annexure labels present"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "verification",
+        "heading": "VERIFICATION",
+        "type": "template",
+        "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+      },
+      {
+        "section_id": "advocate",
+        "heading": "",
+        "type": "template",
+        "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+      }
+    ]
+  },
+  "filled_sections": [
+    {
+      "section_id": "court_heading",
+      "heading": "",
+      "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "title",
+      "heading": "",
+      "text": "IN THE DISTRICT COURT AT {{DISTRICT_NAME}}, {{STATE_NAME}}\n\nSUIT FOR PARTITION AND SEPARATE POSSESSION OF ANCESTRAL PROPERTY\n\nPLAINTIFF: {{PLAINTIFF_NAME}}\n\nDEFENDANT: {{DEFENDANT_NAME}}\n\nRelief sought: Preliminary decree for partition and separate possession; Plaintiff claims a 1/3rd share in the ancestral property.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "parties",
+      "heading": "BETWEEN",
+      "text": "Between the Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, sui juris and competent to sue, and the Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, it is stated that on or about {{DATE_OF_FILING}} the Plaintiff instituted this partition suit before the District Court at {{DISTRICT}} for partition and separate possession of an ancestral property. The Plaintiff asserts entitlement to a 1/3rd share in the coparcenary ancestral property and alleges that the Defendant has refused amicable partition. The property described in the Schedule of Property, situate at {{PROPERTY_LOCATION}}, forms the subject matter of the partition. A Genealogy Table illustrating the lineage and coparcenary status is annexed as Annexure {{ANNEXURE_GENEALOGY}} and the Schedule of Property is annexed as Annexure {{ANNEXURE_SCHEDULE}}. The Plaintiff seeks a preliminary decree for partition and separate possession in accordance with law.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "jurisdiction",
+      "heading": "JURISDICTION",
+      "text": "Territorial jurisdiction for this suit for partition and separate possession of immovable ancestral property is grounded on the situs of the property and the residence of the parties. The immovable ancestral property, in which the Plaintiff holds a one third share and which is the subject matter of the partition, is situated at {{PLACE_OF_PROPERTY}}; under Section 16 of the Code of Civil Procedure, 1908, suits relating to immovable property must be instituted in the court within whose jurisdiction the property is situated. Accordingly, the District Court at {{COURT_PLACE}} has territorial jurisdiction to adjudicate the partition. The Defendant, {{DEFENDANT_NAME}}, resides at {{DEFENDANT_RESIDENCE}} and the cause of action arose in relation to the property at the same locality when the Plaintiff proposed amicable partition on or about {{DATE_OF_PARTITION_PROPOSAL}} and the Defendant refused, thereby giving rise to a continuing dispute concerning co-ownership of the immovable property. Consequently, the Plaintiff respectfully contends that the District Court at {{COURT_PLACE}} is an appropriate forum for adjudication of the partition and related relief.\n\nPecuniary jurisdiction is invoked on the basis of the suit valuation of Rs. {{SUIT_VALUE}}, which falls within the monetary limits of the District Court for partition suits in {{STATE}}. The Plaintiff seeks a preliminary decree for partition and separate possession within the District Court’s pecuniary competence, and the relief sought is within the monetary scope permitted by the court at {{COURT_PLACE}}.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "refusal",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DATE_OF_PARTITION_PROPOSAL}}",
+            "{{DATE_OF_FILING}}"
+          ],
+          "evidence_refs": [
+            "Annexure A"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "facts",
+      "heading": "FACTS OF THE CASE",
+      "text": "1. The Plaintiff is a co-heir in the ancestral estate and claims a one-third share in the undivided property described in Annexure SP, which is situated at {{PROPERTY_ADDRESS}}. The family genealogy, as set out in the Genealogy Table annexed as Annexure GA, shows the Plaintiff’s lineage from the common forefather and establishes the Plaintiff’s status as an heir to the same estate. The property has long been held by the family in an undivided form, without a partition deed record, and the Plaintiff’s entitlement to a share is evidenced by the genealogical linkage in Annexure GA and the schedule of properties in Annexure SP.\n\n2. The Schedule of Property in Annexure SP lists the parcels that constitute the ancestral estate, including the immovable property at {{PROPERTY_ADDRESS}} and related parcels. The records reflect that the family has held the assets in undivided possession for generations, with possession exercised by different co-heirs from time to time, but no formal partition has ever been effected. The Plaintiff’s asserted one-third share is reflected in the genealogical linkage in Annexure GA and the attached property schedule.\n\n3. On or about {{DATE_OF_NOTICE_TO_PARTITION}} the Plaintiff served a written proposal for amicable partition on the Defendant, requesting allocation of exclusive possession to the Plaintiff of a one-third portion and the demarcation of boundaries in accordance with Annexure SP. The notice was dispatched to the Defendant in the presence of witnesses identified in Annexure N, who also acknowledged receipt of the proposal. The Defendant responded by stating that he would not agree to the partition terms proposed and would retain the estate in its undivided form.\n\n4. Thereafter, the Plaintiff and Defendant engaged in further discussions and attempted mediation to effect a partition, but the Defendant again maintained opposition to any partition terms and refused to relinquish possession of any part of the estate. The communications and responses exchanged during this period are documented in Annexure N, with the witnesses named therein present at discussions as indicated.\n\n5. In light of the Defendant’s persistent refusal to agree to a partition and in recognition of the Plaintiff’s lawful entitlement to one-third of the ancestral property described in Annexure SP, the Plaintiff filed the present suit in the District Court at {{PLACE_NAME}} on or about {{DATE_OF_FILING}} seeking partition and separate possession of the Plaintiff’s share and a preliminary decree directing distribution of the property in accordance with the shares. Annexure GA and Annexure SP are attached to illustrate the genealogy and the property involved; Annexure N contains the partition notices and communications relevant to the attempts at amicable settlement.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "agreement",
+          "entities": [
+            "Plaintiff",
+            "Defendant"
+          ],
+          "dates": [
+            "{{DATE_OF_NOTICE_TO_PARTITION}}"
+          ],
+          "evidence_refs": [
+            "Annexure N",
+            "Annexure GA",
+            "Annexure SP"
+          ]
+        },
+        {
+          "claim_type": "refusal",
+          "entities": [
+            "Plaintiff",
+            "Defendant"
+          ],
+          "dates": [
+            "{{DATE_OF_NOTICE_TO_PARTITION}}",
+            "{{DATE_OF_REJECTION}}"
+          ],
+          "evidence_refs": [
+            "Annexure N"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "legal_basis",
+      "heading": "LEGAL BASIS AND GROUNDS",
+      "text": "The Plaintiff, {{PLAINTIFF_NAME}}, files this suit for partition and separate possession of ancestral property against the Defendant, {{DEFENDANT_NAME}}, contending that the Plaintiff is entitled to a one third share in the ancestral property and that the Defendant has refused to participate in any amicable partition. The genealogical connections and the extent of co-ownership are set out in Annexure GENEALOGY, and the Schedule of properties subject to partition is set out in Annexure SCHEDULE; both annexures are intended to guide the Court in identifying co-ownership interests and relevant assets in order to effect a fair partition and delivery of possession to each co-owner. The Plaintiff seeks a preliminary decree to establish the shares and institute partition in kind and separate possession, with directions for the final calculation and delivery of possession to the Plaintiff for its 1/3 share. The Defendant’s position, as stated, is a categorical refusal to engage in amicable partition, which necessitates judicial intervention to avoid continued mismanagement and potential further erosion of each co-owner’s rights.\n\nArticle 136, Limitation Act, 1963 creates a legal rule that a decree, save for a mandatory injunction or order of civil court, must be executed within twelve years, and by necessary implication, the remedy to obtain a partition through a decree falls within this framework when such a decree is sought or executed. The trigger for this rule is the existence of a decree that requires execution; in the present case, the Plaintiff seeks a preliminary decree for partition and separate possession, which, once issued, would become subject to execution if and when a final decree is warranted and the shares and possession are to be enforced. The facts show that the Defendant refused amicable partition on {{DATE_LAST_REFUSAL}} at {{PLACE}}, thereby giving rise to the cause of action to seek judicial partition. The Plaintiff has filed this suit on {{FILING_DATE}} before the District Court at {{JURISDICTION}}, and the claim is framed to obtain a preliminary decree that will culminate in a final partition and separate possession in accordance with the Plaintiff’s 1/3 share; under Article 136, the relief sought is within the ambit of a decree whose execution is governed by a twelve-year period, and the Plaintiff maintains that the suit is timely within that period given the date of last refusal and the filing date. In the alternative and without prejudice to the above, even if the Court were to treat the relief as an interim step in the partition process rather than a final decree, the proceeding remains within the general limitations parameters applicable to such co-ownership relief, provided the cause of action continues in light of the Defendant’s ongoing refusal to partition and the ancestral nature of the property. The Plaintiff reserves the right to rely on Annexure GENEALOGY to establish ancestral status and co-ownership, and Annexure SCHEDULE to demonstrate the assets subject to partition. To pre-empt likely defenses, it is respectfully pleaded that the Plaintiff’s 1/3 share is supported by the family genealogy and the Schedule, that no valid partition has been executed to date, and that the Defendant’s refusal constitutes an ongoing impediment to partition, justifying judicial intervention. The Plaintiff further anticipates that the Defendant may argue limitation or that partition is not feasible; in response, the Plaintiff submits that (i) the action is timely under Article 136 as explained above, (ii) partition in kind remains a viable remedy notwithstanding the current stage of proceedings and (iii) the Court possesses inherent jurisdiction to order a partition in situations of co-ownership of ancestral property to protect the rights of all co-owners.\n\nIn addition, the Plaintiff respectfully submits that the relief sought is appropriate in the alternative and without prejudice to the main prayers: if the Court finds that the immediate grant of a final decretal partition is not warranted, the Court should nonetheless pass a preliminary decree indicating the shares and appointing a mode of partition in order to prevent prejudice to the Plaintiff’s 1/3 interest and to facilitate an orderly division in the near future; this defensive pleading anticipates and neutralizes potential arguments that the suit seeks premature or inappropriate relief, and it anchors the Plaintiff’s rights in the documented genealogical evidence and the property schedule.\n\nAnnexure references: the genealogical table is provided in Annexure GENEALOGY and the Schedule of property is provided in Annexure SCHEDULE for the Court’s reference in determining shares and the property set to be partitioned.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "refusal",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DATE_LAST_REFUSAL}}",
+            "{{FILING_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure GENEALOGY",
+            "Annexure SCHEDULE"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "cause_of_action",
+      "heading": "CAUSE OF ACTION",
+      "text": "The ORIGIN of the cause of action arose when the Plaintiff, {{PLAINTIFF_NAME}}, a co-owner of the ancestral property situated at {{PROPERTY_ADDRESS}}, on {{DEMAND_DATE}} demanded partition and separate possession of the property, asserting a one third share for the Plaintiff and proposing an amicable partition, but the Defendant, {{DEFENDANT_NAME}}, refused to participate in any partition and rejected the Plaintiff’s demand. The ACCRUAL of the cause of action occurred in the subsequent negotiations and communications on {{DATE1}} and {{DATE2}}, during which the Plaintiff reiterated the claim to a 1/3 share and urged partition by metes and bounds, while the Defendant persistently refused to agree to partition or permit any division of the property into distinct portions, thereby sustaining the Plaintiff’s right to seek partition and possession separate from the co-owner’s undivided hold. The CONTINUITY of the action rests on the ongoing and undiminished denial by the Defendant of any partition or division of the ancestral property, leaving the Plaintiff deprived of its lawful one third share and deprived of actual possession of that share, with no amicable settlement in sight; the Plaintiff therefore seeks a preliminary decree for partition and separate possession as warranted by the genealogical relationship and property details set out in Annexure GA (Genealogy Table) and the Schedule of Property stated in Annexure SB, which together justify the relief requested and anchor the action to the facts. The Plaintiff requests that the court grant a preliminary decree for partition and separate possession of the ancestral property consistent with the Plaintiff’s 1/3 entitlement, as elaborated in the accompanying documents. Annexures referenced herein establish the genealogical basis and the identified property to be divided, and are incorporated by reference in this action. The facts stated herein are grounded in the Plaintiff’s entitlement to one third of the ancestral property and the Defendant’s unequivocal refusal to consummate an amicable partition, which kept the Plaintiff from enjoying possession of its share.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DEMAND_DATE}}",
+            "{{DATE1}}",
+            "{{DATE2}}"
+          ],
+          "evidence_refs": [
+            "Annexure GA",
+            "Annexure SB"
+          ]
+        }
+      ],
+      "must_include_passed": false,
+      "retries": 3,
+      "validation_issues": []
+    },
+    {
+      "section_id": "limitation",
+      "heading": "LIMITATION",
+      "text": "The limitation for the suit is governed by Article 136 of the Limitation Act, 1963, which prescribes a period of 12 years for the execution of a decree other than a decree granting a mandatory injunction or order of a civil court. The cause of action in this partition suit accrued on {{ACCRUAL_DATE}} when defendant {{DEFENDANT_NAME}} refused to participate in amicable partition and to give effect to the plaintiff's 1/3 share in the ancestral property situated at {{PROPERTY_LOCATION}}. The suit is within time, as it is filed within 12 years from the accrual date.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "refusal",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{ACCRUAL_DATE}}"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "valuation_court_fee",
+      "heading": "VALUATION AND COURT FEE",
+      "text": "VALUATION AND COURT FEE\nThe Plaintiff, {{PLAINTIFF_NAME}}, seeks partition and separate possession of the ancestral property described in Schedule of Property and evidenced by Annexure [Genealogy Table], wherein Plaintiff is entitled to a 1/3rd undivided share. The suit is instituted before the District Court at {{DISTRICT_NAME}} on {{FILING_DATE}} against the Defendant who has refused amicable partition. For valuation, the total market value of the ancestral property is Rs {{TOTAL_PROPERTY_MARKET_VALUE}}, and accordingly Plaintiff's 1/3rd share is valued at Rs {{SHARE_MARKET_VALUE}} = (1/3) × Rs {{TOTAL_PROPERTY_MARKET_VALUE}}; this valuation is computed in accordance with Section 7 of the Court Fees Act, which prescribes that fees in suits relating to partition be based on the market value of the share. The Court Fee payable to the District Court is Rs {{COURT_FEE_AMOUNT}}, calculated on the market value of the Plaintiff's share as above under the applicable State Court Fees Act.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "interest",
+      "heading": "INTEREST",
+      "text": "In this suit for partition and separate possession of ancestral property, the Plaintiff seeks a preliminary decree partitioning the joint properties and delivering exclusive possession to the Plaintiff in respect of the Plaintiff’s one third share, with the Defendant to be restrained from any interference. The Defendant has refused amicable partition, necessitating judicial partition and arrangement of titles. With respect to financial relief, the Plaintiff claims mesne profits for any period during which the Defendant occupies the property without resolution of rights, and in the event any monetary portion is directed in the final decree, the Plaintiff shall be entitled to future interest on such sums from the date of decree until realization. Pre-suit interest on any money claims is not claimed, as the relief sought is equitable partition rather than a money debt; however, if any amount becomes payable under the final decree, the Plaintiff shall be entitled to the appropriate rate of post-decree interest as described below. The mesne profits, if awarded, shall be calculated at the prevailing market rent for the property and shall be fixed by the Court, and such mesne profits shall be liable to adjustment against the Defendant’s share in the final partition. For the period of pendency, no separate pendente lite interest is claimed on the mesne profits unless and until such sums are due and decreed; if any such sums become due, the rate shall be as per the Court’s determination under applicable law. Future interest on any monetary portion payable under the final decree shall be computed at the rate of {{FUTURE_INTEREST_RATE}} per annum from the date of decree until realization, justified by the need to preserve the value of the Plaintiff’s 1/3 share and to ensure timely payment following partition. The quantum and period for mesne profits will be fixed by the court in accordance with the evidence and market rent for the property, and adjusted against the Defendant’s entitled share in the partition.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "payment",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{DATE_OF_SUIT}}",
+            "{{MESNE_PROFITS_END_DATE}}"
+          ],
+          "evidence_refs": [
+            "{{ANNEXURE_MESNE_PROFITS}}"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "prayer",
+      "heading": "PRAYER",
+      "text": "The Plaintiff, {{PLAINTIFF_NAME}}, respectfully prays that this Hon'ble Court be pleased to grant the following reliefs in a suit for partition and separate possession against the Defendant, {{DEFENDANT_NAME}}, in which the Plaintiff is entitled to a one‑third share of the ancestral property. The genealogical table is annexed as Annexure A and the Schedule of Property is annexed as Annexure B; the Defendant has refused amicable partition, thereby obstructing peaceful enjoyment of the property. (a) A preliminary decree declaring that the Plaintiff is entitled to a 1/3rd share in the ancestral property described in Schedule of Property annexed as Annexure B and evidenced by the genealogical details in Annexure A, and directing partition by metes and bounds with separate possession of the Plaintiff’s share. (b) A final decree for partition and division of the ancestral property by metes and bounds in accordance with the terms of the preliminary decree, delivering exclusive possession of the Plaintiff’s 1/3rd share to the Plaintiff, with liberty to have the final partition recorded and mutations effected in the revenue records. (c) Appointment of a Commissioner under the Civil Procedure Code to carry out the physical partition of the ancestral property, to prepare a plan of partition with marks and measurements, to file a detailed Commissioner’s report with plan and map, and to facilitate delivery of possession of the Plaintiff’s share to the Plaintiff and to record mutation in the revenue records as required. (d) Costs of the suit quantified at {{COSTS_AMOUNT}}; the Plaintiff prays that costs of the suit be taxed and recovered as directed by law. (e) Any other relief the Court deems fit. The Plaintiff prays for such other and further relief as this Court may deem fit and proper in the circumstances. Annexures A and B referred to herein form part of this prayer.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DATE_OF_FILING}}"
+          ],
+          "evidence_refs": [
+            "Annexure A",
+            "Annexure B"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "document_list",
+      "heading": "LIST OF DOCUMENTS RELIED UPON",
+      "text": "1. Annexure A — Title Deeds: Certified copies of the title documents in respect of the ancestral property, relied upon to establish the chain of title from the ancestors to the Plaintiff and to substantiate the Plaintiff’s claim to a 1/3rd share in the partition.\n\n2. Annexure B — Genealogy Table: A tabulated genealogy showing the lineage from the Plaintiff to the immediate predecessors in title, detailing relationships and relevant familial links to corroborate entitlement to the share asserted.\n\n3. Annexure C — Revenue Records: Revenue records pertaining to the ancestral property, including records of rights and possession entries, relied upon to corroborate description, extent, and possession of the property as regards the partition.\n\n4. Annexure D — Survey Sketch/Plan: A survey sketch or plan of the property, prepared to scale, illustrating boundaries, extent, and location of the ancestral property for the purposes of a partition.\n\n5. Annexure E — Schedule of Property: A detailed Schedule of Property listing the properties to be partitioned, with itemized descriptions, extents, and pertinent particulars forming the basis for formation of the preliminary decree.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "text": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "advocate",
+      "heading": "",
+      "text": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    }
+  ],
+  "claim_ledger": [
+    {
+      "claim_type": "refusal",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DATE_OF_PARTITION_PROPOSAL}}",
+        "{{DATE_OF_FILING}}"
+      ],
+      "evidence_refs": [
+        "Annexure A"
+      ]
+    },
+    {
+      "claim_type": "agreement",
+      "entities": [
+        "Plaintiff",
+        "Defendant"
+      ],
+      "dates": [
+        "{{DATE_OF_NOTICE_TO_PARTITION}}"
+      ],
+      "evidence_refs": [
+        "Annexure N",
+        "Annexure GA",
+        "Annexure SP"
+      ]
+    },
+    {
+      "claim_type": "refusal",
+      "entities": [
+        "Plaintiff",
+        "Defendant"
+      ],
+      "dates": [
+        "{{DATE_OF_NOTICE_TO_PARTITION}}",
+        "{{DATE_OF_REJECTION}}"
+      ],
+      "evidence_refs": [
+        "Annexure N"
+      ]
+    },
+    {
+      "claim_type": "refusal",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DATE_LAST_REFUSAL}}",
+        "{{FILING_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure GENEALOGY",
+        "Annexure SCHEDULE"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DEMAND_DATE}}",
+        "{{DATE1}}",
+        "{{DATE2}}"
+      ],
+      "evidence_refs": [
+        "Annexure GA",
+        "Annexure SB"
+      ]
+    },
+    {
+      "claim_type": "refusal",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{ACCRUAL_DATE}}"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "claim_type": "payment",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{DATE_OF_SUIT}}",
+        "{{MESNE_PROFITS_END_DATE}}"
+      ],
+      "evidence_refs": [
+        "{{ANNEXURE_MESNE_PROFITS}}"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DATE_OF_FILING}}"
+      ],
+      "evidence_refs": [
+        "Annexure A",
+        "Annexure B"
+      ]
+    }
+  ],
+  "postprocess_issues": [],
+  "postprocess_light": true,
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "partition_suit_plaint",
+        "title": "IN THE DISTRICT COURT AT {{DISTRICT_NAME}}, {{STATE_NAME}}",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nIN THE DISTRICT COURT AT {{DISTRICT_NAME}}, {{STATE_NAME}}\n\nSUIT FOR PARTITION AND SEPARATE POSSESSION OF ANCESTRAL PROPERTY\n\nPLAINTIFF: {{PLAINTIFF_NAME}}\n\nDEFENDANT: {{DEFENDANT_NAME}}\n\nRelief sought: Preliminary decree for partition and separate possession; Plaintiff claims a 1/3rd share in the ancestral property.\n\n\nBETWEEN\n\nBetween the Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, sui juris and competent to sue, and the Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, it is stated that on or about {{DATE_OF_FILING}} the Plaintiff instituted this partition suit before the District Court at {{DISTRICT}} for partition and separate possession of an ancestral property. The Plaintiff asserts entitlement to a 1/3rd share in the coparcenary ancestral property and alleges that the Defendant has refused amicable partition. The property described in the Schedule of Property, situate at {{PROPERTY_LOCATION}}, forms the subject matter of the partition. A Genealogy Table illustrating the lineage and coparcenary status is annexed as Annexure {{ANNEXURE_GENEALOGY}} and the Schedule of Property is annexed as Annexure {{ANNEXURE_SCHEDULE}}. The Plaintiff seeks a preliminary decree for partition and separate possession in accordance with law.\n\n\nJURISDICTION\n\nTerritorial jurisdiction for this suit for partition and separate possession of immovable ancestral property is grounded on the situs of the property and the residence of the parties. The immovable ancestral property, in which the Plaintiff holds a one third share and which is the subject matter of the partition, is situated at {{PLACE_OF_PROPERTY}}; under Section 16 of the Code of Civil Procedure, 1908, suits relating to immovable property must be instituted in the court within whose jurisdiction the property is situated. Accordingly, the District Court at {{COURT_PLACE}} has territorial jurisdiction to adjudicate the partition. The Defendant, {{DEFENDANT_NAME}}, resides at {{DEFENDANT_RESIDENCE}} and the cause of action arose in relation to the property at the same locality when the Plaintiff proposed amicable partition on or about {{DATE_OF_PARTITION_PROPOSAL}} and the Defendant refused, thereby giving rise to a continuing dispute concerning co-ownership of the immovable property. Consequently, the Plaintiff respectfully contends that the District Court at {{COURT_PLACE}} is an appropriate forum for adjudication of the partition and related relief.\n\nPecuniary jurisdiction is invoked on the basis of the suit valuation of Rs. {{SUIT_VALUE}}, which falls within the monetary limits of the District Court for partition suits in {{STATE}}. The Plaintiff seeks a preliminary decree for partition and separate possession within the District Court’s pecuniary competence, and the relief sought is within the monetary scope permitted by the court at {{COURT_PLACE}}.\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff is a co-heir in the ancestral estate and claims a one-third share in the undivided property described in Annexure SP, which is situated at {{PROPERTY_ADDRESS}}. The family genealogy, as set out in the Genealogy Table annexed as Annexure GA, shows the Plaintiff’s lineage from the common forefather and establishes the Plaintiff’s status as an heir to the same estate. The property has long been held by the family in an undivided form, without a partition deed record, and the Plaintiff’s entitlement to a share is evidenced by the genealogical linkage in Annexure GA and the schedule of properties in Annexure SP.\n\n2. The Schedule of Property in Annexure SP lists the parcels that constitute the ancestral estate, including the immovable property at {{PROPERTY_ADDRESS}} and related parcels. The records reflect that the family has held the assets in undivided possession for generations, with possession exercised by different co-heirs from time to time, but no formal partition has ever been effected. The Plaintiff’s asserted one-third share is reflected in the genealogical linkage in Annexure GA and the attached property schedule.\n\n3. On or about {{DATE_OF_NOTICE_TO_PARTITION}} the Plaintiff served a written proposal for amicable partition on the Defendant, requesting allocation of exclusive possession to the Plaintiff of a one-third portion and the demarcation of boundaries in accordance with Annexure SP. The notice was dispatched to the Defendant in the presence of witnesses identified in Annexure N, who also acknowledged receipt of the proposal. The Defendant responded by stating that he would not agree to the partition terms proposed and would retain the estate in its undivided form.\n\n4. Thereafter, the Plaintiff and Defendant engaged in further discussions and attempted mediation to effect a partition, but the Defendant again maintained opposition to any partition terms and refused to relinquish possession of any part of the estate. The communications and responses exchanged during this period are documented in Annexure N, with the witnesses named therein present at discussions as indicated.\n\n5. In light of the Defendant’s persistent refusal to agree to a partition and in recognition of the Plaintiff’s lawful entitlement to one-third of the ancestral property described in Annexure SP, the Plaintiff filed the present suit in the District Court at {{PLACE_NAME}} on or about {{DATE_OF_FILING}} seeking partition and separate possession of the Plaintiff’s share and a preliminary decree directing distribution of the property in accordance with the shares. Annexure GA and Annexure SP are attached to illustrate the genealogy and the property involved; Annexure N contains the partition notices and communications relevant to the attempts at amicable settlement.\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Plaintiff, {{PLAINTIFF_NAME}}, files this suit for partition and separate possession of ancestral property against the Defendant, {{DEFENDANT_NAME}}, contending that the Plaintiff is entitled to a one third share in the ancestral property and that the Defendant has refused to participate in any amicable partition. The genealogical connections and the extent of co-ownership are set out in Annexure GENEALOGY, and the Schedule of properties subject to partition is set out in Annexure SCHEDULE; both annexures are intended to guide the Court in identifying co-ownership interests and relevant assets in order to effect a fair partition and delivery of possession to each co-owner. The Plaintiff seeks a preliminary decree to establish the shares and institute partition in kind and separate possession, with directions for the final calculation and delivery of possession to the Plaintiff for its 1/3 share. The Defendant’s position, as stated, is a categorical refusal to engage in amicable partition, which necessitates judicial intervention to avoid continued mismanagement and potential further erosion of each co-owner’s rights.\n\nArticle 136, Limitation Act, 1963 creates a legal rule that a decree, save for a mandatory injunction or order of civil court, must be executed within twelve years, and by necessary implication, the remedy to obtain a partition through a decree falls within this framework when such a decree is sought or executed. The trigger for this rule is the existence of a decree that requires execution; in the present case, the Plaintiff seeks a preliminary decree for partition and separate possession, which, once issued, would become subject to execution if and when a final decree is warranted and the shares and possession are to be enforced. The facts show that the Defendant refused amicable partition on {{DATE_LAST_REFUSAL}} at {{PLACE}}, thereby giving rise to the cause of action to seek judicial partition. The Plaintiff has filed this suit on {{FILING_DATE}} before the District Court at {{JURISDICTION}}, and the claim is framed to obtain a preliminary decree that will culminate in a final partition and separate possession in accordance with the Plaintiff’s 1/3 share; under Article 136, the relief sought is within the ambit of a decree whose execution is governed by a twelve-year period, and the Plaintiff maintains that the suit is timely within that period given the date of last refusal and the filing date. In the alternative and without prejudice to the above, even if the Court were to treat the relief as an interim step in the partition process rather than a final decree, the proceeding remains within the general limitations parameters applicable to such co-ownership relief, provided the cause of action continues in light of the Defendant’s ongoing refusal to partition and the ancestral nature of the property. The Plaintiff reserves the right to rely on Annexure GENEALOGY to establish ancestral status and co-ownership, and Annexure SCHEDULE to demonstrate the assets subject to partition. To pre-empt likely defenses, it is respectfully pleaded that the Plaintiff’s 1/3 share is supported by the family genealogy and the Schedule, that no valid partition has been executed to date, and that the Defendant’s refusal constitutes an ongoing impediment to partition, justifying judicial intervention. The Plaintiff further anticipates that the Defendant may argue limitation or that partition is not feasible; in response, the Plaintiff submits that (i) the action is timely under Article 136 as explained above, (ii) partition in kind remains a viable remedy notwithstanding the current stage of proceedings and (iii) the Court possesses inherent jurisdiction to order a partition in situations of co-ownership of ancestral property to protect the rights of all co-owners.\n\nIn addition, the Plaintiff respectfully submits that the relief sought is appropriate in the alternative and without prejudice to the main prayers: if the Court finds that the immediate grant of a final decretal partition is not warranted, the Court should nonetheless pass a preliminary decree indicating the shares and appointing a mode of partition in order to prevent prejudice to the Plaintiff’s 1/3 interest and to facilitate an orderly division in the near future; this defensive pleading anticipates and neutralizes potential arguments that the suit seeks premature or inappropriate relief, and it anchors the Plaintiff’s rights in the documented genealogical evidence and the property schedule.\n\nAnnexure references: the genealogical table is provided in Annexure GENEALOGY and the Schedule of property is provided in Annexure SCHEDULE for the Court’s reference in determining shares and the property set to be partitioned.\n\n\nCAUSE OF ACTION\n\nThe ORIGIN of the cause of action arose when the Plaintiff, {{PLAINTIFF_NAME}}, a co-owner of the ancestral property situated at {{PROPERTY_ADDRESS}}, on {{DEMAND_DATE}} demanded partition and separate possession of the property, asserting a one third share for the Plaintiff and proposing an amicable partition, but the Defendant, {{DEFENDANT_NAME}}, refused to participate in any partition and rejected the Plaintiff’s demand. The ACCRUAL of the cause of action occurred in the subsequent negotiations and communications on {{DATE1}} and {{DATE2}}, during which the Plaintiff reiterated the claim to a 1/3 share and urged partition by metes and bounds, while the Defendant persistently refused to agree to partition or permit any division of the property into distinct portions, thereby sustaining the Plaintiff’s right to seek partition and possession separate from the co-owner’s undivided hold. The CONTINUITY of the action rests on the ongoing and undiminished denial by the Defendant of any partition or division of the ancestral property, leaving the Plaintiff deprived of its lawful one third share and deprived of actual possession of that share, with no amicable settlement in sight; the Plaintiff therefore seeks a preliminary decree for partition and separate possession as warranted by the genealogical relationship and property details set out in Annexure GA (Genealogy Table) and the Schedule of Property stated in Annexure SB, which together justify the relief requested and anchor the action to the facts. The Plaintiff requests that the court grant a preliminary decree for partition and separate possession of the ancestral property consistent with the Plaintiff’s 1/3 entitlement, as elaborated in the accompanying documents. Annexures referenced herein establish the genealogical basis and the identified property to be divided, and are incorporated by reference in this action. The facts stated herein are grounded in the Plaintiff’s entitlement to one third of the ancestral property and the Defendant’s unequivocal refusal to consummate an amicable partition, which kept the Plaintiff from enjoying possession of its share.\n\n\nLIMITATION\n\nThe limitation for the suit is governed by Article 136 of the Limitation Act, 1963, which prescribes a period of 12 years for the execution of a decree other than a decree granting a mandatory injunction or order of a civil court. The cause of action in this partition suit accrued on {{ACCRUAL_DATE}} when defendant {{DEFENDANT_NAME}} refused to participate in amicable partition and to give effect to the plaintiff's 1/3 share in the ancestral property situated at {{PROPERTY_LOCATION}}. The suit is within time, as it is filed within 12 years from the accrual date.\n\n\nVALUATION AND COURT FEE\n\nVALUATION AND COURT FEE\nThe Plaintiff, {{PLAINTIFF_NAME}}, seeks partition and separate possession of the ancestral property described in Schedule of Property and evidenced by Annexure [Genealogy Table], wherein Plaintiff is entitled to a 1/3rd undivided share. The suit is instituted before the District Court at {{DISTRICT_NAME}} on {{FILING_DATE}} against the Defendant who has refused amicable partition. For valuation, the total market value of the ancestral property is Rs {{TOTAL_PROPERTY_MARKET_VALUE}}, and accordingly Plaintiff's 1/3rd share is valued at Rs {{SHARE_MARKET_VALUE}} = (1/3) × Rs {{TOTAL_PROPERTY_MARKET_VALUE}}; this valuation is computed in accordance with Section 7 of the Court Fees Act, which prescribes that fees in suits relating to partition be based on the market value of the share. The Court Fee payable to the District Court is Rs {{COURT_FEE_AMOUNT}}, calculated on the market value of the Plaintiff's share as above under the applicable State Court Fees Act.\n\n\nINTEREST\n\nIn this suit for partition and separate possession of ancestral property, the Plaintiff seeks a preliminary decree partitioning the joint properties and delivering exclusive possession to the Plaintiff in respect of the Plaintiff’s one third share, with the Defendant to be restrained from any interference. The Defendant has refused amicable partition, necessitating judicial partition and arrangement of titles. With respect to financial relief, the Plaintiff claims mesne profits for any period during which the Defendant occupies the property without resolution of rights, and in the event any monetary portion is directed in the final decree, the Plaintiff shall be entitled to future interest on such sums from the date of decree until realization. Pre-suit interest on any money claims is not claimed, as the relief sought is equitable partition rather than a money debt; however, if any amount becomes payable under the final decree, the Plaintiff shall be entitled to the appropriate rate of post-decree interest as described below. The mesne profits, if awarded, shall be calculated at the prevailing market rent for the property and shall be fixed by the Court, and such mesne profits shall be liable to adjustment against the Defendant’s share in the final partition. For the period of pendency, no separate pendente lite interest is claimed on the mesne profits unless and until such sums are due and decreed; if any such sums become due, the rate shall be as per the Court’s determination under applicable law. Future interest on any monetary portion payable under the final decree shall be computed at the rate of {{FUTURE_INTEREST_RATE}} per annum from the date of decree until realization, justified by the need to preserve the value of the Plaintiff’s 1/3 share and to ensure timely payment following partition. The quantum and period for mesne profits will be fixed by the court in accordance with the evidence and market rent for the property, and adjusted against the Defendant’s entitled share in the partition.\n\n\nPRAYER\n\nThe Plaintiff, {{PLAINTIFF_NAME}}, respectfully prays that this Hon'ble Court be pleased to grant the following reliefs in a suit for partition and separate possession against the Defendant, {{DEFENDANT_NAME}}, in which the Plaintiff is entitled to a one‑third share of the ancestral property. The genealogical table is annexed as Annexure A and the Schedule of Property is annexed as Annexure B; the Defendant has refused amicable partition, thereby obstructing peaceful enjoyment of the property. (a) A preliminary decree declaring that the Plaintiff is entitled to a 1/3rd share in the ancestral property described in Schedule of Property annexed as Annexure B and evidenced by the genealogical details in Annexure A, and directing partition by metes and bounds with separate possession of the Plaintiff’s share. (b) A final decree for partition and division of the ancestral property by metes and bounds in accordance with the terms of the preliminary decree, delivering exclusive possession of the Plaintiff’s 1/3rd share to the Plaintiff, with liberty to have the final partition recorded and mutations effected in the revenue records. (c) Appointment of a Commissioner under the Civil Procedure Code to carry out the physical partition of the ancestral property, to prepare a plan of partition with marks and measurements, to file a detailed Commissioner’s report with plan and map, and to facilitate delivery of possession of the Plaintiff’s share to the Plaintiff and to record mutation in the revenue records as required. (d) Costs of the suit quantified at {{COSTS_AMOUNT}}; the Plaintiff prays that costs of the suit be taxed and recovered as directed by law. (e) Any other relief the Court deems fit. The Plaintiff prays for such other and further relief as this Court may deem fit and proper in the circumstances. Annexures A and B referred to herein form part of this prayer.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\n6. Annexure A — Title Deeds: Certified copies of the title documents in respect of the ancestral property, relied upon to establish the chain of title from the ancestors to the Plaintiff and to substantiate the Plaintiff’s claim to a 1/3rd share in the partition.\n\n7. Annexure B — Genealogy Table: A tabulated genealogy showing the lineage from the Plaintiff to the immediate predecessors in title, detailing relationships and relevant familial links to corroborate entitlement to the share asserted.\n\n8. Annexure C — Revenue Records: Revenue records pertaining to the ancestral property, including records of rights and possession entries, relied upon to corroborate description, extent, and possession of the property as regards the partition.\n\n9. Annexure D — Survey Sketch/Plan: A survey sketch or plan of the property, prepared to scale, illustrating boundaries, extent, and location of the ancestral property for the purposes of a partition.\n\n10. Annexure E — Schedule of Property: A detailed Schedule of Property listing the properties to be partitioned, with itemized descriptions, extents, and pertinent particulars forming the basis for formation of the preliminary decree.\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DISTRICT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_FILING",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DISTRICT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ANNEXURE_GENEALOGY",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ANNEXURE_SCHEDULE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE_OF_PROPERTY",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_RESIDENCE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_PARTITION_PROPOSAL",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_NOTICE_TO_PARTITION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_LAST_REFUSAL",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "JURISDICTION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEMAND_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE1",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE2",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ACCRUAL_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "TOTAL_PROPERTY_MARKET_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SHARE_MARKET_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FUTURE_INTEREST_RATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COSTS_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "partition_suit_plaint",
+        "title": "PARTITION SUIT PLAINT - DISTRICT COURT",
+        "text": "IN THE COURT OF THE [COURT_NAME] AT [COURT_PLACE], [DISTRICT_NAME], [STATE_NAME]\n\nO.S. No. [SUIT_NUMBER] / [SUIT_YEAR]\n\nPARTITION SUIT FOR ANCESTRAL PROPERTY\n\nPLAINTIFF: [PLAINTIFF_NAME]\nDEFENDANT: [DEFENDANT_NAME]\n\nRelief sought: Preliminary decree for partition and separate possession; Plaintiff claims a 1/3rd share in the ancestral property.\n\n\nBETWEEN\n\nThe Plaintiff, [PLAINTIFF_NAME], aged [PLAINTIFF_AGE] years, [PLAINTIFF_OCCUPATION], residing at [PLAINTIFF_ADDRESS], sui juris, and the Defendant, [DEFENDANT_NAME], aged [DEFENDANT_AGE] years, [DEFENDANT_OCCUPATION], residing at [DEFENDANT_ADDRESS], it is stated that on or about [DATE_OF_FILING] the Plaintiff instituted this partition suit before the District Court at [DISTRICT_NAME] for partition and separate possession of an ancestral property. The Plaintiff asserts entitlement to a 1/3rd share in the coparcenary ancestral property and alleges that the Defendant has refused amicable partition. The property described in the Schedule of Property, situate at [PROPERTY_LOCATION], forms the subject matter of the partition. A Genealogy Table illustrating the lineage and coparcenary status is annexed as Annexure A and the Schedule of Property is annexed as Annexure E. The Plaintiff seeks a preliminary decree for partition and separate possession in accordance with law.\n\n\nJURISDICTION\n\nTerritorial jurisdiction is grounded on the situs of the property and the residence of the parties. The immovable ancestral property, in which the Plaintiff holds a one third share and which is the subject matter of the partition, is situated at [PLACE_OF_PROPERTY]. Suits relating to immovable property must be instituted in the court within whose jurisdiction the property is situated. Accordingly, the District Court at [COURT_PLACE] has territorial jurisdiction to adjudicate the partition. The Defendant, [DEFENDANT_NAME], resides at [DEFENDANT_RESIDENCE], and the cause of action arose in relation to the property at the same locality when the Plaintiff proposed amicable partition on or about [DATE_OF_PARTITION_PROPOSAL] and the Defendant refused, thereby giving rise to a continuing dispute concerning co-ownership of the immovable property. Consequently, the Plaintiff contends that the District Court at [COURT_PLACE] is an appropriate forum.\n\nPecuniary jurisdiction is invoked on the basis of the suit value of Rs [SUIT_VALUE], which falls within the jurisdictional limits for partition suits in [STATE]. The Plaintiff seeks a preliminary decree for partition and separate possession within the court's pecuniary competence, and the relief sought is within the monetary scope permitted by the court at [COURT_PLACE].\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff is a co-heir in the ancestral estate and claims a one-third share in the undivided property described in Annexure A (Genealogy Table), which is situated at [PROPERTY_ADDRESS]. The genealogy shows the Plaintiff’s lineage and status as an heir, supporting entitlement to the share.\n\n2. The Schedule of Property in Annexure E lists the parcels that constitute the ancestral estate. The family has held the assets in undivided possession for generations, with no formal partition, supporting the Plaintiff’s 1/3 entitlement as evidenced by Annexure A (Genealogy) and Annexure E (Schedule).\n\n3. On or about [DATE_OF_NOTICE_TO_PARTITION], the Plaintiff served a written proposal for amicable partition on the Defendant, requesting exclusive possession of a one-third portion and demarcation of boundaries as per Annexure E. The Defendant refused.\n\n4. Thereafter, attempts at amicable settlement continued, but the Defendant persisted in opposition to any partition.\n\n5. In light of the Defendant’s refusal, the Plaintiff filed this suit on [DATE_OF_FILING] before the District Court at [COURT_PLACE], seeking partition and separate possession of Plaintiff’s share. Annexures A (Genealogy) and E (Schedule) are annexed.\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Plaintiff seeks partition and separate possession; entitlement to a 1/3 share is evidenced by Annexures A (Genealogy) and E (Schedule). The Plaintiff prays for a preliminary decree for partition by metes and bounds and for delivery of possession to the Plaintiff’s share, to be followed by a final decree. The Court has inherent jurisdiction to order partition in cases of co-ownership of ancestral property.\n\nLimitation: Article 113, Limitation Act, 1963 applies to suits for partition. The right to sue accrues on the date of refusal or continuing denial, and the suit is within time if filed within twelve years from accrual. The Plaintiff reserves the right to rely on Annexures A and E to establish ancestral status.\n\n\nCAUSE OF ACTION\n\nOrigin arose when the Plaintiff demanded partition and the Defendant refused on [DEMAND_DATE], asserting a 1/3 share; accrual occurred during negotiations on [DATE1] and [DATE2], and the action remains ongoing due to continued denial of partition. The Plaintiff seeks a preliminary decree for partition and separate possession to protect its 1/3 interest.\n\n\nLIMITATION\n\nArticle 113, Limitation Act, 1963 applies; accrual date is [ACCRUAL_DATE]. The suit is within twelve years from accrual.\n\n\nVALUATION AND COURT FEE\n\nValuation: The total market value of the ancestral property is Rs [TOTAL_PROPERTY_MARKET_VALUE], Plaintiff’s 1/3 share valued at Rs [SHARE_MARKET_VALUE]. Court fee payable Rs [COURT_FEE_AMOUNT] under the State Court Fees Act, computed on the value of the Plaintiff’s share.\n\n\nINTEREST\n\nThe Plaintiff seeks a preliminary decree for partition and separate possession. Post-decree interest and mesne profits, if any, will be determined in the final decree. Pendente lite interest, pre-suit interest, and other relief to be fixed at final decree as appropriate.\n\n\nPRAYER\n\n(a) A preliminary decree declaring Plaintiff’s entitlement to 1/3rd share and directing partition by metes and bounds with separate possession of Plaintiff’s share.\n(b) A final decree for partition and delivery of exclusive possession to Plaintiff’s 1/3 share.\n(c) Appointment of a Commissioner to carry out the physical partition, prepare a partition plan, and file a detailed report with plan and map for court record and mutation in revenue records.\n(d) Costs of the suit quantified at [COSTS_AMOUNT].\n(e) Any other relief the Court deems fit.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\nAnnexure A – Genealogy Table\nAnnexure E – Schedule of Property\nAnnexure B – Title Deeds\nAnnexure C – Revenue Records\nAnnexure D – Survey Sketch/Plan\n\nVERIFICATION\n\nI, [PLAINTIFF_NAME], the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge. Verified at [COURT_PLACE] on [FILING_DATE].\n\nThrough:\n[ADVOCATE_NAME]\nAdvocate\nEnrollment No.: [ADVOCATE_ENROLLMENT]\nPlace: [COURT_PLACE]\nDate: [FILING_DATE]",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DISTRICT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_FILING",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_PARTITION_PROPOSAL",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_NOTICE_TO_PARTITION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_PARTITION_PROPOSAL",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_OF_FILING",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEMAND_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE1",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE2",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ACCRUAL_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "TOTAL_PROPERTY_MARKET_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SHARE_MARKET_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COSTS_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE_OF_PROPERTY",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ANNEXURE_GENEALOGY",
+            "reason": "Renamed to Annexure A in corrected draft"
+          },
+          {
+            "key": "ANNEXURE_SCHEDULE",
+            "reason": "Renamed to Annexure E in corrected draft"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": false,
+      "blocking_issues": [
+        {
+          "issue": "Critical placeholders in caption header: District/State/Court details and case identifiers are left as template placeholders in the caption (DISTRICT_NAME, STATE_NAME, COURT_NAME, COURT_PLACE, SUIT_NUMBER, SUIT_YEAR). Without filling these, the filing cannot be brought in the proper District Court and may be rejected.",
+          "fix": "Populate the caption with actual court details before filing (e.g., District Court name, District, State, Court Location, Suits Number/Year). Replace all placeholders with the correct values or provide client-provided data.",
+          "location": "Caption header / caption block",
+          "severity": "legal"
+        },
+        {
+          "issue": "Document reference inconsistency: Body refers to Annexure GA (Genealogy) and Annexure SP (Schedule) while the List of Documents Relied Upon and Annexures section use Annexure A–E (Genealogy as A, Schedule as E). This mismatch can cause rejection or confusion about the referenced documents.",
+          "fix": "Align all references to the same annexure labels throughout the pleadings (e.g., Genealogy = Annexure A, Schedule = Annexure E). Update body and prayer/list accordingly.",
+          "location": "Body paragraphs referencing Annexures; List of Documents Relied Upon; Annexure references",
+          "severity": "formatting"
+        },
+        {
+          "issue": "Limitation basis incorrectly cited and accrual date not anchored: Draft cites Article 136, Limitation Act, 1963 and a generic accrual date placeholders. Partition suits typically fall under Article 113 of the Limitation Act, with accrual tied to the right to sue and continuing denial or events stopping partition. The current phrasing risks legal defect and potential rejection.",
+          "fix": "Replace with Article 113, Limitation Act, 1963; anchor accrual date to the date when the plaintiff's right to sue arose or the last denial/obstruction occurred, and fill the accrual date with a concrete value or client data.",
+          "location": "LIMITATION section; CAUSE OF ACTION section",
+          "severity": "legal"
+        },
+        {
+          "issue": "Court fee computation shown as placeholders without verified rate: The draft shows COURT_FEE_AMOUNT and value-based calculations as placeholders, which must be computed per the applicable State Court Fees Act and jurisdiction for partition suits.",
+          "fix": "Compute court fee per the current fee schedule (ad valorem vs fixed for partition suits) or indicate a placeholder with a note to fill it in after jurisdictional validation. Ensure totals reflect share value and suit value.",
+          "location": "VALUATION AND COURT FEE section",
+          "severity": "legal"
+        },
+        {
+          "issue": "Material values and dates kept as placeholders throughout: Accrual date, market values, demand dates, partition proposal dates, dates of filing, etc., must be filled to avoid filing defects and to produce a coherent chronology and relief calculation.",
+          "fix": "Populate all placeholder fields with actual dates/values or client-supplied data before filing. If some values are contingent, provide a placeholder noting that they are to be updated with certified data.",
+          "location": "CAUSATION / LIMITATION / VALUATION / INTEREST sections and related Annexures",
+          "severity": "legal"
+        }
+      ],
+      "non_blocking_issues": [
+        {
+          "issue": "Prayer clause could be tightened by clearly enumerating sub-prayers with explicit components (principal, pre-suit interest, pendente lite interest, future interest, costs).",
+          "fix": "Break prayers into clearly labeled sub-prayers with defined monetary amounts and dates where applicable; this improves clarity but does not block filing.",
+          "location": "PRAYER section",
+          "severity": "formatting"
+        },
+        {
+          "issue": "Some formatting improvements suggested (consistent naming of annexures; consistent capitalization; removal of repeated header lines).",
+          "fix": "Polish formatting for readability; ensure consistent headings and capitalization.",
+          "location": "Throughout document",
+          "severity": "formatting"
+        }
+      ],
+      "unsupported_statements": [],
+      "final_artifacts": [
+        {
+          "doc_type": "partition_suit_plaint",
+          "title": "PARTITION SUIT PLAINT - DISTRICT COURT",
+          "text": "IN THE COURT OF THE [COURT_NAME] AT [COURT_PLACE], [DISTRICT_NAME], [STATE_NAME]\n\nO.S. No. [SUIT_NUMBER] / [SUIT_YEAR]\n\nPARTITION SUIT FOR ANCESTRAL PROPERTY\n\nPLAINTIFF: [PLAINTIFF_NAME]\nDEFENDANT: [DEFENDANT_NAME]\n\nRelief sought: Preliminary decree for partition and separate possession; Plaintiff claims a 1/3rd share in the ancestral property.\n\n\nBETWEEN\n\nThe Plaintiff, [PLAINTIFF_NAME], aged [PLAINTIFF_AGE] years, [PLAINTIFF_OCCUPATION], residing at [PLAINTIFF_ADDRESS], sui juris, and the Defendant, [DEFENDANT_NAME], aged [DEFENDANT_AGE] years, [DEFENDANT_OCCUPATION], residing at [DEFENDANT_ADDRESS], it is stated that on or about [DATE_OF_FILING] the Plaintiff instituted this partition suit before the District Court at [DISTRICT_NAME] for partition and separate possession of an ancestral property. The Plaintiff asserts entitlement to a 1/3rd share in the coparcenary ancestral property and alleges that the Defendant has refused amicable partition. The property described in the Schedule of Property, situate at [PROPERTY_LOCATION], forms the subject matter of the partition. A Genealogy Table illustrating the lineage and coparcenary status is annexed as Annexure A and the Schedule of Property is annexed as Annexure E. The Plaintiff seeks a preliminary decree for partition and separate possession in accordance with law.\n\n\nJURISDICTION\n\nTerritorial jurisdiction is grounded on the situs of the property and the residence of the parties. The immovable ancestral property, in which the Plaintiff holds a one third share and which is the subject matter of the partition, is situated at [PLACE_OF_PROPERTY]. Suits relating to immovable property must be instituted in the court within whose jurisdiction the property is situated. Accordingly, the District Court at [COURT_PLACE] has territorial jurisdiction to adjudicate the partition. The Defendant, [DEFENDANT_NAME], resides at [DEFENDANT_RESIDENCE], and the cause of action arose in relation to the property at the same locality when the Plaintiff proposed amicable partition on or about [DATE_OF_PARTITION_PROPOSAL] and the Defendant refused, thereby giving rise to a continuing dispute concerning co-ownership of the immovable property. Consequently, the Plaintiff contends that the District Court at [COURT_PLACE] is an appropriate forum.\n\nPecuniary jurisdiction is invoked on the basis of the suit value of Rs [SUIT_VALUE], which falls within the jurisdictional limits for partition suits in [STATE]. The Plaintiff seeks a preliminary decree for partition and separate possession within the court's pecuniary competence, and the relief sought is within the monetary scope permitted by the court at [COURT_PLACE].\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff is a co-heir in the ancestral estate and claims a one-third share in the undivided property described in Annexure A (Genealogy Table), which is situated at [PROPERTY_ADDRESS]. The genealogy shows the Plaintiff’s lineage and status as an heir, supporting entitlement to the share.\n\n2. The Schedule of Property in Annexure E lists the parcels that constitute the ancestral estate. The family has held the assets in undivided possession for generations, with no formal partition, supporting the Plaintiff’s 1/3 entitlement as evidenced by Annexure A (Genealogy) and Annexure E (Schedule).\n\n3. On or about [DATE_OF_NOTICE_TO_PARTITION], the Plaintiff served a written proposal for amicable partition on the Defendant, requesting exclusive possession of a one-third portion and demarcation of boundaries as per Annexure E. The Defendant refused.\n\n4. Thereafter, attempts at amicable settlement continued, but the Defendant persisted in opposition to any partition.\n\n5. In light of the Defendant’s refusal, the Plaintiff filed this suit on [DATE_OF_FILING] before the District Court at [COURT_PLACE], seeking partition and separate possession of Plaintiff’s share. Annexures A (Genealogy) and E (Schedule) are annexed.\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Plaintiff seeks partition and separate possession; entitlement to a 1/3 share is evidenced by Annexures A (Genealogy) and E (Schedule). The Plaintiff prays for a preliminary decree for partition by metes and bounds and for delivery of possession to the Plaintiff’s share, to be followed by a final decree. The Court has inherent jurisdiction to order partition in cases of co-ownership of ancestral property.\n\nLimitation: Article 113, Limitation Act, 1963 applies to suits for partition. The right to sue accrues on the date of refusal or continuing denial, and the suit is within time if filed within twelve years from accrual. The Plaintiff reserves the right to rely on Annexures A and E to establish ancestral status.\n\n\nCAUSE OF ACTION\n\nOrigin arose when the Plaintiff demanded partition and the Defendant refused on [DEMAND_DATE], asserting a 1/3 share; accrual occurred during negotiations on [DATE1] and [DATE2], and the action remains ongoing due to continued denial of partition. The Plaintiff seeks a preliminary decree for partition and separate possession to protect its 1/3 interest.\n\n\nLIMITATION\n\nArticle 113, Limitation Act, 1963 applies; accrual date is [ACCRUAL_DATE]. The suit is within twelve years from accrual.\n\n\nVALUATION AND COURT FEE\n\nValuation: The total market value of the ancestral property is Rs [TOTAL_PROPERTY_MARKET_VALUE], Plaintiff’s 1/3 share valued at Rs [SHARE_MARKET_VALUE]. Court fee payable Rs [COURT_FEE_AMOUNT] under the State Court Fees Act, computed on the value of the Plaintiff’s share.\n\n\nINTEREST\n\nThe Plaintiff seeks a preliminary decree for partition and separate possession. Post-decree interest and mesne profits, if any, will be determined in the final decree. Pendente lite interest, pre-suit interest, and other relief to be fixed at final decree as appropriate.\n\n\nPRAYER\n\n(a) A preliminary decree declaring Plaintiff’s entitlement to 1/3rd share and directing partition by metes and bounds with separate possession of Plaintiff’s share.\n(b) A final decree for partition and delivery of exclusive possession to Plaintiff’s 1/3 share.\n(c) Appointment of a Commissioner to carry out the physical partition, prepare a partition plan, and file a detailed report with plan and map for court record and mutation in revenue records.\n(d) Costs of the suit quantified at [COSTS_AMOUNT].\n(e) Any other relief the Court deems fit.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\nAnnexure A – Genealogy Table\nAnnexure E – Schedule of Property\nAnnexure B – Title Deeds\nAnnexure C – Revenue Records\nAnnexure D – Survey Sketch/Plan\n\nVERIFICATION\n\nI, [PLAINTIFF_NAME], the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge. Verified at [COURT_PLACE] on [FILING_DATE].\n\nThrough:\n[ADVOCATE_NAME]\nAdvocate\nEnrollment No.: [ADVOCATE_ENROLLMENT]\nPlace: [COURT_PLACE]\nDate: [FILING_DATE]",
+          "placeholders_used": [
+            {
+              "key": "COURT_NAME",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "COURT_PLACE",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DISTRICT_NAME",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "STATE_NAME",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "SUIT_NUMBER",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "SUIT_YEAR",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE_OF_FILING",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "PLAINTIFF_NAME",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DEFENDANT_NAME",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE_OF_PARTITION_PROPOSAL",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE_OF_NOTICE_TO_PARTITION",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE_OF_PARTITION_PROPOSAL",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE_OF_FILING",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DEMAND_DATE",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE1",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "DATE2",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "ACCRUAL_DATE",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "TOTAL_PROPERTY_MARKET_VALUE",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "SHARE_MARKET_VALUE",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "COURT_FEE_AMOUNT",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "COSTS_AMOUNT",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "ADVOCATE_NAME",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "ADVOCATE_ENROLLMENT",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "PROPERTY_LOCATION",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "PROPERTY_ADDRESS",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "PLACE_OF_PROPERTY",
+              "reason": "Template placeholder — detail not provided"
+            },
+            {
+              "key": "ANNEXURE_GENEALOGY",
+              "reason": "Renamed to Annexure A in corrected draft"
+            },
+            {
+              "key": "ANNEXURE_SCHEDULE",
+              "reason": "Renamed to Annexure E in corrected draft"
+            }
+          ],
+          "citations_used": []
+        }
+      ]
+    }
+  },
+  "review_count": 2
+}

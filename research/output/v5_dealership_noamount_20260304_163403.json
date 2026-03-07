@@ -1,0 +1,44 @@
+{
+  "query": "Draft a commercial suit seeking damages for illegal termination of dealership agreement. Plaintiff invested substantial capital and developed territory market. Termination was arbitrary and contrary to agreement terms. Claim compensation for loss of profit, goodwill and unsold stock. Draft with proper breach of contract pleading for Commercial Court.",
+  "elapsed_s": 206.9,
+  "draft_length": 13046,
+  "limitation": {
+    "article": "55",
+    "description": "For compensation for breach of any contract, express or implied",
+    "period": "Three years",
+    "accrual": "When the contract is broken (date of illegal termination)",
+    "reason": "LKB specificity rule: Article 55 is specific to breach_dealership_franchise",
+    "source": "lkb"
+  },
+  "detected_court": {
+    "threshold": 300000,
+    "court": "Commercial Court",
+    "format": "Commercial Suit No.",
+    "heading": "IN THE COURT OF THE {court_type} (COMMERCIAL DIVISION)",
+    "act": "Commercial Courts Act, 2015",
+    "procedural": [
+      "Section 12A pre-institution mediation (mandatory unless urgent interim relief sought)",
+      "Statement of truth as per Commercial Courts Act",
+      "Particularised damages schedule showing: (a) methodology for computing loss of profits, (b) basis for goodwill valuation, (c) itemised capital investment with documentary proof, (d) unsold stock valuation at cost or market value whichever is lower"
+    ],
+    "nature_keywords": []
+  },
+  "intake_amounts": {
+    "principal": null,
+    "interest_rate": null,
+    "damages": null
+  },
+  "checks": {
+    "Commercial Court heading": true,
+    "Commercial Suit No.": true,
+    "Section 12A compliance": true,
+    "Statement of Truth": true,
+    "Damages schedule": true,
+    "Section 73 cited": true,
+    "NO Section 55 misapplied": true,
+    "NO Section 14 SRA": true,
+    "Section 39 cited": true
+  },
+  "passed": 9,
+  "total": 9
+}

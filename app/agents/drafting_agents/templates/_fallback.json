@@ -1,0 +1,174 @@
+{
+  "template_id": "civil/_fallback",
+  "template_version": "1.1",
+  "doc_type": "_fallback",
+  "law_domain": "Civil",
+  "party_labels": {
+    "primary": "Plaintiff",
+    "opposite": "Defendant"
+  },
+  "annexure_scheme": {},
+  "placeholder_dates": {},
+
+  "sections": [
+    {
+      "section_id": "court_heading",
+      "heading": "",
+      "type": "template",
+      "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+    },
+    {
+      "section_id": "title",
+      "heading": "",
+      "type": "template_with_fill",
+      "instruction": "Draft the suit title line. The title must reflect the PRIMARY RELIEF sought as indicated by the classified doc_type. Use standard Indian court pleading format (all caps, filed under applicable CPC provision). If a monetary amount is the primary relief, include the amount in the title. Otherwise, state the nature of the suit (e.g., 'SUIT FOR [nature of relief]').",
+      "context_keys": ["intake.facts"],
+      "must_include": []
+    },
+    {
+      "section_id": "parties",
+      "heading": "BETWEEN",
+      "type": "template_with_fill",
+      "instruction": "Draft the parties section listing plaintiff(s) and defendant(s) with full particulars: name, age, occupation, address. Use competency averment (sui juris / competent to sue). If any detail is missing, use {{PLACEHOLDER}}. Adapt party labels to the suit type (e.g., Petitioner/Respondent for writ petitions).",
+      "context_keys": ["intake.parties"],
+      "must_include": [
+        {"type": "regex", "match": "sui\\s+juris|competent\\s+to\\s+sue|major\\s+in\\s+age", "required": true, "description": "Competency averment"},
+        {"type": "keyword", "match": "Plaintiff", "required": true, "description": "Plaintiff label"},
+        {"type": "keyword", "match": "Defendant", "required": true, "description": "Defendant label"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "witness_names"]
+    },
+    {
+      "section_id": "jurisdiction",
+      "heading": "JURISDICTION",
+      "type": "llm_fill",
+      "instruction": "Draft the jurisdiction section establishing territorial and pecuniary jurisdiction based on the facts. State the SPECIFIC factual basis for territorial jurisdiction (where defendant resides, where property is situated, where cause of action arose). State the suit valuation and that it falls within the court's pecuniary limits.",
+      "context_keys": ["intake.jurisdiction", "intake.facts"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "territorial|within\\s+the\\s+(local\\s+)?limits|Section\\s+16", "required": true, "description": "Territorial jurisdiction ground"},
+        {"type": "regex", "match": "pecuniary|monetary\\s+jurisdiction", "required": true, "description": "Pecuniary jurisdiction ground"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "court_name", "place_names", "property_address"]
+    },
+    {
+      "section_id": "facts",
+      "heading": "FACTS OF THE CASE",
+      "type": "llm_fill",
+      "instruction": "Draft the facts section as numbered paragraphs in chronological narrative form. Frame the narrative around the PRIMARY RELIEF sought (from the doc_type). Each paragraph should cover ONE event or stage. Reference documents as Annexure labels. Do NOT state legal conclusions — keep it purely factual.",
+      "context_keys": ["intake.facts", "intake.evidence"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "Annexure|annexure", "required": true, "description": "Evidence referenced"},
+        {"type": "regex", "match": "\\d{4}|DATE|date", "required": true, "description": "At least one date or date placeholder"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "witness_names", "place_names", "property_address"]
+    },
+    {
+      "section_id": "legal_basis",
+      "heading": "LEGAL BASIS AND GROUNDS",
+      "type": "llm_fill",
+      "instruction": "Draft the legal basis section citing statutory provisions and legal principles that support the PRIMARY RELIEF sought (from the doc_type). For EACH provision: (1) State the legal rule it creates, (2) State what conditions trigger it, (3) Show how the facts satisfy those conditions. Cite ONLY provisions from the verified list or those naturally applicable to this doc_type. Include alternative pleas and defensive pleading where appropriate.",
+      "context_keys": ["intake.facts", "mandatory_provisions.user_cited_provisions"],
+      "rag_query": "from_enrichment",
+      "must_include": [
+        {"type": "regex", "match": "Section\\s+\\d+|Article\\s+\\d+|Order\\s+[IVXLC]+", "required": true, "description": "At least one statutory provision cited"},
+        {"type": "regex", "match": "bound|obligat|liable|entitle|right|duty", "required": true, "description": "Legal consequence stated"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "statutory_provisions"]
+    },
+    {
+      "section_id": "cause_of_action",
+      "heading": "CAUSE OF ACTION",
+      "type": "llm_fill",
+      "instruction": "Draft the cause of action section in PARAGRAPH prose. Must cover: (1) ORIGIN — when and how the right to sue first arose, (2) FURTHER ACCRUAL — subsequent acts that sustain the right, (3) CONTINUITY — why the cause of action is continuing. Anchor to the actual triggering event from the facts.",
+      "context_keys": ["intake.facts", "mandatory_provisions.limitation"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "cause\\s+of\\s+action", "required": true, "description": "Cause of action stated"},
+        {"type": "regex", "match": "first\\s+arose|ar[oi]se|accrued", "required": true, "description": "Origin/accrual stated"},
+        {"type": "regex", "match": "continu(ing|es|ed)", "required": true, "description": "Continuing nature stated"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name", "place_names", "property_address"]
+    },
+    {
+      "section_id": "limitation",
+      "heading": "LIMITATION",
+      "type": "llm_fill",
+      "instruction": "Draft the limitation section stating: (1) the applicable Article of the Limitation Act 1963 (from enrichment context ONLY — if not provided, use {{LIMITATION_ARTICLE}} placeholder), (2) the limitation period, (3) the starting date anchored to the cause of action accrual event, (4) that the suit is within time. Do NOT guess limitation articles.",
+      "context_keys": ["intake.facts", "mandatory_provisions.limitation"],
+      "rag_query": "from_enrichment",
+      "must_include": [
+        {"type": "regex", "match": "Article\\s+\\d+|LIMITATION_ARTICLE", "required": true, "description": "Limitation article cited or placeholdered"},
+        {"type": "regex", "match": "Limitation\\s+Act", "required": true, "description": "Limitation Act reference"},
+        {"type": "regex", "match": "within\\s+(the\\s+)?(?:period|time|limitation)", "required": true, "description": "Within limitation stated"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"]
+    },
+    {
+      "section_id": "valuation_court_fee",
+      "heading": "VALUATION AND COURT FEE",
+      "type": "template_with_fill",
+      "instruction": "Draft the valuation and court fee section. State the suit valuation, the basis for valuation, and the court fee paid or payable. Use {{COURT_FEE_AMOUNT}} placeholder if the exact amount is not available.",
+      "context_keys": ["intake.facts.amounts", "court_fee"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "valuation|valued", "required": true, "description": "Valuation stated"},
+        {"type": "regex", "match": "court\\s+fee|COURT_FEE", "required": true, "description": "Court fee stated"}
+      ],
+      "allowed_entities": ["plaintiff_name"]
+    },
+    {
+      "section_id": "interest",
+      "heading": "INTEREST",
+      "type": "llm_fill",
+      "condition": "doc_type_contains:recovery|money|cheque|loan|rent|damages|restitution",
+      "instruction": "Draft the interest section with applicable interest claims: pre-suit interest, pendente lite interest, and future interest with rates and legal basis.",
+      "context_keys": ["intake.facts.amounts"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "interest|mesne\\s+profit|compensation|per\\s+annum|Section\\s+34", "required": true, "description": "Some form of financial relief or interest stated"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"],
+      "allow_claimed_amounts": true
+    },
+    {
+      "section_id": "prayer",
+      "heading": "PRAYER",
+      "type": "llm_fill",
+      "instruction": "Draft the prayer section with specific sub-prayers as lettered items (a, b, c, ...). Each prayer must match the PRIMARY RELIEF of the classified doc_type. Do NOT pray for relief inconsistent with the suit type. Always include costs and a general relief clause 'any other relief the Court deems fit'.",
+      "context_keys": ["intake.facts", "mandatory_provisions.user_cited_provisions"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "keyword", "match": "decree", "required": true, "description": "Decree prayer"},
+        {"type": "keyword", "match": "costs", "required": true, "description": "Costs claimed"},
+        {"type": "regex", "match": "any\\s+other\\s+(relief|order)|deem(s|ed)?\\s+fit", "required": true, "description": "General relief clause"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"]
+    },
+    {
+      "section_id": "document_list",
+      "heading": "LIST OF DOCUMENTS RELIED UPON",
+      "type": "template_with_fill",
+      "instruction": "Generate a numbered list of documents the plaintiff relies upon, mapped to annexure labels. Base the document list on the evidence provided in context. If evidence is empty, list expected documents for this suit type with {{DOCUMENT_DESCRIPTION}} placeholders.",
+      "context_keys": ["intake.evidence"],
+      "rag_query": null,
+      "must_include": [
+        {"type": "regex", "match": "Annexure|annexure", "required": true, "description": "Annexure labels present"}
+      ],
+      "allowed_entities": ["plaintiff_name", "defendant_name"]
+    },
+    {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "type": "template",
+      "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+    },
+    {
+      "section_id": "advocate",
+      "heading": "",
+      "type": "template",
+      "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+    }
+  ]
+}

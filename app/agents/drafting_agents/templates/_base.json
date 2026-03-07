@@ -1,0 +1,30 @@
+{
+  "_description": "Shared sections reusable across all civil suit templates. Templates inherit these via $ref or by template_loader merging.",
+
+  "shared_sections": {
+    "court_heading": {
+      "section_id": "court_heading",
+      "heading": "",
+      "type": "template",
+      "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+    },
+    "verification_order6_rule15": {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "type": "template",
+      "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to {{LAST_PARA_NUMBER}} of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+    },
+    "verification_criminal": {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "type": "template",
+      "body": "I, {{PLAINTIFF_NAME}}, do hereby state on solemn affirmation that the contents of the above {{DOC_TYPE}} are true and correct to my knowledge and belief, and nothing material has been concealed therefrom."
+    },
+    "advocate_block": {
+      "section_id": "advocate",
+      "heading": "",
+      "type": "template",
+      "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+    }
+  }
+}

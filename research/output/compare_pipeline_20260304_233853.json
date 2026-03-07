@@ -1,0 +1,1547 @@
+{
+  "user_request": "Draft a commercial suit seeking damages for illegal termination of dealership agreement. Plaintiff invested substantial capital and developed territory market. Termination was arbitrary and contrary to agreement terms. Claim compensation for loss of profit, goodwill and unsold stock. Draft with proper breach of contract pleading.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks damages for illegal termination of a commercial dealership agreement, citing arbitrary termination contrary to terms, substantial capital investment, and market development. Claims include compensation for loss of profit, goodwill, and unsold stock.",
+      "chronology": [],
+      "amounts": {
+        "principal": null,
+        "interest_rate": null,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": null,
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "claim_components",
+          "value": [
+            "loss_of_profit",
+            "goodwill",
+            "unsold_stock"
+          ],
+          "type": "list",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "key": "agreement_type",
+          "value": "dealership_agreement",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 0.9
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "breach_of_contract",
+        "damages",
+        "commercial_law",
+        "dealership_termination"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "parties_names",
+        "agreement_date",
+        "termination_date",
+        "jurisdiction_details",
+        "specific_amount_claimed",
+        "contract_terms_breached"
+      ],
+      "assumptions": [
+        "Termination was without cause as per agreement",
+        "Plaintiff has incurred financial loss due to termination"
+      ]
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "damages_plaint",
+    "cause_type": "breach_dealership_franchise",
+    "classification": {
+      "topics": [
+        "breach_of_contract",
+        "damages",
+        "commercial_law",
+        "dealership_termination"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "parties_names",
+        "agreement_date",
+        "termination_date",
+        "jurisdiction_details",
+        "specific_amount_claimed",
+        "contract_terms_breached"
+      ],
+      "assumptions": [
+        "Termination was without cause as per agreement",
+        "Plaintiff has incurred financial loss due to termination"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "breach of dealership agreement damages",
+        "measure of damages loss of profit goodwill",
+        "illegal termination of commercial contract pleading",
+        "claim for unsold stock inventory damages",
+        "commercial suit jurisdiction pecuniary"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "breach of dealership agreement damages",
+      "measure of damages loss of profit goodwill",
+      "illegal termination of commercial contract pleading",
+      "claim for unsold stock inventory damages"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "er s 16 (d) of the Code of Civil Procedure is maintainable only before the court within jurisdiction of \nwhich the suit property is situate and s 20 has no application, the parties cannot by agreement vest the \njurisdiction in any other court other than the court within jurisdiction whereof the suit property is situate. \nTherefore, even if it be assumed that the parties agreed to the jurisdiction of courts, such agreement being \nagainst the law would be bad under s s 23 and 28 of the Indian Contract Act, 1872.72\nIn a case relating to purchase agreement, there was breach of agreement and a suit was filed for damages and \nbreach of contract at Nagpur where the manufacturing unit of the plaintiff was located. The registered office of \nthe defendants was located as Pune where the purchase agreement was executed. Other defendants also \nresided at Pune and the terms of the agreement also restricted the jurisdiction of courts at Pune. Since there \nwere several causes of act ion, the Supreme Court in appeal permitted the plaintiff to file separate suit in \nrelation to the purchase order at Pune and further asked him to make necessary amendments to the plaint filed \nat Nagpur.73\n5. Judgment of Court not Competent to deliver it. See notes under s 11 under the same heading. See notes \nunder heading contract providing for place of suing under s 10 and agreement as to choice of court under",
+        "score": 0.405,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "laintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is",
+        "score": 0.404,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "uit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "score": 0.463,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ance). \n5. The plaintiff's title to the property agreed to be sold is not such as the defendant is bound to accept by \nreason of the following matter—(State why). \n6. The agreement is uncertain in the following respects—(State them). \n7. (or) The plaintiff has been guilty of delay. \n8. (or) The plaintiff has been guilty of fraud (or misrepresentation). \n9. (or) The agreement is unfair. \n10. (or) The agreement was entered into by mistake. \n11. The following are particulars of (7), (8), (9), (10) (or as the case may be). \n12. The agreement was rescinded under Conditions of Sale, No. 11 (or by mutual agreement).\n(In cases where damages are claimed and the defendant disputes his liability to damages, he must deny the\nagreement or the alleged breaches, or show whatever other ground of defence he intends to rely on, e.g.,\nthe [448][Indian Limitation Act,] accord and satisfaction, release, fraud, etc.)\nNo. 14\nDefence In Administration Suit By Pecuniary Legatee\n1. A. B.'s will contained a charge of debts; he died insolvent; he was entitled at his death to some immovable \nproperty which the defendant sold and which produced the net sum of Rs. . . . . . . . . . , and the testator had \nsome movable property which the defendant got in, and which produced the net sum of Rs. . . . . . . . . . \n2. The defendant applied the whole of the said sums and the sum of Rs. . . . . . . . . . which the",
+        "score": 0.439,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "49 \n \nIllustrations \n(a)B, at Singapur, under instructions from A of Calcutta, contracts with C to deliver certain goods to him. A does not send \nthe goods to B, and C sues B for breach of contract. B informs A of the suit, and A authorizes him to defend the suit. B defe nds \nthe suit, and is compelled to pay damages and costs, and incurs expenses. A is liable to B for such damages, costs and expenses. \n(b)B, a broker at Calcutta, by the orders of A, a merchant there, contracts with C for the purchase of 10 casks of oil for A. \nAfterwards A refuses to receive the oil, and C sues B. B informs A, who repudiates the contract altogether. B defends, but \nunsuccessfully, and has to pay damages and costs and incurs expenses. A is liable to B for such damages, costs and expenses. \n223.Agent to be indemnified against consequences of acts done in good faith.—Where one person \nemploys another to do an act, and the agent does the act in good faith, the employer is liable to indemnify \nthe agent against the consequences of that act, though it cause an injury to the rights of third persons. \nIllustrations \n(a)A, a dec ree-holder and entitled to execution of B ’s goods, requires the officer of the Court to seize certain goods, \nrepresenting them to be the goods of B. The officer seizes the goods, and is sued by C, the true owner of the goods. A is liable to \nindemnify the officer for the sum",
+        "score": 0.405,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 18 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthat the relief could not be granted. 56 The commentary on O 6, r 3 be referred for detailed discussion on Forms 47 \nand 48 of the Code of Civil Procedure.\nIn a suit for damages for wrongful repudiation of contract, it is not necessary to plead that the repudiation has been \naccepted.57 If it is an implied agreement, it should appear from what facts or circumstances it is to be implied.58\nIn a suit, where the validity of the sale deed was challenged by the seller-defendant on the grounds that the sale \ndeed did not confine to the property covered by the agreement for sale and its contents were not read over to him \nand it was vitiated by fraud, it was held by the Gauhati High Court that the provision of O 6, r 4 are mandatory and \nthe pleadings of the defendant did not disclose the necessary particulars with specification to establish fraud. \nMoreover, after having executed the sale deed containing necessary recitals, the defendant cannot be permitted to \nturn around and deny the same as such oral denials are hit by s 91 of the Evidence Act.59\n(d) Defamation. In an act ion for slander, the plaintiff must give particulars of the names of the persons to whom the \nalleged slander was made.60\nIn an action for libel, where the charge made against the plaintiff in the alleged libel is general in its nature, a",
+        "score": 0.401,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "ut in a case of breach of confidentiality \nclause in a service contract, the place where the breach has taken place will have jurisdiction.52\nAll terms of the contract were negotiated and finalised in Bombay. It was, thereafter, that the formal contract \nwas engrossed and sent to Ludhiana for the signatures of respondent. The respondents director signed the \ncontract, document and forwarded it to its broker at Bombay, for onward transmission to the petitioner for taking \nnecessary act ion. This issue can be looked at in two ways. If the contract is said to have been concluded when \nthe terms were prepared, then obviously that took place in Bombay. If the contract is said to have been finalised \nonly after both parties had signed, then it is clear that only one of the parties signed at Ludhiana and other \nsigned it in Bombay.53\nIn a suit for damages for breach of contract, the cause of action consists of the making of the contract, and of \nits breach; so that the suit may be filed either at the place where the contract was made or at the place where it \nshould have been performed and the breach occurred. 54 Thus, if a contract is made in Poona to be performed \nin Poona, the whole cause of act ion arises in Poona and the suit for breach can only be filed in the Poona \nCourt; but, if the contract is made in Poona to be performed in Belgaum the suit for its breach can be filed",
+        "score": 0.4,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "its not on the basis of \nthe value of the user of land to the person in wrongful possession, but on an estimated return on the value of the \nproperty.12 The decision in the undermentioned case 13 that mesne profit against a tenant who refuses to vacate the \npremises after the termination of the tenancy should be assessed on the basis of reasonable market value of the \npremises, does not appear to be correct. A person in wrongful possession is not liable for failure to realise the \nhighest possible rates of rent and premium, if a fair return has been realised from the land.14\nThe test set by the statutory definition of mesne profits is not what the plaintiff has lost by his exclusion, but what \nthe defendant has, or might reasonably have, made by his wrongful possession. If the person charged has merely \nlet the land to others, the rent which he has received would be the measure of the profits for which he is liable \nunless there is evidence that a higher rent could, with ordinary diligence, have been obtained. 15 However, if the \nwrongdoers cultivate the land themselves, the cultivation profits are the primary consideration, and if it is contended \nthat other and more profitable crops could have been grown, the true test is what the ordinary prudent agriculturist \nwould have grown. Therefore, when the person in wrongful possession planted indigo for use in his adjacent",
+        "score": 0.449,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "th the Government. A is entitled to receive from B, by way of compensation, the average amount of profit which \nwould have b een made by the working of the mill during the time that delivery of it was delayed, but not the loss sustained \nthrough the loss of the Government contract. \n(j) A, having contracted with B to supply B with 1,000 tons of iron at 100 rupees a ton, to be delivered at a stated time, \ncontracts with C for the pur chase of 1,000 tons of iron at 80 rupees a ton, telling C that he does so for the purpose of performing \nhis contract with B. C fails to perform his contract with A, who cannot procure other iron, and B, in consequence, rescinds the \ncontract. C must pay to A 20,000 rupees, being the profit which A would have made by the performance of his contract with B. \n(k) A contracts with B to make and deliver to B, by a fixed day, for a specified price, a certain piece of machinery. A does \nnot deliver the piece of machinery at the time specified, and in consequence of this, B is obliged to procure another at a high er \nprice than that which he was to have paid to A, and is prevented from performing a contract which B had made with a third \nperson at the time of his contract with A (but which had not been then communicated to A), and is compelled to make \ncompensation for breach of that contract. A must pay to B, by way of compensation, the differ ence",
+        "score": 0.419,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "ause mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of damages which the court may award according to the justice of the case. And",
+        "score": 0.469,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "f there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is not the rate of rent which would be fair and equitable for the lands in question but \nthe profits which the tenants have actually received or might with ordinary diligence have received from their \nwrongful possession.23\nWhere the plaintiff did not produce any evidence in support of the rate of mesne profits claimed by him and also \nadmitted in his examination-in-chief that there was no basis for mesne profits claimed in the plaint, the court \nassessed mesne profits considering the rent of shops situated near the disputed land. 24 In the same case it was \nheld that where the plaintiff had filed a suit for mesne profits earlier also, grant of mesne profits for the period which \nwas the subject-matter of the earlier suit was held to be not proper.25\nThe claim for mesne profits is virtually a claim for damages. Hence, there is no rigid rule for determining the amount \nof mesne profits, and the amount must be assessed in every case by a proper exercise of judicial discretion. 26 In \none case the Patna High Court, on a finding that the plaintiffs had unnecessarily prolonged the litigation, declined to \naward mesne profits upto the date of the decree.27 It held that the Mesne profits",
+        "score": 0.459,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "esne profits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the person in possession.78\nIt cannot be said that mesne profits can be calculated only on the basis of the maximum rent that the premises \ncould have fetched if let out.79\nMesne profits can be claimed only when there is wrongful possession of the defendant. But, where \ndispossession is a joint or concerted act of several persons, each of them who participates in the commission of \nthat act would be liable for mesne profits even though he was not in possession and the profits were received \nnot by him but by some of his confederates.80\nMeasure of mesne profits is the value of wrongful possession. Rent could be a relevant factor for considering \nsuch a value, but not a decisive matter. 81 In terms of the definition of mesne profits under s 2 (12) of the Code \nof Civil Procedure, the question of proprietary of the valuation on account of the same can be decided at the \ntime of trial on evidence where the court can pass a decree for mesne profits or can direct the inquiry, or, can \nreject a prayer of mesne profits.82\nThe reservation as to profits due to",
+        "score": 0.456,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "possession of such property either act ually received or might have received with due diligence. It is not always \nnecessary that there should be proof of actual receipt.66\nFor entitling him to grant of mesne profits, the plaintiff must lead evidence to prove what would be the \ncompensation the defendant might have received with due diligence for his wrongful possession. Where the \nplaintiff did not lead any evidence, it was held that he was not entitled to claim mesne profits.67\nThe observations made in the above case,68 are worth nothing:\nHowever, the concept of mesne profits appear to be different. Section 2(12) of Civil Procedure Code, defines mesne \nprofits to mean those profits which the person in wrongful possession of such property act ually received or might with \nordinary dilegence have received therefrom, together with interest on such profits, but shall not include profits due to \nimprovements made by the person in wrongful possession. The words Mesne Profits suggest value of house for \noccupation of land during the time it was held by one in wrongful possession and is commonly measured in terms of \nrent and profits (See Blacks Law Dictionary). The Apex Court in the case of Fateh Chand v. Balkrishna Dass, AIR 1963 \nSC 1405 [LNIND 1963 SC 20] observed that the normal measure of mesne profits is the value of the user of the land \nto the person in wrongful",
+        "score": 0.442,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "ucted by the plaintiff on the basis of \ndeemed sanction under s 31 (5) of the Himachal Pradesh Town and Country Planning Act (43 of 1995) the \nnotices issued by the authority that the construction was without sanction and liable for demolition, the suit filed \nby the plaintiff that the notices were illegal and void was found maintained before civil court.90\n63. Restrictive Covenant. A company incorporated in Germany entered into contract with an Indian company. \nThe Indian company was to sell certain goods in India. There was a negative covenant, restraining the \ncompany from selling goods after termination of the contract. It was held that this covenant was not \nenforceable.91",
+        "score": 0.485,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "dent necessary for the \ncase of the plaintiff or defendant shall be implied in his pleading. \n7. Departure— No pleading shall, except by way of amendment, raise any new ground of claim or contain \nany allegation of fact inconsistent with the previous pleadings of the party pleading the same. \n8. Denial of contract— Where a contract is alleged in any pleading, a bare denial of the same by the opposite \nparty shall be construed only as a denial in fact of the express contract alleged or of the matters of fact from \nwhich the same may be implied and not as a denial of the legality or sufficiency in law of such contract. \n55",
+        "score": 0.551,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Page 25 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nDenial of contract. All matters which go to show that the contract sued on is void or unlawful must be specifically \npleaded. If such matters are not expressly pleaded, no evidence thereof can, as a rule, be given at the trial. Thus, if \nA sues B on a contract, and B in his written statement merely denies the contract, such denial will be taken to mean \nonly that there was in fact no such contract as alleged: it will not be construed as a denial of the legality of the \ncontract. The result is that if A proves the contract sued upon, B will not be allowed to contend at the hearing that \nthe contract was a wagering contract, and, therefore, void. B ought to have specifically pleaded in his written \nstatement that the contract was a wagering contract. 40 However, where at the hearing of a suit, the plaintiffs case \ndiscloses that the transaction which is the basis of his claim is illegal, the court cannot properly ignore the illegality, \neven if the illegality be not pleaded or relied on by the defendant. 41 No court ought to enforce an illegal contract or \nallow itself to be made the instrument of enforcing obligations alleged to arise out of a contract or transaction which \nis illegal, if the illegality is duly brought to the notice of the court, and if the person invoking the aid of the court is \nhimself",
+        "score": 0.534,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ligations alleged to arise out of a contract or transaction which \nis illegal, if the illegality is duly brought to the notice of the court, and if the person invoking the aid of the court is \nhimself implicated in the illegality. It matters not whether the defendant has pleaded the illegality or whether he has \nnot. If the evidence adduced by the plaintiff proves the illegality, the court ought not to assist him. 42 A party who \nmerely denies the factum of the contract and does not allege that it is unenforceable in law is precluded by this rule \nand by O 8, r 2 from raising the question of its legality or validity. 43 Accordingly, where the defendant had merely \ndenied the contract, but had not pleaded that it was not enforceable, the Supreme Court upheld the view of the High \nCourt of Calcutta that the defendant was not entitled to contend that the contract in question was hit by the failure to \ncomply with the requirements of s 175(3) of the Government of India Act 1935. 44 Note that an agreement by way of \nwager is void, but not illegal.45\nIn a case, where the respondents specifically pleaded that the transaction between them and the appellant was one \nof mortgage by conditional sale, the appellant maintained a blissful silence in relation thereto in the written \nstatement. He did not even mention that the averments of the respondents or facts pleaded by them or as to",
+        "score": 0.527,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "e for rescission of the contract on the ground \nthat it did not fully represent the agreement between the \nparties.77 Similarly, if it is found that in a former suit for eviction by \nthe landlord, the defendant-tenant had failed to raise the plea that the landlord \nbefore filing the suit ought to have terminated the contractual \ntenancy which he might and ought to have raised, he cannot be allowed to raise \nthat plea in a subsequent suit for eviction. 78 If a matter could have been set up \nas a ground of attack or defence in the former suit, \nand if its introduction into that suit was necessary for a complete and final \ndecision of the right claimed by the plaintiff therein, it will be \ndeemed to be a matter which ought to have been made a ground of attack or \ndefence in that suit, unless the matters in that and the subsequent suit \nare so dissimilar that their union might lead to confusion. 79 Thus, in Illus \n(i), the title by heirship could have been made a ground of attack in the \nalternative in the first suit; it was necessary to do so for the complete and final \ndisposal of all questions as to A's right to the property, and it \nwas not forbidden by any rule of pleading; and, further, the question in both suits \nbeing the same, namely, whether A was entitled to the property or B, the title by \nsurvivorship and the title by heirship could not be said to be \nso dissimilar",
+        "score": 0.516,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "ncy and Agricultural Lands Act 1948, the person sought to be \nevicted took the plea throughout that he was a tenant but in a writ filed against the order of his eviction by the \ntenancy court, he took the stand that since he was not a tenant, the tenancy court had no jurisdiction. It was held by \nthe Bombay High Court that it was too late in the day to contend that he was not a tenant. No tenant can be allowed \nto take inconsistent pleas so as to place the opponent at a disadvantage by raising the question of jurisdiction.38\nIn an execution proceeding arising out of an eviction decree passed under the Calcutta Thika and Other Tenancies \nand Lands (Acquisition and Regulation) Act 1981, it was asserted in the objection petition that the petitioners were \ninducted as thika tenants or sub-tenants. However, in the affidavit in reply before the High Court a new case was \nset up that they were occupants on the bustee lands. It was held that these were not alternative pleas and they \ncannot run side by side, one conflicting with the other.39\nR.8. Denial of contract.\nWhere a contract is alleged in any pleading, a bare denial of the same by the opposite party shall be construed only \nas a denial in fact of the express contract or of the matters of fact from which the same may be implied, and not as \na denial of the legality or sufficiency in law of such contract.",
+        "score": 0.502,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "n is received is the place where the suit would lie. 79 If \na contract is pleaded as part of the cause of action giving jurisdiction to the court where the suit is filed and that \ncontract is found to be invalid, such part of the cause of act ion disappears. Hence, the suit cannot be said to be \nwithin the jurisdiction of the court.80\n(b) Termination. Revocation or termination of a contract constitutes a part of the cause of action, and the place \nwhere the same takes place, can vest jurisdiction in the court situated therein. In the instant case, although, \nostensibly, the letter dated 8 February 1983 tended to formally communicate termination of contract by the \nrespondent to the petitioner, yet, in reality, that termination and repudiation took place when the petitioner had \nunmitigatingly conveyed to the respondent at B, that the agreed rates could not remain in force from 4 \nDecember 1979. Petitioner thereby declined to carry out the remaining part of the contract, unless the rates \nwere revised. So far as the existing rates were concerned, there was thus, a clear repudiation. That having \ntaken place at B with the receipt of the communication from the petitioner, the court at B alone had jurisdiction \nto entertain the petitioner for reference under the Arbitration Act. 81 State of Orissa appointed the plaintiff \ncompany as mining agent to raise coal in a colliery within",
+        "score": 0.502,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "e construed. Denial of facts of contract and the legality or sufficiency in \nlaw of such a contract must be specifically denied. \nRule 9: Effect of document to be stated - Wherever the contents of any document are \nmaterial, it shall be sufficient in any pleading to state the effect thereof as briefly as possible, \nwithout setting out the whole or any part thereof, unless the precise words of the document or \nany part thereof are material. \nRule 10: Malice, Knowledge, etc - Wherever it is material to allege malice, fraudulent \nintention, knowledge or other condition of the mind of any person, it shall be sufficient to \nallege the same as a fact without setting out the circumstances fr om which the same is to be \ninferred. \nRule 11: Notice- Wherever it is material to allege notice to any person of any fact, matter or \nthing, it shall be sufficient to allege such notice as a fact, unless the form or the precise terms \nof such notice, or the circumstances from which such notice is to be inferred are material. \n \n6 (1977) 1 SCC 669",
+        "score": 0.501,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "s A's claim, but claims to set-off several sums of \nmoney alleged to be damages sustained by him by reason of A's breach of some of the terms of the same contract. \nB is entitled to claim the set-off, for the claim arises from the same transaction.27\n(2) A agrees to sell, and B agrees to purchase, 200 bales of wool. B takes delivery of 170 bales and is ready and \nwilling to take delivery of the remaining 30 bales, but A fails to deliver them. A sues B for the price of the 170 bales. \nB claims to set-off the damages sustained by him by reason of A's failure to deliver the remaining bales. B is \nentitled to claim the set-off, as the claim arises out of the same transaction.28\n(3) A sues B, his master, for Rs 800 being arrears of salary. B claims to set-off Rs 625, being the loss sustained by \nhim by reason of neglect and misconduct on the part of A as his servant. B is entitled to claim the set-off, as his \nclaim arises out of the same relation from which A's claim arose namely, that of master and servant.29\n(4) A (mortgagee) sues B (mortgagor) to recover the principal and interest due on a usufructuary mortgage. B \nclaims to set-off the loss alleged to have been occasioned by A's failure as mortgagee in possession to make \nrepairs to the mortgaged property. B is entitled to claim the set-off.30\n(5) A washerman sues his employer for his wages. The employer may set-off the value",
+        "score": 0.453,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ught if it is claimed that any candidate other than the returned candidate be \ndeclared elected. Thus, in an election dispute, where no additional relief was claimed by the election petitioner \nexcept declaring the election of returned candidate void, it was held by the Gauhati High Court that the returned \ncandidate would be barred from raising any counter-claim in his written statement akin to recrimination petition.14\nIn a suit for declaration of title, the defendant filed counter-claim after filing written statement asserting his own title \nover the suit premises. The counter-claim was raised not only against co-defendants but also against the plaintiff. It \nwas held by Patna High Court that such counter-claim was maintainable.15\nWhere the cause of action for claiming damages is alleged to have accrued to the guarantor in the case of recovery \nof Bank debt, on attachment of his property on misrepresentation by Bank and without following the procedure \nprescribed in the Recovery of Debts due to Banks and Financial Institutions Act, 1993, and he claimed damages by \namending the written statement, it was held by the Rajasthan High Court in Division Bench that the counter-claim \nwould not be outside the purview of s 19(8) of the Act. If the cause of act ion has accrued to the defendant against \nthe Bank either before or after filing of the application, before or after he filed",
+        "score": 0.432,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "tion. 41 In the undermentioned case, 42 the High Court of Madras held \nthat in a suit by a lessor for rent, it is not open to the lessee to claim by way of equitable set-off an unliquidated \nclaim for damages which was barred at the date of the suit. Seshagiri Ayyar, J, said\nAn exception to this rule [namely, that a time-barred claim cannot be pleaded by way of equitable set-off] has been \nrecognized in some cases. Where there is a fiduciary relationship between the parties as in the case of trustee and \ncestui que trust and there is accountability, even barred claims may be taken into account in passing the final \naccounts. This exception has been extended in some of the decided cases in India to mortgages, presumably on \nthe ground that there is accountability between the parties. It is not necessary to say now whether these cases have \nbeen rightly decided. I see no reason for extending the exception to suits between a lessor and a lessee.43\nIn a Madras case, 44 an agent sued his principal to recover money that might be found due to him on the taking of \nagency accounts. The defendant pleaded in his written statement that money would be found due to him on taking \naccounts and he asked for a decree for such sum as might be found due to him. The defendants claim was not \nbarred at the date of the suit, but it was barred at the date of the written statement. It was held that",
+        "score": 0.428,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "ould not be outside the purview of s 19(8) of the Act. If the cause of act ion has accrued to the defendant against \nthe Bank either before or after filing of the application, before or after he filed the written statement, such counter-\nclaim for damages is entertainable provided the filing of the counter-claim is not an abuse of the process and is \nnecessary to secure the ends of justice.16\nThe counter-claim essentially is a cross-suit with all the trappings of pleadings as a plaint including the duty to aver \nthe cause of action and also payment of requisite court-fees thereon. While the defendants cause of act ion for a \ncounter-claim may be different from and independent of the cause of action of the plaintiffs suit and the cause of act \nion for the counter-claim may arise before the plaintiffs suit or it might have arisen after the institution of the suit, \nwhat is required is that the counter-claim must be made before the written statement is filed or before the date of \nfiling written statement expires.17\nIn a case from Calcutta, the plaintiff laid claim over property made by partnership firm on the basis of registered \npartnership deed and the defendant pleaded that the said document was a sham and interpolated one. But the \ndefendant did not challenge the document specifically asking for any relief for cancellation of the same either by \nfiling cross-suit or making a",
+        "score": 0.426,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 12 of 97\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nalternative for damages. It is alleged in the plaint that the goods belonged to A, that B obtained from A, the \ndocuments of title relating thereto by fraud and made them over to C; that C, knowing that B had no title either to \nthe documents or to the goods, wrongfully dealt with them and sold the goods to D and E; that D and E wrongfully \nclaimed to retain the goods and the documents of title; and, lastly, that one of the documents of title, namely, a \nrailway receipt was pledged by B to F, though the goods covered by it were in the possession of D. It was held that \nthe suit is not bad for misjoinder of defendants and causes of action.106\nThe court has further held\nThe foundation of the case, on which the rest of it depends, is the alleged fraud of B. If such fraud is proved the \nquestion is, did the defendants who all claim under, B obtain any title? If the plaintiff fails to prove fraud on the part \nof B, the case fails against all the defendants. If he proves fraud, it may be that the defendants may have a different \nanswer by way of defence; but that does not make the case any the less one of a common question of law and fact. \nThe same act or transaction which concerns all the parties is the alleged fraud of B, and this involves a common \nquestion of law or fact. All defendants have derived title",
+        "score": 0.422,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "curs insert or value.\n1. Suit for damages. In a suit for damage, the plaintiff must state the amount of damages claimed and pay court-\nfees thereon.35\n2. Suit for mesne profits. A claim for past mesne profits must be valued even though approximately and court-fee \npaid thereon. But it is not necessary that future mesne profits should be valued.36\n3. Suit for Accounts. This rule is applicable to a suit by an agent against his principal praying that accounts be \ntaken of amounts due to him.37\nWhere in the case of export of garments to a foreign purchaser, the purchaser got his foreign German bank to issue \nan irrevocable letter of credit, the respondent bank act ed as the appellants bank in negotiating the documents \nprescribed under the letter of credit under reserve and credited amount to appellants account. When the documents \nwere not honoured and reimbursement was refused by the foreign bank, the respondent debited the amount to \nappellants account. It was held that the appellant was not entitled to claim recovery from the respondent bank.38\nWhere the legal heirs of a pronote holder filed a suit for recovery of money on the basis of the pronote, the trial \ncourt recorded a finding in favour of the legal heirs but dismissed the suit on the ground of non-production of \nsuccession certificate. The proceedings for issuance of succession certificate were pending in court, but no",
+        "score": 0.413,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P430:C1522]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P430:C1522 | commentary | 491014025-MULLA-on-CPC-pdf | p.430 | score=0.405]:\ner s 16 (d) of the Code of Civil Procedure is maintainable only before the court within jurisdiction of \nwhich the suit property is situate and s 20 has no application, the parties cannot by agreement vest the \njurisdiction in any other court other than the court within jurisdiction whereof the suit property is situate. \nTherefore, even if it be assumed that the parties agreed to the jurisdiction of courts, such agreement being \nagainst the law would be bad under s s 23 and 28 of the Indian Contract Act, 1872.72\nIn a case relating to purchase agreement, there was breach of agreement and a suit was filed for damages and \nbreach of contract at Nagpur where the manufacturing unit of the plaintiff was located. The registered office of \nthe defendants was located as Pune where the purchase agreement was executed. Other defendants also \nresided at Pune and the terms of the agreement also restricted the jurisdiction of courts at Pune. Since there \nwere several causes of act ion, the Supreme Court in appeal permitted the plaintiff to file separate suit in \nrelation to the purchase order at Pune and further asked him to make necessary amendments to the plaint filed \nat Nagpur.73\n5. Judgment of Court not Competent to deliver it. See notes under s 11 under the same heading. See notes \nunder heading contract providing for place of suing under s 10 and agreement as to choice of court under\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1695:C6735 | commentary | 491014025-MULLA-on-CPC-pdf | p.1695 | score=0.404]:\nlaintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.463]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 4 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P180:C646 | bare_act | the code of civil procedure, 1908 | p.180 | score=0.439]:\nance). \n5. The plaintiff's title to the property agreed to be sold is not such as the defendant is bound to accept by \nreason of the following matter—(State why). \n6. The agreement is uncertain in the following respects—(State them). \n7. (or) The plaintiff has been guilty of delay. \n8. (or) The plaintiff has been guilty of fraud (or misrepresentation). \n9. (or) The agreement is unfair. \n10. (or) The agreement was entered into by mistake. \n11. The following are particulars of (7), (8), (9), (10) (or as the case may be). \n12. The agreement was rescinded under Conditions of Sale, No. 11 (or by mutual agreement).\n(In cases where damages are claimed and the defendant disputes his liability to damages, he must deny the\nagreement or the alleged breaches, or show whatever other ground of defence he intends to rely on, e.g.,\nthe [448][Indian Limitation Act,] accord and satisfaction, release, fraud, etc.)\nNo. 14\nDefence In Administration Suit By Pecuniary Legatee\n1. A. B.'s will contained a charge of debts; he died insolvent; he was entitled at his death to some immovable \nproperty which the defendant sold and which produced the net sum of Rs. . . . . . . . . . , and the testator had \nsome movable property which the defendant got in, and which produced the net sum of Rs. . . . . . . . . . \n2. The defendant applied the whole of the said sums and the sum of Rs. . . . . . . . . . which the\n\n[Document 5 | Contract Act | Contract Act:C:/Users/GirishN/AppData/Local/Temp/tmp0axp5bbo/Indian_Contract_act.pdf:P49:C151 | bare_act | Indian Contract act | p.49 | score=0.405]:\n49 \n \nIllustrations \n(a)B, at Singapur, under instructions from A of Calcutta, contracts with C to deliver certain goods to him. A does not send \nthe goods to B, and C sues B for breach of contract. B informs A of the suit, and A authorizes him to defend the suit. B defe nds \nthe suit, and is compelled to pay damages and costs, and incurs expenses. A is liable to B for such damages, costs and expenses. \n(b)B, a broker at Calcutta, by the orders of A, a merchant there, contracts with C for the purchase of 10 casks of oil for A. \nAfterwards A refuses to receive the oil, and C sues B. B informs A, who repudiates the contract altogether. B defends, but \nunsuccessfully, and has to pay damages and costs and incurs expenses. A is liable to B for such damages, costs and expenses. \n223.Agent to be indemnified against consequences of acts done in good faith.—Where one person \nemploys another to do an act, and the agent does the act in good faith, the employer is liable to indemnify \nthe agent against the consequences of that act, though it cause an injury to the rights of third persons. \nIllustrations \n(a)A, a dec ree-holder and entitled to execution of B ’s goods, requires the officer of the Court to seize certain goods, \nrepresenting them to be the goods of B. The officer seizes the goods, and is sued by C, the true owner of the goods. A is liable to \nindemnify the officer for the sum\n\n[Document 6 | Contract Act | Contract Act:books/A187209.pdf:P49:C151 | bare_act | A187209 | p.49 | score=0.405]:\n49 \n \nIllustrations \n(a)B, at Singapur, under instructions from A of Calcutta, contracts with C to deliver certain goods to him. A does not send \nthe goods to B, and C sues B for breach of contract. B informs A of the suit, and A authorizes him to defend the suit. B defe nds \nthe suit, and is compelled to pay damages and costs, and incurs expenses. A is liable to B for such damages, costs and expenses. \n(b)B, a broker at Calcutta, by the orders of A, a merchant there, contracts with C for the purchase of 10 casks of oil for A. \nAfterwards A refuses to receive the oil, and C sues B. B informs A, who repudiates the contract altogether. B defends, but \nunsuccessfully, and has to pay damages and costs and incurs expenses. A is liable to B for such damages, costs and expenses. \n223.Agent to be indemnified against consequences of acts done in good faith.—Where one person \nemploys another to do an act, and the agent does the act in good faith, the employer is liable to indemnify \nthe agent against the consequences of that act, though it cause an injury to the rights of third persons. \nIllustrations \n(a)A, a dec ree-holder and entitled to execution of B ’s goods, requires the officer of the Court to seize certain goods, \nrepresenting them to be the goods of B. The officer seizes the goods, and is sued by C, the true owner of the goods. A is liable to \nindemnify the officer for the sum\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1667:C6612 | commentary | 491014025-MULLA-on-CPC-pdf | p.1667 | score=0.401]:\nPage 18 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthat the relief could not be granted. 56 The commentary on O 6, r 3 be referred for detailed discussion on Forms 47 \nand 48 of the Code of Civil Procedure.\nIn a suit for damages for wrongful repudiation of contract, it is not necessary to plead that the repudiation has been \naccepted.57 If it is an implied agreement, it should appear from what facts or circumstances it is to be implied.58\nIn a suit, where the validity of the sale deed was challenged by the seller-defendant on the grounds that the sale \ndeed did not confine to the property covered by the agreement for sale and its contents were not read over to him \nand it was vitiated by fraud, it was held by the Gauhati High Court that the provision of O 6, r 4 are mandatory and \nthe pleadings of the defendant did not disclose the necessary particulars with specification to establish fraud. \nMoreover, after having executed the sale deed containing necessary recitals, the defendant cannot be permitted to \nturn around and deny the same as such oral denials are hit by s 91 of the Evidence Act.59\n(d) Defamation. In an act ion for slander, the plaintiff must give particulars of the names of the persons to whom the \nalleged slander was made.60\nIn an action for libel, where the charge made against the plaintiff in the alleged libel is general in its nature, a\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P451:C1620 | commentary | 491014025-MULLA-on-CPC-pdf | p.451 | score=0.400]:\nut in a case of breach of confidentiality \nclause in a service contract, the place where the breach has taken place will have jurisdiction.52\nAll terms of the contract were negotiated and finalised in Bombay. It was, thereafter, that the formal contract \nwas engrossed and sent to Ludhiana for the signatures of respondent. The respondents director signed the \ncontract, document and forwarded it to its broker at Bombay, for onward transmission to the petitioner for taking \nnecessary act ion. This issue can be looked at in two ways. If the contract is said to have been concluded when \nthe terms were prepared, then obviously that took place in Bombay. If the contract is said to have been finalised \nonly after both parties had signed, then it is clear that only one of the parties signed at Ludhiana and other \nsigned it in Bombay.53\nIn a suit for damages for breach of contract, the cause of action consists of the making of the contract, and of \nits breach; so that the suit may be filed either at the place where the contract was made or at the place where it \nshould have been performed and the breach occurred. 54 Thus, if a contract is made in Poona to be performed \nin Poona, the whole cause of act ion arises in Poona and the suit for breach can only be filed in the Poona \nCourt; but, if the contract is made in Poona to be performed in Belgaum the suit for its breach can be filed\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2198:C8737]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2198:C8737 | commentary | 491014025-MULLA-on-CPC-pdf | p.2198 | score=0.449]:\nits not on the basis of \nthe value of the user of land to the person in wrongful possession, but on an estimated return on the value of the \nproperty.12 The decision in the undermentioned case 13 that mesne profit against a tenant who refuses to vacate the \npremises after the termination of the tenancy should be assessed on the basis of reasonable market value of the \npremises, does not appear to be correct. A person in wrongful possession is not liable for failure to realise the \nhighest possible rates of rent and premium, if a fair return has been realised from the land.14\nThe test set by the statutory definition of mesne profits is not what the plaintiff has lost by his exclusion, but what \nthe defendant has, or might reasonably have, made by his wrongful possession. If the person charged has merely \nlet the land to others, the rent which he has received would be the measure of the profits for which he is liable \nunless there is evidence that a higher rent could, with ordinary diligence, have been obtained. 15 However, if the \nwrongdoers cultivate the land themselves, the cultivation profits are the primary consideration, and if it is contended \nthat other and more profitable crops could have been grown, the true test is what the ordinary prudent agriculturist \nwould have grown. Therefore, when the person in wrongful possession planted indigo for use in his adjacent\n\n[Document 2 | Contract Act | Contract Act:C:/Users/GirishN/AppData/Local/Temp/tmp0axp5bbo/Indian_Contract_act.pdf:P30:C86 | bare_act | Indian Contract act | p.30 | score=0.419]:\nth the Government. A is entitled to receive from B, by way of compensation, the average amount of profit which \nwould have b een made by the working of the mill during the time that delivery of it was delayed, but not the loss sustained \nthrough the loss of the Government contract. \n(j) A, having contracted with B to supply B with 1,000 tons of iron at 100 rupees a ton, to be delivered at a stated time, \ncontracts with C for the pur chase of 1,000 tons of iron at 80 rupees a ton, telling C that he does so for the purpose of performing \nhis contract with B. C fails to perform his contract with A, who cannot procure other iron, and B, in consequence, rescinds the \ncontract. C must pay to A 20,000 rupees, being the profit which A would have made by the performance of his contract with B. \n(k) A contracts with B to make and deliver to B, by a fixed day, for a specified price, a certain piece of machinery. A does \nnot deliver the piece of machinery at the time specified, and in consequence of this, B is obliged to procure another at a high er \nprice than that which he was to have paid to A, and is prevented from performing a contract which B had made with a third \nperson at the time of his contract with A (but which had not been then communicated to A), and is compelled to make \ncompensation for breach of that contract. A must pay to B, by way of compensation, the differ ence\n\n[Document 3 | Contract Act | Contract Act:books/A187209.pdf:P30:C86 | bare_act | A187209 | p.30 | score=0.419]:\nth the Government. A is entitled to receive from B, by way of compensation, the average amount of profit which \nwould have b een made by the working of the mill during the time that delivery of it was delayed, but not the loss sustained \nthrough the loss of the Government contract. \n(j) A, having contracted with B to supply B with 1,000 tons of iron at 100 rupees a ton, to be delivered at a stated time, \ncontracts with C for the pur chase of 1,000 tons of iron at 80 rupees a ton, telling C that he does so for the purpose of performing \nhis contract with B. C fails to perform his contract with A, who cannot procure other iron, and B, in consequence, rescinds the \ncontract. C must pay to A 20,000 rupees, being the profit which A would have made by the performance of his contract with B. \n(k) A contracts with B to make and deliver to B, by a fixed day, for a specified price, a certain piece of machinery. A does \nnot deliver the piece of machinery at the time specified, and in consequence of this, B is obliged to procure another at a high er \nprice than that which he was to have paid to A, and is prevented from performing a contract which B had made with a third \nperson at the time of his contract with A (but which had not been then communicated to A), and is compelled to make \ncompensation for breach of that contract. A must pay to B, by way of compensation, the differ ence\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.477]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2202:C8760 | commentary | 491014025-MULLA-on-CPC-pdf | p.2202 | score=0.469]:\nause mesne profits are defined as meaning \nprofits plus interest on such profits, therefore, the court must always allow interest on such profits. Mesne profits, as \nstated above, are in the nature of damages which the court may award according to the justice of the case. And\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2199:C8740 | commentary | 491014025-MULLA-on-CPC-pdf | p.2199 | score=0.459]:\nf there is proper material, and apportion the \nliability of each of them.22 Where a suit for khas possession and mesne profits is decreed against tenants, the basis \nof calculation of mesne profits is not the rate of rent which would be fair and equitable for the lands in question but \nthe profits which the tenants have actually received or might with ordinary diligence have received from their \nwrongful possession.23\nWhere the plaintiff did not produce any evidence in support of the rate of mesne profits claimed by him and also \nadmitted in his examination-in-chief that there was no basis for mesne profits claimed in the plaint, the court \nassessed mesne profits considering the rent of shops situated near the disputed land. 24 In the same case it was \nheld that where the plaintiff had filed a suit for mesne profits earlier also, grant of mesne profits for the period which \nwas the subject-matter of the earlier suit was held to be not proper.25\nThe claim for mesne profits is virtually a claim for damages. Hence, there is no rigid rule for determining the amount \nof mesne profits, and the amount must be assessed in every case by a proper exercise of judicial discretion. 26 In \none case the Patna High Court, on a finding that the plaintiffs had unnecessarily prolonged the litigation, declined to \naward mesne profits upto the date of the decree.27 It held that the Mesne profits\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P39:C147 | commentary | 491014025-MULLA-on-CPC-pdf | p.39 | score=0.456]:\nesne profits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the person in possession.78\nIt cannot be said that mesne profits can be calculated only on the basis of the maximum rent that the premises \ncould have fetched if let out.79\nMesne profits can be claimed only when there is wrongful possession of the defendant. But, where \ndispossession is a joint or concerted act of several persons, each of them who participates in the commission of \nthat act would be liable for mesne profits even though he was not in possession and the profits were received \nnot by him but by some of his confederates.80\nMeasure of mesne profits is the value of wrongful possession. Rent could be a relevant factor for considering \nsuch a value, but not a decisive matter. 81 In terms of the definition of mesne profits under s 2 (12) of the Code \nof Civil Procedure, the question of proprietary of the valuation on account of the same can be decided at the \ntime of trial on evidence where the court can pass a decree for mesne profits or can direct the inquiry, or, can \nreject a prayer of mesne profits.82\nThe reservation as to profits due to\n\n[Document 8 | CPC | CPC:Section2 | commentary | 491014025-MULLA-on-CPC-pdf | Section 2 | p.38 | score=0.442]:\npossession of such property either act ually received or might have received with due diligence. It is not always \nnecessary that there should be proof of actual receipt.66\nFor entitling him to grant of mesne profits, the plaintiff must lead evidence to prove what would be the \ncompensation the defendant might have received with due diligence for his wrongful possession. Where the \nplaintiff did not lead any evidence, it was held that he was not entitled to claim mesne profits.67\nThe observations made in the above case,68 are worth nothing:\nHowever, the concept of mesne profits appear to be different. Section 2(12) of Civil Procedure Code, defines mesne \nprofits to mean those profits which the person in wrongful possession of such property act ually received or might with \nordinary dilegence have received therefrom, together with interest on such profits, but shall not include profits due to \nimprovements made by the person in wrongful possession. The words Mesne Profits suggest value of house for \noccupation of land during the time it was held by one in wrongful possession and is commonly measured in terms of \nrent and profits (See Blacks Law Dictionary). The Apex Court in the case of Fateh Chand v. Balkrishna Dass, AIR 1963 \nSC 1405 [LNIND 1963 SC 20] observed that the normal measure of mesne profits is the value of the user of the land \nto the person in wrongful\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P120:C504]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P120:C504 | commentary | 491014025-MULLA-on-CPC-pdf | p.120 | score=0.485]:\nucted by the plaintiff on the basis of \ndeemed sanction under s 31 (5) of the Himachal Pradesh Town and Country Planning Act (43 of 1995) the \nnotices issued by the authority that the construction was without sanction and liable for demolition, the suit filed \nby the plaintiff that the notices were illegal and void was found maintained before civil court.90\n63. Restrictive Covenant. A company incorporated in Germany entered into contract with an Indian company. \nThe Indian company was to sell certain goods in India. There was a negative covenant, restraining the \ncompany from selling goods after termination of the contract. It was held that this covenant was not \nenforceable.91\n\n[Document 2 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P55:C197 | bare_act | the code of civil procedure, 1908 | p.55 | score=0.551]:\ndent necessary for the \ncase of the plaintiff or defendant shall be implied in his pleading. \n7. Departure— No pleading shall, except by way of amendment, raise any new ground of claim or contain \nany allegation of fact inconsistent with the previous pleadings of the party pleading the same. \n8. Denial of contract— Where a contract is alleged in any pleading, a bare denial of the same by the opposite \nparty shall be construed only as a denial in fact of the express contract alleged or of the matters of fact from \nwhich the same may be implied and not as a denial of the legality or sufficiency in law of such contract. \n55\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1674:C6642 | commentary | 491014025-MULLA-on-CPC-pdf | p.1674 | score=0.534]:\nPage 25 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nDenial of contract. All matters which go to show that the contract sued on is void or unlawful must be specifically \npleaded. If such matters are not expressly pleaded, no evidence thereof can, as a rule, be given at the trial. Thus, if \nA sues B on a contract, and B in his written statement merely denies the contract, such denial will be taken to mean \nonly that there was in fact no such contract as alleged: it will not be construed as a denial of the legality of the \ncontract. The result is that if A proves the contract sued upon, B will not be allowed to contend at the hearing that \nthe contract was a wagering contract, and, therefore, void. B ought to have specifically pleaded in his written \nstatement that the contract was a wagering contract. 40 However, where at the hearing of a suit, the plaintiffs case \ndiscloses that the transaction which is the basis of his claim is illegal, the court cannot properly ignore the illegality, \neven if the illegality be not pleaded or relied on by the defendant. 41 No court ought to enforce an illegal contract or \nallow itself to be made the instrument of enforcing obligations alleged to arise out of a contract or transaction which \nis illegal, if the illegality is duly brought to the notice of the court, and if the person invoking the aid of the court is \nhimself\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1674:C6643 | commentary | 491014025-MULLA-on-CPC-pdf | p.1674 | score=0.527]:\nligations alleged to arise out of a contract or transaction which \nis illegal, if the illegality is duly brought to the notice of the court, and if the person invoking the aid of the court is \nhimself implicated in the illegality. It matters not whether the defendant has pleaded the illegality or whether he has \nnot. If the evidence adduced by the plaintiff proves the illegality, the court ought not to assist him. 42 A party who \nmerely denies the factum of the contract and does not allege that it is unenforceable in law is precluded by this rule \nand by O 8, r 2 from raising the question of its legality or validity. 43 Accordingly, where the defendant had merely \ndenied the contract, but had not pleaded that it was not enforceable, the Supreme Court upheld the view of the High \nCourt of Calcutta that the defendant was not entitled to contend that the contract in question was hit by the failure to \ncomply with the requirements of s 175(3) of the Government of India Act 1935. 44 Note that an agreement by way of \nwager is void, but not illegal.45\nIn a case, where the respondents specifically pleaded that the transaction between them and the appellant was one \nof mortgage by conditional sale, the appellant maintained a blissful silence in relation thereto in the written \nstatement. He did not even mention that the averments of the respondents or facts pleaded by them or as to\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P236:C888 | commentary | 491014025-MULLA-on-CPC-pdf | p.236 | score=0.516]:\ne for rescission of the contract on the ground \nthat it did not fully represent the agreement between the \nparties.77 Similarly, if it is found that in a former suit for eviction by \nthe landlord, the defendant-tenant had failed to raise the plea that the landlord \nbefore filing the suit ought to have terminated the contractual \ntenancy which he might and ought to have raised, he cannot be allowed to raise \nthat plea in a subsequent suit for eviction. 78 If a matter could have been set up \nas a ground of attack or defence in the former suit, \nand if its introduction into that suit was necessary for a complete and final \ndecision of the right claimed by the plaintiff therein, it will be \ndeemed to be a matter which ought to have been made a ground of attack or \ndefence in that suit, unless the matters in that and the subsequent suit \nare so dissimilar that their union might lead to confusion. 79 Thus, in Illus \n(i), the title by heirship could have been made a ground of attack in the \nalternative in the first suit; it was necessary to do so for the complete and final \ndisposal of all questions as to A's right to the property, and it \nwas not forbidden by any rule of pleading; and, further, the question in both suits \nbeing the same, namely, whether A was entitled to the property or B, the title by \nsurvivorship and the title by heirship could not be said to be \nso dissimilar\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1673:C6641 | commentary | 491014025-MULLA-on-CPC-pdf | p.1673 | score=0.502]:\nncy and Agricultural Lands Act 1948, the person sought to be \nevicted took the plea throughout that he was a tenant but in a writ filed against the order of his eviction by the \ntenancy court, he took the stand that since he was not a tenant, the tenancy court had no jurisdiction. It was held by \nthe Bombay High Court that it was too late in the day to contend that he was not a tenant. No tenant can be allowed \nto take inconsistent pleas so as to place the opponent at a disadvantage by raising the question of jurisdiction.38\nIn an execution proceeding arising out of an eviction decree passed under the Calcutta Thika and Other Tenancies \nand Lands (Acquisition and Regulation) Act 1981, it was asserted in the objection petition that the petitioners were \ninducted as thika tenants or sub-tenants. However, in the affidavit in reply before the High Court a new case was \nset up that they were occupants on the bustee lands. It was held that these were not alternative pleas and they \ncannot run side by side, one conflicting with the other.39\nR.8. Denial of contract.\nWhere a contract is alleged in any pleading, a bare denial of the same by the opposite party shall be construed only \nas a denial in fact of the express contract or of the matters of fact from which the same may be implied, and not as \na denial of the legality or sufficiency in law of such contract.\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P453:C1630 | commentary | 491014025-MULLA-on-CPC-pdf | p.453 | score=0.502]:\nn is received is the place where the suit would lie. 79 If \na contract is pleaded as part of the cause of action giving jurisdiction to the court where the suit is filed and that \ncontract is found to be invalid, such part of the cause of act ion disappears. Hence, the suit cannot be said to be \nwithin the jurisdiction of the court.80\n(b) Termination. Revocation or termination of a contract constitutes a part of the cause of action, and the place \nwhere the same takes place, can vest jurisdiction in the court situated therein. In the instant case, although, \nostensibly, the letter dated 8 February 1983 tended to formally communicate termination of contract by the \nrespondent to the petitioner, yet, in reality, that termination and repudiation took place when the petitioner had \nunmitigatingly conveyed to the respondent at B, that the agreed rates could not remain in force from 4 \nDecember 1979. Petitioner thereby declined to carry out the remaining part of the contract, unless the rates \nwere revised. So far as the existing rates were concerned, there was thus, a clear repudiation. That having \ntaken place at B with the receipt of the communication from the petitioner, the court at B alone had jurisdiction \nto entertain the petitioner for reference under the Arbitration Act. 81 State of Orissa appointed the plaintiff \ncompany as mining agent to raise coal in a colliery within\n\n[Document 8 | Civil Law | Civil Law:books/534436615-General-Principles-of-Pleading.pdf:P3:C5 | practice_guide | 534436615-General-Principles-of-Pleading | Rule 9 | p.3 | score=0.501]:\ne construed. Denial of facts of contract and the legality or sufficiency in \nlaw of such a contract must be specifically denied. \nRule 9: Effect of document to be stated - Wherever the contents of any document are \nmaterial, it shall be sufficient in any pleading to state the effect thereof as briefly as possible, \nwithout setting out the whole or any part thereof, unless the precise words of the document or \nany part thereof are material. \nRule 10: Malice, Knowledge, etc - Wherever it is material to allege malice, fraudulent \nintention, knowledge or other condition of the mind of any person, it shall be sufficient to \nallege the same as a fact without setting out the circumstances fr om which the same is to be \ninferred. \nRule 11: Notice- Wherever it is material to allege notice to any person of any fact, matter or \nthing, it shall be sufficient to allege such notice as a fact, unless the form or the precise terms \nof such notice, or the circumstances from which such notice is to be inferred are material. \n \n6 (1977) 1 SCC 669\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1693:C6727 | commentary | 491014025-MULLA-on-CPC-pdf | p.1693 | score=0.455]:\nuit on a breach of contract the plaintiff sues for the difference between the contract price and the price \nrealised on re-sale, but it transpires at the hearing that the property in the goods had not passed to the defendant, \nthe plaintiff may be allowed to amend the plaint and to claim damages for the breach, being the difference between \nthe contract price and the market price on the date of the breach. The Calcutta High Court has held that the plaintiff \nis not entitled to damages, unless the plaint is amended. 39 The High Court of Bombay has held that the plaintiff is \nentitled to damages without amendment of the plaint. 40 If a plaintiff, who by his plaint has claimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1846:C7368 | commentary | 491014025-MULLA-on-CPC-pdf | p.1846 | score=0.453]:\ns A's claim, but claims to set-off several sums of \nmoney alleged to be damages sustained by him by reason of A's breach of some of the terms of the same contract. \nB is entitled to claim the set-off, for the claim arises from the same transaction.27\n(2) A agrees to sell, and B agrees to purchase, 200 bales of wool. B takes delivery of 170 bales and is ready and \nwilling to take delivery of the remaining 30 bales, but A fails to deliver them. A sues B for the price of the 170 bales. \nB claims to set-off the damages sustained by him by reason of A's failure to deliver the remaining bales. B is \nentitled to claim the set-off, as the claim arises out of the same transaction.28\n(3) A sues B, his master, for Rs 800 being arrears of salary. B claims to set-off Rs 625, being the loss sustained by \nhim by reason of neglect and misconduct on the part of A as his servant. B is entitled to claim the set-off, as his \nclaim arises out of the same relation from which A's claim arose namely, that of master and servant.29\n(4) A (mortgagee) sues B (mortgagor) to recover the principal and interest due on a usufructuary mortgage. B \nclaims to set-off the loss alleged to have been occasioned by A's failure as mortgagee in possession to make \nrepairs to the mortgaged property. B is entitled to claim the set-off.30\n(5) A washerman sues his employer for his wages. The employer may set-off the value\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1695:C6735 | commentary | 491014025-MULLA-on-CPC-pdf | p.1695 | score=0.450]:\nlaintiffs had ample opportunity to amend their \nplaint but that they failed to do so, and that owing to lapse of time the defendants would be seriously prejudiced if \nthis new claim were allowed to be raised. There is considerable force in the objection. But after giving due weight to \nthem, we are of opinion that this is a fit case in which the amendment ought to be allowed. The plaintiffs do not \nclaim any damages for wrongful termination of the agreement, Ex. A, by the notice dated June 13, 1945. What they \nclaim is only damages for non-delivery of goods in respect of orders placed by them and accepted by the \ndefendants prior to the termination of the agreement by that notice. Clause 14 of the agreement expressly reserves \nthat right to the plaintiff. The suit being founded on Ex. A, a claim based on Cl. 14 thereof cannot be said to be \nforeign to the scope of the suit. Schedule E to the plaint mentions the several indents in respect of which the \ndefendants had committed default by refusing to deliver the goods, and the damages claimed are also stated \ntherein. The plaintiffs seek by their amendment only to claim damages in respect of those consignments. The \nprayer in the plaint is itself general and merely claims damages. Thus, all the allegations which are necessary for \nsustaining a claim for damages for breach of contract are already in the plaint. What is lacking is\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1862:C7427 | commentary | 491014025-MULLA-on-CPC-pdf | p.1862 | score=0.432]:\nught if it is claimed that any candidate other than the returned candidate be \ndeclared elected. Thus, in an election dispute, where no additional relief was claimed by the election petitioner \nexcept declaring the election of returned candidate void, it was held by the Gauhati High Court that the returned \ncandidate would be barred from raising any counter-claim in his written statement akin to recrimination petition.14\nIn a suit for declaration of title, the defendant filed counter-claim after filing written statement asserting his own title \nover the suit premises. The counter-claim was raised not only against co-defendants but also against the plaintiff. It \nwas held by Patna High Court that such counter-claim was maintainable.15\nWhere the cause of action for claiming damages is alleged to have accrued to the guarantor in the case of recovery \nof Bank debt, on attachment of his property on misrepresentation by Bank and without following the procedure \nprescribed in the Recovery of Debts due to Banks and Financial Institutions Act, 1993, and he claimed damages by \namending the written statement, it was held by the Rajasthan High Court in Division Bench that the counter-claim \nwould not be outside the purview of s 19(8) of the Act. If the cause of act ion has accrued to the defendant against \nthe Bank either before or after filing of the application, before or after he filed\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1847:C7372 | commentary | 491014025-MULLA-on-CPC-pdf | p.1847 | score=0.428]:\ntion. 41 In the undermentioned case, 42 the High Court of Madras held \nthat in a suit by a lessor for rent, it is not open to the lessee to claim by way of equitable set-off an unliquidated \nclaim for damages which was barred at the date of the suit. Seshagiri Ayyar, J, said\nAn exception to this rule [namely, that a time-barred claim cannot be pleaded by way of equitable set-off] has been \nrecognized in some cases. Where there is a fiduciary relationship between the parties as in the case of trustee and \ncestui que trust and there is accountability, even barred claims may be taken into account in passing the final \naccounts. This exception has been extended in some of the decided cases in India to mortgages, presumably on \nthe ground that there is accountability between the parties. It is not necessary to say now whether these cases have \nbeen rightly decided. I see no reason for extending the exception to suits between a lessor and a lessee.43\nIn a Madras case, 44 an agent sued his principal to recover money that might be found due to him on the taking of \nagency accounts. The defendant pleaded in his written statement that money would be found due to him on taking \naccounts and he asked for a decree for such sum as might be found due to him. The defendants claim was not \nbarred at the date of the suit, but it was barred at the date of the written statement. It was held that\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1862:C7428 | commentary | 491014025-MULLA-on-CPC-pdf | p.1862 | score=0.426]:\nould not be outside the purview of s 19(8) of the Act. If the cause of act ion has accrued to the defendant against \nthe Bank either before or after filing of the application, before or after he filed the written statement, such counter-\nclaim for damages is entertainable provided the filing of the counter-claim is not an abuse of the process and is \nnecessary to secure the ends of justice.16\nThe counter-claim essentially is a cross-suit with all the trappings of pleadings as a plaint including the duty to aver \nthe cause of action and also payment of requisite court-fees thereon. While the defendants cause of act ion for a \ncounter-claim may be different from and independent of the cause of action of the plaintiffs suit and the cause of act \nion for the counter-claim may arise before the plaintiffs suit or it might have arisen after the institution of the suit, \nwhat is required is that the counter-claim must be made before the written statement is filed or before the date of \nfiling written statement expires.17\nIn a case from Calcutta, the plaintiff laid claim over property made by partnership firm on the basis of registered \npartnership deed and the defendant pleaded that the said document was a sham and interpolated one. But the \ndefendant did not challenge the document specifically asking for any relief for cancellation of the same either by \nfiling cross-suit or making a\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1445:C5705 | commentary | 491014025-MULLA-on-CPC-pdf | p.1445 | score=0.422]:\nPage 12 of 97\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nalternative for damages. It is alleged in the plaint that the goods belonged to A, that B obtained from A, the \ndocuments of title relating thereto by fraud and made them over to C; that C, knowing that B had no title either to \nthe documents or to the goods, wrongfully dealt with them and sold the goods to D and E; that D and E wrongfully \nclaimed to retain the goods and the documents of title; and, lastly, that one of the documents of title, namely, a \nrailway receipt was pledged by B to F, though the goods covered by it were in the possession of D. It was held that \nthe suit is not bad for misjoinder of defendants and causes of action.106\nThe court has further held\nThe foundation of the case, on which the rest of it depends, is the alleged fraud of B. If such fraud is proved the \nquestion is, did the defendants who all claim under, B obtain any title? If the plaintiff fails to prove fraud on the part \nof B, the case fails against all the defendants. If he proves fraud, it may be that the defendants may have a different \nanswer by way of defence; but that does not make the case any the less one of a common question of law and fact. \nThe same act or transaction which concerns all the parties is the alleged fraud of B, and this involves a common \nquestion of law or fact. All defendants have derived title\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1764:C7015 | commentary | 491014025-MULLA-on-CPC-pdf | p.1764 | score=0.413]:\ncurs insert or value.\n1. Suit for damages. In a suit for damage, the plaintiff must state the amount of damages claimed and pay court-\nfees thereon.35\n2. Suit for mesne profits. A claim for past mesne profits must be valued even though approximately and court-fee \npaid thereon. But it is not necessary that future mesne profits should be valued.36\n3. Suit for Accounts. This rule is applicable to a suit by an agent against his principal praying that accounts be \ntaken of amounts due to him.37\nWhere in the case of export of garments to a foreign purchaser, the purchaser got his foreign German bank to issue \nan irrevocable letter of credit, the respondent bank act ed as the appellants bank in negotiating the documents \nprescribed under the letter of credit under reserve and credited amount to appellants account. When the documents \nwere not honoured and reimbursement was refused by the foreign bank, the respondent debited the amount to \nappellants account. It was held that the appellant was not entitled to claim recovery from the respondent bank.38\nWhere the legal heirs of a pronote holder filed a suit for recovery of money on the basis of the pronote, the trial \ncourt recorded a finding in favour of the legal heirs but dismissed the suit on the ground of non-production of \nsuccession certificate. The proceedings for issuance of succession certificate were pending in court, but no"
+  },
+  "legal_research": {
+    "queries": [
+      "breach of contract limitation period India years accrual date right to sue",
+      "damages plaint mandatory procedural requirements India"
+    ],
+    "results": [
+      {
+        "title": "Statute of limitations in contract claims : an overview - iPleaders",
+        "url": "https://blog.ipleaders.in/statute-of-limitations-in-contract-claims-an-overview/",
+        "snippet": "Under normal circumstances, the Indian Limitation Act of 1963, under Section 14 of the Limitation Act, provides that a claim for breach of contract must be made within three years from the date of such breach .",
+        "date": ""
+      },
+      {
+        "title": "The Period of Limitation For A Suit For Compensation For The Breach of Any Contract | PDF | Breach Of Contract | Damages",
+        "url": "https://www.scribd.com/document/173440558/The-Period-of-Limitation-for-a-Suit-for-Compensation-for-the-Breach-of-Any-Contract",
+        "snippet": "It is three years from the date the contract was broken, or from the date of the most recent breach if there were successive breaches, or from the date the continuing breach ceased .",
+        "date": ""
+      },
+      {
+        "title": "Applicabilty of Limitation Act to Indian Contract Act",
+        "url": "https://www.linkedin.com/pulse/applicabilty-limitation-act-indian-contract-vipin-tyagi",
+        "snippet": "In other words, if there is no specific provision in the Limitation Act or any other law that prescribes a limitation period for a particular type of suit, then the plaintiff can file such a suit within three years from the date when the right ...",
+        "date": ""
+      },
+      {
+        "title": "1 Limitation Periods: Overview (India)",
+        "url": "https://trilegal.com/wp-content/uploads/2023/06/Limitation-Periods-Overview-India-1.pdf",
+        "snippet": "Limitation Act prescribes separate periods for the preference of suit in tort, and for breach of · obligations under contract.",
+        "date": ""
+      },
+      {
+        "title": "Dhapai vs Dalla And Ors. on 2 April, 1969",
+        "url": "https://indiankanoon.org/doc/1119466/",
+        "snippet": "Three years When the contract is broken, or (where there are successive breaches) when the breach in respect of which the suit is instituted occurs or (where the breach is continuing) when it ceases . 120. Suit for which no period of limitation is provided elsewhere in this Schedule.",
+        "date": ""
+      },
+      {
+        "title": "The Plaint: Foundational Document in Civil Litigation under the Code of Civil Procedure, 1908 - Bhatt & Joshi Associates",
+        "url": "https://bhattandjoshiassociates.com/the-plaint-a-legal-instrument-in-civil-litigation/",
+        "snippet": "Order IV, Rule 1 of the CPC mandates that “ Every suit shall be instituted by presenting a plaint in duplicate to the Court or such officer as it appoints in this behalf ” and that “Every plaint shall comply with the rules contained in Orders ...",
+        "date": ""
+      },
+      {
+        "title": "Adjudication of claim for damages under",
+        "url": "https://docs.manupatra.in/newsline/articles/Upload/30C28D5D-262B-4A4A-AE17-C4D86F92BCE0.pdf",
+        "snippet": "act of the defendant, the plaintiff becomes entitled to damages. How the damages would be · calculated, what factors would be taken into consideration and what arithmetical process would be · adopted would depend upon the facts and circumstances of each case. Now, the damages which can be awarded in an action based on may be contemptuous, nominal, ordinary or, for that matter, exemplary. [Common Cause, A Registered Society v. Union of India...",
+        "date": ""
+      },
+      {
+        "title": "Strict Compliance with Section 80 of the Civil Procedure Code for Suits Against the Government: Amar Nath Dogra v. Union of India: Supreme Court Of India | CaseMine",
+        "url": "https://www.casemine.com/commentary/in/strict-compliance-with-section-80-of-the-civil-procedure-code-for-suits-against-the-government:-amar-nath-dogra-v.-union-of-india/view",
+        "snippet": "During the tenure of his license, Dogra alleged breaches of contractual stipulations by the Excise Authorities, leading him to serve a notice under Section 80 of the Civil Procedure Code (CPC) and subsequently file a suit claiming damages.",
+        "date": ""
+      },
+      {
+        "title": "Documents Filed with Plaint: Comprehensive Legal Framework and Judicial Interpretation - Bhatt & Joshi Associates",
+        "url": "https://bhattandjoshiassociates.com/filing-of-documents-with-plaint-a-legal-overview/",
+        "snippet": "The judgment highlighted that allowing parties to introduce documents at later stages without proper justification would undermine the procedural integrity of civil suits and potentially prejudice the opposing party’s ability to prepare an adequate defense. The decision also clarified that the requirement to file documents with the plaint is not merely directory but mandatory, meaning that non-compliance carries substantive consequences.",
+        "date": ""
+      },
+      {
+        "title": "Revisiting The Principles Of Damages Under The Contract Regime In India - Contracts and Commercial Law - India",
+        "url": "https://www.mondaq.com/india/contracts-and-commercial-law/1079412/revisiting-the-principles-of-damages-under-the-contract-regime-in-india",
+        "snippet": "The Supreme Court in M.N. Gangappa v. Atmakur Nagabhushanam Shetty & Co. and Anr., (AIR 1972 SC 696) has observed that in absence of a strict procedure for calculation of damages arising out of breach of contract, damages would be calculated based on the facts and circumstances of each case.",
+        "date": ""
+      }
+    ],
+    "summary": "[Statute of limitations in contract claims : an overview - iPleaders] Under normal circumstances, the Indian Limitation Act of 1963, under Section 14 of the Limitation Act, provides that a claim for breach of contract must be made within three years from the date of such breach .\n[The Period of Limitation For A Suit For Compensation For The Breach of Any Contract | PDF | Breach Of Contract | Damages] It is three years from the date the contract was broken, or from the date of the most recent breach if there were successive breaches, or from the date the continuing breach ceased .\n[Applicabilty of Limitation Act to Indian Contract Act] In other words, if there is no specific provision in the Limitation Act or any other law that prescribes a limitation period for a particular type of suit, then the plaintiff can file such a suit within three years from the date when the right ...\n[1 Limitation Periods: Overview (India)] Limitation Act prescribes separate periods for the preference of suit in tort, and for breach of · obligations under contract.\n[Dhapai vs Dalla And Ors. on 2 April, 1969] Three years When the contract is broken, or (where there are successive breaches) when the breach in respect of which the suit is instituted occurs or (where the breach is continuing) when it ceases . 120. Suit for which no period of limitation is provided elsewhere in this Schedule.\n[The Plaint: Foundational Document in Civil Litigation under the Code of Civil Procedure, 1908 - Bhatt & Joshi Associates] Order IV, Rule 1 of the CPC mandates that “ Every suit shall be instituted by presenting a plaint in duplicate to the Court or such officer as it appoints in this behalf ” and that “Every plaint shall comply with the rules contained in Orders ...\n[Strict Compliance with Section 80 of the Civil Procedure Code for Suits Against the Government: Amar Nath Dogra v. Union of India: Supreme Court Of India | CaseMine] During the tenure of his license, Dogra alleged breaches of contractual stipulations by the Excise Authorities, leading him to serve a notice under Section 80 of the Civil Procedure Code (CPC) and subsequently file a suit claiming damages.\n[Documents Filed with Plaint: Comprehensive Legal Framework and Judicial Interpretation - Bhatt & Joshi Associates] The judgment highlighted that allowing parties to introduce documents at later stages without proper justification would undermine the procedural integrity of civil suits and potentially prejudice the opposing party’s ability to prepare an adequate defense. The decision also clarified that the requirement to file documents with the plaint is not merely directory but mandatory, meaning that non-compliance carries substantive consequences.\n[Revisiting The Principles Of Damages Under The Contract Regime In India - Contracts and Commercial Law - India] The Supreme Court in M.N. Gangappa v. Atmakur Nagabhushanam Shetty & Co. and Anr., (AIR 1972 SC 696) has observed that in absence of a strict procedure for calculation of damages arising out of breach of contract, damages would be calculated based on the facts and circumstances of each case.",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": {
+      "article": "55",
+      "description": "For compensation for breach of any contract, express or implied, not herein specially provided for",
+      "period": "Three years",
+      "accrual": "When the contract is broken",
+      "source": "schedule_fallback",
+      "reason": "breach of contract for damages not specially provided for"
+    },
+    "user_cited_provisions": [],
+    "verified_provisions": [
+      {
+        "section": "Section 16",
+        "act": "",
+        "text": "er s 16 (d) of the Code of Civil Procedure is maintainable only before the court within jurisdiction of \nwhich the suit property is situate and s 20 has no application, the parties cannot by agreement vest the \njurisdiction in any other court other than the court within jurisdiction whereof the suit proper",
+        "source": "rag"
+      },
+      {
+        "section": "Section 20",
+        "act": "",
+        "text": "erty is situate and s 20 has no application, the parties cannot by agreement vest the \njurisdiction in any other court other than the court within jurisdiction whereof the suit property is situate. \nTherefore, even if it be assumed that the parties agreed to the jurisdiction of courts, such agreement being \nagainst the law",
+        "source": "rag"
+      },
+      {
+        "section": "Section 23",
+        "act": "",
+        "text": "ould be bad under s s 23 and 28 of the Indian Contract Act, 1872.72\nIn a case relating to purchase agreement, there was breach of agreement and a suit was filed for damages and \nbreach of contract at Nagpur where the manufacturing unit of the plaintiff was located. The registered office of \nthe defendants was located as Pu",
+        "source": "rag"
+      },
+      {
+        "section": "Section 11",
+        "act": "",
+        "text": "it. See notes under s 11 under the same heading. See notes \nunder heading contract providing for place of suing under s 10 and agreement as to choice of court under",
+        "source": "rag"
+      },
+      {
+        "section": "Section 10",
+        "act": "",
+        "text": "lace of suing under s 10 and agreement as to choice of court under",
+        "source": "rag"
+      },
+      {
+        "section": "Section 29",
+        "act": "that Act",
+        "text": "since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "source": "rag"
+      },
+      {
+        "section": "Section 223",
+        "act": "",
+        "text": "s, costs and expenses. \n223.Agent to be indemnified against consequences of acts done in good faith.—Where one person \nemploys another to do an act, and the agent does the act in good faith, the employer is liable to indemnify \nthe agent against the consequences of that act, though it cause an injury to the rights of third pe",
+        "source": "rag"
+      },
+      {
+        "section": "Section 47",
+        "act": "",
+        "text": "d discussion on Forms 47 \nand 48 of the Code of Civil Procedure.\nIn a suit for damages for wrongful repudiation of contract, it is not necessary to plead that the repudiation has been \naccepted.57 If it is an implied agreement, it should appear from what facts or circumstances it is to be implied.58\nIn a suit, where the va",
+        "source": "rag"
+      },
+      {
+        "section": "Section 91",
+        "act": "Evidence Act",
+        "text": "denials are hit by s 91 of the Evidence Act.59\n(d) Defamation. In an act ion for slander, the plaintiff must give particulars of the names of the persons to whom the \nalleged slander was made.60\nIn an action for libel, where the charge made against the plaintiff in the alleged libel is general in its nature, a",
+        "source": "rag"
+      },
+      {
+        "section": "Section 2",
+        "act": "",
+        "text": "ofits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the perso",
+        "source": "rag"
+      },
+      {
+        "section": "Section 31",
+        "act": "",
+        "text": "emed sanction under s 31 (5) of the Himachal Pradesh Town and Country Planning Act (43 of 1995) the \nnotices issued by the authority that the construction was without sanction and liable for demolition, the suit filed \nby the plaintiff that the notices were illegal and void was found maintained before civil court.90\n63. Re",
+        "source": "rag"
+      },
+      {
+        "section": "Section 175",
+        "act": "",
+        "text": "the requirements of s 175(3) of the Government of India Act 1935. 44 Note that an agreement by way of \nwager is void, but not illegal.45\nIn a case, where the respondents specifically pleaded that the transaction between them and the appellant was one \nof mortgage by conditional sale, the appellant maintained a blissful sile",
+        "source": "rag"
+      },
+      {
+        "section": "Section 800",
+        "act": "",
+        "text": "B, his master, for Rs 800 being arrears of salary. B claims to set-off Rs 625, being the loss sustained by \nhim by reason of neglect and misconduct on the part of A as his servant. B is entitled to claim the set-off, as his \nclaim arises out of the same relation from which A's claim arose namely, that of master and servant.",
+        "source": "rag"
+      },
+      {
+        "section": "Section 625",
+        "act": "",
+        "text": "claims to set-off Rs 625, being the loss sustained by \nhim by reason of neglect and misconduct on the part of A as his servant. B is entitled to claim the set-off, as his \nclaim arises out of the same relation from which A's claim arose namely, that of master and servant.29\n(4) A (mortgagee) sues B (mortgagor) to recover t",
+        "source": "rag"
+      },
+      {
+        "section": "Section 19",
+        "act": "",
+        "text": "side the purview of s 19(8) of the Act. If the cause of act ion has accrued to the defendant against \nthe Bank either before or after filing of the application, before or after he filed",
+        "source": "rag"
+      },
+      {
+        "section": "Article 55",
+        "act": "Limitation Act, 1963",
+        "text": "For compensation for breach of any contract, express or implied, not herein specially provided for",
+        "source": "schedule_fallback"
+      }
+    ],
+    "enrichment_log": [
+      "limitation: 0 candidates from RAG",
+      "limitation: no RAG/websearch candidates — trying common articles",
+      "limitation: fallback selected Article 55",
+      "rag_provisions: 16 found in RAG chunks",
+      "lkb: cause_type normalized to 'breach_dealership_franchise'",
+      "lkb: found entry for breach_dealership_franchise",
+      "lkb: filtered 1 superseded provisions",
+      "lkb: commercial court (user request says commercial + inherently commercial cause)"
+    ],
+    "rag_provisions": [
+      {
+        "section": "Section 16",
+        "act": "",
+        "text": "er s 16 (d) of the Code of Civil Procedure is maintainable only before the court within jurisdiction of \nwhich the suit property is situate and s 20 has no application, the parties cannot by agreement vest the \njurisdiction in any other court other than the court within jurisdiction whereof the suit proper",
+        "source": "rag"
+      },
+      {
+        "section": "Section 20",
+        "act": "",
+        "text": "erty is situate and s 20 has no application, the parties cannot by agreement vest the \njurisdiction in any other court other than the court within jurisdiction whereof the suit property is situate. \nTherefore, even if it be assumed that the parties agreed to the jurisdiction of courts, such agreement being \nagainst the law",
+        "source": "rag"
+      },
+      {
+        "section": "Section 23",
+        "act": "",
+        "text": "ould be bad under s s 23 and 28 of the Indian Contract Act, 1872.72\nIn a case relating to purchase agreement, there was breach of agreement and a suit was filed for damages and \nbreach of contract at Nagpur where the manufacturing unit of the plaintiff was located. The registered office of \nthe defendants was located as Pu",
+        "source": "rag"
+      },
+      {
+        "section": "Section 11",
+        "act": "",
+        "text": "it. See notes under s 11 under the same heading. See notes \nunder heading contract providing for place of suing under s 10 and agreement as to choice of court under",
+        "source": "rag"
+      },
+      {
+        "section": "Section 10",
+        "act": "",
+        "text": "lace of suing under s 10 and agreement as to choice of court under",
+        "source": "rag"
+      },
+      {
+        "section": "Section 19",
+        "act": "Specific Relief Act 1877",
+        "text": "laimed, pursuant to s 19 \nof the Specific Relief Act 1877, specific performance of a contract and compensation in addition or in substitution, \nsubsequently gives notice abandoning his claim for compensation, he cannot recover damages for breach of the \ncontract without amending his plaint, since relief under s 29 of that Act can be decreed only where the",
+        "source": "rag"
+      },
+      {
+        "section": "Section 29",
+        "act": "that Act",
+        "text": "since relief under s 29 of that Act can be decreed only where the plaintiff is \nready and willing to perform the contract, and it is, therefore, still subsisting.41",
+        "source": "rag"
+      },
+      {
+        "section": "Section 223",
+        "act": "",
+        "text": "s, costs and expenses. \n223.Agent to be indemnified against consequences of acts done in good faith.—Where one person \nemploys another to do an act, and the agent does the act in good faith, the employer is liable to indemnify \nthe agent against the consequences of that act, though it cause an injury to the rights of third pe",
+        "source": "rag"
+      },
+      {
+        "section": "Section 47",
+        "act": "",
+        "text": "d discussion on Forms 47 \nand 48 of the Code of Civil Procedure.\nIn a suit for damages for wrongful repudiation of contract, it is not necessary to plead that the repudiation has been \naccepted.57 If it is an implied agreement, it should appear from what facts or circumstances it is to be implied.58\nIn a suit, where the va",
+        "source": "rag"
+      },
+      {
+        "section": "Section 91",
+        "act": "Evidence Act",
+        "text": "denials are hit by s 91 of the Evidence Act.59\n(d) Defamation. In an act ion for slander, the plaintiff must give particulars of the names of the persons to whom the \nalleged slander was made.60\nIn an action for libel, where the charge made against the plaintiff in the alleged libel is general in its nature, a",
+        "source": "rag"
+      },
+      {
+        "section": "Section 2",
+        "act": "",
+        "text": "ofits as defined in s 2 (12) or O 20, r 12. Possession by the \nco-owner cannot be termed as unlawful possession and therefore, s 2 (12) of the Code of Civil Procedure, can \nhave no application. So understood, future mesne profits mentioned in the preliminary decree could only mean \nthe actual profits received by the perso",
+        "source": "rag"
+      },
+      {
+        "section": "Section 31",
+        "act": "",
+        "text": "emed sanction under s 31 (5) of the Himachal Pradesh Town and Country Planning Act (43 of 1995) the \nnotices issued by the authority that the construction was without sanction and liable for demolition, the suit filed \nby the plaintiff that the notices were illegal and void was found maintained before civil court.90\n63. Re",
+        "source": "rag"
+      },
+      {
+        "section": "Section 175",
+        "act": "",
+        "text": "the requirements of s 175(3) of the Government of India Act 1935. 44 Note that an agreement by way of \nwager is void, but not illegal.45\nIn a case, where the respondents specifically pleaded that the transaction between them and the appellant was one \nof mortgage by conditional sale, the appellant maintained a blissful sile",
+        "source": "rag"
+      },
+      {
+        "section": "Section 800",
+        "act": "",
+        "text": "B, his master, for Rs 800 being arrears of salary. B claims to set-off Rs 625, being the loss sustained by \nhim by reason of neglect and misconduct on the part of A as his servant. B is entitled to claim the set-off, as his \nclaim arises out of the same relation from which A's claim arose namely, that of master and servant.",
+        "source": "rag"
+      },
+      {
+        "section": "Section 625",
+        "act": "",
+        "text": "claims to set-off Rs 625, being the loss sustained by \nhim by reason of neglect and misconduct on the part of A as his servant. B is entitled to claim the set-off, as his \nclaim arises out of the same relation from which A's claim arose namely, that of master and servant.29\n(4) A (mortgagee) sues B (mortgagor) to recover t",
+        "source": "rag"
+      },
+      {
+        "section": "Section 19",
+        "act": "",
+        "text": "side the purview of s 19(8) of the Act. If the cause of act ion has accrued to the defendant against \nthe Bank either before or after filing of the application, before or after he filed",
+        "source": "rag"
+      }
+    ],
+    "procedural_provisions": [],
+    "procedural_context": ""
+  },
+  "lkb_brief": {
+    "cause_type": "breach_dealership_franchise",
+    "display_name": "Damages for illegal termination of dealership / franchise / agency agreement",
+    "primary_acts": [
+      {
+        "act": "Indian Contract Act, 1872",
+        "sections": [
+          "Section 39",
+          "Section 73"
+        ]
+      }
+    ],
+    "alternative_acts": [
+      {
+        "act": "Indian Contract Act, 1872",
+        "sections": [
+          "Section 74"
+        ]
+      }
+    ],
+    "limitation": {
+      "article": "55",
+      "period": "Three years",
+      "from": "When the contract is broken (date of illegal termination)",
+      "description": "For compensation for breach of any contract, express or implied"
+    },
+    "court_rules": {
+      "default": {
+        "court": "District Court",
+        "format": "O.S. No.",
+        "heading": "IN THE COURT OF THE {court_type}"
+      },
+      "commercial": {
+        "threshold": 300000,
+        "court": "Commercial Court",
+        "format": "Commercial Suit No.",
+        "heading": "IN THE COURT OF THE {court_type} (COMMERCIAL DIVISION)",
+        "act": "Commercial Courts Act, 2015",
+        "procedural": [
+          "Section 12A pre-institution mediation (mandatory unless urgent interim relief sought)",
+          "Statement of truth as per Commercial Courts Act",
+          "Particularised damages schedule showing: (a) methodology for computing loss of profits, (b) basis for goodwill valuation, (c) itemised capital investment with documentary proof, (d) unsold stock valuation at cost or market value whichever is lower"
+        ],
+        "nature_keywords": []
+      }
+    },
+    "damages_categories": [
+      "loss_of_profit_unexpired_term",
+      "loss_of_goodwill",
+      "wasted_capital_investment",
+      "loss_on_unsold_stock",
+      "future_business_opportunities"
+    ],
+    "coa_type": "single_event",
+    "coa_guidance": "The cause of action is a SINGLE EVENT — illegal termination. Do NOT plead 'continuing breach' because termination is a one-time act. Three-part CoA: (1) first arose on date of termination letter, (2) further arose when defendant failed to respond to protest/legal notice, (3) cause is NOT continuing — but defendant's retention of benefits of plaintiff's investment and market development continues, and plaintiff's right to damages subsists.",
+    "defensive_points": [
+      "no_oral_variation_of_agreement",
+      "termination_clause_not_complied_with",
+      "no_opportunity_to_cure_alleged_breach",
+      "no_prior_notice_as_contractually_required",
+      "without_prejudice_alternative_pleading"
+    ],
+    "interest_basis": "wrongful_retention_and_deprivation",
+    "interest_guidance": "Defendant retained the benefit of plaintiff's capital investment and market development. Interest justified at commercial rate reflecting the reasonable return plaintiff would have earned on invested capital.",
+    "doc_type_keywords": [
+      "dealership",
+      "franchise",
+      "agency",
+      "termination",
+      "distributor"
+    ],
+    "mandatory_inline_sections": [
+      {
+        "section": "SECTION 12A COMPLIANCE",
+        "placement": "after JURISDICTION, before FACTS",
+        "instruction": "Include a separate paragraph stating compliance with Section 12A of the Commercial Courts Act, 2015: 'The Plaintiff states that in compliance with Section 12A of the Commercial Courts Act, 2015, pre-institution mediation was attempted/undertaken through {{MEDIATION_AUTHORITY}} but the same was unsuccessful / the Defendant failed to participate.' If urgent interim relief is sought, state: 'The Plaintiff seeks urgent interim relief and is therefore exempt from the requirement of pre-institution mediation under Section 12A.' This is MANDATORY for Commercial Court suits."
+      },
+      {
+        "section": "STATEMENT OF TRUTH",
+        "placement": "after VERIFICATION",
+        "instruction": "Include a STATEMENT OF TRUTH as required by the Commercial Courts Act, 2015. Format: 'STATEMENT OF TRUTH\\n\\nI, {{PLAINTIFF_NAME}}, the Plaintiff herein, do hereby state that the facts stated in paragraphs 1 to [last para] of this plaint are true to my knowledge and belief and that I have not wilfully suppressed any material fact. I understand that I may be liable for proceedings under the Indian Penal Code / Bharatiya Nyaya Sanhita for making a false statement.' This is MANDATORY for Commercial Court suits."
+      },
+      {
+        "section": "PARTICULARS OF DAMAGES",
+        "placement": "after PRAYER",
+        "instruction": "Include a DETAILED DAMAGES SCHEDULE as required by the Commercial Courts Act. For each damages category, show: (a) head of damage, (b) amount claimed, (c) methodology/basis for computation, (d) documentary proof reference. Cover: loss of profit (projected from historical data), goodwill (based on territory value, brand equity, customer base), wasted capital (itemised with invoices/receipts), unsold stock (at cost or market value, whichever lower)."
+      }
+    ],
+    "detected_court": {
+      "threshold": 300000,
+      "court": "Commercial Court",
+      "format": "Commercial Suit No.",
+      "heading": "IN THE COURT OF THE {court_type} (COMMERCIAL DIVISION)",
+      "act": "Commercial Courts Act, 2015",
+      "procedural": [
+        "Section 12A pre-institution mediation (mandatory unless urgent interim relief sought)",
+        "Statement of truth as per Commercial Courts Act",
+        "Particularised damages schedule showing: (a) methodology for computing loss of profits, (b) basis for goodwill valuation, (c) itemised capital investment with documentary proof, (d) unsold stock valuation at cost or market value whichever is lower"
+      ],
+      "nature_keywords": []
+    }
+  },
+  "postprocess_issues": [
+    {
+      "type": "placeholder_normalized",
+      "count": 1
+    },
+    {
+      "type": "heading_spacing_fixed",
+      "count": 5
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the plaintiff is' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the defendant is' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'this hon'ble court' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the present suit' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the dealership agreement' repeated 12 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the cause of' repeated 8 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'cause of action' repeated 9 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'valued at rs.' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rs. {{total_damages_amount}}/- (rupees' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '{{total_damages_amount}}/- (rupees {{total_damages_amount_words}}' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'true copy of' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'copy of the' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'annexed hereto and' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'hereto and marked' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'and marked as' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'marked as annexure' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the plaintiff has' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '(a true copy' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the dealership' repeated 9 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'is annexed hereto' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'by the defendant's' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'terms of the' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the agreement' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the termination letter' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the termination was' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the alleged breach' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'to withdraw the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the plaintiff's' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the defendant's' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'notice period and' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'period and cure' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'legal notice dated' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the plaintiff submits' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'plaintiff submits that' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'submits that the' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'that the defendant' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the defendant cannot' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the defendant has' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the benefit of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'benefit of the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'loss of profit' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'breach of the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'interest at the' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'at the rate' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the rate of' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rate of {{interest_rate}}%' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of {{interest_rate}}% per' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '{{interest_rate}}% per annum' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'till the date' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the date of' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'amount claimed: rs.' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'based on the' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'supporting documents: -' repeated 5 times — consider varying language"
+    }
+  ],
+  "citation_issues": [
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 12A",
+      "message": "'Section 12A' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 12A Commercial Courts Act, 2015",
+      "message": "'Section 12A Commercial Courts Act, 2015' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 18",
+      "message": "'Section 18' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 39 Indian Contract",
+      "message": "'Section 39 Indian Contract' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 73 Indian Contract",
+      "message": "'Section 73 Indian Contract' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 73",
+      "message": "'Section 73' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 74 Indian Contract",
+      "message": "'Section 74 Indian Contract' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 24",
+      "message": "'Section 24' not in verified_provisions — may be correct but unverified"
+    }
+  ],
+  "evidence_anchoring_issues": [],
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "damages_plaint",
+        "title": "Commercial Suit No. __________ / 20____",
+        "text": "IN THE COURT OF THE COMMERCIAL COURT (COMMERCIAL DIVISION)\nAT {{COURT_PLACE}}\n\nCommercial Suit No. __________ / 20____\n\n{{PLAINTIFF_NAME}},\nAged about {{PLAINTIFF_AGE}} years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nCarrying on business as Authorized Dealer under the name and style of {{BUSINESS_NAME}},\nHaving registered office at: {{PLAINTIFF_ADDRESS}}.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\n{{DEFENDANT_NAME}},\nA company incorporated under the Companies Act, 2013,\nHaving its registered office at: {{DEFENDANT_ADDRESS}},\nThrough its Authorized Representative.\n\n                                                        ... DEFENDANT\n\nCOMMERCIAL SUIT FOR RECOVERY OF DAMAGES OF RS. {{TOTAL_DAMAGES_AMOUNT}}/- WITH INTEREST AND COSTS FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Plaintiff is an authorized dealer engaged in the business of distribution and sale of {{PRODUCT_DESCRIPTION}} within the territory of {{TERRITORY_DESCRIPTION}}. The Defendant is a company incorporated under the Companies Act, 2013 and is engaged in the business of manufacture and supply of {{PRODUCT_DESCRIPTION}}.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the Defendant carries on business at {{DEFENDANT_ADDRESS}}, which falls within the local limits of the jurisdiction of this Hon'ble Court. Furthermore, the dealership agreement was executed at {{AGREEMENT_EXECUTION_PLACE}}, the Plaintiff's business premises are situated at {{PLAINTIFF_ADDRESS}}, and the cause of action arose within the territorial limits of this Hon'ble Court.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. {{TOTAL_DAMAGES_AMOUNT}}/- (Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only), which is within the pecuniary limits prescribed for this Hon'ble Commercial Court. This Court has subject matter jurisdiction to entertain commercial suits of this nature under the Commercial Courts Act, 2015.\n\nSECTION 12A COMPLIANCE\n\n4. The Plaintiff states that in compliance with Section 12A of the Commercial Courts Act, 2015, pre-institution mediation was undertaken through {{MEDIATION_AUTHORITY}} vide Application No. {{MEDIATION_APPLICATION_NUMBER}} dated {{MEDIATION_APPLICATION_DATE}}. The mediation proceedings were conducted on {{MEDIATION_SESSION_DATE}}. However, the mediation was unsuccessful as the Defendant failed to participate constructively and did not offer any reasonable settlement. The mediation was concluded as unsuccessful on {{MEDIATION_FAILURE_DATE}}. A true copy of the mediation application, mediation proceedings record, and the unsuccessful mediation report are annexed hereto and marked as Annexure A.\n\nFACTS OF THE CASE\n\n5. The Plaintiff is an established businessman carrying on the business of distribution and sale of {{PRODUCT_DESCRIPTION}} under the name and style of {{BUSINESS_NAME}} at {{PLAINTIFF_ADDRESS}} for the past {{YEARS_IN_BUSINESS}} years. The Plaintiff has developed substantial expertise, infrastructure, and market presence in the distribution and retail of {{PRODUCT_DESCRIPTION}} within the assigned territory.\n\n6. The Defendant is a leading manufacturer and supplier of {{PRODUCT_DESCRIPTION}} having its registered office at {{DEFENDANT_ADDRESS}}. The Defendant appointed the Plaintiff as an authorized dealer for the territory of {{TERRITORY_DESCRIPTION}} vide Dealership Agreement dated {{AGREEMENT_DATE}} executed at {{AGREEMENT_EXECUTION_PLACE}} (a true copy of the Dealership Agreement is annexed hereto and marked as Annexure B).\n\n7. The Dealership Agreement was valid for a period of {{AGREEMENT_DURATION}} years commencing from {{AGREEMENT_COMMENCEMENT_DATE}} and was to expire on {{AGREEMENT_EXPIRY_DATE}}. Clause {{CLAUSE_NUMBER}} of the Dealership Agreement provided that the agreement could be terminated by either party by giving {{NOTICE_PERIOD}} months' written notice to the other party. Clause {{CLAUSE_NUMBER}} further provided that in the event of any alleged breach by the dealer, the manufacturer shall first issue a written notice specifying the breach and grant an opportunity of {{CURE_PERIOD}} days to cure the breach before proceeding with termination.\n\n8. In pursuance of the Dealership Agreement and in good faith reliance upon the same, the Plaintiff made substantial capital investment for development of the dealership business. The Plaintiff invested approximately Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/- towards establishment of showroom, warehouse, storage facilities, delivery vehicles, computer systems, and other infrastructure as required by the Defendant's specifications. The Plaintiff also employed {{NUMBER_OF_EMPLOYEES}} persons for managing the dealership operations. The details of capital investment with supporting invoices and receipts are enumerated in the Particulars of Damage annexed to this plaint.\n\n9. Over the period of the dealership, the Plaintiff diligently developed the territory market for the Defendant's products. The Plaintiff established a network of {{NUMBER_OF_SUB_DEALERS}} sub-dealers and retail outlets within the territory. The Plaintiff undertook extensive marketing activities, promotional campaigns, and customer service initiatives which resulted in substantial growth in sales volumes. The annual sales turnover increased from Rs. {{INITIAL_SALES_TURNOVER}}/- in the first year to Rs. {{FINAL_SALES_TURNOVER}}/- in the most recent year. The Plaintiff's performance was consistently rated as {{PERFORMANCE_RATING}} by the Defendant's own evaluation system.\n\n10. On or about {{TERMINATION_LETTER_DATE}}, the Defendant issued a termination letter purporting to terminate the Dealership Agreement with immediate effect, citing alleged non-performance and breach of certain terms of the agreement (a true copy of the termination letter is annexed hereto and marked as Annexure C). The termination was issued without providing any prior notice as mandated under Clause {{CLAUSE_NUMBER}} of the Dealership Agreement. The termination letter did not specify any particulars of the alleged breach and did not afford the Plaintiff any opportunity to cure the alleged breach as contractually required under Clause {{CLAUSE_NUMBER}}.\n\n11. The Plaintiff immediately responded to the termination letter vide communication dated {{PLAINTIFF_RESPONSE_DATE}} denying the allegations of non-performance and breach, pointing out that the termination was in violation of the contractual terms, and requesting the Defendant to withdraw the termination and restore the dealership (a true copy of the Plaintiff's response is annexed hereto and marked as Annexure D). The Plaintiff specifically highlighted that the termination was arbitrary, without any factual basis, and contrary to the express terms of the Dealership Agreement.\n\n12. The Defendant, vide its reply dated {{DEFENDANT_REPLY_DATE}}, reiterated the termination without addressing the Plaintiff's contentions regarding violation of contractual procedure (a true copy of the Defendant's reply is annexed hereto and marked as Annexure E). The Defendant failed to provide any documentary evidence or particulars of the alleged breach. The Defendant also failed to explain why the mandatory notice period and cure period were not provided before termination.\n\n13. The Plaintiff, through his advocate, caused a legal notice dated {{NOTICE_DATE}} to be served upon the Defendant calling upon the Defendant to withdraw the illegal termination, restore the dealership, and compensate the Plaintiff for losses suffered (a true copy of the legal notice along with postal receipt and acknowledgment is annexed hereto and marked as Annexure F). The Defendant's reply to the legal notice dated {{DEFENDANT_NOTICE_REPLY_DATE}} was evasive and did not offer any meaningful response (a true copy is annexed hereto and marked as Annexure G).\n\n14. As a direct consequence of the illegal termination, the Plaintiff has suffered substantial losses. The Plaintiff is left with unsold stock of the Defendant's products valued at Rs. {{UNSOLD_STOCK_VALUE}}/- which cannot be returned or sold at reasonable prices. The Plaintiff's capital investment of Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/- in infrastructure specifically created for the Defendant's dealership has been rendered wasted. The Plaintiff has lost the goodwill and market position developed over {{DEALERSHIP_DURATION}} years, valued at Rs. {{GOODWILL_VALUE}}/-. The Plaintiff has lost the profit that would have been earned during the unexpired term of the agreement, estimated at Rs. {{LOSS_OF_PROFIT_AMOUNT}}/-. The detailed computation of damages is provided in the Particulars of Damage annexed to this plaint.\n\n15. The Plaintiff submits that the termination was illegal and contrary to the express terms of the Dealership Agreement for the following reasons: (a) no prior written notice of {{NOTICE_PERIOD}} months was given as required under Clause {{CLAUSE_NUMBER}}; (b) no opportunity to cure the alleged breach was provided as mandated under Clause {{CLAUSE_NUMBER}}; (c) no particulars of the alleged breach were specified in the termination letter; (d) the Plaintiff was not in breach of any term of the agreement; (e) the termination was arbitrary and motivated by the Defendant's desire to appoint another dealer on more favourable terms, as evidenced by the fact that the Defendant appointed {{NEW_DEALER_NAME}} as dealer for the same territory within {{TIME_PERIOD}} days of terminating the Plaintiff's dealership.\n\n16. The Plaintiff submits that there was no oral variation or modification of the Dealership Agreement. The Defendant cannot claim that any oral understanding superseded the written terms of the agreement. The terms of the written agreement regarding notice period and cure period remained binding and the Defendant was obliged to comply with the same before terminating the dealership.\n\n17. The Plaintiff further submits that the Defendant has retained the benefit of the Plaintiff's substantial capital investment and market development efforts. The infrastructure created by the Plaintiff, the customer base developed by the Plaintiff, and the market presence established by the Plaintiff over {{DEALERSHIP_DURATION}} years have all been appropriated by the Defendant for the benefit of the newly appointed dealer. The Defendant cannot be permitted to benefit from its own wrongful act.\n\nLEGAL BASIS\n\n18. The Plaintiff submits that the Defendant is liable under Section 39 of the Indian Contract Act, 1872 which provides that when a party to a contract has refused to perform or disabled himself from performing his promise in its entirety, the promisee may put an end to the contract. In the present case, the Defendant has wrongfully repudiated the Dealership Agreement by issuing an illegal termination letter without complying with the contractual terms. The Plaintiff is entitled to treat the contract as rescinded by the Defendant's breach and claim damages for the loss suffered.\n\n19. The Plaintiff further submits that the Defendant is liable under Section 73 of the Indian Contract Act, 1872 which provides that when a contract has been broken, the party who suffers by such breach is entitled to receive from the party who has broken the contract compensation for any loss or damage caused thereby which naturally arose in the usual course of things from such breach or which the parties knew when they made the contract to be likely to result from the breach. Section 73 further provides that such compensation is not to be given for any remote or indirect loss or damage sustained by reason of the breach. In the present case, the losses claimed by the Plaintiff, namely loss of profit for the unexpired term, loss of goodwill, wasted capital investment, and loss on unsold stock, are all direct and natural consequences of the Defendant's illegal termination and were within the contemplation of the parties when the Dealership Agreement was entered into.\n\n20. Without prejudice to the above and in the alternative, the Plaintiff submits that the Defendant is also liable under Section 74 of the Indian Contract Act, 1872 which provides that when a contract has been broken, if a sum is named in the contract as the amount to be paid in case of such breach, the party complaining of the breach is entitled, whether or not actual damage or loss is proved to have been caused thereby, to receive from the party who has broken the contract reasonable compensation not exceeding the amount so named. The Dealership Agreement contained a stipulation regarding compensation in case of termination. Even otherwise, the Plaintiff is entitled to reasonable compensation for the breach.\n\n21. The Plaintiff submits that the Defendant's termination was in breach of the express terms of the Dealership Agreement regarding notice period and cure period. The Defendant cannot rely on any alleged oral variation of the agreement. The terms of the written agreement remained binding and enforceable. The Defendant's failure to provide the contractually mandated notice period and cure period constitutes a material breach of the agreement entitling the Plaintiff to damages.\n\n22. The Plaintiff further submits that the Defendant was under an obligation to act in good faith in the performance and termination of the contract. The arbitrary termination without any factual basis, without following contractual procedure, and with the ulterior motive of appointing another dealer constitutes a breach of the implied duty of good faith. The Defendant cannot be permitted to benefit from the Plaintiff's investment and market development efforts while denying the Plaintiff the opportunity to continue the dealership for the agreed term.\n\nCAUSE OF ACTION\n\n23. The cause of action for the present suit first arose on {{TERMINATION_LETTER_DATE}} when the Defendant issued the termination letter purporting to terminate the Dealership Agreement with immediate effect, without complying with the contractual requirements of notice period and cure period, and without any valid ground for termination, thereby committing a fundamental breach of the agreement and giving rise to the Plaintiff's right to claim damages.\n\n24. The cause of action further arose on {{PLAINTIFF_RESPONSE_DATE}} when the Defendant, despite the Plaintiff's protest and request to withdraw the illegal termination, failed and refused to withdraw the termination or provide any justification for the same. The cause of action further arose on {{NOTICE_DATE}} when the Defendant, despite receipt of the legal notice, failed to comply with the demands therein. The cause of action further arose on {{DEFENDANT_NOTICE_REPLY_DATE}} when the Defendant sent an evasive reply to the legal notice without offering any reasonable response.\n\n25. The cause of action is not a continuing cause of action. The breach was a single event, namely the illegal termination dated {{TERMINATION_LETTER_DATE}}. However, the Defendant continues to retain the benefit of the Plaintiff's capital investment and market development efforts, and the Plaintiff's right to damages subsists.\n\nLIMITATION\n\n26. The present suit is within the period of limitation prescribed under Article 55 of the Schedule to the Limitation Act, 1963, which provides a period of three years for compensation for breach of any contract, express or implied. The cause of action having arisen on {{TERMINATION_LETTER_DATE}} when the Defendant committed the breach by issuing the illegal termination letter, and the suit being filed within three years from the said date, the present suit is well within limitation.\n\nVALUATION AND COURT FEE\n\n27. The suit is valued at Rs. {{TOTAL_DAMAGES_AMOUNT}}/- (Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only) for the purposes of jurisdiction and court fee, being the aggregate of the damages claimed. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint in accordance with the applicable Court Fees Act, computed on the suit valuation at the applicable ad valorem rate.\n\nINTEREST\n\n28. The Plaintiff claims interest on the damages amount as follows, the Defendant having wrongfully terminated the dealership and deprived the Plaintiff of the use of his invested capital and expected returns:\n\n    (a) Pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_LETTER_DATE}} (the date of illegal termination) till the date of filing of this suit, the said rate being justified on the ground that the Defendant has retained the benefit of the Plaintiff's capital investment which the Plaintiff could have otherwise deployed in his business at prevailing commercial rates;\n\n    (b) Pendente lite interest at the rate of {{INTEREST_RATE}}% per annum or at such rate as this Hon'ble Court deems just and reasonable during the pendency of this suit under Section 34 of the Code of Civil Procedure, 1908;\n\n    (c) Future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till the date of actual realization.\n\nPRAYER\n\n29. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\n\n    (a) Pass a decree in favour of the Plaintiff and against the Defendant for damages of Rs. {{TOTAL_DAMAGES_AMOUNT}}/- (Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only) being the aggregate of loss of profit for the unexpired term of Rs. {{LOSS_OF_PROFIT_AMOUNT}}/-, loss of goodwill of Rs. {{GOODWILL_VALUE}}/-, wasted capital investment of Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/-, and loss on unsold stock of Rs. {{UNSOLD_STOCK_VALUE}}/-;\n\n    (b) Award pre-suit interest at the rate of {{INTEREST_RATE}}% per annum on the said sum from {{TERMINATION_LETTER_DATE}} till the date of filing of this suit;\n\n    (c) Award pendente lite interest under Section 34 of the Code of Civil Procedure, 1908 at such rate as this Hon'ble Court deems just and reasonable during the pendency of this suit;\n\n    (d) Award future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till the date of actual realization;\n\n    (e) Award costs of this suit including court fees, advocate fees, and all pre-litigation costs incurred for mediation and issuing the legal notice;\n\n    (f) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\nAND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL, AS IN DUTY BOUND, EVER PRAY.\n\nPARTICULARS OF DAMAGES\n\nThe Plaintiff claims damages under the following heads with detailed methodology and supporting documents:\n\nA. LOSS OF PROFIT FOR UNEXPIRED TERM\n\nAmount Claimed: Rs. {{LOSS_OF_PROFIT_AMOUNT}}/-\n\nMethodology: The loss of profit has been computed based on the average annual profit earned by the Plaintiff during the preceding {{NUMBER_OF_YEARS}} years of the dealership. The average annual profit was Rs. {{AVERAGE_ANNUAL_PROFIT}}/-. The unexpired term of the agreement was {{UNEXPIRED_TERM}} months. The loss of profit is computed as the average annual profit multiplied by the unexpired term, adjusted for projected growth based on historical trends.\n\nSupporting Documents:\n- Audited financial statements for the past {{NUMBER_OF_YEARS}} years (Annexure H)\n- Sales records and profit margins (Annexure I)\n- Growth projections and market analysis (Annexure J)\n\nB. LOSS OF GOODWILL\n\nAmount Claimed: Rs. {{GOODWILL_VALUE}}/-\n\nMethodology: The goodwill has been valued based on the capitalization of super profits method. The Plaintiff had developed substantial goodwill in the territory through years of consistent service, customer relationships, and brand building. The goodwill is computed as the present value of future super profits attributable to the dealership, discounted at the prevailing commercial rate. Alternatively, the goodwill is computed based on the number of years of purchase of average profits at {{YEARS_OF_PURCHASE}} years.\n\nSupporting Documents:\n- Customer database and relationship records (Annexure K)\n- Market survey reports establishing brand recognition (Annexure L)\n- Goodwill valuation report by certified valuer (Annexure M)\n\nC. WASTED CAPITAL INVESTMENT\n\nAmount Claimed: Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/-\n\nMethodology: The capital investment made specifically for the Defendant's dealership has been rendered wasted due to the illegal termination. The investment includes showroom construction/renovation, warehouse and storage facilities, delivery vehicles, computer systems and software, signage and branding, and other infrastructure as required by the Defendant's specifications. The written down value of these assets as on the date of termination is claimed.\n\nSupporting Documents:\n- Itemized list of capital investments with invoices and receipts (Annexure N)\n- Bank statements showing payment for investments (Annexure O)\n- Photographs of showroom and infrastructure (Annexure P)\n- Depreciation schedule and written down value computation (Annexure Q)\n\nD. LOSS ON UNSOLD STOCK\n\nAmount Claimed: Rs. {{UNSOLD_STOCK_VALUE}}/-\n\nMethodology: The Plaintiff was left with unsold stock of the Defendant's products at the time of illegal termination. The stock has been valued at cost or market value, whichever is lower, in accordance with sound accounting principles. The Defendant has refused to take back the unsold stock or compensate the Plaintiff for the same. The stock is now difficult to sell at reasonable prices due to the termination of the dealership.\n\nSupporting Documents:\n- Stock statement as on date of termination (Annexure R)\n- Purchase invoices for the unsold stock (Annexure S)\n- Valuation of stock at cost and market value (Annexure T)\n\nE. FUTURE BUSINESS OPPORTUNITIES\n\nAmount Claimed: Rs. {{FUTURE_OPPORTUNITIES_AMOUNT}}/-\n\nMethodology: The Plaintiff had developed substantial business relationships and was in the process of expanding the dealership network within the territory. The illegal termination has resulted in loss of these future business opportunities. The amount is computed based on the projected revenue from identified business opportunities that were in advanced stages of negotiation.\n\nSupporting Documents:\n- Correspondence with prospective sub-dealers and customers (Annexure U)\n- Projected revenue from identified opportunities (Annexure V)\n\nTOTAL DAMAGES CLAIMED: Rs. {{TOTAL_DAMAGES_AMOUNT}}/-\n(Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only)\n\nLIST OF DOCUMENTS\n\n| Sr. No. | Description | Annexure |\n\n|---------|-------------|----------|\n| 1. | Mediation application, proceedings record, and unsuccessful mediation report | Annexure A |\n| 2. | Dealership Agreement dated {{AGREEMENT_DATE}} | Annexure B |\n| 3. | Termination letter dated {{TERMINATION_LETTER_DATE}} | Annexure C |\n| 4. | Plaintiff's response dated {{PLAINTIFF_RESPONSE_DATE}} | Annexure D |\n| 5. | Defendant's reply dated {{DEFENDANT_REPLY_DATE}} | Annexure E |\n| 6. | Legal notice dated {{NOTICE_DATE}} with postal receipt and acknowledgment | Annexure F |\n| 7. | Defendant's reply to legal notice dated {{DEFENDANT_NOTICE_REPLY_DATE}} | Annexure G |\n| 8. | Audited financial statements for past years | Annexure H |\n| 9. | Sales records and profit margins | Annexure I |\n| 10. | Growth projections and market analysis | Annexure J |\n| 11. | Customer database and relationship records | Annexure K |\n| 12. | Market survey reports | Annexure L |\n| 13. | Goodwill valuation report | Annexure M |\n| 14. | Itemized list of capital investments with invoices | Annexure N |\n| 15. | Bank statements for investments | Annexure O |\n| 16. | Photographs of showroom and infrastructure | Annexure P |\n| 17. | Depreciation schedule | Annexure Q |\n| 18. | Stock statement as on termination date | Annexure R |\n| 19. | Purchase invoices for unsold stock | Annexure S |\n| 20. | Stock valuation statement | Annexure T |\n| 21. | Correspondence with prospective sub-dealers | Annexure U |\n| 22. | Projected revenue from identified opportunities | Annexure V |\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby solemnly verify and state on oath that the contents of paragraphs 1 to 29 of this plaint are true and correct to my personal knowledge based upon the records and documents available with me, that the contents relating to legal submissions are based upon legal advice received and are believed to be correct, that no part of the cause of action has arisen within the jurisdiction of any other court, and that nothing material has been concealed therefrom. Verified at {{COURT_PLACE}} on this the ____ day of __________ 20____.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nSTATEMENT OF TRUTH\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff herein, do hereby state that the facts stated in paragraphs 1 to 29 of this plaint are true to my knowledge and belief and that I have not wilfully suppressed any material fact. I understand that I may be liable for proceedings under the Bharatiya Nyaya Sanhita, 2023 for making a false statement.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}\nMobile: {{ADVOCATE_MOBILE}}\nEmail: {{ADVOCATE_EMAIL}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "BUSINESS_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TOTAL_DAMAGES_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PRODUCT_DESCRIPTION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TERRITORY_DESCRIPTION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_EXECUTION_PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TOTAL_DAMAGES_AMOUNT_WORDS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_AUTHORITY",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_APPLICATION_NUMBER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_APPLICATION_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_SESSION_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_FAILURE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "YEARS_IN_BUSINESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_DURATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_COMMENCEMENT_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_EXPIRY_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "CLAUSE_NUMBER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NOTICE_PERIOD",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "CURE_PERIOD",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "CAPITAL_INVESTMENT_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NUMBER_OF_EMPLOYEES",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NUMBER_OF_SUB_DEALERS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "INITIAL_SALES_TURNOVER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "FINAL_SALES_TURNOVER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PERFORMANCE_RATING",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TERMINATION_LETTER_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_RESPONSE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_REPLY_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "LEGAL_NOTICE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NOTICE_REPLY_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "UNSOLD_STOCK_VALUE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEALERSHIP_DURATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "GOODWILL_VALUE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "LOSS_OF_PROFIT_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NEW_DEALER_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TIME_PERIOD",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "INTEREST_RATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NUMBER_OF_YEARS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AVERAGE_ANNUAL_PROFIT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "UNEXPIRED_TERM",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "YEARS_OF_PURCHASE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "FUTURE_OPPORTUNITIES_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_MOBILE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_EMAIL",
+            "reason": "Detail not provided — verify before filing"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "damages_plaint",
+        "title": "Commercial Suit No. __________ / 20____",
+        "text": "IN THE COURT OF THE COMMERCIAL COURT (COMMERCIAL DIVISION)\nAT {{COURT_PLACE}}\n\nCommercial Suit No. __________ / 20____\n\n{{PLAINTIFF_NAME}},\nAged about {{PLAINTIFF_AGE}} years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nCarrying on business as Authorized Dealer under the name and style of {{BUSINESS_NAME}},\nHaving registered office at: {{PLAINTIFF_ADDRESS}}.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\n{{DEFENDANT_NAME}},\nA company incorporated under the Companies Act, 2013,\nHaving its registered office at: {{DEFENDANT_ADDRESS}},\nThrough its Authorized Representative.\n\n                                                        ... DEFENDANT\n\nCOMMERCIAL SUIT FOR RECOVERY OF DAMAGES OF RS. {{TOTAL_DAMAGES_AMOUNT}}/- WITH INTEREST AND COSTS FOR ILLEGAL TERMINATION OF DEALERSHIP AGREEMENT\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Plaintiff is an authorized dealer engaged in the business of distribution and sale of {{PRODUCT_DESCRIPTION}} within the territory of {{TERRITORY_DESCRIPTION}}. The Defendant is a company incorporated under the Companies Act, 2013 and is engaged in the business of manufacture and supply of {{PRODUCT_DESCRIPTION}}.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the Defendant carries on business at {{DEFENDANT_ADDRESS}}, which falls within the local limits of the jurisdiction of this Hon'ble Court. Furthermore, the dealership agreement was executed at {{AGREEMENT_EXECUTION_PLACE}}, the Plaintiff's business premises are situated at {{PLAINTIFF_ADDRESS}}, and the cause of action arose within the territorial limits of this Hon'ble Court.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. {{TOTAL_DAMAGES_AMOUNT}}/- (Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only), which is within the pecuniary limits prescribed for this Hon'ble Commercial Court. This Court has subject matter jurisdiction to entertain commercial suits of this nature under the Commercial Courts Act, 2015.\n\nSECTION 12A COMPLIANCE\n\n4. The Plaintiff states that in compliance with Section 12A of the Commercial Courts Act, 2015, pre-institution mediation was undertaken through {{MEDIATION_AUTHORITY}} vide Application No. {{MEDIATION_APPLICATION_NUMBER}} dated {{MEDIATION_APPLICATION_DATE}}. The mediation proceedings were conducted on {{MEDIATION_SESSION_DATE}}. However, the mediation was unsuccessful as the Defendant failed to participate constructively and did not offer any reasonable settlement. The mediation was concluded as unsuccessful on {{MEDIATION_FAILURE_DATE}}. A true copy of the mediation application, mediation proceedings record, and the unsuccessful mediation report are annexed hereto and marked as Annexure A.\n\nFACTS OF THE CASE\n\n5. The Plaintiff is an established businessman carrying on the business of distribution and sale of {{PRODUCT_DESCRIPTION}} under the name and style of {{BUSINESS_NAME}} at {{PLAINTIFF_ADDRESS}} for the past {{YEARS_IN_BUSINESS}} years. The Plaintiff has developed substantial expertise, infrastructure, and market presence in the distribution and retail of {{PRODUCT_DESCRIPTION}} within the assigned territory.\n\n6. The Defendant is a leading manufacturer and supplier of {{PRODUCT_DESCRIPTION}} having its registered office at {{DEFENDANT_ADDRESS}}. The Defendant appointed the Plaintiff as an authorized dealer for the territory of {{TERRITORY_DESCRIPTION}} vide Dealership Agreement dated {{AGREEMENT_DATE}} executed at {{AGREEMENT_EXECUTION_PLACE}} (a true copy of the Dealership Agreement is annexed hereto and marked as Annexure B).\n\n7. The Dealership Agreement was valid for a period of {{AGREEMENT_DURATION}} years commencing from {{AGREEMENT_COMMENCEMENT_DATE}} and was to expire on {{AGREEMENT_EXPIRY_DATE}}. Clause {{CLAUSE_NUMBER}} of the Dealership Agreement provided that the agreement could be terminated by either party by giving {{NOTICE_PERIOD}} months' written notice to the other party. Clause {{CLAUSE_NUMBER}} further provided that in the event of any alleged breach by the dealer, the manufacturer shall first issue a written notice specifying the breach and grant an opportunity of {{CURE_PERIOD}} days to cure the breach before proceeding with termination.\n\n8. In pursuance of the Dealership Agreement and in good faith reliance upon the same, the Plaintiff made substantial capital investment for development of the dealership business. The Plaintiff invested approximately Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/- towards establishment of showroom, warehouse, storage facilities, delivery vehicles, computer systems, and other infrastructure as required by the Defendant's specifications. The Plaintiff also employed {{NUMBER_OF_EMPLOYEES}} persons for managing the dealership operations. The details of capital investment with supporting invoices and receipts are enumerated in the Particulars of Damage annexed to this plaint.\n\n9. Over the period of the dealership, the Plaintiff diligently developed the territory market for the Defendant's products. The Plaintiff established a network of {{NUMBER_OF_SUB_DEALERS}} sub-dealers and retail outlets within the territory. The Plaintiff undertook extensive marketing activities, promotional campaigns, and customer service initiatives which resulted in substantial growth in sales volumes. The annual sales turnover increased from Rs. {{INITIAL_SALES_TURNOVER}}/- in the first year to Rs. {{FINAL_SALES_TURNOVER}}/- in the most recent year. The Plaintiff's performance was consistently rated as {{PERFORMANCE_RATING}} by the Defendant's own evaluation system.\n\n10. On or about {{TERMINATION_LETTER_DATE}}, the Defendant issued a termination letter purporting to terminate the Dealership Agreement with immediate effect, citing alleged non-performance and breach of certain terms of the agreement (a true copy of the termination letter is annexed hereto and marked as Annexure C). The termination was issued without providing any prior notice as mandated under Clause {{CLAUSE_NUMBER}} of the Dealership Agreement. The termination letter did not specify any particulars of the alleged breach and did not afford the Plaintiff any opportunity to cure the alleged breach as contractually required under Clause {{CLAUSE_NUMBER}}.\n\n11. The Plaintiff immediately responded to the termination letter vide communication dated {{PLAINTIFF_RESPONSE_DATE}} denying the allegations of non-performance and breach, pointing out that the termination was in violation of the contractual terms, and requesting the Defendant to withdraw the termination and restore the dealership (a true copy of the Plaintiff's response is annexed hereto and marked as Annexure D). The Plaintiff specifically highlighted that the termination was arbitrary, without any factual basis, and contrary to the express terms of the Dealership Agreement.\n\n12. The Defendant, vide its reply dated {{DEFENDANT_REPLY_DATE}}, reiterated the termination without addressing the Plaintiff's contentions regarding violation of contractual procedure (a true copy of the Defendant's reply is annexed hereto and marked as Annexure E). The Defendant failed to provide any documentary evidence or particulars of the alleged breach. The Defendant also failed to explain why the mandatory notice period and cure period were not provided before termination.\n\n13. The Plaintiff, through his advocate, caused a legal notice dated {{NOTICE_DATE}} to be served upon the Defendant calling upon the Defendant to withdraw the illegal termination, restore the dealership, and compensate the Plaintiff for losses suffered (a true copy of the legal notice along with postal receipt and acknowledgment is annexed hereto and marked as Annexure F). The Defendant's reply to the legal notice dated {{DEFENDANT_NOTICE_REPLY_DATE}} was evasive and did not offer any meaningful response (a true copy is annexed hereto and marked as Annexure G).\n\n14. As a direct consequence of the illegal termination, the Plaintiff has suffered substantial losses. The Plaintiff is left with unsold stock of the Defendant's products valued at Rs. {{UNSOLD_STOCK_VALUE}}/- which cannot be returned or sold at reasonable prices. The Plaintiff's capital investment of Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/- in infrastructure specifically created for the Defendant's dealership has been rendered wasted. The Plaintiff has lost the goodwill and market position developed over {{DEALERSHIP_DURATION}} years, valued at Rs. {{GOODWILL_VALUE}}/-. The Plaintiff has lost the profit that would have been earned during the unexpired term of the agreement, estimated at Rs. {{LOSS_OF_PROFIT_AMOUNT}}/-. The detailed computation of damages is provided in the Particulars of Damage annexed to this plaint.\n\n15. The Plaintiff submits that the termination was illegal and contrary to the express terms of the Dealership Agreement for the following reasons: (a) no prior written notice of {{NOTICE_PERIOD}} months was given as required under Clause {{CLAUSE_NUMBER}}; (b) no opportunity to cure the alleged breach was provided as mandated under Clause {{CLAUSE_NUMBER}}; (c) no particulars of the alleged breach were specified in the termination letter; (d) the Plaintiff was not in breach of any term of the agreement; (e) the termination was arbitrary and motivated by the Defendant's desire to appoint another dealer on more favourable terms, as evidenced by the fact that the Defendant appointed {{NEW_DEALER_NAME}} as dealer for the same territory within {{TIME_PERIOD}} days of terminating the Plaintiff's dealership.\n\n16. The Plaintiff submits that there was no oral variation or modification of the Dealership Agreement. The Defendant cannot claim that any oral understanding superseded the written terms of the agreement. The terms of the written agreement regarding notice period and cure period remained binding and the Defendant was obliged to comply with the same before terminating the dealership.\n\n17. The Plaintiff further submits that the Defendant has retained the benefit of the Plaintiff's substantial capital investment and market development efforts. The infrastructure created by the Plaintiff, the customer base developed by the Plaintiff, and the market presence established by the Plaintiff over {{DEALERSHIP_DURATION}} years have all been appropriated by the Defendant for the benefit of the newly appointed dealer. The Defendant cannot be permitted to benefit from its own wrongful act.\n\nLEGAL BASIS\n\n18. The Plaintiff submits that the Defendant is liable under Section 39 of the Indian Contract Act, 1872 which provides that when a party to a contract has refused to perform or disabled himself from performing his promise in its entirety, the promisee may put an end to the contract. In the present case, the Defendant has wrongfully repudiated the Dealership Agreement by issuing an illegal termination letter without complying with the contractual terms. The Plaintiff is entitled to treat the contract as rescinded by the Defendant's breach and claim damages for the loss suffered.\n\n19. The Plaintiff further submits that the Defendant is liable under Section 73 of the Indian Contract Act, 1872 which provides that when a contract has been broken, the party who suffers by such breach is entitled to receive from the party who has broken the contract compensation for any loss or damage caused thereby which naturally arose in the usual course of things from such breach or which the parties knew when they made the contract to be likely to result from the breach. Section 73 further provides that such compensation is not to be given for any remote or indirect loss or damage sustained by reason of the breach. In the present case, the losses claimed by the Plaintiff, namely loss of profit for the unexpired term, loss of goodwill, wasted capital investment, and loss on unsold stock, are all direct and natural consequences of the Defendant's illegal termination and were within the contemplation of the parties when the Dealership Agreement was entered into.\n\n20. Without prejudice to the above and in the alternative, the Plaintiff submits that the Defendant is also liable under Section 74 of the Indian Contract Act, 1872 which provides that when a contract has been broken, if a sum is named in the contract as the amount to be paid in case of such breach, the party complaining of the breach is entitled, whether or not actual damage or loss is proved to have been caused thereby, to receive from the party who has broken the contract reasonable compensation not exceeding the amount so named. The Dealership Agreement contained a stipulation regarding compensation in case of termination. Even otherwise, the Plaintiff is entitled to reasonable compensation for the breach.\n\n21. The Plaintiff submits that the Defendant's termination was in breach of the express terms of the Dealership Agreement regarding notice period and cure period. The Defendant cannot rely on any alleged oral variation of the agreement. The terms of the written agreement remained binding and enforceable. The Defendant's failure to provide the contractually mandated notice period and cure period constitutes a material breach of the agreement entitling the Plaintiff to damages.\n\n22. The Plaintiff further submits that the Defendant was under an obligation to act in good faith in the performance and termination of the contract. The arbitrary termination without any factual basis, without following contractual procedure, and with the ulterior motive of appointing another dealer constitutes a breach of the implied duty of good faith. The Defendant cannot be permitted to benefit from the Plaintiff's investment and market development efforts while denying the Plaintiff the opportunity to continue the dealership for the agreed term.\n\nCAUSE OF ACTION\n\n23. The cause of action for the present suit first arose on {{TERMINATION_LETTER_DATE}} when the Defendant issued the termination letter purporting to terminate the Dealership Agreement with immediate effect, without complying with the contractual requirements of notice period and cure period, and without any valid ground for termination, thereby committing a fundamental breach of the agreement and giving rise to the Plaintiff's right to claim damages.\n\n24. The cause of action further arose on {{PLAINTIFF_RESPONSE_DATE}} when the Defendant, despite the Plaintiff's protest and request to withdraw the illegal termination, failed and refused to withdraw the termination or provide any justification for the same. The cause of action further arose on {{NOTICE_DATE}} when the Defendant, despite receipt of the legal notice, failed to comply with the demands therein. The cause of action further arose on {{DEFENDANT_NOTICE_REPLY_DATE}} when the Defendant sent an evasive reply to the legal notice without offering any reasonable response.\n\n25. The cause of action is not a continuing cause of action. The breach was a single event, namely the illegal termination dated {{TERMINATION_LETTER_DATE}}. However, the Defendant continues to retain the benefit of the Plaintiff's capital investment and market development efforts, and the Plaintiff's right to damages subsists.\n\nLIMITATION\n\n26. The present suit is within the period of limitation prescribed under Article 55 of the Schedule to the Limitation Act, 1963, which provides a period of three years for compensation for breach of any contract, express or implied. The cause of action having arisen on {{TERMINATION_LETTER_DATE}} when the Defendant committed the breach by issuing the illegal termination letter, and the suit being filed within three years from the said date, the present suit is well within limitation.\n\nVALUATION AND COURT FEE\n\n27. The suit is valued at Rs. {{TOTAL_DAMAGES_AMOUNT}}/- (Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only) for the purposes of jurisdiction and court fee, being the aggregate of the damages claimed. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint in accordance with the applicable Court Fees Act, computed on the suit valuation at the applicable ad valorem rate.\n\nINTEREST\n\n28. The Plaintiff claims interest on the damages amount as follows, the Defendant having wrongfully terminated the dealership and deprived the Plaintiff of the use of his invested capital and expected returns:\n\n    (a) Pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{TERMINATION_LETTER_DATE}} (the date of illegal termination) till the date of filing of this suit, the said rate being justified on the ground that the Defendant has retained the benefit of the Plaintiff's capital investment which the Plaintiff could have otherwise deployed in his business at prevailing commercial rates;\n\n    (b) Pendente lite interest at the rate of {{INTEREST_RATE}}% per annum or at such rate as this Hon'ble Court deems just and reasonable during the pendency of this suit under Section 34 of the Code of Civil Procedure, 1908;\n\n    (c) Future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till the date of actual realization.\n\nPRAYER\n\n29. In the premises stated hereinabove, it is most respectfully prayed that this Hon'ble Court may be graciously pleased to:\n\n    (a) Pass a decree in favour of the Plaintiff and against the Defendant for damages of Rs. {{TOTAL_DAMAGES_AMOUNT}}/- (Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only) being the aggregate of loss of profit for the unexpired term of Rs. {{LOSS_OF_PROFIT_AMOUNT}}/-, loss of goodwill of Rs. {{GOODWILL_VALUE}}/-, wasted capital investment of Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/-, and loss on unsold stock of Rs. {{UNSOLD_STOCK_VALUE}}/-;\n\n    (b) Award pre-suit interest at the rate of {{INTEREST_RATE}}% per annum on the said sum from {{TERMINATION_LETTER_DATE}} till the date of filing of this suit;\n\n    (c) Award pendente lite interest under Section 34 of the Code of Civil Procedure, 1908 at such rate as this Hon'ble Court deems just and reasonable during the pendency of this suit;\n\n    (d) Award future interest at the rate of {{INTEREST_RATE}}% per annum from the date of decree till the date of actual realization;\n\n    (e) Award costs of this suit including court fees, advocate fees, and all pre-litigation costs incurred for mediation and issuing the legal notice;\n\n    (f) Grant such other and further relief as this Hon'ble Court deems fit and proper in the facts and circumstances of the case.\n\nAND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL, AS IN DUTY BOUND, EVER PRAY.\n\nPARTICULARS OF DAMAGES\n\nThe Plaintiff claims damages under the following heads with detailed methodology and supporting documents:\n\nA. LOSS OF PROFIT FOR UNEXPIRED TERM\n\nAmount Claimed: Rs. {{LOSS_OF_PROFIT_AMOUNT}}/-\n\nMethodology: The loss of profit has been computed based on the average annual profit earned by the Plaintiff during the preceding {{NUMBER_OF_YEARS}} years of the dealership. The average annual profit was Rs. {{AVERAGE_ANNUAL_PROFIT}}/-. The unexpired term of the agreement was {{UNEXPIRED_TERM}} months. The loss of profit is computed as the average annual profit multiplied by the unexpired term, adjusted for projected growth based on historical trends.\n\nSupporting Documents:\n- Audited financial statements for the past {{NUMBER_OF_YEARS}} years (Annexure H)\n- Sales records and profit margins (Annexure I)\n- Growth projections and market analysis (Annexure J)\n\nB. LOSS OF GOODWILL\n\nAmount Claimed: Rs. {{GOODWILL_VALUE}}/-\n\nMethodology: The goodwill has been valued based on the capitalization of super profits method. The Plaintiff had developed substantial goodwill in the territory through years of consistent service, customer relationships, and brand building. The goodwill is computed as the present value of future super profits attributable to the dealership, discounted at the prevailing commercial rate. Alternatively, the goodwill is computed based on the number of years of purchase of average profits at {{YEARS_OF_PURCHASE}} years.\n\nSupporting Documents:\n- Customer database and relationship records (Annexure K)\n- Market survey reports establishing brand recognition (Annexure L)\n- Goodwill valuation report by certified valuer (Annexure M)\n\nC. WASTED CAPITAL INVESTMENT\n\nAmount Claimed: Rs. {{CAPITAL_INVESTMENT_AMOUNT}}/-\n\nMethodology: The capital investment made specifically for the Defendant's dealership has been rendered wasted due to the illegal termination. The investment includes showroom construction/renovation, warehouse and storage facilities, delivery vehicles, computer systems and software, signage and branding, and other infrastructure as required by the Defendant's specifications. The written down value of these assets as on the date of termination is claimed.\n\nSupporting Documents:\n- Itemized list of capital investments with invoices and receipts (Annexure N)\n- Bank statements showing payment for investments (Annexure O)\n- Photographs of showroom and infrastructure (Annexure P)\n- Depreciation schedule and written down value computation (Annexure Q)\n\nD. LOSS ON UNSOLD STOCK\n\nAmount Claimed: Rs. {{UNSOLD_STOCK_VALUE}}/-\n\nMethodology: The Plaintiff was left with unsold stock of the Defendant's products at the time of illegal termination. The stock has been valued at cost or market value, whichever is lower, in accordance with sound accounting principles. The Defendant has refused to take back the unsold stock or compensate the Plaintiff for the same. The stock is now difficult to sell at reasonable prices due to the termination of the dealership.\n\nSupporting Documents:\n- Stock statement as on date of termination (Annexure R)\n- Purchase invoices for the unsold stock (Annexure S)\n- Valuation of stock at cost and market value (Annexure T)\n\nE. FUTURE BUSINESS OPPORTUNITIES\n\nAmount Claimed: Rs. {{FUTURE_OPPORTUNITIES_AMOUNT}}/-\n\nMethodology: The Plaintiff had developed substantial business relationships and was in the process of expanding the dealership network within the territory. The illegal termination has resulted in loss of these future business opportunities. The amount is computed based on the projected revenue from identified business opportunities that were in advanced stages of negotiation.\n\nSupporting Documents:\n- Correspondence with prospective sub-dealers and customers (Annexure U)\n- Projected revenue from identified opportunities (Annexure V)\n\nTOTAL DAMAGES CLAIMED: Rs. {{TOTAL_DAMAGES_AMOUNT}}/-\n(Rupees {{TOTAL_DAMAGES_AMOUNT_WORDS}} Only)\n\nLIST OF DOCUMENTS\n\n| Sr. No. | Description | Annexure |\n\n|---------|-------------|----------|\n| 1. | Mediation application, proceedings record, and unsuccessful mediation report | Annexure A |\n| 2. | Dealership Agreement dated {{AGREEMENT_DATE}} | Annexure B |\n| 3. | Termination letter dated {{TERMINATION_LETTER_DATE}} | Annexure C |\n| 4. | Plaintiff's response dated {{PLAINTIFF_RESPONSE_DATE}} | Annexure D |\n| 5. | Defendant's reply dated {{DEFENDANT_REPLY_DATE}} | Annexure E |\n| 6. | Legal notice dated {{NOTICE_DATE}} with postal receipt and acknowledgment | Annexure F |\n| 7. | Defendant's reply to legal notice dated {{DEFENDANT_NOTICE_REPLY_DATE}} | Annexure G |\n| 8. | Audited financial statements for past years | Annexure H |\n| 9. | Sales records and profit margins | Annexure I |\n| 10. | Growth projections and market analysis | Annexure J |\n| 11. | Customer database and relationship records | Annexure K |\n| 12. | Market survey reports | Annexure L |\n| 13. | Goodwill valuation report | Annexure M |\n| 14. | Itemized list of capital investments with invoices | Annexure N |\n| 15. | Bank statements for investments | Annexure O |\n| 16. | Photographs of showroom and infrastructure | Annexure P |\n| 17. | Depreciation schedule | Annexure Q |\n| 18. | Stock statement as on termination date | Annexure R |\n| 19. | Purchase invoices for unsold stock | Annexure S |\n| 20. | Stock valuation statement | Annexure T |\n| 21. | Correspondence with prospective sub-dealers | Annexure U |\n| 22. | Projected revenue from identified opportunities | Annexure V |\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby solemnly verify and state on oath that the contents of paragraphs 1 to 29 of this plaint are true and correct to my personal knowledge based upon the records and documents available with me, that the contents relating to legal submissions are based upon legal advice received and are believed to be correct, that no part of the cause of action has arisen within the jurisdiction of any other court, and that nothing material has been concealed therefrom. Verified at {{COURT_PLACE}} on this the ____ day of __________ 20____.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nSTATEMENT OF TRUTH\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff herein, do hereby state that the facts stated in paragraphs 1 to 29 of this plaint are true to my knowledge and belief and that I have not wilfully suppressed any material fact. I understand that I may be liable for proceedings under the Bharatiya Nyaya Sanhita, 2023 for making a false statement.\n\n                                                        {{PLAINTIFF_NAME}}\n\n                                                        PLAINTIFF\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}\nMobile: {{ADVOCATE_MOBILE}}\nEmail: {{ADVOCATE_EMAIL}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "BUSINESS_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TOTAL_DAMAGES_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PRODUCT_DESCRIPTION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TERRITORY_DESCRIPTION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_EXECUTION_PLACE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TOTAL_DAMAGES_AMOUNT_WORDS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_AUTHORITY",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_APPLICATION_NUMBER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_APPLICATION_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_SESSION_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "MEDIATION_FAILURE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "YEARS_IN_BUSINESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_DURATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_COMMENCEMENT_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AGREEMENT_EXPIRY_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "CLAUSE_NUMBER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NOTICE_PERIOD",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "CURE_PERIOD",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "CAPITAL_INVESTMENT_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NUMBER_OF_EMPLOYEES",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NUMBER_OF_SUB_DEALERS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "INITIAL_SALES_TURNOVER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "FINAL_SALES_TURNOVER",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PERFORMANCE_RATING",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TERMINATION_LETTER_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "PLAINTIFF_RESPONSE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_REPLY_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "LEGAL_NOTICE_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEFENDANT_NOTICE_REPLY_DATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "UNSOLD_STOCK_VALUE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "DEALERSHIP_DURATION",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "GOODWILL_VALUE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "LOSS_OF_PROFIT_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NEW_DEALER_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "TIME_PERIOD",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "INTEREST_RATE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "NUMBER_OF_YEARS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "AVERAGE_ANNUAL_PROFIT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "UNEXPIRED_TERM",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "YEARS_OF_PURCHASE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "FUTURE_OPPORTUNITIES_AMOUNT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_ADDRESS",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_MOBILE",
+            "reason": "Detail not provided — verify before filing"
+          },
+          {
+            "key": "ADVOCATE_EMAIL",
+            "reason": "Detail not provided — verify before filing"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": true,
+      "blocking_issues": [],
+      "non_blocking_issues": [],
+      "unsupported_statements": [],
+      "final_artifacts": []
+    }
+  },
+  "review_count": 1
+}

@@ -1,200 +1,146 @@
+# SKILL: legal-drafting-workflow
 
+## Purpose
+Execution guide for the v5.1 drafting pipeline. Use this when running, testing, debugging, or extending the pipeline.
 
-# 🚀 How the Workflow Runs
-
-## 1. User Input
-User provides:
-- query text
-- optional uploaded docs
-- optional preferences
-
-Saved as:
-- `USER_INPUT.json`
-
-## 2. Sanitization
-Security normalization cleans prompt injection and unsafe characters.
-
-Output:
-- `SANITIZED_INPUT.json`
-
-## 3. Supervisor Fact Extraction
-Extracts parties, facts, issues, timeline.
-
-Output:
-- `MASTER_FACTS.json`
-
-## 4. Fact Validation Gate
-Blocks unverified facts.
-
-Output:
-- `FACT_VALIDATION_REPORT.json`
-
-If blocked → workflow pauses and asks user.
-
-## 5. Dual Classification
-- Rule classifier (fast)
-- LLM classifier (semantic)
-
-Then route resolver decides final route.
-
-Output:
-- `WORKFLOW_ROUTE.json`
-
-## 6. Mistake Rules Fetch
-Fetches reusable objection patterns from main DB.
-
-Output:
-- `MISTAKE_CHECKLIST.json`
-
-## 7. Template Pack Generation
-Creates structure + mandatory clauses.
-
-Output:
-- `TEMPLATE_PACK.json`
-
-## 8. Parallel Agents
-Runs in parallel:
-- Compliance
-- Localization
-- Prayer
-
-Outputs:
-- `COMPLIANCE_REPORT.json`
-- `LOCAL_RULES.json`
-- `PRAYER_PACK.json`
-
-## 9. Optional Agents
-Conditionally runs:
-- Research agent
-- Citation agent
-
-Outputs:
-- `RESEARCH_BUNDLE.json`
-- `CITATION_PACK.json`
-
-## 10. Citation Validation Gate
-Drops unsafe citations.
-
-Output:
-- `CITATION_VALIDATION_REPORT.json`
-
-## 11. Context Merge
-Merges all outputs into unified draft context.
-
-Output:
-- `DRAFT_CONTEXT.json`
-
-If hard_blocks exist → workflow pauses.
-
-## 12. Draft Generation
-Drafting agent generates Draft V1.
-
-Output:
-- `DRAFT_V1.json`
-
-## 13. Quality Review
-Final QA ensures court-grade output.
-
-Outputs:
-- `FINAL_DRAFT.json`
-- `ERROR_REPORT.json`
-
-## 14–17 Mistake DB Learning Loop
-- store candidate rules in staging
-- promote repeated rules
-- update main DB
-- log promotion decisions
-
-## 18. Export
-Final draft exported to DOCX/PDF.
-
-Output:
-- `EXPORT_OUTPUT.json`
+## Architecture Reference
+- CLAUDE.md: `.claude/CLAUDE.md` (concise reference — reflects what's running)
+- Target architecture: `docs/architecture_drafting_agent_v8.4.md` (future)
 
 ---
 
-# 🗄️ Database Tables (Core)
+## How to Run
 
-- `drafting_sessions`
-- `master_facts`
-- `agent_outputs`
-- `validation_reports`
-- `verified_citations`
-- `draft_versions`
-- `mistake_rules_main`
-- `staging_rules`
-- `promotion_logs`
-- `clarification_history`
+### Run single draft
+```bash
+agent_steer/Scripts/python.exe research/run_draft_live.py
+```
 
----
+### Unit tests
+```bash
+agent_steer/Scripts/python.exe -m pytest tests/drafting/ -v
+```
 
-# 🔍 Observability + Audit Trail
-
-This system is designed for legal audit safety.
-
-Every workflow run stores:
-- step execution times
-- full intermediate outputs
-- validation reports
-- stop events
-- clarification history
-- promotion decisions
-
-This enables replay + debugging for court liability defense.
+### Review model benchmark
+```bash
+agent_steer/Scripts/python.exe research/run_review_benchmark.py
+```
 
 ---
 
-# 🧪 Testing Strategy
+## Pipeline Flow (v5.1 — what's running)
 
-## Required Tests
-- Unit tests per agent output schema
-- Unit tests for gates (validation logic)
-- Integration tests for full pipeline
-- Parallel execution tests (Step 8)
-- Hard stop tests (Steps 3, 5, 11)
-- Promotion gate tests (>=3 cases rule)
-- Citation hash verification tests
-- Export tests (DOCX/PDF)
+```
+STAGE 1: CONTEXT GATHERING (~12-15s, 1 LLM call)
+  intake_classify (qwen3.5:cloud)
+    -> rag (4 Qdrant queries, top-8 per query, dedup to ~30)
+    -> enrichment (limitation + provisions + LKB lookup + court_fee parallel)
 
----
+STAGE 2: FREE-TEXT DRAFTING (~30-50s, 1 LLM call)
+  draft_freetext (glm-5:cloud, reasoning=True)
+    Exemplar-guided, LKB-informed, outputs complete court-ready document
 
-# 📌 Success Metrics
+STAGE 3: DETERMINISTIC VALIDATION (~0.1s, zero LLM)
+  evidence_anchoring -> lkb_compliance -> postprocess -> citation_validator
 
-- Hallucination Rate: **0%**
-- Citation Accuracy: **100% verified**
-- Compliance Pass Rate: **95%+**
-- Draft Generation Time: **< 5 minutes**
-- Quality Score: **90%+**
-- Clarification Rate: **< 20% sessions**
-- Promotion Rate: **10–15%**
-- Workflow Completion Rate: **95%+**
+STAGE 4: REVIEW (~40-70s, 1 LLM call — slim payload)
+  review (glm-5:cloud, reasoning=True)
+    Slim context: draft text + gate errors + user request (~5K tokens total)
+    Phase 1: all checks | Phase 2: inline fix -> END
+```
 
 ---
 
-# 🔑 Key Implementation Rules
+## Key Files to Edit
 
-## Non-Negotiable Rules
-- Never draft with unverified facts
-- Never generate citations
-- Never write directly to main mistake DB
-- Never skip hard stop conditions
-- Always log validation decisions
+### To change draft quality
+1. `prompts/draft_prompt.py` — system/user prompt + exemplar loading
+2. `exemplars/` — structural exemplars per cause type
+3. `nodes/draft_single_call.py` — `draft_freetext_node` + context builders
+4. `lkb/civil.py` — LKB entries (acts, limitation, doctrines, terminology)
+
+### To change review behavior
+1. `prompts/review.py` — review system prompt (7 conditional checks)
+2. `nodes/reviews.py` — slim payload builder + routing logic
+3. Settings: `DRAFTING_REVIEW_INLINE_FIX`, `DRAFTING_MAX_REVIEW_CYCLES`
+
+### To add a new cause type
+1. `lkb/civil.py` — add entry with primary_acts, limitation, permitted_doctrines, doc_type_keywords
+2. `lkb/__init__.py` — add aliases in `_CAUSE_TYPE_ALIASES` if needed
+3. `prompts/intake_classify.py` — add to common cause_type values list
+4. Optionally add exemplar in `exemplars/`
+
+### To change models
+1. `app/config/settings.py` — `OLLAMA_DRAFT_MODEL`, `OLLAMA_REVIEW_MODEL`, etc.
+2. Or override in `.env` file
+
+### To change validation gates
+1. `nodes/evidence_anchoring.py` — fact -> intake tracing
+2. `nodes/lkb_compliance.py` — act citation + superseded law check
+3. `nodes/postprocess.py` — formatting fixes
+4. `nodes/citation_validator.py` — provision verification
 
 ---
 
-# 📄 Reference Documentation
+## LKB v3.0 Features
 
-- Claude Skills Overview  
-  https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+### Cause-type aliases (new)
+LKB now resolves near-miss cause types via `_CAUSE_TYPE_ALIASES`:
+- `property_law` -> `recovery_of_possession`
+- `money_recovery` -> `money_recovery_loan`
+- `breach_contract` -> `breach_of_contract`
+- `eviction_plaint` -> `recovery_of_possession`
 
-- LangGraph Workflows & Parallelization  
-  https://docs.langchain.com/oss/python/langgraph/workflows-agents
-
-- DeepAgents (Research Agent Pattern)  
-  https://docs.langchain.com/oss/python/deepagents/overview
+### Conditional fields (new)
+LKB entries can have `_type: "conditional"` fields that resolve at runtime:
+```python
+"limitation": {
+    "_type": "conditional",
+    "_resolve_by": "occupancy_type",
+    "_rules": [
+        {"when": "tenant_determined", "then": {"article": "67", ...}},
+        {"when": "trespasser", "then": {"article": "65", ...}},
+    ],
+    "_default": {"article": "67", ...}
+}
+```
+Resolved by `resolve_entry(entry, user_request_text)` using keyword inference.
 
 ---
 
-# 📌 License
-This project is intended for internal legal automation and compliance usage.
-Not legal advice. Human review recommended for sensitive filings.
+## Debug Checklist
+
+When a draft scores below target:
+
+1. **Check intake** — did it classify cause_type correctly? Check `[INTAKE+CLASSIFY]` log
+2. **Check LKB** — did lookup succeed? Watch for `[LKB] miss` in logs. Check aliases
+3. **Check enrichment** — did limitation resolve? Check `[ENRICHMENT]` log for article selected
+4. **Check conditional resolution** — did `resolve_entry` flatten conditionals? Check `[LKB] conditional` logs
+5. **Check draft prompt** — is LKB brief reaching the draft? Check `_build_lkb_brief_context`
+6. **Check RAG** — are relevant chunks being retrieved? Check `[RAG]` query terms
+7. **Check gates** — are there false positives? Check `[EVIDENCE_ANCHORING]`, `[LKB_COMPLIANCE]`, `[CITATION_VALIDATOR]`
+8. **Check review** — did review fix or break things? Check `[REVIEW]` blocking_issues
+
+### Common issues
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| 35 placeholders | LKB miss -> no acts/limitation fed to draft | Add alias or fix cause_type in intake prompt |
+| Wrong limitation article | Conditional field not resolved | Check `resolve_entry` + `_INFERENCE_MAP` keywords |
+| Hallucinated section content | LLM uses training memory not RAG | Check anti-hallucination instruction in LKB brief builder |
+| Review too slow | Too many tokens sent | Already fixed — slim payload (~5K tokens) |
+| Citation flagged incorrectly | Provision not in verified_provisions | Check enrichment RAG scan + user_cited_provisions |
+| Wrong model used | Settings override in .env | Check `OLLAMA_DRAFT_MODEL` / `OLLAMA_REVIEW_MODEL` |
+
+---
+
+## Review Slim Payload
+
+Review receives ONLY:
+- Draft text (plain text, ~3K tokens)
+- Gate errors summary (compact, ~200 tokens)
+- User request (~200 tokens)
+- doc_type + law_domain (~10 tokens)
+
+NOT sent: RAG chunks, court fee context, legal research context, cited IDs.
+Gates already verified all of that deterministically.

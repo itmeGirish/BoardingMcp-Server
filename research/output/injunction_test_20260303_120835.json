@@ -1,0 +1,1674 @@
+{
+  "user_request": "Prepare a suit for permanent injunction restraining Defendant from interfering with Plaintiff's peaceful possession of schedule property. Plaintiff is in lawful possession. Defendant attempting illegal encroachment. Include temporary injunction prayer under Order 39 Rules 1 & 2 CPC. Draft clearly with property description in schedule.",
+  "intake": {
+    "facts": {
+      "summary": "Plaintiff seeks a permanent injunction to restrain the Defendant from interfering with their peaceful possession of a scheduled property. The Plaintiff claims lawful possession, while the Defendant is alleged to be attempting illegal encroachment. A temporary injunction under Order 39 Rules 1 & 2 CPC is also requested.",
+      "chronology": [],
+      "amounts": {
+        "principal": null,
+        "interest_rate": null,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": null,
+      "city": null,
+      "court_type": "Civil Court",
+      "place": null
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "prayer_type",
+          "value": "Permanent Injunction",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "interim_relief",
+          "value": "Temporary Injunction under Order 39 Rules 1 & 2 CPC",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "property_schedule",
+          "value": "Required",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Civil",
+        "Injunction",
+        "Property Dispute",
+        "Encroachment"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Property Description/Schedule",
+        "Jurisdiction (City/District)",
+        "Cause of Action Date",
+        "Details of Encroachment"
+      ],
+      "assumptions": []
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "permanent_injunction_plaint",
+    "classification": {
+      "topics": [
+        "Permanent Injunction",
+        "Temporary Injunction",
+        "Possession",
+        "Encroachment",
+        "Order 39 Rules 1 & 2 CPC"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Property description/schedule",
+        "Date of cause of action",
+        "Details of interference/encroachment",
+        "Jurisdiction details (District/City)"
+      ],
+      "assumptions": [
+        "Plaintiff has immediate right to possess the property",
+        "Defendant's acts are ongoing or imminent"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "permanent injunction plaint format CPC",
+        "temporary injunction Order 39 Rules 1 2 requirements",
+        "injunction suit pleading essentials possession",
+        "permanent injunction mandatory prayers schedule property",
+        "civil suit court fee calculation injunction"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "permanent injunction plaint format CPC",
+      "temporary injunction Order 39 Rules 1 2 requirements",
+      "injunction suit pleading essentials possession",
+      "permanent injunction mandatory prayers schedule property"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "Page 14 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nCourt cannot make out a new case, not pleaded in the pleadings.62 Where the plaintiff claimed only half share in the \nproperty, he cannot be declared owner of the entire property.63\nIn a suit for permanent injunction, where parties set up rival claims of right, title and interest in respect of the entire \nproperty, it was held by the Andhra Pradesh High Court that grant of preliminary decree for partitiion was not \nsubtainable. When the pleadings are confined to the relief of permanent injunction claimed by the plaintiff and \nopposed by the defendants and when specific issues were framed in respect of specific pleadings and the parties \nhave gone to trial adducing evidence in support of those issues, there is no justification for the trial court in travelling \nbeyond the pleadings, the issues and the evidence and grant a totally different relief of partition not asked for by \neither of the parties. When a larger relief is claimed and the claim is not duly supported and established, but the \nevidence justified grant of a smaller relief, granting of such smaller relief is permissible under O 7, r 7 of the CPC. \nHowever, the converse is not permissible under this Rule. 64 New plea that defendant was in possession as lawful \ntenant was sought to be taken. It was held that the suit for possession could not be",
+        "score": 0.593,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Page 51 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nstatement on the ground that such an application cannot be entertained in the second appeal, the Supreme Court \nset aside the order and remanded the case back to the High Court for consideration of the application afresh in \naccordance with law.10\nIn a suit for temporary and permanent injunction and for recovery of damages, the plaint contained assertions as to \nthe damage caused. The plaint was also valued accordingly for the purposes of court-fees and jurisdiction. There \nwas, however, an omission to claim the relief of damages, in the prayer clause. The omission being accidental, \namendment of the plaint for the inclusion of relief could be allowed. 11 Thus, where the averments regarding adverse \npossession have already been incorporated by the plaintiff in the suit, the amendment of relief clause for declaring \nownership is based on the pleadings. The amendment neither changes the cause of act ion nor the nature of suit, \nhence the application can be allowed. 12 Where the two principal orders have been challenged, simply because of a \ntechnical flaw in not challenging the said three orders, the amendment for seeking to incorporate a ground, and \nthree prayers, which do not in any way change the nature and character of the proceedings, in such a case the \namendment sought to be incorporated, by no",
+        "score": 0.572,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Page 37 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthe ground that the plaintiff was presenting the case in a manner which was not in consonance with the provisions \nof the Family Courts Act 1984 is unwarranted.59\nThe newly introduced O 7, r 11(e) and (f) contemplate rejection of plaint if it is not filed in duplicate or where the \nplaintiff fails to comply with provisions of O 7, r 9 of the Code of Civil Procedure. However, automatic rejection of \nplaint at the first instance is not contemplated. The Supreme Court has held that if there is any defect as \ncontemplated in r 11(e) or non-compliance as referred to in O 7, r 11(f) the court should give an opportunity for \nrectifying the defects, before rejecting the plaint.60\nIn a private employment with no written contract, an employee, on transfer, sought permanent injunction and \ndeclaration that her transfer was illegal and for restraining the employer from holding enquiry against her. It was \nheld by the Supreme Court that the relief, if granted, would amount to enforcing contract of personal service which \nis barred under law, and therefore, the suit should be rejected at the threshold.61\nA plaint cannot be rejected for misjoinder of plaintiffs or misjoinder of causes of act ion. Even if the averments made \nin the plaint are not in conformity with the provisions contained in O 1 or O 2 of the Code of",
+        "score": 0.555,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ee has been passed.40\nWhere a suit for permanent prohibitory injunction was dismissed directing the plaintiff to remove the \nunauthorised construction on the property given in plaint put up during the pendency of the suit, the said \ndirection does not amount to a decree as defined in the Code; but, it certainly amounts to an executable order \nin favour of the defendant, who qualifies as a decree-holder within the meaning of the Code.41\n4. District: Section 2(4). District means the local limits of the jurisdiction of a principal Civil Court of original \njurisdiction (hereinafter called a District Court), and includes the local limits of the ordinary original civil \njurisdiction of a High Court.\nFollowing this definition, the expression District court, as used in the Inventions and Designs Act 6 of 1888, has \nbeen held to include a High Court in the exercise of its ordinary original civil jurisdiction; 42 but it has since been \nheld in Hyath v. Shake, 43 that this is not necessarily so. In a suit for infringement of copyright under the \nCopyright Act 1957, if the subject matter is valued at less than Rs 50,000, it would be the City Civil Court of \nCalcutta and not the High Court which would have jurisdiction. 44 In the absence of such a court having the \njurisdiction, a High Court having the ordinary original civil jurisdiction would be deemed to be the District \nCourt.45 If a",
+        "score": 0.547,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "Page 52 of 97\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nagainst B, a third party C can never be impleaded in that suit. In our opinion, if C can show a fair semblance of title \nor interest he can certainly file an application for impleadment. To take a contrary view would lead to multiplicity of \nproceedings because then C will have to wait until a decree is passed against B, and then file a suit for cancellation \nof the decree on the ground that A had no title in the property in dispute. Clearly, such a view cannot be \ncountenanced.210\nPlacing reliance on the above decision of the Supreme Court, the Jharkhand High Court held that chances of \nsuccess of the petitioner ought not to have been evaluated at the stage of considering an application for \nimpleadment or the chances of the rejection of the claim should not have been evaluated at that stage. At the stage \nof an application under O 1, r 10(2) of CPC, the trial Court has to look at the fact that if the applicant can show a fair \nsemblance of title or interest, he can be impleaded as a party defendant.211\nIn a suit by a co-owner for permanent injunction, other co-owners are not necessary parties if the plaintiff does not \nclaim exclusive ownership. 212 However, an exception to the rule above has been made where the suing co-owner \nclaims exclusive title to the property in derogation or denial of the rights",
+        "score": 0.545,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "Page 41 of 46\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n 1. Subs. by the CPC (Amendment) Act, 2002 (22 of 2002), s 6 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s \n6 for the following :\n (1) When a suit has been duly instituted, a summons may be issued to the defendant to appear and answer the claim and \nto file the written statement of his defence, if any, on such day within thirty days from the day of institution of the suit as \nmay be specified therein:\nProvided that no such summons shall be issued when a defendant has appeared at the presentation of the plaint and \nadmitted the plaintiff's claim:\nProvided further that where the defendant fails to file the written statement on the said day, he shall be allowed to file the \nsame on such other day which shall not be beyond thirty days from the date of service of summons on the defendant, \nas the court may think fit.\nEarlier Subs. by the CPC (Amendment) Act, 1999 (46 of 1999), s 15 (w.e.f. 1-7-2002) vide Notfn. S.O. 603(E), dt. 6-6-2002 \nfor the following:\n(1) When a suit has been duly instituted a summons may be issued to the defendant to appear and answer the claim on a \nday to be therein specified:\nProvided that no such summons shall be issued when the defendant has appeared at the presentation of the plaint and \nadmitted the plaintiffs claim:\nProvided further that where a summons has been",
+        "score": 0.571,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 36 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nPlaintiff claiming to be a co-sharer, filed a suit for enforcing his right of pre-emption. It was held by the Patna High \nCourt that s 43 of the Bihar Land Reforms (Fixation of Ceiling Area and Acquisition of Surplus Land) Act, 1961 \nwould stand as a bar for maintaining a suit claiming right by way of pre-emption. Therefore, the plaint was liable to \nbe rejected.50\nThe use of the expression not lawful which occurs in O 23, r 3A of the CPC, appears to be of wider import than in r \n3 of O 23 of the CPC. The plain meaning of r 3A is that a decree can be set aside on the ground that apart from the \ncompromise on which such decree is passed was not lawful, not only on the ground contained in the Contract Act, \nbut also otherwise such as want of authority to make the compromise. Thus, a suit for declaration of a compromise \ndecree as forged, was held to be barred by O 23, r 3A CPC and as such the plaint is liable to be rejected.51\nWhere in an administrative suit both the defendant and the plaintiff are the joint executors under the Will \nwhereunder a Probate was granted and the plaintiff did not join hands as executor to get the probate, the suit, \nalleging delay in administration of the estate under the Will and claiming allotment of property inspite of the \nadministration of the estate by executors, is",
+        "score": 0.562,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "in support of the application; \n(ii) a copy of the plaint; and \n(iii) copies of documents on which the applicant relies, and \n(b) to file, on the day on which such injunction is granted or on the day immediately following that day, an \naffidavit stating that the copies aforesaid have been so delivered or sent.] \n[391][3A . Court to dispose of application for injunction within thirty days.— Where an injunction has been \ngranted without giving notice to the opposite party, the Court shall make an endeavour to finally dispose of \nthe application within thirty day from the date on which the injunction was granted; and where it is unable so \nto do, it shall record its reasons for such inability.] \n4 . Order for injunction may be discharged, varied or set aside— Any order for an injunction may be \ndischarged, or varied, or set aside by the Court, on application made thereto by any party dissatisfied with \nsuch order: \n[392] [Provided that if in an application for temporary injunction or in any affidavit support such application a \npart has knowingly made a false or misleading statement in relation to a material particular and the injunction \nwas granted without giving notice to the opposite party, the Court shall vacate the injunction unless, for \nreasons to be recorded, it considers that it is not necessary so to do in the interests of justice: \nProvided further that where an",
+        "score": 0.56,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "court under s 151 is not one which a \nparty is required to make under any provisions of the Code of Civil Procedure for setting in motion the \nmachinery of the court. Thus, Art. 122 of the Limitation Act has no application to such an application.\nIf that be the correct position, an application for restoration of the appeal would be not by a party to the \nproceedings and will not fall within the scope of Art. 122 but under Art. 137 of the Limitation Act.34\n5. This section and Order 39, Rules 1 and 2. It is settled principles of law that discretion conferred under O \n39, rr 1 and 2 of the Code of Civil Procedure in granting or refusing temporary injunction is discretionary and \nlike other cases of discretion is vested in courts which is to be exercised in accordance with reasons and sound \njudicial principles. The sound and judicial principles which govern the exercise of discretion conferred under O \n39 rr 1 and 2, of the Code of Civil Procedure upon trial courts are to the effect that a person who seeks a \ntemporary injunction must satisfy the court, first that there is a serious question to be tried in suit to dispel cloud \nof doubt relating to his entitlement and there is probability of plaintiff being entitled to the relief sought by him. \nSecondly, the courts interference is necessary to protect him from threatened species of injuries enumerated \nunder O 39, rr 1 and 2,",
+        "score": 0.585,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Page 11 of 63\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nAn owner of a property has an unrestricted right of alienation of his own property whichever way he likes and \nsuch right cannot be curtailed unless the law provides for putting any such restriction on the rights of the owner. \nTherefore, if the circumstances enumerated in O 38 and O 39 do not exist, the court in exercise of inherent \npower cannot pass any order the effect of which would be to interfere with the substantive rights of an owner. \nThus, in a case, where the plaintiff prayed for an order of injunction restraining the owner-defendant from \ntransferring or alienating his own property over which the plaintiff had no right or for attaching the property, a \nDivision Bench of Calcutta High Court held that such a prayer cannot be granted as it will have overriding effect \nover the substantive right of the owner over the said property.44\nIt was held by the Kerala High Court that no contempt proceedings would lie in respect of disobedience of an \norder of temporary injunction passed by a subordinate Court. Order 39, r 2-A of the CPC provides appropriate \nand adequate remedy. However, it was held that inherent powers under s 151 of the code can also be invoked, \nbut contempt petition can be filed only in exceptional cases.45\nIf the applicant did not seek injunction under s 151 but filed that petition",
+        "score": 0.529,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Madhya Pradesh.— In Order 39, rule 2, in sub-rule (2), insert the following proviso:— \n\"Provided that no such injunction shall be granted— \n(a) where no perpetual injunction could be granted in view of the provisions of section 38 and section 41 of \nthe Specific Relief Act, 1963 (47 of 1963); or \n(b) to stay, the operation of an order for transfer, suspension, reduction in rank, compulsory retirement, \ndismmissal, removable or otherwise termination of service of, or taking charge from, any person appointed to \npublic service and post in connection with the affairs of the State including any employee of any company or \nCorporation owned or controlled by the State Government; or \n(c) to stay, any disciplinary proceeding, pending or intended \nor, the effect of any adverse entry against any, person appointed to public service and post in connection \nwith the affairs of the State including any employee of the company owned or controlled by the State \nGovernment; or \n(d) to restrain any election; or \n(e) to restrain any auction intended to be made or, to restrain the effect of any auction made by the \nGovernment; or to stay the proceedings for the recovery of any dues recoverable as land revenue unless \nadequate security is furnished; and any order for injuction granted in contravention of these provisions shall \nbe void.\" \n[M.P. Act 29 of 1984]. \nUttar Pradesh.— In rule 2, sub-rule",
+        "score": 0.58,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "here says that even against appellate order \ngranting or rejecting the injunction, a second appeal is maintainable in the High Court under sub-r (2) above \nclearly bars an appeal against the appellate order.43\n16. Order under Order 39, Rule 2A. An appeal shall lie from any order passed under O 39, r 2A of the Code of \nCivil Procedure and there is no limitation whatsoever in the rule itself as to the nature of the order passed under \nthis rule. The restricted meaning that in case where the trial court has refused to initiate action under O 39, r 2A \nof the Code of Civil Procedure does not flow from the provision of the above noted rule.44\n17. Orders under the Hindu Marriage Act, 1955. Section 28 of the Hindu Marriage Act, 1955 provides that all \ndecrees and orders passed under the Act may be appealed from under any law for the time being in force. It \nhas been held that this section does not itself confer a right of appeal against orders passed in proceedings \nunder the Act, that is governed by the law for the time being in force, which is the Code of Civil Procedure 1908; \nthat when the order amounts to a decree, it is appealable as a decree; and that in other cases there is no right \nof appeal unless the order falls within this section of O 43, r 1, and that accordingly no appeal lies against an \norder granting or refusing to grant interim maintenance pendente lite. 45 It",
+        "score": 0.531,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "and for injunction restraining the defendant from alienating the suit property, the relief \nof partition and possession can be granted, where it turns out that the plaintiff is not entitled to all the interest \nclaimed by him in the suit property. The normal rule, that relief not found in the pleading should not be granted, is \nnot without an exception. Where substantial matters constituted in the title of all the parties are touched in the \nissues and have been fully put in the evidence, the case does not fall within the above rule.66\nIn a Patna case, plaintiff and defendant alleged independent right, title and interest over the disputed plot. It was \nheld that the court of appeal cannot make out a new case, holding both of them to be entitled to equal share in joint \npossession.67\nOrder 7, r 7 merely states that every plaint shall state specifically the relief which the plaintiff claims, either simply or \nin the alternative. The fact that the prayer for amendment of the relief portion of the plaint was refused, will not \ndisentitle the plaintiff from getting a relief based upon a claim specifically made by him in so many words in the body \nof the plaint itself. Such a technical plea cannot stand in the way of the court granting a claim specifically made in \nthe plaint, being a claim which on the merits, the plaintiff is entitled to get by law.68\n4. Relief not founded on",
+        "score": 0.595,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "nd allow pleas to be taken, which are not \navailable in the pleading.\nIn a petition for divorce filed by the husband, letters written by the husband to the wife were produced by the wife in \nevidence. It was held that husband cannot rely on them in support of ground of cruelty, not made out by him either \nin his petition or in the advocates notice.89 Once it is pleaded that the alienation by a manager was for the discharge \nof an antecedent debt, then the person who challenges the alienation can assail the same, either by establishing \nthat the debt in question was not antecedent at all or by establishing that the debt had been incurred for immoral or \nillegal purposes. But the party must plead the same in the pleadings so that the other side is not prejudiced.90\nIn a suit for permanent injunction, where the plaintiff clearly stated in the plaint that he is the Bhumidhar and owner \nin possession of the property in suit for more than 12 years, it was held by the Allahabad High Court that these were \nthe crucial facts which are essential for the ownership and possession of the property and in view of these clear \naverments he cannot be non-suited for non-compliance of O 6, r 2 of the Code. It was not necessary for the plaintiff \nto state as to how and with what evidence the factum of ownership and possession was to be proved.91\nRule 2 of O 6 mandates that the pleadings must be",
+        "score": 0.576,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "suit.44\nILLUSTRATION\nA succeeds to B's estate by inheritance, and assigns a portion thereof, to C.D. is in possession of the estate, and \ndisputes A's right to succession to it. A and C may under the present rule jointly sue D for recovery of possession of \nthe portions of the estate to which they are entitled, as their claims in respect thereof, are based on a common \nground. It does not matter that A claims by right of inheritance and C under an assignment from A. Both the \nconditions required by the rule are present in the case.\nFurther, having regard to the comprehensive language of this rule, the plaintiffs may sue in a double capacity, if the \nconditions prescribed by this rule are complied with. Thus, where plaintiffs were trustees of a house, part of which \nwas let out by them and the rest occupied by them as tenants; and they sued both as trustees and tenants for an \ninjunction to restrain the defendant from committing a nuisance, it was held that there was no objection to their \nsuing as trustees to protect the reversion and as tenants to enjoy the property free from the nuisance.45\n9. Impleadment of Plaintiff. In a suit where the plaintiff had already entered into compromise with contesting \ndefendant, the proforma defendant filed an application for impleadment as plaintiff. In such a case, the cause of \naction against the contesting defendant ceases as regards the",
+        "score": 0.609,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ii) for an injunction restraining the Government from withholding deposit paid by the \nplaintiff. Upon an objection raised by the government under s 42 of the Specific Relief Act 1963, the court after \nreading the plaint as a whole found that in substance and effect the second relief was for restraining the \ngovernment from enforcing the illegal orders and held the suit maintainable. 6 Thus where the suit is for declaration \nof title and for injunction on the defendant from interfering with plaintiffs possession, a decree for recovery or \npossession can be granted where such relief would not be inconsistent with the plaintiffs case. 7 Where the plaintiff \nhad not expressly based his claim on prescriptive title but all the facts constituting adverse possession were set out \nin the plaint, he was granted a decree on that ground. 8 Where on the facts, the plaintiff was entitled to relief under s \n65 of the Indian Contract Act 1872, but no claim was based on that section, the court nevertheless granted a decree \nunder that section. 9 In a suit for eviction, if the court finds the defendant to be the licensee and not the tenant as \naverred, a decree can still be passed for possession, though the plaint does not contain the averment of the \ndefendant being a licensee to avert another litigation. 10 In a suit for eviction, a decree for eviction against the sub-\nlessee can be granted,",
+        "score": 0.602,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "hen there is no \nsuch order by the court then it is not open for the respondent to contend that he has filed his pleadings only for the \nlimited purpose.11\nIn a suit for injunction under O 39, r 1 and 2, filed against breach of terms of agreement, the plaintiff did not lay the \nfactual base of his claim in the plaint. It was held that no legal arguments arising therefrom can be entertained by \nthe court.12\nIn a partition suit where a widow was in possession of ancestral property of her husband she would not be allowed \nto raise a plea that the said property was given to her by her husband by way of maintenance, when such plea was \nnot taken in the pleadings. It was held that mere possession would not enlarge into full ownership by invoking s 14 \nof the Hindu Succession Act 1956. The court also cannot make out a new case not pleaded in the pleadings and \ndeclare the widow owner of the entire property when she herself claimed only half share therein.13\nPleadings include statement of parties or counsel recorded before the framing of issues, for clarification of the \npoints in dispute and also averment 14 but not a document referred to in the plaint. 15 However, the averments made \nin the pleadings having the effect of admission, cannot be allowed to be abandoned without the same being \nexplained away by cogent and proper evidence.16 The pleadings need not reproduce the exact",
+        "score": 0.599,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "However, the converse is not permissible under this Rule. 64 New plea that defendant was in possession as lawful \ntenant was sought to be taken. It was held that the suit for possession could not be decreed on the ground of \nunlawful possession, when the case regarding the nature of unlawful possession was not even pleaded by the \nplaintiff in his pleadings, nor was it admitted by the defendant in his written statement. In a case before an ordinary \ncivil court, it would not have been possible for the plaintiff to put his case raising question between landlord and \ntenant. Therefore, the plaintiff could never have raised such inconsistent plea in a suit for possession filed in an \nordinary civil court. In a suit for possession before an ordinary civil court the defendant tenant would lose an \nopportunity to raise various possible defences, including the plea to determine the standard rate of rent. Moreover, \nif the plaintiff were allowed to take the advantage of so-called admission of the defendant, in many cases the \ndefendant might be evicted, which would amount to economic death penalty. Defendant would thus be taken by \nsurprise.65\nIn a suit for declaration of title and for injunction restraining the defendant from alienating the suit property, the relief \nof partition and possession can be granted, where it turns out that the plaintiff is not entitled to all the",
+        "score": 0.591,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "le and for possession. 44 So also, when A filed \na suit for a declaration that, he was the adopted son of the last owner, and alleged in the plaint that he was in \npossession of the properties and the court held that his adoption was established, but that he was not in \npossession, and therefore, dismissed the suit as barred under s 42 of the Specific Relief Act 1877 (Now replaced by \nthe Specific Relief Act, 1963). Being one for a bare declaration, it was held that a second suit for possession was \nnot barred under this rule.45\n(ix) Similarly, the dismissal of a suit for an injunction to restrain the defendant from interfering with the plaintiffs \npossession of certain lands, on the ground that the plaintiff was not in possession, is no bar to a subsequent suit for \npossession.46\n(x) A sues B upon a promissory note, but the action fails owing to a material alteration in the note. A is not \nprecluded from subsequently suing B on the original cause of action, that is, from suing B to recover the \nconsideration for which the note was given. The two causes of action are quite distinct.47\n(xi) A, alleging that he is entitled to one moiety of piece of land and that B is entitled to the other moiety, and that B, \nfalsely claiming the ownership of the whole land, demolished the structures standing on A's moiety of the land and \ndispossessed A of his moiety, sues B for damages for",
+        "score": 0.591,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "s was put in \npossession of the property pursuant to the agreement for sale, on a subsequent date, could not have been held to be \nnot maintainable on any ground. Of course, the grant of the relief of injunction in a sense is discretionary and the court \nultimately might or might not have granted the relief to the plaintiffs. The defendants could have also shown that the \nrelief of injunction claimed is merely consequential to the relief of specific performance and was not an independent \nrelief. But that is different from saying that the suit could be dismissed merely on a finding that the prayer for specific \nperformance of agreement was barred by limitation.85",
+        "score": 0.586,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "3 \n \nSECTIONS \n37. Temporary and perpetual injunctions. \nCHAPTER VIII \nPERPETUAL INJUNCTIONS \n38. Perpetual injunction when granted. \n39. Mandatory injunctions. \n40. Damages in lieu of, or in addition to, injunction. \n41. Injunction when refused. \n42. Injunction to perform negative agreement. \n43. [Repealed.]. \n44. [Repealed.]. \nTHE SCHEDULE.",
+        "score": 0.592,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "ight to, or enjoyment of, \nproperty, the court may grant a perpetual injunction in the following cases, namely:— \n(a) where the defendant is trustee of the property for the plaintiff; \n(b) where there exists no standard for ascertaining the actual damage caused, or likely to be \ncaused, by the invasion; \n(c) where the invasion is such that compensation in money would not afford adequate relief; \n(d) where the injunction is necessary to prevent a multiplicity of judicial proceedings. \n39. Mandatory injunctions.—When, to prevent the breach of an obligation, it is necessary to compel \nthe performance of certain acts which the court is capable of enforcing, the court may in its discretion \ngrant an injunction to prevent the breach complained of, and also to compel performance of the requisite \nacts.",
+        "score": 0.586,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "sion of an act, which would be contrary to the rights of the plaintiff. \nCHAPTER VIII \nPERPETUAL INJUNCTIONS \n38. Perpetual injunction when granted.—(1) Subject to the other provisions contained in or referred \nto by this Chapter, a perpetual injunction may be granted to the plaintiff to prevent the breach of an \nobligation existing in his favour, whether expressly or by implication. \n(2) When any such obligation arises from contract, the court shall be guided by the rules and provisions \ncontained in Chapter II. \n(3) When the defendant invades or threatens to invade the plaintiff’s right to, or enjoyment of, property, \nthe court may grant a perpetual injunction in the following cases, namely:— \n(a) where the defendant is trustee of the property for the plaintiff; \n(b) where there exists no standard for ascertaining the actual damage caused, or likely to be caused, \nby the invasion; \n(c) where the invasion is such that compensation in money would not afford adequate relief; \n(d) where the injunction is necessary to prevent a multiplicity of judicial proceedings. \n39. Mandatory injunctions.—When, to prevent the breach of an obligation, it is necessary to compel \nthe performance of certain acts which the court is capable of enforcing, the court may in its discretion grant \nan injunction to prevent the breach complained of, and also to compel performance of the requisite acts.",
+        "score": 0.561,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ALLY \n36. Preventive relief how granted. \n37. Temporary and perpetual injunctions. \nCHAPTER VIII \nPERPETUAL INJUNCTIONS \n38. Perpetual injunction when granted. \n39. Mandatory injunctions. \n40. Damages in lieu of, or in addition to, injunction. \n41. Injunction when refused. \n42. Injunction to perform negative agreement. \n43. [Repealed.] \n44. [Repealed.]",
+        "score": 0.558,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "property is to derogate from the principle of the public policy that there shall be \nno second litigation in respect of the same right and the same property. It cannot be the policy of law that every \ntime an assignment of the decree schedule property take place, the decree-holder should institute a fresh suit \nagainst the assignee, so as to prevent them from disobeying the decree obtained by the decree-holder against \nthe original owner of the property. 1029 The Bombay High Court has held that an injunction can be enforced \nagainst a person who has purchased while execution proceedings are pending, by virtue of the doctrine of lis \npendens . 1030 \nIn execution of a decree for perpetual injunction, the liability of the legal representatives of the judgment-\ndebtors is limited to the extent of interference which was restrained through such decree. It is only such legal \nrepresentatives who defy the decree that can be proceeded against. 1031 \n13. Application of this section to Orders. This section is applicable to orders which are executable as \ndecrees. 1032 \n969 . Kaim Ali v. Lakhikant, (1868) 1 Beng LR 23 (FB); Kristo Ramani v. Kedarnath, (1889) 16 Cal 619; Sinnu v. Santhoji, \n(1903) 26 Mad 428; Brij Mohan v. Manmohan, AIR 1937 All 351: (1937) All 553. \n970 . Dutta v. Tarubala, AIR 1937 Cal 570. \n971 . Sheo Prasad v. Lall, (1924) 4 Pat 120 : AIR 1925 Pat 449. \n972 . Harjang",
+        "score": 0.547,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "junction granted \nagainst the karta. Suit was not filed under O 1, r 8 of the Code of Civil Procedure. The judgment rendered in the \nsuit for permanent injunction against the karta was only a judgment in personam. An injunction acts or operates \nin personam and not in rem, and was therefore, not binding on the other members of the family. An injunction is \na personal remedy and does not run with the land. A decree for an injunction is to be executed against the \npersons against whom the injunction is issued and cannot be executed against any other person in the absence \nof a statutory provision to that effect.62\nHindu Widow and Reversioners. A decree passed against a Hindu widow as representing the state of her",
+        "score": 0.534,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "the decree in the \nscheduled property takes place, the decree-holder should \ninstitute a fresh suit against the assignees so as to prevent him from disobeying \nthe decree obtained by the decree-holder against the original owner of \nthe property.74 A decree for permanent injunction does not prohibit the \ndefendant from instituting a suit for declaration of his title and for recovery of \npossession from the very decree-holder. On legal principles that \ndistinguish between ownership and possession, it is difficult to hold that the \ntransferee is a privy in estate and the decree made against his \ntransferor operates as res judicata against him. 75 A decree passed ex \nparte against one guarantor on the basis of certain documents cannot bind other \nguarantors who had no opportunity to put forth their case.76 \n \nDirection in preliminary decree about inquiry into mesne \nprofits does not adjudicate the controversy and is not res \njudicata. 77 Suit \nwas filed for specific performance of an agreement of sale of undivided one-third \nshare of the defendant. During its pendency, the share \nof the defendant was determined to be less than one-third, in partition. It was \nheld that the partition decree passed during the pendency of the \nsuit between the defendant and her co-owner could not operate as res \njudicata. Even if it be held that plaintiffs suit for specific performance was",
+        "score": 0.528,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "14 \n \n40. Damages in lieu of, or in addition to, i njunction.—(1) The plaintiff in a suit for perpetual \ninjunction under section 38, or mandatory injunction under section 39, may claim damages either in \naddition to, or in substitution for, such injunction and the court may, if it thinks fit, award such damages. \n(2) No relief for damages shall be granted under this section unless the plaintiff has claimed such \nrelief in his plaint: \nProvided that where no such damages have been claimed in the plaint, the court shall, at any stage of \nthe proceedings, allow the plaintiff to amend the plaint on such terms as may be just for including such \nclaim. \n(3) The dismissal of a suit to prevent the breach of an obligation existing in favour of the plaintiff \nshall bar his right to sue for damages for such breach. \n41. Injunction when refused.—An injunction cannot be granted— \n(a) to restrain any person from prosecuting a judicial proceeding pending at the institution of the \nsuit in which the injunction is sought, unless such restraint is necessary to prevent a multiplicity of \nproceedings; \n(b) to restrain any person from instituting or prosecuting any proceeding in a court not sub -\nordinate to that from which the injunction is sought; \n(c) to restrain any person from applying to any legislative body; \n(d) to restrain any person from instituting or prosecuting any proceeding in a",
+        "score": 0.516,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1773:C7055]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1773:C7055 | commentary | 491014025-MULLA-on-CPC-pdf | p.1773 | score=0.593]:\nPage 14 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nCourt cannot make out a new case, not pleaded in the pleadings.62 Where the plaintiff claimed only half share in the \nproperty, he cannot be declared owner of the entire property.63\nIn a suit for permanent injunction, where parties set up rival claims of right, title and interest in respect of the entire \nproperty, it was held by the Andhra Pradesh High Court that grant of preliminary decree for partitiion was not \nsubtainable. When the pleadings are confined to the relief of permanent injunction claimed by the plaintiff and \nopposed by the defendants and when specific issues were framed in respect of specific pleadings and the parties \nhave gone to trial adducing evidence in support of those issues, there is no justification for the trial court in travelling \nbeyond the pleadings, the issues and the evidence and grant a totally different relief of partition not asked for by \neither of the parties. When a larger relief is claimed and the claim is not duly supported and established, but the \nevidence justified grant of a smaller relief, granting of such smaller relief is permissible under O 7, r 7 of the CPC. \nHowever, the converse is not permissible under this Rule. 64 New plea that defendant was in possession as lawful \ntenant was sought to be taken. It was held that the suit for possession could not be\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1700:C6758 | commentary | 491014025-MULLA-on-CPC-pdf | p.1700 | score=0.572]:\nPage 51 of 110\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nstatement on the ground that such an application cannot be entertained in the second appeal, the Supreme Court \nset aside the order and remanded the case back to the High Court for consideration of the application afresh in \naccordance with law.10\nIn a suit for temporary and permanent injunction and for recovery of damages, the plaint contained assertions as to \nthe damage caused. The plaint was also valued accordingly for the purposes of court-fees and jurisdiction. There \nwas, however, an omission to claim the relief of damages, in the prayer clause. The omission being accidental, \namendment of the plaint for the inclusion of relief could be allowed. 11 Thus, where the averments regarding adverse \npossession have already been incorporated by the plaintiff in the suit, the amendment of relief clause for declaring \nownership is based on the pleadings. The amendment neither changes the cause of act ion nor the nature of suit, \nhence the application can be allowed. 12 Where the two principal orders have been challenged, simply because of a \ntechnical flaw in not challenging the said three orders, the amendment for seeking to incorporate a ground, and \nthree prayers, which do not in any way change the nature and character of the proceedings, in such a case the \namendment sought to be incorporated, by no\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1796:C7163 | commentary | 491014025-MULLA-on-CPC-pdf | p.1796 | score=0.555]:\nPage 37 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nthe ground that the plaintiff was presenting the case in a manner which was not in consonance with the provisions \nof the Family Courts Act 1984 is unwarranted.59\nThe newly introduced O 7, r 11(e) and (f) contemplate rejection of plaint if it is not filed in duplicate or where the \nplaintiff fails to comply with provisions of O 7, r 9 of the Code of Civil Procedure. However, automatic rejection of \nplaint at the first instance is not contemplated. The Supreme Court has held that if there is any defect as \ncontemplated in r 11(e) or non-compliance as referred to in O 7, r 11(f) the court should give an opportunity for \nrectifying the defects, before rejecting the plaint.60\nIn a private employment with no written contract, an employee, on transfer, sought permanent injunction and \ndeclaration that her transfer was illegal and for restraining the employer from holding enquiry against her. It was \nheld by the Supreme Court that the relief, if granted, would amount to enforcing contract of personal service which \nis barred under law, and therefore, the suit should be rejected at the threshold.61\nA plaint cannot be rejected for misjoinder of plaintiffs or misjoinder of causes of act ion. Even if the averments made \nin the plaint are not in conformity with the provisions contained in O 1 or O 2 of the Code of\n\n[Document 4 | CPC | CPC:Section2 | commentary | 491014025-MULLA-on-CPC-pdf | Section 2 | p.29 | score=0.547]:\nee has been passed.40\nWhere a suit for permanent prohibitory injunction was dismissed directing the plaintiff to remove the \nunauthorised construction on the property given in plaint put up during the pendency of the suit, the said \ndirection does not amount to a decree as defined in the Code; but, it certainly amounts to an executable order \nin favour of the defendant, who qualifies as a decree-holder within the meaning of the Code.41\n4. District: Section 2(4). District means the local limits of the jurisdiction of a principal Civil Court of original \njurisdiction (hereinafter called a District Court), and includes the local limits of the ordinary original civil \njurisdiction of a High Court.\nFollowing this definition, the expression District court, as used in the Inventions and Designs Act 6 of 1888, has \nbeen held to include a High Court in the exercise of its ordinary original civil jurisdiction; 42 but it has since been \nheld in Hyath v. Shake, 43 that this is not necessarily so. In a suit for infringement of copyright under the \nCopyright Act 1957, if the subject matter is valued at less than Rs 50,000, it would be the City Civil Court of \nCalcutta and not the High Court which would have jurisdiction. 44 In the absence of such a court having the \njurisdiction, a High Court having the ordinary original civil jurisdiction would be deemed to be the District \nCourt.45 If a\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1485:C5898 | commentary | 491014025-MULLA-on-CPC-pdf | p.1485 | score=0.545]:\nPage 52 of 97\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nagainst B, a third party C can never be impleaded in that suit. In our opinion, if C can show a fair semblance of title \nor interest he can certainly file an application for impleadment. To take a contrary view would lead to multiplicity of \nproceedings because then C will have to wait until a decree is passed against B, and then file a suit for cancellation \nof the decree on the ground that A had no title in the property in dispute. Clearly, such a view cannot be \ncountenanced.210\nPlacing reliance on the above decision of the Supreme Court, the Jharkhand High Court held that chances of \nsuccess of the petitioner ought not to have been evaluated at the stage of considering an application for \nimpleadment or the chances of the rejection of the claim should not have been evaluated at that stage. At the stage \nof an application under O 1, r 10(2) of CPC, the trial Court has to look at the fact that if the applicant can show a fair \nsemblance of title or interest, he can be impleaded as a party defendant.211\nIn a suit by a co-owner for permanent injunction, other co-owners are not necessary parties if the plaintiff does not \nclaim exclusive ownership. 212 However, an exception to the rule above has been made where the suing co-owner \nclaims exclusive title to the property in derogation or denial of the rights\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1644:C6513 | commentary | 491014025-MULLA-on-CPC-pdf | p.1644 | score=0.571]:\nPage 41 of 46\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \n 1. Subs. by the CPC (Amendment) Act, 2002 (22 of 2002), s 6 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s \n6 for the following :\n (1) When a suit has been duly instituted, a summons may be issued to the defendant to appear and answer the claim and \nto file the written statement of his defence, if any, on such day within thirty days from the day of institution of the suit as \nmay be specified therein:\nProvided that no such summons shall be issued when a defendant has appeared at the presentation of the plaint and \nadmitted the plaintiff's claim:\nProvided further that where the defendant fails to file the written statement on the said day, he shall be allowed to file the \nsame on such other day which shall not be beyond thirty days from the date of service of summons on the defendant, \nas the court may think fit.\nEarlier Subs. by the CPC (Amendment) Act, 1999 (46 of 1999), s 15 (w.e.f. 1-7-2002) vide Notfn. S.O. 603(E), dt. 6-6-2002 \nfor the following:\n(1) When a suit has been duly instituted a summons may be issued to the defendant to appear and answer the claim on a \nday to be therein specified:\nProvided that no such summons shall be issued when the defendant has appeared at the presentation of the plaint and \nadmitted the plaintiffs claim:\nProvided further that where a summons has been\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1795:C7158 | commentary | 491014025-MULLA-on-CPC-pdf | p.1795 | score=0.562]:\nPage 36 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nPlaintiff claiming to be a co-sharer, filed a suit for enforcing his right of pre-emption. It was held by the Patna High \nCourt that s 43 of the Bihar Land Reforms (Fixation of Ceiling Area and Acquisition of Surplus Land) Act, 1961 \nwould stand as a bar for maintaining a suit claiming right by way of pre-emption. Therefore, the plaint was liable to \nbe rejected.50\nThe use of the expression not lawful which occurs in O 23, r 3A of the CPC, appears to be of wider import than in r \n3 of O 23 of the CPC. The plain meaning of r 3A is that a decree can be set aside on the ground that apart from the \ncompromise on which such decree is passed was not lawful, not only on the ground contained in the Contract Act, \nbut also otherwise such as want of authority to make the compromise. Thus, a suit for declaration of a compromise \ndecree as forged, was held to be barred by O 23, r 3A CPC and as such the plaint is liable to be rejected.51\nWhere in an administrative suit both the defendant and the plaintiff are the joint executors under the Will \nwhereunder a Probate was granted and the plaintiff did not join hands as executor to get the probate, the suit, \nalleging delay in administration of the estate under the Will and claiming allotment of property inspite of the \nadministration of the estate by executors, is\n\n[Document 8 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P142:C531 | bare_act | the code of civil procedure, 1908 | p.142 | score=0.560]:\nin support of the application; \n(ii) a copy of the plaint; and \n(iii) copies of documents on which the applicant relies, and \n(b) to file, on the day on which such injunction is granted or on the day immediately following that day, an \naffidavit stating that the copies aforesaid have been so delivered or sent.] \n[391][3A . Court to dispose of application for injunction within thirty days.— Where an injunction has been \ngranted without giving notice to the opposite party, the Court shall make an endeavour to finally dispose of \nthe application within thirty day from the date on which the injunction was granted; and where it is unable so \nto do, it shall record its reasons for such inability.] \n4 . Order for injunction may be discharged, varied or set aside— Any order for an injunction may be \ndischarged, or varied, or set aside by the Court, on application made thereto by any party dissatisfied with \nsuch order: \n[392] [Provided that if in an application for temporary injunction or in any affidavit support such application a \npart has knowingly made a false or misleading statement in relation to a material particular and the injunction \nwas granted without giving notice to the opposite party, the Court shall vacate the injunction unless, for \nreasons to be recorded, it considers that it is not necessary so to do in the interests of justice: \nProvided further that where an\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1356:C5384]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1356:C5384 | commentary | 491014025-MULLA-on-CPC-pdf | Order 39 | p.1356 | score=0.585]:\ncourt under s 151 is not one which a \nparty is required to make under any provisions of the Code of Civil Procedure for setting in motion the \nmachinery of the court. Thus, Art. 122 of the Limitation Act has no application to such an application.\nIf that be the correct position, an application for restoration of the appeal would be not by a party to the \nproceedings and will not fall within the scope of Art. 122 but under Art. 137 of the Limitation Act.34\n5. This section and Order 39, Rules 1 and 2. It is settled principles of law that discretion conferred under O \n39, rr 1 and 2 of the Code of Civil Procedure in granting or refusing temporary injunction is discretionary and \nlike other cases of discretion is vested in courts which is to be exercised in accordance with reasons and sound \njudicial principles. The sound and judicial principles which govern the exercise of discretion conferred under O \n39 rr 1 and 2, of the Code of Civil Procedure upon trial courts are to the effect that a person who seeks a \ntemporary injunction must satisfy the court, first that there is a serious question to be tried in suit to dispel cloud \nof doubt relating to his entitlement and there is probability of plaintiff being entitled to the relief sought by him. \nSecondly, the courts interference is necessary to protect him from threatened species of injuries enumerated \nunder O 39, rr 1 and 2,\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1358:C5391 | commentary | 491014025-MULLA-on-CPC-pdf | Order 39 | p.1358 | score=0.529]:\nPage 11 of 63\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nAn owner of a property has an unrestricted right of alienation of his own property whichever way he likes and \nsuch right cannot be curtailed unless the law provides for putting any such restriction on the rights of the owner. \nTherefore, if the circumstances enumerated in O 38 and O 39 do not exist, the court in exercise of inherent \npower cannot pass any order the effect of which would be to interfere with the substantive rights of an owner. \nThus, in a case, where the plaintiff prayed for an order of injunction restraining the owner-defendant from \ntransferring or alienating his own property over which the plaintiff had no right or for attaching the property, a \nDivision Bench of Calcutta High Court held that such a prayer cannot be granted as it will have overriding effect \nover the substantive right of the owner over the said property.44\nIt was held by the Kerala High Court that no contempt proceedings would lie in respect of disobedience of an \norder of temporary injunction passed by a subordinate Court. Order 39, r 2-A of the CPC provides appropriate \nand adequate remedy. However, it was held that inherent powers under s 151 of the code can also be invoked, \nbut contempt petition can be filed only in exceptional cases.45\nIf the applicant did not seek injunction under s 151 but filed that petition\n\n[Document 3 | CPC | CPC:Order39Rule2 | bare_act | the code of civil procedure, 1908 | Section 38 | p.141 | score=0.580]:\nMadhya Pradesh.— In Order 39, rule 2, in sub-rule (2), insert the following proviso:— \n\"Provided that no such injunction shall be granted— \n(a) where no perpetual injunction could be granted in view of the provisions of section 38 and section 41 of \nthe Specific Relief Act, 1963 (47 of 1963); or \n(b) to stay, the operation of an order for transfer, suspension, reduction in rank, compulsory retirement, \ndismmissal, removable or otherwise termination of service of, or taking charge from, any person appointed to \npublic service and post in connection with the affairs of the State including any employee of any company or \nCorporation owned or controlled by the State Government; or \n(c) to stay, any disciplinary proceeding, pending or intended \nor, the effect of any adverse entry against any, person appointed to public service and post in connection \nwith the affairs of the State including any employee of the company owned or controlled by the State \nGovernment; or \n(d) to restrain any election; or \n(e) to restrain any auction intended to be made or, to restrain the effect of any auction made by the \nGovernment; or to stay the proceedings for the recovery of any dues recoverable as land revenue unless \nadequate security is furnished; and any order for injuction granted in contravention of these provisions shall \nbe void.\" \n[M.P. Act 29 of 1984]. \nUttar Pradesh.— In rule 2, sub-rule\n\n[Document 4 | CPC | CPC:Section28 | commentary | 491014025-MULLA-on-CPC-pdf | Section 28 | p.1105 | score=0.531]:\nhere says that even against appellate order \ngranting or rejecting the injunction, a second appeal is maintainable in the High Court under sub-r (2) above \nclearly bars an appeal against the appellate order.43\n16. Order under Order 39, Rule 2A. An appeal shall lie from any order passed under O 39, r 2A of the Code of \nCivil Procedure and there is no limitation whatsoever in the rule itself as to the nature of the order passed under \nthis rule. The restricted meaning that in case where the trial court has refused to initiate action under O 39, r 2A \nof the Code of Civil Procedure does not flow from the provision of the above noted rule.44\n17. Orders under the Hindu Marriage Act, 1955. Section 28 of the Hindu Marriage Act, 1955 provides that all \ndecrees and orders passed under the Act may be appealed from under any law for the time being in force. It \nhas been held that this section does not itself confer a right of appeal against orders passed in proceedings \nunder the Act, that is governed by the law for the time being in force, which is the Code of Civil Procedure 1908; \nthat when the order amounts to a decree, it is appealable as a decree; and that in other cases there is no right \nof appeal unless the order falls within this section of O 43, r 1, and that accordingly no appeal lies against an \norder granting or refusing to grant interim maintenance pendente lite. 45 It\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1773:C7057]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1773:C7057 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 | p.1773 | score=0.595]:\nand for injunction restraining the defendant from alienating the suit property, the relief \nof partition and possession can be granted, where it turns out that the plaintiff is not entitled to all the interest \nclaimed by him in the suit property. The normal rule, that relief not found in the pleading should not be granted, is \nnot without an exception. Where substantial matters constituted in the title of all the parties are touched in the \nissues and have been fully put in the evidence, the case does not fall within the above rule.66\nIn a Patna case, plaintiff and defendant alleged independent right, title and interest over the disputed plot. It was \nheld that the court of appeal cannot make out a new case, holding both of them to be entitled to equal share in joint \npossession.67\nOrder 7, r 7 merely states that every plaint shall state specifically the relief which the plaintiff claims, either simply or \nin the alternative. The fact that the prayer for amendment of the relief portion of the plaint was refused, will not \ndisentitle the plaintiff from getting a relief based upon a claim specifically made by him in so many words in the body \nof the plaint itself. Such a technical plea cannot stand in the way of the court granting a claim specifically made in \nthe plaint, being a claim which on the merits, the plaintiff is entitled to get by law.68\n4. Relief not founded on\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1657:C6566 | commentary | 491014025-MULLA-on-CPC-pdf | Rule 2 | p.1657 | score=0.576]:\nnd allow pleas to be taken, which are not \navailable in the pleading.\nIn a petition for divorce filed by the husband, letters written by the husband to the wife were produced by the wife in \nevidence. It was held that husband cannot rely on them in support of ground of cruelty, not made out by him either \nin his petition or in the advocates notice.89 Once it is pleaded that the alienation by a manager was for the discharge \nof an antecedent debt, then the person who challenges the alienation can assail the same, either by establishing \nthat the debt in question was not antecedent at all or by establishing that the debt had been incurred for immoral or \nillegal purposes. But the party must plead the same in the pleadings so that the other side is not prejudiced.90\nIn a suit for permanent injunction, where the plaintiff clearly stated in the plaint that he is the Bhumidhar and owner \nin possession of the property in suit for more than 12 years, it was held by the Allahabad High Court that these were \nthe crucial facts which are essential for the ownership and possession of the property and in view of these clear \naverments he cannot be non-suited for non-compliance of O 6, r 2 of the Code. It was not necessary for the plaintiff \nto state as to how and with what evidence the factum of ownership and possession was to be proved.91\nRule 2 of O 6 mandates that the pleadings must be\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1440:C5683 | commentary | 491014025-MULLA-on-CPC-pdf | p.1440 | score=0.609]:\nsuit.44\nILLUSTRATION\nA succeeds to B's estate by inheritance, and assigns a portion thereof, to C.D. is in possession of the estate, and \ndisputes A's right to succession to it. A and C may under the present rule jointly sue D for recovery of possession of \nthe portions of the estate to which they are entitled, as their claims in respect thereof, are based on a common \nground. It does not matter that A claims by right of inheritance and C under an assignment from A. Both the \nconditions required by the rule are present in the case.\nFurther, having regard to the comprehensive language of this rule, the plaintiffs may sue in a double capacity, if the \nconditions prescribed by this rule are complied with. Thus, where plaintiffs were trustees of a house, part of which \nwas let out by them and the rest occupied by them as tenants; and they sued both as trustees and tenants for an \ninjunction to restrain the defendant from committing a nuisance, it was held that there was no objection to their \nsuing as trustees to protect the reversion and as tenants to enjoy the property free from the nuisance.45\n9. Impleadment of Plaintiff. In a suit where the plaintiff had already entered into compromise with contesting \ndefendant, the proforma defendant filed an application for impleadment as plaintiff. In such a case, the cause of \naction against the contesting defendant ceases as regards the\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1770:C7041 | commentary | 491014025-MULLA-on-CPC-pdf | p.1770 | score=0.602]:\nii) for an injunction restraining the Government from withholding deposit paid by the \nplaintiff. Upon an objection raised by the government under s 42 of the Specific Relief Act 1963, the court after \nreading the plaint as a whole found that in substance and effect the second relief was for restraining the \ngovernment from enforcing the illegal orders and held the suit maintainable. 6 Thus where the suit is for declaration \nof title and for injunction on the defendant from interfering with plaintiffs possession, a decree for recovery or \npossession can be granted where such relief would not be inconsistent with the plaintiffs case. 7 Where the plaintiff \nhad not expressly based his claim on prescriptive title but all the facts constituting adverse possession were set out \nin the plaint, he was granted a decree on that ground. 8 Where on the facts, the plaintiff was entitled to relief under s \n65 of the Indian Contract Act 1872, but no claim was based on that section, the court nevertheless granted a decree \nunder that section. 9 In a suit for eviction, if the court finds the defendant to be the licensee and not the tenant as \naverred, a decree can still be passed for possession, though the plaint does not contain the averment of the \ndefendant being a licensee to avert another litigation. 10 In a suit for eviction, a decree for eviction against the sub-\nlessee can be granted,\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1651:C6540 | commentary | 491014025-MULLA-on-CPC-pdf | p.1651 | score=0.599]:\nhen there is no \nsuch order by the court then it is not open for the respondent to contend that he has filed his pleadings only for the \nlimited purpose.11\nIn a suit for injunction under O 39, r 1 and 2, filed against breach of terms of agreement, the plaintiff did not lay the \nfactual base of his claim in the plaint. It was held that no legal arguments arising therefrom can be entertained by \nthe court.12\nIn a partition suit where a widow was in possession of ancestral property of her husband she would not be allowed \nto raise a plea that the said property was given to her by her husband by way of maintenance, when such plea was \nnot taken in the pleadings. It was held that mere possession would not enlarge into full ownership by invoking s 14 \nof the Hindu Succession Act 1956. The court also cannot make out a new case not pleaded in the pleadings and \ndeclare the widow owner of the entire property when she herself claimed only half share therein.13\nPleadings include statement of parties or counsel recorded before the framing of issues, for clarification of the \npoints in dispute and also averment 14 but not a document referred to in the plaint. 15 However, the averments made \nin the pleadings having the effect of admission, cannot be allowed to be abandoned without the same being \nexplained away by cogent and proper evidence.16 The pleadings need not reproduce the exact\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1773:C7056 | commentary | 491014025-MULLA-on-CPC-pdf | p.1773 | score=0.591]:\nHowever, the converse is not permissible under this Rule. 64 New plea that defendant was in possession as lawful \ntenant was sought to be taken. It was held that the suit for possession could not be decreed on the ground of \nunlawful possession, when the case regarding the nature of unlawful possession was not even pleaded by the \nplaintiff in his pleadings, nor was it admitted by the defendant in his written statement. In a case before an ordinary \ncivil court, it would not have been possible for the plaintiff to put his case raising question between landlord and \ntenant. Therefore, the plaintiff could never have raised such inconsistent plea in a suit for possession filed in an \nordinary civil court. In a suit for possession before an ordinary civil court the defendant tenant would lose an \nopportunity to raise various possible defences, including the plea to determine the standard rate of rent. Moreover, \nif the plaintiff were allowed to take the advantage of so-called admission of the defendant, in many cases the \ndefendant might be evicted, which would amount to economic death penalty. Defendant would thus be taken by \nsurprise.65\nIn a suit for declaration of title and for injunction restraining the defendant from alienating the suit property, the relief \nof partition and possession can be granted, where it turns out that the plaintiff is not entitled to all the\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1540:C6123 | commentary | 491014025-MULLA-on-CPC-pdf | p.1540 | score=0.591]:\nle and for possession. 44 So also, when A filed \na suit for a declaration that, he was the adopted son of the last owner, and alleged in the plaint that he was in \npossession of the properties and the court held that his adoption was established, but that he was not in \npossession, and therefore, dismissed the suit as barred under s 42 of the Specific Relief Act 1877 (Now replaced by \nthe Specific Relief Act, 1963). Being one for a bare declaration, it was held that a second suit for possession was \nnot barred under this rule.45\n(ix) Similarly, the dismissal of a suit for an injunction to restrain the defendant from interfering with the plaintiffs \npossession of certain lands, on the ground that the plaintiff was not in possession, is no bar to a subsequent suit for \npossession.46\n(x) A sues B upon a promissory note, but the action fails owing to a material alteration in the note. A is not \nprecluded from subsequently suing B on the original cause of action, that is, from suing B to recover the \nconsideration for which the note was given. The two causes of action are quite distinct.47\n(xi) A, alleging that he is entitled to one moiety of piece of land and that B is entitled to the other moiety, and that B, \nfalsely claiming the ownership of the whole land, demolished the structures standing on A's moiety of the land and \ndispossessed A of his moiety, sues B for damages for\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P151:C617 | commentary | 491014025-MULLA-on-CPC-pdf | p.151 | score=0.586]:\ns was put in \npossession of the property pursuant to the agreement for sale, on a subsequent date, could not have been held to be \nnot maintainable on any ground. Of course, the grant of the relief of injunction in a sense is discretionary and the court \nultimately might or might not have granted the relief to the plaintiffs. The defendants could have also shown that the \nrelief of injunction claimed is merely consequential to the relief of specific performance and was not an independent \nrelief. But that is different from saying that the suit could be dismissed merely on a finding that the prayer for specific \nperformance of agreement was barred by limitation.85\n\n[TOP_MATCH: Specific Relief Act | Specific Relief Act:books/specific_relief_act.pdf:P3:C4]\n\n[Document 1 | Specific Relief Act | Specific Relief Act:books/specific_relief_act.pdf:P3:C4 | bare_act | specific relief act | p.3 | score=0.592]:\n3 \n \nSECTIONS \n37. Temporary and perpetual injunctions. \nCHAPTER VIII \nPERPETUAL INJUNCTIONS \n38. Perpetual injunction when granted. \n39. Mandatory injunctions. \n40. Damages in lieu of, or in addition to, injunction. \n41. Injunction when refused. \n42. Injunction to perform negative agreement. \n43. [Repealed.]. \n44. [Repealed.]. \nTHE SCHEDULE.\n\n[Document 2 | Specific Relief Act | Specific Relief Act:books/Specific_Relief_Act_1963.pdf:P13:C37 | bare_act | Specific Relief Act 1963 | p.13 | score=0.586]:\night to, or enjoyment of, \nproperty, the court may grant a perpetual injunction in the following cases, namely:— \n(a) where the defendant is trustee of the property for the plaintiff; \n(b) where there exists no standard for ascertaining the actual damage caused, or likely to be \ncaused, by the invasion; \n(c) where the invasion is such that compensation in money would not afford adequate relief; \n(d) where the injunction is necessary to prevent a multiplicity of judicial proceedings. \n39. Mandatory injunctions.—When, to prevent the breach of an obligation, it is necessary to compel \nthe performance of certain acts which the court is capable of enforcing, the court may in its discretion \ngrant an injunction to prevent the breach complained of, and also to compel performance of the requisite \nacts.\n\n[Document 3 | Specific Relief Act | Specific Relief Act:books/specific_relief_act.pdf:P14:C41 | bare_act | specific relief act | p.14 | score=0.561]:\nsion of an act, which would be contrary to the rights of the plaintiff. \nCHAPTER VIII \nPERPETUAL INJUNCTIONS \n38. Perpetual injunction when granted.—(1) Subject to the other provisions contained in or referred \nto by this Chapter, a perpetual injunction may be granted to the plaintiff to prevent the breach of an \nobligation existing in his favour, whether expressly or by implication. \n(2) When any such obligation arises from contract, the court shall be guided by the rules and provisions \ncontained in Chapter II. \n(3) When the defendant invades or threatens to invade the plaintiff’s right to, or enjoyment of, property, \nthe court may grant a perpetual injunction in the following cases, namely:— \n(a) where the defendant is trustee of the property for the plaintiff; \n(b) where there exists no standard for ascertaining the actual damage caused, or likely to be caused, \nby the invasion; \n(c) where the invasion is such that compensation in money would not afford adequate relief; \n(d) where the injunction is necessary to prevent a multiplicity of judicial proceedings. \n39. Mandatory injunctions.—When, to prevent the breach of an obligation, it is necessary to compel \nthe performance of certain acts which the court is capable of enforcing, the court may in its discretion grant \nan injunction to prevent the breach complained of, and also to compel performance of the requisite acts.\n\n[Document 4 | Specific Relief Act | Specific Relief Act:books/Specific_Relief_Act_1963.pdf:P2:C3 | bare_act | Specific Relief Act 1963 | p.2 | score=0.558]:\nALLY \n36. Preventive relief how granted. \n37. Temporary and perpetual injunctions. \nCHAPTER VIII \nPERPETUAL INJUNCTIONS \n38. Perpetual injunction when granted. \n39. Mandatory injunctions. \n40. Damages in lieu of, or in addition to, injunction. \n41. Injunction when refused. \n42. Injunction to perform negative agreement. \n43. [Repealed.] \n44. [Repealed.]\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P721:C2755 | commentary | 491014025-MULLA-on-CPC-pdf | p.721 | score=0.547]:\nproperty is to derogate from the principle of the public policy that there shall be \nno second litigation in respect of the same right and the same property. It cannot be the policy of law that every \ntime an assignment of the decree schedule property take place, the decree-holder should institute a fresh suit \nagainst the assignee, so as to prevent them from disobeying the decree obtained by the decree-holder against \nthe original owner of the property. 1029 The Bombay High Court has held that an injunction can be enforced \nagainst a person who has purchased while execution proceedings are pending, by virtue of the doctrine of lis \npendens . 1030 \nIn execution of a decree for perpetual injunction, the liability of the legal representatives of the judgment-\ndebtors is limited to the extent of interference which was restrained through such decree. It is only such legal \nrepresentatives who defy the decree that can be proceeded against. 1031 \n13. Application of this section to Orders. This section is applicable to orders which are executable as \ndecrees. 1032 \n969 . Kaim Ali v. Lakhikant, (1868) 1 Beng LR 23 (FB); Kristo Ramani v. Kedarnath, (1889) 16 Cal 619; Sinnu v. Santhoji, \n(1903) 26 Mad 428; Brij Mohan v. Manmohan, AIR 1937 All 351: (1937) All 553. \n970 . Dutta v. Tarubala, AIR 1937 Cal 570. \n971 . Sheo Prasad v. Lall, (1924) 4 Pat 120 : AIR 1925 Pat 449. \n972 . Harjang\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P331:C1077 | commentary | 491014025-MULLA-on-CPC-pdf | p.331 | score=0.534]:\njunction granted \nagainst the karta. Suit was not filed under O 1, r 8 of the Code of Civil Procedure. The judgment rendered in the \nsuit for permanent injunction against the karta was only a judgment in personam. An injunction acts or operates \nin personam and not in rem, and was therefore, not binding on the other members of the family. An injunction is \na personal remedy and does not run with the land. A decree for an injunction is to be executed against the \npersons against whom the injunction is issued and cannot be executed against any other person in the absence \nof a statutory provision to that effect.62\nHindu Widow and Reversioners. A decree passed against a Hindu widow as representing the state of her\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P259:C960 | commentary | 491014025-MULLA-on-CPC-pdf | p.259 | score=0.528]:\nthe decree in the \nscheduled property takes place, the decree-holder should \ninstitute a fresh suit against the assignees so as to prevent him from disobeying \nthe decree obtained by the decree-holder against the original owner of \nthe property.74 A decree for permanent injunction does not prohibit the \ndefendant from instituting a suit for declaration of his title and for recovery of \npossession from the very decree-holder. On legal principles that \ndistinguish between ownership and possession, it is difficult to hold that the \ntransferee is a privy in estate and the decree made against his \ntransferor operates as res judicata against him. 75 A decree passed ex \nparte against one guarantor on the basis of certain documents cannot bind other \nguarantors who had no opportunity to put forth their case.76 \n \nDirection in preliminary decree about inquiry into mesne \nprofits does not adjudicate the controversy and is not res \njudicata. 77 Suit \nwas filed for specific performance of an agreement of sale of undivided one-third \nshare of the defendant. During its pendency, the share \nof the defendant was determined to be less than one-third, in partition. It was \nheld that the partition decree passed during the pendency of the \nsuit between the defendant and her co-owner could not operate as res \njudicata. Even if it be held that plaintiffs suit for specific performance was\n\n[Document 8 | Specific Relief Act | Specific Relief Act:Section38 | bare_act | Specific Relief Act 1963 | Section 38 | p.14 | score=0.516]:\n14 \n \n40. Damages in lieu of, or in addition to, i njunction.—(1) The plaintiff in a suit for perpetual \ninjunction under section 38, or mandatory injunction under section 39, may claim damages either in \naddition to, or in substitution for, such injunction and the court may, if it thinks fit, award such damages. \n(2) No relief for damages shall be granted under this section unless the plaintiff has claimed such \nrelief in his plaint: \nProvided that where no such damages have been claimed in the plaint, the court shall, at any stage of \nthe proceedings, allow the plaintiff to amend the plaint on such terms as may be just for including such \nclaim. \n(3) The dismissal of a suit to prevent the breach of an obligation existing in favour of the plaintiff \nshall bar his right to sue for damages for such breach. \n41. Injunction when refused.—An injunction cannot be granted— \n(a) to restrain any person from prosecuting a judicial proceeding pending at the institution of the \nsuit in which the injunction is sought, unless such restraint is necessary to prevent a multiplicity of \nproceedings; \n(b) to restrain any person from instituting or prosecuting any proceeding in a court not sub -\nordinate to that from which the injunction is sought; \n(c) to restrain any person from applying to any legislative body; \n(d) to restrain any person from instituting or prosecuting any proceeding in a"
+  },
+  "legal_research": {
+    "queries": [
+      "Permanent Injunction limitation period India years accrual date right to sue Civil Court",
+      "permanent injunction plaint mandatory procedural requirements India Civil Court"
+    ],
+    "results": [
+      {
+        "title": "Order VII Rule 11 CPC | Plaint Can Be Rejected Only When Limitation Bar Is Apparent Ex Facie From Plaint Averments: Andhra Pradesh High Court",
+        "url": "https://www.verdictum.in/court-updates/high-courts/andhra-pradesh-high-court/mikkilineni-yujaya-dinesh-babu-ors-v-pasala-satyavathi-limitation-1609082",
+        "snippet": "The Court noted that Article 58 of the Limitation Act prescribes a period of three years for suits seeking a declaration, computed from the date when the right to sue first accrues.",
+        "date": ""
+      },
+      {
+        "title": "No limitation period for execution of a decree for permanent injunction : Article 136 of the Limitation Act - Lexology",
+        "url": "https://www.lexology.com/library/detail.aspx?g=ac2e3213-cb04-49cb-a241-111b2cbc7e42",
+        "snippet": "The Supreme Court of India (“SC”) in Bhudev Mallick Alias Bhudeb Mallick & Anr. V. Ranajit Ghoshal & Ors.,MANU/ SC/ 0174/2025 has laid down principles regarding the limitation period for enforcement of a decree of permanent injunction. The SC set aside the order of High Court of Calcutta and thereby the order of the Executing Court which directed the arrest and detention of the Appellants / judgment debtors in civil prison and for attachment of their property.",
+        "date": ""
+      },
+      {
+        "title": "1 PAPER PRESENTATION ON LIMITATION; SUITS, APPEALS AND APPLICATIONS &",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec01a0ba2648acd23dc7a5829968ce53/uploads/2025/04/2025042945.pdf",
+        "snippet": "Three years When the right to sue accrues. The Hon’ble Supreme Court of India in Gurwanthbhai Mulchand Shah and others V. Anton · Elis Farel and others reported in 2006 (4) ALT 74 (SC) the residuary article 113 applies in a suit for · permanent injunction and the Court has to decide when ...",
+        "date": ""
+      },
+      {
+        "title": "When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law",
+        "url": "https://corporate.cyrilamarchandblogs.com/2020/06/suits-falling-under-article-113-of-the-limitation-act/",
+        "snippet": "A single residuary article may be provided fixing the period of limitation as three years from the time when the right to sue accrues”. As is evident, the Law Commission was mindful to omit the term “first” in Article 120, as far back as 1956.",
+        "date": ""
+      },
+      {
+        "title": "R.Kumar vs G.Jaganmoorthy",
+        "url": "https://indiankanoon.org/doc/90504372/",
+        "snippet": "Under this Article, a suit can be filed within 3 years from the date of accrual of the cause of action . The Division Bench has rightly held that the cause of action for a suit for injunction arose each time when there was a threat of recovery by the respondents.",
+        "date": ""
+      },
+      {
+        "title": "10 Types of Injunctions under Civil Laws",
+        "url": "https://www.indialaw.in/blog/civil/types-of-injunctions-under-civil-laws/",
+        "snippet": "A permanent injunction, popularly referred to as perpetual injunction, can be granted by the court by passing a decree made after hearing and upon the merits of the case . Once such decree is passed, the defendant is permanently prohibited from ...",
+        "date": ""
+      },
+      {
+        "title": "1 DECLARATION AND INJUNCTION SUITS",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec03333cb763facc6ce398ff83845f22/uploads/2024/03/2024031477.pdf",
+        "snippet": "INGREDIENTS: It is well settled that while granting injunction plaintiff must · show: (i) existence of prima facie case, (ii) balance of convenience and (iii) the injury must be of an irreparable loss that cannot be compensated in terms ... Injunction. In brief Temporary Injunctions are the ...",
+        "date": ""
+      },
+      {
+        "title": "Permanent injunction - iPleaders",
+        "url": "https://blog.ipleaders.in/permanent-injunction/",
+        "snippet": "Since it is a final or permanent remedy, the court can grant a permanent injunction only after it has heard both parties on the merits of the dispute and decides to pass a decree on the merits of the dispute .",
+        "date": ""
+      },
+      {
+        "title": "Injunctions Under Indian Civil Law: Types & Procedures",
+        "url": "https://www.raizadaassociates.com/blog/injunctions-under-indian-civil-law/",
+        "snippet": "Section 36: Types of reliefs (prohibitory and mandatory) Section 37: Distinction between temporary and perpetual injunctions · Sections 38–42: Grounds, conditions, and limitations for granting injunctions · Order XXXIX Rules 1 & 2 govern temporary injunctions during the pendency of a civil suit. Rule 2A deals with consequences of disobedience of an injunction. Indian courts have consistently held that an injunction is a discretionary remedy granted only when:",
+        "date": ""
+      },
+      {
+        "title": "SUIT FOR PERMANENT AND MANDATORY INJUNCTION ALONG WITH AFFIDAVIT",
+        "url": "https://lawvs.com/drafts/suit-for-permanent-and-mandatory-injunction-along-with-affidavit-36",
+        "snippet": "SENIOR CIVIL JUDGE, SAKET COURT, SOUTH EAST DISTRICT, DELHI · CS. CASE NO………../XXXX ... Sh. XXXXXXX ...Plaintiff ... Sh. XXXXXXX & Anr. …Defendants ... I, Sh. XXXXXX Pal S/o Late Sh. XXXXXXXXX, R/o H. No. XXX, XXXXX, New Delhi-XXXXXX the deponent, do hereby solemnly affirm and declare as under: - 1. That I, deponent is the plaintiff in the accompanying suit for permanent injunction & mandatory injunction filed by deponent.",
+        "date": ""
+      }
+    ],
+    "summary": "[Order VII Rule 11 CPC | Plaint Can Be Rejected Only When Limitation Bar Is Apparent Ex Facie From Plaint Averments: Andhra Pradesh High Court] The Court noted that Article 58 of the Limitation Act prescribes a period of three years for suits seeking a declaration, computed from the date when the right to sue first accrues.\n[No limitation period for execution of a decree for permanent injunction : Article 136 of the Limitation Act - Lexology] The Supreme Court of India (“SC”) in Bhudev Mallick Alias Bhudeb Mallick & Anr. V. Ranajit Ghoshal & Ors.,MANU/ SC/ 0174/2025 has laid down principles regarding the limitation period for enforcement of a decree of permanent injunction. The SC set aside the order of High Court of Calcutta and thereby the order of the Executing Court which directed the arrest and detention of the Appellants / judgment debtors in civil prison and for attachment of their property.\n[1 PAPER PRESENTATION ON LIMITATION; SUITS, APPEALS AND APPLICATIONS &] Three years When the right to sue accrues. The Hon’ble Supreme Court of India in Gurwanthbhai Mulchand Shah and others V. Anton · Elis Farel and others reported in 2006 (4) ALT 74 (SC) the residuary article 113 applies in a suit for · permanent injunction and the Court has to decide when ...\n[When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law] A single residuary article may be provided fixing the period of limitation as three years from the time when the right to sue accrues”. As is evident, the Law Commission was mindful to omit the term “first” in Article 120, as far back as 1956.\n[R.Kumar vs G.Jaganmoorthy] Under this Article, a suit can be filed within 3 years from the date of accrual of the cause of action . The Division Bench has rightly held that the cause of action for a suit for injunction arose each time when there was a threat of recovery by the respondents.\n[Injunctions Under Indian Civil Law: Types & Procedures] Section 36: Types of reliefs (prohibitory and mandatory) Section 37: Distinction between temporary and perpetual injunctions · Sections 38–42: Grounds, conditions, and limitations for granting injunctions · Order XXXIX Rules 1 & 2 govern temporary injunctions during the pendency of a civil suit. Rule 2A deals with consequences of disobedience of an injunction. Indian courts have consistently held that an injunction is a discretionary remedy granted only when:\n[SUIT FOR PERMANENT AND MANDATORY INJUNCTION ALONG WITH AFFIDAVIT] SENIOR CIVIL JUDGE, SAKET COURT, SOUTH EAST DISTRICT, DELHI · CS. CASE NO………../XXXX ... Sh. XXXXXXX ...Plaintiff ... Sh. XXXXXXX & Anr. …Defendants ... I, Sh. XXXXXX Pal S/o Late Sh. XXXXXXXXX, R/o H. No. XXX, XXXXX, New Delhi-XXXXXX the deponent, do hereby solemnly affirm and declare as under: - 1. That I, deponent is the plaintiff in the accompanying suit for permanent injunction & mandatory injunction filed by deponent.",
+    "error": null
+  },
+  "mandatory_provisions": {
+    "limitation": {
+      "article": "136",
+      "description": "On the question of enforcement of a decree for permanent injunction after a period of 40 years , the SC relied on Article 136 of the Schedule to the Limitation Act, 1963 to emphasize that Limitation Act specifically prescribes that the execution ...",
+      "period": "",
+      "accrual": "",
+      "source": "websearch"
+    },
+    "user_cited_provisions": [
+      {
+        "section": "Section 1",
+        "act": "",
+        "text": "cedure, 18th Edition\n \n 1. Subs. by the CPC (Amendment) Act, 2002 (22 of 2002), s 6 (w.e.f. 1-7-2002) vide Notfn. S.O. 604(E), dt. 6-6-2002, s \n6 for the following :\n (1) When a suit has been duly instituted, a summons may be issued to the defendant to appear and answer the claim and \nto file the written statement of his defence, if any, on such day within thirty days from the day of institution of the suit as \nmay be specified therein:\nProvided that no such summons shall be issued when a defendant has appeared at the pre",
+        "source": "rag"
+      }
+    ],
+    "enrichment_log": [
+      "limitation: NOT in RAG — web search",
+      "limitation: FOUND via websearch (Article 136)",
+      "Section 1 : FOUND in RAG"
+    ]
+  },
+  "template": {
+    "template_id": "civil/_fallback",
+    "template_version": "1.1",
+    "doc_type": "_fallback",
+    "law_domain": "Civil",
+    "party_labels": {
+      "primary": "Plaintiff",
+      "opposite": "Defendant"
+    },
+    "annexure_scheme": {},
+    "placeholder_dates": {},
+    "sections": [
+      {
+        "section_id": "court_heading",
+        "heading": "",
+        "type": "template",
+        "body": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}"
+      },
+      {
+        "section_id": "title",
+        "heading": "",
+        "type": "template_with_fill",
+        "instruction": "Draft the suit title line. The title must reflect the PRIMARY RELIEF sought as indicated by the classified doc_type. Use standard Indian court pleading format (all caps, filed under applicable CPC provision). If a monetary amount is the primary relief, include the amount in the title. Otherwise, state the nature of the suit (e.g., 'SUIT FOR [nature of relief]').",
+        "context_keys": [
+          "intake.facts"
+        ],
+        "must_include": []
+      },
+      {
+        "section_id": "parties",
+        "heading": "BETWEEN",
+        "type": "template_with_fill",
+        "instruction": "Draft the parties section listing plaintiff(s) and defendant(s) with full particulars: name, age, occupation, address. Use competency averment (sui juris / competent to sue). If any detail is missing, use {{PLACEHOLDER}}. Adapt party labels to the suit type (e.g., Petitioner/Respondent for writ petitions).",
+        "context_keys": [
+          "intake.parties"
+        ],
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "sui\\s+juris|competent\\s+to\\s+sue|major\\s+in\\s+age",
+            "required": true,
+            "description": "Competency averment"
+          },
+          {
+            "type": "keyword",
+            "match": "Plaintiff",
+            "required": true,
+            "description": "Plaintiff label"
+          },
+          {
+            "type": "keyword",
+            "match": "Defendant",
+            "required": true,
+            "description": "Defendant label"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "witness_names"
+        ]
+      },
+      {
+        "section_id": "jurisdiction",
+        "heading": "JURISDICTION",
+        "type": "llm_fill",
+        "instruction": "Draft the jurisdiction section establishing territorial and pecuniary jurisdiction based on the facts. State the SPECIFIC factual basis for territorial jurisdiction (where defendant resides, where property is situated, where cause of action arose). State the suit valuation and that it falls within the court's pecuniary limits.",
+        "context_keys": [
+          "intake.jurisdiction",
+          "intake.facts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "territorial|within\\s+the\\s+(local\\s+)?limits|Section\\s+16",
+            "required": true,
+            "description": "Territorial jurisdiction ground"
+          },
+          {
+            "type": "regex",
+            "match": "pecuniary|monetary\\s+jurisdiction",
+            "required": true,
+            "description": "Pecuniary jurisdiction ground"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "court_name",
+          "place_names",
+          "property_address"
+        ]
+      },
+      {
+        "section_id": "facts",
+        "heading": "FACTS OF THE CASE",
+        "type": "llm_fill",
+        "instruction": "Draft the facts section as numbered paragraphs in chronological narrative form. Frame the narrative around the PRIMARY RELIEF sought (from the doc_type). Each paragraph should cover ONE event or stage. Reference documents as Annexure labels. Do NOT state legal conclusions — keep it purely factual.",
+        "context_keys": [
+          "intake.facts",
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Evidence referenced"
+          },
+          {
+            "type": "regex",
+            "match": "\\d{4}|DATE|date",
+            "required": true,
+            "description": "At least one date or date placeholder"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "witness_names",
+          "place_names",
+          "property_address"
+        ]
+      },
+      {
+        "section_id": "legal_basis",
+        "heading": "LEGAL BASIS AND GROUNDS",
+        "type": "llm_fill",
+        "instruction": "Draft the legal basis section citing statutory provisions and legal principles that support the PRIMARY RELIEF sought (from the doc_type). For EACH provision: (1) State the legal rule it creates, (2) State what conditions trigger it, (3) Show how the facts satisfy those conditions. Cite ONLY provisions from the verified list or those naturally applicable to this doc_type. Include alternative pleas and defensive pleading where appropriate.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Section\\s+\\d+|Article\\s+\\d+|Order\\s+[IVXLC]+",
+            "required": true,
+            "description": "At least one statutory provision cited"
+          },
+          {
+            "type": "regex",
+            "match": "bound|obligat|liable|entitle|right|duty",
+            "required": true,
+            "description": "Legal consequence stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "statutory_provisions"
+        ]
+      },
+      {
+        "section_id": "cause_of_action",
+        "heading": "CAUSE OF ACTION",
+        "type": "llm_fill",
+        "instruction": "Draft the cause of action section in PARAGRAPH prose. Must cover: (1) ORIGIN — when and how the right to sue first arose, (2) FURTHER ACCRUAL — subsequent acts that sustain the right, (3) CONTINUITY — why the cause of action is continuing. Anchor to the actual triggering event from the facts.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "cause\\s+of\\s+action",
+            "required": true,
+            "description": "Cause of action stated"
+          },
+          {
+            "type": "regex",
+            "match": "first\\s+arose|ar[oi]se|accrued",
+            "required": true,
+            "description": "Origin/accrual stated"
+          },
+          {
+            "type": "regex",
+            "match": "continu(ing|es|ed)",
+            "required": true,
+            "description": "Continuing nature stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name",
+          "place_names",
+          "property_address"
+        ]
+      },
+      {
+        "section_id": "limitation",
+        "heading": "LIMITATION",
+        "type": "llm_fill",
+        "instruction": "Draft the limitation section stating: (1) the applicable Article of the Limitation Act 1963 (from enrichment context ONLY — if not provided, use {{LIMITATION_ARTICLE}} placeholder), (2) the limitation period, (3) the starting date anchored to the cause of action accrual event, (4) that the suit is within time. Do NOT guess limitation articles.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.limitation"
+        ],
+        "rag_query": "from_enrichment",
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Article\\s+\\d+|LIMITATION_ARTICLE",
+            "required": true,
+            "description": "Limitation article cited or placeholdered"
+          },
+          {
+            "type": "regex",
+            "match": "Limitation\\s+Act",
+            "required": true,
+            "description": "Limitation Act reference"
+          },
+          {
+            "type": "regex",
+            "match": "within\\s+(the\\s+)?(?:period|time|limitation)",
+            "required": true,
+            "description": "Within limitation stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "valuation_court_fee",
+        "heading": "VALUATION AND COURT FEE",
+        "type": "template_with_fill",
+        "instruction": "Draft the valuation and court fee section. State the suit valuation, the basis for valuation, and the court fee paid or payable. Use {{COURT_FEE_AMOUNT}} placeholder if the exact amount is not available.",
+        "context_keys": [
+          "intake.facts.amounts",
+          "court_fee"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "valuation|valued",
+            "required": true,
+            "description": "Valuation stated"
+          },
+          {
+            "type": "regex",
+            "match": "court\\s+fee|COURT_FEE",
+            "required": true,
+            "description": "Court fee stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name"
+        ]
+      },
+      {
+        "section_id": "interest",
+        "heading": "INTEREST",
+        "type": "llm_fill",
+        "condition": "doc_type_contains:recovery|money|cheque|loan|rent|damages|restitution",
+        "instruction": "Draft the interest section with applicable interest claims: pre-suit interest, pendente lite interest, and future interest with rates and legal basis.",
+        "context_keys": [
+          "intake.facts.amounts"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "interest|mesne\\s+profit|compensation|per\\s+annum|Section\\s+34",
+            "required": true,
+            "description": "Some form of financial relief or interest stated"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ],
+        "allow_claimed_amounts": true
+      },
+      {
+        "section_id": "prayer",
+        "heading": "PRAYER",
+        "type": "llm_fill",
+        "instruction": "Draft the prayer section with specific sub-prayers as lettered items (a, b, c, ...). Each prayer must match the PRIMARY RELIEF of the classified doc_type. Do NOT pray for relief inconsistent with the suit type. Always include costs and a general relief clause 'any other relief the Court deems fit'.",
+        "context_keys": [
+          "intake.facts",
+          "mandatory_provisions.user_cited_provisions"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "keyword",
+            "match": "decree",
+            "required": true,
+            "description": "Decree prayer"
+          },
+          {
+            "type": "keyword",
+            "match": "costs",
+            "required": true,
+            "description": "Costs claimed"
+          },
+          {
+            "type": "regex",
+            "match": "any\\s+other\\s+(relief|order)|deem(s|ed)?\\s+fit",
+            "required": true,
+            "description": "General relief clause"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "document_list",
+        "heading": "LIST OF DOCUMENTS RELIED UPON",
+        "type": "template_with_fill",
+        "instruction": "Generate a numbered list of documents the plaintiff relies upon, mapped to annexure labels. Base the document list on the evidence provided in context. If evidence is empty, list expected documents for this suit type with {{DOCUMENT_DESCRIPTION}} placeholders.",
+        "context_keys": [
+          "intake.evidence"
+        ],
+        "rag_query": null,
+        "must_include": [
+          {
+            "type": "regex",
+            "match": "Annexure|annexure",
+            "required": true,
+            "description": "Annexure labels present"
+          }
+        ],
+        "allowed_entities": [
+          "plaintiff_name",
+          "defendant_name"
+        ]
+      },
+      {
+        "section_id": "verification",
+        "heading": "VERIFICATION",
+        "type": "template",
+        "body": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908."
+      },
+      {
+        "section_id": "advocate",
+        "heading": "",
+        "type": "template",
+        "body": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}"
+      }
+    ]
+  },
+  "filled_sections": [
+    {
+      "section_id": "court_heading",
+      "heading": "",
+      "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "title",
+      "heading": "",
+      "text": "IN THE COURT OF THE CIVIL JUDGE AT {{PLACE}}\nSUIT FOR PERMANENT INJUNCTION UNDER SECTION 38 OF THE CPC READ WITH ORDER 39 RULES 1 & 2 CPC, IN RESPECT OF SCHEDULED PROPERTY DESCRIBED IN SCHEDULE\nPLAINTIFF: {{PLAINTIFF_NAME}}; DEFENDANT: {{DEFENDANT_NAME}}",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "parties",
+      "heading": "BETWEEN",
+      "text": "BETWEEN The Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, competent to sue and be sued (sui juris), hereinafter referred to as the Plaintiff, and the Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, competent to be sued and to sue (sui juris), hereinafter referred to as the Defendant. The Plaintiff is in peaceful and lawful possession of the property described in Schedule A hereto. On or about {{ENCROACHMENT_DATE}}, the Defendant attempted to encroach upon and interfere with the Plaintiff's possession of the Schedule A property, thereby rendering continued interference actionable and justifying the grant of a permanent injunction restraining the Defendant; the Plaintiff also prays for a temporary injunction under Order 39 Rules 1 and 2 CPC to maintain the status quo pending disposal of this suit.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "jurisdiction",
+      "heading": "JURISDICTION",
+      "text": "Territorial jurisdiction for this suit lies with the Civil Court at {{COURT_PLACE}}, {{STATE}}, as the schedule property is situated at {{PROPERTY_ADDRESS}} within this city, and the cause of action arose at the said property due to the Defendant's interference with the Plaintiff's peaceful possession. The Plaintiff has been in lawful possession of the schedule property since {{POSSESSION_DATE}}. The Defendant resides at {{DEFENDANT_RESIDENCE}} within the jurisdiction, and the Plaintiff resides at {{PLAINTIFF_ADDRESS}}; on or about {{ENCROACHMENT_DATE}} the Defendant began attempting encroachment on the schedule property, located at {{PROPERTY_ADDRESS}}.\n\nThe suit, including the temporary injunction prayer under Order 39 Rules 1 and 2 CPC, is maintainable in this Court because the property and the alleged interference occur within the territorial limits of the said Civil Court. The factual nexus—possession by the Plaintiff, encroachment attempts by the Defendant at the schedule property, and the parties’ residences within the same jurisdiction—establishes the appropriate territorial link for adjudication in this Court.\n\nPecuniary jurisdiction: The suit seeks relief in the nature of a permanent injunction restraining the Defendant from interfering with Plaintiff’s possession and includes a temporary injunction prayer. The suit value is Rs. {{SUIT_VALUE}}, which falls within the pecuniary limits of this Court. The Court’s monetary jurisdiction for such suits is Rs. {{PECUNIARY_LIMIT}}; accordingly, this Court is empowered to entertain and determine the suit on merits.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{ENCROACHMENT_DATE}}",
+            "{{POSSESSION_DATE}}",
+            "{{CAUSE_OF_ACTION_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure [Property Schedule]"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "facts",
+      "heading": "FACTS OF THE CASE",
+      "text": "1. The Plaintiff, {{PLAINTIFF_NAME}}, is the lawful possessor of the schedule property more particularly described in Schedule-A and situated at {{PROPERTY_ADDRESS}}. The Plaintiff has held peaceful possession since before {{DATE_1}}, and there is documentary evidence of title and possession in Annexure A and Annexure B respectively attached to this plaint.\n\n2. On {{DATE_2}}, the Defendant, {{DEFENDANT_NAME}}, with others attempted to encroach upon the schedule property by entering within the boundary and erecting unauthorised structures, thereby interfering with the Plaintiff’s peaceful possession. The encroachment is evidenced by the Site Plan in Annexure C and by photographs in Annexure H, which depict the areas showing interference and construction near the boundary.\n\n3. On {{DATE_3}}, the Plaintiff served a legal notice on the Defendant demanding immediate cessation of the encroachment and maintenance of the Plaintiff’s peaceful possession; the notice is annexed to this pleading as Annexure D.\n\n4. On {{DATE_4}}, the Defendant sent a reply disputing the Plaintiff’s possession and asserting rights to the boundary and the alleged encroached portions; the reply is annexed as Annexure E.\n\n5. On {{DATE_5}}, the Plaintiff filed before the appropriate Court an application for temporary injunction under Order 39 Rules 1 and 2 CPC, seeking to restrain the Defendant from interfering with the Plaintiff’s possession pending the hearing of the suit; the application and supporting affidavits are annexed as Annexure F.\n\n6. On {{DATE_6}}, the Court granted ad-interim relief in favour of the Plaintiff by way of temporary injunction restraining the Defendant from interfering with the Plaintiff’s possession, and this interim order is reflected in Annexure G.\n\n7. As of {{DATE_7}}, the Plaintiff continues in peaceful possession of the schedule property, and there has been no restoration of possession to the Defendant or disturbance by the Defendant beyond the interim measures; this status is evidenced by the continued relevance of Annexure B (Possession Certificate) and Annexure H (Photographs) on record.\n\n8. The facts described herein establish a continuing interference with the Plaintiff’s peaceful possession of the schedule property, as described in Schedule-A and situated at {{PROPERTY_ADDRESS}}, which necessitates the permanent injunction prayed for in this suit so as to prevent any further encroachment or disturbance by the Defendant. Annexures A, B, C, D, E, F, G and H are collectively referred to for documentary support of these events.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DATE_2}}"
+          ],
+          "evidence_refs": [
+            "Annexure C",
+            "Annexure H"
+          ]
+        },
+        {
+          "claim_type": "notice",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DATE_3}}"
+          ],
+          "evidence_refs": [
+            "Annexure D"
+          ]
+        },
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{DATE_2}}",
+            "{{DATE_7}}"
+          ],
+          "evidence_refs": [
+            "Annexure C",
+            "Annexure H",
+            "Annexure B"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "legal_basis",
+      "heading": "LEGAL BASIS AND GROUNDS",
+      "text": "The Legal Basis and Grounds for the relief sought proceed on the statutory framework governing suits for permanent injunction and the preservation of rightful possession. Under Section 6 of the CPC, as substituted by the CPC (Amendment) Act, 2002 (22 of 2002), when a suit has been duly instituted, a summons may be issued to the defendant to appear and answer the claim and to file the written statement of his defence within thirty days from the day of institution. In the present case, Plaintiff {{PLAINTIFF_NAME}} has duly instituted a suit in the Court of {{COURT_NAME}} at {{LOCATION}} on {{INSTITUTION_DATE}} against Defendant {{DEFENDANT_NAME}} for a permanent injunction restraining interference with Plaintiff’s peaceful possession of the schedule property described in Schedule hereto, as Defendant is alleged to be attempting illegal encroachment. The Court is thus empowered to issue summons to Defendant requiring appearance and defence within the statutory period, enabling the matter to proceed on the merits and for the Plaintiff to obtain final relief restraining further encroachment.\n\nIn respect of future enforcement, Article 136 of the Schedule to the Limitation Act, 1963 provides the governing framework for enforcement of a decree for permanent injunction after a prolonged period, with the outer time limit of forty years and related considerations. The present suit seeks a permanent injunction to restrain continuing interference with peaceful possession of the schedule property, the description of which is set out in Schedule herein. The legal consequence is that, should a decree for permanent injunction be required and thereafter sought for enforcement, such enforcement would be governed by Article 136 and the corresponding time limits, and the Plaintiff contends that the instant suit is within the applicable limitation framework to preserve the remedy. In the alternative and without prejudice to the above, the Defendant may contend limitation, but the Plaintiff relies on the stated framework under Article 136 for enforcement of any decree.\n\nIn addition to the permanent injunction, the Plaintiff prays, in the alternative and without prejudice to the above, for a temporary injunction under Order 39 Rules 1 and 2 CPC to protect the status quo pending final disposal of the suit, on the basis that the Defendant has commenced encroachment and the Plaintiff is in lawful possession of the schedule property described in Schedule, details of which are set out herein. The facts herein establish that the Plaintiff has been in possession since {{POSSESSION_DATE}} and that the Defendant’s actions commencing on {{ENCROACHMENT_DATE}} threaten the peaceful possession and the Plaintiff’s immediate rights in respect of the schedule property.\n\nWherever the schedule property is referred to herein, it is described in Schedule attached hereto, and the Plaintiff reserves all rights to seek further relief as may be just and proper upon proof of the encroachment described above. The factual basis for the injunction is that the Plaintiff, being in lawful possession, has been threatened by the Defendant’s assertion of encroachment and interference, and the relief sought is to maintain the status quo and protect peaceable possession until final adjudication of the matter. This section sets forth the legal grounds and applies the statutory provisions to the facts as stated above, with the appropriate alternative care and defense open to the Defendant.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}"
+          ],
+          "dates": [
+            "{{INSTITUTION_DATE}}",
+            "{{POSSESSION_DATE}}",
+            "{{ENCROACHMENT_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure STATUTORY_PROVISIONS"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "cause_of_action",
+      "heading": "CAUSE OF ACTION",
+      "text": "Plaintiff, {{PLAINTIFF_NAME}}, is in lawful possession of the schedule property described as being located at {{PROPERTY_ADDRESS}} in {{place_names}}. On {{ENCROACHMENT_DATE}}, Defendant {{DEFENDANT_NAME}} entered onto the property and commenced acts of encroachment intended to disturb Plaintiff’s peaceful possession, thereby threatening Plaintiff’s exclusive occupancy. This initial disturbance gave rise to the right to sue for protection of possession. The cause of action accrued on that date and has continued since, as Defendant has repeated attempts to intrude upon the same property and interfere with Plaintiff’s possession on {{ENCROACHMENT_DATE}} and on subsequent occasions up to the present. The interference is ongoing, and the act remains unresolved; therefore the action is continuing, and Plaintiff prays for a temporary injunction under Order 39 Rules 1 and 2 CPC to restrain Defendant from further intrusion until final disposal, and for a permanent injunction against any future interference thereafter. The schedule property is described herein and may be referred to in the annexures accompanying this plaint.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "{{PLAINTIFF_NAME}}",
+            "{{DEFENDANT_NAME}}",
+            "{{PROPERTY_ADDRESS}}",
+            "{{place_names}}"
+          ],
+          "dates": [
+            "{{ENCROACHMENT_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure [PROPERTY_SCHEDULE]"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "limitation",
+      "heading": "LIMITATION",
+      "text": "The suit is brought under Article 136 of the Schedule to the Limitation Act, 1963. The period for limitation under Article 136 is {{LIMITATION_PERIOD}}. The cause of action accrued on {{ACCRUAL_DATE}}, the date on which the Defendant first interfered with Plaintiff's peaceful possession of the Schedule property. The suit is within time.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "breach",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{ACCRUAL_DATE}}"
+          ],
+          "evidence_refs": [
+            "Annexure LIMITATION"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "valuation_court_fee",
+      "heading": "VALUATION AND COURT FEE",
+      "text": "Valuation and Court Fee: The Plaintiff values the suit for purposes of court fee and jurisdiction at Rs. {{PROPERTY_VALUE}}, being the value of the schedule property described in Schedule A and the possessory relief sought by a permanent injunction restraining the Defendant from interfering with the Plaintiff's peaceful possession. The basis for valuation is the fair market value of the immovable property as on the date of filing. The court fee payable on the plaint is Rs. {{COURT_FEE_AMOUNT}}; the court fee has been paid with the filing in the amount of {{COURT_FEE_AMOUNT}}.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "interest",
+      "heading": "INTEREST",
+      "text": "",
+      "type": "llm_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": [],
+      "skipped": true
+    },
+    {
+      "section_id": "prayer",
+      "heading": "PRAYER",
+      "text": "The Plaintiff respectfully prays for relief by way of a permanent injunction and related interim relief in the manner hereinafter set forth. (a) A decree of permanent injunction restraining the Defendant, its servants, agents, and all persons acting for or on its behalf, from directly or indirectly interfering with the Plaintiff's peaceful possession of the schedule property described in Schedule A and Annexure A, and from entering upon the property, obstructing access, ejecting or attempting to eject the Plaintiff, or otherwise disturbing the Plaintiff's possession or enjoyment of the said property. (b) A temporary injunction in terms of Order 39 Rules 1 and 2 CPC restraining the Defendant, its servants, agents, and all persons acting for or on its behalf, from entering upon, encroaching, possessing, or otherwise disturbing the Plaintiff's possession of the schedule property described in Schedule A and Annexure A during the pendency of this suit. (c) Costs of this suit. (d) Any other relief the Court deems fit.",
+      "type": "llm_fill",
+      "claims": [
+        {
+          "claim_type": "continuing_cause",
+          "entities": [
+            "plaintiff_name",
+            "defendant_name"
+          ],
+          "dates": [
+            "{{DATE_OF_FILING}}"
+          ],
+          "evidence_refs": [
+            "Annexure A"
+          ]
+        }
+      ],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "document_list",
+      "heading": "LIST OF DOCUMENTS RELIED UPON",
+      "text": "The Plaintiff relies upon the documents collectively annexed and marked as Annexures A to F, which are attached to this plaint and pertain to the Schedule Property described in the Schedule, to establish the Plaintiff’s lawful possession and to support the prayers for permanent injunction and for interim relief under Order 39 Rules 1 and 2 CPC. The documents relied upon are: Annexure A — {{DOCUMENT_DESCRIPTION}}; Annexure B — {{DOCUMENT_DESCRIPTION}}; Annexure C — {{DOCUMENT_DESCRIPTION}}; Annexure D — {{DOCUMENT_DESCRIPTION}}; Annexure E — {{DOCUMENT_DESCRIPTION}}; Annexure F — {{DOCUMENT_DESCRIPTION}}.",
+      "type": "template_with_fill",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "verification",
+      "heading": "VERIFICATION",
+      "text": "I, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    },
+    {
+      "section_id": "advocate",
+      "heading": "",
+      "text": "Through:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+      "type": "template",
+      "claims": [],
+      "must_include_passed": true,
+      "retries": 0,
+      "validation_issues": []
+    }
+  ],
+  "claim_ledger": [
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{ENCROACHMENT_DATE}}",
+        "{{POSSESSION_DATE}}",
+        "{{CAUSE_OF_ACTION_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure [Property Schedule]"
+      ]
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DATE_2}}"
+      ],
+      "evidence_refs": [
+        "Annexure C",
+        "Annexure H"
+      ]
+    },
+    {
+      "claim_type": "notice",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DATE_3}}"
+      ],
+      "evidence_refs": [
+        "Annexure D"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{DATE_2}}",
+        "{{DATE_7}}"
+      ],
+      "evidence_refs": [
+        "Annexure C",
+        "Annexure H",
+        "Annexure B"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}"
+      ],
+      "dates": [
+        "{{INSTITUTION_DATE}}",
+        "{{POSSESSION_DATE}}",
+        "{{ENCROACHMENT_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure STATUTORY_PROVISIONS"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "{{PLAINTIFF_NAME}}",
+        "{{DEFENDANT_NAME}}",
+        "{{PROPERTY_ADDRESS}}",
+        "{{place_names}}"
+      ],
+      "dates": [
+        "{{ENCROACHMENT_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure [PROPERTY_SCHEDULE]"
+      ]
+    },
+    {
+      "claim_type": "breach",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{ACCRUAL_DATE}}"
+      ],
+      "evidence_refs": [
+        "Annexure LIMITATION"
+      ]
+    },
+    {
+      "claim_type": "continuing_cause",
+      "entities": [
+        "plaintiff_name",
+        "defendant_name"
+      ],
+      "dates": [
+        "{{DATE_OF_FILING}}"
+      ],
+      "evidence_refs": [
+        "Annexure A"
+      ]
+    }
+  ],
+  "postprocess_issues": [
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'for permanent injunction' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'order 39 rules' repeated 8 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '39 rules 1' repeated 8 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'property described in' repeated 8 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'described in schedule' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'lawful possession of' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'possession of the' repeated 12 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'in schedule a' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'with the plaintiff's' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'of the schedule' repeated 16 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'a permanent injunction' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'permanent injunction restraining' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'injunction restraining the' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'a temporary injunction' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'temporary injunction under' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'injunction under order' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'under order 39' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'rules 1 and' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '1 and 2' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'and 2 cpc' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the schedule property' repeated 13 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'cause of action' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'and the plaintiff' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the schedule property,' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'the defendant from' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'defendant from interfering' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'from interfering with' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'interfering with the' repeated 5 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'with the plaintiff’s' repeated 4 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'peaceful possession of' repeated 6 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase 'schedule property described' repeated 7 times — consider varying language"
+    },
+    {
+      "type": "excessive_repetition",
+      "severity": "non_blocking",
+      "description": "Phrase '— {{document_description}}; annexure' repeated 5 times — consider varying language"
+    }
+  ],
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "permanent_injunction_plaint",
+        "title": "IN THE COURT OF THE CIVIL JUDGE AT {{PLACE}}",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nIN THE COURT OF THE CIVIL JUDGE AT {{PLACE}}\nSUIT FOR PERMANENT INJUNCTION UNDER SECTION 38 OF THE CPC READ WITH ORDER 39 RULES 1 & 2 CPC, IN RESPECT OF SCHEDULED PROPERTY DESCRIBED IN SCHEDULE\nPLAINTIFF: {{PLAINTIFF_NAME}}; DEFENDANT: {{DEFENDANT_NAME}}\n\n\nBETWEEN\n\nBETWEEN The Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, competent to sue and be sued (sui juris), hereinafter referred to as the Plaintiff, and the Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, competent to be sued and to sue (sui juris), hereinafter referred to as the Defendant. The Plaintiff is in peaceful and lawful possession of the property described in Schedule A hereto. On or about {{ENCROACHMENT_DATE}}, the Defendant attempted to encroach upon and interfere with the Plaintiff's possession of the Schedule A property, thereby rendering continued interference actionable and justifying the grant of a permanent injunction restraining the Defendant; the Plaintiff also prays for a temporary injunction under Order 39 Rules 1 and 2 CPC to maintain the status quo pending disposal of this suit.\n\n\nJURISDICTION\n\nTerritorial jurisdiction for this suit lies with the Civil Court at {{COURT_PLACE}}, {{STATE}}, as the schedule property is situated at {{PROPERTY_ADDRESS}} within this city, and the cause of action arose at the said property due to the Defendant's interference with the Plaintiff's peaceful possession. The Plaintiff has been in lawful possession of the schedule property since {{POSSESSION_DATE}}. The Defendant resides at {{DEFENDANT_RESIDENCE}} within the jurisdiction, and the Plaintiff resides at {{PLAINTIFF_ADDRESS}}; on or about {{ENCROACHMENT_DATE}} the Defendant began attempting encroachment on the schedule property, located at {{PROPERTY_ADDRESS}}.\n\nThe suit, including the temporary injunction prayer under Order 39 Rules 1 and 2 CPC, is maintainable in this Court because the property and the alleged interference occur within the territorial limits of the said Civil Court. The factual nexus—possession by the Plaintiff, encroachment attempts by the Defendant at the schedule property, and the parties’ residences within the same jurisdiction—establishes the appropriate territorial link for adjudication in this Court.\n\nPecuniary jurisdiction: The suit seeks relief in the nature of a permanent injunction restraining the Defendant from interfering with Plaintiff’s possession and includes a temporary injunction prayer. The suit value is Rs. {{SUIT_VALUE}}, which falls within the pecuniary limits of this Court. The Court’s monetary jurisdiction for such suits is Rs. {{PECUNIARY_LIMIT}}; accordingly, this Court is empowered to entertain and determine the suit on merits.\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff, {{PLAINTIFF_NAME}}, is the lawful possessor of the schedule property more particularly described in Schedule-A and situated at {{PROPERTY_ADDRESS}}. The Plaintiff has held peaceful possession since before {{DATE_1}}, and there is documentary evidence of title and possession in Annexure A and Annexure B respectively attached to this plaint.\n\n2. On {{DATE_2}}, the Defendant, {{DEFENDANT_NAME}}, with others attempted to encroach upon the schedule property by entering within the boundary and erecting unauthorised structures, thereby interfering with the Plaintiff’s peaceful possession. The encroachment is evidenced by the Site Plan in Annexure C and by photographs in Annexure H, which depict the areas showing interference and construction near the boundary.\n\n3. On {{DATE_3}}, the Plaintiff served a legal notice on the Defendant demanding immediate cessation of the encroachment and maintenance of the Plaintiff’s peaceful possession; the notice is annexed to this pleading as Annexure D.\n\n4. On {{DATE_4}}, the Defendant sent a reply disputing the Plaintiff’s possession and asserting rights to the boundary and the alleged encroached portions; the reply is annexed as Annexure E.\n\n5. On {{DATE_5}}, the Plaintiff filed before the appropriate Court an application for temporary injunction under Order 39 Rules 1 and 2 CPC, seeking to restrain the Defendant from interfering with the Plaintiff’s possession pending the hearing of the suit; the application and supporting affidavits are annexed as Annexure F.\n\n6. On {{DATE_6}}, the Court granted ad-interim relief in favour of the Plaintiff by way of temporary injunction restraining the Defendant from interfering with the Plaintiff’s possession, and this interim order is reflected in Annexure G.\n\n7. As of {{DATE_7}}, the Plaintiff continues in peaceful possession of the schedule property, and there has been no restoration of possession to the Defendant or disturbance by the Defendant beyond the interim measures; this status is evidenced by the continued relevance of Annexure B (Possession Certificate) and Annexure H (Photographs) on record.\n\n8. The facts described herein establish a continuing interference with the Plaintiff’s peaceful possession of the schedule property, as described in Schedule-A and situated at {{PROPERTY_ADDRESS}}, which necessitates the permanent injunction prayed for in this suit so as to prevent any further encroachment or disturbance by the Defendant. Annexures A, B, C, D, E, F, G and H are collectively referred to for documentary support of these events.\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Legal Basis and Grounds for the relief sought proceed on the statutory framework governing suits for permanent injunction and the preservation of rightful possession. Under Section 6 of the CPC, as substituted by the CPC (Amendment) Act, 2002 (22 of 2002), when a suit has been duly instituted, a summons may be issued to the defendant to appear and answer the claim and to file the written statement of his defence within thirty days from the day of institution. In the present case, Plaintiff {{PLAINTIFF_NAME}} has duly instituted a suit in the Court of {{COURT_NAME}} at {{LOCATION}} on {{INSTITUTION_DATE}} against Defendant {{DEFENDANT_NAME}} for a permanent injunction restraining interference with Plaintiff’s peaceful possession of the schedule property described in Schedule hereto, as Defendant is alleged to be attempting illegal encroachment. The Court is thus empowered to issue summons to Defendant requiring appearance and defence within the statutory period, enabling the matter to proceed on the merits and for the Plaintiff to obtain final relief restraining further encroachment.\n\nIn respect of future enforcement, Article 136 of the Schedule to the Limitation Act, 1963 provides the governing framework for enforcement of a decree for permanent injunction after a prolonged period, with the outer time limit of forty years and related considerations. The present suit seeks a permanent injunction to restrain continuing interference with peaceful possession of the schedule property, the description of which is set out in Schedule herein. The legal consequence is that, should a decree for permanent injunction be required and thereafter sought for enforcement, such enforcement would be governed by Article 136 and the corresponding time limits, and the Plaintiff contends that the instant suit is within the applicable limitation framework to preserve the remedy. In the alternative and without prejudice to the above, the Defendant may contend limitation, but the Plaintiff relies on the stated framework under Article 136 for enforcement of any decree.\n\nIn addition to the permanent injunction, the Plaintiff prays, in the alternative and without prejudice to the above, for a temporary injunction under Order 39 Rules 1 and 2 CPC to protect the status quo pending final disposal of the suit, on the basis that the Defendant has commenced encroachment and the Plaintiff is in lawful possession of the schedule property described in Schedule, details of which are set out herein. The facts herein establish that the Plaintiff has been in possession since {{POSSESSION_DATE}} and that the Defendant’s actions commencing on {{ENCROACHMENT_DATE}} threaten the peaceful possession and the Plaintiff’s immediate rights in respect of the schedule property.\n\nWherever the schedule property is referred to herein, it is described in Schedule attached hereto, and the Plaintiff reserves all rights to seek further relief as may be just and proper upon proof of the encroachment described above. The factual basis for the injunction is that the Plaintiff, being in lawful possession, has been threatened by the Defendant’s assertion of encroachment and interference, and the relief sought is to maintain the status quo and protect peaceable possession until final adjudication of the matter. This section sets forth the legal grounds and applies the statutory provisions to the facts as stated above, with the appropriate alternative care and defense open to the Defendant.\n\n\nCAUSE OF ACTION\n\nPlaintiff, {{PLAINTIFF_NAME}}, is in lawful possession of the schedule property described as being located at {{PROPERTY_ADDRESS}} in {{place_names}}. On {{ENCROACHMENT_DATE}}, Defendant {{DEFENDANT_NAME}} entered onto the property and commenced acts of encroachment intended to disturb Plaintiff’s peaceful possession, thereby threatening Plaintiff’s exclusive occupancy. This initial disturbance gave rise to the right to sue for protection of possession. The cause of action accrued on that date and has continued since, as Defendant has repeated attempts to intrude upon the same property and interfere with Plaintiff’s possession on {{ENCROACHMENT_DATE}} and on subsequent occasions up to the present. The interference is ongoing, and the act remains unresolved; therefore the action is continuing, and Plaintiff prays for a temporary injunction under Order 39 Rules 1 and 2 CPC to restrain Defendant from further intrusion until final disposal, and for a permanent injunction against any future interference thereafter. The schedule property is described herein and may be referred to in the annexures accompanying this plaint.\n\n\nLIMITATION\n\nThe suit is brought under Article 136 of the Schedule to the Limitation Act, 1963. The period for limitation under Article 136 is {{LIMITATION_PERIOD}}. The cause of action accrued on {{ACCRUAL_DATE}}, the date on which the Defendant first interfered with Plaintiff's peaceful possession of the Schedule property. The suit is within time.\n\n\nVALUATION AND COURT FEE\n\nValuation and Court Fee: The Plaintiff values the suit for purposes of court fee and jurisdiction at Rs. {{PROPERTY_VALUE}}, being the value of the schedule property described in Schedule A and the possessory relief sought by a permanent injunction restraining the Defendant from interfering with the Plaintiff's peaceful possession. The basis for valuation is the fair market value of the immovable property as on the date of filing. The court fee payable on the plaint is Rs. {{COURT_FEE_AMOUNT}}; the court fee has been paid with the filing in the amount of {{COURT_FEE_AMOUNT}}.\n\n\nPRAYER\n\nThe Plaintiff respectfully prays for relief by way of a permanent injunction and related interim relief in the manner hereinafter set forth. (a) A decree of permanent injunction restraining the Defendant, its servants, agents, and all persons acting for or on its behalf, from directly or indirectly interfering with the Plaintiff's peaceful possession of the schedule property described in Schedule A and Annexure A, and from entering upon the property, obstructing access, ejecting or attempting to eject the Plaintiff, or otherwise disturbing the Plaintiff's possession or enjoyment of the said property. (b) A temporary injunction in terms of Order 39 Rules 1 and 2 CPC restraining the Defendant, its servants, agents, and all persons acting for or on its behalf, from entering upon, encroaching, possessing, or otherwise disturbing the Plaintiff's possession of the schedule property described in Schedule A and Annexure A during the pendency of this suit. (c) Costs of this suit. (d) Any other relief the Court deems fit.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\nThe Plaintiff relies upon the documents collectively annexed and marked as Annexures A to F, which are attached to this plaint and pertain to the Schedule Property described in the Schedule, to establish the Plaintiff’s lawful possession and to support the prayers for permanent injunction and for interim relief under Order 39 Rules 1 and 2 CPC. The documents relied upon are: Annexure A — {{DOCUMENT_DESCRIPTION}}; Annexure B — {{DOCUMENT_DESCRIPTION}}; Annexure C — {{DOCUMENT_DESCRIPTION}}; Annexure D — {{DOCUMENT_DESCRIPTION}}; Annexure E — {{DOCUMENT_DESCRIPTION}}; Annexure F — {{DOCUMENT_DESCRIPTION}}.\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ENCROACHMENT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "POSSESSION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_RESIDENCE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PECUNIARY_LIMIT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_1",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_2",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_3",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_4",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_5",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_6",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_7",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "INSTITUTION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "place_names",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "LIMITATION_PERIOD",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ACCRUAL_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DOCUMENT_DESCRIPTION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "permanent_injunction_plaint",
+        "title": "IN THE COURT OF THE CIVIL JUDGE AT {{PLACE}}",
+        "text": "IN THE COURT OF THE {{COURT_NAME}}\nAT {{COURT_PLACE}}\n\nO.S. No. {{SUIT_NUMBER}} / {{SUIT_YEAR}}\n\nIN THE COURT OF THE CIVIL JUDGE AT {{PLACE}}\nSUIT FOR PERMANENT INJUNCTION UNDER SECTION 38 OF THE CPC READ WITH ORDER 39 RULES 1 & 2 CPC, IN RESPECT OF SCHEDULED PROPERTY DESCRIBED IN SCHEDULE\nPLAINTIFF: {{PLAINTIFF_NAME}}; DEFENDANT: {{DEFENDANT_NAME}}\n\n\nBETWEEN\n\nBETWEEN The Plaintiff, {{PLAINTIFF_NAME}}, aged {{PLAINTIFF_AGE}} years, {{PLAINTIFF_OCCUPATION}}, residing at {{PLAINTIFF_ADDRESS}}, competent to sue and be sued (sui juris), hereinafter referred to as the Plaintiff, and the Defendant, {{DEFENDANT_NAME}}, aged {{DEFENDANT_AGE}} years, {{DEFENDANT_OCCUPATION}}, residing at {{DEFENDANT_ADDRESS}}, competent to be sued and to sue (sui juris), hereinafter referred to as the Defendant. The Plaintiff is in peaceful and lawful possession of the property described in Schedule A hereto. On or about {{ENCROACHMENT_DATE}}, the Defendant attempted to encroach upon and interfere with the Plaintiff's possession of the Schedule A property, thereby rendering continued interference actionable and justifying the grant of a permanent injunction restraining the Defendant; the Plaintiff also prays for a temporary injunction under Order 39 Rules 1 and 2 CPC to maintain the status quo pending disposal of this suit.\n\n\nJURISDICTION\n\nTerritorial jurisdiction for this suit lies with the Civil Court at {{COURT_PLACE}}, {{STATE}}, as the schedule property is situated at {{PROPERTY_ADDRESS}} within this city, and the cause of action arose at the said property due to the Defendant's interference with the Plaintiff's peaceful possession. The Plaintiff has been in lawful possession of the schedule property since {{POSSESSION_DATE}}. The Defendant resides at {{DEFENDANT_RESIDENCE}} within the jurisdiction, and the Plaintiff resides at {{PLAINTIFF_ADDRESS}}; on or about {{ENCROACHMENT_DATE}} the Defendant began attempting encroachment on the schedule property, located at {{PROPERTY_ADDRESS}}.\n\nThe suit, including the temporary injunction prayer under Order 39 Rules 1 and 2 CPC, is maintainable in this Court because the property and the alleged interference occur within the territorial limits of the said Civil Court. The factual nexus—possession by the Plaintiff, encroachment attempts by the Defendant at the schedule property, and the parties’ residences within the same jurisdiction—establishes the appropriate territorial link for adjudication in this Court.\n\nPecuniary jurisdiction: The suit seeks relief in the nature of a permanent injunction restraining the Defendant from interfering with Plaintiff’s possession and includes a temporary injunction prayer. The suit value is Rs. {{SUIT_VALUE}}, which falls within the pecuniary limits of this Court. The Court’s monetary jurisdiction for such suits is Rs. {{PECUNIARY_LIMIT}}; accordingly, this Court is empowered to entertain and determine the suit on merits.\n\n\nFACTS OF THE CASE\n\n1. The Plaintiff, {{PLAINTIFF_NAME}}, is the lawful possessor of the schedule property more particularly described in Schedule-A and situated at {{PROPERTY_ADDRESS}}. The Plaintiff has held peaceful possession since before {{DATE_1}}, and there is documentary evidence of title and possession in Annexure A and Annexure B respectively attached to this plaint.\n\n2. On {{DATE_2}}, the Defendant, {{DEFENDANT_NAME}}, with others attempted to encroach upon the schedule property by entering within the boundary and erecting unauthorised structures, thereby interfering with the Plaintiff’s peaceful possession. The encroachment is evidenced by the Site Plan in Annexure C and by photographs in Annexure H, which depict the areas showing interference and construction near the boundary.\n\n3. On {{DATE_3}}, the Plaintiff served a legal notice on the Defendant demanding immediate cessation of the encroachment and maintenance of the Plaintiff’s peaceful possession; the notice is annexed to this pleading as Annexure D.\n\n4. On {{DATE_4}}, the Defendant sent a reply disputing the Plaintiff’s possession and asserting rights to the boundary and the alleged encroached portions; the reply is annexed as Annexure E.\n\n5. On {{DATE_5}}, the Plaintiff filed before the appropriate Court an application for temporary injunction under Order 39 Rules 1 and 2 CPC, seeking to restrain the Defendant from interfering with the Plaintiff’s possession pending the hearing of the suit; the application and supporting affidavits are annexed as Annexure F.\n\n6. On {{DATE_6}}, the Court granted ad-interim relief in favour of the Plaintiff by way of temporary injunction restraining the Defendant from interfering with the Plaintiff’s possession, and this interim order is reflected in Annexure G.\n\n7. As of {{DATE_7}}, the Plaintiff continues in peaceful possession of the schedule property, and there has been no restoration of possession to the Defendant or disturbance by the Defendant beyond the interim measures; this status is evidenced by the continued relevance of Annexure B (Possession Certificate) and Annexure H (Photographs) on record.\n\n8. The facts described herein establish a continuing interference with the Plaintiff’s peaceful possession of the schedule property, as described in Schedule-A and situated at {{PROPERTY_ADDRESS}}, which necessitates the permanent injunction prayed for in this suit so as to prevent any further encroachment or disturbance by the Defendant. Annexures A, B, C, D, E, F, G and H are collectively referred to for documentary support of these events.\n\n\nLEGAL BASIS AND GROUNDS\n\nThe Legal Basis and Grounds for the relief sought proceed on the statutory framework governing suits for permanent injunction and the preservation of rightful possession. Under Section 6 of the CPC, as substituted by the CPC (Amendment) Act, 2002 (22 of 2002), when a suit has been duly instituted, a summons may be issued to the defendant to appear and answer the claim and to file the written statement of his defence within thirty days from the day of institution. In the present case, Plaintiff {{PLAINTIFF_NAME}} has duly instituted a suit in the Court of {{COURT_NAME}} at {{LOCATION}} on {{INSTITUTION_DATE}} against Defendant {{DEFENDANT_NAME}} for a permanent injunction restraining interference with Plaintiff’s peaceful possession of the schedule property described in Schedule hereto, as Defendant is alleged to be attempting illegal encroachment. The Court is thus empowered to issue summons to Defendant requiring appearance and defence within the statutory period, enabling the matter to proceed on the merits and for the Plaintiff to obtain final relief restraining further encroachment.\n\nIn respect of future enforcement, Article 136 of the Schedule to the Limitation Act, 1963 provides the governing framework for enforcement of a decree for permanent injunction after a prolonged period, with the outer time limit of forty years and related considerations. The present suit seeks a permanent injunction to restrain continuing interference with peaceful possession of the schedule property, the description of which is set out in Schedule herein. The legal consequence is that, should a decree for permanent injunction be required and thereafter sought for enforcement, such enforcement would be governed by Article 136 and the corresponding time limits, and the Plaintiff contends that the instant suit is within the applicable limitation framework to preserve the remedy. In the alternative and without prejudice to the above, the Defendant may contend limitation, but the Plaintiff relies on the stated framework under Article 136 for enforcement of any decree.\n\nIn addition to the permanent injunction, the Plaintiff prays, in the alternative and without prejudice to the above, for a temporary injunction under Order 39 Rules 1 and 2 CPC to protect the status quo pending final disposal of the suit, on the basis that the Defendant has commenced encroachment and the Plaintiff is in lawful possession of the schedule property described in Schedule, details of which are set out herein. The facts herein establish that the Plaintiff has been in possession since {{POSSESSION_DATE}} and that the Defendant’s actions commencing on {{ENCROACHMENT_DATE}} threaten the peaceful possession and the Plaintiff’s immediate rights in respect of the schedule property.\n\nWherever the schedule property is referred to herein, it is described in Schedule attached hereto, and the Plaintiff reserves all rights to seek further relief as may be just and proper upon proof of the encroachment described above. The factual basis for the injunction is that the Plaintiff, being in lawful possession, has been threatened by the Defendant’s assertion of encroachment and interference, and the relief sought is to maintain the status quo and protect peaceable possession until final adjudication of the matter. This section sets forth the legal grounds and applies the statutory provisions to the facts as stated above, with the appropriate alternative care and defense open to the Defendant.\n\n\nCAUSE OF ACTION\n\nPlaintiff, {{PLAINTIFF_NAME}}, is in lawful possession of the schedule property described as being located at {{PROPERTY_ADDRESS}} in {{place_names}}. On {{ENCROACHMENT_DATE}}, Defendant {{DEFENDANT_NAME}} entered onto the property and commenced acts of encroachment intended to disturb Plaintiff’s peaceful possession, thereby threatening Plaintiff’s exclusive occupancy. This initial disturbance gave rise to the right to sue for protection of possession. The cause of action accrued on that date and has continued since, as Defendant has repeated attempts to intrude upon the same property and interfere with Plaintiff’s possession on {{ENCROACHMENT_DATE}} and on subsequent occasions up to the present. The interference is ongoing, and the act remains unresolved; therefore the action is continuing, and Plaintiff prays for a temporary injunction under Order 39 Rules 1 and 2 CPC to restrain Defendant from further intrusion until final disposal, and for a permanent injunction against any future interference thereafter. The schedule property is described herein and may be referred to in the annexures accompanying this plaint.\n\n\nLIMITATION\n\nThe suit is brought under Article 136 of the Schedule to the Limitation Act, 1963. The period for limitation under Article 136 is {{LIMITATION_PERIOD}}. The cause of action accrued on {{ACCRUAL_DATE}}, the date on which the Defendant first interfered with Plaintiff's peaceful possession of the Schedule property. The suit is within time.\n\n\nVALUATION AND COURT FEE\n\nValuation and Court Fee: The Plaintiff values the suit for purposes of court fee and jurisdiction at Rs. {{PROPERTY_VALUE}}, being the value of the schedule property described in Schedule A and the possessory relief sought by a permanent injunction restraining the Defendant from interfering with the Plaintiff's peaceful possession. The basis for valuation is the fair market value of the immovable property as on the date of filing. The court fee payable on the plaint is Rs. {{COURT_FEE_AMOUNT}}; the court fee has been paid with the filing in the amount of {{COURT_FEE_AMOUNT}}.\n\n\nPRAYER\n\nThe Plaintiff respectfully prays for relief by way of a permanent injunction and related interim relief in the manner hereinafter set forth. (a) A decree of permanent injunction restraining the Defendant, its servants, agents, and all persons acting for or on its behalf, from directly or indirectly interfering with the Plaintiff's peaceful possession of the schedule property described in Schedule A and Annexure A, and from entering upon the property, obstructing access, ejecting or attempting to eject the Plaintiff, or otherwise disturbing the Plaintiff's possession or enjoyment of the said property. (b) A temporary injunction in terms of Order 39 Rules 1 and 2 CPC restraining the Defendant, its servants, agents, and all persons acting for or on its behalf, from entering upon, encroaching, possessing, or otherwise disturbing the Plaintiff's possession of the schedule property described in Schedule A and Annexure A during the pendency of this suit. (c) Costs of this suit. (d) Any other relief the Court deems fit.\n\n\nLIST OF DOCUMENTS RELIED UPON\n\nThe Plaintiff relies upon the documents collectively annexed and marked as Annexures A to F, which are attached to this plaint and pertain to the Schedule Property described in the Schedule, to establish the Plaintiff’s lawful possession and to support the prayers for permanent injunction and for interim relief under Order 39 Rules 1 and 2 CPC. The documents relied upon are: Annexure A — {{DOCUMENT_DESCRIPTION}}; Annexure B — {{DOCUMENT_DESCRIPTION}}; Annexure C — {{DOCUMENT_DESCRIPTION}}; Annexure D — {{DOCUMENT_DESCRIPTION}}; Annexure E — {{DOCUMENT_DESCRIPTION}}; Annexure F — {{DOCUMENT_DESCRIPTION}}.\n\n\nVERIFICATION\n\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify that the contents of the above plaint are true and correct to my knowledge, and the contents based on legal advice are believed to be true on the basis of such advice. No part of this plaint is false and nothing material has been concealed therefrom.\n\nVerified at {{COURT_PLACE}} on this {{FILING_DATE}}.\n\nAs per Order VI Rule 15 of the Code of Civil Procedure, 1908.\n\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No.: {{ADVOCATE_ENROLLMENT}}\nPlace: {{COURT_PLACE}}\nDate: {{FILING_DATE}}",
+        "placeholders_used": [
+          {
+            "key": "COURT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_YEAR",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLACE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ENCROACHMENT_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "STATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_ADDRESS",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "POSSESSION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DEFENDANT_RESIDENCE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "SUIT_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PECUNIARY_LIMIT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_1",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_2",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_3",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_4",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_5",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_6",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DATE_7",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "LOCATION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "INSTITUTION_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "place_names",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "LIMITATION_PERIOD",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ACCRUAL_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "PROPERTY_VALUE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "DOCUMENT_DESCRIPTION",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "FILING_DATE",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_NAME",
+            "reason": "Template placeholder — detail not provided"
+          },
+          {
+            "key": "ADVOCATE_ENROLLMENT",
+            "reason": "Template placeholder — detail not provided"
+          }
+        ],
+        "citations_used": []
+      }
+    ]
+  }
+}

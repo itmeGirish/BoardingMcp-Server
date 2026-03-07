@@ -1,0 +1,197 @@
+{
+  "timestamp": "20260306_205105",
+  "total_elapsed": 2886.5,
+  "scenarios": [
+    {
+      "name": "Specific Performance of Sale Agreement",
+      "elapsed": 734.6,
+      "text_length": 10675,
+      "placeholders": 7,
+      "score": "30/30 (100%)",
+      "checks": [
+        {
+          "category": "STRUCT",
+          "check": "court_heading",
+          "result": "PASS",
+          "detail": "Court name"
+        },
+        {
+          "category": "STRUCT",
+          "check": "title_plaint",
+          "result": "PASS",
+          "detail": "Document titled as plaint/suit"
+        },
+        {
+          "category": "STRUCT",
+          "check": "parties_named",
+          "result": "PASS",
+          "detail": "Both parties named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "party_roles",
+          "result": "PASS",
+          "detail": "Party roles assigned"
+        },
+        {
+          "category": "STRUCT",
+          "check": "jurisdiction",
+          "result": "PASS",
+          "detail": "Jurisdiction section present"
+        },
+        {
+          "category": "STRUCT",
+          "check": "facts_section",
+          "result": "PASS",
+          "detail": "Facts section present"
+        },
+        {
+          "category": "STRUCT",
+          "check": "prayer_section",
+          "result": "PASS",
+          "detail": "Prayer section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "verification",
+          "result": "PASS",
+          "detail": "Verification clause"
+        },
+        {
+          "category": "FACT",
+          "check": "property_described",
+          "result": "PASS",
+          "detail": "Property described (flat/area)"
+        },
+        {
+          "category": "FACT",
+          "check": "total_consideration",
+          "result": "PASS",
+          "detail": "Rs.85L consideration stated"
+        },
+        {
+          "category": "FACT",
+          "check": "advance_paid",
+          "result": "PASS",
+          "detail": "Rs.25L advance paid"
+        },
+        {
+          "category": "FACT",
+          "check": "balance_amount",
+          "result": "PASS",
+          "detail": "Balance Rs.60L mentioned"
+        },
+        {
+          "category": "FACT",
+          "check": "agreement_date",
+          "result": "PASS",
+          "detail": "Agreement date 10.01.2024"
+        },
+        {
+          "category": "FACT",
+          "check": "refusal_mentioned",
+          "result": "PASS",
+          "detail": "Defendant's refusal narrated"
+        },
+        {
+          "category": "FACT",
+          "check": "ready_willing",
+          "result": "PASS",
+          "detail": "Ready and willing averment"
+        },
+        {
+          "category": "FACT",
+          "check": "legal_notice",
+          "result": "PASS",
+          "detail": "Legal notice mentioned"
+        },
+        {
+          "category": "LEGAL",
+          "check": "specific_relief_act",
+          "result": "PASS",
+          "detail": "Specific Relief Act / specific performance cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "section_cited",
+          "result": "PASS",
+          "detail": "At least one statutory section cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "cause_of_action",
+          "result": "PASS",
+          "detail": "Cause of action section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "limitation_pleaded",
+          "result": "PASS",
+          "detail": "Limitation period addressed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "valuation_court_fee",
+          "result": "PASS",
+          "detail": "Valuation / court fee section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "interest_or_mesne",
+          "result": "PASS",
+          "detail": "Interest/mesne profits/damages claimed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "prayer_specific_performance",
+          "result": "PASS",
+          "detail": "Prayer seeks specific performance decree"
+        },
+        {
+          "category": "LEGAL",
+          "check": "prayer_sale_deed",
+          "result": "PASS",
+          "detail": "Prayer for execution of sale deed"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_air_citation",
+          "result": "PASS",
+          "detail": "No fabricated AIR"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_scc_citation",
+          "result": "PASS",
+          "detail": "No fabricated SCC"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_amounts",
+          "result": "PASS",
+          "detail": "No invented amounts (10L/50L never in facts)"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_names",
+          "result": "PASS",
+          "detail": "No placeholder names"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_drafting_notes",
+          "result": "PASS",
+          "detail": "No drafting-notes language"
+        },
+        {
+          "category": "HALLU",
+          "check": "placeholders_reasonable",
+          "result": "PASS",
+          "detail": "Placeholders: 7"
+        }
+      ],
+      "draft_text": "IN THE COURT OF THE CITY CIVIL COURT, BENGALURU\n\nAT BENGALURU\n\nO.S. No. __________ / 2024\n\nANITA SHARMA,\nAged about 52 years,\nOccupation: {{OCCUPATION}},\nResiding at: Indiranagar, Bengaluru.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\nRAJESH REDDY,\nAged about 60 years,\nOccupation: {{OCCUPATION}},\nResiding at: HSR Layout, Bengaluru.\n\n                                                        ... DEFENDANT\n\nSUIT FOR SPECIFIC PERFORMANCE OF AGREEMENT TO SELL\n\nUNDER SECTION 26 OF THE CODE OF CIVIL PROCEDURE, 1908\n\nREAD WITH SECTION 10 OF THE SPECIFIC RELIEF ACT, 1963\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the subject matter of the suit, namely, Flat No. 302, 3rd Floor, Sunshine Apartments, Koramangala, Bengaluru, is situated within the local limits of the jurisdiction of this Hon'ble Court. The Defendant resides at HSR Layout, Bengaluru, which also falls within the territorial jurisdiction of this Hon'ble Court. The cause of action arose within the territorial limits of this Hon'ble Court.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. 85,00,000/- (Rupees Eighty-Five Lakhs Only), which is within the pecuniary limits prescribed for this Hon'ble Court. This Court has subject matter jurisdiction to entertain suits for specific performance of contracts relating to immovable property.\n\nFACTS OF THE CASE\n\n4. The Plaintiff is a resident of Indiranagar, Bengaluru, and is desirous of purchasing immovable property for residential purposes.\n\n5. The Defendant is the owner of Flat No. 302, 3rd Floor, Sunshine Apartments, Koramangala, Bengaluru, measuring 1200 sq ft, and was desirous of selling the same.\n\n6. On or about 10.01.2024, the Plaintiff and the Defendant entered into an Agreement to Sell, whereby the Defendant agreed to sell the said flat to the Plaintiff for a total sale consideration of Rs. 85,00,000/- (Rupees Eighty-Five Lakhs Only) (a true copy of the said Agreement to Sell dated 10.01.2024 is annexed hereto and marked as Annexure A).\n\n7. In terms of the said Agreement to Sell, the Plaintiff paid an advance amount of Rs. 25,00,000/- (Rupees Twenty-Five Lakhs Only) to the Defendant on 10.01.2024 itself through RTGS, the particulars whereof are HDFC20240110987654 (a true copy of the RTGS receipt is annexed hereto and marked as Annexure B).\n\n8. As per the terms of the Agreement to Sell, the balance sale consideration of Rs. 60,00,000/- (Rupees Sixty Lakhs Only) was to be paid by the Plaintiff on or before 10.07.2024, upon execution and registration of the sale deed by the Defendant in favour of the Plaintiff.\n\n9. The Defendant was obligated under the Agreement to Sell to execute the sale deed and convey the subject property in favour of the Plaintiff upon receipt of the balance consideration on or before 10.07.2024.\n\n10. On 05.06.2024, the Defendant sent a letter to the Plaintiff refusing to execute the sale deed, claiming that he had received a higher offer for the property from a third party (a true copy of the Defendant's refusal letter dated 05.06.2024 is annexed hereto and marked as Annexure C).\n\n11. The Plaintiff, through her advocate, issued a legal notice dated 20.06.2024 calling upon the Defendant to execute the sale deed in terms of the Agreement to Sell (a true copy of the legal notice dated 20.06.2024 along with the postal receipt is annexed hereto and marked as Annexure D).\n\n12. The Defendant has refused to execute the sale deed despite receipt of the legal notice, thereby breaching the Agreement to Sell dated 10.01.2024.\n\nREADINESS AND WILLINGNESS\n\n13. The Plaintiff states that she has at all material times been ready and willing to perform her part of the contract, namely, to pay the balance sale consideration of Rs. 60,00,000/- (Rupees Sixty Lakhs Only) to the Defendant upon execution of the sale deed. The Plaintiff has always been ready with the funds and has been desirous of completing the transaction in accordance with the terms of the Agreement to Sell. The Plaintiff continues to be ready and willing to perform her obligations under the Agreement to Sell.\n\n14. The Plaintiff further states that the contract is not unfair or unconscionable, and that the grant of specific performance would not cause undue hardship to the Defendant, who received the advance amount of Rs. 25,00,000/- and is bound by the Agreement to Sell.\n\nLEGAL BASIS\n\n15. The Plaintiff submits that the Agreement to Sell dated 10.01.2024 is a valid and enforceable contract within the meaning of Section 10 of the Indian Contract Act, 1872, which provides that all agreements are contracts if they are made by the free consent of parties competent to contract, for a lawful consideration and with a lawful object. The Agreement to Sell satisfies all the essential elements of a valid contract, namely, offer, acceptance, lawful consideration, competent parties, and lawful object.\n\n16. The Plaintiff further submits that the present suit for specific performance is maintainable under Section 10 of the Specific Relief Act, 1963, which provides that specific performance of a contract may, in the discretion of the court, be enforced when the act agreed to be done is such that compensation in money would not afford adequate relief. The subject matter of the contract is immovable property, namely, a residential flat, which is unique and non-fungible, and monetary compensation would not afford adequate relief to the Plaintiff.\n\n17. The Plaintiff relies upon Section 16(c) of the Specific Relief Act, 1963, which provides that the plaintiff must prove that he has performed or has always been ready and willing to perform the essential terms of the contract so far as the same are applicable to the plaintiff. As pleaded hereinabove, the Plaintiff has at all times been ready and willing to perform her obligations under the Agreement to Sell.\n\n18. The Plaintiff further relies upon {{TRANSFER_OF_PROPERTY_PROVISION}} of the Transfer of Property Act, 1882, which provides that where any person has agreed to transfer any immovable property for consideration by writing and has received some part of the consideration, the transferor cannot enforce any right in respect of the property except a right to enforce the contract. The Defendant, having received Rs. 25,00,000/- as advance consideration, is estopped from refusing to execute the sale deed. NOTE: Section 53A TP Act was repealed by Specific Relief (Amendment) Act, 2018; verify correct current provision before filing.\n\nCAUSE OF ACTION\n\n19. The cause of action for the present suit arose on 05.06.2024 when the Defendant, by his letter dated 05.06.2024, refused to execute the sale deed in favour of the Plaintiff despite having entered into a valid Agreement to Sell and having received advance consideration, thereby committing breach of the Agreement to Sell and giving rise to the Plaintiff's right to seek specific performance.\n\nLIMITATION\n\n20. The present suit is within the period of limitation prescribed under Article 54 of the Schedule to the Limitation Act, 1963, which provides a period of three years from the date fixed for performance, or if no date is fixed, when the plaintiff has notice that performance is refused. The Defendant refused performance on 05.06.2024, and the suit is being filed within three years from the said date.\n\nVALUATION AND COURT FEE\n\n21. The suit is valued at Rs. 85,00,000/- (Rupees Eighty-Five Lakhs Only) for the purposes of jurisdiction and court fee. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- has been paid on this plaint in accordance with the Karnataka Court Fees and Suits Valuation Act, computed on the suit valuation at the applicable ad valorem rate.\n\nSECTION ",
+      "errors": []
+    }
+  ]
+}

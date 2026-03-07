@@ -1,0 +1,920 @@
+{
+  "user_request": "Prepare a detailed plaint for recovery of Rs.15,00,000/- advanced as a hand loan by bank transfer. There is no written agreement. The transaction is supported by bank statement and WhatsApp communications. The Defendant has failed to repay despite repeated oral demands and legal notice. Plead limitation properly. Claim interest at 12% per annum from date of loan till realization. Draft strictly in accordance with Order VII CPC. Include proper cause of action, jurisdiction, valuation, court fee and prayer clause. Use formal Indian court language suitable for filing before City Civil Court, Bengaluru.",
+  "intake": {
+    "facts": {
+      "summary": "Recovery of Rs. 15,00,000/- advanced as a hand loan via bank transfer. No written agreement exists; transaction is evidenced by bank statements and WhatsApp communications. Defendant failed to repay despite oral demands and a legal notice.",
+      "chronology": [
+        {
+          "date": null,
+          "event": "Loan of Rs. 15,00,000/- advanced via bank transfer",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": null,
+          "event": "Repeated oral demands made for repayment",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": null,
+          "event": "Legal notice issued to Defendant",
+          "source": "user_text",
+          "confidence": 0.9
+        },
+        {
+          "date": null,
+          "event": "Defendant failed to repay the amount",
+          "source": "user_text",
+          "confidence": 0.9
+        }
+      ],
+      "amounts": {
+        "principal": 1500000.0,
+        "interest_rate": 12.0,
+        "damages": null
+      },
+      "cause_of_action_date": null
+    },
+    "jurisdiction": {
+      "country": "India",
+      "state": "Karnataka",
+      "city": "Bengaluru",
+      "court_type": "City Civil Court",
+      "place": "Bengaluru"
+    },
+    "parties": {
+      "primary": {
+        "name": null,
+        "age": null,
+        "occupation": null,
+        "address": null,
+        "role": "Plaintiff"
+      },
+      "opposite": [
+        {
+          "name": null,
+          "age": null,
+          "occupation": null,
+          "address": null,
+          "role": "Defendant"
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "type": "Document",
+        "description": "Bank statement evidencing the transfer of Rs. 15,00,000/-",
+        "relevance": "Proof of transaction/Principal amount",
+        "ref": null
+      },
+      {
+        "type": "Digital Communication",
+        "description": "WhatsApp communications regarding the loan",
+        "relevance": "Acknowledgment of debt/Communication",
+        "ref": null
+      },
+      {
+        "type": "Legal Notice",
+        "description": "Legal notice sent to Defendant",
+        "relevance": "Proof of demand",
+        "ref": null
+      }
+    ],
+    "dynamic_fields": {
+      "slots": [
+        {
+          "key": "agreement_type",
+          "value": "No written agreement / Oral arrangement",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "transfer_mode",
+          "value": "Bank Transfer",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "interest_claim",
+          "value": "12% per annum from date of loan till realization",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "procedural_code",
+          "value": "Order VII CPC",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        },
+        {
+          "key": "limitation_instruction",
+          "value": "Plead limitation properly",
+          "type": "string",
+          "source": "user_text",
+          "confidence": 1.0
+        }
+      ],
+      "field_sources": {}
+    },
+    "classification": {
+      "topics": [
+        "Recovery of Money",
+        "Civil Suit",
+        "Hand Loan",
+        "Limitation"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Plaintiff Name",
+        "Defendant Name",
+        "Date of Loan",
+        "Date of Legal Notice",
+        "Addresses of Parties",
+        "Cause of Action Date"
+      ],
+      "assumptions": []
+    }
+  },
+  "classify": {
+    "law_domain": "Civil",
+    "doc_type": "money_recovery_plaint",
+    "classification": {
+      "topics": [
+        "Money Recovery",
+        "Oral Loan Agreement",
+        "Bank Transfer Evidence",
+        "Limitation Act",
+        "Interest Claim",
+        "Civil Procedure Code Order VII"
+      ],
+      "risk_level": "med",
+      "missing_fields": [
+        "Date of loan transfer",
+        "Date of legal notice issued",
+        "Defendant's name and address",
+        "Date of acknowledgment of debt via WhatsApp"
+      ],
+      "assumptions": [
+        "Jurisdiction lies in Bengaluru City Civil Court based on cause of action or defendant residence",
+        "Legal notice was duly served on the defendant",
+        "WhatsApp communications are admissible as secondary evidence under Indian Evidence Act"
+      ]
+    },
+    "rag_plan": {
+      "collections": [
+        "civil"
+      ],
+      "queries": [
+        "money recovery plaint oral loan bank transfer",
+        "Limitation Act 1963 money suit oral loan",
+        "Karnataka court fees schedule plaint valuation",
+        "Order VII CPC plaint structure Bengaluru",
+        "pleading interest money suit contractual rate"
+      ],
+      "top_k": 8,
+      "filters": {}
+    }
+  },
+  "rag": {
+    "domain": "Civil",
+    "queries": [
+      "money recovery plaint oral loan bank transfer",
+      "Limitation Act 1963 money suit oral loan",
+      "Karnataka court fees schedule plaint valuation",
+      "Order VII CPC plaint structure Bengaluru"
+    ],
+    "chunks": [
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "action for recovery of money based on a medium term loan transaction simpliciter or in \nenforcement of the hypothecation of the bus available in the present case, is a cause of act ion different from the \ncause of action arising out of an equitable mortgage, though the ultimate relief that the plaintiff-Bank is entitled to is \nthe recovery of the term loan that was granted to the appellant. On the scope of O 2, r 2, the Privy Council in \nPayana Reena Saminatha v. Pana Lana Palaniappa, (XLI Ind App 142) has held that O 2, r 2 is directed to securing",
+        "score": 0.547,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "the mortgagor personally, and obtain a decree. He then applies for the attachment and sale of \nthe mortgaged property in execution of the decree. The mortgaged property may be attached, but it cannot be sold \nin execution proceedings. The only mode of bringing it to sale is by instituting a fresh suit for sale. O 34, r 14, says \nthat the mortgagee may institute such a suit notwithstanding anything contained in O 2, r 2. 65 The suit will be one \nunder s 67 of the Transfer of Property Act 1882. It must, however, be noted that though O 34, r 14, allows a \nmortgagee to split his remedies, it does not allow him to split his claim.66\nIn a suit for recovery of money based on a medium term loan transaction simpliciter or in enforcement of \nhypothecation agreement, where a decree is awarded, the subsequent suit for enforcement of equitable mortgage \nis not barred under O 2, r 2. Causes of act ion are different though they might have been part of the same \ntransaction and the ultimate relief is the recovery of the term loan. 67 As pointed out in the above case, what O 2, r 2 \ninsists upon is the inclusion of the whole of the claim which the plaintiff is entitled to make in respect of the cause of \naction put in suit. We must notice at this stage that in respect of a suit in enforcement of a mortgage, the bar under \nO 2, r 2 has been kept out by O 34, r 14 of the Code.68\nThe Supreme",
+        "score": 0.424,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "ainst purchaser for realisation of dues.228\nIn a money decree, where the mode of recovery had been prescribed by the Court granting decree, alteration of the \nmanner of recovery by the Executing Court for recovery of the decretal amount was erroneous and not sustainable. \nThus, in a case of recovery of loan given by Bank, though the Bank was entitled to proceed both against the \nprincipal debtor and guarantor, it was held by the Supreme court that the right of the Bank stood restricted due to \ndirections of the trial Court.229\n3. Sale if made without attachment is valid. Most of the High Courts take the view that the absence of \nattachment is an irregularity but does not vitiate the sale. In Bombay, there seems to be a conflict of opinion on this \npoint. In a latter decision it was held that neither r 30 nor r 60 expressly negative the power given by s 51 to sell \nwithout attachment and a sale without attachment is not a nullity.230 It is submitted that this is the better view.\nIn an execution for recovery for decretal amount of money decree, where the property in question had been \npurchased under a registered sale deed for valid consideration when there was no valid attachment order \nsubsisting, the decree-holder cannot proceed against property in question, unless there is a specific direction in the \ndecree creating any charge on the said property.231",
+        "score": 0.42,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "ept or to reject a plaint, what is to be seen is only the averments made in the plaint. If the \nplaint discloses a cause of action but the averments do not show that the suit is barred by any law, the defence \ncannot be looked into to reject the plaint. Where the defence, alleges fraud, the principle that fraud vitiates all \ncannot be extended to rejection of plaint because fraud is a question of fact which is to be established in the course \nof trial. But what is stated in the written statement is merely the defence version of the defendant which cannot be \nlooked into at the stage of consideration of prayer to reject the plaint under O 7, r 11 of the Code. Therefore, the \nrejection of defendants prayer under O 7, r 11 of the Code cannot be said to be wrong exercise of jurisdiction.48\nIn a case, the Central Bank of India filed a mortgage suit for realisation of its money and the suit was later \ntransferred to the Debt Recovery Tribunal. The debtor filed an application for set off and counter-claim but the said \nclaim was not adjudicated by the DRT. Then the debtor filed an independent suit. The maintainability of the suit was \nchallenged by the Bank by filing an application under O 7, r 11 of the Code but the same was rejected by trial Court \nand the High Court. Thereafter the Bank filed an application for deciding the issue of maintainability as a preliminary \nissue under O",
+        "score": 0.417,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "t of court fees under sch 1, Art. 1 of the Court-fees Act 1870; and\n(vii) Dismissal of suit or its withdrawal would not debar a set of or counterclaim being tried, may be followed by \na decree against the plaintiff.84\nA bank can transfer amount deposited in current account to its loan account for set-off. The bank has the right of \nset-off in terms of the contract to recover the debt due to it. 85 A suit was filed by plaintiff for recovery of certain \namount in respect of various spare parts supplied and repairs carried out to the vessel of defendant at Hamburg \nand elsewhere. The suit was filed under admiralty jurisdiction of the Bombay High Court, when the 1st defendant \nvessel was in Bombay. The defendant-owner of vessel having its registered office at Cyprus, filed a counterclaim in \nthe suit, claiming damages from the plaintiff for defective repairs to the suit-ship and for alleged improper and \nnegligent manner in which repairs were carried out by the plaintiff. 86 The plaintiff sought to strike off the \ncounterclaim on the ground that it did not arise under admiralty jurisdiction of the\nBombay High Court and also that there was no common issue in the suit and counterclaim. It was held that since \nthe plaintiffs submitted themselves to admiralty jurisdiction of Bombay High Court, defendant can file counterclaim \nunder O 8, r 6 of the Code of Civil Procedure. 1 According",
+        "score": 0.416,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "was filed by Bank under the Recovery of Debts Due to Banks and Financial Institutions Act, \n1993 before the Tribunal for recovery against borrower company. During the pendency of the said application \nbefore Tribunal, the borrower company filed civil suit against the Bank alleging breach by Bank in not releasing \nsanctioned loans. It was held by the Supreme Court that the suit of the borrower company and Banks \napplication before the Tribunal are not inextricably connected and as such the provisions of s 31 of the Act are \nnot applicable. Further, the suit was not counter-claim to the application filed by the Bank. Thus, the application \nfiled by Bank for transfer of the suit to Tribunal was not maintainable. 80 R.V. Raveendran, J., speaking for the \nDivision Bench in the above case, observed as follows:\n9. The issues that arose in the Banks application was whether the borrower failed to repay the sums borrowed and \nwhether the Bank was entitled to the amounts claimed. On the other hand, the issues that arose in the borrower suit \nwere whether the Bank had promised/agreed to advance certain monies; whether the Bank committed breach in \nrefusing to release such loans in terms of the sanction letter; whether the borrower failed to fulfil the terms and \nconditions of sanction and therefore, the Banks refusal to advance was justified; and even if there was breach, whether \nthe",
+        "score": 0.471,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "lder and not against his transferee, and accordingly, a payment \nmade by him to a transferee from the decree-holder whose transfer was invalid cannot be set up against a \ntransferee who has obtained a valid transfer. 972 A company borrowed a loan from the bank, but failed to repay. \nConsequent upon this, the bank tried to exercise the right of set off in terms of the contractual obligations \nassumed by the petitioners (company), by transferring the amounts deposited by petitioners in the current \naccount to the loan account. The question arose whether the respondent bank had the right to claim set off of \nthe amounts deposited in the current accounts by transferring them to the loan account, in order to realise the \nloans advanced to the petitioners, which they had failed to discharge. It was held that the matter fell within the \ndomain of the law of contract, and the right of set off claimed by the bank could not be denied on the pretext \nthat the transfer of the amounts in the current account would result in the negation of the activities of the \npetitioners in publishing the newspapers, weeklies, etc. The enforcement of the doctrine of set off for the \namounts to be realised by the bank, cannot be said to be arbitrary or mala fide. 973 \n(i) A holds a decree against B for Rs 5,000. B holds a decree against A for Rs 3,000. A transfers his decree to \nC. C cannot execute the",
+        "score": 0.468,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "r but the said order was recalled and de novo trial \nwas ordered. When an order is recalled by court, it is completely obliterated. But the record showed that while \npassing subsequent order the court was heavily carried away by the earlier recalled ex parte order and the \nsubsequent order was not based upon independent consideration. It was held by the Division Bench that the order \nwas liable to be set aside.52\nUnder the Recovery of Debts Due to Bank and Financial Institutions Act 1993 proceeding for recovery of debt for 10 \nlakhs or more could be filed before the Tribunal constituted under the Act. After enforcement of the said Act, the \nrespondent-Bank filed suit before Civil Court for recovery of loan below 10 lakhs and the Civil Court passed ex parte \ndecree for more than Rs 11 lakhs. It was held by a Full Bench of the Kerala High Court that application for setting \naside the ex parte decree is to be filed before the Tribunal and not the Civil Court.53\nFor the applicability of r 13 of O 9, the ex parte order must be a decree within the meaning of s 2 (2) of the Code of",
+        "score": 0.456,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "3 \nTHE LIMITATION ACT, 1963 \nACT NO. 36 OF 1963 \n[5th October, 1963.] \nAn Act to consolidate and amend the law for the limitation of suits and other proceedings and for \npurposes connected therewith. \nBE it enacted by Parliament in the Fourteenth Year of the Republic of India as follows:— \nPART I \nPRELIMINARY \n1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. \n(2) It extends to the whole of India 1***. \n(3) It shall come into force on such date 2 as the Central Government may, by notification in the \nOfficial Gazette, appoint. \n2. Definitions.—In this Act, unless the context otherwise requires,— \n(a) “applicant” includes— \n(i) a petitioner; \n(ii) any person from or through whom an applicant derives his right to apply; \n(iii) any person whose estate is represented by the applicant as executor, administrator or \nother representative; \n(b) “application” includes a petition; \n(c) “bill of exchange” includes a hundi and a cheque; \n(d) “bond” includes any instrument whereby a person obliges himself to pay money to another, \non condition that the obligation shall be void if a specified act is performed, or is not performed, as \nthe case may be; \n(e) “defendant” includes— \n(i) any person from or through whom a defendant derives his liability to be sued; \n(ii) any person whose estate is represented by the defendant as executor, administrator",
+        "score": 0.654,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "r Court sale.92\nA payment certified by a decree-holder but not recorded by the court, cannot be relied on as a step-in-aid for the \npurposes of limitation. He can rely on such payment if it amounts to an acknowledgment under s 20 of the \nLimitation Act.93\n35. Oral adjustment. An order striking off an execution proceeding on the ground that there was an adjustment of \nthe decree between the parties outside the court, is an order relating to the execution discharge or satisfaction of \nthe decree within the meaning of s 47. So also, in a money decree, where an adjustment is pleaded and the court is \ncalled upon to record and certify such an adjustment. 94 Under the definition of decree in s 2(2) as it stood before its \namendment in 1976, it was held that such an order amounted to a decree and was appealable under s 96. 95 Under \nthe present definition of decree as amended by the Amendment Act, 1976, such an order is not a decree and \nhence, not appealable. The earlier decisions based on s 2(2) prior to its amendment are, therefore, not applicable. \nWhere the court orders an execution application to proceed in spite of certification of payment or adjustment by the \ndecree-holder, such an order would be subject to revision. So also, where the court refuses to determine a dispute \nraised by a judgment-debtor under sub-r (2) as regards the accuracy of certification by a decree-holder",
+        "score": 0.53,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "suit was barred by limitation in terms of Art. 58 of the Limitation Act, 1963. The High Court, \ntherefore, in our opinion, ex facie committed an error in arriving on the aforementioned finding.56\nIn a suit filed by a Bank for recovery of money, where the claim of the Bank was more than 10 lakhs, the Civil Court \nhas no jurisdiction to entertain the suit in view of the bar created under Recovery of Debts Due to Banks and \nFinancial Institutions Act, 1993 and the appropriate remedy was available before the debt recovery Tribunal. Since \nthe suit was barred by statute, it was held liable to be rejected under O 7, r 11(d) of the Code.57\nIn a suit, where permanent injunction was sought prohibiting the defendants from presenting cheques in their favour \nfor encashment, it was held by the Delhi High Court that the reliefs sought will amount to restraining the defendant \nfrom instituting civil or criminal proceedings against the plaintiff on account of non-encashment of cheques which \nwould amount to hampering access to justice. The reliefs sought is barred by law being directly hit by the provisions \nof s 41 (b), (d) of the Specific Relief Act, 1963 and as such the injunction can be refused. However, in the light of \nsubsequent events of the case, it was further held that the entire suit cannot be dismissed as infructuous.58\nIn a matrimonial case before the family courts, the Family",
+        "score": 0.582,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "v. Madhubhai Patel, AIR 2003 Bom 490 [ LNIND 2003 BOM 629].\n50 . R. Viswanathan v. Rukn-ul-Mulk Syed Abdul Wajid, AIR 1963 SC 1 [ LNIND 1962 SC 226].\n51 . Janardhan Mohandas Rajan Pillai v. Madhubhai Patel, AIR 2003 Bom 490 [ LNIND 2003 BOM 629].\n52 . The Indian Limitation Act, 1963, Sch 1, art 101.\n53 . Popat v. Damodar, (1934) 36 Bom LR 844 : AIR 1934 Bom 390.\n54 . Nilratan Cooch Behar Loan Office, (1941) ILR 1 Cal 171 : AIR 1941 Cal 64, 45 CWN 113 : 72 CLJ 148; Setabgang \nSugar Mills v. Benazir Ahmed, AIR 1952 Cal 116 [ LNIND 1951 CAL 161]; East India Trading Co v. Badat and Co., AIR",
+        "score": 0.566,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "4 \n(j) “period of limitation ” means the period of limitation prescribed for any suit, appeal or \napplication by the Schedule, and “prescribed period” means the period of limitation computed in \naccordance with the provisions of this Act; \n(k) “promissory note ” means any instrument whereby the maker engages absolutely to pay a \nspecified sum of money to another at a time therein limited, or on demand, or at sight; \n(l) “suit” does not include an appeal or an application; \n(m) “tort\" means a civil wrong which is not exclusively the breach of a contract or the breach of a \ntrust; \n(n) “trustee” does not include a benamidar, a mortgagee remaining in possession after the \nmortgage has been satisfied or a person in wrongful possession without title. \nPART II \nLIMITATION OF SUITS, APPEALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is presented to the proper officer; \n(ii) in the case of a pauper, when his application for leave to sue as a pauper is made; and \n(iii) in the case of a claim against a company which is being wound up by the court,",
+        "score": 0.555,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "s a party to this suit, nor is \nany notice given to him that A was drawing out of court, the balance of Rs 12,000. B then sues A to recover the \namount drawn out by A , that is, Rs 12,000. Such a suit is not one under sub-s (2), and the period of limitation \napplicable to the suit is 12 years under Art. 132 of the Limitation Act, 1963. The suit is really one to enforce \npayment of money charged upon immovable property within the meaning of that article.2081 \n18. Declaratory suit. Is a decree-holder claiming under this section entitled to file a suit for a declaration that \nanother decree-holder is not entitled to rateable distribution, and for an injunction restraining him from receiving \npayment, before distribution of the assets by the court, or is he bound to wait until act ual distribution is made \nand then sue for a refund? In a Madras case, 2082 Sadasiva Ayyar J, expressed the opinion that he is entitled to \nsue for a declaration. \n19. Inquiry into validity of decree. The judgment of the Privy Council in Shankar Sarup v. Mejo Mal , 2083 \nmakes it clear that the court distributing the assets is acting in an administrative rather than a judicial capacity. \nThe court, which is merely a distributive agency, cannot deal with the question whether any decree has been \nobtained by fraud or improper means as in an ordinary case of execution. The Courts of Calcutta, 2084 Madras,",
+        "score": 0.551,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "al assignee or receiver is entitled on \nthe insolvency of the defendant to the money paid into court.350\n28. Limitation. A full bench of the Madras High Court has held that a rule framed by that court applying s 5 of the \nLimitation Act 1908, (now s 5 of the Limitation Act 1963), to applications under r 13, was intra vires. 351 The period of \n30 days has been enlarged under that section in the case of a mistake of a pleader or his clerk. 352 A decree passed \nex parte in disregard of the provision as to sufficiency of time to enable the defendant to appear (as required by r 6) \nis not a nullity, and must stand unless it is set aside on an application presented within the period specified in Art. \n164.353 Where the defendant had been served with summons, he must apply to set aside an ex parte decree \npassed against him within 30 days of the decree under Art. 164, and not within 30 days of his knowledge of the",
+        "score": 0.544,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "a conclusive adjudication as to those rights, which may be subsequently readjusted in \na suit brought under the penultimate paragraph of the section. 2078 Such a suit is virtually a suit for money had \nand received, and the period of limitation is three years from the date of the receipt of the assets by the \ndefendant. 2079 The suit being one for money had and received, it would be premature if it were brought before \nthe moneys were actually paid to the defendant. A mere order for the payment of money under the section is \nnot sufficient to found the act ion. 2080 \nSuit by Subsequent Mortgagee to Recover Balance of Money Realised by Sale in a Prior Mortgage.X \nmortgages his property to A . He then mortgages the same property to B . Subsequently he executes a further \ncharge on the property in favour of A. A sues X on the first mortgage, joining B as a defendant, and obtains a \ndecree on the mortgage. The property is sold in execution of the decree and a balance of Rs 12,000 which \nremains after satisfying A s decree is deposited in court. A then obtains a decree for sale on further charge and \nin execution of the decree draws out the balance deposited in court. B is not joined as a party to this suit, nor is \nany notice given to him that A was drawing out of court, the balance of Rs 12,000. B then sues A to recover the \namount drawn out by A , that is, Rs 12,000. Such a suit",
+        "score": 0.541,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "valorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53",
+        "score": 0.656,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "(d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter showing the provisions of law \nunder which the valuation of the court-fees and jurisdiction is separately made. (1-11-1966).\nBombay (Dadra and Nagar Haveli) (Goa, Daman and Diu). The following amendments were made by \nMaharashtra Government Gazette, dated 15-9-1983, Part 4 Ka, Page 402; Goa Gazette, dated 12-10-1987, Extra., \ns 1 No. 28, Page 376, dated 1-4-1987.\nFor item (i) substitute the following:\n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of Court-fees, so far \nas the case admits, showing the provisions of law under which the valuation for Court-fees and jurisdiction is \nseparately made.\nKarnataka. The following amendments were made by Karnataka Gazette, dated 30-3-1967.\nDelete r 1 and substitute the following:",
+        "score": 0.625,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "Page 5 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nHIGH COURT AMENDMENTS\nDelhi. Same as that of Punjab.\nHimachal Pradesh. Same as in Delhi.\nKarnataka. The following amendments were made by Karnataka Gazette, dated 30-3-1967.\nFor r 2 substitute the following:\n2. Where the plaintiff seeks for recovery of money the plaint shall state the precise amount claimed, and wherever a \nstatement of account or a memorandum of calculation is necessary for the purpose, such statement or memorandum shall \nbe set out in the schedule to the plaint or separately annexed thereto.\nBut where the plaintiff sues for mesne profits, or for an amount which will be found due to him on taking unsettled accounts \nbetween him and the defendant, the plaint shall state approximately the amount sued for.\nPunjab, Haryana & Chandigarh. The following amendments were made by Punjab Gazette, dated 12-5-1909, Act \n31 of 1966, Ss. 29 and 32, dated 1-11-1966.\nIn the second paragraph after the word defendant insert or for movables in the possession of the defendant, or for \ndebts of which the value he cannot, after the exercise of reasonable diligence, estimate and after the word amount \nwhere it last occurs insert or value.\n1. Suit for damages. In a suit for damage, the plaintiff must state the amount of damages claimed and pay court-\nfees thereon.35\n2. Suit for mesne profits. A claim for past mesne",
+        "score": 0.526,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "(IN) Mulla : The Code of Civil Procedure, 18th Edition\nMulla : The Code of Civil Procedure, 18th Edition\nMulla\nMulla : The Code of Civil Procedure, 18th Edition > Mulla : The Code of Civil Procedure, 18th \nEdition > Volume 2 > The First Schedule\nOrder 7\nPlaint\nR.1. Particulars to be contained in plaint.\nThe plaint shall contain the following particulars: \n(a) the name of the Court in which the suit is brought;\n(b) the name, description and place of residence of the plaintiff;\n(c) the name, description and place of residence of the defendant, so far as they can be asc ertained;\n(d) where the plaintiff or the defendant is a minor or a person of unsound mind, a statement to that effect;\n(e) the facts constituting the cause of act ion and when it arose;\n(f) the facts showing that the Court has jurisdiction;\n(g) the relief which the plaintiff claims;\n(h) where the plaintiff has allowed a set off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and\n(i) a statement of the value of the subject matter of the suit for the purpose of jurisdiction and of court-fees, so far as \nthe case admits.\n[C1. (d) substituted in AP, Kerala and Madras; Cls (b), (c) and (d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter",
+        "score": 0.517,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-5",
+        "text": "t \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is",
+        "score": 0.591,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "eld that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court has \nlaid down that, the plaintiff would be able to drag the defendant into any court be pleases. 79 This passage was \nquoted, with approval, by the Bombay High Court in Bhikamdas v. Motilal, 80 wherein, it was held that an \nerroneous decision of the effect that a suit fell under a particular category for the purposes of court fees was \nopen to revision. And, it was further pointed out that, the jurisdiction of the court might be affected by the \ndecision. The Kerala High Court also held that, the defendant could prefer a revision against an order deciding \nthat the suit fell under a particular category and, that the court fee paid was correct. 81 The Mysore High Court \nheld that where the plaintiff, claiming exemption under a notification issued under the Hyderabad Court Fees \nAct, presented a plaint without any court fee, it was open to the defendant to challenge its validity in a revision, \nas the rule that the defendant cannot move the court under s 115, when the court fee paid has been held to be \nsufficient, has no application when no court fee has been paid.82\nIn Ratnavarma Raja v. Vimla, 83 the Supreme Court has observed that, whether proper court fee has been paid \nor",
+        "score": 0.584,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "Page 68 of 106\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \norder is favourable to the plaintiff, though it may cause detriment to the revenue authorities, and also does not \nprejudice the defendant, there is no ground for revision, 74 Though the defendants would ask for enquiry with \nreference to the value of the court fee payable on the plaint, the defendants cannot have any grievance against \nthe order overruling the objection to get him entitled to invoke the revisional jurisdiction of the High Court on \nquestion whether the plaintiffs have paid adequate court fee on the plaint or not, 75 unless the question of \njurisdiction is connected with the question of court fees. 76 Thus it was observed in Sathappa Chettiar v. \nRamanathan Chettiar,77 that:\nNormally the dispute between the litigant and the Registry in respect of court fees arises at the initial stage of \nthe presentation of the plaint or the appeal and the defendant or the respondent is usually not interested in such \na dispute unless the question of payment of court fees involves also the question of jurisdiction of the court \neither to try the suit or to entertain the appeal.\nThe Calcutta High Court has held that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court",
+        "score": 0.579,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "Page 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade",
+        "score": 0.574,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-1",
+        "text": "ew of s 21 of the Hindu Marriage Act 1955, all \nproceedings subject to the qualification set out in the section would be governed by this rule.\nOrder 7, r 1 of the code prescribes what a plaint should contain, but no section or order or Rule of CPC lays down \nas to what a petition should contain. On the other hand the Code does not say that the ingredients required for \nplaint are the ingredients for a petition. Therefore, a petition is completely different from a plaint. Thus, a petition for \ndivorce under s 13 of the Hindu Marriage Act, 1955 is not a plaint and a final order passed under the Act is not a \ndecree under s 2 (2) of the CPC. Therefore, decree passed without separate prayer for consequential relief is \nenforceable and court-fees for divorce petition is not Rs. 20/- but Re. 1/- as prescribed for petition.33\nR.2. In money suits. \nWhere the plaintiff seeks the recovery of money, the plaint shall state the precise amount claimed:\nBut where the plaintiff sues for mesne profits, or for an amount which will be found due to him on taking unsettled \naccounts between him and the defendant, 34[or for movables in the possession of the defendant, or for debts of \nwhich the value he cannot, after the exercise of reasonable diligence, estimate, the plaint shall state approximately \nthe amount or value sued for].",
+        "score": 0.55,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-2",
+        "text": "Page 59 of 80\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nR. 2. Dismissal of suit where summons not served in consequence of plaintiff's failure to pay costs.Where on the day so \nfixed it is found that the summons has not been served the defendant in consequence of the failure of the plaintiff to \npay the court-fee or postal charge [OR] (if any) chargeable for such service, or to present copies of the plaint or concise \nstatements, as required by rule 9 of Order VII, the Court may make an order that the suit be dismissed:\nProvided that no such order shall be made if, notwithstanding such failure, the defendant attends in person (or by agent \nwhen he is allowed to appear by agent) on the day fixed for him to appear and answer.\n4 . Gobind Ram v. Muhammad, (1912) Punj Rec No. 35, p 115 : 11 IC 317.\n5 . Krishnarao Bapurao Deshmukh v. Wamanrao Ganpatrao Deshmukh, AIR 1950 Mad 188; Ramanand Singh v. \nChandrama Singh, AIR 1921 Pat 422.\n6 . New Bharat Chemical Industry v. Om Prakash, (1998) AIHC 614, (P&H).\n7 . Maghraj Calla v. Kajodi Mal, AIR 1994 Raj 41.\n8 . Latarnath v. Gopeshwar, (1952) ILR 2 Raj 382.\n9 . Shri Sanat Textiles Industries Ltd. v. Naranji Peraj Transport Co., AIR 1996 Guj 107 [ LNIND 1995 GUJ 267].\n10 . Ratnagiri Hotels Pvt. Ltd. v. Municipal Corporation of Greater Bombay, AIR 2006 Bom 132 [ LNIND 2006 BOM 85].\n11 . Lachmi Narain v. Darbari Lal, (1916)",
+        "score": 0.539,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-3",
+        "text": "and 18 shall be omitted.\n17. Amendment of Order VII.\nIn the First Schedule, in Order VII,\n(i) for rule 9, the following rule shall be substituted, namely:\n(9) Procedure on admitting plaint.\n(1) Where the plaint is admitted, the Court shall give to the plaintiff summons in the name of all the \ndefendants to be served upon or get served in the manner provided under Order V.\n(2) Within two days of the receipt of summons under sub-rule (1), the plaintiff shall send or cause to \nsend the summons to the defendants alongwith the copy of the plaint in the manner provided \nunder Orderv.\n(3) Where the Court orders that the summons be served on the defendants in the manner provided in \nrule 9A of Order V, it will direct the plaintiff to present as many copies of the plaint on plain paper \nas there are defendants within two days from the date of such order alongwith requisite fee for \nservice of summons on the defendants.\n(ii) in rule 11, after sub-clause (d), the following sub-clauses shall be inserted namely:\n(e) where it is not filed in duplicate;\n(f) where the plaintiff fails to comply sub-rule (2) of rule 9;\n(g) where the plaintiff fails to comply sub-rule (3) of rule 9.;\n(iii) for rule 14, the following rule shall be substituted, namely:\n14 Production of document on which plaintiff sues or relies.",
+        "score": 0.529,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-4",
+        "text": "tion of such limited \ntime as aforesaid or of such fourteen days, as the case may be, unless the time is extended by the Court..\n8. Amendment of Order VII.\nIn the First Schedule, in Order VII,\n(i) for rule 9 [as substituted by clause (i) of section 17 of the Code of Civil Procedure (Amendment) Act, \n1999 (46 of 1999)] the following rule shall be substituted, namely:\n9 Procedure on admitting plaint.Where the Court orders that the summons be served on the \ndefendants in the manner provided in rule 9 of Order V, it will direct the plaintiff to present as many \ncopies of the plaint on plain paper as there are defendants within seven days from the date of such \norder along with requisite fee for service of summons on the defendants.;\n(ii) in rule 11, for sub-clauses (f) and (g) [as inserted by clause (ii) of section 17 of the Code of Civil \nProcedure (Amendment) Act, 1999 (46 of 1999)], the following sub-clause shall be substituted, namely:\n(f) where the plaintiff fails to comply with the provisions of rule 9.;\n(iii) in rule 14 [as substituted by clause (iii) of section 17 of the Code of Civil Procedure (Amendment) Act, \n1999 (46 of 1999)], for sub-rule (3), the following sub-rule shall be substituted, namely:\n(3) A document which ought to be produced in Court by the plaintiff when the plaint is presented, \nor to be entered in the list to be added or annexed to the plaint but is",
+        "score": 0.523,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-6",
+        "text": "h amendments shall be \nmade as may be necessary for the purpose of determining the real questions in controversy between the \nparties. \n18. Failure to amend after order— If a party who has obtained an order for leave to amend does not amend \naccordingly within the time limited for that purpose by the order, or if no time is thereby limited then within \nfourteen days from the date of the order, he shall not be permitted to amend after the expiration of such \nlimited time as aforesaid or of such fourteen days, as the case may be, unless the time is extended by the \nCourt. \nORDER VII- PLAINT \n1. Particulars to be contained in plaint— The plaint shall contain the following particulars:— \n(a) the name of the Court in which the suit is brought ; \n(b) the name, description and place of residence of the plaintiff; \n(c) the name, description and place of residence of the defendant, so far as they can be ascertained; \n(d) where the plaintiff or the defendant is a minor or a person of unsound mind, a statement to that effect; \n(e) the facts constituting the cause of action and when it arose; \n(f) the facts showing that the Court has jurisdiction; \n(g) the relief which the plaintiff claims; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for",
+        "score": 0.496,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-7",
+        "text": "re a complaint dismissed for default. Hence the opposite party may appear on the subsequent date \nand contest the case.2\n3[R.2. Dismissal of suit where summons not served in consequences of plaintiffs failure to pay costs.\nWhere on the day so fixed it is found that the summons has not been served upon the defendant in consequence of \nthe failure of the plaintiff to pay the court-fee or postal charges, if any, chargeable for such service or failure to \npresent copies of the plaint as required by rule 9 of Order VII, the Court may make an order that the suit be \ndismissed:\nProvided that no such order shall be made, if notwithstanding such failure, the defendant attends in person or by \nagent when he is allowed to appear by agent on the day fixed for him to appear and answer.]\nHIGH COURT AMENDMENTS\nAllahabad. After the words, for such service insert or that the plaintiff has failed to comply with the rules for filing \nthe copy of the plaint for service on the defendant. (24-7-1926).\nOrissa. For the words court-fee or postal charges substitute court-fee postal or other charges. Notn. No. 24X-7-52 \nof 30-3-1954.\n1. Changes in the rule. Rule 2 has been subjected to amendment three times. By Act 104 of 1976, the words or to \npresent copies of the plaint or concise statement as required by r 9 of O 7 were inserted in the rule and a new \nproviso was substituted for the old one. The",
+        "score": 0.495,
+        "source": {
+          "collection": "civil"
+        }
+      },
+      {
+        "chunk_id": "rag-doc-8",
+        "text": "he \nday so fixed it is found that the summons has not been served upon the defendant in consequence of the \nfailure of the plaintiff to pay the court-fee or postal charges, if any, chargeable for such service, or failure to \npresent copies of the plaint as required by rule 9 of Order VII, the Court may make an order that the suit be \ndismissed:\nProvided that no such order shall be made, if notwithstanding such failure, the defendant attends in person or \nby agent when he is allowed to appear by agent on the day fixed for him to appear and answer..\n11. Amendment of Order XIV.\nIn the First Schedule, in Order XIV, for rule 5 [as it stood immediately before its omission by clause (ii) of \nsection 24 of the Code of Civil Procedure (Amendment) Act, 1999 (46 of 1999)], the following rule shall be \nsubstituted, namely:",
+        "score": 0.492,
+        "source": {
+          "collection": "civil"
+        }
+      }
+    ],
+    "authority_map": {},
+    "rules": [],
+    "errors": [],
+    "raw_context": "[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1548:C6164]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1548:C6164 | commentary | 491014025-MULLA-on-CPC-pdf | p.1548 | score=0.547]:\naction for recovery of money based on a medium term loan transaction simpliciter or in \nenforcement of the hypothecation of the bus available in the present case, is a cause of act ion different from the \ncause of action arising out of an equitable mortgage, though the ultimate relief that the plaintiff-Bank is entitled to is \nthe recovery of the term loan that was granted to the appellant. On the scope of O 2, r 2, the Privy Council in \nPayana Reena Saminatha v. Pana Lana Palaniappa, (XLI Ind App 142) has held that O 2, r 2 is directed to securing\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1548:C6162 | commentary | 491014025-MULLA-on-CPC-pdf | p.1548 | score=0.424]:\nthe mortgagor personally, and obtain a decree. He then applies for the attachment and sale of \nthe mortgaged property in execution of the decree. The mortgaged property may be attached, but it cannot be sold \nin execution proceedings. The only mode of bringing it to sale is by instituting a fresh suit for sale. O 34, r 14, says \nthat the mortgagee may institute such a suit notwithstanding anything contained in O 2, r 2. 65 The suit will be one \nunder s 67 of the Transfer of Property Act 1882. It must, however, be noted that though O 34, r 14, allows a \nmortgagee to split his remedies, it does not allow him to split his claim.66\nIn a suit for recovery of money based on a medium term loan transaction simpliciter or in enforcement of \nhypothecation agreement, where a decree is awarded, the subsequent suit for enforcement of equitable mortgage \nis not barred under O 2, r 2. Causes of act ion are different though they might have been part of the same \ntransaction and the ultimate relief is the recovery of the term loan. 67 As pointed out in the above case, what O 2, r 2 \ninsists upon is the inclusion of the whole of the claim which the plaintiff is entitled to make in respect of the cause of \naction put in suit. We must notice at this stage that in respect of a suit in enforcement of a mortgage, the bar under \nO 2, r 2 has been kept out by O 34, r 14 of the Code.68\nThe Supreme\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2350:C9355 | commentary | 491014025-MULLA-on-CPC-pdf | p.2350 | score=0.420]:\nainst purchaser for realisation of dues.228\nIn a money decree, where the mode of recovery had been prescribed by the Court granting decree, alteration of the \nmanner of recovery by the Executing Court for recovery of the decretal amount was erroneous and not sustainable. \nThus, in a case of recovery of loan given by Bank, though the Bank was entitled to proceed both against the \nprincipal debtor and guarantor, it was held by the Supreme court that the right of the Bank stood restricted due to \ndirections of the trial Court.229\n3. Sale if made without attachment is valid. Most of the High Courts take the view that the absence of \nattachment is an irregularity but does not vitiate the sale. In Bombay, there seems to be a conflict of opinion on this \npoint. In a latter decision it was held that neither r 30 nor r 60 expressly negative the power given by s 51 to sell \nwithout attachment and a sale without attachment is not a nullity.230 It is submitted that this is the better view.\nIn an execution for recovery for decretal amount of money decree, where the property in question had been \npurchased under a registered sale deed for valid consideration when there was no valid attachment order \nsubsisting, the decree-holder cannot proceed against property in question, unless there is a specific direction in the \ndecree creating any charge on the said property.231\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1788:C7123 | commentary | 491014025-MULLA-on-CPC-pdf | p.1788 | score=0.417]:\nept or to reject a plaint, what is to be seen is only the averments made in the plaint. If the \nplaint discloses a cause of action but the averments do not show that the suit is barred by any law, the defence \ncannot be looked into to reject the plaint. Where the defence, alleges fraud, the principle that fraud vitiates all \ncannot be extended to rejection of plaint because fraud is a question of fact which is to be established in the course \nof trial. But what is stated in the written statement is merely the defence version of the defendant which cannot be \nlooked into at the stage of consideration of prayer to reject the plaint under O 7, r 11 of the Code. Therefore, the \nrejection of defendants prayer under O 7, r 11 of the Code cannot be said to be wrong exercise of jurisdiction.48\nIn a case, the Central Bank of India filed a mortgage suit for realisation of its money and the suit was later \ntransferred to the Debt Recovery Tribunal. The debtor filed an application for set off and counter-claim but the said \nclaim was not adjudicated by the DRT. Then the debtor filed an independent suit. The maintainability of the suit was \nchallenged by the Bank by filing an application under O 7, r 11 of the Code but the same was rejected by trial Court \nand the High Court. Thereafter the Bank filed an application for deciding the issue of maintainability as a preliminary \nissue under O\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1844:C7360 | commentary | 491014025-MULLA-on-CPC-pdf | p.1844 | score=0.416]:\nt of court fees under sch 1, Art. 1 of the Court-fees Act 1870; and\n(vii) Dismissal of suit or its withdrawal would not debar a set of or counterclaim being tried, may be followed by \na decree against the plaintiff.84\nA bank can transfer amount deposited in current account to its loan account for set-off. The bank has the right of \nset-off in terms of the contract to recover the debt due to it. 85 A suit was filed by plaintiff for recovery of certain \namount in respect of various spare parts supplied and repairs carried out to the vessel of defendant at Hamburg \nand elsewhere. The suit was filed under admiralty jurisdiction of the Bombay High Court, when the 1st defendant \nvessel was in Bombay. The defendant-owner of vessel having its registered office at Cyprus, filed a counterclaim in \nthe suit, claiming damages from the plaintiff for defective repairs to the suit-ship and for alleged improper and \nnegligent manner in which repairs were carried out by the plaintiff. 86 The plaintiff sought to strike off the \ncounterclaim on the ground that it did not arise under admiralty jurisdiction of the\nBombay High Court and also that there was no common issue in the suit and counterclaim. It was held that since \nthe plaintiffs submitted themselves to admiralty jurisdiction of Bombay High Court, defendant can file counterclaim \nunder O 8, r 6 of the Code of Civil Procedure. 1 According\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P118:C493 | commentary | 491014025-MULLA-on-CPC-pdf | p.118 | score=0.471]:\nwas filed by Bank under the Recovery of Debts Due to Banks and Financial Institutions Act, \n1993 before the Tribunal for recovery against borrower company. During the pendency of the said application \nbefore Tribunal, the borrower company filed civil suit against the Bank alleging breach by Bank in not releasing \nsanctioned loans. It was held by the Supreme Court that the suit of the borrower company and Banks \napplication before the Tribunal are not inextricably connected and as such the provisions of s 31 of the Act are \nnot applicable. Further, the suit was not counter-claim to the application filed by the Bank. Thus, the application \nfiled by Bank for transfer of the suit to Tribunal was not maintainable. 80 R.V. Raveendran, J., speaking for the \nDivision Bench in the above case, observed as follows:\n9. The issues that arose in the Banks application was whether the borrower failed to repay the sums borrowed and \nwhether the Bank was entitled to the amounts claimed. On the other hand, the issues that arose in the borrower suit \nwere whether the Bank had promised/agreed to advance certain monies; whether the Bank committed breach in \nrefusing to release such loans in terms of the sanction letter; whether the borrower failed to fulfil the terms and \nconditions of sanction and therefore, the Banks refusal to advance was justified; and even if there was breach, whether \nthe\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P717:C2737 | commentary | 491014025-MULLA-on-CPC-pdf | p.717 | score=0.468]:\nlder and not against his transferee, and accordingly, a payment \nmade by him to a transferee from the decree-holder whose transfer was invalid cannot be set up against a \ntransferee who has obtained a valid transfer. 972 A company borrowed a loan from the bank, but failed to repay. \nConsequent upon this, the bank tried to exercise the right of set off in terms of the contractual obligations \nassumed by the petitioners (company), by transferring the amounts deposited by petitioners in the current \naccount to the loan account. The question arose whether the respondent bank had the right to claim set off of \nthe amounts deposited in the current accounts by transferring them to the loan account, in order to realise the \nloans advanced to the petitioners, which they had failed to discharge. It was held that the matter fell within the \ndomain of the law of contract, and the right of set off claimed by the bank could not be denied on the pretext \nthat the transfer of the amounts in the current account would result in the negation of the activities of the \npetitioners in publishing the newspapers, weeklies, etc. The enforcement of the doctrine of set off for the \namounts to be realised by the bank, cannot be said to be arbitrary or mala fide. 973 \n(i) A holds a decree against B for Rs 5,000. B holds a decree against A for Rs 3,000. A transfers his decree to \nC. C cannot execute the\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1924:C7681 | commentary | 491014025-MULLA-on-CPC-pdf | p.1924 | score=0.456]:\nr but the said order was recalled and de novo trial \nwas ordered. When an order is recalled by court, it is completely obliterated. But the record showed that while \npassing subsequent order the court was heavily carried away by the earlier recalled ex parte order and the \nsubsequent order was not based upon independent consideration. It was held by the Division Bench that the order \nwas liable to be set aside.52\nUnder the Recovery of Debts Due to Bank and Financial Institutions Act 1993 proceeding for recovery of debt for 10 \nlakhs or more could be filed before the Tribunal constituted under the Act. After enforcement of the said Act, the \nrespondent-Bank filed suit before Civil Court for recovery of loan below 10 lakhs and the Civil Court passed ex parte \ndecree for more than Rs 11 lakhs. It was held by a Full Bench of the Kerala High Court that application for setting \naside the ex parte decree is to be filed before the Tribunal and not the Civil Court.53\nFor the applicability of r 13 of O 9, the ex parte order must be a decree within the meaning of s 2 (2) of the Code of\n\n[TOP_MATCH: Limitation Act | Limitation Act:books/A1963-36.pdf:P3:C3]\n\n[Document 1 | Limitation Act | Limitation Act:books/A1963-36.pdf:P3:C3 | bare_act | A1963-36 | p.3 | score=0.654]:\n3 \nTHE LIMITATION ACT, 1963 \nACT NO. 36 OF 1963 \n[5th October, 1963.] \nAn Act to consolidate and amend the law for the limitation of suits and other proceedings and for \npurposes connected therewith. \nBE it enacted by Parliament in the Fourteenth Year of the Republic of India as follows:— \nPART I \nPRELIMINARY \n1. Short title, extent and commencement.—(1) This Act may be called the Limitation Act, 1963. \n(2) It extends to the whole of India 1***. \n(3) It shall come into force on such date 2 as the Central Government may, by notification in the \nOfficial Gazette, appoint. \n2. Definitions.—In this Act, unless the context otherwise requires,— \n(a) “applicant” includes— \n(i) a petitioner; \n(ii) any person from or through whom an applicant derives his right to apply; \n(iii) any person whose estate is represented by the applicant as executor, administrator or \nother representative; \n(b) “application” includes a petition; \n(c) “bill of exchange” includes a hundi and a cheque; \n(d) “bond” includes any instrument whereby a person obliges himself to pay money to another, \non condition that the obligation shall be void if a specified act is performed, or is not performed, as \nthe case may be; \n(e) “defendant” includes— \n(i) any person from or through whom a defendant derives his liability to be sued; \n(ii) any person whose estate is represented by the defendant as executor, administrator\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P2271:C9047 | commentary | 491014025-MULLA-on-CPC-pdf | p.2271 | score=0.530]:\nr Court sale.92\nA payment certified by a decree-holder but not recorded by the court, cannot be relied on as a step-in-aid for the \npurposes of limitation. He can rely on such payment if it amounts to an acknowledgment under s 20 of the \nLimitation Act.93\n35. Oral adjustment. An order striking off an execution proceeding on the ground that there was an adjustment of \nthe decree between the parties outside the court, is an order relating to the execution discharge or satisfaction of \nthe decree within the meaning of s 47. So also, in a money decree, where an adjustment is pleaded and the court is \ncalled upon to record and certify such an adjustment. 94 Under the definition of decree in s 2(2) as it stood before its \namendment in 1976, it was held that such an order amounted to a decree and was appealable under s 96. 95 Under \nthe present definition of decree as amended by the Amendment Act, 1976, such an order is not a decree and \nhence, not appealable. The earlier decisions based on s 2(2) prior to its amendment are, therefore, not applicable. \nWhere the court orders an execution application to proceed in spite of certification of payment or adjustment by the \ndecree-holder, such an order would be subject to revision. So also, where the court refuses to determine a dispute \nraised by a judgment-debtor under sub-r (2) as regards the accuracy of certification by a decree-holder\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1795:C7161 | commentary | 491014025-MULLA-on-CPC-pdf | p.1795 | score=0.582]:\nsuit was barred by limitation in terms of Art. 58 of the Limitation Act, 1963. The High Court, \ntherefore, in our opinion, ex facie committed an error in arriving on the aforementioned finding.56\nIn a suit filed by a Bank for recovery of money, where the claim of the Bank was more than 10 lakhs, the Civil Court \nhas no jurisdiction to entertain the suit in view of the bar created under Recovery of Debts Due to Banks and \nFinancial Institutions Act, 1993 and the appropriate remedy was available before the debt recovery Tribunal. Since \nthe suit was barred by statute, it was held liable to be rejected under O 7, r 11(d) of the Code.57\nIn a suit, where permanent injunction was sought prohibiting the defendants from presenting cheques in their favour \nfor encashment, it was held by the Delhi High Court that the reliefs sought will amount to restraining the defendant \nfrom instituting civil or criminal proceedings against the plaintiff on account of non-encashment of cheques which \nwould amount to hampering access to justice. The reliefs sought is barred by law being directly hit by the provisions \nof s 41 (b), (d) of the Specific Relief Act, 1963 and as such the injunction can be refused. However, in the light of \nsubsequent events of the case, it was further held that the entire suit cannot be dismissed as infructuous.58\nIn a matrimonial case before the family courts, the Family\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P418:C1476 | commentary | 491014025-MULLA-on-CPC-pdf | p.418 | score=0.566]:\nv. Madhubhai Patel, AIR 2003 Bom 490 [ LNIND 2003 BOM 629].\n50 . R. Viswanathan v. Rukn-ul-Mulk Syed Abdul Wajid, AIR 1963 SC 1 [ LNIND 1962 SC 226].\n51 . Janardhan Mohandas Rajan Pillai v. Madhubhai Patel, AIR 2003 Bom 490 [ LNIND 2003 BOM 629].\n52 . The Indian Limitation Act, 1963, Sch 1, art 101.\n53 . Popat v. Damodar, (1934) 36 Bom LR 844 : AIR 1934 Bom 390.\n54 . Nilratan Cooch Behar Loan Office, (1941) ILR 1 Cal 171 : AIR 1941 Cal 64, 45 CWN 113 : 72 CLJ 148; Setabgang \nSugar Mills v. Benazir Ahmed, AIR 1952 Cal 116 [ LNIND 1951 CAL 161]; East India Trading Co v. Badat and Co., AIR\n\n[Document 5 | Limitation Act | Limitation Act:books/A1963-36.pdf:P4:C5 | bare_act | A1963-36 | p.4 | score=0.555]:\n4 \n(j) “period of limitation ” means the period of limitation prescribed for any suit, appeal or \napplication by the Schedule, and “prescribed period” means the period of limitation computed in \naccordance with the provisions of this Act; \n(k) “promissory note ” means any instrument whereby the maker engages absolutely to pay a \nspecified sum of money to another at a time therein limited, or on demand, or at sight; \n(l) “suit” does not include an appeal or an application; \n(m) “tort\" means a civil wrong which is not exclusively the breach of a contract or the breach of a \ntrust; \n(n) “trustee” does not include a benamidar, a mortgagee remaining in possession after the \nmortgage has been satisfied or a person in wrongful possession without title. \nPART II \nLIMITATION OF SUITS, APPEALS AND APPLICATIONS \n3. Bar of limitation .—(1) Subject to the provisions contained in sections 4 to 24 (inclusive), every \nsuit instituted, appeal preferred, and application made after the prescribed period shall be dismissed , \nalthough limitation has not been set up as a defence. \n(2) For the purposes of this Act,— \n(a) a suit is instituted,— \n(i) in an ordinary case, when the plaint is presented to the proper officer; \n(ii) in the case of a pauper, when his application for leave to sue as a pauper is made; and \n(iii) in the case of a claim against a company which is being wound up by the court,\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P840:C3235 | commentary | 491014025-MULLA-on-CPC-pdf | p.840 | score=0.551]:\ns a party to this suit, nor is \nany notice given to him that A was drawing out of court, the balance of Rs 12,000. B then sues A to recover the \namount drawn out by A , that is, Rs 12,000. Such a suit is not one under sub-s (2), and the period of limitation \napplicable to the suit is 12 years under Art. 132 of the Limitation Act, 1963. The suit is really one to enforce \npayment of money charged upon immovable property within the meaning of that article.2081 \n18. Declaratory suit. Is a decree-holder claiming under this section entitled to file a suit for a declaration that \nanother decree-holder is not entitled to rateable distribution, and for an injunction restraining him from receiving \npayment, before distribution of the assets by the court, or is he bound to wait until act ual distribution is made \nand then sue for a refund? In a Madras case, 2082 Sadasiva Ayyar J, expressed the opinion that he is entitled to \nsue for a declaration. \n19. Inquiry into validity of decree. The judgment of the Privy Council in Shankar Sarup v. Mejo Mal , 2083 \nmakes it clear that the court distributing the assets is acting in an administrative rather than a judicial capacity. \nThe court, which is merely a distributive agency, cannot deal with the question whether any decree has been \nobtained by fraud or improper means as in an ordinary case of execution. The Courts of Calcutta, 2084 Madras,\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1947:C7793 | commentary | 491014025-MULLA-on-CPC-pdf | p.1947 | score=0.544]:\nal assignee or receiver is entitled on \nthe insolvency of the defendant to the money paid into court.350\n28. Limitation. A full bench of the Madras High Court has held that a rule framed by that court applying s 5 of the \nLimitation Act 1908, (now s 5 of the Limitation Act 1963), to applications under r 13, was intra vires. 351 The period of \n30 days has been enlarged under that section in the case of a mistake of a pleader or his clerk. 352 A decree passed \nex parte in disregard of the provision as to sufficiency of time to enable the defendant to appear (as required by r 6) \nis not a nullity, and must stand unless it is set aside on an application presented within the period specified in Art. \n164.353 Where the defendant had been served with summons, he must apply to set aside an ex parte decree \npassed against him within 30 days of the decree under Art. 164, and not within 30 days of his knowledge of the\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P840:C3234 | commentary | 491014025-MULLA-on-CPC-pdf | p.840 | score=0.541]:\na conclusive adjudication as to those rights, which may be subsequently readjusted in \na suit brought under the penultimate paragraph of the section. 2078 Such a suit is virtually a suit for money had \nand received, and the period of limitation is three years from the date of the receipt of the assets by the \ndefendant. 2079 The suit being one for money had and received, it would be premature if it were brought before \nthe moneys were actually paid to the defendant. A mere order for the payment of money under the section is \nnot sufficient to found the act ion. 2080 \nSuit by Subsequent Mortgagee to Recover Balance of Money Realised by Sale in a Prior Mortgage.X \nmortgages his property to A . He then mortgages the same property to B . Subsequently he executes a further \ncharge on the property in favour of A. A sues X on the first mortgage, joining B as a defendant, and obtains a \ndecree on the mortgage. The property is sold in execution of the decree and a balance of Rs 12,000 which \nremains after satisfying A s decree is deposited in court. A then obtains a decree for sale on further charge and \nin execution of the decree draws out the balance deposited in court. B is not joined as a party to this suit, nor is \nany notice given to him that A was drawing out of court, the balance of Rs 12,000. B then sues A to recover the \namount drawn out by A , that is, Rs 12,000. Such a suit\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4786]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4786 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.656]:\nvalorem court fee on the valuation so made, was held as not liable to \nbe interfered in revision. 89 Where a plaint is rejected because of deficient court fee, on account of failure of the \nplaintiffs counsel to pay the court fee, despite the fact that the same was purchased and handed over to the \ncounsel, the plaint can be restored under s 151 and that order will not be open for interference in revision.90 In a \ncase where the trial court has adjudicated upon the issue relating to valuation of the subject matter of the suit \nand sufficiency of court fee paid or payable, then he will be deemed to have acted within the jurisdiction to do \nso even if the decision is found to be erroneous or wrong on merits. That by itself cannot clothe defendant with \nthe right of maintaining a revision before High Court under s 115, Code of Civil Procedure. No doubt, as \nprovided under sub-s (4)(a) of s 11 of the Karnataka Court-fees and Suits Valuation Act, 1958, he will have a \nright to raise such an issue before the court of appeal if an occasion arises, and in such a situation the \nprocedure laid down under the said sub-section will have to be followed for adjudicating and for recovery of the \ndeficit court fee and refund of the excess court fee but the revision against the said order is not maintainable.91\n66. Deccan Agriculturist Relief Act, 1879. A special judge has, by virtue of s 53\n\n[Document 2 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1760:C7001 | commentary | 491014025-MULLA-on-CPC-pdf | p.1760 | score=0.625]:\n(d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter showing the provisions of law \nunder which the valuation of the court-fees and jurisdiction is separately made. (1-11-1966).\nBombay (Dadra and Nagar Haveli) (Goa, Daman and Diu). The following amendments were made by \nMaharashtra Government Gazette, dated 15-9-1983, Part 4 Ka, Page 402; Goa Gazette, dated 12-10-1987, Extra., \ns 1 No. 28, Page 376, dated 1-4-1987.\nFor item (i) substitute the following:\n(i) a statement of the value of the subject-matter of the suit for the purposes of jurisdiction and of Court-fees, so far \nas the case admits, showing the provisions of law under which the valuation for Court-fees and jurisdiction is \nseparately made.\nKarnataka. The following amendments were made by Karnataka Gazette, dated 30-3-1967.\nDelete r 1 and substitute the following:\n\n[Document 3 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1764:C7014 | commentary | 491014025-MULLA-on-CPC-pdf | p.1764 | score=0.526]:\nPage 5 of 68\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nHIGH COURT AMENDMENTS\nDelhi. Same as that of Punjab.\nHimachal Pradesh. Same as in Delhi.\nKarnataka. The following amendments were made by Karnataka Gazette, dated 30-3-1967.\nFor r 2 substitute the following:\n2. Where the plaintiff seeks for recovery of money the plaint shall state the precise amount claimed, and wherever a \nstatement of account or a memorandum of calculation is necessary for the purpose, such statement or memorandum shall \nbe set out in the schedule to the plaint or separately annexed thereto.\nBut where the plaintiff sues for mesne profits, or for an amount which will be found due to him on taking unsettled accounts \nbetween him and the defendant, the plaint shall state approximately the amount sued for.\nPunjab, Haryana & Chandigarh. The following amendments were made by Punjab Gazette, dated 12-5-1909, Act \n31 of 1966, Ss. 29 and 32, dated 1-11-1966.\nIn the second paragraph after the word defendant insert or for movables in the possession of the defendant, or for \ndebts of which the value he cannot, after the exercise of reasonable diligence, estimate and after the word amount \nwhere it last occurs insert or value.\n1. Suit for damages. In a suit for damage, the plaintiff must state the amount of damages claimed and pay court-\nfees thereon.35\n2. Suit for mesne profits. A claim for past mesne\n\n[Document 4 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1760:C7000 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 | p.1760 | score=0.517]:\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\nMulla : The Code of Civil Procedure, 18th Edition\nMulla\nMulla : The Code of Civil Procedure, 18th Edition > Mulla : The Code of Civil Procedure, 18th \nEdition > Volume 2 > The First Schedule\nOrder 7\nPlaint\nR.1. Particulars to be contained in plaint.\nThe plaint shall contain the following particulars: \n(a) the name of the Court in which the suit is brought;\n(b) the name, description and place of residence of the plaintiff;\n(c) the name, description and place of residence of the defendant, so far as they can be asc ertained;\n(d) where the plaintiff or the defendant is a minor or a person of unsound mind, a statement to that effect;\n(e) the facts constituting the cause of act ion and when it arose;\n(f) the facts showing that the Court has jurisdiction;\n(g) the relief which the plaintiff claims;\n(h) where the plaintiff has allowed a set off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and\n(i) a statement of the value of the subject matter of the suit for the purpose of jurisdiction and of court-fees, so far as \nthe case admits.\n[C1. (d) substituted in AP, Kerala and Madras; Cls (b), (c) and (d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1793:C7149 | commentary | 491014025-MULLA-on-CPC-pdf | p.1793 | score=0.591]:\nt \nof deficit court-fees.19\nAn order rejecting a plaint under this rule should be made only after the plaintiff is given an opportunity to correct \nthe valuation and pay the deficient court-fee and he fails to do so.20\nThus, in a suit for permanent injunction and restraining the defendant from putting up construction in the house \nagreed upon to be sold, the plaintiff amended the plaint to include additional relief of specific performance of sale \nagreement, but the requisite court-fee for additional relief was not paid. The order rejecting the plaint partly in \nrespect of the additional relief was not challenged. Subsequent payment of court-fee is not valid payment. 21 In \nanother case of injunction for restraining the electricity board from disconnecting the electric supply, the suit was \nvalued at Rs 600 but fixed court-fee of Rs 60 was paid. It was held that order directing the plaintiff to pay ad \nvalorem court-fee was legal. The High Courts observed that mere astuteness in drafting the plaint would not glaze \nthe jurisdiction of court for looking at the substance of the relief claimed for.22\nThe procedure prescribed by the present rule is not applicable to a case in which the Appellate Court acts under s \n12 of the Court Fees Act 1870. 23 There is no provision for recovering court-fees determined as payable under this \nrule, as the plaint is treated, when court-fee is\n\n[Document 6 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4784 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.584]:\neld that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court has \nlaid down that, the plaintiff would be able to drag the defendant into any court be pleases. 79 This passage was \nquoted, with approval, by the Bombay High Court in Bhikamdas v. Motilal, 80 wherein, it was held that an \nerroneous decision of the effect that a suit fell under a particular category for the purposes of court fees was \nopen to revision. And, it was further pointed out that, the jurisdiction of the court might be affected by the \ndecision. The Kerala High Court also held that, the defendant could prefer a revision against an order deciding \nthat the suit fell under a particular category and, that the court fee paid was correct. 81 The Mysore High Court \nheld that where the plaintiff, claiming exemption under a notification issued under the Hyderabad Court Fees \nAct, presented a plaint without any court fee, it was open to the defendant to challenge its validity in a revision, \nas the rule that the defendant cannot move the court under s 115, when the court fee paid has been held to be \nsufficient, has no application when no court fee has been paid.82\nIn Ratnavarma Raja v. Vimla, 83 the Supreme Court has observed that, whether proper court fee has been paid \nor\n\n[Document 7 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1207:C4783 | commentary | 491014025-MULLA-on-CPC-pdf | p.1207 | score=0.579]:\nPage 68 of 106\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \norder is favourable to the plaintiff, though it may cause detriment to the revenue authorities, and also does not \nprejudice the defendant, there is no ground for revision, 74 Though the defendants would ask for enquiry with \nreference to the value of the court fee payable on the plaint, the defendants cannot have any grievance against \nthe order overruling the objection to get him entitled to invoke the revisional jurisdiction of the High Court on \nquestion whether the plaintiffs have paid adequate court fee on the plaint or not, 75 unless the question of \njurisdiction is connected with the question of court fees. 76 Thus it was observed in Sathappa Chettiar v. \nRamanathan Chettiar,77 that:\nNormally the dispute between the litigant and the Registry in respect of court fees arises at the initial stage of \nthe presentation of the plaint or the appeal and the defendant or the respondent is usually not interested in such \na dispute unless the question of payment of court fees involves also the question of jurisdiction of the court \neither to try the suit or to entertain the appeal.\nThe Calcutta High Court has held that an order of the effect that the plaintiffs valuation is correct is not open to \nrevision.78 However, if the plaintiffs valuation is too low, it can be revised. Otherwise, the Patna High Court\n\n[Document 8 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P47:C178 | commentary | 491014025-MULLA-on-CPC-pdf | p.47 | score=0.574]:\nPage 43 of 67\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nmust be read subject to its provisions. Under s 8 of Suits Valuation Act, 1887 the valuation for court fees and \nthe valuation for jurisdiction in certain suits is the same. Under s 7 cl (iv)(f) of the Court Fees Act, 1870, the \nvaluation for purposes of court fees in a suit for accounts lies in the discretion of the plaintiff. Therefore, in a suit \nfor accounts, the plaintiffs valuation in the plaint fixes the jurisdiction of the court. 2 In a suit for unsettled \naccounts, fixed court fee is payable and for jurisdictional purposes, such a suit can be valued in terms of \nvaluation as fixed by the plaintiff. 3 In a suit for partition, the value for the purpose of jurisdiction is the value of \nthe share claimed by the plaintiff and not the value of the entire estate in which the partition is sought. 4 In a suit \nfor recovery of property from the tenant whose tenancy has been terminated, the valuation of suit for \njurisdictional purposes should be on the basis of annual rent or profit. Suit so valued along with the claim of \ndamage exceeding pecuniary jurisdiction of the court is liable to be returned for prosecution before the proper \ncourt.5\n2. Pecuniary limits of jurisdiction. Pecuniary jurisdiction of a court-suit valued less than Rs 50,000 is to be \ninstituted before the court of the lowest grade\n\n[TOP_MATCH: CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1763:C7013]\n\n[Document 1 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1763:C7013 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 | p.1763 | score=0.550]:\new of s 21 of the Hindu Marriage Act 1955, all \nproceedings subject to the qualification set out in the section would be governed by this rule.\nOrder 7, r 1 of the code prescribes what a plaint should contain, but no section or order or Rule of CPC lays down \nas to what a petition should contain. On the other hand the Code does not say that the ingredients required for \nplaint are the ingredients for a petition. Therefore, a petition is completely different from a plaint. Thus, a petition for \ndivorce under s 13 of the Hindu Marriage Act, 1955 is not a plaint and a final order passed under the Act is not a \ndecree under s 2 (2) of the CPC. Therefore, decree passed without separate prayer for consequential relief is \nenforceable and court-fees for divorce petition is not Rs. 20/- but Re. 1/- as prescribed for petition.33\nR.2. In money suits. \nWhere the plaintiff seeks the recovery of money, the plaint shall state the precise amount claimed:\nBut where the plaintiff sues for mesne profits, or for an amount which will be found due to him on taking unsettled \naccounts between him and the defendant, 34[or for movables in the possession of the defendant, or for debts of \nwhich the value he cannot, after the exercise of reasonable diligence, estimate, the plaint shall state approximately \nthe amount or value sued for].\n\n[Document 2 | CPC | CPC:Order7Rule9 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 Rule 9 | p.1951 | score=0.539]:\nPage 59 of 80\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\n \nR. 2. Dismissal of suit where summons not served in consequence of plaintiff's failure to pay costs.Where on the day so \nfixed it is found that the summons has not been served the defendant in consequence of the failure of the plaintiff to \npay the court-fee or postal charge [OR] (if any) chargeable for such service, or to present copies of the plaint or concise \nstatements, as required by rule 9 of Order VII, the Court may make an order that the suit be dismissed:\nProvided that no such order shall be made if, notwithstanding such failure, the defendant attends in person (or by agent \nwhen he is allowed to appear by agent) on the day fixed for him to appear and answer.\n4 . Gobind Ram v. Muhammad, (1912) Punj Rec No. 35, p 115 : 11 IC 317.\n5 . Krishnarao Bapurao Deshmukh v. Wamanrao Ganpatrao Deshmukh, AIR 1950 Mad 188; Ramanand Singh v. \nChandrama Singh, AIR 1921 Pat 422.\n6 . New Bharat Chemical Industry v. Om Prakash, (1998) AIHC 614, (P&H).\n7 . Maghraj Calla v. Kajodi Mal, AIR 1994 Raj 41.\n8 . Latarnath v. Gopeshwar, (1952) ILR 2 Raj 382.\n9 . Shri Sanat Textiles Industries Ltd. v. Naranji Peraj Transport Co., AIR 1996 Guj 107 [ LNIND 1995 GUJ 267].\n10 . Ratnagiri Hotels Pvt. Ltd. v. Municipal Corporation of Greater Bombay, AIR 2006 Bom 132 [ LNIND 2006 BOM 85].\n11 . Lachmi Narain v. Darbari Lal, (1916)\n\n[Document 3 | CPC | CPC:Order7Rule9 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 Rule 9 | p.1416 | score=0.529]:\nand 18 shall be omitted.\n17. Amendment of Order VII.\nIn the First Schedule, in Order VII,\n(i) for rule 9, the following rule shall be substituted, namely:\n(9) Procedure on admitting plaint.\n(1) Where the plaint is admitted, the Court shall give to the plaintiff summons in the name of all the \ndefendants to be served upon or get served in the manner provided under Order V.\n(2) Within two days of the receipt of summons under sub-rule (1), the plaintiff shall send or cause to \nsend the summons to the defendants alongwith the copy of the plaint in the manner provided \nunder Orderv.\n(3) Where the Court orders that the summons be served on the defendants in the manner provided in \nrule 9A of Order V, it will direct the plaintiff to present as many copies of the plaint on plain paper \nas there are defendants within two days from the date of such order alongwith requisite fee for \nservice of summons on the defendants.\n(ii) in rule 11, after sub-clause (d), the following sub-clauses shall be inserted namely:\n(e) where it is not filed in duplicate;\n(f) where the plaintiff fails to comply sub-rule (2) of rule 9;\n(g) where the plaintiff fails to comply sub-rule (3) of rule 9.;\n(iii) for rule 14, the following rule shall be substituted, namely:\n14 Production of document on which plaintiff sues or relies.\n\n[Document 4 | CPC | CPC:Order7Rule9 | commentary | 491014025-MULLA-on-CPC-pdf | Section 17 | p.1428 | score=0.523]:\ntion of such limited \ntime as aforesaid or of such fourteen days, as the case may be, unless the time is extended by the Court..\n8. Amendment of Order VII.\nIn the First Schedule, in Order VII,\n(i) for rule 9 [as substituted by clause (i) of section 17 of the Code of Civil Procedure (Amendment) Act, \n1999 (46 of 1999)] the following rule shall be substituted, namely:\n9 Procedure on admitting plaint.Where the Court orders that the summons be served on the \ndefendants in the manner provided in rule 9 of Order V, it will direct the plaintiff to present as many \ncopies of the plaint on plain paper as there are defendants within seven days from the date of such \norder along with requisite fee for service of summons on the defendants.;\n(ii) in rule 11, for sub-clauses (f) and (g) [as inserted by clause (ii) of section 17 of the Code of Civil \nProcedure (Amendment) Act, 1999 (46 of 1999)], the following sub-clause shall be substituted, namely:\n(f) where the plaintiff fails to comply with the provisions of rule 9.;\n(iii) in rule 14 [as substituted by clause (iii) of section 17 of the Code of Civil Procedure (Amendment) Act, \n1999 (46 of 1999)], for sub-rule (3), the following sub-rule shall be substituted, namely:\n(3) A document which ought to be produced in Court by the plaintiff when the plaint is presented, \nor to be entered in the list to be added or annexed to the plaint but is\n\n[Document 5 | CPC | CPC:books/491014025-MULLA-on-CPC-pdf.pdf:P1760:C7000 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 | p.1760 | score=0.583]:\n(IN) Mulla : The Code of Civil Procedure, 18th Edition\nMulla : The Code of Civil Procedure, 18th Edition\nMulla\nMulla : The Code of Civil Procedure, 18th Edition > Mulla : The Code of Civil Procedure, 18th \nEdition > Volume 2 > The First Schedule\nOrder 7\nPlaint\nR.1. Particulars to be contained in plaint.\nThe plaint shall contain the following particulars: \n(a) the name of the Court in which the suit is brought;\n(b) the name, description and place of residence of the plaintiff;\n(c) the name, description and place of residence of the defendant, so far as they can be asc ertained;\n(d) where the plaintiff or the defendant is a minor or a person of unsound mind, a statement to that effect;\n(e) the facts constituting the cause of act ion and when it arose;\n(f) the facts showing that the Court has jurisdiction;\n(g) the relief which the plaintiff claims;\n(h) where the plaintiff has allowed a set off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and\n(i) a statement of the value of the subject matter of the suit for the purpose of jurisdiction and of court-fees, so far as \nthe case admits.\n[C1. (d) substituted in AP, Kerala and Madras; Cls (b), (c) and (d) substituted in Karnataka; Cl (i) substituted in \nBom.]\nHIGH COURT AMENDMENTS\nAndhra Pradesh. Same as in Madras.\nBombay. In item (i) at the end substitute comma for the full stop and add thereafter\n\n[Document 6 | CPC | CPC:books/the_code_of_civil_procedure,_1908.pdf:P57:C203 | bare_act | the code of civil procedure, 1908 | Order 7 | p.57 | score=0.496]:\nh amendments shall be \nmade as may be necessary for the purpose of determining the real questions in controversy between the \nparties. \n18. Failure to amend after order— If a party who has obtained an order for leave to amend does not amend \naccordingly within the time limited for that purpose by the order, or if no time is thereby limited then within \nfourteen days from the date of the order, he shall not be permitted to amend after the expiration of such \nlimited time as aforesaid or of such fourteen days, as the case may be, unless the time is extended by the \nCourt. \nORDER VII- PLAINT \n1. Particulars to be contained in plaint— The plaint shall contain the following particulars:— \n(a) the name of the Court in which the suit is brought ; \n(b) the name, description and place of residence of the plaintiff; \n(c) the name, description and place of residence of the defendant, so far as they can be ascertained; \n(d) where the plaintiff or the defendant is a minor or a person of unsound mind, a statement to that effect; \n(e) the facts constituting the cause of action and when it arose; \n(f) the facts showing that the Court has jurisdiction; \n(g) the relief which the plaintiff claims; \n(h) where the plaintiff has allowed a set-off or relinquished a portion of his claim, the amount so allowed or \nrelinquished; and \n(i) a statement of the value of the subject-matter of the suit for\n\n[Document 7 | CPC | CPC:Order7Rule9 | commentary | 491014025-MULLA-on-CPC-pdf | Order 7 Rule 9 | p.1893 | score=0.495]:\nre a complaint dismissed for default. Hence the opposite party may appear on the subsequent date \nand contest the case.2\n3[R.2. Dismissal of suit where summons not served in consequences of plaintiffs failure to pay costs.\nWhere on the day so fixed it is found that the summons has not been served upon the defendant in consequence of \nthe failure of the plaintiff to pay the court-fee or postal charges, if any, chargeable for such service or failure to \npresent copies of the plaint as required by rule 9 of Order VII, the Court may make an order that the suit be \ndismissed:\nProvided that no such order shall be made, if notwithstanding such failure, the defendant attends in person or by \nagent when he is allowed to appear by agent on the day fixed for him to appear and answer.]\nHIGH COURT AMENDMENTS\nAllahabad. After the words, for such service insert or that the plaintiff has failed to comply with the rules for filing \nthe copy of the plaint for service on the defendant. (24-7-1926).\nOrissa. For the words court-fee or postal charges substitute court-fee postal or other charges. Notn. No. 24X-7-52 \nof 30-3-1954.\n1. Changes in the rule. Rule 2 has been subjected to amendment three times. By Act 104 of 1976, the words or to \npresent copies of the plaint or concise statement as required by r 9 of O 7 were inserted in the rule and a new \nproviso was substituted for the old one. The\n\n[Document 8 | CPC | CPC:Order7Rule9 | commentary | 491014025-MULLA-on-CPC-pdf | Section 24 | p.1429 | score=0.492]:\nhe \nday so fixed it is found that the summons has not been served upon the defendant in consequence of the \nfailure of the plaintiff to pay the court-fee or postal charges, if any, chargeable for such service, or failure to \npresent copies of the plaint as required by rule 9 of Order VII, the Court may make an order that the suit be \ndismissed:\nProvided that no such order shall be made, if notwithstanding such failure, the defendant attends in person or \nby agent when he is allowed to appear by agent on the day fixed for him to appear and answer..\n11. Amendment of Order XIV.\nIn the First Schedule, in Order XIV, for rule 5 [as it stood immediately before its omission by clause (ii) of \nsection 24 of the Code of Civil Procedure (Amendment) Act, 1999 (46 of 1999)], the following rule shall be \nsubstituted, namely:"
+  },
+  "court_fee": {
+    "query": "Karnataka court fee ad valorem percentage City Civil Court money recovery plaint civil suit Rs 15 lakh",
+    "results": [
+      {
+        "title": "1 THE KARNATAKA COURT-FEE AND SUITS VALUATION ACT, 1958.",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/7625/1/16_of_1958_(e).pdf",
+        "snippet": "Rupees fifteen if the value of plaintiff’s share is Rs.",
+        "date": ""
+      },
+      {
+        "title": "Court Fee Calculator State-wise Online - Century Law Firm",
+        "url": "https://www.centurylawfirm.in/blog/court-fee-calculator-state-wise-online/",
+        "snippet": "These court fees and jurisdiction calculators can be used to calculate court fees and jurisdiction easily in seconds for free.",
+        "date": ""
+      },
+      {
+        "title": "COURT FEES PAYABLE CIVIL CASES Sr. No. Category of Cases Court Fees 1.",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec02504c296f8eb5fd521e744da4e837/uploads/2023/05/2023052233-1.pdf",
+        "snippet": "A TABLE SHOWING THE VALUE OF SUITS FOR PURPOSES OF COMPUTING COURT FEE AND FOR · DETERMINING THE JURISIDICITION OF THE COURTS RESPECTIVELY ... Schedule II, Art. ... Rule 3 Ch. 3-C ... Chapter 3-C. ... Section V Act. ... Rs. 10 leviable ... Schedule II Art. ... Schedule II Art. ... Rs. 30 leviable ... Schedule II Art. ... Vol. 1 10 Ch. 3-D. ... Schedule II Art. ... Rs. 15 leviable",
+        "date": ""
+      },
+      {
+        "title": "1 SCHEDULE I Ad valorem fees Number. . . . Proper fee. (1) (2) (3)",
+        "url": "https://upload.indiacode.nic.in/schedulefile?aid=AC_MH_166_855_00063_00063_1616477497342&rid=1066",
+        "snippet": "1 This table of rates of ad-valorem ... or part thereof over Rupees one · lakh upto Rupees 11,00,000 and over Rupees 11,00,000 at the rate of Rupees 1,200 for every Rupees ...",
+        "date": ""
+      },
+      {
+        "title": "THE FIRST SCHEDULE (See section 3 ) Ad valorem fees Number Proper fee 1 2",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec0360a70bb05b08d6cd95deb3bdb750/uploads/2023/05/2023051461.pdf",
+        "snippet": "proper fee leviable shall be Rs. 6560/- (Six thousand five hundred and sixty) plus fifty rupees for each · five thousand rupees or part thereof, in excess of rupees 4,00,000 (Four Lac) ... Court or office.",
+        "date": ""
+      },
+      {
+        "title": "DISCLAIMER: This document is being furnished to you for your information by PRS",
+        "url": "https://prsindia.org/files/bills_acts/acts_states/karnataka/1958/1958Karnataka16.pdf",
+        "snippet": "3. Substituted for the words \"Civil Judge, Junior Division\" by the Karnataka Adaptations of Laws Order ... (c) in any other case, whether the subject-matter of the suit has a market value or not, fee shall be · computed on the amount at which the relief sought is valued in the plaint or on3[rupees one",
+        "date": ""
+      },
+      {
+        "title": "THE KARNATAKA COURT-FEES AND SUITS VALUATION RULES, 1960 NOTIFICATION",
+        "url": "https://www.indiacode.nic.in/ViewFileUploaded?path=AC_KA_71_401_00004_16_1551435305356%2Frulesindividualfile%2F&file=rules_1960-new.pdf",
+        "snippet": "Karnataka Court-Fees and Suits Valuation Act, 1958 (Karnataka Act 16 of 1958) the Government of Karnataka hereby appoints the 15th August 1960 the date on",
+        "date": ""
+      }
+    ],
+    "summary": "[Court Fee Calculator State-wise Online - Century Law Firm] These court fees and jurisdiction calculators can be used to calculate court fees and jurisdiction easily in seconds for free.\n[COURT FEES PAYABLE CIVIL CASES Sr. No. Category of Cases Court Fees 1.] A TABLE SHOWING THE VALUE OF SUITS FOR PURPOSES OF COMPUTING COURT FEE AND FOR · DETERMINING THE JURISIDICITION OF THE COURTS RESPECTIVELY ... Schedule II, Art. ... Rule 3 Ch. 3-C ... Chapter 3-C. ... Section V Act. ... Rs. 10 leviable ... Schedule II Art. ... Schedule II Art. ... Rs. 30 leviable ... Schedule II Art. ... Vol. 1 10 Ch. 3-D. ... Schedule II Art. ... Rs. 15 leviable",
+    "error": null
+  },
+  "legal_research": {
+    "queries": [
+      "Money Recovery limitation period India years accrual date right to sue Karnataka City Civil Court",
+      "money recovery plaint mandatory procedural requirements India Karnataka City Civil Court"
+    ],
+    "results": [
+      {
+        "title": "12 THE SCHEDULE (PERIODS OF LIMITATION) [See sections 2(j) and 3]",
+        "url": "https://upload.indiacode.nic.in/schedulefile?aid=AC_CEN_3_20_00005_196336_1517807319297&rid=33",
+        "snippet": "When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.",
+        "date": ""
+      },
+      {
+        "title": "1 MONEY AND MORTGAGE SUITS",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec03333cb763facc6ce398ff83845f22/uploads/2024/03/2024031436.pdf",
+        "snippet": "Supreme Court ruled that a money recovery litigation must be filed within · three years . A plaintiff must sue within three years of the cause of action.",
+        "date": ""
+      },
+      {
+        "title": "When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law",
+        "url": "https://corporate.cyrilamarchandblogs.com/2020/06/suits-falling-under-article-113-of-the-limitation-act/",
+        "snippet": "A single residuary article may be provided fixing the period of limitation as three years from the time when the right to sue accrues”. As is evident, the Law Commission was mindful to omit the term “first” in Article 120, as far back as 1956.",
+        "date": ""
+      },
+      {
+        "title": "1 Limitation Periods: Overview (India)",
+        "url": "https://trilegal.com/wp-content/uploads/2023/06/Limitation-Periods-Overview-India-1.pdf",
+        "snippet": "Court of India has held that the law of limitation is not meant to destroy the rights of the parties but · is meant to regulate the availability of such remedy, for a legislatively fixed period (N. Balakrishnan v. M. Krishnamurthy, AIR 1998 SC 3222). The law of limitation seeks to promote diligence and expects a · litigant to seek the enforcement of a right available to them within a reasonable time (State of · Karnataka v.",
+        "date": ""
+      },
+      {
+        "title": "Suit+for+recovery+of+money+limitation | Indian Case Law | Law | CaseMine",
+        "url": "https://www.casemine.com/search/in/Suit+for+recovery+of+money+limitation",
+        "snippet": ".... 2. The Tribunal has no power ... only the applications for recovery of money can be entertained for which limitation is three years ....",
+        "date": ""
+      },
+      {
+        "title": "Recovery Suit",
+        "url": "https://www.indialawoffices.com/knowledge-centre/recovery-suit",
+        "snippet": "Documents: The Plaint is to be accompanied by the supporting documents viz, written contract, particulars of claim and correspondences if any . This plaint is required to be proved by way of an accompanying affidavit and an appropriate verification of the facts.",
+        "date": ""
+      },
+      {
+        "title": "Summary Suit",
+        "url": "https://www.indialawoffices.com/knowledge-centre/summary-suit",
+        "snippet": "Summary Suit is given under Order 37 of CPC as civil remedy for recovery of money. The suit can be filed within limitation of 3 years from date of cause of action .",
+        "date": ""
+      },
+      {
+        "title": "Suit for recovery of money under CPC: Step by Step Process and Sample",
+        "url": "https://www.legalbites.in/suit-for-recovery-of-money-under-cpc",
+        "snippet": "This implies that the steps of filing a WS within a time period of 30 days and not later than 90 days , a response, admission of documents, formulation of issues by the Court, leading testimony, cross-examination by parties, concluding arguments, ...",
+        "date": ""
+      },
+      {
+        "title": "How To File A Money Recovery Suit? - leadindia.law",
+        "url": "https://www.leadindia.law/legal-services/civil/money-recovery",
+        "snippet": "Yes, it is mandatory to pay the ... matter or the relief being sought. The Money Recovery Suit is filed under Order 37, Code of Civil Procedure ....",
+        "date": ""
+      },
+      {
+        "title": "1 THE KARNATAKA COURT-FEE AND SUITS VALUATION ACT, 1958.",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/7625/1/16_of_1958_(e).pdf",
+        "snippet": "Rupees fifteen if the value of plaintiff’s share is Rs.",
+        "date": ""
+      }
+    ],
+    "summary": "[12 THE SCHEDULE (PERIODS OF LIMITATION) [See sections 2(j) and 3]] When the right to sue accrues. ... Ninety days . The date of the order appealed from. ... Thirty days. The date of the grant of special leave. ... Thirty days. The date of the sentence. ... Sixty days. The date of the sentence or order. ... Thirty days. The date of the sentence or order.\n[1 MONEY AND MORTGAGE SUITS] Supreme Court ruled that a money recovery litigation must be filed within · three years . A plaintiff must sue within three years of the cause of action.\n[When does the clock of limitation start ticking for suits falling under Article 113 of the Limitation Act? | India Corporate Law] A single residuary article may be provided fixing the period of limitation as three years from the time when the right to sue accrues”. As is evident, the Law Commission was mindful to omit the term “first” in Article 120, as far back as 1956.\n[1 Limitation Periods: Overview (India)] Court of India has held that the law of limitation is not meant to destroy the rights of the parties but · is meant to regulate the availability of such remedy, for a legislatively fixed period (N. Balakrishnan v. M. Krishnamurthy, AIR 1998 SC 3222). The law of limitation seeks to promote diligence and expects a · litigant to seek the enforcement of a right available to them within a reasonable time (State of · Karnataka v.\n[Suit+for+recovery+of+money+limitation | Indian Case Law | Law | CaseMine] .... 2. The Tribunal has no power ... only the applications for recovery of money can be entertained for which limitation is three years ....\n[Recovery Suit] Documents: The Plaint is to be accompanied by the supporting documents viz, written contract, particulars of claim and correspondences if any . This plaint is required to be proved by way of an accompanying affidavit and an appropriate verification of the facts.\n[Summary Suit] Summary Suit is given under Order 37 of CPC as civil remedy for recovery of money. The suit can be filed within limitation of 3 years from date of cause of action .\n[How To File A Money Recovery Suit? - leadindia.law] Yes, it is mandatory to pay the ... matter or the relief being sought. The Money Recovery Suit is filed under Order 37, Code of Civil Procedure ....",
+    "error": null
+  },
+  "draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "money_recovery_plaint",
+        "title": "Plaint for Recovery of Money Under Order VII CPC",
+        "text": "IN THE CITY CIVIL COURT, BENGALURU\n\nCIVIL SUIT NO. {{SUIT_NUMBER}} OF {{YEAR}}\n\nIN THE MATTER OF:\n{{PLAINTIFF_NAME}}, {{PLAINTIFF_AGE}}, {{PLAINTIFF_OCCUPATION}},\nresiding at {{PLAINTIFF_ADDRESS}}                                    ... PLAINTIFF\n\nVERSUS\n\n{{DEFENDANT_NAME}}, {{DEFENDANT_AGE}}, {{DEFENDANT_OCCUPATION}},\nresiding at {{DEFENDANT_ADDRESS}}                                     ... DEFENDANT\n\nPLAINT UNDER ORDER VII OF THE CODE OF CIVIL PROCEDURE, 1908\n\nThe Plaintiff above-named, in compliance with the mandatory particulars prescribed under Order VII Rule 1 of the Code of Civil Procedure, 1908, and in conformity with the Karnataka Court-fees and Suits Valuation Act, 1958, respectfully submits this Plaint, praying as follows:\n\n1. The Plaintiff is {{PLAINTIFF_DESCRIPTION}}. The Defendant is {{DEFENDANT_DESCRIPTION}} and is personally known to the Plaintiff.\n\n2. That on or about {{DATE_OF_LOAN}}, the Defendant approached the Plaintiff and requested an advance of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) as a hand loan for personal/business exigencies, promising to repay the same on demand or within a reasonable period.\n\n3. That pursuant to the said request and based on an oral agreement/arrangement between the parties, and in the absence of any written agreement or promissory note, the Plaintiff on {{DATE_OF_TRANSFER}} transferred the sum of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) to the Defendant's bank account through electronic bank transfer, as evidenced by the bank statement annexed hereto as Annexure-A.\n\n4. That the Defendant acknowledged receipt of the said loan amount through WhatsApp communications dated {{DATE_OF_ACKNOWLEDGMENT}}, copies of which are annexed hereto as Annexure-B, and promised to repay the same within a reasonable time.\n\n5. That despite repeated oral demands made by the Plaintiff from {{DATE_OF_FIRST_DEMAND}} onwards, the Defendant failed and neglected to repay the said amount or any part thereof.\n\n6. That the Plaintiff, through his Advocate, issued a legal notice dated {{DATE_OF_LEGAL_NOTICE}} calling upon the Defendant to repay the principal amount of Rs. 15,00,000/- along with interest at the rate of 12% per annum within 15 days from the date of receipt thereof. The said notice was duly served upon the Defendant on {{DATE_OF_SERVICE}}, as evidenced by the postal/courier receipts and acknowledgment annexed hereto as Annexure-C.\n\n7. That the Defendant has failed, neglected and refused to repay the said principal amount of Rs. 15,00,000/- or any part thereof, or any interest thereon, despite the service of the said legal notice and despite having no lawful justification or excuse for such non-payment. The Defendant is thus liable to repay the said loan amount along with interest as claimed hereinafter.\n\nCAUSE OF ACTION:\n8. That the cause of action for the present suit first arose on {{DATE_OF_TRANSFER}} when the loan amount was advanced to the Defendant, creating an obligation upon the Defendant to repay the same. The right to sue first accrued on {{DATE_OF_ACCRUAL}} when the Defendant failed to repay the amount despite oral demands and the legal notice served upon him. The said cause of action is continuing in nature and continues to accrue de die in diem till the realization of the entire amount due and payable by the Defendant to the Plaintiff.\n\nJURISDICTION:\n9. That the Defendant resides and/or carries on business at {{DEFENDANT_ADDRESS}}, which is within the territorial jurisdiction of this Hon'ble Court. Alternatively, a substantial part of the cause of action arose at Bengaluru where the loan was arranged and the bank transfer was initiated from a bank branch situated within the jurisdiction of this Hon'ble Court. This Hon'ble Court has thus jurisdiction to entertain and try the present suit.\n\nLIMITATION:\n10. That the present suit has been instituted within the period of limitation prescribed under {{LIMITATION_ARTICLE}} of the Schedule to the Limitation Act, 1963 (Act No. 36 of 1963), which prescribes a period of three years from the date when the right to sue first accrued. The right to sue accrued on {{DATE_OF_ACCRUAL}}, and the present suit is filed well within the prescribed period of three years from the said date, and is therefore within limitation.\n\nVALUATION AND COURT FEE:\n11. That for the purpose of jurisdiction under Section 8 of the Suits Valuation Act, 1887 read with the Karnataka Court-fees and Suits Valuation Act, 1958, and in compliance with Order VII Rule 1(i) and Rule 2 of the Code of Civil Procedure, 1908, the suit is valued at Rs. 15,00,000/- (Rupees Fifteen Lakhs only) being the principal amount claimed. The ad valorem court fee of Rs. {{COURT_FEE_AMOUNT}} has been paid on the said valuation as per Schedule II, Article 1 of the Karnataka Court-fees and Suits Valuation Act, 1958.\n\nRELIEF CLAIMED:\n12. The Plaintiff claims the following reliefs:\n(a) A decree for recovery of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) against the Defendant;\n(b) Interest at the rate of 12% per annum on the said principal amount from {{DATE_OF_TRANSFER}} till the date of realization;\n(c) Costs of the suit; and\n(d) Any other relief or further orders that this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.\n\nPRAYER:\nIn view of the foregoing facts and submissions, it is most respectfully prayed that this Hon'ble Court may be pleased to:\n(a) Pass a decree for recovery of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) in favour of the Plaintiff and against the Defendant with interest thereon at the rate of 12% per annum from {{DATE_OF_TRANSFER}} till the date of realization;\n(b) Award costs of the suit to the Plaintiff;\n(c) Pass any other order or grant any other relief as this Hon'ble Court may deem just and proper in the interest of justice.\n\nPlace: Bengaluru\nDate: {{DATE_OF_FILING}}\n\n{{PLAINTIFF_NAME}}\n... Plaintiff\n\nVERIFICATION:\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify and state on solemn affirmation as follows:\n1. That the contents of paragraphs 1 to 7 are true to my personal knowledge.\n2. That the contents of paragraphs 8 to 12 are based on legal advice and believed to be true.\n3. That the documents annexed hereto are true copies of the original documents.\n4. That I have not concealed any material fact or document relevant to this case.\n\nSolemnly affirmed at Bengaluru on this {{DATE_OF_VERIFICATION}}.\n\n{{PLAINTIFF_NAME}}\n... Plaintiff\n\nLIST OF DOCUMENTS/ENCLOSURES:\n1. Annexure-A: Bank statement evidencing transfer of Rs. 15,00,000/- to Defendant's account dated {{DATE_OF_TRANSFER}}.\n2. Annexure-B: Printouts of WhatsApp communications between Plaintiff and Defendant acknowledging the loan dated {{DATE_OF_ACKNOWLEDGMENT}}.\n3. Annexure-C: Copy of legal notice dated {{DATE_OF_LEGAL_NOTICE}} along with postal/courier receipts and acknowledgment.\n4. Annexure-D: {{ADDITIONAL_DOCUMENTS}}",
+        "placeholders_used": [
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Suit number to be assigned by the Court registry upon filing"
+          },
+          {
+            "key": "YEAR",
+            "reason": "Year of filing to be determined at time of presentation"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Name of plaintiff not provided in intake"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Age of plaintiff not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Occupation of plaintiff not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Residential address of plaintiff not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Name of defendant not provided in intake"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Age of defendant not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Occupation of defendant not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Residential address of defendant required for jurisdiction and service"
+          },
+          {
+            "key": "DATE_OF_LOAN",
+            "reason": "Date when oral loan agreement was made not provided"
+          },
+          {
+            "key": "DATE_OF_TRANSFER",
+            "reason": "Date of bank transfer of Rs. 15,00,000/- not provided"
+          },
+          {
+            "key": "DATE_OF_ACKNOWLEDGMENT",
+            "reason": "Date of WhatsApp acknowledgment by defendant not provided"
+          },
+          {
+            "key": "DATE_OF_FIRST_DEMAND",
+            "reason": "Date of first oral demand for repayment not provided"
+          },
+          {
+            "key": "DATE_OF_LEGAL_NOTICE",
+            "reason": "Date of issuance of legal notice not provided"
+          },
+          {
+            "key": "DATE_OF_SERVICE",
+            "reason": "Date of service of legal notice on defendant not provided"
+          },
+          {
+            "key": "DATE_OF_ACCRUAL",
+            "reason": "Date when right to sue accrued (date of refusal/demand) not provided - critical for limitation computation"
+          },
+          {
+            "key": "DATE_OF_FILING",
+            "reason": "Actual date of filing to be inserted"
+          },
+          {
+            "key": "DATE_OF_VERIFICATION",
+            "reason": "Date of affidavit verification to be inserted"
+          },
+          {
+            "key": "LIMITATION_ARTICLE",
+            "reason": "Article 113 of Limitation Act 1963 applies to residuary money suits - verify specific article number before filing"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Exact ad valorem court fee to be calculated as per Schedule II Article 1 of Karnataka Court-fees and Suits Valuation Act, 1958 based on Rs. 15,00,000/- valuation"
+          },
+          {
+            "key": "ADDITIONAL_DOCUMENTS",
+            "reason": "Any additional evidence to be listed"
+          }
+        ],
+        "citations_used": [
+          "rag-doc-6",
+          "rag-doc-1",
+          "rag-doc-5",
+          "rag-doc-8"
+        ]
+      }
+    ]
+  },
+  "final_draft": {
+    "draft_artifacts": [
+      {
+        "doc_type": "money_recovery_plaint",
+        "title": "Plaint for Recovery of Money Under Order VII CPC (Pass-2 Corrected)",
+        "text": "IN THE CITY CIVIL COURT, BENGALURU\n\nCIVIL SUIT NO. {{SUIT_NUMBER}} OF {{YEAR}}\n\nIN THE MATTER OF:\n{{PLAINTIFF_NAME}}, {{PLAINTIFF_AGE}}, {{PLAINTIFF_OCCUPATION}},\nresiding at {{PLAINTIFF_ADDRESS}}                                    ... PLAINTIFF\n\nVERSUS\n\n{{DEFENDANT_NAME}}, {{DEFENDANT_AGE}}, {{DEFENDANT_OCCUPATION}},\nresiding at {{DEFENDANT_ADDRESS}}                                     ... DEFENDANT\n\nPLAINT UNDER ORDER VII OF THE CODE OF CIVIL PROCEDURE, 1908\n\nThe Plaintiff above-named, in compliance with the mandatory particulars prescribed under Order VII Rule 1 of the Code of Civil Procedure, 1908, and in conformity with the Karnataka Court-fees and Suits Valuation Act, 1958, respectfully submits this Plaint, praying as follows:\n\n1. The Plaintiff is {{PLAINTIFF_DESCRIPTION}}. The Defendant is {{DEFENDANT_DESCRIPTION}} and is personally known to the Plaintiff.\n\n2. That on or about {{DATE_OF_LOAN}}, the Defendant approached the Plaintiff and requested an advance of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) as a hand loan for personal/business exigencies, promising to repay the same on demand or within a reasonable period.\n\n3. That pursuant to the said request and based on an oral agreement/arrangement between the parties, and in the absence of any written agreement or promissory note, the Plaintiff on {{DATE_OF_TRANSFER}} transferred the sum of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) to the Defendant's bank account through electronic bank transfer, as evidenced by the bank statement annexed hereto as Annexure-A.\n\n4. That the Defendant acknowledged receipt of the said loan amount through WhatsApp communications dated {{DATE_OF_ACKNOWLEDGMENT}}, copies of which are annexed hereto as Annexure-B, and promised to repay the same within a reasonable time.\n\n5. That despite repeated oral demands made by the Plaintiff from {{DATE_OF_FIRST_DEMAND}} onwards, the Defendant failed and neglected to repay the said amount or any part thereof.\n\n6. That the Plaintiff, through his Advocate, issued a legal notice dated {{DATE_OF_LEGAL_NOTICE}} calling upon the Defendant to repay the principal amount of Rs. 15,00,000/- along with interest at the rate of 12% per annum within 15 days from the date of receipt thereof. The said notice was duly served upon the Defendant on {{DATE_OF_SERVICE}}, as evidenced by the postal/courier receipts and acknowledgment annexed hereto as Annexure-C.\n\n7. That the Defendant has failed, neglected and refused to repay the said principal amount of Rs. 15,00,000/- or any part thereof, or any interest thereon, despite the service of the said legal notice and despite having no lawful justification or excuse for such non-payment. The Defendant is thus liable to repay the said loan amount along with interest as claimed hereinafter.\n\nCAUSE OF ACTION:\n8. That the cause of action for the present suit first arose on {{DATE_OF_TRANSFER}} when the loan amount was advanced to the Defendant, creating an obligation upon the Defendant to repay the same. The right to sue first accrued on {{DATE_OF_ACCRUAL}} when the Defendant failed to repay the amount despite oral demands made upon him and the expiry of reasonable time for repayment. The said cause of action is continuing in nature and continues to accrue de die in diem till the realization of the entire amount due and payable by the Defendant to the Plaintiff.\n\nJURISDICTION:\n9. That the Defendant resides and/or carries on business at {{DEFENDANT_ADDRESS}}, which is within the territorial jurisdiction of this Hon'ble Court. Alternatively, a substantial part of the cause of action arose at Bengaluru where the loan was arranged and the bank transfer was initiated from a bank branch situated within the jurisdiction of this Hon'ble Court. This Hon'ble Court has thus jurisdiction to entertain and try the present suit.\n\nLIMITATION:\n10. That the present suit has been instituted within the period of limitation prescribed under {{LIMITATION_ARTICLE}} of the Schedule to the Limitation Act, 1963 (Act No. 36 of 1963), which prescribes a period of three years from the date when the right to sue first accrued. The right to sue accrued on {{DATE_OF_ACCRUAL}}, and the present suit is filed well within the prescribed period of three years from the said date, and is therefore within limitation.\n\nVALUATION AND COURT FEE:\n11. That for the purpose of jurisdiction under Section 8 of the Suits Valuation Act, 1887 read with the Karnataka Court-fees and Suits Valuation Act, 1958, and in compliance with Order VII Rule 1(i) and Rule 2 of the Code of Civil Procedure, 1908, the suit is valued at Rs. 15,00,000/- (Rupees Fifteen Lakhs only) being the principal amount claimed. The ad valorem court fee of Rs. {{COURT_FEE_AMOUNT}} has been paid on the said valuation as per the applicable provisions of the Karnataka Court-fees and Suits Valuation Act, 1958.\n\nRELIEF CLAIMED:\n12. The Plaintiff claims the following reliefs:\n(a) A decree for recovery of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) against the Defendant;\n(b) Interest at the rate of 12% per annum on the said principal amount from {{DATE_OF_TRANSFER}} till the date of realization;\n(c) Costs of the suit; and\n(d) Any other relief or further orders that this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.\n\nPRAYER:\nIn view of the foregoing facts and submissions, it is most respectfully prayed that this Hon'ble Court may be pleased to:\n(a) Pass a decree for recovery of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) in favour of the Plaintiff and against the Defendant with interest thereon at the rate of 12% per annum from {{DATE_OF_TRANSFER}} till the date of realization;\n(b) Award costs of the suit to the Plaintiff;\n(c) Pass any other order or grant any other relief as this Hon'ble Court may deem just and proper in the interest of justice.\n\nPlace: Bengaluru\nDate: {{DATE_OF_FILING}}\n\n{{PLAINTIFF_NAME}}\n... Plaintiff\n\nVERIFICATION:\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify and state on solemn affirmation as follows:\n1. That the contents of paragraphs 1 to 7 are true to my personal knowledge.\n2. That the contents of paragraphs 8 to 12 are based on legal advice and believed to be true.\n3. That the documents annexed hereto are true copies of the original documents.\n4. That I have not concealed any material fact or document relevant to this case.\n\nSolemnly affirmed at Bengaluru on this {{DATE_OF_VERIFICATION}}.\n\n{{PLAINTIFF_NAME}}\n... Plaintiff\n\nLIST OF DOCUMENTS/ENCLOSURES:\n1. Annexure-A: Bank statement evidencing transfer of Rs. 15,00,000/- to Defendant's account dated {{DATE_OF_TRANSFER}}.\n2. Annexure-B: Printouts of WhatsApp communications between Plaintiff and Defendant acknowledging the loan dated {{DATE_OF_ACKNOWLEDGMENT}}.\n3. Annexure-C: Copy of legal notice dated {{DATE_OF_LEGAL_NOTICE}} along with postal/courier receipts and acknowledgment.",
+        "placeholders_used": [
+          {
+            "key": "SUIT_NUMBER",
+            "reason": "Suit number to be assigned by the Court registry upon filing"
+          },
+          {
+            "key": "YEAR",
+            "reason": "Year of filing to be determined at time of presentation"
+          },
+          {
+            "key": "PLAINTIFF_NAME",
+            "reason": "Name of plaintiff not provided in intake"
+          },
+          {
+            "key": "PLAINTIFF_AGE",
+            "reason": "Age of plaintiff not provided"
+          },
+          {
+            "key": "PLAINTIFF_OCCUPATION",
+            "reason": "Occupation of plaintiff not provided"
+          },
+          {
+            "key": "PLAINTIFF_ADDRESS",
+            "reason": "Residential address of plaintiff not provided"
+          },
+          {
+            "key": "PLAINTIFF_DESCRIPTION",
+            "reason": "Description of plaintiff not provided"
+          },
+          {
+            "key": "DEFENDANT_NAME",
+            "reason": "Name of defendant not provided in intake"
+          },
+          {
+            "key": "DEFENDANT_AGE",
+            "reason": "Age of defendant not provided"
+          },
+          {
+            "key": "DEFENDANT_OCCUPATION",
+            "reason": "Occupation of defendant not provided"
+          },
+          {
+            "key": "DEFENDANT_ADDRESS",
+            "reason": "Residential address of defendant required for jurisdiction and service"
+          },
+          {
+            "key": "DEFENDANT_DESCRIPTION",
+            "reason": "Description of defendant not provided"
+          },
+          {
+            "key": "DATE_OF_LOAN",
+            "reason": "Date when oral loan agreement was made not provided"
+          },
+          {
+            "key": "DATE_OF_TRANSFER",
+            "reason": "Date of bank transfer of Rs. 15,00,000/- not provided"
+          },
+          {
+            "key": "DATE_OF_ACKNOWLEDGMENT",
+            "reason": "Date of WhatsApp acknowledgment by defendant not provided"
+          },
+          {
+            "key": "DATE_OF_FIRST_DEMAND",
+            "reason": "Date of first oral demand for repayment not provided"
+          },
+          {
+            "key": "DATE_OF_LEGAL_NOTICE",
+            "reason": "Date of issuance of legal notice not provided"
+          },
+          {
+            "key": "DATE_OF_SERVICE",
+            "reason": "Date of service of legal notice on defendant not provided"
+          },
+          {
+            "key": "DATE_OF_ACCRUAL",
+            "reason": "Date when right to sue accrued (date of refusal/demand) not provided - critical for limitation computation"
+          },
+          {
+            "key": "DATE_OF_FILING",
+            "reason": "Actual date of filing to be inserted"
+          },
+          {
+            "key": "DATE_OF_VERIFICATION",
+            "reason": "Date of affidavit verification to be inserted"
+          },
+          {
+            "key": "LIMITATION_ARTICLE",
+            "reason": "Specific article number to be verified from Limitation Act 1963 for money suits - not found in RAG context"
+          },
+          {
+            "key": "COURT_FEE_AMOUNT",
+            "reason": "Exact ad valorem court fee to be calculated as per Karnataka Court-fees and Suits Valuation Act based on Rs. 15,00,000/- valuation"
+          }
+        ],
+        "citations_used": [
+          "rag-doc-6",
+          "rag-doc-1",
+          "rag-doc-5",
+          "rag-doc-8"
+        ]
+      }
+    ]
+  },
+  "review": {
+    "review": {
+      "review_pass": false,
+      "blocking_issues": [
+        {
+          "issue": "Statutory reference cited without RAG support — may be sourced from training memory which can produce incorrect provision numbers for this cause of action type",
+          "fix": "Replace the unsupported citation with a placeholder (e.g., {{PROVISION_NAME}}) and record the reason; verify the correct provision before filing",
+          "location": "Paragraph 11 (Court fee / valuation paragraph)"
+        },
+        {
+          "issue": "Cause of action anchored to a procedural step rather than the date when the right to sue actually accrued under the applicable law",
+          "fix": "Identify the correct accrual date from FACTS based on the cause of action type, and use that as the cause of action date; procedural steps are not accrual events",
+          "location": "Paragraph 8 (Cause of action / limitation paragraph)"
+        },
+        {
+          "issue": "Document reference label mismatch: label in body does not match List of Documents",
+          "fix": "Ensure every document label in the body matches exactly the corresponding list entry; use a single consistent label scheme throughout the draft",
+          "location": "List of Documents (Annexure-D) and Body paragraph(s)"
+        }
+      ],
+      "non_blocking_issues": [
+        {
+          "issue": "Multiple mandatory factual details (dates, names, addresses) remain as placeholders",
+          "fix": "Populate all placeholder values with actual verified facts before filing",
+          "location": "Throughout the plaint"
+        },
+        {
+          "issue": "Interest rate of 12% claimed from date of loan without explicit written agreement shown in evidence summary",
+          "fix": "Verify WhatsApp communications explicitly document agreed interest rate; otherwise claim interest from date of demand or as per court rules",
+          "location": "Paragraph 12 (Relief claimed) and Prayer clause"
+        }
+      ],
+      "unsupported_statements": [
+        {
+          "statement": "Schedule II, Article 1 of the Karnataka Court-fees and Suits Valuation Act, 1958 prescribes the ad valorem court fee for this suit",
+          "reason": "Specific provision 'Schedule II, Article 1' of Karnataka Court-fees Act not found verbatim in RAG_CHUNKS or RAG_RAW_CONTEXT; RAG only contains general references to Court-fees Act 1870 and Karnataka Court-fees Act without specific schedule/article numbers for ad valorem fees",
+          "location": "Paragraph 11"
+        },
+        {
+          "statement": "The period of limitation prescribed is three years from the date when the right to sue first accrued under Article [X] of the Schedule to the Limitation Act, 1963",
+          "reason": "Specific limitation article number and corresponding 3-year period for money recovery suits not verified in provided RAG_CHUNKS",
+          "location": "Paragraph 10"
+        }
+      ],
+      "final_artifacts": [
+        {
+          "doc_type": "money_recovery_plaint",
+          "title": "Plaint for Recovery of Money Under Order VII CPC (Corrected)",
+          "text": "IN THE CITY CIVIL COURT, BENGALURU\n\nCIVIL SUIT NO. {{SUIT_NUMBER}} OF {{YEAR}}\n\nIN THE MATTER OF:\n{{PLAINTIFF_NAME}}, {{PLAINTIFF_AGE}}, {{PLAINTIFF_OCCUPATION}},\nresiding at {{PLAINTIFF_ADDRESS}}                                    ... PLAINTIFF\n\nVERSUS\n\n{{DEFENDANT_NAME}}, {{DEFENDANT_AGE}}, {{DEFENDANT_OCCUPATION}},\nresiding at {{DEFENDANT_ADDRESS}}                                     ... DEFENDANT\n\nPLAINT UNDER ORDER VII OF THE CODE OF CIVIL PROCEDURE, 1908\n\nThe Plaintiff above-named, in compliance with the mandatory particulars prescribed under Order VII Rule 1 of the Code of Civil Procedure, 1908, and in conformity with the Karnataka Court-fees and Suits Valuation Act, 1958, respectfully submits this Plaint, praying as follows:\n\n1. The Plaintiff is {{PLAINTIFF_DESCRIPTION}}. The Defendant is {{DEFENDANT_DESCRIPTION}} and is personally known to the Plaintiff.\n\n2. That on or about {{DATE_OF_LOAN}}, the Defendant approached the Plaintiff and requested an advance of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) as a hand loan for personal/business exigencies, promising to repay the same on demand or within a reasonable period.\n\n3. That pursuant to the said request and based on an oral agreement/arrangement between the parties, and in the absence of any written agreement or promissory note, the Plaintiff on {{DATE_OF_TRANSFER}} transferred the sum of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) to the Defendant's bank account through electronic bank transfer, as evidenced by the bank statement annexed hereto as Annexure-A.\n\n4. That the Defendant acknowledged receipt of the said loan amount through WhatsApp communications dated {{DATE_OF_ACKNOWLEDGMENT}}, copies of which are annexed hereto as Annexure-B, and promised to repay the same within a reasonable time.\n\n5. That despite repeated oral demands made by the Plaintiff from {{DATE_OF_FIRST_DEMAND}} onwards, the Defendant failed and neglected to repay the said amount or any part thereof.\n\n6. That the Plaintiff, through his Advocate, issued a legal notice dated {{DATE_OF_LEGAL_NOTICE}} calling upon the Defendant to repay the principal amount of Rs. 15,00,000/- along with interest at the rate of 12% per annum within 15 days from the date of receipt thereof. The said notice was duly served upon the Defendant on {{DATE_OF_SERVICE}}, as evidenced by the postal/courier receipts and acknowledgment annexed hereto as Annexure-C.\n\n7. That the Defendant has failed, neglected and refused to repay the said principal amount of Rs. 15,00,000/- or any part thereof, or any interest thereon, despite the service of the said legal notice and despite having no lawful justification or excuse for such non-payment. The Defendant is thus liable to repay the said loan amount along with interest as claimed hereinafter.\n\nCAUSE OF ACTION:\n8. That the cause of action for the present suit first arose on {{DATE_OF_TRANSFER}} when the loan amount was advanced to the Defendant, creating an obligation upon the Defendant to repay the same. The right to sue first accrued on {{DATE_OF_ACCRUAL}} when the Defendant failed to repay the amount despite oral demands made upon him and the expiry of reasonable time for repayment. The said cause of action is continuing in nature and continues to accrue de die in diem till the realization of the entire amount due and payable by the Defendant to the Plaintiff.\n\nJURISDICTION:\n9. That the Defendant resides and/or carries on business at {{DEFENDANT_ADDRESS}}, which is within the territorial jurisdiction of this Hon'ble Court. Alternatively, a substantial part of the cause of action arose at Bengaluru where the loan was arranged and the bank transfer was initiated from a bank branch situated within the jurisdiction of this Hon'ble Court. This Hon'ble Court has thus jurisdiction to entertain and try the present suit.\n\nLIMITATION:\n10. That the present suit has been instituted within the period of limitation prescribed under {{LIMITATION_ARTICLE}} of the Schedule to the Limitation Act, 1963 (Act No. 36 of 1963), which prescribes a period of three years from the date when the right to sue first accrued. The right to sue accrued on {{DATE_OF_ACCRUAL}}, and the present suit is filed well within the prescribed period of three years from the said date, and is therefore within limitation.\n\nVALUATION AND COURT FEE:\n11. That for the purpose of jurisdiction under Section 8 of the Suits Valuation Act, 1887 read with the Karnataka Court-fees and Suits Valuation Act, 1958, and in compliance with Order VII Rule 1(i) and Rule 2 of the Code of Civil Procedure, 1908, the suit is valued at Rs. 15,00,000/- (Rupees Fifteen Lakhs only) being the principal amount claimed. The ad valorem court fee of Rs. {{COURT_FEE_AMOUNT}} has been paid on the said valuation as per the applicable provisions of the Karnataka Court-fees and Suits Valuation Act, 1958.\n\nRELIEF CLAIMED:\n12. The Plaintiff claims the following reliefs:\n(a) A decree for recovery of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) against the Defendant;\n(b) Interest at the rate of 12% per annum on the said principal amount from {{DATE_OF_TRANSFER}} till the date of realization;\n(c) Costs of the suit; and\n(d) Any other relief or further orders that this Hon'ble Court may deem fit and proper in the facts and circumstances of the case.\n\nPRAYER:\nIn view of the foregoing facts and submissions, it is most respectfully prayed that this Hon'ble Court may be pleased to:\n(a) Pass a decree for recovery of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) in favour of the Plaintiff and against the Defendant with interest thereon at the rate of 12% per annum from {{DATE_OF_TRANSFER}} till the date of realization;\n(b) Award costs of the suit to the Plaintiff;\n(c) Pass any other order or grant any other relief as this Hon'ble Court may deem just and proper in the interest of justice.\n\nPlace: Bengaluru\nDate: {{DATE_OF_FILING}}\n\n{{PLAINTIFF_NAME}}\n... Plaintiff\n\nVERIFICATION:\nI, {{PLAINTIFF_NAME}}, the Plaintiff above-named, do hereby verify and state on solemn affirmation as follows:\n1. That the contents of paragraphs 1 to 7 are true to my personal knowledge.\n2. That the contents of paragraphs 8 to 12 are based on legal advice and believed to be true.\n3. That the documents annexed hereto are true copies of the original documents.\n4. That I have not concealed any material fact or document relevant to this case.\n\nSolemnly affirmed at Bengaluru on this {{DATE_OF_VERIFICATION}}.\n\n{{PLAINTIFF_NAME}}\n... Plaintiff\n\nLIST OF DOCUMENTS/ENCLOSURES:\n1. Annexure-A: Bank statement evidencing transfer of Rs. 15,00,000/- to Defendant's account dated {{DATE_OF_TRANSFER}}.\n2. Annexure-B: Printouts of WhatsApp communications between Plaintiff and Defendant acknowledging the loan dated {{DATE_OF_ACKNOWLEDGMENT}}.\n3. Annexure-C: Copy of legal notice dated {{DATE_OF_LEGAL_NOTICE}} along with postal/courier receipts and acknowledgment.",
+          "placeholders_used": [
+            {
+              "key": "SUIT_NUMBER",
+              "reason": "Suit number to be assigned by the Court registry upon filing"
+            },
+            {
+              "key": "YEAR",
+              "reason": "Year of filing to be determined at time of presentation"
+            },
+            {
+              "key": "PLAINTIFF_NAME",
+              "reason": "Name of plaintiff not provided in intake"
+            },
+            {
+              "key": "PLAINTIFF_AGE",
+              "reason": "Age of plaintiff not provided"
+            },
+            {
+              "key": "PLAINTIFF_OCCUPATION",
+              "reason": "Occupation of plaintiff not provided"
+            },
+            {
+              "key": "PLAINTIFF_ADDRESS",
+              "reason": "Residential address of plaintiff not provided"
+            },
+            {
+              "key": "DEFENDANT_NAME",
+              "reason": "Name of defendant not provided in intake"
+            },
+            {
+              "key": "DEFENDANT_AGE",
+              "reason": "Age of defendant not provided"
+            },
+            {
+              "key": "DEFENDANT_OCCUPATION",
+              "reason": "Occupation of defendant not provided"
+            },
+            {
+              "key": "DEFENDANT_ADDRESS",
+              "reason": "Residential address of defendant required for jurisdiction and service"
+            },
+            {
+              "key": "DATE_OF_LOAN",
+              "reason": "Date when oral loan agreement was made not provided"
+            },
+            {
+              "key": "DATE_OF_TRANSFER",
+              "reason": "Date of bank transfer of Rs. 15,00,000/- not provided"
+            },
+            {
+              "key": "DATE_OF_ACKNOWLEDGMENT",
+              "reason": "Date of WhatsApp acknowledgment by defendant not provided"
+            },
+            {
+              "key": "DATE_OF_FIRST_DEMAND",
+              "reason": "Date of first oral demand for repayment not provided"
+            },
+            {
+              "key": "DATE_OF_LEGAL_NOTICE",
+              "reason": "Date of issuance of legal notice not provided"
+            },
+            {
+              "key": "DATE_OF_SERVICE",
+              "reason": "Date of service of legal notice on defendant not provided"
+            },
+            {
+              "key": "DATE_OF_ACCRUAL",
+              "reason": "Date when right to sue accrued (date of refusal/demand) not provided - critical for limitation computation"
+            },
+            {
+              "key": "DATE_OF_FILING",
+              "reason": "Actual date of filing to be inserted"
+            },
+            {
+              "key": "DATE_OF_VERIFICATION",
+              "reason": "Date of affidavit verification to be inserted"
+            },
+            {
+              "key": "LIMITATION_ARTICLE",
+              "reason": "Specific article number to be verified from Limitation Act 1963 for money suits"
+            },
+            {
+              "key": "COURT_FEE_AMOUNT",
+              "reason": "Exact ad valorem court fee to be calculated as per Karnataka Court-fees and Suits Valuation Act based on Rs. 15,00,000/- valuation"
+            }
+          ],
+          "citations_used": []
+        }
+      ]
+    }
+  },
+  "review_count": 1
+}
