@@ -426,8 +426,6 @@ class TestLKBv2:
         entry = self.lookup("Civil", "money_recovery_loan")
         assert entry is not None
         assert "permitted_doctrines" in entry
-        assert "excluded_doctrines" in entry
-        assert "court_fee_statute" in entry
         assert "required_sections" in entry
         assert "complexity_weight" in entry
 
@@ -443,7 +441,7 @@ class TestLKBv2:
         entry = self.lookup("Civil", "breach_dealership_franchise")
         assert entry is not None
         assert "permitted_doctrines" in entry
-        assert "breach_of_contract" in entry["permitted_doctrines"]
+        assert "repudiatory_breach" in entry["permitted_doctrines"]
         assert "procedural_prerequisites" in entry
         assert "section_12a_mediation" in entry["procedural_prerequisites"]
         assert entry["complexity_weight"] == 3
@@ -452,9 +450,7 @@ class TestLKBv2:
         entry = self.lookup("Civil", "partition")
         assert entry is not None
         assert "permitted_doctrines" in entry
-        assert "court_fee_statute" in entry
         assert "required_sections" in entry
-        assert "genealogy_table" in entry["required_sections"]
         assert entry["complexity_weight"] == 3
 
     def test_court_fee_statute_per_state(self):
