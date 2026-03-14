@@ -1,0 +1,93 @@
+{
+  "construction_breach": {
+    "scenario": "construction_breach",
+    "query": "Draft a suit for damages for breach of construction agreement. Plaintiff engaged Defendant (contractor) to construct a residential house at Survey No. 45, Whitefield, Bangalore for Rs.1,20,00,000/- with completion deadline of 31.12.2025. Defendant abandoned work after receiving Rs.80,00,000/- with only 60% work completed. Cost of completion by another contractor estimated at Rs.70,00,000/-. Claim damages for breach including cost overrun and delay. Draft for District Court.",
+    "pipeline": {
+      "elapsed_s": 1.6,
+      "source": "none",
+      "blocking_issues": 0,
+      "cause_type": "unknown",
+      "doc_type": "unknown",
+      "char_count": 0,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": false,
+          "S2: Parties section": false,
+          "S3: Facts section present": false,
+          "S4: Cause of action": false,
+          "S5: Prayer/relief section": false,
+          "S6: Verification clause": false,
+          "S7: Advocate block or place/date": false,
+          "S8: Continuous para numbering": false,
+          "L1: Expected act(s) cited": false,
+          "L2: Jurisdiction pleaded": false,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": false,
+          "L5: Court fee mentioned": false,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": false,
+          "Q1: Narrative facts (not skeleton)": false,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": false,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": false,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": false,
+          "Q10: Expected key sections present": false
+        },
+        "passed": 5,
+        "total": 25,
+        "score": 2.0,
+        "percent": 20.0
+      }
+    },
+    "claude": {
+      "elapsed_s": 12.3,
+      "model": "gpt-4.1",
+      "tokens_in": 221,
+      "tokens_out": 1303,
+      "char_count": 5697,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": true,
+          "S2: Parties section": true,
+          "S3: Facts section present": true,
+          "S4: Cause of action": true,
+          "S5: Prayer/relief section": true,
+          "S6: Verification clause": true,
+          "S7: Advocate block or place/date": true,
+          "S8: Continuous para numbering": true,
+          "L1: Expected act(s) cited": true,
+          "L2: Jurisdiction pleaded": true,
+          "L3: Limitation addressed": true,
+          "L4: Valuation stated": false,
+          "L5: Court fee mentioned": false,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": true,
+          "Q1: Narrative facts (not skeleton)": true,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": true,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": true,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": true,
+          "Q10: Expected key sections present": true
+        },
+        "passed": 22,
+        "total": 25,
+        "score": 8.8,
+        "percent": 88.0
+      }
+    },
+    "comparison": {
+      "pipeline_score": 2.0,
+      "claude_score": 8.8,
+      "diff": -6.8,
+      "winner": "CLAUDE"
+    }
+  }
+}

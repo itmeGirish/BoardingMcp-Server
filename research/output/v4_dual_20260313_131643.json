@@ -1,0 +1,390 @@
+{
+  "timestamp": "20260313_131643",
+  "total_elapsed": 207.1,
+  "scenarios": [
+    {
+      "name": "Specific Performance of Sale Agreement",
+      "elapsed": 140.2,
+      "text_length": 7943,
+      "placeholders": 14,
+      "score": "29/30 (97%)",
+      "checks": [
+        {
+          "category": "STRUCT",
+          "check": "court_heading",
+          "result": "PASS",
+          "detail": "Court name"
+        },
+        {
+          "category": "STRUCT",
+          "check": "title_plaint",
+          "result": "PASS",
+          "detail": "Document titled as plaint/suit"
+        },
+        {
+          "category": "STRUCT",
+          "check": "parties_named",
+          "result": "PASS",
+          "detail": "Both parties named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "party_roles",
+          "result": "PASS",
+          "detail": "Party roles assigned"
+        },
+        {
+          "category": "STRUCT",
+          "check": "jurisdiction",
+          "result": "PASS",
+          "detail": "Jurisdiction section present"
+        },
+        {
+          "category": "STRUCT",
+          "check": "facts_section",
+          "result": "PASS",
+          "detail": "Facts section present"
+        },
+        {
+          "category": "STRUCT",
+          "check": "prayer_section",
+          "result": "PASS",
+          "detail": "Prayer section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "verification",
+          "result": "PASS",
+          "detail": "Verification clause"
+        },
+        {
+          "category": "FACT",
+          "check": "property_described",
+          "result": "PASS",
+          "detail": "Property described (flat/area)"
+        },
+        {
+          "category": "FACT",
+          "check": "total_consideration",
+          "result": "PASS",
+          "detail": "Rs.85L consideration stated"
+        },
+        {
+          "category": "FACT",
+          "check": "advance_paid",
+          "result": "PASS",
+          "detail": "Rs.25L advance paid"
+        },
+        {
+          "category": "FACT",
+          "check": "balance_amount",
+          "result": "PASS",
+          "detail": "Balance Rs.60L mentioned"
+        },
+        {
+          "category": "FACT",
+          "check": "agreement_date",
+          "result": "PASS",
+          "detail": "Agreement date 10.01.2024"
+        },
+        {
+          "category": "FACT",
+          "check": "refusal_mentioned",
+          "result": "PASS",
+          "detail": "Defendant's refusal narrated"
+        },
+        {
+          "category": "FACT",
+          "check": "ready_willing",
+          "result": "PASS",
+          "detail": "Ready and willing averment"
+        },
+        {
+          "category": "FACT",
+          "check": "legal_notice",
+          "result": "PASS",
+          "detail": "Legal notice mentioned"
+        },
+        {
+          "category": "LEGAL",
+          "check": "specific_relief_act",
+          "result": "PASS",
+          "detail": "Specific Relief Act / specific performance cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "section_cited",
+          "result": "PASS",
+          "detail": "At least one statutory section cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "cause_of_action",
+          "result": "PASS",
+          "detail": "Cause of action section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "limitation_pleaded",
+          "result": "PASS",
+          "detail": "Limitation period addressed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "valuation_court_fee",
+          "result": "PASS",
+          "detail": "Valuation / court fee section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "interest_or_mesne",
+          "result": "PASS",
+          "detail": "Interest/mesne profits/damages claimed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "prayer_specific_performance",
+          "result": "PASS",
+          "detail": "Prayer seeks specific performance decree"
+        },
+        {
+          "category": "LEGAL",
+          "check": "prayer_sale_deed",
+          "result": "PASS",
+          "detail": "Prayer for execution of sale deed"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_air_citation",
+          "result": "PASS",
+          "detail": "No fabricated AIR"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_scc_citation",
+          "result": "PASS",
+          "detail": "No fabricated SCC"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_amounts",
+          "result": "PASS",
+          "detail": "No invented amounts (10L/50L never in facts)"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_names",
+          "result": "PASS",
+          "detail": "No placeholder names"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_drafting_notes",
+          "result": "PASS",
+          "detail": "No drafting-notes language"
+        },
+        {
+          "category": "HALLU",
+          "check": "placeholders_reasonable",
+          "result": "FAIL",
+          "detail": "Placeholders: 14"
+        }
+      ],
+      "draft_text": "IN THE COURT OF THE CITY CIVIL COURT\nAT BENGALURU\n\nO.S. No. __________ / 20____\n\nAnita Sharma,\nAged about 52 years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: Indiranagar, Bengaluru.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\nRajesh Reddy,\nAged about 60 years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: HSR Layout, Bengaluru.\n\n                                                        ... DEFENDANT\n\nSUIT FOR SPECIFIC PERFORMANCE OF CONTRACT WITH COSTS\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. This Court has territorial jurisdiction under Section 20 CPC, as the agreement was entered into at Bengaluru, was to be performed at Bengaluru, and the breach occurred at Bengaluru; in any event, the Defendant resides within the local limits of this Court at Bengaluru.\n\n2. This Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only), which is within the pecuniary limits prescribed for this Court.\n\nLIMITATION\n\n3. The suit is within limitation under Article 54 of the Schedule to the Limitation Act, 1963, the period prescribed being three years from the date on which the contract was broken. The suit is filed well within the prescribed period.\n\nFACTS OF THE CASE\n\n4. On 10.01.2024, the Plaintiff herein entered into an Agreement to Sell with the Defendant regarding the residential property bearing Flat No. 302, 3rd Floor, Sunshine Apartments, Koramangala, Bengaluru, measuring 1200 sq ft, for a total consideration of Rs. 85,00,000/- (Rupees Eighty Five Lakhs Only). The said Agreement is documented in the original Agreement to Sell dated 10.01.2024, marked as Annexure A.\n\n5. The terms of the Agreement stipulated that the Plaintiff shall pay an advance amount of Rs. 25,00,000/- at the time of execution, and the balance consideration of Rs. 60,00,000/- was to be paid on or before 10.07.2024 against the execution and registration of the Sale Deed.\n\n6. In pursuance of the said Agreement, the Plaintiff paid the advance amount of Rs. 25,00,000/- on 10.01.2024 via RTGS bearing UTR No. HDFC20240110987654. The proof of said payment is preserved as Annexure B. The Plaintiff has maintained sufficient funds to discharge the balance liability within the stipulated timeline.\n\n7. The Plaintiff has always remained ready and willing to perform her part of the contract, including the payment of the balance consideration and execution of necessary documents. The Plaintiff was prepared to complete the transaction on the date fixed for execution of the Sale Deed.\n\n8. Possession of the suit property was agreed to be handed over to the Plaintiff upon execution of the Sale Deed and payment of the full consideration. The Plaintiff has not been put in possession as the Defendant failed to execute the Sale Deed.\n\nBREACH OF CONTRACT\n\n9. On 05.06.2024, prior to the date fixed for execution, the Defendant sent a written letter to the Plaintiff expressly refusing to execute the Sale Deed, citing receipt of a higher offer from a third party. A copy of the Defendant's refusal letter dated 05.06.2024 is annexed as Annexure C.\n\n10. To secure her rights, the Plaintiff issued a legal notice dated 20.06.2024 calling upon the Defendant to perform his part of the contract and execute the Sale Deed as agreed. The legal notice along with the postal receipt is marked as Annexure D.\n\n11. Despite receipt of the legal notice and the Plaintiff's continued readiness to perform, the Defendant has failed and refused to execute the Sale Deed or complete the transaction. The Defendant has committed breach of the Agreement to Sell dated 10.01.2024.\n\nLOSS AND DAMAGE\n\n12. Due to the Defendant's wrongful refusal and breach of contract, the Plaintiff has suffered financial loss owing to the escalation in market prices of similar properties in the locality since the date of the Agreement. The Plaintiff estimates the loss on account of such market difference to be Rs. {{DAMAGES_AMOUNT}}/-.\n\n13. The Plaintiff has also incurred costs and expenses in issuing the legal notice and pursuing the matter to protect her rights under the Agreement. These costs are a direct result of the Defendant's failure to perform his obligations.\n\n14. The Plaintiff is entitled to claim damages for the breach of contract in addition to the relief of specific performance, as the Defendant's actions have caused tangible financial detriment to the Plaintiff. The Plaintiff seeks compensation for the loss sustained due to the delay and refusal.\n\nLEGAL BASIS\n\n15. The Plaintiff is entitled to a decree of specific performance of the agreement under Section 10 of the Specific Relief Act, 1963, the subject matter being such that the grant of compensation in money would not afford adequate relief.\n\n16. The Plaintiff has been ready and willing to perform her part of the agreement at all material times within the meaning of Section 16(c) of the Specific Relief Act, 1963.\n\nCAUSE OF ACTION\n\n17. The cause of action first arose on 05.06.2024 when the Defendant committed default under the agreement and thereby caused the Plaintiff's right to sue for specific performance to accrue.\n\n18. The breach was a single event. The Plaintiff's claim for specific performance subsists and remains enforceable in law.\n\nVALUATION AND COURT FEE\n\n19. The suit is valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only) for the purposes of jurisdiction and court fee. Court fee on the plaint has been computed at Rs. {{COURT_FEE_AMOUNT}}/- under the provisions of the Karnataka Court Fees and Suits Valuation Act, 1958 as applicable in the State of Karnataka, with reference to the suit value and the applicable rate schedule. The plaint is tendered with the requisite court fee.\n\nPRAYER\n\nIn the premises aforesaid, the Plaintiff most respectfully prays that this Hon'ble Court be pleased to:\n\n    (a) Direct the Defendant to execute and register the sale deed in respect of the suit property in favour of the Plaintiff upon receipt of the balance consideration of Rs. {{BALANCE_CONSIDERATION}}/-;\n    (b) Direct the Defendant to deliver vacant and peaceful possession of the suit property to the Plaintiff (if not already in possession);\n    (c) In the alternative, award compensation under Section 21 of the Specific Relief Act, 1963 in lieu of or in addition to specific performance, at such amount as this Hon'ble Court deems fit;\n    (d) Award pendente lite and future interest on the amount paid under Section 34 CPC;\n    (e) Award costs of the suit to the Plaintiff;\n    (f) Grant such other and further relief(s) as this Hon'ble Court deems fit and proper;\n\nLIST OF DOCUMENTS\n\nAnnexure A — Original agreement dated 10.01.2024 for sale of Flat No. 302, Sunshine Apartments.\n\nAnnexure B — RTGS receipt for advance payment of Rs. 25,00,000 (UTR: HDFC20240110987654).\n\nAnnexure C — Defendant's refusal letter dated 05.06.2024.\n\nAnnexure D — Legal notice dated 20.06.2024 with postal receipt.\n\nVERIFICATION\n\nVerified at Bengaluru on this the ____ day of __________ 20____.\n\nI, Anita Sharma, the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 19 of this plaint are true and correct to my knowledge, and no material facts have been concealed therefrom, and that I have not filed any other suit, petition, or proceeding in any court or before any authority in respect of the same subject matter and cause of action.\n\nDEPONENT\n\nAnita Sharma\n\nPLAINTIFF\n\n                                    THROUGH:\n                                    {{ADVOCATE_NAME}}\n                                    Advocate for the Plaintiff\n                                    Enrollment No. {{ENROLLMENT_NO}}\n                                    {{ADVOCATE_ADDRESS}}\n                                    Mobile: {{ADVOCATE_PHONE}}\n                                    Email: {{ADVOCATE_EMAIL}}",
+      "errors": []
+    },
+    {
+      "name": "Breach of Contract — Damages (Business)",
+      "elapsed": 67.0,
+      "text_length": 260,
+      "placeholders": 0,
+      "score": "7/30 (23%)",
+      "checks": [
+        {
+          "category": "STRUCT",
+          "check": "court_heading",
+          "result": "FAIL",
+          "detail": "Court name (Commercial/Civil)"
+        },
+        {
+          "category": "STRUCT",
+          "check": "title_plaint",
+          "result": "PASS",
+          "detail": "Titled as plaint/suit"
+        },
+        {
+          "category": "STRUCT",
+          "check": "plaintiff_company",
+          "result": "FAIL",
+          "detail": "Plaintiff company named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "defendant_company",
+          "result": "FAIL",
+          "detail": "Defendant company named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "jurisdiction",
+          "result": "FAIL",
+          "detail": "Jurisdiction section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "facts_section",
+          "result": "FAIL",
+          "detail": "Facts section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "prayer_section",
+          "result": "FAIL",
+          "detail": "Prayer section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "verification",
+          "result": "FAIL",
+          "detail": "Verification clause"
+        },
+        {
+          "category": "FACT",
+          "check": "contract_value",
+          "result": "FAIL",
+          "detail": "Rs.45L contract value"
+        },
+        {
+          "category": "FACT",
+          "check": "advance_paid",
+          "result": "FAIL",
+          "detail": "Rs.20L advance paid"
+        },
+        {
+          "category": "FACT",
+          "check": "consequential_damages",
+          "result": "FAIL",
+          "detail": "Rs.12L consequential damages / loss"
+        },
+        {
+          "category": "FACT",
+          "check": "total_claim",
+          "result": "FAIL",
+          "detail": "Total claim Rs.32L or breakdown stated"
+        },
+        {
+          "category": "FACT",
+          "check": "software_agreement",
+          "result": "FAIL",
+          "detail": "Software/ERP agreement mentioned"
+        },
+        {
+          "category": "FACT",
+          "check": "abandonment",
+          "result": "FAIL",
+          "detail": "Project abandonment narrated"
+        },
+        {
+          "category": "FACT",
+          "check": "neft_evidence",
+          "result": "FAIL",
+          "detail": "NEFT/bank transfer evidence"
+        },
+        {
+          "category": "FACT",
+          "check": "legal_notice",
+          "result": "FAIL",
+          "detail": "Legal notice mentioned"
+        },
+        {
+          "category": "LEGAL",
+          "check": "contract_act",
+          "result": "FAIL",
+          "detail": "Indian Contract Act / breach cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "section_cited",
+          "result": "FAIL",
+          "detail": "At least one statutory section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "cause_of_action",
+          "result": "FAIL",
+          "detail": "Cause of action section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "limitation_pleaded",
+          "result": "FAIL",
+          "detail": "Limitation addressed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "valuation_court_fee",
+          "result": "FAIL",
+          "detail": "Valuation / court fee"
+        },
+        {
+          "category": "LEGAL",
+          "check": "interest_claimed",
+          "result": "FAIL",
+          "detail": "18% interest claimed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "damages_in_prayer",
+          "result": "FAIL",
+          "detail": "Prayer seeks damages decree"
+        },
+        {
+          "category": "LEGAL",
+          "check": "refund_claimed",
+          "result": "FAIL",
+          "detail": "Refund of advance claimed"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_air_citation",
+          "result": "PASS",
+          "detail": "No fabricated AIR"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_scc_citation",
+          "result": "PASS",
+          "detail": "No fabricated SCC"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_amounts",
+          "result": "PASS",
+          "detail": "No invented amounts"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_names",
+          "result": "PASS",
+          "detail": "No placeholder names"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_drafting_notes",
+          "result": "PASS",
+          "detail": "No drafting-notes language"
+        },
+        {
+          "category": "HALLU",
+          "check": "placeholders_reasonable",
+          "result": "PASS",
+          "detail": "Placeholders: 0"
+        }
+      ],
+      "draft_text": "CONSISTENCY GATE — FORBIDDEN CONTENT\n\nThe civil drafting pipeline stopped before finalization for the following reasons:\n1. UNANCHORED_THEORY: Draft pleads readiness and willingness in a pure damages contract suit.\n\nClarify the above issues and rerun drafting.",
+      "errors": [
+        "UNANCHORED_THEORY: Draft pleads readiness and willingness in a pure damages contract suit."
+      ]
+    }
+  ]
+}

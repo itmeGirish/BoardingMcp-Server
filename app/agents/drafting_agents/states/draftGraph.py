@@ -206,6 +206,100 @@ class ReviewNode(BaseModel):
     review: Review
 
 
+CivilFamily = Literal[
+    "money_and_debt",
+    "contract_and_commercial",
+    "immovable_property",
+    "injunction_and_declaratory",
+    "tort_and_civil_wrong",
+    "tenancy_and_rent",
+    "partnership_and_business",
+    "ip_civil",
+    "trust_and_fiduciary",
+    "execution_and_restitution",
+    "special_and_miscellaneous",
+    "succession_and_estate",
+    "unsupported",
+]
+
+CivilDecisionStatus = Literal["not_applicable", "resolved", "ambiguous", "unsupported"]
+CivilDraftStrategy = Literal["template_first", "free_text"]
+
+
+class CivilDecision(BaseModel):
+    enabled: bool = False
+    family: Optional[CivilFamily] = None
+    original_cause_type: Optional[str] = None
+    resolved_cause_type: Optional[str] = None
+    relationship_track: Optional[str] = None
+    status: CivilDecisionStatus = "not_applicable"
+    draft_strategy: CivilDraftStrategy = "free_text"
+    template_eligible: bool = False
+    maintainability_checks: List[str] = Field(default_factory=list)
+    ambiguity_flags: List[str] = Field(default_factory=list)
+    blocking_issues: List[str] = Field(default_factory=list)
+    limitation: Dict[str, Any] = Field(default_factory=dict)
+    allowed_statutes: List[str] = Field(default_factory=list)
+    forbidden_statutes: List[str] = Field(default_factory=list)
+    allowed_reliefs: List[str] = Field(default_factory=list)
+    forbidden_reliefs: List[str] = Field(default_factory=list)
+    allowed_damages: List[str] = Field(default_factory=list)
+    forbidden_damages: List[str] = Field(default_factory=list)
+    allowed_doctrines: List[str] = Field(default_factory=list)
+    forbidden_doctrines: List[str] = Field(default_factory=list)
+    filtered_red_flags: List[str] = Field(default_factory=list)
+    route_reason: str = ""
+    confidence: float = 0.0
+
+
+class DomainDecision(BaseModel):
+    enabled: bool = False
+    plugin_key: Optional[str] = None
+    law_domain: Optional[str] = None
+    family: Optional[str] = None
+    subtype: Optional[str] = None
+    relationship_track: Optional[str] = None
+    status: CivilDecisionStatus = "not_applicable"
+    draft_strategy: CivilDraftStrategy = "free_text"
+    template_eligible: bool = False
+    maintainability_checks: List[str] = Field(default_factory=list)
+    ambiguity_flags: List[str] = Field(default_factory=list)
+    blocking_issues: List[str] = Field(default_factory=list)
+    limitation: Dict[str, Any] = Field(default_factory=dict)
+    allowed_statutes: List[str] = Field(default_factory=list)
+    forbidden_statutes: List[str] = Field(default_factory=list)
+    allowed_reliefs: List[str] = Field(default_factory=list)
+    forbidden_reliefs: List[str] = Field(default_factory=list)
+    allowed_damages: List[str] = Field(default_factory=list)
+    forbidden_damages: List[str] = Field(default_factory=list)
+    allowed_doctrines: List[str] = Field(default_factory=list)
+    forbidden_doctrines: List[str] = Field(default_factory=list)
+    filtered_red_flags: List[str] = Field(default_factory=list)
+    route_reason: str = ""
+    confidence: float = 0.0
+
+
+class DraftPlanIR(BaseModel):
+    plugin_key: Optional[str] = None
+    law_domain: Optional[str] = None
+    family: Optional[str] = None
+    subtype: Optional[str] = None
+    relationship_track: Optional[str] = None
+    route_reason: str = ""
+    required_sections: List[str] = Field(default_factory=list)
+    required_reliefs: List[str] = Field(default_factory=list)
+    optional_reliefs: List[str] = Field(default_factory=list)
+    required_averments: List[str] = Field(default_factory=list)
+    mandatory_inline_sections: List[Dict[str, Any]] = Field(default_factory=list)
+    maintainability_checks: List[str] = Field(default_factory=list)
+    limitation: Dict[str, Any] = Field(default_factory=dict)
+    verified_provisions: List[Dict[str, Any]] = Field(default_factory=list)
+    evidence_checklist: List[str] = Field(default_factory=list)
+    red_flags: List[str] = Field(default_factory=list)
+    missing_fields: List[str] = Field(default_factory=list)
+    constraints: Dict[str, Any] = Field(default_factory=dict)
+
+
 # -------------------------------------------------------------------
 # 1) LangGraph State (TypedDict) — single global state for ALL doc types
 # -------------------------------------------------------------------
@@ -215,6 +309,13 @@ class DraftingState(TypedDict, total=False):
 
     intake: IntakeNode | None
     classify: ClassifyNode | None
+    domain_plugin: str | None
+    decision_ir: DomainDecision | None
+    plan_ir: DraftPlanIR | None
+    domain_gate_issues: List[Dict[str, Any]]
+    civil_decision: CivilDecision | None
+    civil_draft_plan: Dict[str, Any] | None
+    civil_gate_issues: List[Dict[str, Any]]
     rag: RagBundle | None
     court_fee: Dict[str, Any] | None       # web search: jurisdiction court fee rates
     legal_research: Dict[str, Any] | None  # web search: limitation period + procedural requirements
@@ -234,6 +335,7 @@ class DraftingState(TypedDict, total=False):
     structural_issues: List[Dict[str, Any]]  # structural_gate: missing section checks
     citation_issues: List[Dict[str, Any]]    # citation_validator: unverified citations
     evidence_anchoring_issues: List[Dict[str, Any]]  # evidence_anchoring: replaced tokens + quality
+    accuracy_gate_issues: List[Dict[str, Any]]  # v10.0 accuracy gates: procedural, date, arithmetic, annexure, rules
 
     draft: DraftNode | None
     final_draft: DraftNode | None

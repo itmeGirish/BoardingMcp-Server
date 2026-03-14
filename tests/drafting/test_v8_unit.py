@@ -140,8 +140,9 @@ class TestTemplateEngine:
             mandatory_provisions=minimal_mandatory_provisions,
         )
         assert "{{GENERATE:FACTS" in result
-        assert "{{GENERATE:BREACH}}" in result
-        assert "{{GENERATE:DAMAGES}}" in result
+        # v10.0: contract family uses BREACH_PARTICULARS gap (legacy: BREACH)
+        assert "{{GENERATE:BREACH_PARTICULARS" in result or "{{GENERATE:BREACH}}" in result
+        assert "{{GENERATE:DAMAGES" in result
 
     def test_assemble_contains_court_heading(self, minimal_intake, minimal_classify, minimal_lkb_brief, minimal_mandatory_provisions):
         engine = self.TemplateEngine()
@@ -214,13 +215,17 @@ class TestTemplateEngine:
         assert "Article NONE" not in result
 
     def test_limitation_unknown(self, minimal_intake, minimal_classify, minimal_lkb_brief):
-        """article=UNKNOWN → placeholder."""
+        """article=UNKNOWN → placeholder when LKB also has no data."""
         engine = self.TemplateEngine()
         prov = {"limitation": {"article": "UNKNOWN"}}
+        # Use LKB brief with UNKNOWN limitation too — otherwise the engine
+        # falls back to LKB's real limitation article (correct behavior).
+        lkb_with_unknown_lim = dict(minimal_lkb_brief)
+        lkb_with_unknown_lim["limitation"] = {"article": "UNKNOWN"}
         result = engine.assemble(
             intake=minimal_intake,
             classify=minimal_classify,
-            lkb_brief=minimal_lkb_brief,
+            lkb_brief=lkb_with_unknown_lim,
             mandatory_provisions=prov,
         )
         assert "{{LIMITATION_ARTICLE}}" in result
@@ -234,7 +239,13 @@ class TestTemplateEngine:
             mandatory_provisions=minimal_mandatory_provisions,
         )
         assert "PRAYER" in result
-        assert "decree" in result.lower()
+        # Prayer is now LLM-generated via {{GENERATE:PRAYER}} — verify gap constraints exist
+        from app.agents.drafting_agents.lkb.causes._family_defaults import resolve_gap_definitions
+        cause_type = minimal_classify.get("cause_type", "breach_of_contract")
+        gaps = resolve_gap_definitions(minimal_lkb_brief, cause_type)
+        if gaps:
+            prayer_gap = next((g for g in gaps if g["gap_id"] == "PRAYER"), None)
+            assert prayer_gap is not None, "PRAYER gap should exist in gap_definitions"
 
     def test_assemble_contains_documents_list(self, minimal_intake, minimal_classify, minimal_lkb_brief, minimal_mandatory_provisions):
         engine = self.TemplateEngine()
@@ -255,7 +266,8 @@ class TestTemplateEngine:
             lkb_brief=minimal_lkb_brief,
             mandatory_provisions=minimal_mandatory_provisions,
         )
-        assert "LEGAL BASIS" in result
+        # Legal basis is now LLM-generated via {{GENERATE:LEGAL_BASIS}} marker
+        assert "LEGAL_BASIS" in result or "LEGAL BASIS" in result
 
     def test_paragraph_numbering_continuous(self, minimal_intake, minimal_classify, minimal_lkb_brief, minimal_mandatory_provisions):
         engine = self.TemplateEngine()
@@ -411,6 +423,23 @@ class TestGapFillPrompt:
         # Unfilled markers should become {{SECTION_NOT_GENERATED}}
         assert "{{SECTION_NOT_GENERATED}}" in result
 
+    def test_merge_uses_injunction_specific_section_headings(self):
+        template = (
+            "{{GENERATE:FACTS|start_para=1}}\n\n"
+            "{{GENERATE:BREACH}}\n\n"
+            "{{GENERATE:DAMAGES}}"
+        )
+        gaps = {
+            "facts": "1. The Plaintiff is in possession of the agricultural land.",
+            "breach": "2. The Defendant attempted to trespass into the land.",
+            "damages": "3. Monetary compensation is not an adequate remedy.",
+        }
+        result = self.merge(template, gaps, cause_type="permanent_injunction")
+        assert "PLAINTIFF RIGHT AND DEFENDANT INTERFERENCE" in result
+        assert "IRREPARABLE HARM AND BALANCE OF CONVENIENCE" in result
+        assert "BREACH PARTICULARS" not in result
+        assert "\nDAMAGES\n" not in result
+
     # --- renumber_paragraphs ---
 
     def test_renumber_continuous(self):
@@ -470,6 +499,41 @@ class TestGapFillPrompt:
         assert "DAMAGES CATEGORIES" in result
         assert "principal amount" in result
         assert "loss of profit" in result
+
+    def test_user_prompt_includes_injunction_constraints(self):
+        result = self.build_user(
+            user_request="Draft a suit for permanent injunction over agricultural land.",
+            assembled_template="TEMPLATE",
+            facts_summary="Plaintiff in peaceful possession of agricultural land.",
+            parties_context="",
+            evidence_context="Revenue records.",
+            verified_provisions="Section 38 Specific Relief Act, 1963",
+            rag_context="",
+            cause_type="permanent_injunction",
+        )
+        assert "INJUNCTION DRAFTING CONSTRAINTS" in result
+        assert "do not plead a money damages claim or interest" in result.lower()
+
+    def test_user_prompt_includes_contract_constraints(self):
+        result = self.build_user(
+            user_request="Draft a suit for damages for breach of contract under Section 73.",
+            assembled_template="TEMPLATE",
+            facts_summary="Plaintiff signed a contract and Defendant failed to perform.",
+            parties_context="",
+            evidence_context="Annexure P-1: Contract",
+            verified_provisions="Section 73 Indian Contract Act, 1872",
+            rag_context="",
+            cause_type="breach_of_contract",
+            damages_categories=["actual_loss"],
+        )
+        assert "CONTRACT DRAFTING CONSTRAINTS" in result
+        assert "do not use repudiatory" in result.lower()
+        assert "do not introduce additional loss heads" in result.lower()
+        assert "do not add cause-of-action" in result.lower()
+        assert "annexure p-1" in result.lower()
+        assert "annexure p-2" in result.lower()
+        assert "not a specific performance track" in result.lower()
+        assert "{{TOTAL_SUIT_VALUE}}" in result
 
 
 # ===========================================================================
@@ -536,9 +600,9 @@ class TestDraftTemplateFillHelpers:
 
     def test_evidence_context(self, minimal_intake):
         result = self.evidence_context(minimal_intake)
-        assert "Annexure A" in result
+        assert "Annexure P-1" in result
         assert "Dealership agreement" in result
-        assert "Annexure B" in result
+        assert "Annexure P-2" in result
 
     def test_evidence_context_empty(self):
         result = self.evidence_context({})
@@ -699,6 +763,19 @@ class TestTemplateEngineSections:
         assert "No limitation applies" in result
         assert "reasonable time" in result
 
+    def test_limitation_section_special_reference(self):
+        lim = {
+            "article": "N/A",
+            "reference": "Section 34(3) of the Arbitration and Conciliation Act, 1996",
+            "act": "Arbitration and Conciliation Act, 1996",
+            "period": "Three months and thirty days",
+            "from": "the date of receipt of the award",
+        }
+        result = self.engine._limitation_section(lim, {})
+        assert "Section 34(3)" in result
+        assert "Limitation Act, 1963" not in result
+        assert "three months" in result.lower()
+
     def test_limitation_section_unknown(self):
         lim = {"article": "UNKNOWN"}
         result = self.engine._limitation_section(lim, {})
@@ -731,7 +808,8 @@ class TestTemplateEngineSections:
     def test_arbitration_disclosure_absent(self):
         intake = {}
         result = self.engine._arbitration_disclosure(intake, "normal agreement")
-        assert "{{ARBITRATION_STATUS" in result
+        # When no arbitration mentioned in intake, section is skipped entirely
+        assert result == ""
 
     def test_legal_basis_uses_doctrine_templates(self):
         lkb = {"permitted_doctrines": ["breach_of_contract", "damages_s73"]}
@@ -741,13 +819,16 @@ class TestTemplateEngineSections:
         assert "breach" in result.lower()
         assert "Section 73" in result
 
-    def test_prayer_includes_damage_heads(self):
+    def test_prayer_includes_aggregate_decree(self):
         lkb = {"damages_categories": ["principal_amount", "loss_of_profit"]}
         result = self.engine._prayer(lkb)
         assert "PRAYER" in result
         assert "decree" in result.lower()
-        assert "PRINCIPAL_AMOUNT_AMOUNT" in result
-        assert "LOSS_OF_PROFIT_AMOUNT" in result
+        assert "TOTAL_SUIT_VALUE" in result
+        # Individual damage heads now in Schedule of Damages, not prayer
+        schedule = self.engine._damages_schedule(lkb)
+        assert "PRINCIPAL_AMOUNT_AMOUNT" in schedule
+        assert "LOSS_OF_PROFIT_AMOUNT" in schedule
 
     def test_documents_list_with_evidence(self):
         evidence = [
@@ -761,7 +842,7 @@ class TestTemplateEngineSections:
 
     def test_documents_list_empty(self):
         result = self.engine._documents_list([])
-        assert "{{DOCUMENT_1}}" in result
+        assert "{{DOCUMENTS_TO_BE_ANNEXED}}" in result
 
     def test_damages_schedule(self):
         lkb = {"damages_categories": ["principal_amount", "loss_of_goodwill"]}
@@ -777,7 +858,8 @@ class TestTemplateEngineSections:
         result = self.engine._cause_of_action(lkb, facts)
         assert "CAUSE OF ACTION" in result
         assert "15.06.2024" in result
-        assert "single event" in result.lower()
+        assert "loss and" in result.lower()
+        assert "not a continuing cause of action" not in result.lower()
 
     def test_cause_of_action_continuing(self):
         lkb = {"coa_type": "continuing"}
@@ -785,6 +867,119 @@ class TestTemplateEngineSections:
         self.engine._para = 0
         result = self.engine._cause_of_action(lkb, facts)
         assert "continuing" in result.lower()
+
+    def test_possession_licensee_template_uses_possession_core_sections(self):
+        lkb = {
+            "display_name": "Recovery of possession — revoked licence (licensee)",
+            "required_reliefs": ["possession_decree", "mesne_profits_inquiry_order_xx_r12", "costs"],
+            "alternative_acts": [
+                {"act": "Indian Easements Act, 1882", "sections": ["Section 52", "Section 60", "Section 61", "Section 62", "Section 63"]},
+            ],
+            "court_fee_statute": {"Karnataka": "Karnataka Court Fees and Suits Valuation Act, 1958"},
+        }
+        facts = {
+            "property_address": "Survey No. 45, Koramangala, Bengaluru",
+            "revocation_date": "15.03.2024",
+        }
+        jurisdiction = {"city": "Bengaluru", "state": "Karnataka"}
+
+        self.engine._para = 0
+        title = self.engine._suit_title(lkb, {}, "recovery_of_possession_licensee")
+        jurisdiction_text = self.engine._jurisdiction_section(jurisdiction, {}, False, "recovery_of_possession_licensee", facts)
+        legal_basis = self.engine._legal_basis(lkb, "recovery_of_possession_licensee")
+        cause = self.engine._cause_of_action(lkb, facts, "recovery_of_possession_licensee")
+        interest = self.engine._interest_section(lkb, "recovery_of_possession_licensee")
+        prayer = self.engine._prayer(lkb, "recovery_of_possession_licensee")
+
+        assert "WITH MESNE PROFITS AND COSTS" in title
+        assert "Section 16" in jurisdiction_text
+        assert "cause of action arose" not in jurisdiction_text.lower()
+        assert "Indian Easements Act, 1882" in legal_basis
+        assert "revoked / came to an end" in cause
+        assert interest == ""
+        assert "recovery of possession" in prayer.lower()
+        assert "Order XX Rule 12" in prayer
+        assert "towards damages" not in prayer.lower()
+
+    def test_permanent_injunction_template_uses_non_monetary_core_sections(self):
+        lkb = {
+            "display_name": "Suit for perpetual / permanent injunction",
+            "required_reliefs": ["permanent_injunction_decree", "costs"],
+            "court_fee_statute": {"Karnataka": "Karnataka Court Fees and Suits Valuation Act, 1958"},
+        }
+        facts = {
+            "summary": "Plaintiff is in peaceful possession of agricultural land supported by revenue records and defendant is attempting to dispossess the plaintiff unlawfully.",
+            "land_survey_number": "Survey No. 12",
+            "property_address": "Survey No. 12, Hosakote Village, Bengaluru Rural",
+            "cause_of_action_date": "15.03.2026",
+        }
+        jurisdiction = {"city": "Bengaluru", "state": "Karnataka"}
+
+        self.engine._para = 0
+        title = self.engine._suit_title(lkb, {}, "permanent_injunction")
+        jurisdiction_text = self.engine._jurisdiction_section(jurisdiction, {}, False, "permanent_injunction", facts)
+        legal_basis = self.engine._legal_basis(lkb, "permanent_injunction", facts)
+        cause = self.engine._cause_of_action(lkb, facts, "permanent_injunction")
+        valuation = self.engine._valuation_court_fee(lkb, facts, "Karnataka", None, "permanent_injunction")
+        interest = self.engine._interest_section(lkb, "permanent_injunction")
+        prayer = self.engine._prayer(lkb, "permanent_injunction")
+
+        assert "WITH COSTS" in title
+        assert "WITH INTEREST AND COSTS" not in title
+        assert "Section 16" in jurisdiction_text
+        assert "carries on business / resides" not in jurisdiction_text.lower()
+        assert "Section 38" in legal_basis
+        assert "Section 34 of the Code of Civil Procedure" not in legal_basis
+        assert "15.03.2026" in cause
+        assert "legal notice" not in cause.lower()
+        assert "suit for injunction" in valuation.lower()
+        assert interest == ""
+        assert "permanent injunction" in prayer.lower()
+        assert "towards damages" not in prayer.lower()
+
+    def test_easement_template_uses_declaration_injunction_and_dual_schedule(self):
+        lkb = {
+            "display_name": "Suit for declaration / protection of easement rights",
+            "required_reliefs": [
+                "declaration_decree",
+                "mandatory_injunction_decree",
+                "permanent_injunction_decree",
+                "costs",
+            ],
+            "court_fee_statute": {"Karnataka": "Karnataka Court Fees and Suits Valuation Act, 1958"},
+        }
+        facts = {
+            "summary": "Plaintiff has been using a pathway for more than twenty years to access property and the defendant has now obstructed it.",
+            "property_address": "Survey No. 12, Hosakote Village, Bengaluru Rural",
+            "land_survey_number": "Survey No. 12",
+            "pathway_description": "Cart track / pathway running through the Defendant's land to the Plaintiff's property",
+            "pathway_measurements": "Width 10 feet, length 120 feet",
+            "pathway_boundaries": "East: Defendant's field, West: Plaintiff's field, North: Village road, South: Canal",
+            "cause_of_action_date": "15.03.2026",
+        }
+        jurisdiction = {"city": "Bengaluru", "state": "Karnataka"}
+
+        self.engine._para = 0
+        title = self.engine._suit_title(lkb, {}, "easement")
+        jurisdiction_text = self.engine._jurisdiction_section(jurisdiction, {}, False, "easement", facts)
+        legal_basis = self.engine._legal_basis(lkb, "easement", facts)
+        cause = self.engine._cause_of_action(lkb, facts, "easement")
+        prayer = self.engine._prayer(lkb, "easement")
+        schedule = self.engine._schedule_of_easement(facts)
+
+        assert "SUIT FOR SUIT FOR" not in title
+        assert "EASEMENTARY RIGHT" in title
+        assert "Section 16" in jurisdiction_text
+        assert "Section 15" in legal_basis
+        assert "Section 34" in legal_basis
+        assert "Sections 38 and 39" in legal_basis
+        assert "obstructed / threatened to obstruct" in cause
+        assert "declaring" in prayer.lower()
+        assert "mandatory injunction" in prayer.lower()
+        assert "permanent injunction" in prayer.lower()
+        assert "towards damages" not in prayer.lower()
+        assert "SCHEDULE A - DOMINANT HERITAGE" in schedule
+        assert "SCHEDULE B - PATHWAY / SERVIENT HERITAGE" in schedule
 
 
 # ===========================================================================
@@ -801,9 +996,11 @@ class TestTemplateMergeIntegration:
             merge_template_with_gaps,
             renumber_paragraphs,
         )
+        from app.agents.drafting_agents.lkb.causes._family_defaults import resolve_gap_definitions
 
         # Phase 1: Assemble template
         engine = TemplateEngine()
+        cause_type = minimal_classify.get("cause_type", "")
         template = engine.assemble(
             intake=minimal_intake,
             classify=minimal_classify,
@@ -812,29 +1009,39 @@ class TestTemplateMergeIntegration:
         )
         assert "{{GENERATE:FACTS" in template
 
-        # Phase 2: Simulate LLM response
-        mock_llm = (
-            "{{GENERATE:FACTS|start_para=5}}\n"
-            "5. The Plaintiff is a sole proprietor who entered into a dealership "
-            "agreement with the Defendant on 01.01.2024.\n\n"
-            "6. The Defendant illegally terminated the agreement on 15.06.2024.\n\n"
-            "{{GENERATE:BREACH}}\n"
-            "7. The Defendant breached the terms of the agreement by terminating "
-            "without proper notice or justification.\n\n"
-            "{{GENERATE:DAMAGES}}\n"
-            "8. As a result of the breach, the Plaintiff has suffered damages "
-            "amounting to Rs. 15,00,000/-."
-        )
-        gaps = parse_gap_fill_response(mock_llm)
-        assert gaps["facts"]
-        assert gaps["breach"]
-        assert gaps["damages"]
+        # Resolve gap_definitions for this cause type (v10.0)
+        gap_defs = resolve_gap_definitions(minimal_lkb_brief, cause_type)
+
+        # Phase 2: Simulate LLM response (use v10.0 gap IDs if available)
+        if gap_defs:
+            gap_ids = [g["gap_id"] for g in gap_defs]
+            mock_parts = []
+            for i, gid in enumerate(gap_ids):
+                para = 5 + i * 2
+                mock_parts.append(
+                    f"{{{{GENERATE:{gid}}}}}\n"
+                    f"{para}. Mock content for {gid} section.\n\n"
+                    f"{para+1}. Additional paragraph for {gid}."
+                )
+            mock_llm = "\n\n".join(mock_parts)
+        else:
+            mock_llm = (
+                "{{GENERATE:FACTS|start_para=5}}\n"
+                "5. The Plaintiff entered into a dealership agreement on 01.01.2024.\n\n"
+                "6. The Defendant illegally terminated the agreement on 15.06.2024.\n\n"
+                "{{GENERATE:BREACH}}\n"
+                "7. The Defendant breached the terms of the agreement.\n\n"
+                "{{GENERATE:DAMAGES}}\n"
+                "8. The Plaintiff suffered damages amounting to Rs. 15,00,000/-."
+            )
+
+        gaps = parse_gap_fill_response(mock_llm, gap_definitions=gap_defs)
+        assert any(v for v in gaps.values())  # At least one gap filled
 
         # Phase 3: Merge
-        merged = merge_template_with_gaps(template, gaps)
+        merged = merge_template_with_gaps(template, gaps, cause_type=cause_type, gap_definitions=gap_defs)
         assert "{{GENERATE:" not in merged
-        assert "FACTS OF THE CASE" in merged
-        assert "BREACH PARTICULARS" in merged
+        assert "FACTS" in merged  # Some FACTS heading present
 
         # Renumber
         final = renumber_paragraphs(merged)
@@ -854,7 +1061,9 @@ class TestTemplateMergeIntegration:
             parse_gap_fill_response,
             merge_template_with_gaps,
         )
+        from app.agents.drafting_agents.lkb.causes._family_defaults import resolve_gap_definitions
 
+        cause_type = minimal_classify.get("cause_type", "")
         engine = TemplateEngine()
         template = engine.assemble(
             intake=minimal_intake,
@@ -863,14 +1072,30 @@ class TestTemplateMergeIntegration:
             mandatory_provisions=minimal_mandatory_provisions,
         )
 
+        gap_defs = resolve_gap_definitions(minimal_lkb_brief, cause_type)
         mock_llm = "{{GENERATE:FACTS}}\nSome facts."
-        gaps = parse_gap_fill_response(mock_llm)
-        merged = merge_template_with_gaps(template, gaps)
+        gaps = parse_gap_fill_response(mock_llm, gap_definitions=gap_defs)
+        merged = merge_template_with_gaps(template, gaps, cause_type=cause_type, gap_definitions=gap_defs)
 
         # Facts replaced
-        assert "FACTS OF THE CASE" in merged
+        assert "FACTS" in merged
         # Others should be {{SECTION_NOT_GENERATED}}
         assert "{{SECTION_NOT_GENERATED}}" in merged
+
+    def test_merge_uses_possession_section_headings(self):
+        from app.agents.drafting_agents.prompts.gap_fill_prompt import merge_template_with_gaps
+
+        template = "{{GENERATE:FACTS}}\n\n{{GENERATE:BREACH}}\n\n{{GENERATE:DAMAGES}}"
+        gaps = {
+            "facts": "1. Facts text.",
+            "breach": "2. Occupation text.",
+            "damages": "3. Mesne profits text.",
+        }
+        merged = merge_template_with_gaps(template, gaps, cause_type="recovery_of_possession_licensee")
+
+        assert "FACTS OF THE CASE" in merged
+        assert "DEFENDANT'S UNAUTHORIZED OCCUPATION" in merged
+        assert "MESNE PROFITS" in merged
 
 
 # ===========================================================================

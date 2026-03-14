@@ -8,6 +8,8 @@ from __future__ import annotations
 import json
 from typing import Any, Dict, List, Optional
 
+from ..lkb.limitation import get_limitation_reference_details
+
 
 def _get_quality_guidance(section_id: str, heading: str, section: Dict[str, Any] = None, doc_type: str = "") -> str:
     """Return STRUCTURAL drafting guidance per section type.
@@ -78,8 +80,9 @@ STYLE GUIDANCE — PRAYER:
 """,
         "limitation": """
 STYLE GUIDANCE — LIMITATION:
-- Use ONLY the limitation article provided in the LIMITATION ARTICLE context below.
-- If no limitation article is provided, use {{LIMITATION_ARTICLE}} as placeholder — do NOT guess or invent an article number.
+- Use ONLY the limitation citation provided in the LIMITATION context below.
+- If the context gives a statutory reference, cite that exact provision. Do NOT rewrite it as a Limitation Act article.
+- If no limitation citation is provided, use {{LIMITATION_ARTICLE}} as placeholder — do NOT guess or invent an article number.
 - Anchor the limitation period START to the actual cause of action accrual event.
 - State clearly that the suit is within time.
 - Keep this section SHORT — 1-2 paragraphs. Do not explain limitation theory.
@@ -260,11 +263,19 @@ def build_section_user_prompt(
             parts.append("")
         lim = mandatory_provisions.get("limitation")
         if lim and isinstance(lim, dict):
-            parts.append("LIMITATION ARTICLE:")
-            parts.append(f"  Article {lim.get('article', '{{LIMITATION_ARTICLE}}')}")
+            details = get_limitation_reference_details(lim)
+            parts.append("LIMITATION:")
+            if details["kind"] == "none":
+                parts.append("  No limitation article applies.")
+            elif details["kind"] == "unknown":
+                parts.append("  Citation: verify the applicable limitation article from the case-specific facts before filing.")
+            elif details["citation"]:
+                parts.append(f"  Citation: {details['citation']}")
+            else:
+                parts.append(f"  Article: {lim.get('article', '{{LIMITATION_ARTICLE}}')}")
             parts.append(f"  Description: {lim.get('description', '')}")
             parts.append(f"  Period: {lim.get('period', '{{LIMITATION_PERIOD}}')}")
-            accrual = lim.get("accrual", "")
+            accrual = lim.get("accrual", lim.get("from", ""))
             if accrual:
                 parts.append(f"  Accrual: {accrual}")
             parts.append("")
@@ -386,10 +397,18 @@ def _extract_context(
     elif key == "mandatory_provisions.limitation":
         lim = mandatory_provisions.get("limitation")
         if lim and isinstance(lim, dict):
+            details = get_limitation_reference_details(lim)
             parts.append("LIMITATION:")
-            parts.append(f"  Article: {lim.get('article', '{{LIMITATION_ARTICLE}}')}")
+            if details["kind"] == "none":
+                parts.append("  No limitation article applies.")
+            elif details["kind"] == "unknown":
+                parts.append("  Citation: verify the applicable limitation article from the case-specific facts before filing.")
+            elif details["citation"]:
+                parts.append(f"  Citation: {details['citation']}")
+            else:
+                parts.append(f"  Article: {lim.get('article', '{{LIMITATION_ARTICLE}}')}")
             parts.append(f"  Period: {lim.get('period', '{{LIMITATION_PERIOD}}')}")
-            accrual = lim.get("accrual", "")
+            accrual = lim.get("accrual", lim.get("from", ""))
             if accrual:
                 parts.append(f"  Accrual: {accrual}")
             parts.append("")

@@ -1,127 +1,122 @@
 # SKILL: exemplar-builder
 
 ## Purpose
-Create, validate, and maintain structural exemplars that guide draft LLM output quality. v5.1 uses exemplar-guided free-text drafting — exemplars show document structure, section order, and Indian legal conventions. The LLM uses the exemplar as a structural reference while drafting the complete document.
+Create, validate, and maintain document schemas and LKB Layer 2 data for the v11.0 scalable drafting pipeline.
+
+**v11.0 approach:** No exemplar documents in prompts. Instead: LKB 2-layer data + document schema → structured prompt → LLM drafts.
 
 ## When to Use
-- Creating a new exemplar for a cause type
-- Reviewing exemplar quality
-- Adding a new document category
-- Debugging why draft structure is wrong for a specific cause type
+- Creating a new document schema (e.g., written_statement, appeal_memo)
+- Enriching LKB entries with Layer 2 data (available_reliefs, jurisdiction_basis)
+- Reviewing schema quality against CPC rules
+- Adding a new document type to the pipeline
+- Debugging why draft structure is wrong
 
-## Architecture Context (v5.1 — what's running)
-
-Exemplars are loaded into the draft system prompt via `load_exemplar(doc_type)`. The LLM sees the exemplar as a structural guide and produces a complete court-ready document in a single call.
+## Architecture Context (v11.0)
 
 ```
-exemplar (system prompt) + LKB brief + RAG + user facts -> draft_freetext_node -> complete document
+LKB Layer 1 (legal knowledge) + LKB Layer 2 (document components) + Document Schema
+  → Structured prompt (3 sections, ~1,500 tokens)
+  → LLM drafts complete document (1 call)
+  → Gates validate (0 LLM)
 ```
 
-No Template Engine, no Section Registry, no gap-fill markers. Exemplars guide STRUCTURE and TONE.
+No template engine. No exemplar files. Just better context to the same LLM.
 
 ---
 
-## Exemplar Directory
+## Document Schema Directory (v11.0)
 
 ```
-app/agents/drafting_agents/exemplars/
-├── breach_dealership_franchise.txt
-├── money_recovery_loan.txt
-├── partition.txt
-├── recovery_of_possession.txt
-├── permanent_injunction.txt
-├── defamation.txt
-├── _default.txt                    # Fallback for unknown cause types
-└── ... (per cause type)
-```
-
----
-
-## Exemplar Format (~1,500 tokens)
-
-Each exemplar is a structural template showing:
-1. Court heading format
-2. Parties block format
-3. Section ordering (FACTS, BREACH, DAMAGES, CAUSE OF ACTION, JURISDICTION, etc.)
-4. Heading style (ALL CAPS)
-5. Paragraph numbering convention
-6. Prayer section format
-7. Verification clause
-8. Advocate block
-
-### Example Structure
-```
-IN THE COURT OF {{COURT_NAME}}
-AT {{PLACE}}
-
-CIVIL SUIT NO. _____ OF 20____
-
-{{PLAINTIFF_NAME}}                               ... PLAINTIFF
-VERSUS
-{{DEFENDANT_NAME}}                               ... DEFENDANT
-
-PLAINT UNDER {{SECTIONS}}
-
-MOST RESPECTFULLY SHOWETH:
-
-FACTS OF THE CASE
-
-1. That the Plaintiff is {{description}}...
-2. That the Defendant is {{description}}...
-
-[... structural sections with generic placeholders ...]
-
-PRAYER
-
-In the premises aforesaid, the Plaintiff most respectfully prays:
-(a) That this Hon'ble Court be pleased to pass a decree...
-
-VERIFICATION
-I, {{NAME}}, the Plaintiff above-named, do hereby verify...
-
-DEPONENT
-
-Place: {{PLACE}}
-Date: {{DATE}}
-
-Through:
-{{ADVOCATE_NAME}}
-Advocate for the Plaintiff
+app/agents/drafting_agents/schemas/
+├── __init__.py          # DOCUMENT_SCHEMAS registry + lookup
+├── trial_court.py       # plaint, written_statement, rejoinder, counter_claim
+├── applications.py      # interim_application, condonation, set_aside_ex_parte, caveat
+├── appellate.py          # appeal_memo, revision_petition, review_petition
+└── execution.py          # execution_application
 ```
 
 ---
 
-## Creating a New Exemplar
+## Document Schema Format
 
-1. Name file to match LKB cause_type key (e.g., `specific_performance.txt`)
-2. Use ~1,500 tokens (shorter is fine, never exceed ~2,000)
-3. Use `{{PLACEHOLDER}}` for all specific facts/names/amounts
-4. Show ALL expected sections for that cause type in correct order
-5. Show correct heading style (ALL CAPS for section headers)
-6. Include verification clause and advocate block
-7. Test by running pipeline with the new cause type
+Each schema defines structure for ONE document type, independent of cause type:
 
-### Cause-Type Specific Sections
+```python
+{
+    "code": "written_statement",
+    "display_name": "Written Statement",
+    "filed_by": "defendant",
+    "cpc_reference": "Order VIII",
+    "annexure_prefix": "D-",
+    "verification_type": "defendant",
+    "signing_format": "Defendant through Advocate",
 
-Different cause types need different sections:
-- **Partition**: genealogy table, share entitlement, schedule of property
-- **Dealership/franchise**: investment details, territory, termination breach
-- **Recovery of possession**: property description, occupancy basis, trespass/encroachment
-- **Defamation**: publication details, defamatory statements, reputation damage
-- **Money recovery**: loan details, repayment schedule, demand notice
+    "sections": [
+        {"key": "court_heading",          "instruction": "Court name, place, suit number"},
+        {"key": "parties",                "instruction": "Defendant and Plaintiff details"},
+        {"key": "preliminary_objections", "instruction": "Limitation, jurisdiction, non-joinder objections"},
+        {"key": "parawise_reply",         "instruction": "Reply to EVERY plaint paragraph: ADMITTED/DENIED/NOT ADMITTED"},
+        {"key": "additional_facts",       "instruction": "New facts supporting defence, not in plaint"},
+        {"key": "legal_grounds",          "instruction": "Statutory and legal basis for defence"},
+        {"key": "prayer",                 "instruction": "Dismiss suit with costs"},
+        {"key": "verification",           "instruction": "Verification on oath"},
+    ],
+
+    "filing_rules": {
+        "court_fee": False,
+        "filing_deadline": "30 days from service (max 120 days — Order VIII Rule 1)",
+        "vakalatnama": True,
+    },
+}
+```
 
 ---
 
-## LKB Integration
+## LKB Layer 2 Data Format
 
-Exemplars work alongside LKB entries. The LKB provides:
-- Primary acts and sections to cite
-- Limitation article
-- Damages categories to cover
-- Permitted doctrines
-- Terminology mapping
+Each LKB entry gets document component fields alongside existing legal knowledge:
 
-The exemplar shows HOW to structure the document; LKB tells WHAT legal substance to include.
+```python
+"breach_of_contract": {
+    # Layer 1 — Legal knowledge (already exists)
+    "primary_acts": [...],
+    "limitation": {...},
+    "facts_must_cover": [...],
+
+    # Layer 2 — Document components (NEW)
+    "available_reliefs": [
+        {"type": "damages", "statute": "S.73 ICA", "prayer_text": "decree for damages of Rs.{{AMOUNT}}"},
+        {"type": "interest_pre_suit", "statute": "S.34 CPC", "prayer_text": "interest at {{RATE}}% per annum from {{BREACH_DATE}}"},
+        {"type": "interest_pendente_lite", "statute": "Order XX Rule 11 CPC", "prayer_text": "pendente lite and future interest"},
+        {"type": "costs", "statute": "S.35 CPC", "prayer_text": "costs of the suit"},
+    ],
+    "jurisdiction_basis": "Section 20 CPC — where cause of action arose",
+    "valuation_basis": "Amount of damages claimed",
+}
+```
+
+---
+
+## Creating a New Document Schema
+
+1. Identify CPC/statute reference for the document type
+2. List all required sections in court-standard order
+3. Add per-section instruction (what goes in that section)
+4. Set `filed_by`, `annexure_prefix`, `verification_type`
+5. Add `filing_rules` (deadline, court fee, etc.)
+6. Verify section order against actual court practice
+7. Test by running pipeline with the new document type
+
+---
+
+## Enriching LKB with Layer 2
+
+1. For each LKB entry, add `available_reliefs` with `prayer_text`
+2. Add `jurisdiction_basis` (which CPC section determines jurisdiction)
+3. Add `valuation_basis` (what determines suit valuation/court fee)
+4. Verify prayer_text matches actual court prayer format
+5. Test by running pipeline — check if prayer output uses exact prayer_text
 
 ---
 
@@ -129,25 +124,25 @@ The exemplar shows HOW to structure the document; LKB tells WHAT legal substance
 
 | File | What |
 |------|------|
-| `exemplars/` | All structural exemplars |
-| `prompts/draft_prompt.py` | `load_exemplar()` function |
-| `lkb/civil.py` | LKB entries per cause type |
-| `lkb/__init__.py` | Cause-type aliases for fuzzy matching |
+| `schemas/` | Document type schemas (NEW) |
+| `lkb/causes/` | LKB entries (enrich with Layer 2) |
+| `lkb/causes/_helpers.py` | `_entry()` schema definition |
+| `prompts/draft_prompt.py` | Structured prompt builder |
+| `nodes/draft_single_call.py` | `_build_lkb_brief_context()` (to be replaced) |
 
 ---
 
 ## Rules
-- Exemplars guide STRUCTURE and TONE — not legal substance
-- Keep to ~1,500 tokens (Few-Shot > Exhaustive Rules)
-- Use generic `{{PLACEHOLDER}}` for all specifics — never real data
-- One exemplar per cause type (naming convention: `{cause_type}.txt`)
-- `_default.txt` is the fallback for unknown cause types
-- Exemplar section order should match Indian court conventions for that document type
+- Schema defines STRUCTURE — not legal substance (LKB does that)
+- One schema per document type (not per cause type)
+- Schema is independent of cause type — same schema works for ALL 92 causes
+- `available_reliefs.prayer_text` must match actual court prayer wording
+- Verify schemas against CPC/statute text — wrong structure = court rejects
+- Keep sections in court-standard order for that document type
 
 ## Anti-Patterns
-- Do NOT include specific amounts, dates, or names — use placeholders
-- Do NOT include must_include checklists in exemplars
-- Do NOT include legal arguments or doctrines — LKB handles that
-- Do NOT make exemplars too long (>2,000 tokens) — diminishing returns
-- Do NOT include scenario-specific instructions — exemplar is generic
-- Do NOT use JSON or structured format — exemplar is plain text, exactly as filed
+- Do NOT create per-cause-type schemas — schema is per document type only
+- Do NOT put legal knowledge in schemas — LKB handles that
+- Do NOT use exemplar files in prompts — structured data replaces exemplars
+- Do NOT hardcode section order in engine.py — schema drives order
+- Do NOT mix Layer 1 and Layer 2 fields — keep them conceptually separate

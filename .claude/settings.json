@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/ -v)",
+      "Bash(agent_steer/Scripts/python.exe research/run_10scenario_compare.py --scenario money_recovery)",
+      "Bash(agent_steer/Scripts/python.exe research/run_10scenario_compare.py --scenario partition)",
+      "Bash(agent_steer/Scripts/python.exe research/run_10scenario_compare.py --scenario dealership)",
+      "Bash(agent_steer/Scripts/python.exe research/run_10scenario_compare.py --scenario specific_performance)",
+      "Bash(agent_steer/Scripts/python.exe research/run_10scenario_compare.py --scenario recovery_possession)",
+      "Bash(agent_steer/Scripts/python.exe research/run_10scenario_compare.py --scenario construction_breach)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/ -q --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py tests/drafting/test_v9_antifab.py -q --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe research/run_draft_benchmark.py --compare)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestFamilySpecificTemplates::test_contract_prayer_labels_decree_as_breach_of_contract_damages tests/drafting/test_v8_unit.py::TestTemplateEngineSections::test_documents_list_empty -v)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/GirishN/AppData/Local/Temp/claude/c--Girish-Fundamental-Projects-ActionAi-Agent-steer-backend-BoardingMcp-Server/28e26020-e795-4af6-8867-4e10d199308a/**)",
+      "Bash(done)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py -v --timeout=60)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py -v)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v9_antifab.py tests/drafting/test_v10_civil_architecture.py tests/drafting/test_lkb_limitation_helpers.py -v)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestFamilySpecificTemplates::test_money_recovery_loan_has_s37 tests/drafting/test_v10_civil_architecture.py::TestFamilySpecificTemplates::test_partition_has_partition_act -v)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v9_antifab.py tests/drafting/test_v10_civil_architecture.py tests/drafting/test_lkb_limitation_helpers.py -q)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py -q)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/ -v --tb=short -k \"not live and not dual_scenario\")",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py tests/drafting/test_v9_antifab.py tests/drafting/test_v10_civil_architecture.py tests/drafting/test_lkb_limitation_helpers.py -v --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestCivilConsistencyGate::test_flags_guarantee_citing_indemnity_section tests/drafting/test_v10_civil_architecture.py::TestCivilConsistencyGate::test_flags_summary_suit_missing_order_xxxvii -v --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py tests/drafting/test_v9_antifab.py tests/drafting/test_v10_civil_architecture.py tests/drafting/test_lkb_limitation_helpers.py --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestEnrichmentResolvedCauseType -v --tb=short)"
+    ]
+  }
+}

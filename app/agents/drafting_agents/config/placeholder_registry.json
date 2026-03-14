@@ -71,6 +71,10 @@
       "description": "Court fee payable",
       "aliases": ["COURT_FEES"]
     },
+    "COURT_FEE_COMPUTATION_BASIS": {
+      "description": "Basis for computing court fee under the applicable rate schedule",
+      "aliases": ["COURT_FEE_BASIS", "COURT_FEE_RATE_BASIS"]
+    },
     "VALUATION_AMOUNT": {
       "description": "Suit valuation for jurisdiction and court fee",
       "aliases": ["SUIT_VALUATION"]
@@ -94,6 +98,18 @@
     "AGREEMENT_DATE": {
       "description": "Date of the agreement/contract",
       "aliases": ["CONTRACT_DATE"]
+    },
+    "PLACE_OF_CONTRACT": {
+      "description": "Place where the contract/agreement was executed",
+      "aliases": ["CONTRACT_PLACE", "AGREEMENT_PLACE"]
+    },
+    "PLACE_OF_PERFORMANCE": {
+      "description": "Place where the contract was to be performed",
+      "aliases": ["PERFORMANCE_PLACE", "PERFORMANCE_LOCATION"]
+    },
+    "PLACE_OF_BREACH": {
+      "description": "Place where the breach/default occurred",
+      "aliases": ["BREACH_PLACE", "BREACH_LOCATION"]
     },
     "CAUSE_OF_ACTION_DATE": {
       "description": "Date when cause of action arose",
@@ -146,6 +162,22 @@
     "PROPERTY_DESCRIPTION": {
       "description": "Description of the property (address, survey number, etc.)",
       "aliases": ["SCHEDULE_PROPERTY"]
+    },
+    "CONTRACT_DETAILS": {
+      "description": "Short description of the contract and its subject matter",
+      "aliases": ["CONTRACT_SUBJECT_MATTER"]
+    },
+    "DEFENDANT_OBLIGATION": {
+      "description": "Primary contractual obligation of the defendant",
+      "aliases": ["DEFENDANT_OBLIGATION_DETAILS", "SPECIFIC_OBLIGATION_BREACHED"]
+    },
+    "PLAINTIFF_PERFORMANCE_DETAILS": {
+      "description": "Facts/documents showing the plaintiff's performance under the contract",
+      "aliases": ["PERFORMANCE_DETAILS", "PERFORMANCE_PROOF"]
+    },
+    "DAMAGES_AMOUNT": {
+      "description": "Amount of damages / quantified loss claimed",
+      "aliases": ["QUANTUM_OF_LOSS", "TOTAL_DAMAGES"]
     }
   },
 

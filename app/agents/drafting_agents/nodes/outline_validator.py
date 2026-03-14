@@ -14,13 +14,14 @@ from typing import Any, Dict, List, Set
 from langgraph.types import Command
 
 from ....config import logger
+from ..schema_contracts import validate_template_payload
 from ..states import DraftingState
 from ._utils import _as_dict
 
 
 def _validate_template(template: Dict[str, Any]) -> List[str]:
     """Validate template structure. Returns list of error messages (empty = valid)."""
-    errors: List[str] = []
+    errors = validate_template_payload(template)
 
     sections = template.get("sections", [])
     if not sections:
@@ -81,7 +82,7 @@ def outline_validator_node(state: DraftingState) -> Command:
     template = state.get("template")
     if template is None:
         logger.error("[OUTLINE_VALIDATOR] no template in state — fallback to draft")
-        return Command(goto="draft")
+        return Command(goto="draft_freetext")
 
     template_dict = _as_dict(template) if not isinstance(template, dict) else template
     errors = _validate_template(template_dict)
@@ -95,7 +96,7 @@ def outline_validator_node(state: DraftingState) -> Command:
         )
         return Command(
             update={"errors": [f"template_validation: {e}" for e in errors]},
-            goto="draft",
+            goto="draft_freetext",
         )
 
     section_ids = [s["section_id"] for s in template_dict.get("sections", [])]

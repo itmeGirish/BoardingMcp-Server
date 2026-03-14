@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional
 from langgraph.types import Command
 
 from ....config import logger
+from ..schema_contracts import validate_template_payload
 from ..states import DraftingState
 from ._utils import _as_dict
 
@@ -85,12 +86,10 @@ def _load_template(doc_type: str) -> Optional[Dict[str, Any]]:
         logger.error("[TEMPLATE] failed to parse %s: %s", template_path, exc)
         return None
 
-    # Validate required fields
-    required = ["template_id", "template_version", "doc_type", "sections"]
-    for field in required:
-        if field not in template:
-            logger.error("[TEMPLATE] missing required field %r in %s", field, template_path)
-            return None
+    errors = validate_template_payload(template)
+    if errors:
+        logger.error("[TEMPLATE] invalid template %s: %s", template_path, "; ".join(errors[:5]))
+        return None
 
     # Version check
     if template.get("template_version") != _REQUIRED_VERSION:
@@ -98,23 +97,6 @@ def _load_template(doc_type: str) -> Optional[Dict[str, Any]]:
             "[TEMPLATE] version mismatch: got %s, expected %s",
             template.get("template_version"), _REQUIRED_VERSION,
         )
-
-    # Validate sections
-    sections = template.get("sections", [])
-    if not isinstance(sections, list) or len(sections) == 0:
-        logger.error("[TEMPLATE] no sections found in %s", template_path)
-        return None
-
-    for i, sec in enumerate(sections):
-        if not isinstance(sec, dict):
-            logger.error("[TEMPLATE] section %d is not a dict in %s", i, template_path)
-            return None
-        if "section_id" not in sec or "type" not in sec:
-            logger.error("[TEMPLATE] section %d missing section_id or type in %s", i, template_path)
-            return None
-        if sec["type"] not in ("template", "template_with_fill", "llm_fill"):
-            logger.error("[TEMPLATE] section %d has invalid type %r", i, sec["type"])
-            return None
 
     return template
 
@@ -135,7 +117,7 @@ def template_loader_node(state: DraftingState) -> Command:
             "[TEMPLATE] ✗ no template for doc_type=%r (%.1fs) → fallback to old draft node",
             doc_type, elapsed,
         )
-        return Command(update={"template": None}, goto="draft")
+        return Command(update={"template": None}, goto="draft_freetext")
 
     section_count = len(template.get("sections", []))
     llm_sections = sum(1 for s in template["sections"] if s["type"] in ("llm_fill", "template_with_fill"))

@@ -1,0 +1,93 @@
+{
+  "money_recovery": {
+    "scenario": "money_recovery",
+    "query": "Draft a suit for recovery of Rs.20,00,000/- paid as advance for a business transaction which failed due to Defendant's default. Plead total failure of consideration under Section 65 of Indian Contract Act. Claim refund with interest and costs. Include cause of action paragraph, valuation, court fee, and verification clause. Draft suitable for filing before the District Court.",
+    "pipeline": {
+      "elapsed_s": 3.5,
+      "source": "none",
+      "blocking_issues": 0,
+      "cause_type": "unknown",
+      "doc_type": "unknown",
+      "char_count": 0,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": false,
+          "S2: Parties section": false,
+          "S3: Facts section present": false,
+          "S4: Cause of action": false,
+          "S5: Prayer/relief section": false,
+          "S6: Verification clause": false,
+          "S7: Advocate block or place/date": false,
+          "S8: Continuous para numbering": false,
+          "L1: Expected act(s) cited": false,
+          "L2: Jurisdiction pleaded": false,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": false,
+          "L5: Court fee mentioned": false,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": false,
+          "Q1: Narrative facts (not skeleton)": false,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": false,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": false,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": false,
+          "Q10: Expected key sections present": false
+        },
+        "passed": 5,
+        "total": 25,
+        "score": 2.0,
+        "percent": 20.0
+      }
+    },
+    "claude": {
+      "elapsed_s": 11.3,
+      "model": "gpt-4.1",
+      "tokens_in": 185,
+      "tokens_out": 1124,
+      "char_count": 5052,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": true,
+          "S2: Parties section": true,
+          "S3: Facts section present": true,
+          "S4: Cause of action": true,
+          "S5: Prayer/relief section": true,
+          "S6: Verification clause": true,
+          "S7: Advocate block or place/date": true,
+          "S8: Continuous para numbering": true,
+          "L1: Expected act(s) cited": true,
+          "L2: Jurisdiction pleaded": true,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": true,
+          "L5: Court fee mentioned": true,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": true,
+          "Q1: Narrative facts (not skeleton)": true,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": true,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": true,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": true,
+          "Q10: Expected key sections present": true
+        },
+        "passed": 23,
+        "total": 25,
+        "score": 9.2,
+        "percent": 92.0
+      }
+    },
+    "comparison": {
+      "pipeline_score": 2.0,
+      "claude_score": 9.2,
+      "diff": -7.2,
+      "winner": "CLAUDE"
+    }
+  }
+}

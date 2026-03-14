@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import time
 from typing import Any, Dict
 
@@ -8,7 +9,7 @@ from langgraph.graph import END
 from langgraph.types import Command
 
 from ....config import logger, settings
-from ....services import review_ollama_model as review_openai_model
+from ....services import review_openai_model
 from ..prompts import build_review_system_prompt
 from ..states import DraftingState, ReviewNode
 from ._utils import (
@@ -38,6 +39,72 @@ GATE ERRORS (from deterministic validation gates — already verified):
 DRAFT TEXT:
 {draft_text}
 """
+
+
+def _resolve_last_para_placeholders(text: str) -> str:
+    if not text:
+        return text
+
+    placeholder_pattern = re.compile(
+        r"\{\{(?:LAST|TOTAL)_(?:PARA|PARAGRAPH)(?:S|_NUMBER|_NUMBERS|GRAPH_NUMBER|GRAPHS)?\}\}",
+        re.IGNORECASE,
+    )
+    variants = (
+        "{{LAST_PARA}}",
+        "{{LAST_PARA_NUMBER}}",
+        "{{LAST_PARAGRAPH}}",
+        "{{LAST_PARAGRAPH_NUMBER}}",
+        "{{TOTAL_PARAGRAPHS}}",
+        "{{TOTAL_PARAGRAPH_NUMBER}}",
+    )
+    if not any(v in text for v in variants) and not placeholder_pattern.search(text):
+        return text
+
+    para_nums = [int(m.group(1)) for m in re.finditer(r"^\s*(\d+)\.\s", text, re.MULTILINE)]
+    last_para = max(para_nums) if para_nums else 0
+    if last_para <= 0:
+        return text
+
+    for v in variants:
+        text = text.replace(v, str(last_para))
+    text = placeholder_pattern.sub(str(last_para), text)
+
+    stale = re.search(r"paragraphs\s+1\s+to\s+(\d+)", text)
+    if stale:
+        stated = int(stale.group(1))
+        if stated != last_para:
+            text = text.replace(f"paragraphs 1 to {stated}", f"paragraphs 1 to {last_para}")
+    return text
+
+
+def _sanitize_contract_inline_fix(text: str, cause_type: str) -> str:
+    if not text or cause_type != "breach_of_contract":
+        return text
+
+    text = re.sub(r"\bfailed and refused to comply\b", "failed to comply", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bfailed to respond satisfactorily\b", "failed to comply", text, flags=re.IGNORECASE)
+    text = re.sub(r"\brefused and failed to perform\b", "failed to perform", text, flags=re.IGNORECASE)
+    text = re.sub(
+        r"The cause of action continues to subsist[^.\n]*\.",
+        "The Defendant has not compensated the Plaintiff despite legal notice, and the Plaintiff's right to claim damages therefore subsists.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"The Plaintiff's loss and right to claim damages continue until compensated in accordance with law\.",
+        "The Plaintiff's claim for damages subsists and remains enforceable in law.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    return text
+
+
+def _strip_reviewer_notes(text: str) -> str:
+    if not text:
+        return text
+    text = re.sub(r"\s*\[NOTE:[^\]]+\]", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\s*\[DRAFTING NOTE:[^\]]+\]", "", text, flags=re.IGNORECASE)
+    return text
 
 
 def _build_gate_errors_summary(state: DraftingState) -> str:
@@ -146,14 +213,36 @@ def _route_after_review(
         # Apply safe deterministic fixes (e.g., "and/or" → "and") since inline fix
         # bypasses postprocess and the LLM may reintroduce anti-patterns.
         next_node = END
+        classify = _as_dict(state.get("classify"))
+        cause_type = classify.get("cause_type", "")
         sanitized_artifacts = []
         for a in final_artifacts:
             art = a if isinstance(a, dict) else _as_dict(a)
             text = art.get("text", "")
             if text:
                 text, _ = _fix_and_or(text)
+                text = _sanitize_contract_inline_fix(text, cause_type)
+                text = _strip_reviewer_notes(text)
+                text = _resolve_last_para_placeholders(text)
                 art = {**art, "text": text}
             sanitized_artifacts.append(art)
+
+        # v10.0: Re-run accuracy gates on inline-fixed text (Critical Gap #40)
+        from .accuracy_gates import run_accuracy_gates
+
+        lkb_brief = _as_dict(state.get("lkb_brief"))
+        intake = _as_dict(state.get("intake"))
+        for art in sanitized_artifacts:
+            fixed_text = art.get("text", "")
+            if fixed_text:
+                post_fix_issues = run_accuracy_gates(fixed_text, lkb_brief, intake)
+                blocking = [i for i in post_fix_issues if i.get("blocking")]
+                if blocking:
+                    logger.warning(
+                        "[REVIEW] inline fix introduced %d blocking accuracy issues — flagging",
+                        len(blocking),
+                    )
+
         inline_draft = {"draft_artifacts": sanitized_artifacts}
         extra_update = {"final_draft": inline_draft}
         next_label = (

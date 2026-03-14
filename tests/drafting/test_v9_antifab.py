@@ -142,17 +142,18 @@ class TestFreetextPromptAntiFabrication:
         assert "\n13." not in self._template
         assert "\n14." not in self._template
 
-    def test_only_five_rules(self):
-        """Freetext template should have exactly 5 rules."""
+    def test_only_six_rules(self):
+        """Freetext template should have exactly 6 rules."""
         assert "1. ANTI-FABRICATION" in self._template
         assert "2. Do NOT fabricate" in self._template
         assert "3. Number paragraphs" in self._template
         assert "4. NEVER cite repealed" in self._template
         assert "5. If PROCEDURAL" in self._template
-        # Rule 6 must NOT exist
+        assert "6. LEGAL BRIEF COMPLIANCE" in self._template
+        # Rule 7 must NOT exist
         lines = self._template.split("\n")
-        rule_6_lines = [l for l in lines if l.strip().startswith("6.")]
-        assert len(rule_6_lines) == 0, f"Found rule 6: {rule_6_lines}"
+        rule_7_lines = [l for l in lines if l.strip().startswith("7.")]
+        assert len(rule_7_lines) == 0, f"Found rule 7: {rule_7_lines}"
 
     def test_do_not_invent_documents(self):
         """Must instruct not to invent documents."""
@@ -208,60 +209,26 @@ class TestReviewPromptFactCheck:
         ]:
             assert label not in self._prompt, f"Found {label} — should be removed"
 
-    def test_fact_fabrication_check_present(self):
-        """Check 7 (FACT FABRICATION CHECK) must be present."""
-        assert "7. FACT FABRICATION CHECK" in self._prompt
+    def test_redundant_checks_removed(self):
+        """Checks handled by deterministic gates must NOT be in review prompt."""
+        # These are handled by: citation_validator, evidence_anchoring, postprocess
+        assert "STATUTORY REFERENCE SOURCING" not in self._prompt
+        assert "EVIDENCE PROVISION ACCURACY" not in self._prompt
+        assert "FACT FABRICATION CHECK" not in self._prompt
+        assert "DOCUMENT REFERENCE CONSISTENCY" not in self._prompt
 
-    def test_fact_fabrication_is_critical(self):
-        """Fact fabrication check must be marked CRITICAL."""
-        assert "CRITICAL" in self._prompt.split("7. FACT FABRICATION CHECK")[1][:50]
+    def test_non_redundant_checks_preserved(self):
+        """Checks NOT handled by gates must still be present."""
+        assert "CAUSE OF ACTION ACCRUAL DATE" in self._prompt
+        assert "COURT FEE COMPUTATION" in self._prompt
+        assert "PROCEDURAL ACT COMPLIANCE" in self._prompt
 
-    def test_fabrication_check_has_examples(self):
-        """Must include examples of fabrication."""
-        assert "Plaintiff accompanied Defendant" in self._prompt
-        assert "thumb impression" in self._prompt
-
-    def test_fabrication_threshold(self):
-        """3+ fabricated facts should trigger blocking issue."""
-        assert "3+ fabricated facts" in self._prompt
-
-    def test_fabrication_severity_legal(self):
-        """Fabrication blocking issue must be severity=legal."""
-        section = self._prompt.split("7. FACT FABRICATION CHECK")[1]
-        assert 'severity="legal"' in section
-
-    def test_unsupported_statements_for_fabricated(self):
-        """Each fabricated fact should go into unsupported_statements[]."""
-        section = self._prompt.split("7. FACT FABRICATION CHECK")[1]
-        assert "unsupported_statements" in section
-
-    def test_annexure_fabrication_check(self):
-        """Must check Annexures against USER_REQUEST too."""
-        section = self._prompt.split("7. FACT FABRICATION CHECK")[1]
-        assert "Annexure" in section
-
-    def test_existing_checks_preserved(self):
-        """Checks 1-6 must still be present."""
-        assert "1. STATUTORY REFERENCE SOURCING" in self._prompt
-        assert "2. CAUSE OF ACTION ACCRUAL DATE" in self._prompt
-        assert "3. COURT FEE COMPUTATION" in self._prompt
-        assert "4. EVIDENCE PROVISION ACCURACY" in self._prompt
-        assert "5. DOCUMENT REFERENCE CONSISTENCY" in self._prompt
-        assert "6. PROCEDURAL ACT COMPLIANCE" in self._prompt
-
-    def test_phase2_references_check_7(self):
-        """Phase 2 suffix must reference checks 1-7."""
-        assert "checks 1–7" in self._phase2 or "checks 1-7" in self._phase2
-
-    def test_build_returns_string_with_check_7(self):
-        """Built review prompt includes fact fabrication check."""
+    def test_build_returns_string_with_checks(self):
+        """Built review prompt includes non-redundant checks."""
         result = self._build(retry=False, inline_fix=True)
-        assert "FACT FABRICATION CHECK" in result
-
-    def test_fabricated_facts_in_severity_definition(self):
-        """Severity definition must include 'fabricated facts' as example."""
-        # The severity="legal" definition lists examples — fabricated facts should be among them
-        assert "fabricated facts" in self._prompt
+        assert "CAUSE OF ACTION ACCRUAL DATE" in result
+        assert "COURT FEE COMPUTATION" in result
+        assert "PROCEDURAL ACT COMPLIANCE" in result
 
 
 # ===========================================================================
@@ -360,10 +327,10 @@ class TestPromptSizeReduction:
         )
 
     def test_freetext_system_prompt_shorter_than_old(self):
-        """v5.0 freetext template should be under 2500 chars (was ~3000+ with 14 rules)."""
+        """v5.1 freetext template should be under 4000 chars (expanded with court-ready formatting + rule 6)."""
         from app.agents.drafting_agents.prompts.draft_prompt import _FREETEXT_SYSTEM_TEMPLATE
-        assert len(_FREETEXT_SYSTEM_TEMPLATE) < 2500, (
-            f"Freetext template is {len(_FREETEXT_SYSTEM_TEMPLATE)} chars — should be under 2500"
+        assert len(_FREETEXT_SYSTEM_TEMPLATE) < 4000, (
+            f"Freetext template is {len(_FREETEXT_SYSTEM_TEMPLATE)} chars — should be under 4000"
         )
 
     def test_review_prompt_shorter_than_old(self):
@@ -380,13 +347,6 @@ class TestPromptSizeReduction:
 
 class TestExistingFunctionalityPreserved:
     """Verify existing helper functions still work correctly."""
-
-    def test_load_exemplar_works(self):
-        """load_exemplar should still return content for civil_suit."""
-        from app.agents.drafting_agents.prompts.draft_prompt import load_exemplar
-        result = load_exemplar("civil_suit")
-        assert isinstance(result, str)
-        # May be empty if exemplar file doesn't exist, but shouldn't crash
 
     def test_get_section_keys_civil(self):
         """get_section_keys returns correct keys for civil suits."""
@@ -454,7 +414,7 @@ class TestExistingFunctionalityPreserved:
         from app.agents.drafting_agents.prompts.review import build_review_system_prompt
         result = build_review_system_prompt(retry=False, inline_fix=True)
         assert isinstance(result, str)
-        assert "FACT FABRICATION CHECK" in result
+        assert "CAUSE OF ACTION ACCRUAL DATE" in result
         assert "Schema" in result
 
     def test_build_review_system_prompt_retry(self):
@@ -486,6 +446,20 @@ class TestExistingFunctionalityPreserved:
         from app.agents.drafting_agents.nodes.draft_single_call import _build_limitation_context
         result = _build_limitation_context({"limitation": {"article": "UNKNOWN"}})
         assert "LIMITATION_ARTICLE" in result or "placeholder" in result.lower()
+
+    def test_limitation_context_special_reference(self):
+        """_build_limitation_context preserves special statutory references."""
+        from app.agents.drafting_agents.nodes.draft_single_call import _build_limitation_context
+        result = _build_limitation_context({
+            "limitation": {
+                "article": "N/A",
+                "reference": "Section 69 of the Consumer Protection Act, 2019",
+                "act": "Consumer Protection Act, 2019",
+                "period": "Two years",
+            },
+        })
+        assert "Section 69 of the Consumer Protection Act, 2019" in result
+        assert "Do NOT convert this into a Limitation Act article" in result
 
 
 # ===========================================================================
@@ -523,3 +497,9 @@ class TestLKBLookupPreserved:
         result = _build_lkb_brief_context(entry)
         assert "No specific Legal Knowledge Base entry" in result
         assert "PLACEHOLDER" in result
+
+    def test_lookup_cross_domain_returns_none_for_non_civil(self):
+        """Non-Civil domains must NOT resolve civil LKB entries — domain boundaries are hard."""
+        from app.agents.drafting_agents.lkb import lookup
+        entry = lookup("Family", "money_recovery_loan")
+        assert entry is None  # no cross-domain fallback

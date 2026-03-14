@@ -24,6 +24,7 @@ from langgraph.types import Command
 from ....config import logger, settings
 from ....services import draft_ollama_model as draft_openai_model
 from ..prompts.section_drafter import build_section_system_prompt, build_section_user_prompt
+from ..schema_contracts import evaluate_section_condition
 from ..states import DraftingState
 from ._utils import _as_dict
 
@@ -177,7 +178,14 @@ async def _draft_single_section(
 
     # Check condition — skip section entirely if condition not met (e.g., interest for injunction suits)
     actual_doc_type = classify.get("doc_type") or template.get("doc_type", "")
-    if not _check_section_condition(section, actual_doc_type):
+    condition_context = {
+        "classify": classify,
+        "template": template,
+        "intake": intake,
+        "facts": intake.get("facts", {}),
+        "mandatory_provisions": mandatory_provisions,
+    }
+    if not evaluate_section_condition(section.get("condition", ""), doc_type=actual_doc_type, context=condition_context):
         logger.info("[SECTION_DRAFTER] %s: SKIPPED (condition not met for doc_type=%r)", sid, actual_doc_type)
         return {
             "section_id": sid,

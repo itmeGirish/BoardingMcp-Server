@@ -20,6 +20,7 @@ from typing import Any, Dict, List
 from langgraph.types import Command
 
 from ....config import logger
+from ..lkb.limitation import get_limitation_reference_details, normalize_coa_type
 from ..states import DraftingState
 from ._utils import _as_dict
 
@@ -48,31 +49,40 @@ def _check_acts_cited(draft_text: str, lkb_brief: Dict[str, Any]) -> List[Dict[s
 
 
 def _check_limitation_article(draft_text: str, lkb_brief: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Check if the correct limitation article from LKB is in the draft."""
+    """Check if the correct limitation citation from LKB is in the draft."""
     issues = []
     lim = lkb_brief.get("limitation", {})
-    lkb_article = str(lim.get("article", ""))
-    if not lkb_article or lkb_article == "NONE":
+    details = get_limitation_reference_details(lim)
+    if not details["requires_citation"]:
         return issues
 
-    # Check if the LKB article number appears in the draft
-    article_pattern = rf"Article\s+{re.escape(lkb_article)}\b"
-    if not re.search(article_pattern, draft_text, re.IGNORECASE):
-        # Check if a WRONG article is cited
-        wrong_articles = re.findall(r"Article\s+(\d+)", draft_text, re.IGNORECASE)
-        wrong = [a for a in wrong_articles if a != lkb_article]
-        issue_text = f"LKB requires Article {lkb_article} but draft"
+    short_ref = details["short_citation"]
+    full_ref = details["citation"]
+    draft_text_lower = draft_text.lower()
+
+    if details["kind"] == "limitation_article":
+        article_number = str(details["article"])
+        article_pattern = rf"Article\s+{re.escape(article_number)}\b"
+        if re.search(article_pattern, draft_text, re.IGNORECASE):
+            return issues
+        wrong_articles = re.findall(r"Article\s+(\d+[A-Za-z]?(?:\([A-Za-z0-9]+\))?)", draft_text, re.IGNORECASE)
+        wrong = [a for a in wrong_articles if a.lower() != article_number.lower()]
+        issue_text = f"LKB requires {short_ref} but draft"
         if wrong:
             issue_text += f" cites Article {', '.join(wrong)} instead"
         else:
-            issue_text += " does not cite any limitation article"
+            issue_text += " does not cite the required limitation article"
+    else:
+        if short_ref.lower() in draft_text_lower or full_ref.lower() in draft_text_lower:
+            return issues
+        issue_text = f"LKB requires '{full_ref}' but draft does not cite that limitation reference"
 
-        issues.append({
-            "type": "lkb_limitation_wrong",
-            "severity": "legal",
-            "issue": issue_text,
-            "fix": f"Replace with Article {lkb_article}: {lim.get('description', '')} — Period: {lim.get('period', '')}",
-        })
+    issues.append({
+        "type": "lkb_limitation_wrong",
+        "severity": "legal",
+        "issue": issue_text,
+        "fix": f"Use {full_ref}. Period: {lim.get('period', '')}",
+    })
     return issues
 
 
@@ -180,11 +190,19 @@ def _check_superseded_acts(draft_text: str) -> List[Dict[str, Any]]:
 def _check_coa_type(draft_text: str, lkb_brief: Dict[str, Any]) -> List[Dict[str, Any]]:
     """Check if cause of action matches the LKB-specified type."""
     issues = []
-    coa_type = lkb_brief.get("coa_type", "")
+    coa_type = normalize_coa_type(lkb_brief.get("coa_type", ""))
     if not coa_type:
         return issues
 
-    t = draft_text.lower()
+    section_text = draft_text
+    match = re.search(
+        r"(?is)\bCAUSE OF ACTION\b(.*?)(?:\n[A-Z][A-Z\s/&(),.-]{2,}\n|\Z)",
+        draft_text,
+    )
+    if match:
+        section_text = match.group(1)
+
+    t = section_text.lower()
     if coa_type == "single_event":
         # Single event breach should NOT have "continuing cause" / "continuing breach"
         continuing_patterns = [

@@ -51,7 +51,7 @@ def classifier_node(state: DraftingState) -> Dict[str, Any]:
             result.get("doc_type"),
             active_collection,
         )
-        return Command(update={"classify": result}, goto="rag")
+        return Command(update={"classify": result}, goto="domain_router")
     except Exception as first_exc:
         logger.error("[CLASSIFY] attempt1 failed (%.1fs): %s", time.perf_counter() - t0, first_exc)
 
@@ -66,10 +66,10 @@ def classifier_node(state: DraftingState) -> Dict[str, Any]:
             result.get("law_domain"),
             result.get("doc_type"),
         )
-        return Command(update={"classify": result}, goto="rag")
+        return Command(update={"classify": result}, goto="domain_router")
     except Exception as exc:
         logger.error("[CLASSIFY] ✗ failed after 2 attempts (%.1fs): %s", time.perf_counter() - t0, exc)
         return Command(
             update={"errors": [f"classifier_node failed: {exc}"], "classify": None},
-            goto="rag",
+            goto="domain_router",
         )

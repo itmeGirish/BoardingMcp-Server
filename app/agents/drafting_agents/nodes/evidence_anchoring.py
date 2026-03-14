@@ -72,16 +72,24 @@ def evidence_anchoring_node(state: DraftingState) -> Command:
     corrected_artifact = {**artifacts[0], "text": corrected_text}
     draft_update = {"draft_artifacts": [corrected_artifact]}
 
+    # v10.0: Run accuracy gates on corrected text
+    from .accuracy_gates import run_accuracy_gates
+
+    lkb_brief = _as_dict(state.get("lkb_brief"))
+    accuracy_issues = run_accuracy_gates(corrected_text, lkb_brief, intake)
+
     elapsed = time.perf_counter() - t0
     logger.info(
-        "[EVIDENCE_ANCHORING] ✓ done (%.1fs) | entities=%d | anchored=%d | replaced=%d | quality=%d",
-        elapsed, entities_found, entities_anchored, entities_replaced, len(quality_issues),
+        "[EVIDENCE_ANCHORING] ✓ done (%.1fs) | entities=%d | anchored=%d | replaced=%d | quality=%d | accuracy=%d",
+        elapsed, entities_found, entities_anchored, entities_replaced,
+        len(quality_issues), len(accuracy_issues),
     )
 
     return Command(
         update={
             "draft": draft_update,
             "evidence_anchoring_issues": all_issues,
+            "accuracy_gate_issues": accuracy_issues,
         },
         goto="lkb_compliance",
     )

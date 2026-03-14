@@ -235,9 +235,9 @@ def _generate_draft(query: str, max_attempts: int = 1):
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    st.set_page_config(page_title="Legal Drafting Agent v7.0", layout="wide", page_icon="--")
+    st.set_page_config(page_title="Legal Drafting Agent v9.0", layout="wide", page_icon="--")
     st.title("Legal Drafting Agent")
-    st.caption("v7.0 Ironclad -- Court-ready Indian legal documents with hallucination protection")
+    st.caption("v9.0 Plugin + IR + Compiler -- Court-ready Indian legal documents")
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -347,7 +347,7 @@ def main() -> None:
                 if theory["unanchored"]:
                     st.markdown(f"**Unanchored:** {', '.join(theory['unanchored'])}")
                 for flag in theory.get("flags", []):
-                    st.warning(flag, icon="!")
+                    st.warning(flag)
 
             # Procedural Prerequisites
             prereq = analysis.get("gates", {}).get("prereq", {})
@@ -424,8 +424,34 @@ def main() -> None:
                             else:
                                 st.markdown(f"- `{ph}`")
 
+                # v9.0 Domain gate issues
+                domain_issues = result.get("domain_gate_issues") or result.get("civil_gate_issues") or []
+                if domain_issues:
+                    with st.expander(f"Semantic Gate Issues ({len(domain_issues)})", expanded=True):
+                        for issue in domain_issues:
+                            if isinstance(issue, dict):
+                                sev = issue.get("severity", "warning")
+                                if sev == "blocking":
+                                    st.error(f"{issue.get('issue', '')}")
+                                else:
+                                    st.warning(f"{issue.get('issue', '')}")
+                            else:
+                                st.warning(str(issue))
+
+                # v9.0 IR layers
+                decision_ir = result.get("decision_ir")
+                plan_ir = result.get("plan_ir")
+                if decision_ir or plan_ir:
+                    with st.expander("v9.0 IR Layers"):
+                        if decision_ir:
+                            st.markdown("**Decision IR**")
+                            st.json(decision_ir)
+                        if plan_ir:
+                            st.markdown("**Plan IR**")
+                            st.json(plan_ir)
+
                 # v7.0 Gates
-                with st.spinner("Running v7.0 verification gates..."):
+                with st.spinner("Running verification gates..."):
                     gates = _run_v7_gates(draft_text, query, result)
                     accuracy = _score_accuracy(draft_text)
 

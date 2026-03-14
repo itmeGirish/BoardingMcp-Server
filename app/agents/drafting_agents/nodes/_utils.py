@@ -4,6 +4,8 @@ import json
 import re
 from typing import Any, Dict, Optional, List
 
+from ..lkb.limitation import get_limitation_reference_details
+
 
 def _as_dict(value: Any) -> Dict[str, Any]:
     if value is None:
@@ -70,18 +72,42 @@ def build_mandatory_provisions_context(mandatory_provisions: Dict[str, Any]) -> 
     # Limitation article
     lim = mandatory_provisions.get("limitation")
     if lim and isinstance(lim, dict):
-        article = lim.get("article", "")
+        details = get_limitation_reference_details(lim)
         desc = lim.get("description", "")
         period = lim.get("period", "")
-        accrual = lim.get("accrual", "")
+        accrual = lim.get("accrual", lim.get("from", ""))
         source = lim.get("source", "")
-        parts.append(
-            f"LIMITATION ARTICLE (source: {source}):\n"
-            f"  Article {article} of the Schedule to the Limitation Act, 1963\n"
-            f"  Description: {desc}\n"
-            f"  Period: {period}\n"
-            + (f"  Accrual: {accrual}\n" if accrual else "")
-        )
+        if details["kind"] == "none":
+            parts.append(
+                f"LIMITATION (source: {source}):\n"
+                f"  No limitation article applies.\n"
+                f"  Description: {desc}\n"
+                f"  Period: {period}\n"
+                + (f"  Accrual: {accrual}\n" if accrual else "")
+            )
+        elif details["kind"] == "unknown":
+            parts.append(
+                f"LIMITATION (source: {source}):\n"
+                f"  Citation could not be determined.\n"
+                f"  Period: {period}\n"
+                + (f"  Accrual: {accrual}\n" if accrual else "")
+            )
+        elif details["kind"] == "not_applicable":
+            parts.append(
+                f"LIMITATION (source: {source}):\n"
+                f"  Governed by special statute / forum-specific rule.\n"
+                f"  Description: {desc}\n"
+                f"  Period: {period}\n"
+                + (f"  Accrual: {accrual}\n" if accrual else "")
+            )
+        else:
+            parts.append(
+                f"LIMITATION (source: {source}):\n"
+                f"  {details['citation']}\n"
+                f"  Description: {desc}\n"
+                f"  Period: {period}\n"
+                + (f"  Accrual: {accrual}\n" if accrual else "")
+            )
 
     # User-cited provisions
     provisions = mandatory_provisions.get("user_cited_provisions") or []

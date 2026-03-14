@@ -459,11 +459,12 @@ class TestLKBv2:
         assert "damages_categories" in entry
         assert len(entry["damages_categories"]) > 0
 
-    def test_coa_type_present(self):
+    def test_coa_type_defaults_to_none_for_breach(self):
+        """breach_of_contract coa_type is None — LLM determines from display_name."""
         entry = self.lookup("Civil", "breach_of_contract")
         assert entry is not None
-        assert "coa_type" in entry
-        assert entry["coa_type"] is not None
+        # coa_type deliberately removed — None means LLM uses display_name
+        assert entry.get("coa_type") is None
 
     def test_required_sections_non_empty(self):
         for cause_type in ["money_recovery_loan", "breach_of_contract", "partition"]:

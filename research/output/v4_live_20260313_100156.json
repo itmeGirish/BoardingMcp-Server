@@ -1,0 +1,124 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 57.6,
+  "draft_length": 9183,
+  "placeholder_count": 22,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "PASS",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "PASS",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "PASS",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "PASS",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "PASS",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "PASS",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "PASS",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "PASS",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "PASS",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "PASS",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "PASS",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "PASS",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "PASS",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "PASS",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "PASS",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "PASS",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "PASS",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "PASS",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "FAIL",
+      "detail": "Reasonable placeholder count (22)"
+    }
+  ],
+  "score": "21/22 (95%)",
+  "draft_text": "IN THE COURT OF THE District Court / Civil Court\nAT Bengaluru\n\nO.S. No. __________ / 20____\n\nRam Kumar,\nAged about 45 years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: Jayanagar, Bengaluru.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\nSuresh Patel,\nAged about 38 years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: Koramangala, Bengaluru.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF MONEY LENT / ADVANCE PAID WITH INTEREST AND COSTS\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the cause of action arose within the local limits of the jurisdiction of this Hon'ble Court at Bengaluru, and the Defendant carries on business / resides within such territorial limits.\n\n3. This Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only), which is within the pecuniary limits prescribed for this Court.\n\nLIMITATION\n\n4. Verify the applicable loan article from the transaction terms. Article 19 commonly applies to money payable for money lent, while Article 21 commonly applies where the loan is expressly payable on demand. The present suit is filed within the period of limitation prescribed under the applicable article of the Schedule to the Limitation Act, 1963.\n\nFACTS OF THE CASE\n\n5. On 15.03.2024, the Plaintiff advanced a sum of Rs. 15,00,000 (Rupees Fifteen Lakhs Only) to the Defendant as a hand loan. The said amount was transferred via NEFT from the Plaintiff's bank account to the Defendant's bank account, bearing UTR Number AXIB20240315123456. A copy of the bank transaction record is annexed hereto as **Annexure A**.\n\n6. There was no written loan agreement executed between the parties. However, the Defendant acknowledged the receipt of the said loan amount and the liability to repay the same through electronic messages exchanged on the WhatsApp platform. Copies of the relevant digital communications are annexed hereto as **Annexure B**.\n\n7. The parties mutually understood and agreed that the Defendant was liable to repay the principal amount on or before 20.06.2024. It was further agreed that in the event of default, the Defendant would be liable to pay interest on the outstanding principal amount at the rate of 12% per annum.\n\n8. The Plaintiff states that the Defendant has not made any part-payment towards the principal amount or the accrued interest since the date of advance. The entire principal sum of Rs. 15,00,000 remains outstanding and due payable by the Defendant.\n\n9. The Plaintiff made repeated oral demands upon the Defendant for repayment of the loan amount. When the Defendant failed to honor the oral demands, the Plaintiff issued a legal notice dated 01.07.2024 calling upon the Defendant to repay the dues. The Defendant received the said notice {{LEGAL_NOTICE_ACKNOWLEDGMENT_STATUS}}. A copy of the legal notice is annexed hereto as **Annexure C**.\n\n10. Despite the expiry of the agreed repayment date and the service of the legal notice, the Defendant has failed and refused to repay the loan amount. The Plaintiff states that the Defendant has no valid defense or justification for withholding the payment.\n\n11. The cause of action arose on 15.03.2024 when the loan was advanced, subsequently on 20.06.2024 when the Defendant failed to repay as agreed, and again on 01.07.2024 when the legal notice was issued and ignored by the Defendant. The cause of action is continuing till date as the liability remains unpaid.\n\nBREACH PARTICULARS\n\n12. S\n\n12. The Defendant is in breach of the obligation to repay the hand loan advanced by the Plaintiff. By failing to remit the principal amount on or before 20.06.2024, the Defendant violated the terms of the lending arrangement acknowledged via **Annexure B**.\n\n13. The Defendant further committed a breach by ignoring the formal demand made through the legal notice dated 01.07.2024 (**Annexure C**). The Defendant's failure to respond to the notice or discharge the liability constitutes a wrongful withholding of the Plaintiff's funds, necessitating the present litigation.\n\nDAMAGES\n\n14. By reason of the Defendant's failure to repay the loan on the agreed date, the Plaintiff has suffered financial loss. The Plaintiff is entitled to claim interest at the rate of 12% per annum on the principal sum of Rs. 15,00,000 from the date of default, i.e., 20.06.2024, till the date of actual realization.\n\n15. The total outstanding amount as on the date of filing this plaint comprises the principal sum of Rs. 15,00,000 along with the accrued interest calculated at 12% per annum from 20.06.2024. The Plaintiff claims the entire outstanding amount together with p",
+  "structural_issues": [],
+  "citation_issues": [],
+  "evidence_anchoring_issues": [],
+  "errors": []
+}

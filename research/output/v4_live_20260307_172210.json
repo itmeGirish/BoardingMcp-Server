@@ -1,0 +1,151 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 319.2,
+  "draft_length": 4031,
+  "placeholder_count": 5,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "PASS",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "PASS",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "PASS",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "PASS",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "PASS",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "PASS",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "PASS",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "PASS",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "PASS",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "PASS",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "PASS",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "PASS",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "PASS",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "PASS",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "PASS",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "PASS",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "PASS",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "PASS",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "PASS",
+      "detail": "Reasonable placeholder count (5)"
+    }
+  ],
+  "score": "22/22 (100%)",
+  "draft_text": "IN THE COURT OF THE CITY CIVIL COURT AT BENGALURU\n\nO.S. No. ____________ / 2024\n\nBETWEEN:\n\nRAM KUMAR\nAge: 45 years\nResiding at: Jayanagar, Bengaluru\n\n... PLAINTIFF\n\nAND:\n\nSURESH PATEL\nAge: 38 years\nResiding at: Koramangala, Bengaluru\n\n... DEFENDANT\n\nPLAINT FOR RECOVERY OF MONEY\n\nThe Plaintiff submits as follows:\n\nJURISDICTION\n\n1. This Court has jurisdiction to try this suit under Section 9 of the Code of Civil Procedure, 1908, as this is a civil suit for recovery of money.\n\n2. This Court has territorial jurisdiction under Section 20 of the Code of Civil Procedure, 1908, as the Defendant resides within the jurisdiction of this Court at Koramangala, Bengaluru, and the cause of action arose within Bengaluru where the loan was advanced and demanded.\n\nFACTS OF THE CASE\n\n1. The Plaintiff is a resident of Jayanagar, Bengaluru, and is competent to file this suit.\n\n2. The Defendant is a resident of Koramangala, Bengaluru, and is legally liable to repay the amount claimed herein.\n\n3. On 15.03.2024, the Plaintiff advanced a hand loan of Rs. 15,00,000 to the Defendant.\n\n4. The said amount was transferred via NEFT bank transfer bearing {{UTR_NUMBER}}: AXIB20240315123456 dated 15.03.2024.\n\n5. There was no written agreement executed between the parties regarding the said loan.\n\n6. The Defendant acknowledged the loan via WhatsApp messages.\n\n7. The Defendant failed to repay the loan amount by the agreed date, and the date of default is 20.06.2024.\n\n8. The Plaintiff claims interest at the rate of 12% per annum from the date of default i.e., 20.06.2024.\n\n9. The Plaintiff made repeated oral demands for repayment of the loan amount.\n\n10. The Plaintiff issued a legal notice dated 01.07.2024 to the Defendant demanding repayment.\n\n11. Despite the legal notice and repeated demands, the Defendant has failed to repay the principal amount or interest.\n\nLEGAL BASIS\n\n1. The Plaintiff is entitled to recover the principal amount under the general principles of law governing repayment of loans.\n\n2. The Plaintiff is entitled to compensation for the loss caused by the breach of obligation to repay under Section 73 of the Indian Contract Act,\n\n1872.\n\n1. The Plaintiff is entitled to interest under Section 34 of the Code of Civil Procedure,\n\n1908.\n\nCAUSE OF ACTION\n\n1. The cause of action for this suit arose on 20.06.2024 when the Defendant defaulted on the repayment.\n\n2. The cause of action is continuing in nature as the money remains unpaid despite demands and notice, and continues to date until realization.\n\nLIMITATION\n\n1. This suit is filed within the period of limitation prescribed under Article 19 of the Limitation Act, 1963, which provides a period of three years from the date when the loan is made.\n\n2. The suit is filed well within three years from the date of the transaction dated 15.03.2024 and the default dated 20.06.2024.\n\nVALUATION AND COURT FEE\n\n1. The suit is valued at Rs. 15,00,000 for the purpose of jurisdiction and court fee.\n\n2. The Plaintiff claims interest at 12% per annum from 20.06.2024 till realization.\n\n3. The requisite court fee of {{COURT_FEE_AMOUNT}} is paid on this plaint.\n\nPRAYER\n\nThe Plaintiff prays for a judgment and decree against the Defendant for:\n\n(a) Recovery of principal amount of Rs. 15,00,000;\n(b) Payment of interest at 12% per annum from 20.06.2024 till realization;\n(c) Costs of the suit; and\n\n(d) Any other relief this Court deems fit to grant in the interest of justice.\n\nLIST OF DOCUMENTS\n\n1. NEFT bank transfer record with UTR: AXIB20240315123456 dated 15.03.2024 (Annexure P1).\n\n2. WhatsApp messages acknowledging the loan (Annexure P2).\n\n3. Legal notice dated 01.07.2024 (Annexure P3).\n\nVERIFICATION\n\n1. Verified at Bengaluru on this ___ day of ______ 2024, that the contents of paragraphs 1 to 23 are true to my knowledge and based on legal advice which I believe to be true.\n\nRAM KUMAR\n\nPLAINTIFF\n\nADVOCATE BLOCK\n\n_______________\n\nADVOCATE FOR PLAINTIFF\n\nBENGALURU\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}",
+  "structural_issues": [],
+  "citation_issues": [
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 20 the Code",
+      "message": "'Section 20 the Code' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 20",
+      "message": "'Section 20' not in verified_provisions — may be correct but unverified"
+    },
+    {
+      "type": "unverified_statute",
+      "severity": "WARN",
+      "citation": "Section 73 Indian Contract",
+      "message": "'Section 73 Indian Contract' not in verified_provisions — may be correct but unverified"
+    }
+  ],
+  "evidence_anchoring_issues": [
+    {
+      "issue_type": "unsupported_reference",
+      "description": "Unsupported reference: UTR Number",
+      "original": "UTR Number",
+      "replacement": "{{UTR_NUMBER}}",
+      "severity": "replaced"
+    }
+  ],
+  "errors": []
+}

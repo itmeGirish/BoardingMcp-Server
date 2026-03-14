@@ -50,6 +50,12 @@ def _normalize_placeholders(text: str) -> Tuple[str, int]:
     return text, count
 
 
+def _fix_escaped_placeholders(text: str) -> Tuple[str, int]:
+    """Collapse accidentally escaped placeholder braces back to canonical form."""
+    fixed = re.sub(r"\{\{\{\{([A-Z0-9_]+)\}\}\}\}", r"{{\1}}", text)
+    return fixed, 1 if fixed != text else 0
+
+
 def _fix_mid_word_placeholders(text: str) -> Tuple[str, int]:
     """Fix placeholders that are fused to adjacent word characters.
 
@@ -100,14 +106,132 @@ def _flag_incomplete_sentences(text: str) -> List[Dict[str, Any]]:
     return issues
 
 
+def _fix_paragraph_breaks(text: str) -> Tuple[str, int]:
+    """Split run-together numbered paragraphs into separate lines.
+
+    LLMs often output "4. First para. 5. Second para." as one continuous
+    string. This inserts newlines before each numbered paragraph start.
+    """
+    original = text
+    # Insert \n\n before numbered paragraph starts that are NOT at line start
+    text = re.sub(r"(?<!\n)(\s)(\d+\.\s)", r"\n\n\2", text)
+    fixes = 1 if text != original else 0
+    return text, fixes
+
+
+def _fix_paragraph_number_spacing(text: str) -> Tuple[str, int]:
+    """Normalize numbered paragraphs from `1.Text` to `1. Text`."""
+    fixed = re.sub(r"(?m)^(\s*\d+)\.(\S)", r"\1. \2", text)
+    return fixed, 1 if fixed != text else 0
+
+
+def _fix_split_act_years(text: str) -> Tuple[str, int]:
+    """Join stray act-year lines like `Code of Civil Procedure,` + `1908.`."""
+    fixed = re.sub(r"(Code of Civil Procedure,)\s*\n+\s*(1908\.)", r"\1 \2", text)
+    fixed = re.sub(r"([A-Za-z][A-Za-z\s]+Act,)\s*\n+\s*((?:18|19|20)\d{2}\.)", r"\1 \2", fixed)
+    return fixed, 1 if fixed != text else 0
+
+
+def _repair_breach_heading_runon(text: str) -> Tuple[str, int]:
+    """Repair common run-together breach heading corruption before numbering."""
+    lines = text.split("\n")
+    fixed: List[str] = []
+    fixes = 0
+
+    for line in lines:
+        stripped = line.strip()
+        match = re.match(
+            r"^(BREACH\s+PARTICULA\w*)(?:\s+\{\{[A-Z0-9_]+\}\}\.)?\s*(.+)$",
+            stripped,
+            flags=re.IGNORECASE,
+        )
+        if match and match.group(2):
+            prev_num = 0
+            for prior in reversed(fixed):
+                num_match = re.match(r"^\s*(\d+)\.\s", prior)
+                if num_match:
+                    prev_num = int(num_match.group(1))
+                    break
+            next_num = prev_num + 1 if prev_num else 1
+            fixed.append("BREACH PARTICULARS")
+            fixed.append("")
+            fixed.append(f"{next_num}. {match.group(2).strip()}")
+            fixes += 1
+            continue
+        fixed.append(line)
+
+    return "\n".join(fixed), fixes
+
+
+def _fix_prayer_items(text: str) -> Tuple[str, int]:
+    """Ensure prayer sub-items (a), (b), (c) are on separate lines."""
+    original = text
+    # Split run-together prayer items: "...relief; (b) Award..." → newline before (b)
+    text = re.sub(r";\s*\(([a-z])\)", r";\n(\1)", text)
+    # Also handle period before prayer item: "...suit. (b) Award..."
+    text = re.sub(r"\.\s+\(([b-z])\)", r".\n(\1)", text)
+    fixes = 1 if text != original else 0
+    return text, fixes
+
+
+def _fix_annexure_list_breaks(text: str) -> Tuple[str, int]:
+    """Split semicolon-separated annexure items into separate lines."""
+    original = text
+    text = re.sub(r";\s*(Annexure\s)", r";\n\n\1", text, flags=re.IGNORECASE)
+    fixes = 1 if text != original else 0
+    return text, fixes
+
+
+def _collapse_blank_lines(text: str) -> Tuple[str, int]:
+    """Collapse 3+ consecutive blank lines to 2."""
+    original = text
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    fixes = 1 if text != original else 0
+    return text, fixes
+
+
+def _strip_trailing_whitespace(text: str) -> Tuple[str, int]:
+    """Strip trailing whitespace from each line."""
+    lines = text.split("\n")
+    fixed = [line.rstrip() for line in lines]
+    fixes = sum(1 for a, b in zip(lines, fixed) if a != b)
+    return "\n".join(fixed), fixes
+
+
 def _fix_numbering(text: str) -> Tuple[str, int]:
-    """Fix paragraph numbering continuity (1., 2., 3., ...)."""
+    """Fix paragraph numbering continuity — CONTINUOUS across entire document.
+
+    Does NOT reset numbering on section headings. Paragraphs are numbered
+    1, 2, 3... through the whole plaint as required by court filing standards.
+    Skips renumbering inside PRAYER sections (which use (a), (b), (c)).
+    """
     lines = text.split("\n")
     fixed_lines: List[str] = []
     expected = 1
     fixes = 0
+    in_prayer = False
 
     for line in lines:
+        stripped = line.strip()
+
+        # Detect ALL-CAPS heading (do NOT reset numbering — keep continuous)
+        if (
+            stripped
+            and stripped == stripped.upper()
+            and len(stripped) < 80
+            and "{{" not in stripped
+            and not stripped.startswith(("(", "•", "-"))
+            and len(stripped) > 3
+        ):
+            in_prayer = stripped in ("PRAYER", "PRAYERS", "PRAYER CLAUSE")
+            fixed_lines.append(line)
+            continue
+
+        # Skip renumbering inside PRAYER sections
+        if in_prayer:
+            fixed_lines.append(line)
+            continue
+
         # Match numbered paragraph starts: "1.", "2.", etc.
         m = re.match(r"^(\s*)(\d+)\.\s", line)
         if m:
@@ -420,6 +544,11 @@ def postprocess_node(state: DraftingState) -> Command:
             total_fixes += marker_fixes
 
         # 0.5. Fix mid-word placeholders (safe — adds space only, always applied)
+        text, escaped_placeholder_fixes = _fix_escaped_placeholders(text)
+        if escaped_placeholder_fixes:
+            issues.append({"type": "escaped_placeholders_fixed", "count": escaped_placeholder_fixes})
+            total_fixes += escaped_placeholder_fixes
+
         text, midword_fixes = _fix_mid_word_placeholders(text)
         if midword_fixes:
             issues.append({"type": "mid_word_placeholder_fixed", "count": midword_fixes})
@@ -456,11 +585,80 @@ def postprocess_node(state: DraftingState) -> Command:
                 issues.append({"type": "duplicate_advocate_block_removed", "count": advocate_fixes})
                 total_fixes += advocate_fixes
 
-            # 3. Numbering continuity
+            # 2.8. Split run-together numbered paragraphs
+            text, para_fixes = _fix_paragraph_breaks(text)
+            if para_fixes:
+                issues.append({"type": "paragraph_breaks_fixed", "count": para_fixes})
+                total_fixes += para_fixes
+
+            text, para_space_fixes = _fix_paragraph_number_spacing(text)
+            if para_space_fixes:
+                issues.append({"type": "paragraph_number_spacing_fixed", "count": para_space_fixes})
+                total_fixes += para_space_fixes
+
+            text, breach_heading_fixes = _repair_breach_heading_runon(text)
+            if breach_heading_fixes:
+                issues.append({"type": "breach_heading_runon_fixed", "count": breach_heading_fixes})
+                total_fixes += breach_heading_fixes
+
+            text, split_year_fixes = _fix_split_act_years(text)
+            if split_year_fixes:
+                issues.append({"type": "split_act_years_fixed", "count": split_year_fixes})
+                total_fixes += split_year_fixes
+
+            # 2.9. Split run-together prayer sub-items
+            text, prayer_fixes = _fix_prayer_items(text)
+            if prayer_fixes:
+                issues.append({"type": "prayer_items_fixed", "count": prayer_fixes})
+                total_fixes += prayer_fixes
+
+            # 2.10. Split semicolon-separated annexure items
+            text, annex_fixes = _fix_annexure_list_breaks(text)
+            if annex_fixes:
+                issues.append({"type": "annexure_list_fixed", "count": annex_fixes})
+                total_fixes += annex_fixes
+
+            # 2.11. Collapse 3+ blank lines to 2
+            text, blank_fixes = _collapse_blank_lines(text)
+            if blank_fixes:
+                issues.append({"type": "blank_lines_collapsed", "count": blank_fixes})
+                total_fixes += blank_fixes
+
+            # 2.12. Strip trailing whitespace
+            text, ws_fixes = _strip_trailing_whitespace(text)
+            if ws_fixes:
+                issues.append({"type": "trailing_whitespace_stripped", "count": ws_fixes})
+                total_fixes += ws_fixes
+
+            # 3. Numbering continuity (section-aware)
             text, numbering_fixes = _fix_numbering(text)
             if numbering_fixes:
                 issues.append({"type": "numbering_fixed", "count": numbering_fixes})
                 total_fixes += numbering_fixes
+
+            # 3.5. Resolve {{LAST_PARA}} / {{LAST_PARA_NUMBER}} in verification/SOT
+            para_nums = [int(m.group(1)) for m in re.finditer(r"^\s*(\d+)\.\s", text, re.MULTILINE)]
+            _last_para_variants = ("{{LAST_PARA}}", "{{LAST_PARA_NUMBER}}", "{{LAST_PARAGRAPH}}")
+            if any(v in text for v in _last_para_variants):
+                last_para = max(para_nums) if para_nums else 0
+                if last_para > 0:
+                    for v in _last_para_variants:
+                        if v in text:
+                            text = text.replace(v, str(last_para))
+                    total_fixes += 1
+                    issues.append({"type": "verification_para_count_fixed", "count": 1})
+
+            # 3.6. Fix stale "paragraphs 1 to N" where N doesn't match actual count
+            _stale_m = re.search(r"paragraphs\s+1\s+to\s+(\d+)", text)
+            if _stale_m and para_nums:
+                _stated = int(_stale_m.group(1))
+                _actual = max(para_nums) if para_nums else _stated
+                if _stated != _actual and _actual > 0:
+                    text = text.replace(
+                        f"paragraphs 1 to {_stated}",
+                        f"paragraphs 1 to {_actual}",
+                    )
+                    total_fixes += 1
 
             # 4. Heading spacing
             text, spacing_fixes = _fix_heading_spacing(text)

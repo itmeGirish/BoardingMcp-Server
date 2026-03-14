@@ -1,0 +1,93 @@
+{
+  "partition": {
+    "scenario": "partition",
+    "query": "Draft a suit for partition and separate possession of ancestral joint family property situated at Bangalore. The Plaintiff and Defendants are Hindu co-owners who inherited the property from their deceased father. The property includes a residential house at No. 42, 3rd Cross, Jayanagar, Bangalore measuring 2400 sq.ft. and agricultural land at Survey No. 85, Anekal Taluk, Bangalore Rural measuring 2 acres. The Defendants are denying the Plaintiff's rightful 1/3rd share and refusing to partition. Include genealogy table, schedule of properties, and prayer for appointment of Commissioner. Draft for City Civil Court, Bangalore.",
+    "pipeline": {
+      "elapsed_s": 31.6,
+      "source": "none",
+      "blocking_issues": 0,
+      "cause_type": "unknown",
+      "doc_type": "unknown",
+      "char_count": 0,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": false,
+          "S2: Parties section": false,
+          "S3: Facts section present": false,
+          "S4: Cause of action": false,
+          "S5: Prayer/relief section": false,
+          "S6: Verification clause": false,
+          "S7: Advocate block or place/date": false,
+          "S8: Continuous para numbering": false,
+          "L1: Expected act(s) cited": false,
+          "L2: Jurisdiction pleaded": false,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": false,
+          "L5: Court fee mentioned": false,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": false,
+          "Q1: Narrative facts (not skeleton)": false,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": false,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": false,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": false,
+          "Q10: Expected key sections present": false
+        },
+        "passed": 5,
+        "total": 25,
+        "score": 2.0,
+        "percent": 20.0
+      }
+    },
+    "claude": {
+      "elapsed_s": 13.3,
+      "model": "gpt-4.1",
+      "tokens_in": 241,
+      "tokens_out": 1451,
+      "char_count": 6263,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": true,
+          "S2: Parties section": true,
+          "S3: Facts section present": false,
+          "S4: Cause of action": true,
+          "S5: Prayer/relief section": true,
+          "S6: Verification clause": true,
+          "S7: Advocate block or place/date": true,
+          "S8: Continuous para numbering": true,
+          "L1: Expected act(s) cited": false,
+          "L2: Jurisdiction pleaded": true,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": true,
+          "L5: Court fee mentioned": true,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": true,
+          "Q1: Narrative facts (not skeleton)": true,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": false,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": true,
+          "Q7: No and/or usage": false,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": true,
+          "Q10: Expected key sections present": true
+        },
+        "passed": 19,
+        "total": 25,
+        "score": 7.6,
+        "percent": 76.0
+      }
+    },
+    "comparison": {
+      "pipeline_score": 2.0,
+      "claude_score": 7.6,
+      "diff": -5.6,
+      "winner": "CLAUDE"
+    }
+  }
+}

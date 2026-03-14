@@ -98,6 +98,7 @@ class Settings(BaseSettings):
     DRAFTING_REVIEW_INLINE_FIX: bool = True
 
     DRAFTING_SKIP_REVIEW: bool = False                  # keep review ON for quality; set True to skip for speed
+    DRAFTING_SKIP_REVIEW_AFTER_VALIDATION_IF_CLEAN: bool = True  # skip review only after deterministic gates/citation checks pass cleanly
 
     # v8.1 Template Engine
     TEMPLATE_ENGINE_ENABLED: bool = False               # True=v8.1 template+gap-fill, False=v5.0 freetext
@@ -106,17 +107,19 @@ class Settings(BaseSettings):
     DRAFTING_ENRICHMENT_LLM_ENABLED: bool = True     # use LLM for limitation article selection
     DRAFTING_CITATION_VALIDATOR_ENABLED: bool = True  # validate cited provisions against enrichment
     DRAFTING_USER_REQUEST_ENTITY_MINING: bool = True  # mine amounts/dates/refs from user_request text
+    DRAFTING_RAG_ENABLED: bool = False                 # False=skip RAG node entirely (no Qdrant/OpenAI calls)
     DRAFTING_RAG_PROVISION_SCAN: bool = True          # scan RAG chunks for statutory section numbers
     DRAFTING_LIMITATION_RETRY: bool = False            # disabled for speed — skip retry web search
     DRAFTING_LIMITATION_COMMON_FALLBACK: bool = True  # use common articles as last-resort fallback
     DRAFTING_PROCEDURAL_SEARCH: bool = False           # disabled for speed — skip slow web search
+    DRAFTING_LEGAL_RESEARCH_ENABLED: bool = False     # False=skip LegalResearch websearch (Brave API)
 
     # Ollama model configuration (override in .env)
     OLLAMA_PRIMARY_MODEL: str = "glm-5:cloud"               # deep generation (intake fallback, general)
     OLLAMA_ROUTER_MODEL: str = "glm-4.7:cloud"             # routing / classification
     OLLAMA_INTAKE_MODEL: str = "qwen3.5:cloud"              # intake node
-    OLLAMA_DRAFT_MODEL: str = "qwen3.5:cloud"               # draft node
-    OLLAMA_REVIEW_MODEL: str = "qwen3.5:cloud"              # review node
+    OLLAMA_DRAFT_MODEL: str = "qwen3.5:cloud"                # draft node
+    OLLAMA_REVIEW_MODEL: str = "glm-5:cloud"                  # review node
     OLLAMA_FALLBACK_MODEL: str = "glm-4.6:cloud"           # fallback for drafting chain
     OLLAMA_ROUTER_FALLBACK_MODEL: str = "glm-4.6:cloud"    # fallback for router chain
 

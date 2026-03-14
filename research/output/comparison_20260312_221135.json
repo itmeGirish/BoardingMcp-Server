@@ -1,0 +1,892 @@
+[
+  {
+    "scenario": 1,
+    "pipeline": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0
+      },
+      "word_count": 898,
+      "placeholder_count": 36,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "medium",
+          "detail": "Pendente lite interest cites S.34 CPC (should be Order XX Rule 11 CPC)"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "36 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.8,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "word_count": 1614,
+      "placeholder_count": 4,
+      "errors": [
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": true
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -0.8
+  },
+  {
+    "scenario": 2,
+    "pipeline": {
+      "score": 7.5,
+      "error_counts": {
+        "critical": 1,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "word_count": 842,
+      "placeholder_count": 39,
+      "errors": [
+        {
+          "category": "fabrication",
+          "severity": "critical",
+          "detail": "Fabricated citation/document: ['annexure p-1 - sale deed dated', 'annexure p-2 - legal notice dated']"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "39 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      },
+      "word_count": 1791,
+      "placeholder_count": 0,
+      "errors": [
+        {
+          "category": "missing_section",
+          "severity": "high",
+          "detail": "Missing: court_heading"
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": true
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -1.5
+  },
+  {
+    "scenario": 3,
+    "pipeline": {
+      "score": 9.5,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "word_count": 1141,
+      "placeholder_count": 32,
+      "errors": [
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "32 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.2,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "word_count": 1725,
+      "placeholder_count": 59,
+      "errors": [
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "59 placeholders (threshold: 15)"
+        },
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": false,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "schedule of property": {
+        "pipeline": true,
+        "chatgpt": true
+      }
+    },
+    "winner": "pipeline",
+    "score_diff": 0.3
+  },
+  {
+    "scenario": 4,
+    "pipeline": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0
+      },
+      "word_count": 1517,
+      "placeholder_count": 59,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "medium",
+          "detail": "Facts section contains statutory citations (should be in Legal Basis)"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "59 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 8.2,
+      "error_counts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 1,
+        "low": 1
+      },
+      "word_count": 1651,
+      "placeholder_count": 46,
+      "errors": [
+        {
+          "category": "missing_section",
+          "severity": "high",
+          "detail": "Missing: court_heading"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "46 placeholders (threshold: 15)"
+        },
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": true
+      }
+    },
+    "winner": "pipeline",
+    "score_diff": 0.8
+  },
+  {
+    "scenario": 5,
+    "pipeline": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0
+      },
+      "word_count": 1140,
+      "placeholder_count": 39,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "medium",
+          "detail": "Facts section contains statutory citations (should be in Legal Basis)"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "39 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.8,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "word_count": 1741,
+      "placeholder_count": 3,
+      "errors": [
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": true
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -0.8
+  },
+  {
+    "scenario": 6,
+    "pipeline": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0
+      },
+      "word_count": 1166,
+      "placeholder_count": 36,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "medium",
+          "detail": "Facts section contains statutory citations (should be in Legal Basis)"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "36 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.2,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "word_count": 1527,
+      "placeholder_count": 51,
+      "errors": [
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "51 placeholders (threshold: 15)"
+        },
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": false
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -0.2
+  },
+  {
+    "scenario": 7,
+    "pipeline": {
+      "score": 9.5,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "word_count": 933,
+      "placeholder_count": 32,
+      "errors": [
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "32 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.5,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 2
+      },
+      "word_count": 1684,
+      "placeholder_count": 0,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "low",
+          "detail": "'and/or' used — courts disfavor this"
+        },
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": false
+      }
+    },
+    "winner": "pipeline",
+    "score_diff": 0.0
+  },
+  {
+    "scenario": 8,
+    "pipeline": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0
+      },
+      "word_count": 936,
+      "placeholder_count": 35,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "medium",
+          "detail": "Pendente lite interest cites S.34 CPC (should be Order XX Rule 11 CPC)"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "35 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.8,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "word_count": 2152,
+      "placeholder_count": 0,
+      "errors": [
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": false
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -0.8
+  },
+  {
+    "scenario": 9,
+    "pipeline": {
+      "score": 9.0,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0
+      },
+      "word_count": 915,
+      "placeholder_count": 36,
+      "errors": [
+        {
+          "category": "legal_error",
+          "severity": "medium",
+          "detail": "Pendente lite interest cites S.34 CPC (should be Order XX Rule 11 CPC)"
+        },
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "36 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.8,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "word_count": 1338,
+      "placeholder_count": 0,
+      "errors": [
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": false
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -0.8
+  },
+  {
+    "scenario": 10,
+    "pipeline": {
+      "score": 9.5,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "word_count": 936,
+      "placeholder_count": 32,
+      "errors": [
+        {
+          "category": "placeholder_excess",
+          "severity": "medium",
+          "detail": "32 placeholders (threshold: 15)"
+        }
+      ]
+    },
+    "chatgpt": {
+      "score": 9.8,
+      "error_counts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "word_count": 1357,
+      "placeholder_count": 0,
+      "errors": [
+        {
+          "category": "structural",
+          "severity": "low",
+          "detail": "Paragraph numbering not continuous: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]..."
+        }
+      ]
+    },
+    "section_comparison": {
+      "verification": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "prayer": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "jurisdiction": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "cause of action": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "valuation": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "court fee": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "legal basis": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "interest": {
+        "pipeline": true,
+        "chatgpt": true
+      },
+      "list of documents": {
+        "pipeline": true,
+        "chatgpt": false
+      },
+      "schedule of property": {
+        "pipeline": false,
+        "chatgpt": true
+      }
+    },
+    "winner": "chatgpt",
+    "score_diff": -0.3
+  }
+]

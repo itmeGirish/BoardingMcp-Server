@@ -51,7 +51,28 @@
       "properties": {
         "claim_type": {
           "type": "string",
-          "description": "payment|notice|breach|admission|agreement|refusal|no_benefit|failure_of_consideration|continuing_cause"
+          "enum": [
+            "payment",
+            "notice",
+            "breach",
+            "admission",
+            "agreement",
+            "refusal",
+            "receipt",
+            "no_benefit",
+            "failure_of_consideration",
+            "continuing_cause",
+            "acknowledgment",
+            "confession",
+            "demand",
+            "delivery",
+            "service",
+            "occupation",
+            "possession",
+            "damage",
+            "injury"
+          ],
+          "description": "Type of factual claim captured for this section"
         },
         "entities": {
           "type": "array",

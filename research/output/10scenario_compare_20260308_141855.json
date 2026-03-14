@@ -1,0 +1,93 @@
+{
+  "defamation": {
+    "scenario": "defamation",
+    "query": "Draft a civil suit for damages for defamation. The Defendant published false and defamatory statements about the Plaintiff on social media (Facebook and Twitter) on 10.01.2026, alleging that the Plaintiff is involved in financial fraud and cheating. The statements were viewed by over 5000 people and caused severe damage to Plaintiff's business reputation. Plaintiff lost 3 major clients worth Rs.15,00,000/- in business. Claim damages of Rs.25,00,000/- and permanent injunction against repetition. Draft for District Court.",
+    "pipeline": {
+      "elapsed_s": 1.8,
+      "source": "none",
+      "blocking_issues": 0,
+      "cause_type": "unknown",
+      "doc_type": "unknown",
+      "char_count": 0,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": false,
+          "S2: Parties section": false,
+          "S3: Facts section present": false,
+          "S4: Cause of action": false,
+          "S5: Prayer/relief section": false,
+          "S6: Verification clause": false,
+          "S7: Advocate block or place/date": false,
+          "S8: Continuous para numbering": false,
+          "L1: Expected act(s) cited": false,
+          "L2: Jurisdiction pleaded": false,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": false,
+          "L5: Court fee mentioned": false,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": false,
+          "Q1: Narrative facts (not skeleton)": false,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": false,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": false,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": false,
+          "Q10: Expected key sections present": false
+        },
+        "passed": 5,
+        "total": 25,
+        "score": 2.0,
+        "percent": 20.0
+      }
+    },
+    "claude": {
+      "elapsed_s": 7.8,
+      "model": "gpt-4.1",
+      "tokens_in": 219,
+      "tokens_out": 1055,
+      "char_count": 5143,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": true,
+          "S2: Parties section": true,
+          "S3: Facts section present": true,
+          "S4: Cause of action": true,
+          "S5: Prayer/relief section": true,
+          "S6: Verification clause": true,
+          "S7: Advocate block or place/date": true,
+          "S8: Continuous para numbering": true,
+          "L1: Expected act(s) cited": true,
+          "L2: Jurisdiction pleaded": true,
+          "L3: Limitation addressed": false,
+          "L4: Valuation stated": true,
+          "L5: Court fee mentioned": true,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": true,
+          "Q1: Narrative facts (not skeleton)": true,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": false,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": true,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": true,
+          "Q10: Expected key sections present": true
+        },
+        "passed": 22,
+        "total": 25,
+        "score": 8.8,
+        "percent": 88.0
+      }
+    },
+    "comparison": {
+      "pipeline_score": 2.0,
+      "claude_score": 8.8,
+      "diff": -6.8,
+      "winner": "CLAUDE"
+    }
+  }
+}

@@ -20,7 +20,7 @@
     },
     "law_domain": {
       "type": "string",
-      "enum": ["Civil", "Criminal", "Family", "Corporate", "IP", "Constitutional", "Other"]
+      "enum": ["Civil", "Criminal", "Family", "Corporate", "IP", "Other"]
     },
     "party_labels": {
       "type": "object",
@@ -103,8 +103,40 @@
         "context_budget": {
           "type": "integer",
           "description": "Max tokens of context to send for this section"
+        },
+        "condition": {
+          "type": "string",
+          "pattern": "^(doc_type_contains:.+|monetary_claim|immovable_property|is_commercial|has_damages_categories|has_schedule_of_property|has_interest)$",
+          "description": "Optional condition DSL controlling whether the section is included"
+        },
+        "examples": {
+          "$ref": "#/definitions/examples_block"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": { "const": "template" }
+            }
+          },
+          "then": {
+            "required": ["body"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "enum": ["template_with_fill", "llm_fill"]
+              }
+            }
+          },
+          "then": {
+            "required": ["instruction"]
+          }
+        }
+      ]
     },
     "must_include_item": {
       "type": "object",
@@ -125,6 +157,19 @@
         "description": {
           "type": "string",
           "description": "Human-readable description of what this checks"
+        }
+      }
+    },
+    "examples_block": {
+      "type": "object",
+      "properties": {
+        "bad": {
+          "type": "string",
+          "description": "Counterexample illustrating a weak or incorrect section"
+        },
+        "good": {
+          "type": "string",
+          "description": "Example illustrating a strong or correct section"
         }
       }
     }

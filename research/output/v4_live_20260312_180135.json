@@ -1,0 +1,126 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 7.2,
+  "draft_length": 262,
+  "placeholder_count": 0,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "FAIL",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "FAIL",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "FAIL",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "FAIL",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "FAIL",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "FAIL",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "FAIL",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "FAIL",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "FAIL",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "FAIL",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "FAIL",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "FAIL",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "FAIL",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "FAIL",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "FAIL",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "FAIL",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "FAIL",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "FAIL",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "PASS",
+      "detail": "Reasonable placeholder count (0)"
+    }
+  ],
+  "score": "4/22 (18%)",
+  "draft_text": "TEMPLATE DRAFTING FAILED\n\nThe civil drafting pipeline stopped before finalization for the following reasons:\n1. template_assembly: TemplateEngine._legal_basis() takes from 2 to 4 positional arguments but 5 were given\n\nCorrect the above issues and rerun drafting.",
+  "structural_issues": [],
+  "citation_issues": [],
+  "evidence_anchoring_issues": [],
+  "errors": [
+    "template_assembly: TemplateEngine._legal_basis() takes from 2 to 4 positional arguments but 5 were given"
+  ]
+}

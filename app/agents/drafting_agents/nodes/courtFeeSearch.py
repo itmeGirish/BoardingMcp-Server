@@ -14,7 +14,7 @@ from typing import Any, Dict
 
 from langgraph.types import Command
 
-from ....config import logger
+from ....config import logger, settings
 from ..states import DraftingState
 from ..tools import CourtFeeWebSearchTool, LegalResearchWebSearchTool
 from ._utils import _as_dict
@@ -68,7 +68,7 @@ async def court_fee_node(state: DraftingState) -> Dict[str, Any]:
         doc_type=doc_type,
         cause_of_action=cause_of_action,
         jurisdiction=jurisdiction_str,
-    ) if doc_type else None
+    ) if (doc_type and getattr(settings, "DRAFTING_LEGAL_RESEARCH_ENABLED", True)) else None
 
     tasks = [t for t in [court_fee_coro, legal_research_coro] if t is not None]
     results_list = await asyncio.gather(*tasks, return_exceptions=True)

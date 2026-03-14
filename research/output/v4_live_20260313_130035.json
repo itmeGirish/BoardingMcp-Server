@@ -1,0 +1,197 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 120.1,
+  "draft_length": 7038,
+  "placeholder_count": 13,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "PASS",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "PASS",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "PASS",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "PASS",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "PASS",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "PASS",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "PASS",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "PASS",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "PASS",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "PASS",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "PASS",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "PASS",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "PASS",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "PASS",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "PASS",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "PASS",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "PASS",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "PASS",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "PASS",
+      "detail": "Reasonable placeholder count (13)"
+    }
+  ],
+  "score": "22/22 (100%)",
+  "draft_text": "IN THE COURT OF THE CITY CIVIL COURT\nAT BENGALURU\n\nO.S. No. __________ / 20____\n\nRam Kumar,\nAged about 45 years,\nResiding at: Jayanagar, Bengaluru.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\nSuresh Patel,\nAged about 38 years,\nResiding at: Koramangala, Bengaluru.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF MONEY LENT WITH INTEREST AND COSTS\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain this suit inasmuch as the cause of action arose within the local limits of the jurisdiction of this Hon'ble Court at Bengaluru, and the Defendant resides within such territorial limits.\n\n3. This Court has pecuniary jurisdiction to try this suit, the suit being valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only), which is within the pecuniary limits prescribed for this Court.\n\nLIMITATION\n\n4. The present suit is filed within the period of limitation prescribed under Article 113 of the Schedule to the Limitation Act, 1963, as the loan was repayable on demand and demand was made within the limitation period.\n\nFACTS OF THE TRANSACTION\n\n5. The Plaintiff states that on 15.03.2024, the Defendant approached the Plaintiff requesting financial assistance.\n\n6. Acting on the request, the Plaintiff advanced a sum of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) to the Defendant on 15.03.2024.\n\n7. The said amount was transferred via NEFT from the Plaintiff's bank account to the Defendant's bank account, bearing UTR Number AXIB20240315123456, as evidenced by the bank record marked as Annexure A.\n\n8. The transaction was a hand loan advanced out of the Plaintiff's own funds, and there was no written loan agreement executed between the parties at the time of advancement.\n\n9. The Defendant acknowledged the receipt of the said loan amount through electronic messages on WhatsApp, copies of which are marked as Annexure B.\n\nDEFAULT AND DEMAND\n\n10. The Plaintiff states that the loan was advanced on the understanding that the Defendant would repay the same on demand or within a reasonable time.\n\n11. The Defendant failed to repay the loan amount by 20.06.2024, which constitutes the date of default for the purpose of this suit.\n\n12. The Plaintiff made repeated oral demands for repayment, but the Defendant failed to honour the commitment.\n\n13. Consequently, the Plaintiff issued a legal notice dated 01.07.2024 to the Defendant, calling upon him to repay the outstanding dues.\n\n14. The Defendant has failed to respond to the said legal notice and has not made any payment towards the principal amount despite the demand.\n\nQUANTIFICATION OF CLAIM\n\n15. The Plaintiff states that the total principal amount due and payable by the Defendant is Rs. 15,00,000/- (Rupees Fifteen Lakhs only).\n\n16. The Plaintiff claims interest on the said principal amount at the rate of 12% per annum from the date of default i.e., 20.06.2024 till the date of realisation.\n\n17. The interest claimed is simple interest and not compound interest, as there was no express agreement for compound interest between the parties.\n\n18. As on the date of filing this plaint, the total claim towards principal and accrued interest amounts to Rs. {{TOTAL_CLAIM_AMOUNT}}/- (including interest accrued from 20.06.2024 to {{FILING_DATE}}).\n\nLEGAL BASIS\n\n19. The Defendant borrowed and received a sum of Rs. 15,00,000/- from the Plaintiff and is liable to repay the same with interest as the loan was advanced for the Defendant's use and benefit.\n\n20. The present suit is maintainable under Section 9 of the Code of Civil Procedure, 1908.\n\nCAUSE OF ACTION\n\n21. The cause of action for the present suit first arose on 20.06.2024 when the Defendant failed to repay the loan amount despite demand, constituting breach of the obligation to repay.\n\n22. The cause of action continues to subsist as the Defendant has failed to comply with the Plaintiff's demand despite legal notice dated 01.07.2024.\n\n23. The breach was a single event. The Plaintiff's loss and right to claim damages continue until compensated in accordance with law.\n\nVALUATION AND COURT FEE\n\n24. The suit is valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only) for the purposes of jurisdiction and court fee. Court fee on the plaint has been computed at Rs. {{COURT_FEE_AMOUNT}}/- under the provisions of the Karnataka Court Fees and Suits Valuation Act, 1958 as applicable in the State of Karnataka. The plaint is tendered with the requisite court fee.\n\nINTEREST\n\n25. The Plaintiff claims interest on the suit amount as follows:\n\n    (a) Pendente lite interest at the rate of 12% per annum from the date of institution of the suit until the date of decree, under Order XX Rule 11 CPC;\n    (b) Future interest under Se",
+  "structural_issues": [],
+  "citation_issues": [
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s.\n\n3",
+      "message": "'s.\n\n3' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s.\n6",
+      "message": "'s.\n6' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s. 15",
+      "message": "'s. 15' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s.\n14",
+      "message": "'s.\n14' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s. 15",
+      "message": "'s. 15' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s.\n18",
+      "message": "'s.\n18' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "S\n\n19",
+      "message": "'S\n\n19' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "Section 69",
+      "message": "'Section 69' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "Order XX Rule 11",
+      "message": "'Order XX Rule 11' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "Order XX Rule 11",
+      "message": "'Order XX Rule 11' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "Order XX Rule 11",
+      "message": "'Order XX Rule 11' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s 1",
+      "message": "'s 1' in draft not found in verified provisions — may be hallucinated"
+    }
+  ],
+  "evidence_anchoring_issues": [],
+  "errors": []
+}

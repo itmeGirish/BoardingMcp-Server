@@ -1,10 +1,9 @@
-"""Draft Single Call Node — ONE LLM call produces section-keyed JSON.
+"""Draft Single Call Node — ONE LLM call produces court-ready document.
 
-Replaces template_loader + section_drafter (10 per-section calls) with one
-draft_openai_model call guided by an exemplar. Output is a dict of
-{section_id: section_text}.
+v5.0 freetext: LKB-guided plain text generation.
+Legacy JSON path: section-keyed JSON (not used in production).
 
-Pipeline position: court_fee → **draft_single_call** → structural_gate
+Pipeline position: enrichment → **draft_freetext** → evidence_anchoring
 """
 from __future__ import annotations
 
@@ -17,13 +16,17 @@ from langgraph.types import Command
 
 from ....config import logger, settings
 from ....services import draft_ollama_model as draft_openai_model
+from ..lkb.limitation import get_limitation_reference_details, normalize_coa_type
 from ..prompts.draft_prompt import (
     build_draft_system_prompt,
     build_draft_user_prompt,
     build_draft_freetext_system_prompt,
     build_draft_freetext_user_prompt,
+    build_structured_draft_prompt,
+    build_structured_system_prompt,
     get_section_keys,
 )
+from ..schemas import get_schema
 from ..states import DraftingState
 from ._utils import (
     _as_dict, _as_json,
@@ -39,26 +42,42 @@ def _build_limitation_context(mandatory_provisions: Dict[str, Any]) -> str:
     if not lim or not isinstance(lim, dict):
         return "Limitation article could not be determined. Use {{LIMITATION_ARTICLE}} placeholder."
 
-    # Safety: if an unresolved conditional slipped through, use its _default
-    if lim.get("_type") == "conditional":
-        lim = lim.get("_default", {})
-        if not lim:
-            return "Limitation article could not be determined. Use {{LIMITATION_ARTICLE}} placeholder."
-
+    details = get_limitation_reference_details(lim)
     article = lim.get("article", "UNKNOWN")
-    if article == "UNKNOWN":
+    if article == "UNKNOWN" and not details["citation"]:
         return "Limitation article could not be determined. Use {{LIMITATION_ARTICLE}} placeholder."
 
-    if article == "NONE":
+    if details["kind"] == "none":
         desc = lim.get("description", "No specific limitation applies.")
         return f"NO LIMITATION APPLIES: {desc}\nDo NOT cite any Limitation Act article in this draft."
+
+    if details["kind"] == "unknown":
+        return "Limitation article could not be determined. Use {{LIMITATION_ARTICLE}} placeholder."
+
+    if details["kind"] == "not_applicable" or (
+        details["kind"] == "statutory_reference" and not details["is_limitation_act"]
+    ):
+        desc = lim.get("description", "Limitation is governed by the specific statute or forum.")
+        period = lim.get("period", "")
+        reason = lim.get("reason", "")
+        parts = ["SPECIAL STATUTORY LIMITATION / FORUM RULE:"]
+        if details["citation"]:
+            parts.append(details["citation"])
+        if desc:
+            parts.append(desc)
+        if period:
+            parts.append(f"Period: {period}")
+        if reason:
+            parts.append(f"Reason: {reason}")
+        parts.append("Do NOT convert this into a Limitation Act article unless the source expressly says so.")
+        return "\n".join(parts)
 
     desc = lim.get("description", "")
     period = lim.get("period", "")
     reason = lim.get("reason", "")
     source = lim.get("source", "")
 
-    parts = [f"Article {article} of the Schedule to the Limitation Act, 1963"]
+    parts = [details["citation"] or f"Article {article} of the Schedule to the Limitation Act, 1963"]
     if desc:
         parts.append(f"Description: {desc}")
     if period:
@@ -107,7 +126,7 @@ def _build_rag_context(rag: Dict[str, Any], limit: int) -> str:
 
     chunks = (rag.get("chunks") or [])[:limit]
     if not chunks:
-        return "No RAG context available."
+        return ""
 
     # Build regex to detect superseded acts in chunk text
     superseded_patterns = []
@@ -157,19 +176,33 @@ def _build_procedural_requirements_context(mandatory_provisions: Dict[str, Any])
     return context
 
 
-def _build_lkb_brief_context(lkb_brief: Dict[str, Any]) -> str:
+def _build_lkb_brief_context(lkb_brief: Dict[str, Any], decision_ir: Dict[str, Any] | None = None) -> str:
     """Build a structured legal brief from LKB entry for the draft LLM.
 
     This tells the LLM exactly what law to cite, what court format to use,
     what damages to claim, and how to structure the cause of action.
+
+    When decision_ir is provided, filters through applicability compiler output:
+    - forbidden_statutes are excluded and warned about
+    - forbidden_damages are excluded
+    - filtered_red_flags replace raw drafting_red_flags
     """
     if not lkb_brief:
         return (
             "LEGAL BRIEF: No specific Legal Knowledge Base entry found for this cause type.\n"
-            "Use your legal knowledge and the VERIFIED PROVISIONS + RAG CONTEXT provided.\n"
+            "Use your legal knowledge and the VERIFIED PROVISIONS provided.\n"
             "For limitation, court fee, and jurisdiction: use {{PLACEHOLDER}} if not certain.\n"
             "Do NOT guess — accuracy is more important than completeness."
         )
+
+    # Extract compiler decisions for filtering
+    _decision = decision_ir or {}
+    _forbidden_statutes = set(_decision.get("forbidden_statutes") or [])
+    _forbidden_damages = set(_decision.get("forbidden_damages") or [])
+    _forbidden_reliefs = set(_decision.get("forbidden_reliefs") or [])
+    _forbidden_doctrines = set(_decision.get("forbidden_doctrines") or [])
+    _allowed_doctrines = _decision.get("allowed_doctrines") or []
+    _filtered_red_flags = _decision.get("filtered_red_flags") or []
 
     lines = ["LEGAL BRIEF (from verified Legal Knowledge Base — follow these precisely):"]
 
@@ -185,46 +218,68 @@ def _build_lkb_brief_context(lkb_brief: Dict[str, Any]) -> str:
         for old_act, new_act in SUPERSEDED_ACTS.items():
             if "," in old_act:  # skip duplicates without comma
                 lines.append(f"  - WRONG: {old_act} → CORRECT: {new_act}")
-        lines.append("If RAG context mentions any of these, IGNORE those references completely.")
+        lines.append("If any context mentions these Acts, IGNORE those references completely.")
 
     primary = lkb_brief.get("primary_acts", [])
     if primary:
         lines.append("\nPRIMARY STATUTES (cite these as the main legal basis):")
         for act_info in primary:
             act = act_info.get("act", "")
+            if act in _forbidden_statutes:
+                continue  # filtered by applicability compiler
             sections = ", ".join(act_info.get("sections", []))
             lines.append(f"  - {act}: {sections}")
         lines.append("  IMPORTANT: When describing what a provision says, use the text from")
-        lines.append("  RAG CONTEXT or VERIFIED PROVISIONS — do NOT paraphrase from memory.")
-        lines.append("  If the provision text is not in RAG, cite the section number only")
+        lines.append("  VERIFIED PROVISIONS — do NOT paraphrase from memory.")
+        lines.append("  If the provision text is not available, cite the section number only")
         lines.append("  without attempting to describe its content.")
 
     alt_acts_raw = lkb_brief.get("alternative_acts", [])
-    # Resolve conditional alternative_acts (may already be resolved by enrichment)
-    if isinstance(alt_acts_raw, dict) and alt_acts_raw.get("_type") == "conditional":
-        from ..lkb import resolve_conditional
-        user_ctx = lkb_brief.get("_resolve_context", "")
-        alt_acts = resolve_conditional(alt_acts_raw, user_ctx) or []
-    else:
-        alt_acts = alt_acts_raw if isinstance(alt_acts_raw, list) else []
+    alt_acts = alt_acts_raw if isinstance(alt_acts_raw, list) else []
     if alt_acts:
         lines.append("\nADDITIONAL STATUTES (cite where facts support):")
         for act_info in alt_acts:
             act = act_info.get("act", "")
+            if act in _forbidden_statutes:
+                continue  # filtered by applicability compiler
             sections = ", ".join(act_info.get("sections", []))
             lines.append(f"  - {act}: {sections}")
 
+    # Forbidden statutes warning (from applicability compiler)
+    if _forbidden_statutes:
+        lines.append("\n*** DO NOT CITE — INAPPLICABLE TO THIS CASE ***")
+        for fs in _forbidden_statutes:
+            lines.append(f"  - {fs}")
+        lines.append("  The applicability compiler determined these statutes do not apply.")
+
+    # Forbidden doctrines (from applicability compiler — facts don't support these)
+    if _forbidden_doctrines:
+        lines.append("\n*** DO NOT PLEAD — UNSUPPORTED BY FACTS ***")
+        for fd in _forbidden_doctrines:
+            lines.append(f"  - {fd.replace('_', ' ').title()}")
+        lines.append("  These legal theories require specific factual triggers that are ABSENT.")
+        lines.append("  Pleading them without factual basis is a professional conduct violation.")
+    # Allowed doctrines (only these may be used in the draft)
+    if _allowed_doctrines:
+        lines.append("\nALLOWED LEGAL THEORIES (use ONLY these in the draft):")
+        for ad in _allowed_doctrines:
+            lines.append(f"  - {ad.replace('_', ' ').title()}")
+
     lim = lkb_brief.get("limitation", {})
-    # Safety: resolve conditional limitation if it wasn't resolved in enrichment
-    if isinstance(lim, dict) and lim.get("_type") == "conditional":
-        lim = lim.get("_default", {})
-    if lim and lim.get("article"):
-        if lim["article"] == "NONE":
+    lim_details = get_limitation_reference_details(lim)
+    if lim and (lim.get("article") or lim_details["citation"]):
+        if lim_details["kind"] == "none":
             lines.append(f"\nLIMITATION: NO LIMITATION APPLIES")
             lines.append(f"  {lim.get('description', 'No specific limitation for this suit type.')}")
             lines.append("  Do NOT cite any Article of the Limitation Act, 1963.")
+        elif lim_details["kind"] == "unknown":
+            lines.append("\nLIMITATION: UNKNOWN")
+            lines.append("  Verify the applicable limitation provision before filing.")
+        elif lim_details["kind"] == "not_applicable":
+            lines.append("\nLIMITATION: SPECIAL STATUTORY / FORUM-SPECIFIC RULE")
+            lines.append(f"  {lim.get('description', 'No Limitation Act article applies to this proceeding.')}")
         else:
-            lines.append(f"\nLIMITATION: Article {lim['article']} of the Limitation Act, 1963")
+            lines.append(f"\nLIMITATION: {lim_details['citation']}")
         if lim.get("period"):
             lines.append(f"  Period: {lim['period']}")
         if lim.get("from"):
@@ -233,6 +288,10 @@ def _build_lkb_brief_context(lkb_brief: Dict[str, Any]) -> str:
             lines.append(f"  Description: {lim['description']}")
 
     detected_court = lkb_brief.get("detected_court", {})
+    if not detected_court:
+        court_rules = lkb_brief.get("court_rules", {})
+        if isinstance(court_rules, dict):
+            detected_court = court_rules.get("default", {})
     if detected_court:
         lines.append(f"\nCOURT FORMAT:")
         lines.append(f"  Court: {detected_court.get('court', '')}")
@@ -248,13 +307,21 @@ def _build_lkb_brief_context(lkb_brief: Dict[str, Any]) -> str:
 
     damages = lkb_brief.get("damages_categories", [])
     if damages:
-        lines.append(f"\nDAMAGES CATEGORIES (itemise each in prayer with specific amounts):")
-        for d in damages:
-            lines.append(f"  - {d.replace('_', ' ').title()}")
+        # Filter through applicability compiler
+        filtered_damages = [d for d in damages if d not in _forbidden_damages]
+        if filtered_damages:
+            lines.append(f"\nDAMAGES CATEGORIES (itemise each in prayer with specific amounts):")
+            for d in filtered_damages:
+                lines.append(f"  - {d.replace('_', ' ').title()}")
+        if _forbidden_damages:
+            lines.append(f"\n  DO NOT claim these as damages/relief (defence concepts, not plaintiff relief):")
+            for fd in _forbidden_damages:
+                lines.append(f"    - {fd.replace('_', ' ').title()}")
 
-    coa_type = lkb_brief.get("coa_type", "")
+    coa_type = normalize_coa_type(lkb_brief.get("coa_type") or "")
     coa_guidance = lkb_brief.get("coa_guidance", "")
     if coa_type:
+        # Explicit coa_type set in LKB — give strong instruction
         lines.append(f"\nCAUSE OF ACTION TYPE: {coa_type.upper()}")
         if coa_type == "single_event":
             lines.append("  *** CRITICAL: This is a SINGLE EVENT breach. The cause of action arose")
@@ -265,6 +332,11 @@ def _build_lkb_brief_context(lkb_brief: Dict[str, Any]) -> str:
         elif coa_type == "continuing":
             lines.append("  This is a continuing cause of action — the breach is ongoing.")
             lines.append("  Write both origin date AND continuing accrual language.")
+    else:
+        # No explicit coa_type — let LLM determine from case type description
+        lines.append(f"\nCAUSE OF ACTION: Determine from the case type description above whether")
+        lines.append("  the cause of action is a single event or continuing wrong, and draft")
+        lines.append("  accordingly. Use terminology consistent with the case type description.")
     if coa_guidance:
         lines.append(f"  {coa_guidance}")
 
@@ -317,16 +389,23 @@ def _build_lkb_brief_context(lkb_brief: Dict[str, Any]) -> str:
 
     prayer_template = lkb_brief.get("prayer_template", [])
     if prayer_template:
-        lines.append("\nPRAYER MUST INCLUDE (each as a separate sub-prayer):")
+        lines.append("\nPRAYER — USE THESE EXACT ITEMS (copy statutory citations verbatim — do NOT paraphrase or drop section numbers):")
         for i, item in enumerate(prayer_template, 1):
             lines.append(f"  ({chr(96+i)}) {item}")
+
+    # Anti-fabrication rules
+    lines.append("\n*** DO NOT INVENT FACTS ***")
+    lines.append("  - Do NOT assert arbitration clause exists/doesn't exist unless user provided that fact.")
+    lines.append("  - Do NOT claim mediation was attempted unless user provided mediation details.")
+    lines.append("  - Do NOT assert readiness/willingness as a conclusory formula — plead specific acts.")
+    lines.append("  - If a fact is unknown, use {{PLACEHOLDER}} — never fabricate.")
 
     return "\n".join(lines)
 
 
 async def draft_single_call_node(state: DraftingState) -> Command:
     """ONE LLM call → section-keyed JSON → stored as filled_sections."""
-    logger.info("[DRAFT] ▶ start (single-call exemplar-guided)")
+    logger.info("[DRAFT] ▶ start (single-call LKB-guided)")
     t0 = time.perf_counter()
 
     user_request = (state.get("user_request") or "").strip()
@@ -341,7 +420,7 @@ async def draft_single_call_node(state: DraftingState) -> Command:
     law_domain = classify.get("law_domain", "")
     cause_type = classify.get("cause_type", "")
 
-    # Build system prompt with exemplar (cause_type determines section list)
+    # Build system prompt (cause_type determines section list)
     system_prompt = build_draft_system_prompt(doc_type, cause_type)
 
     # Build user prompt with all context
@@ -352,7 +431,8 @@ async def draft_single_call_node(state: DraftingState) -> Command:
     verified_provisions_context = _build_verified_provisions_context(mandatory_provisions)
     rag_context = _build_rag_context(rag, settings.DRAFTING_DRAFT_RAG_LIMIT)
     procedural_requirements_context = _build_procedural_requirements_context(mandatory_provisions)
-    lkb_brief_context = _build_lkb_brief_context(lkb_brief)
+    decision_ir = _as_dict(state.get("decision_ir"))
+    lkb_brief_context = _build_lkb_brief_context(lkb_brief, decision_ir)
 
     user_prompt = build_draft_user_prompt(
         user_request=user_request,
@@ -500,9 +580,6 @@ async def draft_freetext_node(state: DraftingState) -> Command:
     doc_type = classify.get("doc_type", "")
     cause_type = classify.get("cause_type", "")
 
-    # Build simplified prompts
-    system_prompt = build_draft_freetext_system_prompt(doc_type, cause_type)
-
     court_fee_context = build_court_fee_context(
         court_fee, settings.DRAFTING_WEBSEARCH_SOURCE_URLS,
     )
@@ -510,23 +587,62 @@ async def draft_freetext_node(state: DraftingState) -> Command:
     verified_provisions_context = _build_verified_provisions_context(mandatory_provisions)
     rag_context = _build_rag_context(rag, settings.DRAFTING_DRAFT_RAG_LIMIT)
     procedural_requirements_context = _build_procedural_requirements_context(mandatory_provisions)
-    lkb_brief_context = _build_lkb_brief_context(lkb_brief)
+    decision_ir = _as_dict(state.get("decision_ir"))
 
-    user_prompt = build_draft_freetext_user_prompt(
-        user_request=user_request,
-        doc_type=doc_type,
-        law_domain=classify.get("law_domain", ""),
-        jurisdiction=_as_json(intake.get("jurisdiction", {})),
-        parties=_as_json(intake.get("parties", {})),
-        facts=_as_json(intake.get("facts", {})),
-        evidence=_as_json(intake.get("evidence", [])),
-        verified_provisions=verified_provisions_context,
-        limitation=limitation_context,
-        court_fee_context=court_fee_context,
-        rag_context=rag_context,
-        procedural_requirements=procedural_requirements_context,
-        lkb_brief=lkb_brief_context,
-    )
+    # --- v11.0: try structured prompt (schema + LKB 2-layer) first ---
+    doc_schema = get_schema(doc_type) if doc_type else None
+    if doc_schema and lkb_brief:
+        logger.info("[DRAFT_FREETEXT] using v11.0 structured prompt (schema=%s)", doc_schema.get("code"))
+        system_prompt = build_structured_system_prompt(doc_schema)
+
+        structured_context = build_structured_draft_prompt(
+            lkb_entry=lkb_brief,
+            doc_schema=doc_schema,
+            user_facts=user_request,
+            verified_provisions=verified_provisions_context,
+            parties=_as_json(intake.get("parties", {})),
+            jurisdiction=_as_json(intake.get("jurisdiction", {})),
+            court_fee_context=court_fee_context,
+            decision_ir=decision_ir,
+        )
+
+        # Build user prompt with structured context replacing lkb_brief
+        user_prompt = build_draft_freetext_user_prompt(
+            user_request=user_request,
+            doc_type=doc_type,
+            law_domain=classify.get("law_domain", ""),
+            jurisdiction=_as_json(intake.get("jurisdiction", {})),
+            parties=_as_json(intake.get("parties", {})),
+            facts=_as_json(intake.get("facts", {})),
+            evidence=_as_json(intake.get("evidence", [])),
+            verified_provisions=verified_provisions_context,
+            limitation=limitation_context,
+            court_fee_context=court_fee_context,
+            rag_context=rag_context,
+            procedural_requirements=procedural_requirements_context,
+            lkb_brief=structured_context,
+        )
+    else:
+        # --- Fallback: v5.1 flat prompt ---
+        logger.info("[DRAFT_FREETEXT] using v5.1 flat prompt (no schema match for doc_type=%s)", doc_type)
+        system_prompt = build_draft_freetext_system_prompt(doc_type, cause_type)
+        lkb_brief_context = _build_lkb_brief_context(lkb_brief, decision_ir)
+
+        user_prompt = build_draft_freetext_user_prompt(
+            user_request=user_request,
+            doc_type=doc_type,
+            law_domain=classify.get("law_domain", ""),
+            jurisdiction=_as_json(intake.get("jurisdiction", {})),
+            parties=_as_json(intake.get("parties", {})),
+            facts=_as_json(intake.get("facts", {})),
+            evidence=_as_json(intake.get("evidence", [])),
+            verified_provisions=verified_provisions_context,
+            limitation=limitation_context,
+            court_fee_context=court_fee_context,
+            rag_context=rag_context,
+            procedural_requirements=procedural_requirements_context,
+            lkb_brief=lkb_brief_context,
+        )
 
     messages = [
         SystemMessage(content=system_prompt),
@@ -631,5 +747,5 @@ async def draft_freetext_node(state: DraftingState) -> Command:
     # Skip structural_gate + assembler — go straight to evidence_anchoring
     return Command(
         update={"draft": {"draft_artifacts": [draft_artifact]}},
-        goto="evidence_anchoring",
-    )
+            goto="domain_consistency_gate",
+        )

@@ -1,0 +1,132 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 215.1,
+  "draft_length": 8270,
+  "placeholder_count": 22,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "PASS",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "PASS",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "PASS",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "PASS",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "PASS",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "PASS",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "PASS",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "PASS",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "PASS",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "PASS",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "PASS",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "PASS",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "PASS",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "PASS",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "PASS",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "PASS",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "PASS",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "PASS",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "FAIL",
+      "detail": "Reasonable placeholder count (22)"
+    }
+  ],
+  "score": "21/22 (95%)",
+  "draft_text": "IN THE COURT OF THE District Court / Civil Court\nAT Bengaluru\n\nO.S. No. __________ / 20____\n\nRam Kumar,\nAged about 45 years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: Jayanagar, Bengaluru.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\nSuresh Patel,\nAged about 38 years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: Koramangala, Bengaluru.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF MONEY LENT / ADVANCE PAID WITH INTEREST AND COSTS\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the cause of action arose within the local limits of the jurisdiction of this Hon'ble Court at Bengaluru, and the Defendant carries on business / resides within such territorial limits.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only), which is within the pecuniary limits prescribed for this Hon'ble Court.\n\nLIMITATION\n\n4. The present suit is within the period of limitation prescribed under Article 19 of the Schedule to the Limitation Act, 1963, which provides a period of three years from the date when the money became due. The suit is filed well within the prescribed limitation period from the date of default.\n\nFACTS OF THE CASE\n\n5. The Plaintiff and the Defendant are known to each other. The Defendant approached the Plaintiff requesting financial assistance for {{PURPOSE_OF_LOAN}} and promised to repay the same within a stipulated time.\n\n6. Acting on the request and reposing trust in the Defendant, the Plaintiff advanced a sum of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) as a hand loan to the Defendant on 15.03.2024. The said amount was transferred via NEFT from the Plaintiff's bank account to the Defendant's bank account, bearing UTR No. AXIB20240315123456. A copy of the bank transfer record is annexed herewith as Annexure A.\n\n7. Although no formal written agreement was executed between the parties, the Defendant acknowledged the receipt of the said loan amount and the liability to repay the same through electronic messages exchanged on WhatsApp. The Defendant admitted the debt via messages dated {{WHATSAPP_DATE}} wherein the Defendant stated {{WHATSAPP_CONTENT}}. Copies of the relevant WhatsApp chat transcripts are annexed herewith as Annexure B.\n\n8. It was orally agreed between the parties that the Defendant shall repay the principal amount on or before 20.06.2024. The Plaintiff relied on the promise and assurance given by the Defendant regarding the timely repayment of the said hand loan.\n\n9. The Plaintiff states that the transaction was bona fide and the Defendant is legally bound to repay the same. The Plaintiff has always been ready and willing to perform his part of the obligation under the oral agreement.\n\nBREACH AND PARTICULARS OF DEFAULT\n\n10. The Defendant failed to repay the principal amount on the agreed date, i.e., 20.06.2024, thereby committing a breach of the oral agreement and the acknowledgment made via WhatsApp.\n\n11. Despite the default, the Plaintiff made repeated oral demands and requests to the Defendant for the repayment of the due amount. The Defendant postponed the repayment on one pretext or another and failed to discharge the liability.\n\n12. Consequently, the Plaintiff caused a legal notice to be issued to the Defendant dated 01.07.2024 through {{NOTICE_SENDER}}, calling upon the Defendant to repay the outstanding amount within the stipulated time. The notice was sent via {{NOTICE_DELIVERY_MODE}}. A copy of the said legal notice and postal proof is annexed herewith as Annexure C.\n\n13. The Defendant received the said notice but failed to comply with the requisition made therein. The Defendant has neither repaid the principal amount nor acknowledged the liability further, leaving the Plaintiff with no option but to approach this Hon'ble Court.\n\nDAMAGES\n\n14. Due to the wrongful withholding of the Plaintiff's money by the Defendant, the Plaintiff has suffered financial loss and hardship. The Plaintiff was deprived of the use of the said funds for business and personal requirements since the date of default.\n\n15. The Plaintiff is entitled to interest on the principal amount at the rate of 12% per annum from the date of default, i.e., 20.06.2024, till the date of realisation. The Defendant is liable to compensate the Plaintiff for the delay in repayment.\n\n16. The Plaintiff has thus incurred a loss equivalent to the principal amount along with accrued interest, which the Defendant is legally bound to pay. The Plaintiff claims the entire amount as damages for the breach of obligation to repay the loan.\n\nLEGAL BASIS\n\n17. The present cause is govern",
+  "structural_issues": [],
+  "citation_issues": [],
+  "evidence_anchoring_issues": [
+    {
+      "issue_type": "unsupported_amount",
+      "description": "Unsupported amount: RS\n\n10",
+      "original": "RS\n\n10",
+      "replacement": "{{AMOUNT}}",
+      "severity": "replaced"
+    }
+  ],
+  "errors": []
+}

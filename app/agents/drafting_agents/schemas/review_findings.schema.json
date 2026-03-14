@@ -1,95 +1,120 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ReviewFindings",
-  "description": "Schema for structured review output — claim-by-claim validation + issues",
+  "title": "ReviewNode",
+  "description": "Schema for structured review output used by the drafting review node",
   "type": "object",
-  "required": ["review_pass"],
+  "required": ["review"],
   "properties": {
-    "review_pass": {
-      "type": "boolean",
-      "description": "True if no blocking issues found"
-    },
-    "claim_checks": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/claim_check"
-      },
-      "description": "Per-sentence claim validation results"
-    },
-    "blocking_issues": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/review_issue"
-      },
-      "description": "Legal defects that would cause rejection"
-    },
-    "non_blocking_issues": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/review_issue"
-      },
-      "description": "Style/formatting issues"
+    "review": {
+      "$ref": "#/definitions/review"
     }
   },
   "definitions": {
-    "claim_check": {
+    "review": {
       "type": "object",
-      "required": ["claim_text", "claim_type", "verdict"],
+      "required": ["review_pass"],
       "properties": {
-        "claim_text": {
-          "type": "string",
-          "description": "Exact sentence from draft"
+        "review_pass": {
+          "type": "boolean",
+          "description": "True if no blocking issues were found"
         },
-        "claim_type": {
-          "type": "string",
-          "description": "payment|notice|breach|admission|agreement|refusal|no_benefit|failure_of_consideration"
-        },
-        "supported_by": {
+        "blocking_issues": {
           "type": "array",
-          "items": { "type": "string" },
-          "description": "Evidence references, e.g. intake.facts.amounts.principal"
+          "items": {
+            "$ref": "#/definitions/review_issue"
+          }
         },
-        "verdict": {
-          "type": "string",
-          "enum": ["supported", "partially_supported", "unsupported"]
+        "non_blocking_issues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/review_issue"
+          }
+        },
+        "unsupported_statements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/unsupported_statement"
+          }
+        },
+        "final_artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/draft_artifact"
+          }
         }
       }
     },
     "review_issue": {
       "type": "object",
-      "required": ["section_id", "issue_type", "severity", "fix_instruction"],
+      "required": ["issue", "fix", "location"],
       "properties": {
-        "section_id": {
-          "type": "string",
-          "description": "Must match a section ID from the template"
+        "issue": {
+          "type": "string"
         },
-        "issue_type": {
-          "type": "string",
-          "enum": [
-            "missing_provision",
-            "wrong_citation",
-            "unsupported_claim",
-            "missing_alternative_plea",
-            "annexure_mismatch",
-            "missing_mandatory_section",
-            "limitation_error",
-            "jurisdiction_incomplete",
-            "interest_structure_incomplete",
-            "verification_defective",
-            "cause_of_action_incomplete"
-          ]
+        "fix": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
         },
         "severity": {
           "type": "string",
-          "enum": ["blocking", "non_blocking"]
+          "enum": ["legal", "formatting"],
+          "default": "legal"
+        }
+      }
+    },
+    "unsupported_statement": {
+      "type": "object",
+      "required": ["statement", "reason"],
+      "properties": {
+        "statement": {
+          "type": "string"
         },
-        "quote": {
-          "type": "string",
-          "description": "Exact substring from draft text with the issue"
+        "reason": {
+          "type": "string"
         },
-        "fix_instruction": {
-          "type": "string",
-          "description": "One imperative sentence: what to fix"
+        "location": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "draft_artifact": {
+      "type": "object",
+      "required": ["doc_type", "title", "text"],
+      "properties": {
+        "doc_type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "placeholders_used": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/placeholder_used"
+          }
+        },
+        "citations_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "placeholder_used": {
+      "type": "object",
+      "required": ["key", "reason"],
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
         }
       }
     }

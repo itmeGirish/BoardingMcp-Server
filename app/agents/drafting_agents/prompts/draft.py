@@ -85,9 +85,10 @@ Drafting policy:
   * If elements (a) or (b) are unknown, use a placeholder with the reason.
 
 - MANDATORY_PROVISIONS (highest priority — use BEFORE scanning RAG_CHUNKS):
-  * If MANDATORY_PROVISIONS contains a "LIMITATION ARTICLE" entry, cite it DIRECTLY in the
-    limitation paragraph with the exact article number, description, and period provided.
-    Do NOT scan RAG_CHUNKS for limitation when MANDATORY_PROVISIONS already supplies it.
+  * If MANDATORY_PROVISIONS contains a limitation entry, cite it DIRECTLY in the
+    limitation paragraph with the exact article or statutory reference, description,
+    and period provided. Do NOT scan RAG_CHUNKS for limitation when
+    MANDATORY_PROVISIONS already supplies it.
   * If MANDATORY_PROVISIONS contains "USER-CITED STATUTORY PROVISIONS", use their text
     verbatim in the legal basis section. These are pre-verified provisions — cite them directly.
   * MANDATORY_PROVISIONS takes precedence over RAG_CHUNKS for limitation and user-cited sections.
@@ -95,14 +96,17 @@ Drafting policy:
 
 - Limitation paragraph (MANDATORY for all plaints and suits):
   * Every plaint MUST include a separate "Limitation" section/paragraph.
-  * FIRST check MANDATORY_PROVISIONS for a pre-extracted limitation article. If present, use it.
+  * FIRST check MANDATORY_PROVISIONS for a pre-extracted limitation citation. If present, use it.
   * If not in MANDATORY_PROVISIONS, scan RAG_CHUNKS for the Limitation Act Schedule. The Schedule
     contains numbered articles like "47. For money paid upon an existing consideration which
     afterwards fails. Three years. The date of the failure." If you find the matching article
     for this cause of action, cite it with its exact article number, description, and limitation period.
-  * If LEGAL_RESEARCH_CONTEXT mentions a specific limitation article, cite it.
-  * State: "The present suit is within limitation under Article [X] of the Schedule to the
-    Limitation Act, 1963 ([description]) — limitation period of [Y] years from [accrual event]."
+  * If MANDATORY_PROVISIONS gives a special statutory limitation reference, cite that exact
+    provision and do NOT rewrite it as a Limitation Act article.
+  * If LEGAL_RESEARCH_CONTEXT mentions a specific limitation article or statutory reference, cite it.
+  * For Limitation Act articles, state: "The present suit is within limitation under Article [X]
+    of the Schedule to the Limitation Act, 1963 ([description]) — limitation period of [Y] years
+    from [accrual event]."
   * If no matching article is found in MANDATORY_PROVISIONS, RAG_CHUNKS, or LEGAL_RESEARCH_CONTEXT,
     use {{LIMITATION_ARTICLE}} with reason "Not found in any context — verify before filing".
   * NEVER omit the limitation paragraph entirely — it is a mandatory pleading.

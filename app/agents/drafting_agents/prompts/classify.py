@@ -30,7 +30,7 @@ Your job:
    For CIVIL, use one of these cause_type values:
    Money:     money_recovery_loan, money_recovery_goods, failure_of_consideration, cheque_bounce, deposit_refund
    Breach:    breach_of_contract, breach_dealership_franchise, breach_employment, breach_construction
-   Property:  specific_performance, recovery_of_possession, permanent_injunction, mandatory_injunction, declaration_title, partition
+   Property:  specific_performance, recovery_of_possession_tenant, recovery_of_possession_licensee, recovery_of_possession_trespasser, recovery_of_possession_co_owner, permanent_injunction, mandatory_injunction, declaration_title, partition
    Damages:   tortious_negligence, defamation, nuisance
    Other:     eviction, mortgage_redemption, easement, partnership_dissolution, motor_accident
    Pick the MOST SPECIFIC match. E.g., if dealership terminated → breach_dealership_franchise (not breach_of_contract).

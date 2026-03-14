@@ -1,0 +1,132 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 361.1,
+  "draft_length": 7347,
+  "placeholder_count": 21,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "PASS",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "PASS",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "PASS",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "PASS",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "PASS",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "PASS",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "PASS",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "PASS",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "PASS",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "PASS",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "PASS",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "PASS",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "PASS",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "PASS",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "PASS",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "PASS",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "PASS",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "PASS",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "FAIL",
+      "detail": "Reasonable placeholder count (21)"
+    }
+  ],
+  "score": "21/22 (95%)",
+  "draft_text": "IN THE COURT OF THE District Court / Civil Court\nAT Bengaluru\n\nO.S. No. __________ / 20____\n\nRam Kumar,\nAged about 45 years,\nOccupation: {{PLAINTIFF_OCCUPATION}},\nResiding at: Jayanagar, Bengaluru.\n\n                                                        ... PLAINTIFF\n\n                    VERSUS\n\nSuresh Patel,\nAged about 38 years,\nOccupation: {{DEFENDANT_OCCUPATION}},\nResiding at: Koramangala, Bengaluru.\n\n                                                        ... DEFENDANT\n\nSUIT FOR RECOVERY OF MONEY LENT / ADVANCE PAID WITH INTEREST AND COSTS\n\nMOST RESPECTFULLY SHOWETH:\n\nJURISDICTION\n\n1. The Plaintiff is a person sui juris and competent to institute the present suit. The Defendant is also a person sui juris and can be sued.\n\n2. This Hon'ble Court has territorial jurisdiction to try and entertain the present suit inasmuch as the cause of action arose within the local limits of the jurisdiction of this Hon'ble Court at Bengaluru, and the Defendant carries on business / resides within such territorial limits.\n\n3. This Hon'ble Court has pecuniary jurisdiction to try the present suit, the suit being valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only), which is within the pecuniary limits prescribed for this Hon'ble Court.\n\nLIMITATION\n\n4. The present suit is within the period of limitation prescribed under Article 113 of the Schedule to the Limitation Act, 1963, which provides a period of three years from the date of accrual of the cause of action. The suit is filed well within the prescribed limitation period.\n\nFACTS OF THE CASE\n\n5. The Plaintiff is {{PLAINTIFF_OCCUPATION}} by profession and the Defendant is {{DEFENDANT_OCCUPATION}} by profession. The parties are known to each other and maintain cordial relations.\n\n6. On 15.03.2024, the Defendant approached the Plaintiff requesting financial assistance. Acting on the request and trust reposed, the Plaintiff advanced a sum of Rs. 15,00,000/- (Rupees Fifteen Lakhs only) to the Defendant via NEFT bank transfer. The transaction is evidenced by the bank record bearing UTR No. AXIB20240315123456, marked as **Annexure A**.\n\n7. Though no formal written loan agreement was executed at the time of advancement, the Defendant acknowledged the receipt of the said loan amount and the liability to repay the same through digital communications on WhatsApp dated {{WHATSAPP_COMMUNICATION_DATE}}. The copies of the relevant WhatsApp messages are marked as **Annexure B**.\n\n8. The loan was advanced on the oral understanding that the same shall be repaid on or before 20.06.2024. The Defendant agreed to these terms at the time of receiving the funds.\n\nBREACH AND PARTICULARS OF DEFAULT\n\n9. The Defendant failed to repay the loan amount on the agreed date i.e., 20.06.2024, thereby committing a breach of the oral agreement.\n\n10. The Plaintiff made repeated oral demands upon the Defendant for repayment of the outstanding dues, but the Defendant postponed the same on one pretext or another.\n\n11. Consequently, the Plaintiff issued a legal notice dated 01.07.2024 calling upon the Defendant to repay the principal amount along with interest. The copy of the said legal notice is marked as **Annexure C**.\n\n12. Despite receipt of the said notice, the Defendant has failed to comply with the demand or reply to the same satisfactorily. The status of the reply to the legal notice is {{NOTICE_REPLY_STATUS}}.\n\nDAMAGES\n\n13. By reason of the breaches and defaults complained of above, the Plaintiff has suffered loss and damage for which the Defendant is liable to compensate.\n\n14. The Plaintiff is entitled to recover the principal sum of Rs. 15,00,000/- along with interest at the rate of 12% per annum from the date of default i.e., 20.06.2024 till the date of realisation.\n\n15. The cause of action for the present suit arose on 15.03.2024 when the loan was advanced, subsequently on 20.06.2024 when the Defendant failed to repay, and finally on 01.07.2024 when the legal notice was issued, all within the jurisdiction of this Hon'ble Court.\n\nLEGAL BASIS\n\n16. The present cause is governed by Indian Contract Act, 1872, including Section 73.\n\n17. The present cause is governed by Code of Civil Procedure, 1908, including Section 9, Section 20, Section 34.\n\nCAUSE OF ACTION\n\n18. The cause of action for the present suit first arose on 20.06.2024 when the Defendant committed the breach / wrongful act giving rise to the Plaintiff's right to institute the present suit.\n\n19. The cause of action further arose when the Defendant, despite receipt of the legal notice dated {{NOTICE_DATE}}, failed and refused to comply with the Plaintiff's demand.\n\n20. The cause of action is not a continuing cause of action. The breach consisted of a single event. However, the Plaintiff's right to damages subsists.\n\nVALUATION AND COURT FEE\n\n21. The suit is valued at Rs. {{TOTAL_SUIT_VALUE}}/- (Rupees {{TOTAL_SUIT_VALUE_WORDS}} Only) for the purposes of jurisdiction and court fee. Appropriate court fee has been paid on th",
+  "structural_issues": [],
+  "citation_issues": [],
+  "evidence_anchoring_issues": [
+    {
+      "issue_type": "unsupported_amount",
+      "description": "Unsupported amount: RS\n\n9",
+      "original": "RS\n\n9",
+      "replacement": "{{AMOUNT}}",
+      "severity": "replaced"
+    }
+  ],
+  "errors": []
+}

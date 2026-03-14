@@ -142,21 +142,17 @@ class TestStructuralGate:
 # ===========================================================================
 
 class TestCitationValidator:
-    """Test citation_validator_node: verifies citations against enrichment."""
+    """Test citation_validator_node: string containment approach (v5.1)."""
 
     @pytest.fixture(autouse=True)
     def _import(self):
         from app.agents.drafting_agents.nodes.citation_validator import (
             citation_validator_node,
             _RE_CASE_CITATION,
-            _RE_STATUTE_CITATION,
-            _RE_LIM_ARTICLE,
             _ALWAYS_ALLOWED,
         )
         self.node = citation_validator_node
         self.re_case = _RE_CASE_CITATION
-        self.re_statute = _RE_STATUTE_CITATION
-        self.re_lim = _RE_LIM_ARTICLE
         self.allowed = _ALWAYS_ALLOWED
 
     def test_always_allowed_contains_common_cpc(self):
@@ -165,6 +161,9 @@ class TestCitationValidator:
         assert "Section 151" in self.allowed
         assert "Article 226" in self.allowed
         assert "Section 65B" in self.allowed
+        # v5.1: common substantive sections also allowed
+        assert "Section 73" in self.allowed
+        assert "Section 10" in self.allowed
 
     def test_case_citation_regex_detects_air(self):
         text = "as held in AIR 2015 SC 123"
@@ -176,20 +175,32 @@ class TestCitationValidator:
         matches = list(self.re_case.finditer(text))
         assert len(matches) >= 1
 
-    def test_statute_citation_regex(self):
-        text = "Section 65 of the Indian Contract Act, 1872"
-        matches = list(self.re_statute.finditer(text))
-        assert len(matches) >= 1
-        assert matches[0].group(1) == "65"
+    def test_no_false_positive_on_currency_amounts(self):
+        """v5.1: Rs. 15,00,000 must NOT produce 'Section 15' warnings."""
+        state = {
+            "draft": {
+                "draft_artifacts": [{
+                    "text": (
+                        "The plaintiff claims Rs. 15,00,000/- (Rupees Fifteen Lakhs). "
+                        "The suit is valued at Rs. 20,00,000/-. "
+                        "Section 73 of the Indian Contract Act applies."
+                    ),
+                }],
+            },
+            "mandatory_provisions": {
+                "verified_provisions": [
+                    {"section": "Section 73", "act": "Indian Contract Act"},
+                ],
+            },
+        }
+        result = self.node(state)
+        issues = result.update.get("citation_issues", [])
+        # No "Section 15" or "Section 20" warnings from currency amounts
+        section_warns = [i for i in issues if "Section 15" in str(i) or "Section 20" in str(i)]
+        assert len(section_warns) == 0
 
-    def test_limitation_article_regex(self):
-        text = "Article 55 of the Schedule to the Limitation Act"
-        matches = list(self.re_lim.finditer(text))
-        assert len(matches) >= 1
-        assert matches[0].group(1) == "55"
-
-    def test_clean_draft_no_issues(self):
-        """Draft citing only verified + always-allowed provisions → zero issues."""
+    def test_verified_provision_in_draft_no_issues(self):
+        """v5.1: verified provision found in draft text → no issues."""
         state = {
             "draft": {
                 "draft_artifacts": [{
@@ -228,24 +239,68 @@ class TestCitationValidator:
         assert len(errors) >= 1
         assert errors[0]["type"] == "fabricated_case_citation"
 
-    def test_unverified_statute_flagged_as_warn(self):
-        """Section not in verified_provisions → WARN."""
+    def test_verified_provision_missing_from_draft(self):
+        """v5.1: verified provision NOT in draft → INFO (not WARN)."""
         state = {
             "draft": {
                 "draft_artifacts": [{
-                    "text": "Under Section 420 of the Indian Penal Code",
+                    "text": "The plaintiff seeks relief under general principles.",
                 }],
             },
             "mandatory_provisions": {
                 "verified_provisions": [
-                    {"section": "Section 65", "act": "Indian Contract Act"},
+                    {"section": "Section 92", "act": "Code of Civil Procedure"},
                 ],
+            },
+        }
+        result = self.node(state)
+        issues = result.update.get("citation_issues", [])
+        info_issues = [i for i in issues if i["severity"] == "INFO"]
+        assert len(info_issues) >= 1
+        assert info_issues[0]["type"] == "verified_provision_not_cited"
+
+    def test_limitation_article_missing_from_draft(self):
+        """v5.1: limitation article not cited in draft → WARN."""
+        state = {
+            "draft": {
+                "draft_artifacts": [{
+                    "text": "The suit is filed within time.",
+                }],
+            },
+            "mandatory_provisions": {
+                "verified_provisions": [],
+                "limitation": {"article": "55"},
             },
         }
         result = self.node(state)
         issues = result.update.get("citation_issues", [])
         warns = [i for i in issues if i["severity"] == "WARN"]
         assert len(warns) >= 1
+        assert warns[0]["type"] == "limitation_reference_missing"
+
+    def test_special_limitation_reference_missing_from_draft(self):
+        """Special-statute limitation reference not cited in draft → WARN."""
+        state = {
+            "draft": {
+                "draft_artifacts": [{
+                    "text": "The complaint is within limitation.",
+                }],
+            },
+            "mandatory_provisions": {
+                "verified_provisions": [],
+                "limitation": {
+                    "article": "N/A",
+                    "reference": "Section 69 of the Consumer Protection Act, 2019",
+                    "act": "Consumer Protection Act, 2019",
+                },
+            },
+        }
+        result = self.node(state)
+        issues = result.update.get("citation_issues", [])
+        warns = [i for i in issues if i["severity"] == "WARN"]
+        assert len(warns) >= 1
+        assert warns[0]["type"] == "limitation_reference_missing"
+        assert "Section 69" in warns[0]["citation"]
 
     def test_disabled_setting_skips(self):
         """When DRAFTING_CITATION_VALIDATOR_ENABLED=False, skip with empty issues."""
@@ -259,7 +314,6 @@ class TestCitationValidator:
             }
             result = self.node(state)
             assert result.update.get("citation_issues") == []
-            # Routes to END (review skipped) or "review" depending on DRAFTING_SKIP_REVIEW
             assert result.goto in ("review", "__end__")
         finally:
             settings.DRAFTING_CITATION_VALIDATOR_ENABLED = original
@@ -271,7 +325,6 @@ class TestCitationValidator:
             "mandatory_provisions": {"verified_provisions": []},
         }
         result = self.node(state)
-        # Routes to END (review skipped) or "review" depending on DRAFTING_SKIP_REVIEW
         assert result.goto in ("review", "__end__")
 
 
@@ -493,25 +546,13 @@ class TestDraftPrompt:
     @pytest.fixture(autouse=True)
     def _import(self):
         from app.agents.drafting_agents.prompts.draft_prompt import (
-            load_exemplar,
             get_section_keys,
             build_draft_system_prompt,
             build_draft_user_prompt,
         )
-        self.load_exemplar = load_exemplar
         self.get_keys = get_section_keys
         self.build_system = build_draft_system_prompt
         self.build_user = build_draft_user_prompt
-
-    def test_load_exemplar_civil(self):
-        text = self.load_exemplar("money_recovery_plaint")
-        assert len(text) > 100
-        assert "{{" in text  # Should have placeholders
-        assert "PRAYER" in text or "prayer" in text.lower()
-
-    def test_load_exemplar_unknown_falls_back_to_civil(self):
-        text = self.load_exemplar("some_unknown_type")
-        assert len(text) > 100  # Should load civil_plaint.txt as default
 
     def test_section_keys_civil(self):
         keys = self.get_keys("money_recovery_plaint")

@@ -26,10 +26,9 @@ from ..lkb import (
     filter_superseded_provisions,
     lookup,
     apply_specificity_rule,
-    resolve_conditional,
-    resolve_entry,
+    infer_cause_type,
 )
-from ..lkb.civil import infer_cause_type
+from ..lkb.limitation import build_limitation_verified_provision, normalize_coa_type
 from ..states import DraftingState
 from ..tools.websearch import _fetch_one, _strip_html, _is_legal_relevant, ProceduralWebSearchTool
 from ._utils import _as_dict, extract_json_from_text
@@ -274,24 +273,20 @@ async def _websearch_limitation_retry(
 # ---------------------------------------------------------------------------
 
 async def enrichment_node(state: DraftingState) -> Command:
-    """Enrichment with LLM limitation selector + parallel court_fee.
+    """Deterministic enrichment — LKB only, zero LLM calls, zero API calls.
 
-    Runs court_fee web searches CONCURRENTLY with enrichment logic to save ~5s.
-    Routes directly to draft_freetext (skips separate court_fee node).
-
-    1. Regex-extract ALL candidate limitation articles from RAG chunks.
-    2. Web search adds more candidates if RAG has few.
-    3. ONE glm_model LLM call selects the right article from candidates.
-    4. If LLM unsure → UNKNOWN → pipeline uses placeholder.
-    5. Parse user_request for explicitly cited sections.
-    6. For each cited section not in RAG → web search for provision text.
-    7. Build verified_provisions list for citation validator.
+    RAG and websearch disconnected (code preserved in tools/, nodes/ragDomain.py).
+    All enrichment now comes from the LKB (92 cause types, fully deterministic):
+      1. Limitation article from LKB
+      2. User-cited provisions parsed from user_request (marked unverified)
+      3. LKB brief (acts, reliefs, court rules, court detection)
+      4. Verified provisions built from LKB primary_acts + alternative_acts
     """
-    logger.info("[ENRICHMENT] ▶ start (with parallel court_fee)")
+    logger.info("[ENRICHMENT] ▶ start (deterministic, LKB-only)")
     t0 = time.perf_counter()
 
-    rag = _as_dict(state.get("rag"))
     classify = _as_dict(state.get("classify"))
+    civil_decision = _as_dict(state.get("civil_decision"))
     intake = _as_dict(state.get("intake"))
     user_request = (state.get("user_request") or "").strip()
 
@@ -299,463 +294,192 @@ async def enrichment_node(state: DraftingState) -> Command:
     classification = _as_dict(classify.get("classification"))
     facts = _as_dict(intake.get("facts"))
     topics = classification.get("topics") or []
-    coa = (topics[0] if topics else "").lower().replace(" ", "_")
-
-    # ── Start court_fee searches in parallel (background tasks) ────────
-    jurisdiction = _as_dict(intake.get("jurisdiction"))
-    state_name = (jurisdiction.get("state") or "").strip()
-    court_type = (jurisdiction.get("court_type") or jurisdiction.get("city") or "").strip()
-    amounts = _as_dict(facts.get("amounts"))
-    suit_value_cf: float | None = amounts.get("principal")
-    jurisdiction_str_cf = " ".join(filter(None, [state_name, court_type]))
-    coa_label_cf = topics[0] if topics else ""
-
-    court_fee_task = None
-    legal_research_task = None
-    if state_name:
-        court_fee_task = asyncio.ensure_future(CourtFeeWebSearchTool(
-            state=state_name, court_type=court_type,
-            doc_type=doc_type, suit_value=suit_value_cf,
-        ))
-    if doc_type:
-        legal_research_task = asyncio.ensure_future(LegalResearchWebSearchTool(
-            doc_type=doc_type, cause_of_action=coa_label_cf,
-            jurisdiction=jurisdiction_str_cf,
-        ))
-
-    all_chunks = rag.get("chunks") or []
-    chunk_texts = [c.get("text", "") for c in all_chunks if isinstance(c, dict)]
+    resolved_cause_type = normalize_coa_type(
+        str(civil_decision.get("resolved_cause_type") or classify.get("cause_type") or "")
+    )
+    topic_hint = normalize_coa_type((topics[0] if topics else "").lower().replace(" ", "_"))
+    coa = resolved_cause_type or topic_hint
 
     log: List[str] = []
     result: Dict[str, Any] = {
         "limitation": None,
         "user_cited_provisions": [],
         "verified_provisions": [],
+        "procedural_provisions": [],
+        "procedural_context": "",
         "enrichment_log": log,
     }
 
-    # ── Step 1-4: Limitation article (candidates → LLM selection) ────
-    needs_lim = any(kw in doc_type for kw in (
-        "plaint", "suit", "recovery", "damages", "defamation",
-        "breach", "money", "injunction", "partition", "declaration",
-    ))
+    # ── Step 1: Limitation from LKB (deterministic) ───────────────────
+    cause_type = coa or ""
+    law_domain = classify.get("law_domain", "Civil")
 
-    if needs_lim:
-        # Step 0: Check LKB FIRST — if article is "NONE", skip search entirely
-        _pre_cause_type = coa or ""
-        if not _pre_cause_type:
-            _pre_law_domain = (classify.get("law_domain") or "Civil")
-            _pre_cause_type = (classify.get("cause_type") or "").lower().replace(" ", "_").replace("-", "_")
-            if not _pre_cause_type and _pre_law_domain == "Civil":
-                _inferred = infer_cause_type(doc_type, user_request, (classification.get("topics") or []))
-                _pre_cause_type = _inferred[0] if isinstance(_inferred, tuple) else _inferred
-        if _pre_cause_type:
-            _pre_lkb = lookup(classify.get("law_domain", "Civil"), _pre_cause_type)
-            if _pre_lkb:
-                _pre_lim_raw = _pre_lkb.get("limitation", {})
-                # Resolve conditional limitations (e.g. recovery_of_possession)
-                if isinstance(_pre_lim_raw, dict) and _pre_lim_raw.get("_type") == "conditional":
-                    _pre_lim = resolve_conditional(_pre_lim_raw, user_request) or {}
-                else:
-                    _pre_lim = _pre_lim_raw
-                _lkb_art = str(_pre_lim.get("article", ""))
-                if _lkb_art == "NONE":
-                    result["limitation"] = {
-                        "article": "NONE",
-                        "description": _pre_lim.get("description", "No limitation applies"),
-                        "period": _pre_lim.get("period", ""),
-                        "reason": f"LKB: {_pre_cause_type} — {_pre_lim.get('from', '')}",
-                        "source": "lkb",
-                    }
-                    log.append(f"limitation: LKB says NONE for {_pre_cause_type} — skipped search")
-                    logger.info("[ENRICHMENT] limitation: LKB NONE for %s — skipped search", _pre_cause_type)
-                    needs_lim = False
-                elif _lkb_art:
-                    # LKB has a specific article — trust it over web search/LLM selector
-                    result["limitation"] = {
-                        "article": _lkb_art,
-                        "description": _pre_lim.get("description", ""),
-                        "period": _pre_lim.get("period", ""),
-                        "from": _pre_lim.get("from", ""),
-                        "reason": f"LKB: {_pre_cause_type} — {_pre_lim.get('description', '')}",
-                        "source": "lkb",
-                    }
-                    log.append(f"limitation: LKB has Article {_lkb_art} for {_pre_cause_type} — skipped search")
-                    logger.info("[ENRICHMENT] limitation: LKB Article %s for %s — skipped search", _lkb_art, _pre_cause_type)
-                    needs_lim = False
+    if not cause_type:
+        _pre_cause_type = (classify.get("cause_type") or "").lower().replace(" ", "_").replace("-", "_")
+        if not _pre_cause_type and law_domain == "Civil":
+            _inferred = infer_cause_type(doc_type, user_request, (classification.get("topics") or []))
+            _pre_cause_type = _inferred[0] if isinstance(_inferred, tuple) else _inferred
+        cause_type = normalize_coa_type(_pre_cause_type)
 
-    if needs_lim:
-        # Step 1: Extract ALL candidates from RAG (aggressive — grab every mention)
-        candidates = _extract_limitation_candidates(chunk_texts)
-        log.append(f"limitation: {len(candidates)} candidates from RAG")
-        logger.info("[ENRICHMENT] limitation candidates from RAG: %d", len(candidates))
+    if cause_type:
+        cause_type = normalize_coa_type(cause_type)
 
-        # Step 2: If few candidates, add from web search
-        if len(candidates) < 3:
-            ws_candidates = await _websearch_limitation_candidates(coa, doc_type)
-            candidates.extend(ws_candidates)
-            if ws_candidates:
-                log.append(f"limitation: +{len(ws_candidates)} candidates from websearch")
-                logger.info("[ENRICHMENT] +%d candidates from websearch", len(ws_candidates))
+    lkb_entry = lookup(law_domain, cause_type) if cause_type else None
 
-        # Step 3: LLM selects from candidates
-        if candidates:
-            lim = await _llm_select_limitation(
-                candidates, facts, doc_type, coa, user_request,
-            )
-            if lim:
-                result["limitation"] = lim
-                log.append(f"limitation: LLM selected Article {lim['article']} ({lim.get('reason', '')})")
-                logger.info(
-                    "[ENRICHMENT] limitation LLM selected | article=%s | reason=%s",
-                    lim["article"], lim.get("reason", ""),
-                )
-            else:
-                # Step 3.5: RETRY — more specific web search
-                retry_enabled = getattr(settings, "DRAFTING_LIMITATION_RETRY", True)
-                if retry_enabled:
-                    log.append("limitation: LLM UNKNOWN — retrying with targeted query")
-                    logger.info("[ENRICHMENT] limitation UNKNOWN — retrying")
-                    facts_summary = facts.get("summary", "")
-                    retry_candidates = await _websearch_limitation_retry(
-                        coa, doc_type, facts_summary, user_request,
-                    )
-                    if retry_candidates:
-                        candidates.extend(retry_candidates)
-                        log.append(f"limitation: +{len(retry_candidates)} from retry websearch")
-                        lim = await _llm_select_limitation(
-                            candidates, facts, doc_type, coa, user_request,
-                        )
-                        if lim:
-                            result["limitation"] = lim
-                            log.append(f"limitation: retry selected Article {lim['article']}")
-                            logger.info("[ENRICHMENT] limitation retry selected Article %s", lim["article"])
+    if lkb_entry:
+        lkb_lim = lkb_entry.get("limitation", {})
+        lkb_art = str(lkb_lim.get("article", ""))
+        lkb_ref = str(lkb_lim.get("reference", ""))
 
-                # Step 3.6: FALLBACK — common articles as last resort
-                if not result["limitation"]:
-                    fallback_enabled = getattr(settings, "DRAFTING_LIMITATION_COMMON_FALLBACK", True)
-                    if fallback_enabled and _COMMON_ARTICLES:
-                        log.append("limitation: trying common articles fallback")
-                        lim = await _llm_select_limitation(
-                            _COMMON_ARTICLES, facts, doc_type, coa, user_request,
-                        )
-                        if lim:
-                            result["limitation"] = lim
-                            log.append(f"limitation: fallback selected Article {lim['article']}")
-                            logger.info("[ENRICHMENT] limitation fallback selected Article %s", lim["article"])
-                        else:
-                            log.append("limitation: fallback also UNKNOWN — will use placeholder")
-                            logger.info("[ENRICHMENT] limitation fallback UNKNOWN — placeholder")
-                    else:
-                        log.append("limitation: UNKNOWN — will use placeholder")
-                        logger.info("[ENRICHMENT] limitation UNKNOWN — placeholder")
+        if lkb_art == "NONE":
+            result["limitation"] = {
+                "article": "NONE",
+                "reference": "",
+                "act": "",
+                "description": lkb_lim.get("description", "No limitation applies"),
+                "period": lkb_lim.get("period", ""),
+                "reason": f"LKB: {cause_type} — {lkb_lim.get('from', '')}",
+                "source": "lkb",
+            }
+            log.append(f"limitation: LKB says NONE for {cause_type}")
+        elif lkb_art == "UNKNOWN" and not lkb_ref:
+            log.append(f"limitation: LKB says UNKNOWN for {cause_type} — placeholder")
+        elif lkb_art or lkb_ref:
+            result["limitation"] = {
+                "article": lkb_art or "N/A",
+                "reference": lkb_ref,
+                "act": lkb_lim.get("act", ""),
+                "description": lkb_lim.get("description", ""),
+                "period": lkb_lim.get("period", ""),
+                "from": lkb_lim.get("from", ""),
+                "reason": f"LKB: {cause_type} — {lkb_lim.get('description', '')}",
+                "source": "lkb",
+            }
+            log.append(f"limitation: LKB Article {lkb_art or lkb_ref} for {cause_type}")
         else:
-            # No candidates from RAG or initial websearch — try fallback directly
-            fallback_enabled = getattr(settings, "DRAFTING_LIMITATION_COMMON_FALLBACK", True)
-            if fallback_enabled and _COMMON_ARTICLES:
-                log.append("limitation: no RAG/websearch candidates — trying common articles")
-                lim = await _llm_select_limitation(
-                    _COMMON_ARTICLES, facts, doc_type, coa, user_request,
-                )
-                if lim:
-                    result["limitation"] = lim
-                    log.append(f"limitation: fallback selected Article {lim['article']}")
-                    logger.info("[ENRICHMENT] limitation fallback selected Article %s", lim["article"])
-                else:
-                    log.append("limitation: fallback also UNKNOWN — will use placeholder")
-            else:
-                log.append("limitation: no candidates found anywhere")
-                logger.info("[ENRICHMENT] no limitation candidates — placeholder")
+            log.append(f"limitation: LKB has no limitation data for {cause_type} — placeholder")
 
-    # ── Step 5+6: User-cited sections ────────────────────────────────
+        logger.info(
+            "[ENRICHMENT] limitation: %s for %s",
+            result["limitation"]["article"] if result["limitation"] else "placeholder",
+            cause_type,
+        )
+    else:
+        if cause_type:
+            log.append(f"limitation: no LKB entry for {cause_type} — placeholder")
+        else:
+            log.append("limitation: no cause_type — placeholder")
+
+    # ── Step 2: Build verified_provisions from limitation ─────────────
+    limitation_provision = build_limitation_verified_provision(result["limitation"])
+    if limitation_provision:
+        result["verified_provisions"].append(limitation_provision)
+
+    # ── Step 3: User-cited sections (parsed, marked unverified) ───────
     user_secs = _parse_user_sections(user_request)
     for sec in user_secs:
         key = sec["section"]
         act = sec.get("act", "")
-        found = _find_in_chunks(key, chunk_texts)
-        if found:
-            prov = {"section": key, "act": act, "text": found, "source": "rag"}
-            result["user_cited_provisions"].append(prov)
-            result["verified_provisions"].append(prov)
-            log.append(f"{key} {act}: FOUND in RAG")
-        else:
-            log.append(f"{key} {act}: NOT in RAG — web search")
-            prov = await _websearch_provision(key, act)
-            if prov:
-                result["user_cited_provisions"].append(prov)
+        prov = {"section": key, "act": act, "text": "", "source": "user_cited"}
+        result["user_cited_provisions"].append(prov)
+        result["verified_provisions"].append(prov)
+        log.append(f"{key} {act}: user-cited (unverified)")
+
+    # ── Step 4: Build verified_provisions from LKB primary/alt acts ───
+    if lkb_entry:
+        for act_entry in lkb_entry.get("primary_acts", []):
+            act_name = act_entry.get("act", "")
+            for section in act_entry.get("sections", []):
+                prov = {"section": section, "act": act_name, "text": "", "source": "lkb"}
                 result["verified_provisions"].append(prov)
-                log.append(f"{key} {act}: FOUND via websearch")
-            else:
-                log.append(f"{key} {act}: NOT found anywhere")
+        for act_entry in lkb_entry.get("alternative_acts", []):
+            act_name = act_entry.get("act", "")
+            for section in act_entry.get("sections", []):
+                prov = {"section": section, "act": act_name, "text": "", "source": "lkb"}
+                result["verified_provisions"].append(prov)
+        log.append(f"provisions: {len(result['verified_provisions'])} from LKB primary+alternative acts")
 
-    # ── Step 6.5: Scan RAG for all statutory provisions ─────────────
-    rag_scan_enabled = getattr(settings, "DRAFTING_RAG_PROVISION_SCAN", True)
-    if rag_scan_enabled:
-        rag_provisions = _scan_rag_provisions(chunk_texts)
-        result["rag_provisions"] = rag_provisions
-        # Add RAG-sourced provisions to verified list (LLM can cite them)
-        for p in rag_provisions:
-            result["verified_provisions"].append(p)
-        log.append(f"rag_provisions: {len(rag_provisions)} found in RAG chunks")
-        logger.info("[ENRICHMENT] rag_provisions: %d found in RAG", len(rag_provisions))
-
-    # ── Step 6.7: Procedural provisions web search ───────────────────
-    procedural_enabled = getattr(settings, "DRAFTING_PROCEDURAL_SEARCH", True)
-    if procedural_enabled:
-        facts_keywords = _extract_facts_keywords(facts, user_request, topics)
-        jurisdiction_data = _as_dict(intake.get("jurisdiction"))
-        jurisdiction_str = " ".join(filter(None, [
-            jurisdiction_data.get("state", ""),
-            jurisdiction_data.get("court_type", ""),
-        ]))
-        amounts = _as_dict(facts.get("amounts"))
-        suit_value = amounts.get("principal") or amounts.get("damages")
-
-        try:
-            proc_result = await ProceduralWebSearchTool(
-                doc_type=doc_type,
-                cause_of_action=coa.replace("_", " "),
-                jurisdiction=jurisdiction_str,
-                suit_value=suit_value,
-                facts_keywords=facts_keywords,
-            )
-        except Exception as exc:
-            logger.warning("[ENRICHMENT] procedural websearch failed: %s", exc)
-            proc_result = None
-
-        if proc_result and not proc_result.get("error"):
-            proc_provisions = _extract_procedural_provisions(
-                proc_result.get("results", []),
-            )
-            result["procedural_provisions"] = proc_provisions
-            result["procedural_context"] = proc_result.get("summary", "")
-            for p in proc_provisions:
-                result["verified_provisions"].append(p)
-            log.append(f"procedural: {len(proc_provisions)} provisions found via websearch")
-            logger.info(
-                "[ENRICHMENT] procedural provisions: %d found via websearch",
-                len(proc_provisions),
-            )
-        else:
-            result["procedural_provisions"] = []
-            result["procedural_context"] = ""
-            err_msg = proc_result.get("error", "unknown") if proc_result else "exception"
-            log.append(f"procedural: websearch returned no results ({err_msg})")
-            logger.info("[ENRICHMENT] procedural websearch skipped/failed: %s", err_msg)
-    else:
-        result["procedural_provisions"] = []
-        result["procedural_context"] = ""
-
-    # ── Step 7: Build verified_provisions from limitation too ────────
-    _lim_article = (result["limitation"] or {}).get("article", "UNKNOWN")
-    if result["limitation"] and _lim_article not in ("UNKNOWN", "NONE"):
-        result["verified_provisions"].append({
-            "section": f"Article {_lim_article}",
-            "act": "Limitation Act, 1963",
-            "text": result["limitation"].get("description", ""),
-            "source": result["limitation"].get("source", ""),
-        })
-
-    # ── Step 8: LKB lookup + validation ───────────────────────────────
+    # ── Step 5: LKB brief + court detection ───────────────────────────
     lkb_brief = None
-    cause_type = classify.get("cause_type", "")
-    law_domain = classify.get("law_domain", "Civil")
-
-    # Normalize: classifier might output "Permanent Injunction" or "PERMANENT_INJUNCTION"
-    # but LKB keys are snake_case: "permanent_injunction"
-    if cause_type:
-        cause_type = cause_type.lower().replace(" ", "_").replace("-", "_")
-        log.append(f"lkb: cause_type normalized to '{cause_type}'")
-
-    # If classify didn't provide cause_type, infer from doc_type + user_request
     if not cause_type and law_domain == "Civil":
         _inferred = infer_cause_type(doc_type, user_request, topics)
         cause_type = _inferred[0] if isinstance(_inferred, tuple) else _inferred
         log.append(f"lkb: cause_type inferred as '{cause_type}' from doc_type+request")
-        logger.info("[ENRICHMENT] LKB inferred cause_type=%s", cause_type)
 
-    if cause_type:
-        lkb_entry = lookup(law_domain, cause_type)
-        if lkb_entry:
-            # Resolve conditional fields using user_request + facts as context
-            _resolve_ctx = (user_request or "") + " " + (facts.get("summary", "") if isinstance(facts, dict) else "")
-            lkb_entry = resolve_entry(lkb_entry, _resolve_ctx)
-            lkb_brief = lkb_entry.copy()
-            log.append(f"lkb: found entry for {cause_type}")
+    if cause_type and lkb_entry:
+        lkb_brief = lkb_entry.copy()
+        if lkb_brief.get("coa_type"):
+            lkb_brief["coa_type"] = normalize_coa_type(lkb_brief.get("coa_type", ""))
+        log.append(f"lkb: found entry for {cause_type}")
 
-            # 8a: Apply supersession filter — remove repealed Acts from verified_provisions
-            before_count = len(result["verified_provisions"])
-            result["verified_provisions"] = filter_superseded_provisions(
-                result["verified_provisions"],
-            )
-            filtered = before_count - len(result["verified_provisions"])
-            if filtered:
-                log.append(f"lkb: filtered {filtered} superseded provisions")
-                logger.info("[ENRICHMENT] LKB filtered %d superseded provisions", filtered)
+        # Apply supersession filter
+        before_count = len(result["verified_provisions"])
+        result["verified_provisions"] = filter_superseded_provisions(
+            result["verified_provisions"],
+        )
+        filtered = before_count - len(result["verified_provisions"])
+        if filtered:
+            log.append(f"lkb: filtered {filtered} superseded provisions")
 
-            # 8b: Apply specificity rule for limitation
-            if result["limitation"]:
-                pipeline_article = result["limitation"].get("article", "UNKNOWN")
-                lkb_lim = lkb_entry.get("limitation", {})
-                lkb_article = str(lkb_lim.get("article", ""))
+        # Court detection — Commercial Court requires amount > threshold + commercial nature
+        court_rules = lkb_entry.get("court_rules", {})
+        amounts = _as_dict(facts.get("amounts"))
+        suit_value = amounts.get("principal") or amounts.get("damages") or 0
+        _has_commercial_rules = "commercial" in court_rules
+        _threshold = court_rules.get("commercial", {}).get("threshold", 300000) if _has_commercial_rules else 0
+        _amount_exceeds = suit_value and float(suit_value) > _threshold
 
-                # If LKB says NONE, override whatever pipeline picked
-                if lkb_article == "NONE" and pipeline_article != "NONE":
-                    result["limitation"] = {
-                        "article": "NONE",
-                        "description": lkb_lim.get("description", "No limitation applies"),
-                        "period": lkb_lim.get("period", ""),
-                        "reason": f"LKB: {cause_type} — {lkb_lim.get('from', '')}",
-                        "source": "lkb",
-                    }
-                    # Remove any Limitation Act entries from verified_provisions
-                    result["verified_provisions"] = [
-                        p for p in result["verified_provisions"]
-                        if p.get("act", "") != "Limitation Act, 1963"
-                    ]
-                    log.append(f"lkb: overrode pipeline Article {pipeline_article} → NONE")
-                    logger.info("[ENRICHMENT] LKB overrode Article %s → NONE for %s", pipeline_article, cause_type)
-                    corrected = "NONE"
-                else:
-                    corrected = apply_specificity_rule(str(pipeline_article), lkb_article)
+        _user_says_commercial = False
+        if _has_commercial_rules and not _amount_exceeds:
+            _check_text_comm = (
+                (user_request or "") + " "
+                + (facts.get("summary", "") if isinstance(facts, dict) else "") + " "
+                + " ".join(topics)
+            ).lower()
+            nature_keywords_check = court_rules["commercial"].get("nature_keywords")
+            _inherently_commercial = nature_keywords_check is not None and len(nature_keywords_check) == 0
+            if _inherently_commercial and "commercial" in _check_text_comm:
+                _user_says_commercial = True
 
-                if corrected != str(pipeline_article) and corrected != "NONE":
-                    log.append(
-                        f"lkb: specificity rule corrected Article {pipeline_article} → {corrected}"
-                    )
-                    # Update limitation to LKB's version
-                    result["limitation"] = {
-                        "article": corrected,
-                        "description": lkb_lim.get("description", result["limitation"].get("description", "")),
-                        "period": lkb_lim.get("period", result["limitation"].get("period", "")),
-                        "accrual": lkb_lim.get("from", ""),
-                        "reason": f"LKB specificity rule: Article {corrected} is specific to {cause_type}",
-                        "source": "lkb",
-                    }
-                    # Update the limitation provision in verified_provisions
-                    result["verified_provisions"] = [
-                        p for p in result["verified_provisions"]
-                        if not (p.get("act", "") == "Limitation Act, 1963")
-                    ]
-                    result["verified_provisions"].append({
-                        "section": f"Article {corrected}",
-                        "act": "Limitation Act, 1963",
-                        "text": lkb_lim.get("description", ""),
-                        "source": "lkb",
-                    })
-            elif lkb_entry.get("limitation", {}).get("article"):
-                # Pipeline found no limitation — use LKB's
-                lkb_lim = lkb_entry["limitation"]
-                lkb_art = str(lkb_lim["article"])
-                if lkb_art != "NONE":
-                    result["limitation"] = {
-                        "article": lkb_art,
-                        "description": lkb_lim.get("description", ""),
-                        "period": lkb_lim.get("period", ""),
-                        "accrual": lkb_lim.get("from", ""),
-                        "reason": f"LKB: Article {lkb_art} for {cause_type}",
-                        "source": "lkb",
-                    }
-                    result["verified_provisions"].append({
-                        "section": f"Article {lkb_art}",
-                        "act": "Limitation Act, 1963",
-                        "text": lkb_lim.get("description", ""),
-                        "source": "lkb",
-                    })
-                    log.append(f"lkb: provided limitation Article {lkb_art}")
-
-            # 8c: Detect court format from LKB
-            # Commercial Court requires BOTH: (a) amount > threshold AND
-            # (b) dispute is "commercial" in nature per Section 2(1)(c)
-            # Commercial Courts Act 2015. A personal advance refund or
-            # hand loan is NOT commercial even if amount > ₹3L.
-            # nature_keywords in LKB data: [] = inherently commercial (amount
-            # alone suffices), non-empty = ambiguous (must match facts).
-            court_rules = lkb_entry.get("court_rules", {})
-            amounts = _as_dict(facts.get("amounts"))
-            suit_value = amounts.get("principal") or amounts.get("damages") or 0
-            _has_commercial_rules = "commercial" in court_rules
-            _threshold = court_rules.get("commercial", {}).get("threshold", 300000) if _has_commercial_rules else 0
-            _amount_exceeds = suit_value and float(suit_value) > _threshold
-
-            # Fallback: if suit_value unknown but user/facts explicitly say "commercial"
-            # AND the LKB entry is inherently commercial (nature_keywords=[]),
-            # still route to Commercial Court.
-            _user_says_commercial = False
-            if _has_commercial_rules and not _amount_exceeds:
-                _check_text_comm = (
+        if _has_commercial_rules and (_amount_exceeds or _user_says_commercial):
+            nature_keywords = court_rules["commercial"].get("nature_keywords")
+            if nature_keywords is None or len(nature_keywords) == 0:
+                lkb_brief["detected_court"] = court_rules["commercial"]
+                reason = f"value={suit_value} > threshold" if _amount_exceeds else "user request says commercial"
+                log.append(f"lkb: commercial court ({reason})")
+            else:
+                _check_text = (
                     (user_request or "") + " "
                     + (facts.get("summary", "") if isinstance(facts, dict) else "") + " "
                     + " ".join(topics)
                 ).lower()
-                nature_keywords_check = court_rules["commercial"].get("nature_keywords")
-                _inherently_commercial = nature_keywords_check is not None and len(nature_keywords_check) == 0
-                if _inherently_commercial and "commercial" in _check_text_comm:
-                    _user_says_commercial = True
-
-            if _has_commercial_rules and (_amount_exceeds or _user_says_commercial):
-                nature_keywords = court_rules["commercial"].get("nature_keywords")
-                if nature_keywords is None or len(nature_keywords) == 0:
-                    # Inherently commercial cause type — amount or user intent suffices
+                is_commercial = any(kw in _check_text for kw in nature_keywords)
+                if is_commercial:
                     lkb_brief["detected_court"] = court_rules["commercial"]
-                    reason = f"value={suit_value} > threshold" if _amount_exceeds else "user request says commercial + inherently commercial cause"
-                    log.append(f"lkb: commercial court ({reason})")
+                    log.append(f"lkb: commercial court (value + nature confirmed)")
                 else:
-                    # Ambiguous — check facts for commercial indicators from LKB
-                    _check_text = (
-                        (user_request or "") + " "
-                        + (facts.get("summary", "") if isinstance(facts, dict) else "") + " "
-                        + " ".join(topics)
-                    ).lower()
-                    is_commercial = any(kw in _check_text for kw in nature_keywords)
-                    if is_commercial:
-                        lkb_brief["detected_court"] = court_rules["commercial"]
-                        log.append(f"lkb: commercial court (value={suit_value} > threshold + nature confirmed)")
-                    else:
-                        lkb_brief["detected_court"] = court_rules.get("default", {})
-                        log.append(f"lkb: value={suit_value} > threshold but no commercial indicators — default court")
-                        logger.info("[ENRICHMENT] suit value > threshold but not commercial in nature — default court")
-            else:
-                lkb_brief["detected_court"] = court_rules.get("default", {})
-
-            logger.info("[ENRICHMENT] LKB brief ready: cause_type=%s court=%s", cause_type, lkb_brief.get("detected_court", {}).get("court", "default"))
+                    lkb_brief["detected_court"] = court_rules.get("default", {})
+                    log.append(f"lkb: value > threshold but no commercial indicators — default court")
         else:
-            log.append(f"lkb: no entry found for cause_type={cause_type}")
+            lkb_brief["detected_court"] = court_rules.get("default", {})
+
+        logger.info("[ENRICHMENT] LKB brief ready: cause_type=%s court=%s", cause_type, lkb_brief.get("detected_court", {}).get("court", "default"))
+    elif cause_type:
+        log.append(f"lkb: no entry found for cause_type={cause_type}")
     else:
         log.append("lkb: no cause_type available — LKB skipped")
 
-    # ── Collect court_fee results (started in parallel at top) ────────
     update_dict: Dict[str, Any] = {"mandatory_provisions": result, "lkb_brief": lkb_brief}
-    if court_fee_task is not None:
-        try:
-            cf_result = await court_fee_task
-            if isinstance(cf_result, dict) and not cf_result.get("error"):
-                update_dict["court_fee"] = cf_result
-                logger.info("[ENRICHMENT] court_fee ✓ (parallel)")
-        except Exception as exc:
-            logger.warning("[ENRICHMENT] court_fee failed (parallel): %s", exc)
-    if legal_research_task is not None:
-        try:
-            lr_result = await legal_research_task
-            if isinstance(lr_result, dict) and not lr_result.get("error"):
-                update_dict["legal_research"] = lr_result
-                logger.info("[ENRICHMENT] legal_research ✓ (parallel)")
-        except Exception as exc:
-            logger.warning("[ENRICHMENT] legal_research failed (parallel): %s", exc)
 
     elapsed = time.perf_counter() - t0
     logger.info(
-        "[ENRICHMENT] ✓ done (%.1fs) | limitation=%s | provisions=%d | verified=%d | rag_scanned=%d | procedural=%d | lkb=%s",
+        "[ENRICHMENT] ✓ done (%.1fs) | limitation=%s | verified=%d | lkb=%s",
         elapsed,
         result["limitation"]["article"] if result["limitation"] else "none",
-        len(result["user_cited_provisions"]),
         len(result["verified_provisions"]),
-        len(result.get("rag_provisions", [])),
-        len(result.get("procedural_provisions", [])),
         cause_type or "none",
     )
-    # Route directly to draft_freetext — court_fee already ran in parallel
-    return Command(update=update_dict, goto="draft_freetext")
+    return Command(update=update_dict, goto="domain_plan_compiler")
 
 
 # ---------------------------------------------------------------------------

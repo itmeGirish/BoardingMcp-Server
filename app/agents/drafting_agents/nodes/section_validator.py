@@ -98,8 +98,8 @@ _RE_PERCENTAGE = re.compile(r"\b\d+(?:\.\d+)?%", re.IGNORECASE)
 
 # Reference number patterns (keyword-aware)
 _RE_CHEQUE = re.compile(r"cheque\s+(?:no\.?\s*|number\s*|#\s*)(\w+)", re.IGNORECASE)
-_RE_UTR = re.compile(r"UTR[:\s]+(\w+)", re.IGNORECASE)
-_RE_NEFT = re.compile(r"NEFT\s+(?:Ref\.?\s*|reference\s*)(\w+)", re.IGNORECASE)
+_RE_UTR = re.compile(r"UTR\s*(?:No\.?\s*|Number\s*|:?\s*)[:\s]*([A-Z0-9]{10,})", re.IGNORECASE)
+_RE_NEFT = re.compile(r"(?:NEFT|RTGS)\s*(?:Ref\.?\s*|reference\s*|No\.?\s*|:?\s*)[:\s]*([A-Z0-9]{10,})", re.IGNORECASE)
 _RE_RECEIPT = re.compile(r"Receipt\s+(?:No\.?\s*|number\s*)(\w+)", re.IGNORECASE)
 _RE_FIR = re.compile(r"FIR\s+(?:No\.?\s*)(\d+/\d+)", re.IGNORECASE)
 
@@ -309,8 +309,16 @@ def _get_user_request_dates(user_request: str) -> Set[str]:
 
 
 def _get_user_request_references(user_request: str) -> Set[str]:
-    """Extract references from raw user_request text using the same parser."""
-    return {r["value"] for r in _extract_references(user_request)}
+    """Extract references from raw user_request text using the same parser.
+
+    Also extracts long alphanumeric tokens (>=10 chars) as potential reference
+    numbers (UTR, NEFT, RTGS, account numbers) that regex patterns may miss.
+    """
+    refs = {r["value"] for r in _extract_references(user_request)}
+    # Fallback: any alphanumeric token >=10 chars is likely a reference number
+    for token in re.findall(r"\b[A-Z0-9]{10,}\b", user_request):
+        refs.add(token)
+    return refs
 
 
 def _pick_placeholder(entity_type: str, subtype: str = "") -> str:

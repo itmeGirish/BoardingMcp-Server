@@ -1,0 +1,93 @@
+{
+  "dealership": {
+    "scenario": "dealership",
+    "query": "Draft a commercial suit seeking damages for illegal termination of dealership agreement. Plaintiff invested Rs.50,00,000/- capital and developed territory market over 5 years. Termination was arbitrary with only 15 days notice instead of 6 months required. Claim: loss of profit Rs.25,00,000/-, goodwill Rs.15,00,000/-, unsold stock Rs.10,00,000/-. Draft with breach of contract pleading for Commercial Court.",
+    "pipeline": {
+      "elapsed_s": 640.9,
+      "source": "final_draft",
+      "blocking_issues": 1,
+      "cause_type": "unknown",
+      "doc_type": "unknown",
+      "char_count": 5881,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": true,
+          "S2: Parties section": true,
+          "S3: Facts section present": false,
+          "S4: Cause of action": true,
+          "S5: Prayer/relief section": true,
+          "S6: Verification clause": true,
+          "S7: Advocate block or place/date": true,
+          "S8: Continuous para numbering": true,
+          "L1: Expected act(s) cited": true,
+          "L2: Jurisdiction pleaded": true,
+          "L3: Limitation addressed": true,
+          "L4: Valuation stated": true,
+          "L5: Court fee mentioned": true,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": true,
+          "Q1: Narrative facts (not skeleton)": true,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": true,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": true,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": true,
+          "Q9: Draft length adequate (>2000 chars)": true,
+          "Q10: Expected key sections present": true
+        },
+        "passed": 24,
+        "total": 25,
+        "score": 9.6,
+        "percent": 96.0
+      }
+    },
+    "claude": {
+      "elapsed_s": 14.2,
+      "model": "gpt-4.1",
+      "tokens_in": 206,
+      "tokens_out": 1348,
+      "char_count": 6113,
+      "score": {
+        "checks": {
+          "S1: Title/cause heading present": true,
+          "S2: Parties section": true,
+          "S3: Facts section present": true,
+          "S4: Cause of action": true,
+          "S5: Prayer/relief section": true,
+          "S6: Verification clause": true,
+          "S7: Advocate block or place/date": true,
+          "S8: Continuous para numbering": true,
+          "L1: Expected act(s) cited": true,
+          "L2: Jurisdiction pleaded": true,
+          "L3: Limitation addressed": true,
+          "L4: Valuation stated": false,
+          "L5: Court fee mentioned": false,
+          "L6: No fabricated case law": true,
+          "L7: Relief specificity (3+ prayers)": true,
+          "Q1: Narrative facts (not skeleton)": true,
+          "Q2: Facts-law separation": true,
+          "Q3: No drafting-notes language": true,
+          "Q4: Interest rate/basis stated": true,
+          "Q5: Placeholder for unknowns": true,
+          "Q6: Proper legal terminology": true,
+          "Q7: No and/or usage": true,
+          "Q8: Annexure/document references": false,
+          "Q9: Draft length adequate (>2000 chars)": true,
+          "Q10: Expected key sections present": false
+        },
+        "passed": 21,
+        "total": 25,
+        "score": 8.4,
+        "percent": 84.0
+      }
+    },
+    "comparison": {
+      "pipeline_score": 9.6,
+      "claude_score": 8.4,
+      "diff": 1.2,
+      "winner": "PIPELINE"
+    }
+  }
+}

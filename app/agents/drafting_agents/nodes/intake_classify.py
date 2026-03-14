@@ -4,7 +4,7 @@ Saves ~10-15s by doing fact extraction AND classification in a single call.
 Splits result into separate `intake` and `classify` state fields so downstream
 nodes (rag, enrichment, draft) work unchanged.
 
-Pipeline position: START → **intake_classify** → rag
+Pipeline position: START → **intake_classify** → rag (or enrichment if RAG disabled)
 """
 from __future__ import annotations
 
@@ -45,6 +45,11 @@ def _split_result(result: Dict[str, Any]) -> tuple[Dict[str, Any], Dict[str, Any
     return intake, classify
 
 
+def _next_node() -> str:
+    """Always pass through the civil resolver before retrieval/enrichment."""
+    return "domain_router"
+
+
 def intake_classify_node(state: DraftingState) -> Dict[str, Any]:
     """Extract intake + classify in ONE LLM call."""
     logger.info("[INTAKE+CLASSIFY] ▶ start")
@@ -59,7 +64,7 @@ def intake_classify_node(state: DraftingState) -> Dict[str, Any]:
                 "intake": None,
                 "classify": None,
             },
-            goto="rag",
+            goto=_next_node(),
         )
 
     try:
@@ -90,7 +95,7 @@ def intake_classify_node(state: DraftingState) -> Dict[str, Any]:
             classify.get("doc_type"),
             facts_summary,
         )
-        return Command(update={"intake": intake, "classify": classify}, goto="rag")
+        return Command(update={"intake": intake, "classify": classify}, goto=_next_node())
     except Exception as first_exc:
         logger.error("[INTAKE+CLASSIFY] attempt1 failed (%.1fs): %s", time.perf_counter() - t0, first_exc)
 
@@ -105,7 +110,7 @@ def intake_classify_node(state: DraftingState) -> Dict[str, Any]:
         intake, classify = _split_result(result)
 
         logger.info("[INTAKE+CLASSIFY] ✓ done on retry (%.1fs)", time.perf_counter() - t0)
-        return Command(update={"intake": intake, "classify": classify}, goto="rag")
+        return Command(update={"intake": intake, "classify": classify}, goto=_next_node())
     except Exception as exc:
         logger.error("[INTAKE+CLASSIFY] ✗ failed after 2 attempts (%.1fs): %s", time.perf_counter() - t0, exc)
         return Command(
@@ -114,5 +119,5 @@ def intake_classify_node(state: DraftingState) -> Dict[str, Any]:
                 "intake": None,
                 "classify": None,
             },
-            goto="rag",
+            goto=_next_node(),
         )
