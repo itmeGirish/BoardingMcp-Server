@@ -1,0 +1,197 @@
+{
+  "timestamp": "20260315_124540",
+  "total_elapsed": 2105.9,
+  "scenarios": [
+    {
+      "name": "Specific Performance of Sale Agreement",
+      "elapsed": 979.4,
+      "text_length": 7094,
+      "placeholders": 19,
+      "score": "29/30 (97%)",
+      "checks": [
+        {
+          "category": "STRUCT",
+          "check": "court_heading",
+          "result": "PASS",
+          "detail": "Court name"
+        },
+        {
+          "category": "STRUCT",
+          "check": "title_plaint",
+          "result": "PASS",
+          "detail": "Document titled as plaint/suit"
+        },
+        {
+          "category": "STRUCT",
+          "check": "parties_named",
+          "result": "PASS",
+          "detail": "Both parties named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "party_roles",
+          "result": "PASS",
+          "detail": "Party roles assigned"
+        },
+        {
+          "category": "STRUCT",
+          "check": "jurisdiction",
+          "result": "PASS",
+          "detail": "Jurisdiction section present"
+        },
+        {
+          "category": "STRUCT",
+          "check": "facts_section",
+          "result": "PASS",
+          "detail": "Facts section present"
+        },
+        {
+          "category": "STRUCT",
+          "check": "prayer_section",
+          "result": "PASS",
+          "detail": "Prayer section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "verification",
+          "result": "PASS",
+          "detail": "Verification clause"
+        },
+        {
+          "category": "FACT",
+          "check": "property_described",
+          "result": "PASS",
+          "detail": "Property described (flat/area)"
+        },
+        {
+          "category": "FACT",
+          "check": "total_consideration",
+          "result": "PASS",
+          "detail": "Rs.85L consideration stated"
+        },
+        {
+          "category": "FACT",
+          "check": "advance_paid",
+          "result": "PASS",
+          "detail": "Rs.25L advance paid"
+        },
+        {
+          "category": "FACT",
+          "check": "balance_amount",
+          "result": "PASS",
+          "detail": "Balance Rs.60L mentioned"
+        },
+        {
+          "category": "FACT",
+          "check": "agreement_date",
+          "result": "PASS",
+          "detail": "Agreement date 10.01.2024"
+        },
+        {
+          "category": "FACT",
+          "check": "refusal_mentioned",
+          "result": "PASS",
+          "detail": "Defendant's refusal narrated"
+        },
+        {
+          "category": "FACT",
+          "check": "ready_willing",
+          "result": "PASS",
+          "detail": "Ready and willing averment"
+        },
+        {
+          "category": "FACT",
+          "check": "legal_notice",
+          "result": "PASS",
+          "detail": "Legal notice mentioned"
+        },
+        {
+          "category": "LEGAL",
+          "check": "specific_relief_act",
+          "result": "PASS",
+          "detail": "Specific Relief Act / specific performance cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "section_cited",
+          "result": "PASS",
+          "detail": "At least one statutory section cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "cause_of_action",
+          "result": "PASS",
+          "detail": "Cause of action section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "limitation_pleaded",
+          "result": "PASS",
+          "detail": "Limitation period addressed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "valuation_court_fee",
+          "result": "PASS",
+          "detail": "Valuation / court fee section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "interest_or_mesne",
+          "result": "PASS",
+          "detail": "Interest/mesne profits/damages claimed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "prayer_specific_performance",
+          "result": "PASS",
+          "detail": "Prayer seeks specific performance decree"
+        },
+        {
+          "category": "LEGAL",
+          "check": "prayer_sale_deed",
+          "result": "PASS",
+          "detail": "Prayer for execution of sale deed"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_air_citation",
+          "result": "PASS",
+          "detail": "No fabricated AIR"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_scc_citation",
+          "result": "PASS",
+          "detail": "No fabricated SCC"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_amounts",
+          "result": "PASS",
+          "detail": "No invented amounts (10L/50L never in facts)"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_names",
+          "result": "PASS",
+          "detail": "No placeholder names"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_drafting_notes",
+          "result": "PASS",
+          "detail": "No drafting-notes language"
+        },
+        {
+          "category": "HALLU",
+          "check": "placeholders_reasonable",
+          "result": "FAIL",
+          "detail": "Placeholders: 19"
+        }
+      ],
+      "draft_text": "THE PRINCIPAL JUDGE, CITY CIVIL COURT, BENGALURU\n\nO.S. NUMBER {{SUITE_NUMBER}} OF 2024\n\nBETWEEN:\n\nANITA SHARMA, D/O {{PLACEHOLDER_FATHER_OR_HUSBAND_NAME}}, AGE 52 YEARS, OCCUPATION: {{PLACEHOLDER_OCCUPATION}}, RESIDING AT INDIRANAGAR, BENGALURU, {{PLACEHOLDER_PIN_CODE}}.\n\n... PLAINTIFF\n\nAND:\n\nRAJESH REDDY, S/O {{PLACEHOLDER_FATHER_OR_HUSBAND_NAME}}, AGE 60 YEARS, OCCUPATION: {{PLACEHOLDER_OCCUPATION}}, RESIDING AT HSR LAYOUT, BENGALURU, {{PLACEHOLDER_PIN_CODE}}.\n\n... DEFENDANT\n\nSUIT FOR SPECIFIC PERFORMANCE OF AGREEMENT TO SELL\n\nFACTS\n\n1. The Plaintiff states that she entered into an Agreement to Sell with the Defendant dated 10.01.2024 for the purchase of a residential flat bearing No. 302, 3rd Floor, Sunshine Apartments, Koramangala, Bengaluru, measuring 1200 sq ft.\n\n2. The Plaintiff states that the total consideration agreed upon for the suit property is Rs. 85,00,000/-.\n\n3. The Plaintiff states that on the date of the agreement, i.e., 10.01.2024, she paid an advance amount of Rs. 25,00,000/- to the Defendant via RTGS bearing UTR No. HDFC20240110987654.\n\n4. The Plaintiff states that as per the terms of the Agreement to Sell, the balance consideration of Rs. 60,00,000/- was to be paid on or before 10.07.2024 against execution of the sale deed.\n\n5. The Plaintiff states that she has always been ready and willing to perform her part of the contract, including the payment of the balance consideration within the stipulated time.\n\n6. The Plaintiff states that on 05.06.2024, the Defendant sent a letter to the Plaintiff refusing to execute the sale deed, claiming that he had received a higher offer for the suit property.\n\n7. The Plaintiff states that she issued a legal notice dated 20.06.2024 calling upon the Defendant to execute the sale deed in terms of the Agreement to Sell.\n\n8. The Plaintiff states that the Defendant refused to comply with the legal notice and has failed to execute the sale deed despite the Plaintiff's readiness and willingness to perform.\n\n9. The Plaintiff states that the possession of the suit property is yet to be delivered to her pursuant to the sale deed.\n\nLEGAL_BASIS\n\n10. The Plaintiff relies upon Section 10 of the Specific Relief Act, 1963, which states that specific performance shall be enforced subject to Sections 11(2), 14, and\n\n16.\n\n11. The Plaintiff relies upon Section 16 of the Specific Relief Act, 1963 regarding personal bars to relief for specific performance.\n\n12. The Plaintiff relies upon Section 21 of the Specific Relief Act, 1963 regarding power to award compensation in certain cases.\n\n13. The Plaintiff relies upon Section 22 of the Specific Relief Act, 1963 regarding grant of additional reliefs (including possession, partition and separate possession) in a suit for specific performance.\n\n14. The Plaintiff relies upon Section 10 of the Indian Contract Act, 1872 regarding validity of contracts.\n\n15. The Plaintiff relies upon Section 16 of the Code of Civil Procedure, 1908 regarding suits for immovable property.\n\n16. The Plaintiff relies upon Section 53A of the Transfer of Property Act, 1882 regarding part performance.\n\n17. The Plaintiff relies upon Section 17(1A) of the Registration Act, 1908 regarding registration of documents containing contracts to transfer immovable property.\n\nCAUSE_OF_ACTION\n\n18. The cause of action arose on 05.06.2024 when the Defendant, by his letter, repudiated/refused to perform the Agreement to Sell and refused to execute the sale deed in respect of the suit property.\n\n19. The cause of action further continued and subsisted, including on 10.07.2024, being the date fixed for performance under the Agreement to Sell, when despite the Plaintiff’s readiness and willingness, the Defendant failed and neglected/refused to execute and register the sale deed.\n\n20. The cause of action arose within the jurisdiction of this Hon'ble Court as the suit property is situated in Bengaluru.\n\nLIMITATION\n\n21. The suit is governed by Article 54 of the Limitation Act, 1963.\n\n22. The period of limitation is three years from the date fixed for performance or, if no date is fixed, when the Plaintiff has notice that performance is refused.\n\n23. The present suit is filed within the prescribed period of limitation.\n\nJURISDICTION\n\n24. This Hon'ble Court has territorial jurisdiction as the suit property is situated within Bengaluru, as per Section 16 of the Code of Civil Procedure, 1908.\n\n25. This Hon'ble Court has pecuniary jurisdiction as the value of the suit exceeds the threshold limit for the City Civil Court, Bengaluru.\n\nVALUATION_COURT_FEE\n\n26. The suit is valued at Rs. 85,00,000/- for the purpose of jurisdiction.\n\n27. Ad valorem court fee is paid on the suit valuation as per the Karnataka Court Fees and Suits Valuation Act, 1958.\n\nINTEREST\n\n28. The Plaintiff claims pre-suit interest if contract, usage, or substantive law permits.\n\n29. The Plaintiff claims pendente lite and future interest under Section 34 of the Code of Civil Procedure, 1908 as this Hon'ble Court deems fit.\n\nSCHEDULE_OF_PROPERTY\n\n30. Residential Flat No. 302, 3rd Floor, Sunshine Apartments, Koramangala, Bengaluru.\n\n31. Area: 1200 sq ft.\n\n32. East: {{PLACEHOLDER_BOUNDARY}}\n\n33. West: {{PLACEHOLDER_BOUNDARY}}\n\n34. North: {{PLACEHOLDER_BOUNDARY}}\n\n35. South: {{PLACEHOLDER_BOUNDARY}}\n\nPRAYER\n\n(a) Direct the Defendant to execute and register the sale deed in respect of the suit property in favour of the Plaintiff upon receipt of the balance consideration of Rs. 60,00,000/-\n\n(b) Direct the Defendant to deliver vacant and peaceful possession of the suit property to the Plaintiff (if not already in possession)\n\n(c) In the alternative, award compensation under Section 21 of the Specific Relief Act, 1963 in lieu of or in addition to specific performance, at such amount as this Hon'ble Court deems fit\n\n(d) Award pre-suit interest if contract, usage, or substantive law permits, and pendente lite and future interest under Section 34 CPC as this Hon'ble Court deems fit\n\n(e) Award costs of the suit to the Plaintiff\n\n(f) Grant such other and further relief(s) as this Hon'ble Court deems fit and proper\n\nDOCUMENTS_LIST\n\n36. Agreement to Sell dated 10.01.2024 (Original) - Annexure P-1\n\n37. RTGS Receipt (UTR: HDFC20240110987654) - Annexure P-2\n\n38. Defendant's refusal letter dated 05.06.2024 - Annexure P-3\n\n39. Legal Notice dated 20.06.2024 with postal receipt - Annexure P-4\n\nVERIFICATION\n\nI, Anita Sharma, the Plaintiff herein, do hereby verify that the contents of paragraphs 1 to 9 under the FACTS section are true and correct to my personal knowledge and belief. The contents of paragraphs 10 to 39 and the LEGAL_BASIS, CAUSE_OF_ACTION, LIMITATION, JURISDICTION, VALUATION_COURT_FEE, INTEREST, SCHEDULE_OF_PROPERTY, PRAYER, and DOCUMENTS_LIST are based on legal advice and records available with me, which I believe to be true.\n\nVerified at Bengaluru on this {{DATE_OF_VERIFICATION}}.\n\nADVOCATE FOR PLAINTIFF\n{{ADVOCATE_NAME}}\n{{BAR_COUNCIL_NUMBER}}\n{{CHAMBERS_ADDRESS}}\n{{CONTACT_DETAILS}}\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}\n",
+      "errors": []
+    }
+  ]
+}

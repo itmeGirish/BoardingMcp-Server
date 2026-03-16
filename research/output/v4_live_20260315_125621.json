@@ -1,0 +1,197 @@
+{
+  "scenario": "Draft a plaint for recovery of Rs.15,00,000 given as a hand loan. The plaintiff Ram Kumar, aged 45, resident of Jayanagar, Bengaluru, advanced Rs.15,00,000 to the defendant Suresh Patel, aged 38, resident of Koramangala, Bengaluru, on 15.03.2024 via NEFT bank transfer (UTR: AXIB20240315123456). There was no written agreement. The defendant acknowledged the loan via WhatsApp messages. Despite repeated oral demands and a legal notice dated 01.07.2024, the defendant has failed to repay. The plaintiff claims interest at 12% per annum from the date of default (20.06.2024). File in City Civil Court, Bengaluru.",
+  "elapsed_seconds": 630.2,
+  "draft_length": 4593,
+  "placeholder_count": 19,
+  "scorecard": [
+    {
+      "check": "S1_court_heading",
+      "result": "PASS",
+      "detail": "Court name present"
+    },
+    {
+      "check": "S2_title",
+      "result": "PASS",
+      "detail": "Document title present"
+    },
+    {
+      "check": "S3_parties",
+      "result": "PASS",
+      "detail": "Both parties named with roles"
+    },
+    {
+      "check": "S4_jurisdiction_section",
+      "result": "PASS",
+      "detail": "Jurisdiction section present"
+    },
+    {
+      "check": "S5_facts_section",
+      "result": "PASS",
+      "detail": "Facts section present"
+    },
+    {
+      "check": "S6_prayer_section",
+      "result": "PASS",
+      "detail": "Prayer section present"
+    },
+    {
+      "check": "S7_verification",
+      "result": "PASS",
+      "detail": "Verification clause present"
+    },
+    {
+      "check": "F1_amount_correct",
+      "result": "PASS",
+      "detail": "Rs.15,00,000 principal amount"
+    },
+    {
+      "check": "F2_hand_loan_stated",
+      "result": "PASS",
+      "detail": "Hand loan / loan mentioned"
+    },
+    {
+      "check": "F3_neft_reference",
+      "result": "PASS",
+      "detail": "NEFT/bank transfer referenced"
+    },
+    {
+      "check": "F4_no_written_agreement",
+      "result": "PASS",
+      "detail": "No written agreement disclosed"
+    },
+    {
+      "check": "F5_whatsapp_evidence",
+      "result": "PASS",
+      "detail": "WhatsApp evidence mentioned"
+    },
+    {
+      "check": "L1_cause_of_action",
+      "result": "PASS",
+      "detail": "Cause of action section"
+    },
+    {
+      "check": "L2_limitation_pleaded",
+      "result": "PASS",
+      "detail": "Limitation section present"
+    },
+    {
+      "check": "L3_limitation_article",
+      "result": "FAIL",
+      "detail": "Limitation article cited (any)"
+    },
+    {
+      "check": "L4_interest_claimed",
+      "result": "PASS",
+      "detail": "12% interest claim"
+    },
+    {
+      "check": "L5_valuation_court_fee",
+      "result": "PASS",
+      "detail": "Valuation/court fee section"
+    },
+    {
+      "check": "L6_legal_basis",
+      "result": "PASS",
+      "detail": "At least one statutory section cited"
+    },
+    {
+      "check": "H1_no_fabricated_case_law",
+      "result": "PASS",
+      "detail": "No fabricated AIR citations"
+    },
+    {
+      "check": "H2_no_fabricated_scc",
+      "result": "PASS",
+      "detail": "No fabricated SCC citations"
+    },
+    {
+      "check": "H3_no_invented_names",
+      "result": "PASS",
+      "detail": "No invented placeholder names"
+    },
+    {
+      "check": "H4_placeholders_used_correctly",
+      "result": "FAIL",
+      "detail": "Reasonable placeholder count (19)"
+    }
+  ],
+  "score": "20/22 (91%)",
+  "draft_text": "IN THE CITY CIVIL COURT AT BENGALURU\nO.S. No. {{SUIT_NUMBER}} of 2024\n\nPARTIES\n\n1. Ram Kumar, S/o {{FATHER'S/HUSBAND'S NAME}}, Age: 45 years, Occupation: {{OCCUPATION}}, R/o {{HOUSE_NUMBER}}, Jayanagar, Bengaluru, {{PIN_CODE}}. ... PLAINTIFF\n\nVERSUS\n\n2. Suresh Patel, S/o {{FATHER'S/HUSBAND'S NAME}}, Age: 38 years, Occupation: {{OCCUPATION}}, R/o {{HOUSE_NUMBER}}, Koramangala, Bengaluru, {{PIN_CODE}}. ... DEFENDANT\n\nSUIT_TITLE\n\nSUIT FOR RECOVERY OF MONEY\n\nFACTS\n\n3. The Plaintiff states that on 15.03.2024, he advanced a sum of Rs. 15,00,000/- to the Defendant as a hand loan.\n\n4. The Plaintiff states that the said amount was transferred via NEFT bank transfer bearing UTR Number AXIB20240315123456.\n\n5. The Plaintiff states that there was no written agreement executed between the parties regarding the loan.\n\n6. The Plaintiff states that the Defendant acknowledged the receipt of the loan amount via WhatsApp messages.\n\n7. The Plaintiff states that the Defendant failed to repay the loan amount despite repeated oral demands.\n\n8. The Plaintiff states that the date of default for the purpose of interest calculation is 20.06.2024.\n\n9. The Plaintiff states that a legal notice was issued to the Defendant dated 01.07.2024 demanding repayment.\n\n10. The Plaintiff states that the Defendant has failed to repay the amount despite the legal notice.\n\n11. The Plaintiff states that the total outstanding as on the date of filing includes the principal amount and accrued interest.\n\nLEGAL_BASIS\n\n12. The Plaintiff relies on Section 73 of the Indian Contract Act, 1872 for compensation for breach of contract.\n\n13. The Plaintiff relies on Section 20 of the Code of Civil Procedure, 1908 for jurisdiction.\n\nCAUSE_OF_ACTION\n\n14. The cause of action arose on 20.06.2024 when the Defendant committed default.\n\n15. The cause of action arose within the jurisdiction of this Hon'ble Court as the Defendant resides in Bengaluru and the loan was advanced from Bengaluru.\n\n16. The cause of action last arose on 01.07.2024 when the legal notice was served and remained uncomplied with.\n\nLIMITATION\n\n17. The suit is governed by {{LIMITATION_ARTICLE}} of the Limitation Act.\n\n18. The suit is filed within the prescribed period of limitation.\n\nJURISDICTION\n\n19. This Hon'ble Court has territorial jurisdiction as the Defendant resides within Bengaluru and part of the cause of action arose within Bengaluru under Section 20 of the Code of Civil Procedure, 1908.\n\n20. This Hon'ble Court has pecuniary jurisdiction to try the suit based on the valuation.\n\nVALUATION_COURT_FEE\n\n21. The suit is valued at Rs. 15,00,000/- for the purpose of court fee and jurisdiction.\n\n22. The requisite court fee has been paid on the plaint as per the Karnataka Court Fees and Suits Valuation Act.\n\nINTEREST\n\n23. The Plaintiff claims pre-suit interest at the rate of 12% per annum from 20.06.2024 till the date of filing.\n\n24. The Plaintiff claims pendente lite and future interest under Section 34 of the Code of Civil Procedure, 1908.\n\nSCHEDULE_OF_PROPERTY\n\n25. NOT APPLICABLE. This is a suit for recovery of money and does not involve immovable property.\n\nPRAYER\n\n26. The Plaintiff prays for the following reliefs:\n\n(a) decree directing the Defendant to pay Rs. 15,00,000/- being the principal amount of the loan (S.73 ICA)\n\n(b) pre-suit interest at the rate of 12% per annum from 20.06.2024 till date of filing (Contract / usage / substantive law)\n\n(c) pendente lite interest at such rate as this Hon'ble Court deems fit from filing till decree (S.34 CPC)\n\n(d) future interest at such rate as this Hon'ble Court deems fit from decree till realisation (S.34 CPC)\n\n(e) costs of the suit (S.35 CPC)\n\n(f) such other and further relief(s) as this Hon'ble Court may deem fit and proper\n\nDOCUMENTS_LIST\n\n26. The following documents are filed as annexures:\n\n(a) Annexure P-1: Bank Transaction Record (NEFT proof with UTR: AXIB20240315123456 dated 15.03.2024)\n\n(b) Annexure P-2: Digital Communication (WhatsApp messages acknowledging the loan)\n\n(c) Annexure P-3: Legal Notice dated 01.07.2024\n\nVERIFICATION\n\n27. I, Ram Kumar, the Plaintiff herein, do hereby declare that the contents of paragraphs 3 to 11 are true to my personal knowledge.\n\n28. I declare that the contents of paragraphs 12 to 27 are based on legal advice and information believed to be true.\n\n29. Verified at Bengaluru on this {{DATE}} day of {{MONTH}},\n\n2024.\n\nPLACE: BENGALURU\nDATE: {{DATE}}\n\n{{ADVOCATE_NAME}}\n\nADVOCATE FOR PLAINTIFF\n{{ADDRESS}}\n{{BAR_COUNCIL_NUMBER}}\nThrough:\n{{ADVOCATE_NAME}}\nAdvocate\nEnrollment No. {{ADVOCATE_ENROLLMENT}}\n{{ADVOCATE_ADDRESS}}",
+  "structural_issues": [],
+  "citation_issues": [
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "S\n\n1",
+      "message": "'S\n\n1' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "S\n\n2",
+      "message": "'S\n\n2' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "S\n\n3",
+      "message": "'S\n\n3' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s. 15",
+      "message": "'s. 15' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s.\n\n7",
+      "message": "'s.\n\n7' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s.\n\n8",
+      "message": "'s.\n\n8' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s 20",
+      "message": "'s 20' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "S\n\n12",
+      "message": "'S\n\n12' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s. 15",
+      "message": "'s. 15' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s. 15",
+      "message": "'s. 15' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s 3",
+      "message": "'s 3' in draft not found in verified provisions — may be hallucinated"
+    },
+    {
+      "type": "unverified_draft_citation",
+      "severity": "WARN",
+      "citation": "s 12",
+      "message": "'s 12' in draft not found in verified provisions — may be hallucinated"
+    }
+  ],
+  "evidence_anchoring_issues": [],
+  "errors": []
+}

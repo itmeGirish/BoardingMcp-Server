@@ -50,7 +50,7 @@ SCHEMAS: dict = {
 
         "filing_rules": {
             "court_fee": True,
-            "filing_deadline": "30 days from date of decree to subordinate court; 90 days if to High Court (Art 116 Limitation Act read with S.96 CPC)",
+            "filing_deadline": "30 days from date of decree when appealing to District Court or subordinate appellate court (Art 116(b)); 90 days when appealing to High Court (Art 116(a) Limitation Act, read with S.96 CPC)",
             "vakalatnama": True,
             "certified_copy": True,
         },
@@ -145,7 +145,7 @@ SCHEMAS: dict = {
         "filing_rules": {
             "court_fee": True,
             "filing_deadline": "30 days from date of decree/order (Art 124 Limitation Act)",
-            "vakalatnama": False,
+            "vakalatnama": True,
             "certified_copy": True,
         },
     },

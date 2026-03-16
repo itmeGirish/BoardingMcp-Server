@@ -3,7 +3,10 @@
     "allow": [
       "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v9_antifab.py tests/drafting/test_lkb_limitation_helpers.py --tb=short -q)",
       "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/ -q)",
-      "Bash(grep REVIEW.*done C:UsersGirishNAppDataLocalTempclaudec--Girish-Fundamental-Projects-ActionAi-Agent-steer-backend-BoardingMcp-Servertasksb0yqf2tqi.output)"
+      "Bash(grep REVIEW.*done C:UsersGirishNAppDataLocalTempclaudec--Girish-Fundamental-Projects-ActionAi-Agent-steer-backend-BoardingMcp-Servertasksb0yqf2tqi.output)",
+      "Bash(timeout 120 agent_steer/Scripts/python.exe -m pytest tests/drafting/ --tb=short -q)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v8_unit.py tests/drafting/test_v9_antifab.py tests/drafting/test_verified_legal_rules.py tests/drafting/test_lkb_limitation_helpers.py -q --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/ --tb=short -q)"
     ]
   }
 }

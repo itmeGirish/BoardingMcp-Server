@@ -26,7 +26,32 @@
       "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py tests/drafting/test_v9_antifab.py tests/drafting/test_v10_civil_architecture.py tests/drafting/test_lkb_limitation_helpers.py -v --tb=short)",
       "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestCivilConsistencyGate::test_flags_guarantee_citing_indemnity_section tests/drafting/test_v10_civil_architecture.py::TestCivilConsistencyGate::test_flags_summary_suit_missing_order_xxxvii -v --tb=short)",
       "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v4_unit.py tests/drafting/test_v7_unit.py tests/drafting/test_v8_unit.py tests/drafting/test_v9_antifab.py tests/drafting/test_v10_civil_architecture.py tests/drafting/test_lkb_limitation_helpers.py --tb=short)",
-      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestEnrichmentResolvedCauseType -v --tb=short)"
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/test_v10_civil_architecture.py::TestEnrichmentResolvedCauseType -v --tb=short)",
+      "Bash(agent_steer/Scripts/python.exe -m pytest tests/drafting/ -v --tb=short -x --ignore=tests/drafting/test_v4_dual_scenario.py --ignore=tests/drafting/test_v4_live_pipeline.py)",
+      "WebSearch",
+      "WebFetch(domain:ibclaw.in)",
+      "WebFetch(domain:www.indiacode.nic.in)",
+      "WebFetch(domain:upload.indiacode.nic.in)",
+      "WebFetch(domain:www.commonlii.org)",
+      "Read(//c/Users/GirishN/.claude/projects/c--Girish-Fundamental-Projects-ActionAi-Agent-steer-backend-BoardingMcp-Server/28e26020-e795-4af6-8867-4e10d199308a/tool-results/**)",
+      "WebFetch(domain:indiankanoon.org)",
+      "WebFetch(domain:www.latestlaws.com)",
+      "WebFetch(domain:www.bareactslive.com)",
+      "WebFetch(domain:www.advocatekhoj.com)",
+      "WebFetch(domain:supremetoday.ai)",
+      "WebFetch(domain:www.writinglaw.com)",
+      "WebFetch(domain:rentedbuilding.wordpress.com)",
+      "WebFetch(domain:vault.drishtijudiciary.com)",
+      "WebFetch(domain:jajharkhand.in)",
+      "WebFetch(domain:www.taxmanagementindia.com)",
+      "WebFetch(domain:www.drishtijudiciary.com)",
+      "WebFetch(domain:www.mylawman.co.in)",
+      "WebFetch(domain:taxmanagementindia.com)",
+      "WebFetch(domain:www.taxtmi.com)",
+      "WebFetch(domain:bhattandjoshiassociates.com)",
+      "WebFetch(domain:lawbhoomi.com)",
+      "WebFetch(domain:www.shareyouressays.com)",
+      "WebFetch(domain:cdnbbsr.s3waas.gov.in)"
     ]
   }
 }

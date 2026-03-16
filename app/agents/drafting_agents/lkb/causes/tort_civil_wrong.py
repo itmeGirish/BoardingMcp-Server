@@ -56,7 +56,7 @@ CAUSES: dict = {
             "If service deficiency, Consumer Protection Act forum has concurrent jurisdiction.",
             "Professional negligence requires expert evidence.",
             "Res ipsa loquitur shifts evidential burden — plead specifically.",
-            "Art 73 Limitation Act may apply to bodily injury (1 year) instead of Art 113 (3 years) — verify for specific injury type.",
+            "Art 113 (residuary, 3 years) applies to negligence personal injury — Art 73 covers false imprisonment only, not bodily injury.",
         ],
         complexity_weight=2,
     ),
@@ -195,9 +195,9 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 91"]},
         ],
         limitation={
-            "article": "73",
-            "period": "One year (continuing nuisance: fresh cause of action accrues daily — S.22 Limitation Act)",
-            "from": "When nuisance first affects plaintiff",
+            "article": "113",
+            "period": "Three years (continuing nuisance: fresh cause of action accrues daily — S.22 Limitation Act)",
+            "from": "When nuisance first affects plaintiff (residuary article — no specific tort article for nuisance)",
         },
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + ["nuisance_description", "interference_with_enjoyment"],
         required_reliefs=["injunction_abate_nuisance", "damages_if_claimed", "costs"],
@@ -351,7 +351,7 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 19", "Section 20"]},
         ],
         limitation={
-            "article": "74",
+            "article": "73",
             "period": "One year",
             "from": "When the imprisonment ends",
         },
@@ -372,7 +372,7 @@ CAUSES: dict = {
             "Award costs of the suit",
         ],
         drafting_red_flags=[
-            "Limitation ONLY ONE YEAR (Art 74) — verify dates.",
+            "Limitation ONLY ONE YEAR (Art 73) — verify dates.",
             "Total restraint of liberty required — mere obstruction of one route is not false imprisonment.",
             "Knowledge of plaintiff not necessary — imprisonment can exist without plaintiff knowing.",
         ],
@@ -390,7 +390,7 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 19", "Section 20"]},
         ],
         limitation={
-            "article": "77",
+            "article": "74",
             "period": "One year",
             "from": "When plaintiff is acquitted or prosecution terminated",
         },
@@ -411,7 +411,7 @@ CAUSES: dict = {
             "Award costs of the suit",
         ],
         drafting_red_flags=[
-            "Limitation ONLY ONE YEAR (Art 77).",
+            "Limitation ONLY ONE YEAR (Art 74).",
             "ALL FOUR elements: (1) defendant prosecuted, (2) ended in plaintiff favour, (3) no reasonable cause, (4) malice.",
         ],
         complexity_weight=3,
@@ -545,9 +545,9 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20"]},
         ],
         limitation={
-            "article": "113",
-            "period": "Three years",
-            "from": "When the right to sue accrues (date of inducement causing breach)",
+            "article": "78",
+            "period": "One year",
+            "from": "The date of the breach",
         },
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + [
             "contract_with_third_party", "defendant_inducement",
@@ -568,7 +568,7 @@ CAUSES: dict = {
             "Award costs of the suit",
         ],
         drafting_red_flags=[
-            "Residuary limitation Art 113 — three years.",
+            "Limitation ONLY ONE YEAR (Art 78) — for inducing breach of contract.",
             "Must prove: (1) valid contract existed, (2) defendant KNEW of the contract, (3) defendant INDUCED the breach, (4) plaintiff suffered damage.",
             "Distinct from breach of contract itself — this is a tort against the INDUCER, not the contract-breaker.",
         ],

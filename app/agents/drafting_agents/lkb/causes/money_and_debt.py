@@ -44,7 +44,7 @@ CAUSES: dict = {
         interest_basis="wrongful_retention_of_money",
         interest_guidance=(
             "Claim pendente lite interest under Section 34 CPC. "
-            "Pre-suit interest: contractual rate if agreed, otherwise 12% p.a. simple interest is defensible for unsecured loans. "
+            "Pre-suit interest: claim it only on a contractual, mercantile usage, substantive-law, or other legally sustainable basis; avoid presenting any fixed percentage as a statutory default. "
             "Post-decree future interest under Section 34 CPC at such rate as the Court deems fit. "
             "For MSME suppliers: compound interest at three times bank rate under Section 16 MSMED Act. "
             "Do NOT claim compound interest for ordinary loans unless contract expressly provides."
@@ -95,7 +95,7 @@ CAUSES: dict = {
         ],
         drafting_red_flags=[
             "If lender is non-banking entity lending habitually, screen RBI registration and state money-lending act.",
-            "Interest exceeding 12% unsecured may be scrutinised.",
+            "High or penal interest in an unsecured transaction may be scrutinised for excessiveness or unconscionability.",
             "Order II Rule 2 CPC: entire claim from one cause must be included.",
             "Do NOT cite Article 19 mechanically; payable-on-demand terms may shift the accrual article.",
         ],
@@ -103,9 +103,9 @@ CAUSES: dict = {
         available_reliefs=[
             {"type": "money_decree", "statute": "S.73 ICA",
              "prayer_text": "decree directing the Defendant to pay Rs.{{PRINCIPAL_AMOUNT}}/- being the principal amount of the loan"},
-            {"type": "interest", "subtype": "pre_suit", "statute": "S.34 CPC",
+            {"type": "interest", "subtype": "pre_suit", "statute": "Contract / usage / substantive law",
              "prayer_text": "pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{DATE_OF_DEFAULT}} till date of filing"},
-            {"type": "interest", "subtype": "pendente_lite", "statute": "Order XX Rule 11 CPC",
+            {"type": "interest", "subtype": "pendente_lite", "statute": "S.34 CPC",
              "prayer_text": "pendente lite interest at such rate as this Hon'ble Court deems fit from filing till decree"},
             {"type": "interest", "subtype": "future", "statute": "S.34 CPC",
              "prayer_text": "future interest at such rate as this Hon'ble Court deems fit from decree till realisation"},
@@ -213,44 +213,76 @@ CAUSES: dict = {
 
     # ── deposit_refund ────────────────────────────────────────────────────
     # Refund-deposit accrual is contract-sensitive.
+    # S.65 ICA applies ONLY when contract becomes void — NOT for normal lease expiry.
+    # For lease security deposit: refund obligation arises from the lease terms themselves
+    # and breach-based recovery under S.73 ICA.
     "deposit_refund": _entry(
         registry_kind="cause",
         code="deposit_refund",
-        display_name="Recovery of security deposit / earnest money / refundable deposit",
+        display_name="Recovery of refundable security deposit / earnest money",
         primary_acts=[
             {"act": "Indian Contract Act, 1872", "sections": ["Section 73"]},
+            {"act": "Transfer of Property Act, 1882", "sections": ["Section 111 (determination of lease)"]},
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20"]},
         ],
         alternative_acts=[
-            {"act": "Indian Contract Act, 1872", "sections": ["Section 65 (when contract becomes void — restitution)"]},
+            {"act": "Indian Contract Act, 1872", "sections": ["Section 65 (ONLY when contract discovered void or becomes void — NOT for normal lease expiry/termination)"]},
+            {"act": "Indian Contract Act, 1872", "sections": ["Section 70 (quantum meruit — if no express contract)"]},
         ],
         limitation={
             "article": "UNKNOWN",
-            "description": "Verify the limitation article from the deposit clause and refund trigger. Security deposits, earnest money, and refundable advances do not all share one accrual rule.",
+            "description": "Verify the limitation article from the deposit clause and refund trigger. Security deposits, earnest money, and refundable advances do not all share one accrual rule. For lease security deposit, accrual is typically from date refund became due (vacation + handover + expiry of contractual refund period).",
             "period": "Usually three years, subject to the governing refund article",
             "from": "From demand, breach, termination, or the contractual refund trigger, depending on the underlying transaction",
         },
+        coa_type="single_event",
+        coa_guidance="The cause of action is a SINGLE EVENT — it arose on the date the refund became due and was not paid. Do NOT plead 'continuing cause of action'. The withholding may continue, but the breach (non-refund) crystallised on one date.",
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + ["deposit_details", "refund_trigger", "demand_and_refusal", "interest"],
         required_reliefs=["money_decree", "interest_pendente_lite_future", "costs"],
         doc_type_keywords=["deposit refund", "security deposit", "earnest money refund"],
         interest_basis="wrongful_retention_of_money",
+        interest_guidance=(
+            "Pre-suit interest: claim it only if supported by the lease/agreement, mercantile usage, substantive law, or another legally sustainable basis. "
+            "Section 34 CPC governs pendente lite interest from the date of suit to decree and may also govern post-decree interest till realisation."
+        ),
         facts_must_cover=[
             "Nature of deposit — security deposit, earnest money, or refundable advance",
-            "Date and amount of deposit paid, mode of payment",
-            "Agreement under which deposit was paid (lease, sale, service contract)",
-            "Refund trigger — termination of lease, completion of contract, cancellation, or contractual condition",
-            "Date when refund became due under the agreement terms",
-            "Demand for refund — legal notice date and Defendant's response or refusal",
+            "Date and amount of deposit paid, mode of payment (cheque/NEFT/cash with receipt)",
+            "Agreement under which deposit was paid (lease, sale, service contract) — date and parties",
+            "Refund trigger — termination/expiry of lease, completion of contract, cancellation, or contractual condition",
+            "Date when Plaintiff vacated/handed over the premises (for lease deposits) — vacant and peaceful possession",
+            "That all dues (rent, electricity, water, maintenance) were cleared before/at handover",
+            "That no damage memo or deduction notice was served by the Defendant, or if served, was unjustified",
+            "Date when refund became due under the agreement terms (handover + contractual refund period)",
+            "Demand for refund — legal notice date, mode of service, and Defendant's response or refusal",
+            "That the Defendant has no lawful right to withhold/forfeit the deposit",
         ],
         prayer_template=[
-            "Pass a decree directing the Defendant to refund to the Plaintiff a sum of Rs. {{DEPOSIT_AMOUNT}}/- being the security deposit / earnest money",
+            "Pass a decree directing the Defendant to refund to the Plaintiff a sum of Rs. {{DEPOSIT_AMOUNT}}/- being the refundable security deposit paid under the {{AGREEMENT_TYPE}} dated {{AGREEMENT_DATE}}",
             "Award pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{REFUND_DUE_DATE}} till the date of institution of the suit",
-            "Award pendente lite and future interest under Section 34 CPC",
+            "Award pendente lite interest at such rate as this Hon'ble Court deems fit from the date of suit till the date of decree under Section 34 CPC",
+            "Award future interest at such rate as this Hon'ble Court deems fit from the date of decree till realisation under Section 34 CPC",
             "Award costs of the suit",
         ],
+        mandatory_averments=[
+            {"averment": "Deposit payment", "instruction": "Plead exact date, amount, mode of payment, and receipt/proof", "provision": "S.73 ICA"},
+            {"averment": "Vacancy and handover", "instruction": "Plead that Plaintiff vacated premises and handed over vacant peaceful possession on a specific date", "provision": "S.111 TPA"},
+            {"averment": "Dues clearance", "instruction": "Plead that all rent, utility, and maintenance dues were cleared", "provision": "Defence pre-emption"},
+            {"averment": "Demand and refusal", "instruction": "Plead legal notice with date and that Defendant failed/refused to refund", "provision": "S.73 ICA"},
+        ],
+        defensive_points=[
+            "no_damage_to_property",
+            "all_dues_cleared",
+            "no_forfeiture_clause_triggered",
+            "no_lawful_deductions",
+        ],
         drafting_red_flags=[
+            "Do NOT cite Section 65 ICA as primary basis — S.65 applies ONLY when contract becomes void, not for normal lease expiry/termination. Use S.73 ICA (breach/non-performance) as primary basis.",
+            "Do NOT use 'security deposit / earnest money' interchangeably — identify the exact nature of the deposit from the agreement and use precise terminology throughout.",
             "Do NOT cite Article 22 mechanically unless the deposit is expressly payable on demand.",
+            "Do NOT plead 'continuing cause of action' — this is a single-event money recovery claim.",
             "Earnest money forfeiture disputes may follow a different accrual analysis from refundable security deposits.",
+            "Section 34 CPC covers pendente lite interest in an ordinary money decree; do not cite Order XX Rule 11 CPC as the general source for pendente lite interest.",
         ],
         complexity_weight=1,
     ),
@@ -432,10 +464,9 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20"]},
         ],
         limitation={
-            "article": "UNKNOWN",
-            "description": "Art 18 is wrong (it covers instruments, not quantum meruit). Verify the applicable article: commonly the residual Art 113 (3 years from when right to sue accrues) applies to quantum meruit / S.70 ICA claims.",
-            "period": "Three years under the governing article",
-            "from": "When the work is done and the benefit is received by the Defendant",
+            "article": "18",
+            "period": "Three years",
+            "from": "When the work is done (Art 18 — 'for the price of work done by the plaintiff at the request of the defendant where no time has been fixed for payment'. This is the specific article for quantum meruit claims. Accrual: when the work is completed and the defendant has received the benefit)",
         },
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + ["work_performed_details", "absence_of_agreed_price", "reasonable_value_computation"],
         required_reliefs=["money_decree_for_reasonable_value", "interest_pendente_lite_future", "costs"],
@@ -454,14 +485,14 @@ CAUSES: dict = {
         ],
         limitation={
             "article": "UNKNOWN",
-            "description": "Verify the applicable article based on relationship: Art 46 for joint promisors/co-debtors (S.43 ICA — 3 years from date of payment), Art 48 for co-sureties (S.146 ICA — 3 years from date of payment), Art 113 (residuary) for joint tortfeasors. These are distinct articles for distinct relationships.",
+            "description": "Verify the applicable article based on relationship: Art 43 for co-sureties (S.146 ICA — 3 years from date of payment in excess of own share), Art 48 for contribution after paying more than share under a joint decree, Art 55 (breach of contract) or Art 113 (residuary) for joint promisors/co-debtors under S.43 ICA or joint tortfeasors. NOTE: Art 46 is a Succession Act article (executor/legacy refund) and does NOT apply to ICA joint promisors.",
             "period": "Three years",
             "from": "The date of payment in excess of the plaintiff's own share",
         },
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + ["joint_liability_basis", "payment_in_excess", "share_computation"],
         required_reliefs=["money_decree_for_excess_share", "interest", "costs"],
         doc_type_keywords=["contribution", "co-debtor", "co-surety", "joint tortfeasor", "excess payment"],
-        notes=["S.43 ICA: promisee may compel any joint promisor to perform. Art 48 Limitation Act: contribution runs from date of excess payment."],
+        notes=["S.43 ICA: promisee may compel any joint promisor to perform. Art 43 Limitation Act: surety against co-surety, contribution runs from date of excess payment."],
         facts_must_cover=[
             "Joint liability basis — joint promise (S.43 ICA), co-suretyship (S.146 ICA), or joint tort",
             "Total debt / liability amount and each co-debtor's proportionate share",
@@ -493,9 +524,9 @@ CAUSES: dict = {
             {"act": "Indian Contract Act, 1872", "sections": ["Section 129 (only for continuing guarantees)", "Section 133 (discharge by variance — pre-empt defence)", "Section 139 (discharge by creditor's act — pre-empt defence)"]},
         ],
         limitation={
-            "article": "44",
+            "article": "55",
             "period": "Three years",
-            "from": "When the debt becomes due (Art 44 specifically covers creditor-against-surety suits; Art 55 is residuary and displaced by this specific article)",
+            "from": "When the principal debtor defaults — that is the date the guarantee contract is broken, triggering Art 55. Where the guarantee is payable on demand, time runs from the date of demand on the surety. Art 44 is WRONG for guarantees — it covers insurance policies only",
         },
         court_rules=_civil_and_commercial_rules(
             nature_keywords=["business", "commercial", "guarantee"],
@@ -548,10 +579,9 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20"]},
         ],
         limitation={
-            "article": "UNKNOWN",
-            "description": "Verify the applicable limitation article. Art 24 (contingency — 3 years from when loss is suffered / payment made) is most precise for indemnity claims where right crystallises on damnification. Some courts apply Art 55 (breach of contract — 3 years from when contract broken) but the accrual trigger differs. Art 24 aligns with the indemnity principle that right to sue arises on actual loss, not mere breach.",
+            "article": "55",
             "period": "Three years",
-            "from": "When the indemnified party suffers actual loss or makes actual payment (date of damnification)",
+            "from": "When the contract of indemnity is broken — i.e., when the indemnifier refuses to indemnify after the indemnified party suffers actual loss or makes payment (date of damnification). Art 55 applies because indemnity is a contract, and breach occurs when the indemnifier fails to honour the indemnity obligation upon the triggering event",
         },
         court_rules=_civil_and_commercial_rules(
             nature_keywords=["business", "commercial", "indemnity"],

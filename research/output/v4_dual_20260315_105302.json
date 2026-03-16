@@ -1,0 +1,197 @@
+{
+  "timestamp": "20260315_105302",
+  "total_elapsed": 1477.1,
+  "scenarios": [
+    {
+      "name": "Breach of Contract — Damages (Business)",
+      "elapsed": 517.8,
+      "text_length": 8211,
+      "placeholders": 17,
+      "score": "29/30 (97%)",
+      "checks": [
+        {
+          "category": "STRUCT",
+          "check": "court_heading",
+          "result": "PASS",
+          "detail": "Court name (Commercial/Civil)"
+        },
+        {
+          "category": "STRUCT",
+          "check": "title_plaint",
+          "result": "PASS",
+          "detail": "Titled as plaint/suit"
+        },
+        {
+          "category": "STRUCT",
+          "check": "plaintiff_company",
+          "result": "PASS",
+          "detail": "Plaintiff company named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "defendant_company",
+          "result": "PASS",
+          "detail": "Defendant company named"
+        },
+        {
+          "category": "STRUCT",
+          "check": "jurisdiction",
+          "result": "PASS",
+          "detail": "Jurisdiction section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "facts_section",
+          "result": "PASS",
+          "detail": "Facts section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "prayer_section",
+          "result": "PASS",
+          "detail": "Prayer section"
+        },
+        {
+          "category": "STRUCT",
+          "check": "verification",
+          "result": "PASS",
+          "detail": "Verification clause"
+        },
+        {
+          "category": "FACT",
+          "check": "contract_value",
+          "result": "PASS",
+          "detail": "Rs.45L contract value"
+        },
+        {
+          "category": "FACT",
+          "check": "advance_paid",
+          "result": "PASS",
+          "detail": "Rs.20L advance paid"
+        },
+        {
+          "category": "FACT",
+          "check": "consequential_damages",
+          "result": "PASS",
+          "detail": "Rs.12L consequential damages / loss"
+        },
+        {
+          "category": "FACT",
+          "check": "total_claim",
+          "result": "PASS",
+          "detail": "Total claim Rs.32L or breakdown stated"
+        },
+        {
+          "category": "FACT",
+          "check": "software_agreement",
+          "result": "PASS",
+          "detail": "Software/ERP agreement mentioned"
+        },
+        {
+          "category": "FACT",
+          "check": "abandonment",
+          "result": "PASS",
+          "detail": "Project abandonment narrated"
+        },
+        {
+          "category": "FACT",
+          "check": "neft_evidence",
+          "result": "PASS",
+          "detail": "NEFT/bank transfer evidence"
+        },
+        {
+          "category": "FACT",
+          "check": "legal_notice",
+          "result": "PASS",
+          "detail": "Legal notice mentioned"
+        },
+        {
+          "category": "LEGAL",
+          "check": "contract_act",
+          "result": "PASS",
+          "detail": "Indian Contract Act / breach cited"
+        },
+        {
+          "category": "LEGAL",
+          "check": "section_cited",
+          "result": "PASS",
+          "detail": "At least one statutory section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "cause_of_action",
+          "result": "PASS",
+          "detail": "Cause of action section"
+        },
+        {
+          "category": "LEGAL",
+          "check": "limitation_pleaded",
+          "result": "PASS",
+          "detail": "Limitation addressed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "valuation_court_fee",
+          "result": "PASS",
+          "detail": "Valuation / court fee"
+        },
+        {
+          "category": "LEGAL",
+          "check": "interest_claimed",
+          "result": "PASS",
+          "detail": "18% interest claimed"
+        },
+        {
+          "category": "LEGAL",
+          "check": "damages_in_prayer",
+          "result": "PASS",
+          "detail": "Prayer seeks damages decree"
+        },
+        {
+          "category": "LEGAL",
+          "check": "refund_claimed",
+          "result": "PASS",
+          "detail": "Refund of advance claimed"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_air_citation",
+          "result": "PASS",
+          "detail": "No fabricated AIR"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_scc_citation",
+          "result": "PASS",
+          "detail": "No fabricated SCC"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_amounts",
+          "result": "PASS",
+          "detail": "No invented amounts"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_invented_names",
+          "result": "PASS",
+          "detail": "No placeholder names"
+        },
+        {
+          "category": "HALLU",
+          "check": "no_drafting_notes",
+          "result": "PASS",
+          "detail": "No drafting-notes language"
+        },
+        {
+          "category": "HALLU",
+          "check": "placeholders_reasonable",
+          "result": "FAIL",
+          "detail": "Placeholders: 17"
+        }
+      ],
+      "draft_text": "IN THE COURT OF THE PRINCIPAL JUDGE, COMMERCIAL COURT, BENGALURU\n\nSUIT NO. {{SUIT_NUMBER}} OF 2024\n\nBETWEEN:\n\nTECHSOFT SOLUTIONS PVT LTD,\nA company registered under the Companies Act,\nHaving its registered office at MG Road, Bengaluru, {{PLACEHOLDER_PIN}},\nRepresented by its Director Priya Menon, aged 40 years,\n\n... PLAINTIFF\n\nAND\n\nCLOUDBRIDGE SYSTEMS LLP,\nA limited liability partnership,\nHaving its office at Whitefield, Bengaluru, {{PLACEHOLDER_PIN}},\nRepresented by its Designated Partner Vikram Singh, aged 48 years,\n\n... DEFENDANT\n\nSUIT FOR RECOVERY OF DAMAGES FOR BREACH OF CONTRACT\n\nFACTS\n\n1. The Plaintiff is a company registered under the Companies Act, engaged in the business of software solutions. The Defendant is a limited liability partnership engaged in software development services.\n\n2. On 01.02.2024, the Plaintiff entered into a written Software Development Agreement with the Defendant for the development of an ERP system. The total contract value was agreed at Rs. 45,00,000/-.\n\n3. Pursuant to the terms of the Agreement, the Plaintiff paid Rs. 20,00,000/- as the first milestone payment to the Defendant on 01.02.2024 via NEFT. The transaction bears UTR Number ICIC20240201456789.\n\n4. As per the agreed timeline, the Defendant was obligated to deliver the first module of the ERP system by 01.05.2024.\n\n5. The Defendant failed to deliver any module by the stipulated deadline of 01.05.2024.\n\n6. On 15.06.2024, the Defendant abandoned the project without completing the development and without returning the advance payment received from the Plaintiff.\n\n7. Due to the non-delivery and abandonment of the project, the Plaintiff suffered delay in operations. The Plaintiff incurred an additional loss of Rs. 12,00,000/- as assessed by the auditor.\n\n8. The Plaintiff issued a legal notice to the Defendant dated 01.07.2024 demanding refund of the advance and compensation for losses. The Defendant has not complied with the notice.\n\n9. The Plaintiff claims total damages of Rs. 32,00,000/-, comprising Rs. 20,00,000/- as refund of advance payment and Rs. 12,00,000/- as consequential damages for loss suffered.\n\nLEGAL BASIS\n\n10. The Plaintiff relies on Section 73 of the Indian Contract Act, 1872, which provides compensation for loss or damage caused by breach of contract.\n\n11. The Plaintiff relies on Section 20 of the Code of Civil Procedure, 1908, regarding jurisdiction where the Defendant resides/carries on business or where the cause of action arises.\n\n12. The Plaintiff relies on Section 34 of the Code of Civil Procedure, 1908, regarding the award of interest.\n\n13. The Plaintiff relies on Section 35 of the Code of Civil Procedure, 1908, regarding costs of the suit.\n\nCAUSE OF ACTION\n\n14. The cause of action arose on 15.06.2024 when the Defendant abandoned the project and failed to perform its obligations.\n\n15. The cause of action arose within the territorial jurisdiction of Bengaluru, inter alia because the Defendant carries on business at Whitefield, Bengaluru, and the Plaintiff made the milestone payment to the Defendant from Bengaluru pursuant to the Agreement; the Defendant’s failure/non-performance and resultant loss are thus connected with Bengaluru.\n\n16. The cause of action is continuing as the Defendant has not refunded the amount or compensated the loss.\n\nLIMITATION\n\n17. The suit is governed by Article 55 of the Limitation Act, 1963.\n\n18. The limitation period is three years from the date when the contract is broken.\n\n19. The breach occurred on 15.06.2024. The present suit is filed within three years from the date of breach and is within limitation.\n\nJURISDICTION, COMMERCIAL DISPUTE AND SPECIFIED VALUE\n\n20. This Hon'ble Court has territorial jurisdiction under Section 20 of the Code of Civil Procedure, 1908, as the Defendant carries on business within Bengaluru and material parts of the cause of action arose within Bengaluru.\n\n21. The present dispute arises out of a software development/services contract and constitutes a “commercial dispute” under the Commercial Courts Act, 2015.\n\n22. The specified value of the subject-matter of the commercial dispute for the purposes of the Commercial Courts Act, 2015 is Rs. 32,00,000/- (Rupees Thirty Two Lakhs only), being the aggregate money claim of (i) Rs. 20,00,000/- towards refund of the milestone payment and (ii) Rs. 12,00,000/- towards consequential loss/damages.\n\nSECTION 12A COMPLIANCE (COMMERCIAL COURTS ACT, 2015)\n\n23. The Plaintiff states that this suit does not contemplate any urgent interim relief. Accordingly, the Plaintiff has complied with the mandatory pre-institution mediation requirement under Section 12A of the Commercial Courts Act, 2015 and obtained the pre-institution mediation non-starter/closure report bearing reference no. {{MEDIATION_REFERENCE_NO}} dated {{MEDIATION_REPORT_DATE}} issued by {{MEDIATION_AUTHORITY}}.\n\nVALUATION AND COURT FEE\n\n24. The suit is valued at Rs. 32,00,000/- for the purpose of court fee and pecuniary jurisdiction.\n\n25. The requisite court fee of Rs. {{COURT_FEE_AMOUNT}}/- is paid on the plaint.\n\nINTEREST\n\n26. The Plaintiff claims pre-suit interest at the rate of 18% per annum from 15.06.2024 till the date of filing of the suit.\n\n27. The Plaintiff claims pendente lite interest at such rate as this Hon'ble Court deems fit from the date of filing till the date of decree under Section 34 of the Code of Civil Procedure, 1908.\n\n28. The Plaintiff claims future interest at such rate as this Hon'ble Court deems fit from the date of decree till realisation under Section 34 of the Code of Civil Procedure, 1908.\n\nPRAYER\n\nThe Plaintiff prays for judgment and decree in favour of the Plaintiff and against the Defendant as follows:\n\n(a) decree for damages in the sum of Rs. 32,00,000/- on account of breach of contract (Section 73, Indian Contract Act, 1872)\n\n(b) pre-suit interest at the rate of 18% per annum from 15.06.2024 till date of filing\n\n(c) pendente lite interest at such rate as this Hon'ble Court deems fit from filing till decree (Section 34, CPC)\n\n(d) future interest at such rate as this Hon'ble Court deems fit from decree till realisation (Section 34, CPC)\n\n(e) costs of the suit including advocate's fees (Section 35, CPC)\n\n(f) such other and further relief(s) as this Hon'ble Court may deem fit and proper\n\nLIST OF DOCUMENTS\n\n29. Software Development Agreement dated 01.02.2024 (Annexure P-1)\n\n30. NEFT receipt (UTR: ICIC20240201456789) dated 01.02.2024 (Annexure P-2)\n\n31. Email correspondence showing abandonment (Annexure P-3)\n\n32. Loss assessment report by auditor (Annexure P-4)\n\n33. Legal notice dated 01.07.2024 (Annexure P-5)\n\n34. Pre-institution mediation non-starter/closure report under Section 12A, Commercial Courts Act, 2015 bearing reference no. {{MEDIATION_REFERENCE_NO}} dated {{MEDIATION_REPORT_DATE}} issued by {{MEDIATION_AUTHORITY}} (Annexure P-6)\n\nVERIFICATION\n\nI, Priya Menon, aged 40 years, Director of TechSoft Solutions Pvt Ltd, the Plaintiff herein, do hereby verify and declare that:\n\n35. Paragraphs 1 to 6 and 8 of the Facts section are within my personal knowledge and are true and correct.\n\n36. Paragraphs 7 and 9 of the Facts section are based on information received from the auditor and records maintained by the Plaintiff, which I believe to be true and correct.\n\n37. The Legal Basis, Cause of Action, Limitation, Jurisdiction, Valuation and Court Fee, Interest, Prayer and List of Documents sections are based on legal advice and records, which I believe to be true and correct.\n\nVerified at Bengaluru on this {{DATE}} day of {{MONTH}}, 2024.\n\nDEPONENT\n\nSTATEMENT OF TRUTH (ORDER VI RULE 15A, CPC — COMMERCIAL DISPUTE)\n\nI, Priya Menon, aged 40 years, Director of TechSoft Solutions Pvt Ltd, the Plaintiff above-named, do hereby state on oath that I am authorised to sign and verify this plaint and that the contents of this plaint are true and correct to my knowledge, and where stated on information, I believe the same to be true, and nothing material has been concealed",
+      "errors": []
+    }
+  ]
+}

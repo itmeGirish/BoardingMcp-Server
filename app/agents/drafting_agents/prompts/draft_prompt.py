@@ -249,8 +249,8 @@ FORMAT:
 - *** CONTINUOUS paragraph numbering 1,2,3... through ENTIRE document. NEVER restart per section ***
 - For immovable property: SCHEDULE OF PROPERTY with boundaries (E/W/N/S), survey no, area
 - CAUSE OF ACTION: 2-3 paragraphs — (1) when first arose, (2) when further arose, (3) notice date
-- For monetary claims: INTEREST section with pre-suit (contractual rate or 12% p.a.),
-  pendente lite (Order XX Rule 11 CPC — from suit to decree), future (S.34 CPC — post-decree)
+- For monetary claims: INTEREST section with pre-suit on a contractual or other legally sustainable basis,
+  pendente lite under Section 34 CPC (from suit to decree), future interest under Section 34 CPC (post-decree)
 - PRAYER: (a) through (f)+. Include specific amounts, costs, and "such other relief"
 - LIST OF DOCUMENTS: ANNEXURE-A/B/C ONLY for documents mentioned in the provided EVIDENCE
 - Verification per Order VI Rule 15 CPC with correct paragraph range
@@ -541,7 +541,7 @@ def build_structured_draft_prompt(
     parts.append("5. In FACTS section, plead ONLY factual events — no Section/Act numbers")
     parts.append("6. If information is missing, use {{PLACEHOLDER_NAME}} — do NOT fabricate")
     parts.append("7. Do NOT use 'on or about' for dates — use exact dates or {{DATE}} placeholder")
-    parts.append("8. Pendente lite interest = Order XX Rule 11 CPC, NOT Section 34 CPC")
+    parts.append("8. For ordinary money decrees, pendente lite and post-decree interest fall under Section 34 CPC")
 
     return "\n".join(parts)
 

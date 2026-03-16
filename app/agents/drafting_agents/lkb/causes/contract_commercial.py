@@ -52,7 +52,7 @@ CAUSES: dict = {
         ],
         damages_categories=["actual_loss", "consequential_loss", "interest_on_delayed_payment"],
         interest_guidance=(
-            "Pre-suit interest on delayed payment: contractual rate if stipulated, otherwise 12-18% p.a. simple interest. "
+            "Pre-suit interest on delayed payment: claim it only if supported by contract, mercantile usage, substantive law, or another legally sustainable basis. "
             "Pendente lite interest under Section 34 CPC. "
             "Post-decree future interest under Section 34 CPC. "
             "S.73 ICA: compensation for loss naturally arising from breach — interest on delayed payment is a standard head."
@@ -104,10 +104,12 @@ CAUSES: dict = {
         available_reliefs=[
             {"type": "damages", "subtype": "compensatory", "statute": "S.73 ICA",
              "prayer_text": "decree for damages in the sum of Rs.{{TOTAL_DAMAGES}}/- on account of breach of contract"},
-            {"type": "interest", "subtype": "pre_suit", "statute": "S.34 CPC",
+            {"type": "interest", "subtype": "pre_suit", "statute": "Contract / usage / substantive law",
              "prayer_text": "pre-suit interest at the rate of {{INTEREST_RATE}}% per annum from {{DATE_OF_BREACH}} till date of filing"},
-            {"type": "interest", "subtype": "pendente_lite", "statute": "Order XX Rule 11 CPC",
-             "prayer_text": "pendente lite and future interest at such rate as this Hon'ble Court deems fit"},
+            {"type": "interest", "subtype": "pendente_lite", "statute": "S.34 CPC",
+             "prayer_text": "pendente lite interest at such rate as this Hon'ble Court deems fit from filing till decree"},
+            {"type": "interest", "subtype": "future", "statute": "S.34 CPC",
+             "prayer_text": "future interest at such rate as this Hon'ble Court deems fit from decree till realisation"},
             {"type": "costs", "statute": "S.35 CPC",
              "prayer_text": "costs of the suit including advocate's fees"},
             {"type": "general",
@@ -465,7 +467,7 @@ CAUSES: dict = {
             {"act": "Specific Relief Act, 1963", "sections": ["Section 42"]},
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20"]},
         ],
-        limitation={"article": "58", "period": "Three years", "from": "When the right to have the injunction first arises (i.e., date of first breach of the negative covenant)"},
+        limitation={"article": "113", "period": "Three years", "from": "When the right to sue accrues (i.e., date of breach of the negative covenant — residuary article, no specific article exists in the Schedule)"},
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + ["contract_and_negative_covenant", "breach_or_threat"],
         required_reliefs=["permanent_injunction_decree", "damages_if_past_breach", "costs"],
         doc_type_keywords=["negative covenant", "section 42", "restraint covenant"],
@@ -484,8 +486,8 @@ CAUSES: dict = {
         drafting_red_flags=[
             "S.27 ICA voids restraint of trade — ensure exception applies (must be ancillary to a main transaction and reasonable in scope/duration/geography).",
             "S.42 SRA: if negative covenant proved, court MAY grant injunction (discretionary, not mandatory).",
-            "Art.58 (suit for injunction — 3 years) applies; Art.113 (residuary) is inapplicable because a specific article covers injunction suits.",
-            "For continuing covenant violations (e.g., ongoing non-compete breach): each successive breach is a fresh cause of action for injunction. Plead the date of first discovered breach AND the continuing nature. Art 58 accrual for damages runs from the first breach.",
+            "Art.113 (residuary — 3 years) applies — there is no specific article for injunction suits in the Limitation Act.",
+            "For continuing covenant violations (e.g., ongoing non-compete breach): each successive breach is a fresh cause of action for injunction. Plead the date of first discovered breach AND the continuing nature. Art 55 accrual for damages runs from the first breach (Art 58 is for declaratory suits, not contractual damages).",
         ],
         complexity_weight=2,
     ),
@@ -502,7 +504,7 @@ CAUSES: dict = {
         alternative_acts=[
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 16 (only when instrument relates to immovable property)"]},
         ],
-        limitation={"article": "113", "period": "Three years", "from": "When facts entitling rectification first become known (discovery of mutual mistake)"},
+        limitation={"article": "59", "period": "Three years", "from": "When the facts entitling the plaintiff to have the instrument rectified first become known to him (Art 59 covers suits to obtain a declaration, cancel, set aside, or rectify an instrument — it is the specific article, displacing the residuary Art 113)"},
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + ["instrument_details", "mutual_mistake_or_fraud", "correct_text_sought"],
         required_reliefs=["rectification_decree", "costs"],
         doc_type_keywords=["rectification", "section 26 specific relief", "correct deed"],

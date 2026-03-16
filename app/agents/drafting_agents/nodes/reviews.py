@@ -9,7 +9,7 @@ from langgraph.graph import END
 from langgraph.types import Command
 
 from ....config import logger, settings
-from ....services import review_openai_model
+from ....services import review_ollama_model
 from ..prompts import build_review_system_prompt
 from ..states import DraftingState, ReviewNode
 from ._utils import (
@@ -330,7 +330,7 @@ def review_node(state: DraftingState) -> Dict[str, Any]:
         len(user_request), len(draft_text), len(gate_errors),
     )
 
-    structured_llm = review_openai_model.with_structured_output(ReviewNode)
+    structured_llm = review_ollama_model.with_structured_output(ReviewNode)
     human_message = HumanMessage(content=user_payload)
 
     # Log approximate token counts for cost tracking
@@ -389,7 +389,7 @@ def review_node(state: DraftingState) -> Dict[str, Any]:
             SystemMessage(content=build_review_system_prompt(retry=True, inline_fix=inline_fix_enabled)),
             human_message,
         ]
-        raw_response = review_openai_model.invoke(raw_messages)
+        raw_response = review_ollama_model.invoke(raw_messages)
         # Log token usage from raw response
         _raw_meta = getattr(raw_response, "response_metadata", None) or {}
         _raw_usage = _raw_meta.get("token_usage") or _raw_meta.get("usage") or {}

@@ -22,9 +22,9 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20", "Order XX Rule 16"]},
         ],
         limitation={
-            "article": "44",
+            "article": "5",
             "period": "Three years",
-            "from": "The date of the dissolution",
+            "from": "The date of the dissolution (Art 5 — suit for account and share of profits of a dissolved partnership. Where winding up continues under Ss.45-48 IPA, courts have sometimes treated the date of final winding up as the accrual date)",
         },
         court_rules=_civil_and_commercial_rules(nature_keywords=["partnership", "business", "firm"]),
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + [

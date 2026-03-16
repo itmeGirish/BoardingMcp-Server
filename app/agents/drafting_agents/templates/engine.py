@@ -1829,7 +1829,7 @@ class TemplateEngine:
             lines.append(
                 f"\n    (b) Pendente lite interest at such rate as the Court "
                 f"deems fit and just from the date of institution of the suit until "
-                f"the date of decree, under Order XX Rule 11 CPC;"
+                f"the date of decree, under Section 34 CPC;"
             )
             lines.append(
                 f"\n    (c) Post-decree interest at such rate as the Court deems "
@@ -1840,7 +1840,7 @@ class TemplateEngine:
             lines.append(
                 f"\n    (a) Pendente lite interest at such rate as the Court "
                 f"deems fit and just from the date of institution of the suit until "
-                f"the date of decree, under Order XX Rule 11 CPC;"
+                f"the date of decree, under Section 34 CPC;"
             )
             lines.append(
                 f"\n    (b) Post-decree interest at such rate as the Court deems "
@@ -2210,8 +2210,8 @@ class TemplateEngine:
             )
             letter += 1
             lines.append(
-                f"\n    ({chr(letter)}) Award pendente lite interest under Order XX "
-                f"Rule 11 CPC and post-decree interest under Section 34 CPC at such "
+                f"\n    ({chr(letter)}) Award pendente lite and post-decree interest "
+                f"under Section 34 CPC at such "
                 f"rate as this Hon'ble Court deems just;"
             )
             letter += 1
@@ -2292,8 +2292,8 @@ class TemplateEngine:
         lines.append(
             f"\n    ({chr(letter)}) Award pendente lite interest at such rate as "
             f"the Court deems just from the date of suit till decree under "
-            f"Order XX Rule 11 CPC, and future interest from the date of "
-            f"decree till realisation under Section 34 CPC;"
+            f"Section 34 CPC, and future interest from the date of decree "
+            f"till realisation under Section 34 CPC;"
         )
         letter += 1
 

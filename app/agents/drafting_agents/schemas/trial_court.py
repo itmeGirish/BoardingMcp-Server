@@ -133,7 +133,7 @@ SCHEMAS: dict = {
 
         "filing_rules": {
             "court_fee": False,
-            "filing_deadline": "30 days from service of summons (max 90 days — Order VIII Rule 1; 120 days for commercial disputes under Commercial Courts Act)",
+            "filing_deadline": "Ordinarily within 30 days from service of summons; in regular civil suits the court may extend time beyond 30 days and ordinarily up to 90 days for recorded reasons, while commercial disputes carry a strict outer limit of 120 days from service under the Commercial Courts Act",
             "vakalatnama": True,
             "certified_copy": False,
         },
@@ -239,7 +239,7 @@ SCHEMAS: dict = {
 
         "filing_rules": {
             "court_fee": True,
-            "filing_deadline": "The counter-claim cause of action must accrue before the defendant has delivered the defence or before the time limited for delivering the defence expires (Order VIII Rule 6A)",
+            "filing_deadline": "May be raised before issues are framed; subject to independent limitation for the counter-claim cause of action (Order VIII Rule 6A CPC)",
             "vakalatnama": False,
             "certified_copy": False,
         },

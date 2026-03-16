@@ -119,7 +119,7 @@ class Settings(BaseSettings):
     OLLAMA_ROUTER_MODEL: str = "glm-4.7:cloud"             # routing / classification
     OLLAMA_INTAKE_MODEL: str = "qwen3.5:cloud"              # intake node
     OLLAMA_DRAFT_MODEL: str = "qwen3.5:cloud"                # draft node
-    OLLAMA_REVIEW_MODEL: str = "glm-5:cloud"                  # review node
+    OLLAMA_REVIEW_MODEL: str = "qwen3.5:cloud"                 # review node
     OLLAMA_FALLBACK_MODEL: str = "glm-4.6:cloud"           # fallback for drafting chain
     OLLAMA_ROUTER_FALLBACK_MODEL: str = "glm-4.6:cloud"    # fallback for router chain
 

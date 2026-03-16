@@ -104,9 +104,9 @@ CAUSES: dict = {
             {"act": "Code of Civil Procedure, 1908", "sections": ["Section 20"]},
         ],
         limitation={
-            "article": "14",
+            "article": "26",
             "period": "Three years",
-            "from": "When accounts are stated in writing signed by defendant or his authorised agent (unless payable at future date, then when that date arrives)",
+            "from": "When the accounts are stated in writing signed by the defendant or his agent duly authorised in this behalf; unless the account is stated to be payable at a future time, in which case when that time arrives",
         },
         court_rules=_civil_and_commercial_rules(),
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + [

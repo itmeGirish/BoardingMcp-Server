@@ -201,10 +201,9 @@ CAUSES: dict = {
             {"act": "Transfer of Property Act, 1882", "sections": ["Section 106", "Section 111"]},
         ],
         limitation={
-            "article": "UNKNOWN",
-            "description": "Do not use Article 32 for mesne profits after tenancy. Verify the governing profits article and plead the occupation period-wise.",
-            "period": "Runs separately for each profits period under the applicable article",
-            "from": "From each period of wrongful occupation profits, subject to the governing article",
+            "article": "87",
+            "period": "Three years",
+            "from": "When each period's profits are received — limitation runs separately for each period of wrongful occupation profits. Plaintiff can recover only mesne profits within three years prior to suit. Where mesne profits are directed by Order XX Rule 12 CPC inquiry in an existing possession suit, the inquiry is not a separate suit and limitation does not bar it separately",
         },
         required_sections=COMMON_CIVIL_PLAINT_SECTIONS + [
             "termination_details", "unauthorized_occupation_period",

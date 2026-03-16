@@ -36,6 +36,9 @@ SUPERSEDED_ACTS: Dict[str, str] = {
     "Code of Criminal Procedure, 1973": "Bharatiya Nagarik Suraksha Sanhita, 2023",
     "Code of Criminal Procedure 1973": "Bharatiya Nagarik Suraksha Sanhita, 2023",
     "Indian Evidence Act, 1872": "Bharatiya Sakshya Adhiniyam, 2023",
+    "Indian Evidence Act 1872": "Bharatiya Sakshya Adhiniyam, 2023",
+    "Evidence Act, 1872": "Bharatiya Sakshya Adhiniyam, 2023",
+    "Evidence Act 1872": "Bharatiya Sakshya Adhiniyam, 2023",
 }
 
 

@@ -54,7 +54,7 @@ SCHEMAS: dict = {
 
         "filing_rules": {
             "court_fee": True,
-            "filing_deadline": "12 years from when the decree or order becomes enforceable; for a decree granting a mandatory injunction, from the date of breach or successive breaches (Art 136 Limitation Act)",
+            "filing_deadline": "12 years from when the decree or order becomes enforceable (Art 136 Limitation Act). Art 136 excludes decrees granting a mandatory injunction — no express limitation period prescribed for execution of such decrees",
             "vakalatnama": True,
             "certified_copy": True,
         },
